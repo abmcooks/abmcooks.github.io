@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — Basit Masood (ABM)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --display: 'Bricolage Grotesque', sans-serif;
+    --body: 'Inter', sans-serif;
+    --bg: #08080C;
+    --surface: #0E0E14;
+    --text: #EDE8DB;
+    --dim: #8F8A7B;
+    --muted: #53504A;
+    --border: #1E1D19;
+    --accent: #D4654A;
+    --accent-light: #E8856C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { background: var(--bg); }
+
+  body {
+    font-family: var(--body);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+    padding: 0;
+  }
+
+  /* ─── PAGE WRAPPER ─── */
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 6px;
+  }
+  .name {
+    font-family: var(--display);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--text);
+  }
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin-top: 4px;
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin-top: 14px;
+  }
+  .contact a, .contact span {
+    font-size: 12.5px;
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact a:hover { color: var(--accent-light); }
+  .contact .sep { color: var(--muted); }
+
+  /* ─── SUMMARY ─── */
+  .summary {
+    font-size: 13.5px;
+    color: var(--dim);
+    line-height: 1.65;
+    max-width: 680px;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    margin-top: 36px;
+  }
+  .section-title {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ─── EXPERIENCE ENTRY ─── */
+  .entry {
+    margin-bottom: 28px;
+  }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+  }
+  .entry-company {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .entry-role {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dim);
+  }
+  .entry-meta {
+    font-size: 12px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .entry-desc {
+    font-size: 13px;
+    color: var(--dim);
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .entry ul {
+    list-style: none;
+    padding: 0;
+  }
+  .entry li {
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .entry li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+
+  /* ─── CONSULTING ─── */
+  .consult-entry {
+    margin-bottom: 14px;
+  }
+  .consult-entry:last-child { margin-bottom: 0; }
+  .consult-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .consult-name {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .consult-meta {
+    font-size: 11.5px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .consult-desc {
+    font-size: 12.5px;
+    color: var(--dim);
+    line-height: 1.6;
+    margin-top: 2px;
+  }
+
+  /* ─── EXPERTISE ─── */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 32px;
+  }
+  .expertise-cat {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: 0.01em;
+  }
+  .expertise-items {
+    font-size: 12.5px;
+    color: var(--dim);
+    line-height: 1.6;
+  }
+
+  /* ─── EDUCATION ─── */
+  .edu-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .edu-school {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .edu-degree {
+    font-size: 12.5px;
+    color: var(--dim);
+    margin-top: 2px;
+  }
+  .edu-year {
+    font-size: 12px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  /* ─── BACK LINK ─── */
+  .back-link {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+    z-index: 10;
+  }
+  .back-link:hover { color: var(--accent-light); }
+  .back-link svg { width: 14px; height: 14px; }
+
+  /* ─── PRINT BUTTON ─── */
+  .print-btn {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dim);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .print-btn:hover {
+    color: var(--text);
+    border-color: var(--muted);
+  }
+  .print-btn svg { width: 14px; height: 14px; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 640px) {
+    .page { padding: 40px 24px 60px; }
+    .name { font-size: 26px; }
+    .header-top { flex-direction: column; gap: 4px; }
+    .entry-header { flex-direction: column; gap: 2px; }
+    .consult-header { flex-direction: column; gap: 2px; }
+    .expertise-grid { grid-template-columns: 1fr; gap: 14px; }
+    .edu-row { flex-direction: column; gap: 2px; }
+    .back-link, .print-btn { position: static; margin-bottom: 8px; }
+    .top-bar { display: flex; justify-content: space-between; margin-bottom: 20px; }
+  }
+
+  /* ═══════════════════════════════════════
+     PRINT STYLES
+     ═══════════════════════════════════════ */
+  @media print {
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --dim: #444444;
+      --muted: #777777;
+      --border: #e0e0e0;
+      --accent: #C04530;
+      --accent-light: #C04530;
+    }
+
+    html, body { background: white; }
+
+    .page {
+      max-width: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .back-link, .print-btn, .top-bar { display: none !important; }
+
+    .header { margin-bottom: 24px; padding-bottom: 18px; }
+    .name { font-size: 26px; }
+    .title { font-size: 12px; }
+    .contact a, .contact span { font-size: 11px; }
+    .summary { font-size: 12px; }
+
+    .section { margin-top: 22px; }
+    .section-title { font-size: 10px; margin-bottom: 12px; padding-bottom: 5px; }
+
+    .entry { margin-bottom: 18px; }
+    .entry-company { font-size: 14px; }
+    .entry-role { font-size: 11.5px; }
+    .entry-meta { font-size: 10.5px; }
+    .entry-desc { font-size: 11.5px; margin-bottom: 5px; }
+    .entry li { font-size: 11.5px; line-height: 1.5; margin-bottom: 2px; padding-left: 12px; }
+    .entry li::before { top: 7px; width: 3px; height: 3px; background: #999; }
+
+    .consult-name { font-size: 12.5px; }
+    .consult-meta { font-size: 10px; }
+    .consult-desc { font-size: 11px; }
+    .consult-entry { margin-bottom: 10px; }
+
+    .expertise-grid { gap: 10px 24px; }
+    .expertise-cat { font-size: 10.5px; }
+    .expertise-items { font-size: 11px; }
+
+    .edu-school { font-size: 12.5px; }
+    .edu-degree { font-size: 11px; }
+    .edu-year { font-size: 10.5px; }
+
+    /* Avoid page breaks inside individual entries, but allow within sections */
+    .entry, .consult-entry { break-inside: avoid; }
+
+    /* Tighten header to let content flow onto page 1 */
+    .header { margin-bottom: 16px; padding-bottom: 12px; }
+    .summary { margin-top: 10px !important; }
+    .section { margin-top: 14px; }
+    .section-title { margin-bottom: 10px; padding-bottom: 4px; }
+    .entry { margin-bottom: 14px; }
+    .entry-desc { margin-top: 2px; margin-bottom: 4px; }
+    .entry li { margin-bottom: 1px; }
+  }
+
+  @page {
+    margin: 0.5in 0.6in;
+    size: letter;
+  }
+</style>
+</head>
+<body>
+
+<a href="/" class="back-link">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+  Back
+</a>
+
+<button class="print-btn" onclick="window.print()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  Save PDF
+</button>
+
+<div class="page">
+
+  <!-- MOBILE TOP BAR -->
+  <div class="top-bar" style="display:none;">
+    <a href="/" class="back-link" style="position:static;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Back
+    </a>
+    <button class="print-btn" style="position:static;" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Save PDF
+    </button>
+  </div>
+
+  <!-- ─── HEADER ─── -->
+  <header class="header">
+    <div class="header-top">
+      <div>
+        <h1 class="name">Basit Masood</h1>
+        <div class="title">Lead Product Designer</div>
+      </div>
+    </div>
+    <div class="contact">
+      <span>Dubai, UAE</span>
+      <span class="sep">/</span>
+      <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
+      <span class="sep">/</span>
+      <a href="https://linkedin.com/in/iabm" target="_blank">linkedin.com/in/iabm</a>
+      <span class="sep">/</span>
+      <a href="https://abmcooks.github.io" target="_blank">abmcooks.github.io</a>
+    </div>
+    <p class="summary" style="margin-top: 16px;">
+      Fintech product design leader with 6+ years building products that raised $70M+ in funding. Two-time founding designer (SadaPay, ZAR). Scaled a design org from 1 to 8 and grew from IC to Head of Design. Now pioneering AI-enabled design operations&mdash;building systems where engineers self-serve design, AI handles design consulting, and governance runs automatically.
+    </p>
+  </header>
+
+  <!-- ─── EXPERIENCE ─── -->
+  <section class="section">
+    <div class="section-title">Experience</div>
+
+    <!-- ZAR -->
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <span class="entry-company">ZAR</span>
+          <span class="entry-role">&nbsp;&mdash; Lead Product Designer</span>
+        </div>
+        <span class="entry-meta">Nov 2024 &ndash; Present &middot; Dubai</span>
+      </div>
+      <div class="entry-desc">Founding designer at a Solana-powered digital dollar wallet (a16z-backed, $20M Series A)</div>
+      <ul>
+        <li>Own all product design across consumer, merchant, and operational domains&mdash;from foundational service design research and on-ground user studies to final UI</li>
+        <li>Built design system from zero and led brand identity refresh; redesigned core transaction flows from order-based to QR scanning based on behavioral research</li>
+        <li>Pioneered AI-enabled design operations: built an AI design consultant agent that enables engineers to self-serve MVP screens using ZAR's design system, patterns, and principles&mdash;without waiting for a designer</li>
+        <li>Built the design layer into ZAR's company operating system (Praxis) from scratch&mdash;added design conventions, brand identity standards, UX pattern library, and design consulting workflows into the org-wide framework used by both humans and AI agents</li>
+        <li>Automated design workflows end-to-end: meeting summarization, design knowledge base, cross-tool integrations, and daily operational briefings using AI</li>
+        <li>Hired and manage design team; established design standards, brand compliance, and UX governance across all product squads</li>
+      </ul>
+    </div>
+
+    <!-- SadaPay -->
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <span class="entry-company">SadaPay</span>
+          <span class="entry-role">&nbsp;&mdash; UX Designer &rarr; Senior &rarr; Lead &rarr; Head of Product Design</span>
+        </div>
+        <span class="entry-meta">Dec 2020 &ndash; Aug 2024 &middot; Pakistan</span>
+      </div>
+      <div class="entry-desc">First in-house designer at Pakistan's leading neobank (220M population, 87% unbanked). Grew from sole IC to leading a team of 8.</div>
+      <ul>
+        <li>Designed the app experience that secured $7.2M pre-seed funding; continued shaping the product through $20M+ Series A and $50M acquisition by Papara</li>
+        <li>Scaled design team from 1&rarr;8: headhunted, hired, mentored, and built career progression frameworks. Created a design chapter with learning culture and self-assessment programs</li>
+        <li>Built and maintained the design system with tokens connected to production code; established a dedicated design system squad with executive buy-in from Head of Engineering and CTO</li>
+        <li>Led fraud reduction through service design blueprints&mdash;mapped end-to-end risk analyst workflows, refined SOPs, and significantly reduced fraud rate</li>
+        <li>Optimized chatbot flows through research and data analysis, creating service blueprints that reduced contact volume and improved customer experience</li>
+        <li>Collaborated with C-level leadership on product roadmap; defined design principles and quality checklists that enabled team autonomy across squads</li>
+      </ul>
+    </div>
+
+    <!-- ADIB -->
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <span class="entry-company">ADIB (Abu Dhabi Islamic Bank)</span>
+          <span class="entry-role">&nbsp;&mdash; Lead Product Designer</span>
+        </div>
+        <span class="entry-meta">Sep 2024 &ndash; Feb 2025 &middot; Abu Dhabi</span>
+      </div>
+      <div class="entry-desc">Led product design at one of the world's largest Islamic banks, via Synechron</div>
+      <ul>
+        <li>Designed end-to-end UX for Remit! (Visa Direct)&mdash;ADIB's real-time cross-border transfer service reaching 11B+ endpoints. First bank worldwide to offer such reach</li>
+        <li>Designed open banking UI/UX from zero in partnership with Lean Technologies for UAE's Open Finance ecosystem</li>
+        <li>Rescued a fragmented design system: audited all screens, identified broken patterns, restructured Figma files, and rebuilt as atomic component library</li>
+        <li>Established design governance framework and quality assurance processes across all product domains</li>
+      </ul>
+    </div>
+
+    <!-- Consulting -->
+    <div class="entry">
+      <div class="section-title" style="margin-top: 0; margin-bottom: 16px;">Selected Consulting</div>
+
+      <div class="consult-entry">
+        <div class="consult-header">
+          <span class="consult-name">Bolt VPN &mdash; Product Design Consultant</span>
+          <span class="consult-meta">Dec 2024 &ndash; Mar 2025 &middot; via Galixo AI</span>
+        </div>
+        <div class="consult-desc">Led complete UI/UX transformation for VPN app with 10M+ downloads. Redesigned interface, optimized paywall conversion, and built atomic design system across iOS, Android, and Chrome extension.</div>
+      </div>
+
+      <div class="consult-entry">
+        <div class="consult-header">
+          <span class="consult-name">GoCompliance &mdash; Product Design Consultant</span>
+          <span class="consult-meta">Aug 2024 &ndash; Jan 2025 &middot; via GoSaaS</span>
+        </div>
+        <div class="consult-desc">Overhauled UX for Oracle-integrated compliance platform serving Fortune 500 companies. Built design system from zero, conducted user testing with enterprise compliance managers.</div>
+      </div>
+
+      <div class="consult-entry">
+        <div class="consult-header">
+          <span class="consult-name">Walking the Talk / ZRG Partners &mdash; Product Design Consultant</span>
+          <span class="consult-meta"></span>
+        </div>
+        <div class="consult-desc">Designed web-based culture assessment tools for global culture consulting firm (acquired by ZRG Partners). Built the Taylor Assessment&mdash;a psychometric tool measuring leadership culture contribution across six archetypes. Also designed 360-degree feedback survey and Culture Insights Survey used by hundreds of global organizations.</div>
+      </div>
+    </div>
+
+    <!-- Xpence -->
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <span class="entry-company">Xpence</span>
+          <span class="entry-role">&nbsp;&mdash; UX Designer (via VentureDive)</span>
+        </div>
+        <span class="entry-meta">Mar 2020 &ndash; Dec 2020 &middot; Dubai</span>
+      </div>
+      <ul>
+        <li>Designed entire fintech app for business expenses in 8 sprints, from wireframes to micro-interactions</li>
+        <li>Built atomic design system (Xperia) from scratch with full documentation</li>
+      </ul>
+    </div>
+
+    <!-- Vizteck -->
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <span class="entry-company">Vizteck Solutions</span>
+          <span class="entry-role">&nbsp;&mdash; UI/UX Designer</span>
+        </div>
+        <span class="entry-meta">Mar 2019 &ndash; Feb 2020 &middot; Islamabad</span>
+      </div>
+      <div class="consult-desc">Launched design career working on ride-hailing, food delivery, and on-demand apps. Built landing pages and responsive email templates.</div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERTISE ─── -->
+  <section class="section">
+    <div class="section-title">Expertise</div>
+    <div class="expertise-grid">
+      <div>
+        <div class="expertise-cat">Design</div>
+        <div class="expertise-items">Product Design (Mobile-First) · Design Systems Architecture · Service Design & Blueprinting · User Research · Prototyping</div>
+      </div>
+      <div>
+        <div class="expertise-cat">Leadership</div>
+        <div class="expertise-items">Design Org Scaling (1&rarr;8) · Design Governance · Career Frameworks · Cross-Functional Collaboration · Stakeholder Management</div>
+      </div>
+      <div>
+        <div class="expertise-cat">Domain</div>
+        <div class="expertise-items">Payments UX · Fintech (Startups & Enterprise) · Trust & Security Design · KYC/Onboarding · Emerging Markets</div>
+      </div>
+      <div>
+        <div class="expertise-cat">AI + Design Ops</div>
+        <div class="expertise-items">AI-Enabled Design Workflows · Engineer Self-Serve Design · Automated Design Operations · Design Knowledge Systems</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EDUCATION ─── -->
+  <section class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-school">University of Engineering & Technology, Taxila</div>
+        <div class="edu-degree">B.S. Information Technology</div>
+      </div>
+      <span class="edu-year">2014 &ndash; 2018</span>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Mobile top bar visibility
+  const mq = window.matchMedia('(max-width: 640px)');
+  function handleMobile(e) {
+    document.querySelector('.top-bar').style.display = e.matches ? 'flex' : 'none';
+  }
+  mq.addEventListener('change', handleMobile);
+  handleMobile(mq);
+</script>
+
+</body>
+</html>
