@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The waitlist didn't just collect signups. It filtered for commitment. How gamified waitlists at SadaPay and ZAR created power users before launch.">
+<meta name="author" content="ABM (Basit Masood)">
+<meta property="og:title" content="Hooks That Created Power Users — ABM">
+<meta property="og:description" content="How gamified waitlists at SadaPay and ZAR turned signups into power users — with zero paid acquisition.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hooks That Created Power Users — ABM">
+<meta name="twitter:description" content="How gamified waitlists at SadaPay and ZAR turned signups into power users — with zero paid acquisition.">
+<title>Hooks That Created Power Users — ABM</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  :root {
+    --display: 'Bricolage Grotesque', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --bg: #08080C;
+    --card: #0E0E14;
+    --text: #EDE8DB;
+    --dim: #8F8A7B;
+    --muted: #53504A;
+    --border: #1E1D19;
+    --accent: #D4654A;
+    --accent-light: #E8856C;
+    --accent-glow: rgba(212,101,74,0.08);
+    --teal: #4ECDC4;
+    --teal-dim: rgba(78,205,196,0.08);
+    --gold: #D4A853;
+    --gold-dim: rgba(212,168,83,0.08);
+    --violet: #9B72CF;
+    --violet-dim: rgba(155,114,207,0.08);
+    --radius: 20px;
+  }
+
+  @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  body {
+    font-family: var(--body); background: var(--bg); color: var(--text);
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; padding-bottom: 120px; cursor: none;
+    animation: pageIn 0.3s ease;
+  }
+  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
+  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ─── SCROLL PROGRESS ─── */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2px; z-index: 10001;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    width: 0%; transform-origin: left;
+  }
+
+  /* ─── READING PROGRESS (percentage) ─── */
+  .read-pct {
+    position: fixed; top: 16px; right: 24px; z-index: 10001;
+    font-family: var(--display); font-size: 11px; font-weight: 600;
+    color: var(--muted); letter-spacing: 0.02em;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .read-pct.visible { opacity: 1; }
+
+  /* ─── BLOBS ─── */
+  .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .bl { position: absolute; border-radius: 50%; filter: blur(130px); }
+  .bl-1 { width: 600px; height: 600px; top: -10%; left: -5%; background: var(--accent); opacity: 0.08; animation: bd1 25s ease-in-out infinite; }
+  .bl-2 { width: 450px; height: 450px; bottom: 10%; right: -5%; background: #D4654A; opacity: 0.045; animation: bd2 30s ease-in-out infinite; }
+
+  /* ─── GRAIN ─── */
+  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* ─── CURSOR ─── */
+  .cur { position: fixed; width: 14px; height: 14px; border-radius: 50%;
+    border: 1.5px solid rgba(237,232,219,0.18); pointer-events: none; z-index: 10000;
+    transition: width 0.35s cubic-bezier(.23,1,.32,1), height 0.35s cubic-bezier(.23,1,.32,1), background 0.35s, border-color 0.35s;
+    transform: translate(-50%,-50%); }
+  .cur.hov { width: 56px; height: 56px; background: rgba(212,101,74,0.06); border-color: rgba(212,101,74,0.3); }
+  .glow { position: fixed; width: 500px; height: 500px; border-radius: 50%;
+    pointer-events: none; z-index: 1;
+    background: radial-gradient(circle, rgba(212,101,74,0.04) 0%, transparent 70%);
+    transform: translate(-50%,-50%); }
+
+  /* ─── NAV ─── */
+  .bnav {
+    position: fixed; bottom: 28px; left: 50%; z-index: 1000;
+    display: flex; align-items: center; gap: 2px;
+    padding: 5px 5px 5px 18px; border-radius: 100px;
+    background:
+      linear-gradient(rgba(14,14,20,0.92), rgba(14,14,20,0.92)) padding-box,
+      conic-gradient(from var(--angle), transparent 20%, rgba(212,101,74,0.4) 40%, rgba(232,133,108,0.6) 50%, rgba(212,101,74,0.4) 60%, transparent 80%) border-box;
+    border: 1.5px solid transparent;
+    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+    box-shadow: 0 0 60px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3), 0 0 24px rgba(212,101,74,0.06);
+    opacity: 0; transform: translateX(-50%) translateY(20px);
+    animation: navIn 0.6s 0.8s forwards, rotateBorder 6s linear infinite;
+  }
+  .bnav .nn { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--text); margin-right: 10px; letter-spacing: -0.01em; }
+  .bnav .ns { width: 1px; height: 18px; background: var(--border); margin: 0 6px; }
+  .nav-links { position: relative; display: flex; align-items: center; gap: 2px; }
+  .nav-ind {
+    position: absolute; height: 30px; border-radius: 100px; top: 50%; transform: translateY(-50%);
+    background: linear-gradient(135deg, rgba(212,101,74,0.12), rgba(232,133,108,0.06));
+    border: 1px solid rgba(212,101,74,0.1);
+    box-shadow: 0 0 14px rgba(212,101,74,0.08);
+    transition: all 0.4s cubic-bezier(.23,1,.32,1); pointer-events: none; opacity: 0;
+  }
+  .nav-ind.ready { opacity: 1; }
+  .nl {
+    font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none;
+    padding: 7px 13px; border-radius: 100px; cursor: none; position: relative; z-index: 1;
+    transition: color 0.3s, transform 0.25s cubic-bezier(.23,1,.32,1);
+  }
+  .nl:hover { color: var(--dim); }
+  .nl.ac { color: var(--text); }
+  .nl.ac::after {
+    content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 8px rgba(212,101,74,0.6);
+  }
+  .nc {
+    font-size: 13px; font-weight: 600; background: #D4654A; color: white; text-decoration: none;
+    padding: 7px 18px; border-radius: 100px; margin-left: 4px; cursor: none;
+    box-shadow: 0 2px 20px rgba(212,101,74,0.25);
+    transition: all 0.3s cubic-bezier(.23,1,.32,1);
+  }
+  .nc:hover { box-shadow: 0 4px 28px rgba(212,101,74,0.45); transform: translateY(-1px) scale(1.03); }
+
+  /* ─── MOBILE MENU ─── */
+  .mob-btn {
+    display: none; background: none; border: none; color: var(--dim);
+    padding: 7px; border-radius: 8px; cursor: pointer; transition: color 0.3s;
+  }
+  .mob-btn:hover { color: var(--text); }
+  .mob-menu {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(8,8,12,0.96);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .mob-menu.open { opacity: 1; pointer-events: all; }
+  .mob-nav { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .mob-link {
+    font-family: var(--display); font-size: 36px; font-weight: 700;
+    color: var(--dim); text-decoration: none;
+    padding: 10px 32px; border-radius: 12px; transition: color 0.3s;
+  }
+  .mob-link:hover { color: var(--text); }
+  .mob-link.mob-ac { color: #D4654A; }
+  .mob-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: 1px solid var(--border);
+    color: var(--dim); font-size: 22px;
+    cursor: pointer; transition: all 0.3s; font-family: var(--body);
+  }
+  .mob-close:hover { border-color: rgba(212,101,74,0.3); color: var(--text); }
+
+  /* ─── ARTICLE HERO ─── */
+  .art-hero {
+    position: relative; z-index: 2;
+    max-width: 720px; margin: 0 auto;
+    padding: 160px 32px 60px;
+    text-align: center;
+    opacity: 0; animation: fu 0.8s 0.2s forwards;
+  }
+  .art-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    text-decoration: none; cursor: none;
+    margin-bottom: 40px; transition: color 0.3s;
+  }
+  .art-back:hover { color: var(--accent); }
+  .art-back svg { transition: transform 0.3s; }
+  .art-back:hover svg { transform: translateX(-3px); }
+  .art-meta-top {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    font-size: 12px; color: var(--muted); margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .art-meta-top .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
+  .art-hero h1 {
+    font-family: var(--display); font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+    color: var(--text); margin-bottom: 20px;
+  }
+  .art-hook {
+    font-family: var(--display); font-size: 18px; font-weight: 400;
+    color: var(--dim); line-height: 1.65; letter-spacing: -0.01em;
+    max-width: 560px; margin: 0 auto 28px;
+  }
+  .art-tags {
+    display: flex; justify-content: center; gap: 8px;
+    flex-wrap: wrap;
+  }
+  .art-tag {
+    font-size: 11px; font-weight: 500; padding: 4px 14px;
+    border-radius: 100px; color: var(--accent);
+    border: 1px solid rgba(212,101,74,0.15);
+    background: rgba(212,101,74,0.04);
+  }
+  .art-divider {
+    width: 48px; height: 1px; background: var(--border);
+    margin: 0 auto;
+  }
+
+  /* ─── ARTICLE BODY ─── */
+  .article {
+    position: relative; z-index: 2;
+    max-width: 680px; margin: 0 auto;
+    padding: 48px 32px 0;
+  }
+  .article p {
+    font-size: 16.5px; color: var(--dim); line-height: 1.85;
+    margin-bottom: 24px;
+  }
+  .article p strong { color: var(--text); font-weight: 600; }
+  .article p em { font-style: italic; }
+
+  .article h2 {
+    font-family: var(--display); font-size: 26px; font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.2;
+    color: var(--text); margin: 56px 0 20px;
+  }
+  .article h3 {
+    font-family: var(--display); font-size: 20px; font-weight: 600;
+    letter-spacing: -0.01em; line-height: 1.3;
+    color: var(--text); margin: 40px 0 16px;
+  }
+
+  /* Blockquote */
+  .article blockquote {
+    margin: 36px 0;
+    padding: 24px 28px;
+    border-left: 2px solid var(--accent);
+    background: rgba(212,101,74,0.03);
+    border-radius: 0 14px 14px 0;
+  }
+  .article blockquote p {
+    font-family: var(--display); font-size: 18px; font-weight: 400;
+    font-style: italic; color: var(--dim); line-height: 1.7;
+    margin-bottom: 0;
+  }
+  .article blockquote p strong { font-style: normal; }
+
+  /* Lists */
+  .article ul, .article ol {
+    margin: 16px 0 24px;
+    padding-left: 0;
+    list-style: none;
+  }
+  .article li {
+    font-size: 16px; color: var(--dim); line-height: 1.8;
+    padding: 4px 0 4px 22px;
+    position: relative;
+  }
+  .article ul li::before {
+    content: '';
+    position: absolute; left: 0; top: 13px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); opacity: 0.5;
+  }
+  .article ol { counter-reset: item; }
+  .article ol li { counter-increment: item; }
+  .article ol li::before {
+    content: counter(item) '.';
+    position: absolute; left: 0; top: 4px;
+    font-family: var(--display); font-size: 14px; font-weight: 700;
+    color: var(--accent); opacity: 0.6;
+  }
+  .article li strong { color: var(--text); font-weight: 600; }
+
+  /* Divider */
+  .article hr {
+    border: none; height: 1px; background: var(--border);
+    margin: 48px auto; width: 48px;
+  }
+
+  /* Image placeholder */
+  .article .img-placeholder {
+    margin: 36px 0;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+  .article .img-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(212,101,74,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .article .img-inner {
+    aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--muted);
+    padding: 32px; text-align: center;
+  }
+  .article .img-cap {
+    padding: 12px 20px;
+    font-size: 12px; color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ─── CUSTOM: SPLIT STRIP ─── */
+  .split-strip {
+    position: relative; z-index: 2;
+    max-width: 680px; margin: 36px auto;
+    padding: 0 32px;
+  }
+  .split-strip-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card);
+  }
+  .split-side {
+    padding: 32px 24px; text-align: center;
+    position: relative;
+  }
+  .split-side:first-child { border-right: 1px solid var(--border); }
+  .split-side .ss-company {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .split-side .ss-company.sp { color: var(--teal); }
+  .split-side .ss-company.zar { color: var(--gold); }
+  .split-side .ss-number {
+    font-family: var(--mono); font-size: clamp(28px, 5vw, 40px); font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .split-side .ss-number.sp { color: var(--teal); }
+  .split-side .ss-number.zar { color: var(--gold); }
+  .split-side .ss-context {
+    font-size: 12px; color: var(--muted); font-weight: 500;
+  }
+  .split-sub {
+    text-align: center; padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--card);
+    grid-column: 1 / -1;
+  }
+  .split-sub p {
+    font-size: 14px; color: var(--dim); margin: 0;
+    font-weight: 500;
+  }
+  .split-sub p strong { color: var(--accent); }
+
+  /* ─── CUSTOM: HOOK MECHANIC ─── */
+  .hook-mechanic {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px; margin: 32px 0; text-align: center;
+  }
+  .hook-mechanic .hm-flow {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    flex-wrap: wrap; margin-bottom: 16px;
+  }
+  .hook-mechanic .hm-step {
+    font-family: var(--mono); font-size: 14px; font-weight: 700;
+    padding: 10px 20px; border-radius: 10px;
+  }
+  .hook-mechanic .hm-step.action {
+    background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(78,205,196,0.15);
+  }
+  .hook-mechanic .hm-step.reward {
+    background: var(--violet-dim); color: var(--violet); border: 1px solid rgba(155,114,207,0.15);
+  }
+  .hook-mechanic .hm-arrow { color: var(--muted); font-size: 18px; }
+  .hook-mechanic .hm-label {
+    font-size: 12px; color: var(--muted); font-weight: 500;
+  }
+
+  /* ─── CUSTOM: HOOKS GRID ─── */
+  .hooks-grid {
+    display: grid; grid-template-columns: 1fr; gap: 2px;
+    background: var(--border); border-radius: 14px; overflow: hidden; margin: 32px 0;
+  }
+  .hook-item {
+    background: var(--card); padding: 20px 24px; display: grid;
+    grid-template-columns: 48px 1fr; gap: 16px; align-items: start;
+  }
+  .hook-item .hi-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+  }
+  .hook-item .hi-icon.teal { background: var(--teal-dim); color: var(--teal); }
+  .hook-item .hi-icon.violet { background: var(--violet-dim); color: var(--violet); }
+  .hook-item .hi-icon.gold { background: var(--gold-dim); color: var(--gold); }
+  .hook-item .hi-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .hook-item .hi-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ─── CUSTOM: PROOF BLOCK ─── */
+  .proof-block {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 36px 28px; margin: 32px 0; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .proof-block::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--teal), var(--accent));
+  }
+  .proof-block .pb-year {
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    color: var(--accent); margin-bottom: 14px; letter-spacing: 0.05em;
+  }
+  .proof-block .pb-quote {
+    font-family: var(--display); font-size: 18px; font-weight: 600; line-height: 1.5;
+    max-width: 480px; margin: 0 auto 14px; color: var(--text);
+  }
+  .proof-block .pb-context {
+    font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 440px; margin: 0 auto;
+  }
+
+  /* ─── CUSTOM: LAYERS STACK ─── */
+  .layers-stack {
+    margin: 32px 0; display: flex; flex-direction: column; gap: 6px;
+  }
+  .layer-bar {
+    background: var(--card); border-radius: 12px; padding: 18px 20px;
+    display: flex; align-items: center; gap: 16px;
+    border-left: 3px solid var(--accent);
+    border: 1px solid var(--border);
+  }
+  .layer-bar:nth-child(1) { border-left: 3px solid var(--gold); }
+  .layer-bar:nth-child(2) { border-left: 3px solid var(--violet); }
+  .layer-bar:nth-child(3) { border-left: 3px solid var(--teal); }
+  .layer-bar:nth-child(4) { border-left: 3px solid var(--accent); }
+  .layer-bar .lb-num {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .layer-bar:nth-child(1) .lb-num { background: var(--gold-dim); color: var(--gold); }
+  .layer-bar:nth-child(2) .lb-num { background: var(--violet-dim); color: var(--violet); }
+  .layer-bar:nth-child(3) .lb-num { background: var(--teal-dim); color: var(--teal); }
+  .layer-bar:nth-child(4) .lb-num { background: rgba(212,101,74,0.08); color: var(--accent); }
+  .layer-bar .lb-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .layer-bar .lb-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* ─── CUSTOM: ESCALATION ─── */
+  .escalation {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 6px; margin: 32px 0;
+  }
+  .esc-step {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 18px 14px; text-align: center;
+    border-radius: 12px; position: relative; overflow: hidden;
+  }
+  .esc-step::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--accent); opacity: 0.3;
+  }
+  .esc-step:nth-child(1)::after { opacity: 0.2; }
+  .esc-step:nth-child(2)::after { opacity: 0.4; }
+  .esc-step:nth-child(3)::after { opacity: 0.7; }
+  .esc-step:nth-child(4)::after { opacity: 1; }
+  .esc-step .es-action {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    color: var(--accent); margin-bottom: 6px; letter-spacing: 0.03em;
+  }
+  .esc-step .es-label { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .esc-step .es-result { font-size: 11px; color: var(--muted); }
+
+  /* ─── CUSTOM: IMPACT TABLE ─── */
+  .impact-table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    margin: 32px 0; font-size: 14px;
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .impact-table th {
+    text-align: left; padding: 12px 16px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+  }
+  .impact-table th.col-sp { color: var(--teal); }
+  .impact-table th.col-zar { color: var(--gold); }
+  .impact-table td {
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    color: var(--dim); background: var(--card);
+  }
+  .impact-table tr:last-child td { border-bottom: none; }
+  .impact-table td:first-child { font-weight: 600; color: var(--text); }
+  .impact-table .val-sp { color: var(--teal); }
+  .impact-table .val-zar { color: var(--gold); font-weight: 600; }
+
+  /* ─── CUSTOM: LEARNING GRID ─── */
+  .learning-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 6px; margin: 32px 0;
+  }
+  .learning-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px;
+  }
+  .learning-card .lc-num {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .learning-card .lc-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+  .learning-card .lc-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ─── AUTHOR CARD ─── */
+  .author {
+    max-width: 680px; margin: 64px auto 0;
+    padding: 0 32px;
+    position: relative; z-index: 2;
+  }
+  .author-card {
+    display: flex; align-items: center; gap: 20px;
+    padding: 28px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .author-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(212,101,74,0.15), rgba(212,101,74,0.1));
+    border: 1px solid rgba(212,101,74,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 20px; font-weight: 700;
+    color: var(--accent); flex-shrink: 0;
+  }
+  .author-info { flex: 1; }
+  .author-name {
+    font-family: var(--display); font-size: 16px; font-weight: 600;
+    color: var(--text); margin-bottom: 2px;
+  }
+  .author-role {
+    font-size: 13px; color: var(--dim); line-height: 1.4;
+  }
+  .author-links {
+    display: flex; gap: 8px;
+  }
+  .author-link {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--dim); text-decoration: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600;
+    cursor: none; transition: all 0.3s;
+  }
+  .author-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── ARTICLE NAV ─── */
+  .art-nav {
+    position: relative; z-index: 2;
+    max-width: 680px; margin: 48px auto 0;
+    padding: 0 32px;
+    display: flex; justify-content: space-between; gap: 16px;
+  }
+  .art-nav-link {
+    display: flex; flex-direction: column; gap: 4px;
+    text-decoration: none; cursor: none;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    flex: 1;
+  }
+  .art-nav-link:hover {
+    border-color: rgba(212,101,74,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+  .art-nav-link:last-child { text-align: right; }
+  .art-nav-dir {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .art-nav-title {
+    font-family: var(--display); font-size: 15px; font-weight: 600;
+    color: var(--text); letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  /* ─── FOOTER ─── */
+  footer { position: relative; z-index: 2; max-width: 800px; margin: 80px auto 0; padding: 0 48px; }
+  .fb { padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); }
+  .fb-social { display: flex; gap: 8px; }
+  .fbs {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--muted); text-decoration: none;
+    font-size: 11px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s; cursor: none;
+  }
+  .fbs:hover { border-color: rgba(212,101,74,0.3); color: #D4654A; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes navIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+  @keyframes rotateBorder { to { --angle: 360deg; } }
+  @keyframes bd1 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(80px,60px) scale(1.1); } 100% { transform: translate(-40px,30px) scale(.95); } }
+  @keyframes bd2 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px,-40px) scale(1.15); } 100% { transform: translate(30px,-60px) scale(.9); } }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    body { cursor: auto; } .cur, .glow { display: none; }
+    .art-hero, .article, .author, .art-nav { padding-left: 20px; padding-right: 20px; }
+    .split-strip { padding-left: 20px; padding-right: 20px; }
+    footer { padding-left: 20px; padding-right: 20px; }
+    .read-pct { display: none; }
+    .nl.hsm { display: none; }
+    .mob-btn { display: flex; align-items: center; }
+  }
+  @media (max-width: 640px) {
+    .art-hero { padding-top: 120px; }
+    .art-hero h1 { font-size: 28px; }
+    .art-nav { flex-direction: column; }
+    .art-nav-link:last-child { text-align: left; }
+    .author-card { flex-direction: column; text-align: center; }
+    .author-links { justify-content: center; }
+    .fb { flex-direction: column; gap: 8px; text-align: center; }
+    .split-strip-inner { grid-template-columns: 1fr; }
+    .split-side:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    .escalation { grid-template-columns: repeat(2, 1fr); }
+    .learning-grid { grid-template-columns: 1fr; }
+    .hook-mechanic .hm-flow { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="sp"></div>
+<div class="read-pct" id="readPct">0%</div>
+<div class="blobs"><div class="bl bl-1"></div><div class="bl bl-2"></div></div>
+<div class="grain"></div>
+<div class="cur" id="cur"></div>
+<div class="glow" id="glo"></div>
+
+<!-- NAV -->
+<nav class="bnav">
+  <span class="nn">ABM</span><span class="ns"></span>
+  <div class="nav-links">
+    <div class="nav-ind" id="navInd"></div>
+    <a href="/" class="nl">Work</a>
+    <a href="/about/" class="nl hsm">About</a>
+    <a href="/writing/" class="nl ac hsm">Writing</a>
+    <span style="color:var(--muted);font-size:12px;margin:0 2px;font-weight:400;">-</span>
+    <a href="/resume/" class="nl hsm">Resume</a>
+  </div>
+  <button class="mob-btn" id="mobBtn" aria-label="Menu">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+  <a href="/contact/" class="nc">Contact</a>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose">&times;</button>
+  <nav class="mob-nav">
+    <a href="/" class="mob-link">Work</a>
+    <a href="/about/" class="mob-link">About</a>
+    <a href="/writing/" class="mob-link mob-ac">Writing</a>
+    <span style="color:var(--muted);font-size:14px;margin:0 4px;">-</span>
+    <a href="/resume/" class="mob-link">Resume</a>
+    <a href="/contact/" class="mob-link">Contact</a>
+  </nav>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--           ARTICLE HERO                  -->
+<!-- ═══════════════════════════════════════ -->
+<div class="art-hero">
+  <a href="/writing/" class="art-back">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All Articles
+  </a>
+  <div class="art-meta-top">
+    <span>February 2026</span>
+    <span class="dot"></span>
+    <span>9 min read</span>
+  </div>
+  <h1>Hooks that created power users</h1>
+  <p class="art-hook">The waitlist didn&rsquo;t just collect signups. It filtered for commitment. The people who earned their way in became the ones who never left.</p>
+  <div class="art-tags">
+    <span class="art-tag">Growth Design</span>
+    <span class="art-tag">Gamification</span>
+    <span class="art-tag">SadaPay</span>
+    <span class="art-tag">ZAR</span>
+  </div>
+</div>
+<div class="art-divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--           ARTICLE BODY                  -->
+<!-- ═══════════════════════════════════════ -->
+<div class="article">
+
+  <!-- Split Strip: Two Companies -->
+  <div class="split-strip" style="max-width:100%;padding:0;margin:36px 0;">
+    <div class="split-strip-inner">
+      <div class="split-side">
+        <div class="ss-company sp">SadaPay</div>
+        <div class="ss-number sp">700K+</div>
+        <div class="ss-context">Pakistan only &middot; 2020&ndash;2023</div>
+      </div>
+      <div class="split-side">
+        <div class="ss-company zar">ZAR</div>
+        <div class="ss-number zar">200K+</div>
+        <div class="ss-context">100+ countries &middot; 2025&ndash;2026</div>
+      </div>
+      <div class="split-sub">
+        <p><strong>Same playbook. Evolved.</strong> Designed the waitlist as a product &mdash; twice.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>A waitlist is your first product.</h2>
+
+  <p>Most companies treat pre-launch as a signup form and a &ldquo;we&rsquo;ll let you know&rdquo; email. The user gives you their attention once &mdash; and you give them nothing back.</p>
+
+  <p>I designed waitlists as <strong>hook systems</strong> &mdash; layered mechanics that reward specific behaviors, create social proof, and filter for users who actually want to engage. Not email collection. <strong>Commitment filtration.</strong></p>
+
+  <hr>
+
+  <h2>SadaPay &mdash; the experiment</h2>
+
+  <h3>One hook. One reward.</h3>
+
+  <div class="hook-mechanic">
+    <div class="hm-flow">
+      <div class="hm-step action">Invite 10 Friends</div>
+      <div class="hm-arrow">&rarr;</div>
+      <div class="hm-step reward">Black Card + Merch</div>
+    </div>
+    <div class="hm-label">One clear goal. One tangible reward. No complexity.</div>
+  </div>
+
+  <div class="hooks-grid">
+    <div class="hook-item">
+      <div class="hi-icon teal">#</div>
+      <div>
+        <div class="hi-title">Position as pressure</div>
+        <div class="hi-desc">Every user saw their exact queue position. Your number determined when you got the product &mdash; referring friends was cutting the line, not vanity.</div>
+      </div>
+    </div>
+    <div class="hook-item">
+      <div class="hi-icon violet">FC</div>
+      <div>
+        <div class="hi-title">Physical reward as identity</div>
+        <div class="hi-desc">The Founder&rsquo;s Club black card &mdash; first numberless card in MEA. People posted it on Instagram. Plus exclusive merchandise. A debit card became a status symbol.</div>
+      </div>
+    </div>
+    <div class="hook-item">
+      <div class="hi-icon gold">10</div>
+      <div>
+        <div class="hi-title">Effort as filter</div>
+        <div class="hi-desc">Inviting 10 people is real social effort. You&rsquo;re putting your name behind a product that doesn&rsquo;t exist yet. That effort filtered for evangelists, not casual signups.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-placeholder">
+    <div class="img-inner">SadaPay waitlist UI &mdash; position number, Founder&rsquo;s Club CTA, black card</div>
+    <div class="img-cap">The waitlist screen that drove 700K+ organic signups.</div>
+  </div>
+
+  <hr>
+
+  <h2>The hook didn&rsquo;t expire. The identity stuck.</h2>
+
+  <div class="proof-block">
+    <div class="pb-year">2026 &mdash; Three years after I left</div>
+    <div class="pb-quote">&ldquo;I hold a Founder&rsquo;s Club card. I invited 10 people to get it.&rdquo;</div>
+    <div class="pb-context">People still introduce themselves to me this way. The waitlist mechanic became part of how they relate to the product &mdash; permanently.</div>
+  </div>
+
+  <p><strong>Founder&rsquo;s Club members became power users.</strong> They ordered cards immediately. They transacted daily. They brought more people in after launch, not just during the waitlist. The gamification didn&rsquo;t grow a list &mdash; it <strong>pre-qualified an entire user base.</strong></p>
+
+  <p><strong>700,000+ signups.</strong> Zero paid acquisition. Pure word-of-mouth. And the users who earned their way in stayed.</p>
+
+  <hr>
+
+  <h2>ZAR &mdash; the evolution</h2>
+
+  <p>ZAR operates in 100+ countries. Different cultures, different motivations. A single mechanic wouldn&rsquo;t scale. The system needed <strong>four layers of hooks.</strong></p>
+
+  <h3>One hook works for one market. Layers work globally.</h3>
+
+  <div class="layers-stack">
+    <div class="layer-bar">
+      <div class="lb-num">1</div>
+      <div>
+        <div class="lb-title">Active Waitlist Dashboard</div>
+        <div class="lb-desc">Stories, points capsule, reward tiles, dynamic position-aware CTA. The waitlist feels like an app, not a queue.</div>
+      </div>
+    </div>
+    <div class="layer-bar">
+      <div class="lb-num">2</div>
+      <div>
+        <div class="lb-title">Multi-Action Points</div>
+        <div class="lb-desc">Invite friends, verify email, follow social, claim username. Not everyone refers 10 friends &mdash; but everyone does something.</div>
+      </div>
+    </div>
+    <div class="layer-bar">
+      <div class="lb-num">3</div>
+      <div>
+        <div class="lb-title">Golden Flow &mdash; Invisible Referral</div>
+        <div class="lb-desc">Send money to a non-user. They join. Sender gets credit. No referral link. The product action IS the invitation.</div>
+      </div>
+    </div>
+    <div class="layer-bar">
+      <div class="lb-num">4</div>
+      <div>
+        <div class="lb-title">Campaign Spikes (PrismFest)</div>
+        <div class="lb-desc">Time-limited scratch tickets. Every 3 referrals = 1 ticket. Campaign urgency on top of structural virality.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-placeholder">
+    <div class="img-inner">ZAR waitlist dashboard &mdash; stories, points, rewards, dynamic CTA</div>
+    <div class="img-cap">The waitlist as a product: stories, points, rewards, and a dynamic CTA that adapts to your position.</div>
+  </div>
+
+  <hr>
+
+  <h2>Escalating commitment</h2>
+
+  <p>By graduation, they&rsquo;re already power users.</p>
+
+  <div class="escalation">
+    <div class="esc-step">
+      <div class="es-action">Claim</div>
+      <div class="es-label">Username</div>
+      <div class="es-result">Identity</div>
+    </div>
+    <div class="esc-step">
+      <div class="es-action">Earn</div>
+      <div class="es-label">Points</div>
+      <div class="es-result">Progress</div>
+    </div>
+    <div class="esc-step">
+      <div class="es-action">Invite</div>
+      <div class="es-label">Friends</div>
+      <div class="es-result">Social proof</div>
+    </div>
+    <div class="esc-step">
+      <div class="es-action">Receive</div>
+      <div class="es-label">Reward</div>
+      <div class="es-result">Status</div>
+    </div>
+  </div>
+
+  <p><strong>Status over access.</strong> The black card wasn&rsquo;t about getting in faster &mdash; it was about being different. Points and rewards create visible progress. The reward is who you become, not just what you get.</p>
+
+  <p><strong>Effort creates loyalty.</strong> The IKEA effect &mdash; people value what they build. A user who earned their way through the waitlist values the product more than one handed instant access. The friction is the feature.</p>
+
+  <p><strong>Physical anchors.</strong> SadaPay&rsquo;s black card. The merchandise. Physical objects create emotional weight that digital rewards can&rsquo;t match. You can delete an app. You can&rsquo;t unknow the card in your wallet.</p>
+
+  <div class="img-placeholder">
+    <div class="img-inner">Compounding hooks diagram &mdash; each action deepens investment</div>
+    <div class="img-cap">Each layer of commitment compounds into the next, creating users who are already invested before they even launch the product.</div>
+  </div>
+
+  <hr>
+
+  <h2>Same designer. Same thesis. Different scale.</h2>
+
+  <table class="impact-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="col-sp">SadaPay</th>
+        <th class="col-zar">ZAR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Signups</td>
+        <td class="val-sp">700,000+</td>
+        <td class="val-zar">200,000+</td>
+      </tr>
+      <tr>
+        <td>Markets</td>
+        <td class="val-sp">Pakistan</td>
+        <td class="val-zar">100+ countries</td>
+      </tr>
+      <tr>
+        <td>Hooks</td>
+        <td class="val-sp">1 (referral)</td>
+        <td class="val-zar">4 (layered system)</td>
+      </tr>
+      <tr>
+        <td>Paid acquisition</td>
+        <td class="val-sp">Zero</td>
+        <td class="val-zar">Zero</td>
+      </tr>
+      <tr>
+        <td>Key reward</td>
+        <td class="val-sp">Black card + merch</td>
+        <td class="val-zar">Points + $ after graduation</td>
+      </tr>
+      <tr>
+        <td>Power user conversion</td>
+        <td class="val-sp">FC &rarr; highest transacting</td>
+        <td class="val-zar">Pre-qualified wallet users</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>Four lessons from two waitlists</h2>
+
+  <div class="learning-grid">
+    <div class="learning-card">
+      <div class="lc-num">01</div>
+      <div class="lc-title">Gamification is filtration.</div>
+      <div class="lc-desc">The users who complete hard tasks &mdash; inviting 10 real people &mdash; are the users who transact daily after launch. Design the effort, design the user base.</div>
+    </div>
+    <div class="learning-card">
+      <div class="lc-num">02</div>
+      <div class="lc-title">Physical rewards create permanent identity.</div>
+      <div class="lc-desc">Digital badges expire emotionally. A black card in your wallet doesn&rsquo;t. Three years later, it&rsquo;s still how people introduce themselves.</div>
+    </div>
+    <div class="learning-card">
+      <div class="lc-num">03</div>
+      <div class="lc-title">One hook for one market. Layers for the world.</div>
+      <div class="lc-desc">SadaPay&rsquo;s single mechanic was perfect for Pakistan. ZAR needed four layers for 100+ countries. The principle transfers; the implementation adapts.</div>
+    </div>
+    <div class="learning-card">
+      <div class="lc-num">04</div>
+      <div class="lc-title">The best referral is invisible.</div>
+      <div class="lc-desc">Golden Flow: users don&rsquo;t want to be marketers. If using the product naturally brings new users, the growth loop runs itself.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <p><em>The waitlist is the product. The effort is the filter. The reward is the identity. Design all three, and you don&rsquo;t just grow a list &mdash; you grow a user base that stays.</em></p>
+
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--           AUTHOR                        -->
+<!-- ═══════════════════════════════════════ -->
+<div class="author">
+  <div class="author-card">
+    <div class="author-avatar">B</div>
+    <div class="author-info">
+      <div class="author-name">ABM (Basit Masood)</div>
+      <div class="author-role">Lead Product Designer at ZAR. Two-time founding designer. Building design orgs and products that raise millions.</div>
+    </div>
+    <div class="author-links">
+      <a href="#" class="author-link" title="LinkedIn">in</a>
+      <a href="#" class="author-link" title="X">X</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--           ARTICLE NAV                   -->
+<!-- ═══════════════════════════════════════ -->
+<div class="art-nav">
+  <a href="/writing/the-1-12-ratio/" class="art-nav-link">
+    <span class="art-nav-dir">&larr; Previous</span>
+    <span class="art-nav-title">The 1:12 Ratio</span>
+  </a>
+  <a href="#" class="art-nav-link" style="opacity:0.4;pointer-events:none;">
+    <span class="art-nav-dir">Next &rarr;</span>
+    <span class="art-nav-title">Coming soon</span>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer class="reveal">
+  <div class="fb">
+    <span>&copy; 2026 ABM</span>
+    <div class="fb-social">
+      <a href="#" class="fbs" title="LinkedIn">in</a>
+      <a href="#" class="fbs" title="X">X</a>
+      <a href="mailto:hello@abm.design" class="fbs" title="Email">@</a>
+    </div>
+    <span>Designed with intention</span>
+  </div>
+</footer>
+
+<script>
+  // ─── CURSOR ───
+  const cur=document.getElementById('cur'),glo=document.getElementById('glo');
+  let mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;glo.style.left=mx+'px';glo.style.top=my+'px';});
+  (function l(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(l)})();
+  document.querySelectorAll('a,button,.author-card').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hov'));el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));});
+
+  // ─── SCROLL PROGRESS + READING % ───
+  const readEl=document.getElementById('readPct');
+  window.addEventListener('scroll',()=>{
+    const p=Math.min((window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100,100);
+    document.getElementById('sp').style.width=p+'%';
+    readEl.textContent=Math.round(p)+'%';
+    if(window.scrollY>200) readEl.classList.add('visible');
+    else readEl.classList.remove('visible');
+  });
+
+  // ─── NAV SLIDING INDICATOR ───
+  const navLinks=document.querySelector('.nav-links');
+  const navInd=document.getElementById('navInd');
+  const nls=document.querySelectorAll('.nl');
+  const activeNl=document.querySelector('.nl.ac');
+  function setInd(el){
+    const r=el.getBoundingClientRect(),pr=navLinks.getBoundingClientRect();
+    navInd.style.width=r.width+'px';
+    navInd.style.left=(r.left-pr.left)+'px';
+  }
+  setTimeout(()=>{if(activeNl){setInd(activeNl);navInd.classList.add('ready');}},1000);
+  nls.forEach(l=>{
+    l.addEventListener('mouseenter',()=>setInd(l));
+    l.addEventListener('mousemove',e=>{
+      const r=l.getBoundingClientRect();
+      const x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
+      l.style.transform=`translate(${x*0.25}px,${y*0.4}px)`;
+    });
+    l.addEventListener('mouseleave',()=>{l.style.transform='';});
+  });
+  navLinks.addEventListener('mouseleave',()=>{if(activeNl)setInd(activeNl);});
+
+  // ─── MOBILE MENU ───
+  const mobBtn=document.getElementById('mobBtn'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
+  if(mobBtn&&mobMenu){
+    mobBtn.addEventListener('click',()=>mobMenu.classList.add('open'));
+    mobClose.addEventListener('click',()=>mobMenu.classList.remove('open'));
+    mobMenu.addEventListener('click',e=>{if(e.target===mobMenu)mobMenu.classList.remove('open');});
+  }
+
+  // ─── PAGE TRANSITIONS ───
+  if(location.protocol!=='file:'){
+    document.querySelectorAll('a[href]').forEach(a=>{
+      const h=a.getAttribute('href');
+      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(()=>window.location.href=h,150);
+      });
+    });
+  }
+</script>
+</body>
+</html>

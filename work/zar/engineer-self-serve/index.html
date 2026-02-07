@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cash QR Consolidation — 72% of transactions happened through Cash QR. ABM killed the order system and made the merchant workaround the actual product.">
+<meta name="description" content="Engineer Self-Serve Design — What if the best thing a design leader could do was remove design from the critical path? ABM built an AI-powered system that eliminated the design bottleneck at ZAR.">
 <meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="Cash QR Consolidation — ABM">
-<meta property="og:description" content="72% of transactions were through Cash QR. We killed the order system.">
+<meta property="og:title" content="Eliminating the Design Bottleneck — ABM">
+<meta property="og:description" content="2 designers, 12+ engineers. Every feature was hostage to design bandwidth. So I eliminated the bottleneck — on purpose.">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cash QR Consolidation — ABM">
-<meta name="twitter:description" content="72% of transactions were through Cash QR. We killed the order system.">
-<title>Cash QR Consolidation — ABM</title>
+<meta name="twitter:title" content="Eliminating the Design Bottleneck — ABM">
+<meta name="twitter:description" content="2 designers, 12+ engineers. Every feature was hostage to design bandwidth. So I eliminated the bottleneck — on purpose.">
+<title>Eliminating the Design Bottleneck — ABM</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
@@ -29,6 +29,10 @@
     --accent-light: #DBBF6A;
     --accent-glow: rgba(201,168,78,0.08);
     --radius: 20px;
+    --red: #FF4D4D;
+    --red-dim: rgba(255,77,77,0.09);
+    --green: #4ADE80;
+    --green-dim: rgba(74,222,128,0.09);
   }
 
   @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
@@ -44,24 +48,24 @@
   body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
   @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* ─── SCROLL PROGRESS ─── */
+  /* --- SCROLL PROGRESS --- */
   .scroll-progress {
     position: fixed; top: 0; left: 0; height: 2px; z-index: 10001;
     background: linear-gradient(90deg, var(--accent), var(--accent-light));
     width: 0%; transform-origin: left;
   }
 
-  /* ─── BLOBS ─── */
+  /* --- BLOBS --- */
   .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .bl { position: absolute; border-radius: 50%; filter: blur(130px); }
   .bl-1 { width: 600px; height: 600px; top: -10%; left: -5%; background: var(--accent); opacity: 0.08; animation: bd1 25s ease-in-out infinite; }
   .bl-2 { width: 450px; height: 450px; bottom: 10%; right: -5%; background: #D4654A; opacity: 0.045; animation: bd2 30s ease-in-out infinite; }
 
-  /* ─── GRAIN ─── */
+  /* --- GRAIN --- */
   .grain { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
-  /* ─── CURSOR ─── */
+  /* --- CURSOR --- */
   .cur { position: fixed; width: 14px; height: 14px; border-radius: 50%;
     border: 1.5px solid rgba(237,232,219,0.18); pointer-events: none; z-index: 10000;
     transition: width 0.35s cubic-bezier(.23,1,.32,1), height 0.35s cubic-bezier(.23,1,.32,1), background 0.35s, border-color 0.35s;
@@ -72,7 +76,7 @@
     background: radial-gradient(circle, rgba(201,168,78,0.04) 0%, transparent 70%);
     transform: translate(-50%,-50%); }
 
-  /* ─── NAV ─── */
+  /* --- NAV --- */
   .bnav {
     position: fixed; bottom: 28px; left: 50%; z-index: 1000;
     display: flex; align-items: center; gap: 2px;
@@ -117,7 +121,7 @@
   }
   .nc:hover { box-shadow: 0 4px 28px rgba(212,101,74,0.45); transform: translateY(-1px) scale(1.03); }
 
-  /* ─── MOBILE MENU ─── */
+  /* --- MOBILE MENU --- */
   .mob-btn {
     display: none; background: none; border: none; color: var(--dim);
     padding: 7px; border-radius: 8px; cursor: pointer; transition: color 0.3s;
@@ -149,7 +153,7 @@
   }
   .mob-close:hover { border-color: rgba(212,101,74,0.3); color: var(--text); }
 
-  /* ─── CASE STUDY HERO ─── */
+  /* --- CASE STUDY HERO --- */
   .cs-hero {
     position: relative; z-index: 2;
     min-height: 80vh;
@@ -220,7 +224,7 @@
     border: 1px solid var(--border); background: rgba(255,255,255,0.02);
   }
 
-  /* ─── ARTICLE BODY ─── */
+  /* --- ARTICLE BODY --- */
   .article {
     position: relative; z-index: 2;
     max-width: 720px; margin: 0 auto;
@@ -271,6 +275,9 @@
     font-style: italic; color: var(--dim); line-height: 1.7; margin: 0;
   }
   .cs-quote p strong { color: var(--text); font-weight: 600; font-style: normal; }
+  .cs-quote-source {
+    font-size: 13px; color: var(--muted); margin-top: 12px;
+  }
 
   /* Stat callout blocks */
   .cs-stats {
@@ -340,6 +347,16 @@
   }
   .cs-compare-content strong { color: var(--text); font-weight: 600; }
 
+  /* Tags inside compare */
+  .cs-compare-tag {
+    display: inline-block; margin-top: 12px; margin-right: 6px;
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 6px;
+  }
+  .cs-compare-tag.speed { background: var(--green-dim); color: var(--green); }
+  .cs-compare-tag.quality { background: rgba(201,168,78,0.09); color: var(--accent); }
+  .cs-compare-tag.no { background: var(--red-dim); color: var(--red); }
+
   /* Numbered steps */
   .cs-steps {
     margin: 28px 0;
@@ -386,9 +403,6 @@
     font-family: var(--display); font-weight: 600; color: var(--text);
     font-size: 14px;
   }
-  .cs-impact-table td:last-child {
-    color: var(--accent);
-  }
 
   /* Learning cards */
   .cs-learnings {
@@ -417,7 +431,7 @@
     font-size: 14px; color: var(--dim); line-height: 1.7;
   }
 
-  /* ─── CASE NAV (next/prev) ─── */
+  /* --- CASE NAV (next/prev) --- */
   .cs-nav {
     position: relative; z-index: 2;
     max-width: 720px; margin: 80px auto 0;
@@ -474,7 +488,255 @@
     margin: 48px auto;
   }
 
-  /* ─── FOOTER ─── */
+  /* --- VERSION CARD --- */
+  .cs-version-card {
+    padding: 28px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    margin: 28px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cs-version-card.failed { border-color: var(--red-dim); }
+  .cs-version-card.failed::before {
+    content: 'FAILED';
+    position: absolute; top: 16px; right: 16px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--red); background: var(--red-dim);
+    padding: 4px 10px; border-radius: 6px;
+  }
+  .cs-version-card.success { border-color: rgba(74,222,128,0.2); }
+  .cs-version-card.success::before {
+    content: 'BREAKTHROUGH';
+    position: absolute; top: 16px; right: 16px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--green); background: var(--green-dim);
+    padding: 4px 10px; border-radius: 6px;
+  }
+  .cs-vc-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 700; color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .cs-vc-title {
+    font-family: var(--display); font-size: 18px; font-weight: 700;
+    color: var(--text); margin-bottom: 8px;
+  }
+  .cs-vc-desc {
+    font-size: 14px; color: var(--dim); line-height: 1.7;
+  }
+  .cs-vc-desc strong { color: var(--text); font-weight: 600; }
+  .cs-vc-verdict {
+    font-family: var(--display); font-size: 24px; font-weight: 800;
+    margin-top: 16px;
+  }
+  .cs-vc-verdict.red { color: var(--red); }
+  .cs-vc-learning {
+    font-size: 13px; color: var(--muted);
+    margin-top: 12px; padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-style: italic;
+  }
+
+  /* --- STAKEHOLDER GRID --- */
+  .cs-stake-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin: 28px 0;
+  }
+  .cs-stake-card {
+    padding: 24px 20px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .cs-stake-role {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .cs-stake-want {
+    font-size: 14px; color: var(--dim); line-height: 1.5;
+  }
+  .cs-stake-want strong {
+    color: var(--text); font-weight: 600;
+    display: block; margin-bottom: 4px;
+  }
+  .cs-stake-card.me {
+    border-bottom: 2px solid var(--accent);
+  }
+  .cs-stake-card.me .cs-stake-role { color: var(--accent); }
+
+  /* --- FLYWHEEL --- */
+  .cs-flywheel {
+    max-width: 420px; margin: 40px auto;
+    position: relative;
+    aspect-ratio: 1;
+  }
+  .cs-flywheel-ring {
+    position: absolute; inset: 0;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+  }
+  .cs-flywheel-ring::after {
+    content: '';
+    position: absolute; inset: -1px;
+    border: 2px dashed var(--accent);
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .cs-fw-node {
+    position: absolute;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-align: center;
+    width: 130px;
+    transform: translate(-50%, -50%);
+  }
+  .cs-fw-label {
+    font-family: var(--display); font-size: 12px; font-weight: 700;
+    color: var(--text); letter-spacing: 0.02em;
+  }
+  .cs-fw-sub {
+    font-size: 10px; color: var(--muted); margin-top: 2px;
+  }
+  .cs-fw-node.primary {
+    border-color: var(--accent);
+    background: rgba(201,168,78,0.06);
+  }
+  .cs-fw-node.primary .cs-fw-label { color: var(--accent); }
+  .cs-fw-top { top: 5%; left: 50%; }
+  .cs-fw-right { top: 50%; left: 95%; }
+  .cs-fw-bottom { top: 95%; left: 50%; }
+  .cs-fw-left { top: 50%; left: 5%; }
+  .cs-fw-center {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .cs-fw-center-icon {
+    font-size: 22px; color: var(--accent); margin-bottom: 4px;
+  }
+  .cs-fw-center-text {
+    font-family: var(--display); font-size: 11px; font-weight: 700;
+    color: var(--muted); letter-spacing: 0.05em;
+  }
+
+  /* --- CHOTHU WORKFLOW --- */
+  .cs-chothu-flow {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin: 32px 0;
+  }
+  .cs-chothu-step {
+    padding: 24px 16px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    text-align: center;
+    position: relative;
+  }
+  .cs-chothu-step::after {
+    content: '\2192';
+    position: absolute; right: -12px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted); font-size: 14px;
+    z-index: 1;
+  }
+  .cs-chothu-step:last-child::after { display: none; }
+  .cs-chothu-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700; color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .cs-chothu-icon {
+    font-size: 24px; margin-bottom: 8px;
+  }
+  .cs-chothu-title {
+    font-family: var(--display); font-size: 14px; font-weight: 700;
+    color: var(--text); margin-bottom: 4px;
+  }
+  .cs-chothu-desc {
+    font-size: 11px; color: var(--muted); line-height: 1.4;
+  }
+
+  /* --- TEST RESULT --- */
+  .cs-test-result {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin: 28px 0;
+  }
+  .cs-tr-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .cs-tr-title {
+    font-family: var(--display); font-size: 15px; font-weight: 700;
+    color: var(--text);
+  }
+  .cs-tr-rating {
+    font-family: var(--display); font-size: 13px; font-weight: 700;
+    color: var(--accent);
+    background: rgba(201,168,78,0.09);
+    padding: 4px 12px; border-radius: 6px;
+  }
+  .cs-tr-steps {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .cs-tr-step {
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .cs-tr-bullet {
+    width: 24px; height: 24px;
+    background: rgba(201,168,78,0.08);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700; color: var(--accent);
+  }
+  .cs-tr-text {
+    font-size: 14px; color: var(--dim); line-height: 1.5;
+  }
+  .cs-tr-text strong { color: var(--text); font-weight: 600; }
+  .cs-tr-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--muted);
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  /* --- IMPACT COLUMNS --- */
+  .cs-impact-cols {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin: 36px 0;
+  }
+  .cs-impact-col {
+    padding: 28px 20px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .cs-impact-for {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .cs-impact-item {
+    font-size: 14px; color: var(--dim); line-height: 1.5;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cs-impact-item:last-child { border-bottom: none; }
+
+  /* --- FOOTER --- */
   footer { position: relative; z-index: 2; max-width: 1000px; margin: 100px auto 0; padding: 0 48px; text-align: center; }
   .fh { font-family: var(--display); font-size: clamp(28px, 4.5vw, 48px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
   .fh .gw { background: linear-gradient(135deg, #D4654A 0%, #E8856C 100%);
@@ -500,20 +762,24 @@
   }
   .fbs:hover { border-color: rgba(212,101,74,0.3); color: #D4654A; }
 
-  /* ─── ANIMATIONS ─── */
+  /* --- ANIMATIONS --- */
   @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes navIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
   @keyframes rotateBorder { to { --angle: 360deg; } }
   @keyframes bd1 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(80px,60px) scale(1.1); } 100% { transform: translate(-40px,30px) scale(.95); } }
   @keyframes bd2 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px,-40px) scale(1.15); } 100% { transform: translate(30px,-60px) scale(.9); } }
 
-  /* ─── RESPONSIVE ─── */
+  /* --- RESPONSIVE --- */
   @media (max-width: 900px) {
     body { cursor: auto; } .cur, .glow { display: none; }
     .cs-hero { padding: 100px 24px 60px; min-height: 60vh; }
     .cs-hero-metric { font-size: 140px; }
     .article { padding: 0 20px; }
     .cs-compare { grid-template-columns: 1fr; }
+    .cs-stake-grid { grid-template-columns: 1fr; }
+    .cs-chothu-flow { grid-template-columns: repeat(2, 1fr); }
+    .cs-chothu-step::after { display: none; }
+    .cs-impact-cols { grid-template-columns: 1fr; }
     .cs-nav { padding: 0 20px; }
     footer { padding-left: 20px; padding-right: 20px; }
     .nl.hsm { display: none; }
@@ -527,6 +793,8 @@
     .cs-stats { grid-template-columns: 1fr 1fr; }
     .cs-nav { flex-direction: column; }
     .cs-nav-link:last-child { text-align: left; }
+    .cs-flywheel { max-width: 300px; }
+    .cs-fw-node { width: 105px; padding: 8px 10px; }
     .fb { flex-direction: column; gap: 8px; text-align: center; }
   }
 </style>
@@ -567,208 +835,263 @@
   </nav>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
-<!--              HERO                       -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
+<!--              HERO                        -->
+<!-- ======================================= -->
 <div class="cs-hero">
-  <div class="cs-hero-metric">72%</div>
+  <div class="cs-hero-metric">2:12</div>
   <div class="cs-hero-content">
     <a href="/work/zar/" class="cs-hero-back">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       ZAR
     </a>
-    <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; January 2026</div>
-    <h1>Cash QR Consolidation</h1>
-    <p class="cs-hero-hook">72% of transactions were happening through Cash QR. The order system we&rsquo;d built? Merchants were walking around it.</p>
+    <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; February 2026</div>
+    <h1>Eliminating the Design Bottleneck &mdash; On Purpose</h1>
+    <p class="cs-hero-hook">&ldquo;What if the best thing a design leader could do was remove design from the critical path?&rdquo;</p>
     <div class="cs-hero-meta">
       <span class="cs-meta-pill">Lead Product Designer</span>
-      <span class="cs-meta-pill">On-Ground Research</span>
-      <span class="cs-meta-pill">Service Design</span>
-      <span class="cs-meta-pill">iOS &amp; Android</span>
+      <span class="cs-meta-pill">Strategy + AI + Org Change</span>
+      <span class="cs-meta-pill">6 Weeks</span>
+      <span class="cs-meta-pill">ZAR (a16z, Multicoin)</span>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
-<!--           ARTICLE BODY                  -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
+<!--           ARTICLE BODY                   -->
+<!-- ======================================= -->
 <div class="article">
 
-  <!-- THE OBSERVATION -->
+  <!-- THE RATIO -->
   <section class="cs-section reveal">
-    <div class="cs-label">The Observation</div>
-    <h2 class="cs-heading">I went to Pakistan. Not to test screens &mdash; to watch.</h2>
-
-    <p class="cs-body">What I found: <strong>over 60% of merchants were bypassing our order system entirely.</strong> In face-to-face transactions &mdash; a customer standing at the counter wanting to buy dollars &mdash; merchants ignored the formal merchant flow. Instead, they collected cash manually and used Send or Exchange. Features we&rsquo;d designed for peer-to-peer transfers, not merchant commerce.</p>
-
-    <p class="cs-body">They weren&rsquo;t confused. They weren&rsquo;t untrained. They&rsquo;d figured out that the order system added steps without adding value for in-person transactions. The app had a formal merchant flow with order creation, status tracking, and multi-step confirmation. The street had cash, a QR code, and a handshake.</p>
-
-    <div class="cs-quote">
-      <p>The merchants were telling us what the product should be. <strong>We just hadn&rsquo;t been listening.</strong></p>
-    </div>
-
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Split screen &mdash; Left: The formal order flow (multiple screens, status tracking, confirmations). Right: What actually happens on the street (cash exchanges hands, QR scan, done).</div>
-      <div class="cs-visual-caption">The gap between what we built and what merchants actually did.</div>
-    </div>
-  </section>
-
-  <!-- THE DATA -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Data</div>
-    <h2 class="cs-heading">The numbers confirmed what the streets showed.</h2>
-
-    <p class="cs-body">The on-ground research aligned perfectly with the data. <strong>Cash QR codes accounted for 72% of total transaction volume.</strong> The order system we&rsquo;d invested in &mdash; designed, engineered, iterated on &mdash; handled less than a third.</p>
+    <div class="cs-label">The Problem</div>
+    <h2 class="cs-heading">2 designers. 12+ engineers. One bottleneck.</h2>
 
     <div class="cs-stats">
       <div class="cs-stat">
-        <div class="cs-stat-num">72%</div>
-        <div class="cs-stat-label">Cash QR transactions</div>
+        <div class="cs-stat-num">2</div>
+        <div class="cs-stat-label">Designers</div>
       </div>
       <div class="cs-stat">
-        <div class="cs-stat-num">8 min</div>
-        <div class="cs-stat-label">Per bank transfer (6 steps, 2 OTPs)</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">63%</div>
-        <div class="cs-stat-label">Churn after first order</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">56%</div>
-        <div class="cs-stat-label">Users from top 3 merchants</div>
+        <div class="cs-stat-num">12+</div>
+        <div class="cs-stat-label">Engineers</div>
       </div>
     </div>
 
-    <p class="cs-body">Other signals painted the same picture:</p>
-
-    <ul class="cs-list">
-      <li><strong>Lahore outskirts: 100 ambassador visits, zero conversions</strong> &mdash; the product wasn&rsquo;t matching the context</li>
-      <li><strong>Detail card had 8 fields</strong> &mdash; for a transaction that takes 30 seconds in person</li>
-      <li>The order system wasn&rsquo;t slightly misaligned. It was <strong>fundamentally wrong</strong> for face-to-face commerce</li>
-    </ul>
-
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Data visualization &mdash; 72% Cash QR vs. 28% Orders split. Supporting stat cards below.</div>
-      <div class="cs-visual-caption">We&rsquo;d built a digital marketplace for people standing three feet apart.</div>
-    </div>
+    <p class="cs-body">Every feature required design before engineering could start. Features rotted in a queue called <strong>&ldquo;Needs Design&rdquo;</strong> while engineers context-switched. The roadmap was hostage to my bandwidth.</p>
   </section>
 
-  <!-- THE INSIGHT -->
+  <!-- THE POLITICS -->
   <section class="cs-section reveal">
-    <div class="cs-label">The Insight</div>
-    <h2 class="cs-heading">The transaction happens in the real world. The app just confirms it.</h2>
+    <div class="cs-label">The Politics</div>
+    <h2 class="cs-heading">Three bosses. Three different answers.</h2>
 
-    <p class="cs-body">ZAR&rsquo;s merchant transactions are <strong>physical-first.</strong> A customer walks into a store. Cash changes hands. The app confirms what already happened &mdash; it doesn&rsquo;t intermediate it.</p>
+    <p class="cs-body">Everyone agreed design was a bottleneck. Nobody agreed on the fix.</p>
 
-    <p class="cs-body">But our product was designed as if the transaction started in the app. That makes sense for remote commerce. It makes zero sense when two people are standing next to each other.</p>
-
-    <div class="cs-compare">
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">Digital-First (what we built)</div>
-        <div class="cs-compare-content">
-          <strong>1.</strong> Create order<br>
-          <strong>2.</strong> Set terms<br>
-          <strong>3.</strong> Wait for acceptance<br>
-          <strong>4.</strong> Confirm payment<br>
-          <strong>5.</strong> Track status<br>
-          <strong>6.</strong> Complete
-        </div>
+    <div class="cs-stake-grid">
+      <div class="cs-stake-card">
+        <div class="cs-stake-role">CEO + CTO</div>
+        <div class="cs-stake-want"><strong>Full automation</strong>Engineers design with AI. No designers needed.</div>
       </div>
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">Physical-First (what merchants did)</div>
-        <div class="cs-compare-content">
-          <strong>1.</strong> Cash changes hands<br>
-          <strong>2.</strong> Scan QR<br>
-          <strong>3.</strong> Done
-        </div>
+      <div class="cs-stake-card">
+        <div class="cs-stake-role">Head of Engineering</div>
+        <div class="cs-stake-want"><strong>Consultant model</strong>Designers advise. Engineers own design decisions.</div>
+      </div>
+      <div class="cs-stake-card me">
+        <div class="cs-stake-role">Me</div>
+        <div class="cs-stake-want"><strong>I didn&rsquo;t know yet</strong>But I knew the answer wasn&rsquo;t picking a side.</div>
       </div>
     </div>
 
-    <p class="cs-body">The merchants had already solved this. They just used the simplest tool available. Our job was to <strong>make their workaround the actual product.</strong></p>
+    <p class="cs-body">My job was to turn this from a debate into an experiment.</p>
   </section>
 
   <div class="cs-divider"></div>
 
-  <!-- THE REDESIGN -->
+  <!-- V1: FAILED -->
   <section class="cs-section reveal">
-    <div class="cs-label">The Redesign</div>
-    <h2 class="cs-heading">Kill the order flow. Three steps.</h2>
+    <div class="cs-label">V1 &mdash; Weeks 1-2</div>
+    <h2 class="cs-heading">Structured guidelines for AI</h2>
 
-    <p class="cs-body">For merchant-to-customer transactions, we <strong>deprecated the order system entirely.</strong> No partial fix. No iteration. Removed. Orders were retained only for merchant-to-trader interactions &mdash; bulk wholesale transactions where formal tracking adds legitimate value.</p>
-
-    <div class="cs-steps">
-      <div class="cs-step">
-        <div class="cs-step-num">1</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Visit store</div>
-          <div class="cs-step-desc">Customer finds the merchant on the map or walks in.</div>
-        </div>
+    <div class="cs-version-card failed">
+      <div class="cs-vc-tag">V1 // STRUCTURED GUIDELINES</div>
+      <div class="cs-vc-title">Built a two-layer system</div>
+      <div class="cs-vc-desc">
+        <strong>design-system.md</strong> &mdash; Brand principles written for an AI audience. Explicit, no assumed context.<br><br>
+        <strong>Guidelines.md</strong> &mdash; Component rules, layout patterns, ZAR visual language. Everything an AI tool would need to assemble a screen.<br><br>
+        Fed it to Figma Make. It generated screens. They looked like a designer had described ZAR to someone who&rsquo;d never seen it.
       </div>
-      <div class="cs-step">
-        <div class="cs-step-num">2</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Exchange cash</div>
-          <div class="cs-step-desc">Physical handoff. The real transaction.</div>
-        </div>
-      </div>
-      <div class="cs-step">
-        <div class="cs-step-num">3</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Scan QR</div>
-          <div class="cs-step-desc">The app confirms the exchange. Dollar amount. Rate. Done.</div>
-        </div>
-      </div>
+      <div class="cs-vc-verdict red">&ldquo;Inadequate.&rdquo;</div>
+      <div class="cs-vc-learning">Head of Engineering&rsquo;s one-word review after the 1:1 demo.</div>
     </div>
 
-    <p class="cs-body">Three steps. No orders. No status tracking. No acceptance flow. The app serves the moment &mdash; it doesn&rsquo;t replace it.</p>
+    <p class="cs-body">But the failure revealed the real problem: <strong>the gap wasn&rsquo;t in the guidelines &mdash; it was between our design system and what the AI could actually access.</strong> Words about components aren&rsquo;t components.</p>
   </section>
 
-  <!-- RADICAL SIMPLIFICATION -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Simplification</div>
-    <h2 class="cs-heading">8 fields to 2. Discovery only. Present tense.</h2>
+  <div class="cs-divider"></div>
 
-    <p class="cs-body"><strong>The merchant map</strong> had been trying to do two things: help users find merchants AND initiate transactions. I stripped transaction initiation entirely. The map became discovery-only with clear instructions: &ldquo;1. Visit store. 2. Exchange cash. 3. Scan QR.&rdquo;</p>
+  <!-- V2: PARALLEL PATHS -->
+  <section class="cs-section reveal">
+    <div class="cs-label">V2 &mdash; Weeks 3-4</div>
+    <h2 class="cs-heading">Two paths. Run in parallel. Data over opinions.</h2>
 
     <div class="cs-compare">
       <div class="cs-compare-side">
-        <div class="cs-compare-label">Before</div>
+        <div class="cs-compare-label">Path A &mdash; Automation</div>
         <div class="cs-compare-content">
-          <strong>Detail card: 8 fields</strong><br>
-          Every data point we captured. Cluttered, unnecessary for a 30-second interaction.<br><br>
-          <strong>Screen title: &ldquo;Buy&rdquo;</strong><br>
-          Preparing a transaction.<br><br>
-          <strong>Map: discovery + transaction</strong><br>
-          Trying to do two things.
+          <strong>Claude Code &rarr; Flutter UI</strong><br><br>
+          Technically correct but lifeless screens. No soul, no brand feel.
+          <br>
+          <span class="cs-compare-tag speed">Fast</span>
+          <span class="cs-compare-tag no">Not scalable alone</span>
         </div>
       </div>
       <div class="cs-compare-side">
-        <div class="cs-compare-label">After</div>
+        <div class="cs-compare-label">Path B &mdash; Process</div>
         <div class="cs-compare-content">
-          <strong>Detail card: 2 fields</strong><br>
-          Paid and Exchange rate. What the merchant actually needs.<br><br>
-          <strong>Screen title: &ldquo;Buying&rdquo;</strong><br>
-          Present tense. It&rsquo;s happening now.<br><br>
-          <strong>Map: discovery only</strong><br>
-          Tells you where to go. What happens there is between you and the merchant.
+          <strong>Designer-as-Consultant</strong><br><br>
+          Better quality, but still required significant designer time. The bottleneck moved, it didn&rsquo;t disappear.
+          <br>
+          <span class="cs-compare-tag quality">Better quality</span>
+          <span class="cs-compare-tag no">Still depends on me</span>
         </div>
       </div>
     </div>
 
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Before/after of the transaction detail card. Left: 8 fields. Right: 2 fields (Paid + Exchange rate). The reduction should feel like relief.</div>
-      <div class="cs-visual-caption">Detail card &mdash; 8 fields reduced to 2.</div>
+    <p class="cs-body">Neither approach alone worked. But together, they pointed to an answer: <strong>the AI needed direct access to the design system &mdash; not descriptions of it.</strong></p>
+  </section>
+
+  <div class="cs-divider"></div>
+
+  <!-- V3: BREAKTHROUGH -->
+  <section class="cs-section reveal">
+    <div class="cs-label">V3 &mdash; Week 5</div>
+    <h2 class="cs-heading">The breakthrough</h2>
+
+    <div class="cs-version-card success">
+      <div class="cs-vc-tag">V3 // DIRECT SYSTEM ACCESS</div>
+      <div class="cs-vc-title">Connected AI directly to Figma</div>
+      <div class="cs-vc-desc">
+        Gave Claude read/write access to <strong>Techtonic</strong>, our 670-component design system, via Figma Console MCP.<br><br>
+        Described a screen verbally. No mockups. No guidelines. Just words.<br><br>
+        Claude created the screen using our <strong>actual components</strong>. Correct colors. Correct typography. Correct spacing. Not a generic mockup &mdash; a screen that belonged in our app.
+      </div>
+    </div>
+
+    <p class="cs-body">The AI wasn&rsquo;t designing. It was <em>assembling</em> &mdash; the same way a trained designer works from a system.</p>
+
+    <div class="cs-quote">
+      <p>The quality of AI output is directly proportional to the quality of your design system. <strong>No system, no magic.</strong></p>
+    </div>
+
+    <div class="cs-flywheel">
+      <div class="cs-flywheel-ring"></div>
+      <div class="cs-fw-node primary cs-fw-top">
+        <div class="cs-fw-label">Design System</div>
+        <div class="cs-fw-sub">670 components</div>
+      </div>
+      <div class="cs-fw-node cs-fw-right">
+        <div class="cs-fw-label">AI Output</div>
+        <div class="cs-fw-sub">Higher fidelity</div>
+      </div>
+      <div class="cs-fw-node cs-fw-bottom">
+        <div class="cs-fw-label">Engineer Adoption</div>
+        <div class="cs-fw-sub">More self-serve</div>
+      </div>
+      <div class="cs-fw-node cs-fw-left">
+        <div class="cs-fw-label">Feedback</div>
+        <div class="cs-fw-sub">System improves</div>
+      </div>
+      <div class="cs-fw-center">
+        <div class="cs-fw-center-icon">&#8635;</div>
+        <div class="cs-fw-center-text">FLYWHEEL</div>
+      </div>
     </div>
   </section>
 
-  <!-- MERCHANT CONTROL -->
+  <div class="cs-divider"></div>
+
+  <!-- CHOTHU -->
   <section class="cs-section reveal">
-    <div class="cs-label">Merchant Control</div>
-    <h2 class="cs-heading">The merchant sets the terms.</h2>
+    <div class="cs-label">The Product</div>
+    <h2 class="cs-heading">Chothu &mdash; AI design consultant for everyone</h2>
 
-    <p class="cs-body">One principle guided the redesign: <strong>the merchant sets the terms.</strong> In the old flow, exchange rates were part of the order negotiation. In the new flow, the merchant sets their rate upfront. It&rsquo;s displayed on their profile. Customers see it before they walk in. If they show up, they&rsquo;ve already agreed.</p>
+    <p class="cs-body">The V3 breakthrough was technical. The real product was organizational. I built <strong>Chothu</strong> (Urdu for &ldquo;little one&rdquo;) &mdash; an AI design consultant anyone in the company could use.</p>
 
-    <p class="cs-body">Merchants can adjust their rate per transaction &mdash; responding to market conditions, competition, or customer relationships. The system enables their business judgment instead of constraining it with a formal order protocol.</p>
+    <div class="cs-quote">
+      <p>Design knowledge shouldn&rsquo;t be locked behind a designer&rsquo;s availability.</p>
+    </div>
+
+    <div class="cs-chothu-flow">
+      <div class="cs-chothu-step">
+        <div class="cs-chothu-num">01</div>
+        <div class="cs-chothu-icon">?</div>
+        <div class="cs-chothu-title">Clarify</div>
+        <div class="cs-chothu-desc">User goal, entry point, exit point, edge cases</div>
+      </div>
+      <div class="cs-chothu-step">
+        <div class="cs-chothu-num">02</div>
+        <div class="cs-chothu-icon">&#9906;</div>
+        <div class="cs-chothu-title">Pattern Match</div>
+        <div class="cs-chothu-desc">Search Figma, Nexus, and past decisions</div>
+      </div>
+      <div class="cs-chothu-step">
+        <div class="cs-chothu-num">03</div>
+        <div class="cs-chothu-icon">&#9733;</div>
+        <div class="cs-chothu-title">Inspire</div>
+        <div class="cs-chothu-desc">How do Wise, Airbnb, Stripe solve this?</div>
+      </div>
+      <div class="cs-chothu-step">
+        <div class="cs-chothu-num">04</div>
+        <div class="cs-chothu-icon">&#10003;</div>
+        <div class="cs-chothu-title">Recommend</div>
+        <div class="cs-chothu-desc">Clear direction with brand tokens and rationale</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-divider"></div>
+
+  <!-- THE TEST -->
+  <section class="cs-section reveal">
+    <div class="cs-label">Proof</div>
+    <h2 class="cs-heading">First real consultation</h2>
+
+    <p class="cs-body">An engineer needed a merchant onboarding screen &mdash; what a merchant sees after scanning a QR code for the first time.</p>
+
+    <div class="cs-test-result">
+      <div class="cs-tr-header">
+        <div class="cs-tr-title">Merchant Post-QR Screen</div>
+        <div class="cs-tr-rating">&#9733; 4/5</div>
+      </div>
+      <div class="cs-tr-steps">
+        <div class="cs-tr-step">
+          <div class="cs-tr-bullet">1</div>
+          <div class="cs-tr-text">Found <strong>38 existing frames</strong> in the merchant onboarding Figma page</div>
+        </div>
+        <div class="cs-tr-step">
+          <div class="cs-tr-bullet">2</div>
+          <div class="cs-tr-text">Identified a <strong>gap</strong>: no screen combined $5 balance reveal with rate setup</div>
+        </div>
+        <div class="cs-tr-step">
+          <div class="cs-tr-bullet">3</div>
+          <div class="cs-tr-text">Searched knowledge base, found the <strong>&ldquo;$5 ghost wallet&rdquo; decision</strong> context</div>
+        </div>
+        <div class="cs-tr-step">
+          <div class="cs-tr-bullet">4</div>
+          <div class="cs-tr-text">Recommended copy: <strong>&ldquo;Yours to sell.&rdquo;</strong> not &ldquo;You&rsquo;ve been credited&rdquo; &mdash; grounded in the same value-first principle behind the Golden Flow</div>
+        </div>
+        <div class="cs-tr-step">
+          <div class="cs-tr-bullet">5</div>
+          <div class="cs-tr-text">Referenced <strong>Binance P2P&rsquo;s</strong> percentage-based margin model for the exchange rate UI</div>
+        </div>
+        <div class="cs-tr-step">
+          <div class="cs-tr-bullet">6</div>
+          <div class="cs-tr-text">Provided design direction using <strong>actual Techtonic components</strong> with exact token names</div>
+        </div>
+      </div>
+      <div class="cs-tr-time">Total time: &lt; 5 minutes</div>
+    </div>
   </section>
 
   <div class="cs-divider"></div>
@@ -776,46 +1099,46 @@
   <!-- IMPACT -->
   <section class="cs-section reveal">
     <div class="cs-label">Impact</div>
-    <h2 class="cs-heading">We didn&rsquo;t change merchant behavior. We changed the product.</h2>
+    <h2 class="cs-heading">What changed</h2>
+
+    <div class="cs-impact-cols">
+      <div class="cs-impact-col">
+        <div class="cs-impact-for">For Engineering</div>
+        <div class="cs-impact-item">&ldquo;Needs Design&rdquo; is no longer a blocking state</div>
+        <div class="cs-impact-item">Engineers create MVP screens independently</div>
+        <div class="cs-impact-item">Design review replaced design creation</div>
+      </div>
+      <div class="cs-impact-col">
+        <div class="cs-impact-for">For Design</div>
+        <div class="cs-impact-item">Shifted from delivery to consultancy</div>
+        <div class="cs-impact-item">Freed capacity for strategic work</div>
+        <div class="cs-impact-item">Removed bottleneck perception</div>
+      </div>
+      <div class="cs-impact-col">
+        <div class="cs-impact-for">For the Org</div>
+        <div class="cs-impact-item">Design thinking available to everyone</div>
+        <div class="cs-impact-item">Feedback loop improving the system</div>
+        <div class="cs-impact-item">Evidence-based decision making</div>
+      </div>
+    </div>
+
+    <div class="cs-quote">
+      <p>&ldquo;Designers act as a resource and are no longer a mandatory step in the process.&rdquo;</p>
+      <div class="cs-quote-source">Design weekly &mdash; February 3, 2026</div>
+    </div>
 
     <table class="cs-impact-table">
       <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Before</th>
-          <th>After</th>
-        </tr>
+        <tr><th>Artifact</th><th>Purpose</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Transaction model</td>
-          <td>Order-based (multi-step)</td>
-          <td>Cash QR (3 steps)</td>
-        </tr>
-        <tr>
-          <td>Detail card fields</td>
-          <td>8</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>Merchant map</td>
-          <td>Discovery + transaction</td>
-          <td>Discovery only</td>
-        </tr>
-        <tr>
-          <td>Rate setting</td>
-          <td>Per-order negotiation</td>
-          <td>Merchant-controlled, pre-set</td>
-        </tr>
-        <tr>
-          <td>Organic adoption</td>
-          <td>60%+ already using Cash QR</td>
-          <td>Now the only option</td>
-        </tr>
+        <tr><td>design-system.md</td><td>Brand principles for AI consumption</td></tr>
+        <tr><td>Guidelines.md</td><td>Component rules and visual patterns</td></tr>
+        <tr><td>Self-Serve Guide</td><td>When/how to self-serve vs. get a designer</td></tr>
+        <tr><td>Chothu</td><td>AI design consultant for anyone in the org</td></tr>
+        <tr><td>Feedback Database</td><td>Star ratings improving every consultation</td></tr>
       </tbody>
     </table>
-
-    <p class="cs-body">The strongest validation: <strong>we didn&rsquo;t change merchant behavior.</strong> We changed the product to match the behavior that was already working. 72% of volume was already flowing through Cash QR. We just removed the 28% that was fighting reality.</p>
   </section>
 
   <div class="cs-divider"></div>
@@ -823,35 +1146,35 @@
   <!-- LEARNINGS -->
   <section class="cs-section reveal">
     <div class="cs-label">Learnings</div>
-    <h2 class="cs-heading">What this taught me.</h2>
+    <h2 class="cs-heading">Four things this project taught me.</h2>
 
     <div class="cs-learnings">
       <div class="cs-learning">
         <div class="cs-learning-num">01</div>
         <div class="cs-learning-content">
-          <div class="cs-learning-title">Watch before you design.</div>
-          <div class="cs-learning-desc">60% of merchants had already solved the problem we were trying to solve. They didn&rsquo;t need a better order flow &mdash; they needed us to stop forcing one. The most important research I did wasn&rsquo;t user testing. It was standing in a store and watching.</div>
+          <div class="cs-learning-title">AI amplifies design systems.</div>
+          <div class="cs-learning-desc">Without Techtonic (670 components), the AI had nothing to work with. The quality of AI-generated design is directly proportional to the quality of your design system. This is the strongest argument for investing in a system early.</div>
         </div>
       </div>
       <div class="cs-learning">
         <div class="cs-learning-num">02</div>
         <div class="cs-learning-content">
-          <div class="cs-learning-title">Remove before you add.</div>
-          <div class="cs-learning-desc">The instinct is always to build: a better order flow, a smarter status system, a more elegant confirmation screen. The right answer was to remove all of it. The feature that best served merchants was the absence of features they didn&rsquo;t need.</div>
+          <div class="cs-learning-title">Fail fast, in public.</div>
+          <div class="cs-learning-desc">V1 failed in front of the Head of Engineering. That was uncomfortable. But showing the failure built trust &mdash; it proved I was solving the real problem, not just shipping a demo.</div>
         </div>
       </div>
       <div class="cs-learning">
         <div class="cs-learning-num">03</div>
         <div class="cs-learning-content">
-          <div class="cs-learning-title">Digital should serve physical, not replace it.</div>
-          <div class="cs-learning-desc">In emerging market fintech, the transaction happens in the real world. Cash changes hands. People shake on it. The app&rsquo;s job is to confirm and record &mdash; not to intermediate. Products that try to digitize the human interaction will always lose to the workaround.</div>
+          <div class="cs-learning-title">Navigate, don&rsquo;t pick sides.</div>
+          <div class="cs-learning-desc">When leadership disagrees, a designer&rsquo;s job isn&rsquo;t to choose &mdash; it&rsquo;s to generate evidence that helps everyone converge. Running parallel experiments turned a political problem into an empirical one.</div>
         </div>
       </div>
       <div class="cs-learning">
         <div class="cs-learning-num">04</div>
         <div class="cs-learning-content">
-          <div class="cs-learning-title">Adoption data is design research.</div>
-          <div class="cs-learning-desc">72% Cash QR adoption wasn&rsquo;t a metric &mdash; it was a design brief. The users had already voted with their behavior. Listening to adoption patterns is the fastest form of user research, if you&rsquo;re willing to hear that your product is wrong.</div>
+          <div class="cs-learning-title">Make yourself unnecessary.</div>
+          <div class="cs-learning-desc">My instinct was to protect design&rsquo;s role. The breakthrough came when I realized my job wasn&rsquo;t to stay essential &mdash; it was to make design thinking available everywhere, through better systems, better tools, and better access.</div>
         </div>
       </div>
     </div>
@@ -859,17 +1182,17 @@
 
 </div>
 
-<!-- ═══════════════════════════════════════ -->
-<!--            CASE NAV                     -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
+<!--            CASE NAV                      -->
+<!-- ======================================= -->
 <div class="cs-nav reveal">
-  <a href="/work/zar/merchant-onboarding/" class="cs-nav-link">
+  <a href="/work/zar/techtonic/" class="cs-nav-link">
     <span class="cs-nav-dir">&larr; Previous</span>
-    <span class="cs-nav-title">Merchant Onboarding</span>
+    <span class="cs-nav-title">Techtonic</span>
   </a>
-  <a href="/work/zar/golden-flow/" class="cs-nav-link">
+  <a href="/work/zar/merchant-onboarding/" class="cs-nav-link">
     <span class="cs-nav-dir">Next &rarr;</span>
-    <span class="cs-nav-title">The Golden Flow</span>
+    <span class="cs-nav-title">Merchant Onboarding</span>
   </a>
 </div>
 
@@ -887,20 +1210,20 @@
 </footer>
 
 <script>
-  // ─── CURSOR ───
+  // --- CURSOR ---
   const cur=document.getElementById('cur'),glo=document.getElementById('glo');
   let mx=0,my=0,cx=0,cy=0;
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;glo.style.left=mx+'px';glo.style.top=my+'px';});
   (function l(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(l)})();
   document.querySelectorAll('a,button,.cs-learning').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hov'));el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));});
 
-  // ─── SCROLL PROGRESS ───
+  // --- SCROLL PROGRESS ---
   window.addEventListener('scroll',()=>{
     const p=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
     document.getElementById('sp').style.width=p+'%';
   });
 
-  // ─── NAV SLIDING INDICATOR ───
+  // --- NAV SLIDING INDICATOR ---
   const navLinks=document.querySelector('.nav-links');
   const navInd=document.getElementById('navInd');
   const nls=document.querySelectorAll('.nl');
@@ -922,13 +1245,13 @@
   });
   navLinks.addEventListener('mouseleave',()=>{if(activeNl)setInd(activeNl);});
 
-  // ─── REVEALS ───
+  // --- REVEALS ---
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{
     if(e.isIntersecting) e.target.classList.add('visible');
   })},{threshold:.06});
   document.querySelectorAll('.cs-section, .reveal').forEach(el=>obs.observe(el));
 
-  // ─── MOBILE MENU ───
+  // --- MOBILE MENU ---
   const mobBtn=document.getElementById('mobBtn'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
   if(mobBtn&&mobMenu){
     mobBtn.addEventListener('click',()=>mobMenu.classList.add('open'));
@@ -936,7 +1259,7 @@
     mobMenu.addEventListener('click',e=>{if(e.target===mobMenu)mobMenu.classList.remove('open');});
   }
 
-  // ─── PAGE TRANSITIONS ───
+  // --- PAGE TRANSITIONS ---
   if(location.protocol!=='file:'){
     document.querySelectorAll('a[href]').forEach(a=>{
       const h=a.getAttribute('href');

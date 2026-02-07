@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cash QR Consolidation — 72% of transactions happened through Cash QR. ABM killed the order system and made the merchant workaround the actual product.">
+<meta name="description" content="Merchant Onboarding — 19 steps to become a merchant. Target: 100,000 stores. The math didn't work. The onboarding had to change.">
 <meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="Cash QR Consolidation — ABM">
-<meta property="og:description" content="72% of transactions were through Cash QR. We killed the order system.">
+<meta property="og:title" content="Merchant Onboarding — ABM">
+<meta property="og:description" content="19 steps to 4. Designing for 100,000 stores.">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cash QR Consolidation — ABM">
-<meta name="twitter:description" content="72% of transactions were through Cash QR. We killed the order system.">
-<title>Cash QR Consolidation — ABM</title>
+<meta name="twitter:title" content="Merchant Onboarding — ABM">
+<meta name="twitter:description" content="19 steps to 4. Designing for 100,000 stores.">
+<title>Merchant Onboarding — ABM</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
@@ -474,6 +474,146 @@
     margin: 48px auto;
   }
 
+  /* ─── SCALE STRIP ─── */
+  .scale-strip {
+    position: relative; z-index: 2;
+    max-width: 720px; margin: 0 auto;
+    padding: 48px 32px; text-align: center;
+  }
+  .scale-tension {
+    display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap;
+  }
+  .scale-num {
+    font-family: var(--display); font-weight: 800; line-height: 1;
+  }
+  .scale-num.bad { font-size: clamp(48px, 10vw, 80px); color: #FF6B6B; }
+  .scale-num.target { font-size: clamp(48px, 10vw, 80px); color: var(--accent); }
+  .scale-label {
+    font-size: 12px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.08em; font-weight: 600; margin-top: 4px;
+  }
+  .scale-arrow {
+    font-size: 32px; color: var(--muted);
+  }
+  .scale-sub {
+    font-size: 15px; color: var(--dim); max-width: 500px; margin: 24px auto 0; line-height: 1.7;
+  }
+
+  /* ─── PERSONA GRID ─── */
+  .persona-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin: 32px 0;
+  }
+  .persona-card {
+    padding: 24px 20px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .persona-card .pe-name { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .persona-card .pe-role {
+    font-size: 11px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.05em; font-weight: 600; margin-bottom: 12px;
+  }
+  .persona-card .pe-quote {
+    font-size: 14px; color: var(--dim); font-style: italic; line-height: 1.5; margin-bottom: 12px;
+  }
+  .persona-card .pe-desc {
+    font-size: 12px; color: var(--muted); line-height: 1.5;
+    border-top: 1px solid var(--border); padding-top: 12px;
+  }
+
+  /* ─── QR LIFECYCLE ─── */
+  .qr-lifecycle {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin: 32px 0;
+  }
+  .qr-state {
+    padding: 24px 20px; text-align: center;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .qr-state .qs-icon { font-size: 28px; margin-bottom: 12px; }
+  .qr-state .qs-name { font-family: var(--display); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .qr-state .qs-tag {
+    font-size: 10px; font-weight: 700;
+    color: var(--accent); background: rgba(201,168,78,0.08);
+    display: inline-block; padding: 2px 8px; border-radius: 100px; margin-bottom: 8px;
+  }
+  .qr-state .qs-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ─── GHOST WALLET ─── */
+  .ghost-wallet {
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 48px 32px; margin: 36px 0;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .ghost-wallet::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(201,168,78,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .ghost-wallet .gw-amount {
+    font-family: var(--display); font-size: 56px; font-weight: 800;
+    color: var(--text); position: relative; z-index: 1; letter-spacing: -0.02em;
+  }
+  .ghost-wallet .gw-copy {
+    font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--accent);
+    margin-top: 8px; position: relative; z-index: 1;
+  }
+  .ghost-wallet .gw-equiv {
+    font-size: 14px; color: var(--muted); margin-top: 8px; position: relative; z-index: 1;
+  }
+  .ghost-wallet .gw-pitch {
+    font-size: 14px; color: var(--dim); margin-top: 4px; position: relative; z-index: 1;
+  }
+  .ghost-wallet .gw-cta {
+    display: inline-block; margin-top: 24px; padding: 12px 32px;
+    background: var(--accent); color: #0A0A08; font-weight: 700;
+    font-size: 14px; border-radius: 100px; position: relative; z-index: 1;
+  }
+  .ghost-wallet .gw-tags {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px; position: relative; z-index: 1;
+  }
+  .ghost-wallet .gw-tag {
+    font-size: 10px; font-weight: 600;
+    color: var(--muted); background: rgba(255,255,255,0.03);
+    padding: 4px 10px; border-radius: 100px; border: 1px solid var(--border);
+  }
+
+  /* ─── DECISION GRID ─── */
+  .decision-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px; margin: 32px 0;
+  }
+  .decision-card {
+    padding: 24px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .decision-card .dc-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .decision-card .dc-desc { font-size: 13px; color: var(--dim); line-height: 1.6; }
+
+  /* ─── GROUND FORCE PILLARS ─── */
+  .gf-pillars {
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    overflow: hidden; margin: 32px 0;
+  }
+  .gf-pillar {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 24px; border-bottom: 1px solid var(--border);
+  }
+  .gf-pillar:last-child { border-bottom: none; }
+  .gf-pillar .gfp-icon { font-size: 20px; flex-shrink: 0; }
+  .gf-pillar .gfp-title { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--text); }
+  .gf-pillar .gfp-desc { font-size: 12px; color: var(--muted); margin-left: auto; }
+
   /* ─── FOOTER ─── */
   footer { position: relative; z-index: 2; max-width: 1000px; margin: 100px auto 0; padding: 0 48px; text-align: center; }
   .fh { font-family: var(--display); font-size: clamp(28px, 4.5vw, 48px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
@@ -518,6 +658,8 @@
     footer { padding-left: 20px; padding-right: 20px; }
     .nl.hsm { display: none; }
     .mob-btn { display: flex; align-items: center; }
+    .persona-grid, .qr-lifecycle { grid-template-columns: 1fr; }
+    .decision-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
     .cs-hero { min-height: 50vh; padding: 80px 20px 48px; }
@@ -528,6 +670,7 @@
     .cs-nav { flex-direction: column; }
     .cs-nav-link:last-child { text-align: left; }
     .fb { flex-direction: column; gap: 8px; text-align: center; }
+    .scale-tension { flex-direction: column; gap: 12px; }
   }
 </style>
 </head>
@@ -571,22 +714,40 @@
 <!--              HERO                       -->
 <!-- ═══════════════════════════════════════ -->
 <div class="cs-hero">
-  <div class="cs-hero-metric">72%</div>
+  <div class="cs-hero-metric">19&rarr;4</div>
   <div class="cs-hero-content">
     <a href="/work/zar/" class="cs-hero-back">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       ZAR
     </a>
-    <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; January 2026</div>
-    <h1>Cash QR Consolidation</h1>
-    <p class="cs-hero-hook">72% of transactions were happening through Cash QR. The order system we&rsquo;d built? Merchants were walking around it.</p>
+    <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; Jan &ndash; Feb 2026</div>
+    <h1>Merchant Onboarding</h1>
+    <p class="cs-hero-hook">19 steps to become a merchant. Target: 100,000 stores. The math didn&rsquo;t work. The onboarding had to change.</p>
     <div class="cs-hero-meta">
       <span class="cs-meta-pill">Lead Product Designer</span>
-      <span class="cs-meta-pill">On-Ground Research</span>
       <span class="cs-meta-pill">Service Design</span>
+      <span class="cs-meta-pill">Ground Force</span>
       <span class="cs-meta-pill">iOS &amp; Android</span>
     </div>
   </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--           SCALE STRIP                   -->
+<!-- ═══════════════════════════════════════ -->
+<div class="scale-strip reveal">
+  <div class="scale-tension">
+    <div>
+      <div class="scale-num bad">19</div>
+      <div class="scale-label">Steps Per Merchant</div>
+    </div>
+    <div class="scale-arrow">&rarr;</div>
+    <div>
+      <div class="scale-num target">100K</div>
+      <div class="scale-label">Merchant Target</div>
+    </div>
+  </div>
+  <p class="scale-sub">At 19 steps per merchant, 100,000 was fantasy. 0.3% activation. 63% churn after first order. The onboarding was designed for a pilot, not for scale.</p>
 </div>
 
 <!-- ═══════════════════════════════════════ -->
@@ -594,181 +755,232 @@
 <!-- ═══════════════════════════════════════ -->
 <div class="article">
 
-  <!-- THE OBSERVATION -->
+  <!-- THE SCALE PROBLEM -->
   <section class="cs-section reveal">
-    <div class="cs-label">The Observation</div>
-    <h2 class="cs-heading">I went to Pakistan. Not to test screens &mdash; to watch.</h2>
-
-    <p class="cs-body">What I found: <strong>over 60% of merchants were bypassing our order system entirely.</strong> In face-to-face transactions &mdash; a customer standing at the counter wanting to buy dollars &mdash; merchants ignored the formal merchant flow. Instead, they collected cash manually and used Send or Exchange. Features we&rsquo;d designed for peer-to-peer transfers, not merchant commerce.</p>
-
-    <p class="cs-body">They weren&rsquo;t confused. They weren&rsquo;t untrained. They&rsquo;d figured out that the order system added steps without adding value for in-person transactions. The app had a formal merchant flow with order creation, status tracking, and multi-step confirmation. The street had cash, a QR code, and a handshake.</p>
-
-    <div class="cs-quote">
-      <p>The merchants were telling us what the product should be. <strong>We just hadn&rsquo;t been listening.</strong></p>
-    </div>
-
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Split screen &mdash; Left: The formal order flow (multiple screens, status tracking, confirmations). Right: What actually happens on the street (cash exchanges hands, QR scan, done).</div>
-      <div class="cs-visual-caption">The gap between what we built and what merchants actually did.</div>
-    </div>
-  </section>
-
-  <!-- THE DATA -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Data</div>
-    <h2 class="cs-heading">The numbers confirmed what the streets showed.</h2>
-
-    <p class="cs-body">The on-ground research aligned perfectly with the data. <strong>Cash QR codes accounted for 72% of total transaction volume.</strong> The order system we&rsquo;d invested in &mdash; designed, engineered, iterated on &mdash; handled less than a third.</p>
-
-    <div class="cs-stats">
-      <div class="cs-stat">
-        <div class="cs-stat-num">72%</div>
-        <div class="cs-stat-label">Cash QR transactions</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">8 min</div>
-        <div class="cs-stat-label">Per bank transfer (6 steps, 2 OTPs)</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">63%</div>
-        <div class="cs-stat-label">Churn after first order</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">56%</div>
-        <div class="cs-stat-label">Users from top 3 merchants</div>
-      </div>
-    </div>
-
-    <p class="cs-body">Other signals painted the same picture:</p>
+    <div class="cs-label">The Scale Problem</div>
+    <h2 class="cs-heading">19 steps. Ambassador required at every one.</h2>
 
     <ul class="cs-list">
-      <li><strong>Lahore outskirts: 100 ambassador visits, zero conversions</strong> &mdash; the product wasn&rsquo;t matching the context</li>
-      <li><strong>Detail card had 8 fields</strong> &mdash; for a transaction that takes 30 seconds in person</li>
-      <li>The order system wasn&rsquo;t slightly misaligned. It was <strong>fundamentally wrong</strong> for face-to-face commerce</li>
+      <li><strong>19-step onboarding</strong> across fragmented screens and flows</li>
+      <li><strong>Phone-number-based linking</strong> &mdash; fragile, created broken records</li>
+      <li><strong>English-only interface</strong> for merchants who may not read English</li>
+      <li><strong>Complete ambassador dependency</strong> at every step</li>
+      <li><strong>0.3% activation</strong> &mdash; 573 onboarded, 2 transacting</li>
+      <li><strong>63% churn</strong> after first order</li>
     </ul>
 
     <div class="cs-visual">
-      <div class="cs-visual-inner">Data visualization &mdash; 72% Cash QR vs. 28% Orders split. Supporting stat cards below.</div>
-      <div class="cs-visual-caption">We&rsquo;d built a digital marketplace for people standing three feet apart.</div>
+      <div class="cs-visual-inner">19-step old onboarding flow &mdash; annotated with friction points</div>
+      <div class="cs-visual-caption">The original flow had 19 steps, each requiring ambassador presence.</div>
     </div>
   </section>
 
-  <!-- THE INSIGHT -->
+  <!-- THE PERSONAS -->
   <section class="cs-section reveal">
-    <div class="cs-label">The Insight</div>
-    <h2 class="cs-heading">The transaction happens in the real world. The app just confirms it.</h2>
+    <div class="cs-label">The Personas</div>
+    <h2 class="cs-heading">You have 10 seconds. Don&rsquo;t explain. Demonstrate.</h2>
 
-    <p class="cs-body">ZAR&rsquo;s merchant transactions are <strong>physical-first.</strong> A customer walks into a store. Cash changes hands. The app confirms what already happened &mdash; it doesn&rsquo;t intermediate it.</p>
-
-    <p class="cs-body">But our product was designed as if the transaction started in the app. That makes sense for remote commerce. It makes zero sense when two people are standing next to each other.</p>
-
-    <div class="cs-compare">
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">Digital-First (what we built)</div>
-        <div class="cs-compare-content">
-          <strong>1.</strong> Create order<br>
-          <strong>2.</strong> Set terms<br>
-          <strong>3.</strong> Wait for acceptance<br>
-          <strong>4.</strong> Confirm payment<br>
-          <strong>5.</strong> Track status<br>
-          <strong>6.</strong> Complete
-        </div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="pe-name">Tariq</div>
+        <div class="pe-role">Kiryana Owner, Pakistan</div>
+        <div class="pe-quote">&ldquo;I already have Easypaisa. It works fine.&rdquo;</div>
+        <div class="pe-desc">Dismissive. Pitched by dozens of agents. Leave your card &mdash; he won&rsquo;t call.</div>
       </div>
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">Physical-First (what merchants did)</div>
-        <div class="cs-compare-content">
-          <strong>1.</strong> Cash changes hands<br>
-          <strong>2.</strong> Scan QR<br>
-          <strong>3.</strong> Done
-        </div>
+      <div class="persona-card">
+        <div class="pe-name">Samuel</div>
+        <div class="pe-role">Mobile Money Agent, Africa</div>
+        <div class="pe-quote">&ldquo;What&rsquo;s the float requirement? Let me see it work first.&rdquo;</div>
+        <div class="pe-desc">Calculating. Comparing against current setup in real-time.</div>
+      </div>
+      <div class="persona-card">
+        <div class="pe-name">Joseph</div>
+        <div class="pe-role">Corner Store Owner</div>
+        <div class="pe-quote">&ldquo;I sell groceries. I&rsquo;m not a bank.&rdquo;</div>
+        <div class="pe-desc">Fundamentally uninterested. You&rsquo;re asking him to add complexity.</div>
       </div>
     </div>
 
-    <p class="cs-body">The merchants had already solved this. They just used the simplest tool available. Our job was to <strong>make their workaround the actual product.</strong></p>
+    <p class="cs-body">A 19-step onboarding gives you zero seconds. By step 3, Tariq has already put his phone down.</p>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">On-ground research photos &mdash; merchant visits</div>
+      <div class="cs-visual-caption">Field research across merchant locations revealed the urgency gap.</div>
+    </div>
   </section>
 
   <div class="cs-divider"></div>
 
-  <!-- THE REDESIGN -->
+  <!-- QR SELF-SERVICE -->
   <section class="cs-section reveal">
-    <div class="cs-label">The Redesign</div>
-    <h2 class="cs-heading">Kill the order flow. Three steps.</h2>
+    <div class="cs-label">QR Self-Service</div>
+    <h2 class="cs-heading">One QR code. Three lifecycle states.</h2>
 
-    <p class="cs-body">For merchant-to-customer transactions, we <strong>deprecated the order system entirely.</strong> No partial fix. No iteration. Removed. Orders were retained only for merchant-to-trader interactions &mdash; bulk wholesale transactions where formal tracking adds legitimate value.</p>
+    <p class="cs-body">Inspired by BharatPe &mdash; 13 million merchants, 4&ndash;5 step onboarding &mdash; I redesigned everything around a single artifact: a <strong>pre-printed QR code</strong> that routes the entire flow.</p>
+
+    <div class="qr-lifecycle">
+      <div class="qr-state">
+        <div class="qs-icon">&#128230;</div>
+        <div class="qs-tag">STATE 1</div>
+        <div class="qs-name">Unassigned</div>
+        <div class="qs-desc">Batch-generated. Sitting in inventory. Not linked to anyone.</div>
+      </div>
+      <div class="qr-state">
+        <div class="qs-icon">&#129309;</div>
+        <div class="qs-tag">STATE 2</div>
+        <div class="qs-name">Ambassador-Claimed</div>
+        <div class="qs-desc">Ambassador picks it up. Pre-fills merchant name, location, photo.</div>
+      </div>
+      <div class="qr-state">
+        <div class="qs-icon">&#127978;</div>
+        <div class="qs-tag">STATE 3</div>
+        <div class="qs-name">Merchant-Assigned</div>
+        <div class="qs-desc">Merchant scans. Onboarding complete. Transacting.</div>
+      </div>
+    </div>
+
+    <p class="cs-body">No phone numbers. No passwords. No manual linking. The QR code IS the authentication. The app detects which state it&rsquo;s in and branches accordingly.</p>
+  </section>
+
+  <!-- THE NEW FLOW -->
+  <section class="cs-section reveal">
+    <div class="cs-label">The New Flow</div>
+    <h2 class="cs-heading">From 19 steps to 4.</h2>
 
     <div class="cs-steps">
       <div class="cs-step">
         <div class="cs-step-num">1</div>
         <div class="cs-step-content">
-          <div class="cs-step-title">Visit store</div>
-          <div class="cs-step-desc">Customer finds the merchant on the map or walks in.</div>
+          <div class="cs-step-title">Scan QR</div>
+          <div class="cs-step-desc">Pre-printed QR at the store.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">2</div>
         <div class="cs-step-content">
-          <div class="cs-step-title">Exchange cash</div>
-          <div class="cs-step-desc">Physical handoff. The real transaction.</div>
+          <div class="cs-step-title">See $5</div>
+          <div class="cs-step-desc">Store pre-configured. Ghost wallet ready.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">3</div>
         <div class="cs-step-content">
-          <div class="cs-step-title">Scan QR</div>
-          <div class="cs-step-desc">The app confirms the exchange. Dollar amount. Rate. Done.</div>
+          <div class="cs-step-title">Set Rate</div>
+          <div class="cs-step-desc">One input. Choose your margin.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div class="cs-step-content">
+          <div class="cs-step-title">First Sale</div>
+          <div class="cs-step-desc">Transact with ambassador. Right now.</div>
         </div>
       </div>
     </div>
 
-    <p class="cs-body">Three steps. No orders. No status tracking. No acceptance flow. The app serves the moment &mdash; it doesn&rsquo;t replace it.</p>
+    <p class="cs-body">The ambassador pre-fills everything <strong>before</strong> entering the store. The merchant scans and sees magic &mdash; their store already configured, $5 ready to sell.</p>
+
+    <!-- GHOST WALLET -->
+    <div class="ghost-wallet">
+      <div class="gw-amount">$5.00</div>
+      <div class="gw-copy">Yours to sell.</div>
+      <div class="gw-equiv">&asymp; PKR 1,480 at market rate</div>
+      <div class="gw-pitch">You keep the difference.</div>
+      <div class="gw-cta">Set rate</div>
+      <div class="gw-tags">
+        <span class="gw-tag">SELL-ONLY</span>
+        <span class="gw-tag">NON-WITHDRAWABLE</span>
+        <span class="gw-tag">CONVERTS WHEN SOLD</span>
+      </div>
+    </div>
+
+    <p class="cs-body">The $5 ghost wallet costs ZAR nothing until it creates real economic activity. Three words of copy create psychological ownership before a single form field.</p>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">Post-QR merchant screen &mdash; Figma mockup with &ldquo;Yours to sell&rdquo; copy</div>
+      <div class="cs-visual-caption">The first thing a merchant sees: their store, $5, and three words.</div>
+    </div>
   </section>
 
-  <!-- RADICAL SIMPLIFICATION -->
+  <div class="cs-divider"></div>
+
+  <!-- KEY DECISIONS -->
   <section class="cs-section reveal">
-    <div class="cs-label">Simplification</div>
-    <h2 class="cs-heading">8 fields to 2. Discovery only. Present tense.</h2>
+    <div class="cs-label">Key Decisions</div>
+    <h2 class="cs-heading">What made it scale.</h2>
 
-    <p class="cs-body"><strong>The merchant map</strong> had been trying to do two things: help users find merchants AND initiate transactions. I stripped transaction initiation entirely. The map became discovery-only with clear instructions: &ldquo;1. Visit store. 2. Exchange cash. 3. Scan QR.&rdquo;</p>
-
-    <div class="cs-compare">
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">Before</div>
-        <div class="cs-compare-content">
-          <strong>Detail card: 8 fields</strong><br>
-          Every data point we captured. Cluttered, unnecessary for a 30-second interaction.<br><br>
-          <strong>Screen title: &ldquo;Buy&rdquo;</strong><br>
-          Preparing a transaction.<br><br>
-          <strong>Map: discovery + transaction</strong><br>
-          Trying to do two things.
-        </div>
+    <div class="decision-grid">
+      <div class="decision-card">
+        <div class="dc-title">Immediate Role Grant</div>
+        <div class="dc-desc">No approval queue. Scan, fill one screen, you&rsquo;re a merchant. Bottleneck eliminated.</div>
       </div>
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">After</div>
-        <div class="cs-compare-content">
-          <strong>Detail card: 2 fields</strong><br>
-          Paid and Exchange rate. What the merchant actually needs.<br><br>
-          <strong>Screen title: &ldquo;Buying&rdquo;</strong><br>
-          Present tense. It&rsquo;s happening now.<br><br>
-          <strong>Map: discovery only</strong><br>
-          Tells you where to go. What happens there is between you and the merchant.
-        </div>
+      <div class="decision-card">
+        <div class="dc-title">Unified Screen</div>
+        <div class="dc-desc">Multiple onboarding screens consolidated into one Store Details submission. Ambassador pre-filled most of it.</div>
+      </div>
+      <div class="decision-card">
+        <div class="dc-title">Authless Architecture</div>
+        <div class="dc-desc">No phone verification. No OTPs. The QR&rsquo;s lifecycle states handle all routing and authentication.</div>
+      </div>
+      <div class="decision-card">
+        <div class="dc-title">First Sale = Completion</div>
+        <div class="dc-desc">Ambassador becomes the first customer. Activation happens during onboarding, not &ldquo;sometime later.&rdquo;</div>
       </div>
     </div>
 
     <div class="cs-visual">
-      <div class="cs-visual-inner">Before/after of the transaction detail card. Left: 8 fields. Right: 2 fields (Paid + Exchange rate). The reduction should feel like relief.</div>
-      <div class="cs-visual-caption">Detail card &mdash; 8 fields reduced to 2.</div>
+      <div class="cs-visual-inner">Before/after: 19-step flow vs. 4-step QR flow</div>
+      <div class="cs-visual-caption">Side-by-side comparison of the original and redesigned onboarding.</div>
     </div>
   </section>
 
-  <!-- MERCHANT CONTROL -->
+  <!-- THE GROUND FORCE -->
   <section class="cs-section reveal">
-    <div class="cs-label">Merchant Control</div>
-    <h2 class="cs-heading">The merchant sets the terms.</h2>
+    <div class="cs-label">The Ground Force</div>
+    <h2 class="cs-heading">100,000 merchants. Zero employees.</h2>
 
-    <p class="cs-body">One principle guided the redesign: <strong>the merchant sets the terms.</strong> In the old flow, exchange rates were part of the order negotiation. In the new flow, the merchant sets their rate upfront. It&rsquo;s displayed on their profile. Customers see it before they walk in. If they show up, they&rsquo;ve already agreed.</p>
+    <p class="cs-body">Merchant onboarding doesn&rsquo;t scale with headcount. It scales with a system. I contributed to the design of ZAR&rsquo;s ambassador network &mdash; the system that recruits, qualifies, and distributes the right people to carry QR codes into the right stores.</p>
 
-    <p class="cs-body">Merchants can adjust their rate per transaction &mdash; responding to market conditions, competition, or customer relationships. The system enables their business judgment instead of constraining it with a formal order protocol.</p>
+    <div class="gf-pillars">
+      <div class="gf-pillar">
+        <div class="gfp-icon">&#127891;</div>
+        <div class="gfp-title">Earned Qualification</div>
+        <div class="gfp-desc">30 days, 10 txns, training, 5 recruits</div>
+      </div>
+      <div class="gf-pillar">
+        <div class="gfp-icon">&#128176;</div>
+        <div class="gfp-title">$10 Cost Ceiling</div>
+        <div class="gfp-desc">Per verified merchant, all-in</div>
+      </div>
+      <div class="gf-pillar">
+        <div class="gfp-icon">&#128737;&#65039;</div>
+        <div class="gfp-title">Anti-Fraud by Design</div>
+        <div class="gfp-desc">20% single detection &rarr; 99% at scale</div>
+      </div>
+      <div class="gf-pillar">
+        <div class="gfp-icon">&#128205;</div>
+        <div class="gfp-title">Geographic Distribution</div>
+        <div class="gfp-desc">Dynamic zone multipliers prevent clustering</div>
+      </div>
+    </div>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">Ground Force qualification ladder + anti-fraud compounding diagram</div>
+      <div class="cs-visual-caption">The system behind the system: how ambassadors earn their role.</div>
+    </div>
+  </section>
+
+  <!-- SERVICE BLUEPRINT -->
+  <section class="cs-section reveal">
+    <div class="cs-label">Service Design</div>
+    <h2 class="cs-heading">The ambassador is trust. The app is onboarding.</h2>
+
+    <p class="cs-body">I mapped the full onboarding service &mdash; three swim lanes. The critical insight: the ambassador&rsquo;s job ends when the QR is scanned. Everything after is self-service. Separating trust-building from flow execution is what makes this scale without linear headcount growth.</p>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner" style="aspect-ratio: 16/7;">Service blueprint &mdash; Ambassador, Merchant, and System swim lanes</div>
+      <div class="cs-visual-caption">Three swim lanes: ambassador builds trust, merchant scans QR, system handles the rest.</div>
+    </div>
   </section>
 
   <div class="cs-divider"></div>
@@ -776,7 +988,7 @@
   <!-- IMPACT -->
   <section class="cs-section reveal">
     <div class="cs-label">Impact</div>
-    <h2 class="cs-heading">We didn&rsquo;t change merchant behavior. We changed the product.</h2>
+    <h2 class="cs-heading">What the redesign delivered.</h2>
 
     <table class="cs-impact-table">
       <thead>
@@ -788,34 +1000,44 @@
       </thead>
       <tbody>
         <tr>
-          <td>Transaction model</td>
-          <td>Order-based (multi-step)</td>
-          <td>Cash QR (3 steps)</td>
+          <td>Onboarding steps</td>
+          <td>19</td>
+          <td>4</td>
         </tr>
         <tr>
-          <td>Detail card fields</td>
-          <td>8</td>
-          <td>2</td>
+          <td>Ambassador dependency</td>
+          <td>Every step</td>
+          <td>Pre-fill only</td>
         </tr>
         <tr>
-          <td>Merchant map</td>
-          <td>Discovery + transaction</td>
-          <td>Discovery only</td>
+          <td>Authentication</td>
+          <td>Phone + OTP</td>
+          <td>Authless (QR)</td>
         </tr>
         <tr>
-          <td>Rate setting</td>
-          <td>Per-order negotiation</td>
-          <td>Merchant-controlled, pre-set</td>
+          <td>First transaction</td>
+          <td>Days later</td>
+          <td>During onboarding</td>
         </tr>
         <tr>
-          <td>Organic adoption</td>
-          <td>60%+ already using Cash QR</td>
-          <td>Now the only option</td>
+          <td>First screen</td>
+          <td>Form fields</td>
+          <td>$5 + &ldquo;Yours to sell&rdquo;</td>
+        </tr>
+        <tr>
+          <td>Cost per merchant</td>
+          <td>Unstructured</td>
+          <td>$10 ceiling</td>
+        </tr>
+        <tr>
+          <td>Scale target</td>
+          <td>Pilot (573)</td>
+          <td>100,000</td>
         </tr>
       </tbody>
     </table>
 
-    <p class="cs-body">The strongest validation: <strong>we didn&rsquo;t change merchant behavior.</strong> We changed the product to match the behavior that was already working. 72% of volume was already flowing through Cash QR. We just removed the 28% that was fighting reality.</p>
+    <p class="cs-body">22 of 23 implementation issues completed. Before/after presented to investors at a ZAR board meeting.</p>
   </section>
 
   <div class="cs-divider"></div>
@@ -829,29 +1051,29 @@
       <div class="cs-learning">
         <div class="cs-learning-num">01</div>
         <div class="cs-learning-content">
-          <div class="cs-learning-title">Watch before you design.</div>
-          <div class="cs-learning-desc">60% of merchants had already solved the problem we were trying to solve. They didn&rsquo;t need a better order flow &mdash; they needed us to stop forcing one. The most important research I did wasn&rsquo;t user testing. It was standing in a store and watching.</div>
+          <div class="cs-learning-title">Onboarding IS the growth engine.</div>
+          <div class="cs-learning-desc">Every friction in onboarding is friction in the entire flywheel. 19 steps doesn&rsquo;t slow one merchant &mdash; it caps the whole network.</div>
         </div>
       </div>
       <div class="cs-learning">
         <div class="cs-learning-num">02</div>
         <div class="cs-learning-content">
-          <div class="cs-learning-title">Remove before you add.</div>
-          <div class="cs-learning-desc">The instinct is always to build: a better order flow, a smarter status system, a more elegant confirmation screen. The right answer was to remove all of it. The feature that best served merchants was the absence of features they didn&rsquo;t need.</div>
+          <div class="cs-learning-title">Pre-fill creates magic.</div>
+          <div class="cs-learning-desc">When a merchant scans and sees their store already configured &mdash; name, photo, $5 &mdash; something shifts. Invisible work before creates the wow moment after.</div>
         </div>
       </div>
       <div class="cs-learning">
         <div class="cs-learning-num">03</div>
         <div class="cs-learning-content">
-          <div class="cs-learning-title">Digital should serve physical, not replace it.</div>
-          <div class="cs-learning-desc">In emerging market fintech, the transaction happens in the real world. Cash changes hands. People shake on it. The app&rsquo;s job is to confirm and record &mdash; not to intermediate. Products that try to digitize the human interaction will always lose to the workaround.</div>
+          <div class="cs-learning-title">First transaction during onboarding.</div>
+          <div class="cs-learning-desc">If the merchant leaves without transacting, 63% never come back. The ambassador as first customer ensures activation in the moment.</div>
         </div>
       </div>
       <div class="cs-learning">
         <div class="cs-learning-num">04</div>
         <div class="cs-learning-content">
-          <div class="cs-learning-title">Adoption data is design research.</div>
-          <div class="cs-learning-desc">72% Cash QR adoption wasn&rsquo;t a metric &mdash; it was a design brief. The users had already voted with their behavior. Listening to adoption patterns is the fastest form of user research, if you&rsquo;re willing to hear that your product is wrong.</div>
+          <div class="cs-learning-title">Design the system, not just the screen.</div>
+          <div class="cs-learning-desc">Ground Force &mdash; qualification, economics, anti-fraud, distribution &mdash; is as much a design problem as any UI. The flow only works because the system behind it works.</div>
         </div>
       </div>
     </div>
@@ -863,13 +1085,13 @@
 <!--            CASE NAV                     -->
 <!-- ═══════════════════════════════════════ -->
 <div class="cs-nav reveal">
-  <a href="/work/zar/merchant-onboarding/" class="cs-nav-link">
+  <a href="/work/zar/engineer-self-serve/" class="cs-nav-link">
     <span class="cs-nav-dir">&larr; Previous</span>
-    <span class="cs-nav-title">Merchant Onboarding</span>
+    <span class="cs-nav-title">Engineer Self-Serve</span>
   </a>
-  <a href="/work/zar/golden-flow/" class="cs-nav-link">
+  <a href="/work/zar/cash-qr-consolidation/" class="cs-nav-link">
     <span class="cs-nav-dir">Next &rarr;</span>
-    <span class="cs-nav-title">The Golden Flow</span>
+    <span class="cs-nav-title">Cash QR Consolidation</span>
   </a>
 </div>
 

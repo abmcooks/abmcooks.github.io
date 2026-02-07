@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Techtonic Design System — From Brand Book to Production Code. A brand vision existed as ten beautiful PDFs. ABM built the system that ships it — 670 components, three platforms, zero drift.">
+<meta name="author" content="ABM (Basit Masood)">
+<meta property="og:title" content="Techtonic Design System — ABM">
+<meta property="og:description" content="From Brand Book to Production Code. 670 components, three platforms, zero drift.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Techtonic Design System — ABM">
+<meta name="twitter:description" content="From Brand Book to Production Code. 670 components, three platforms, zero drift.">
+<title>Techtonic Design System — ABM</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  :root {
+    --display: 'Bricolage Grotesque', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --bg: #08080C;
+    --card: #0E0E14;
+    --text: #EDE8DB;
+    --dim: #8F8A7B;
+    --muted: #53504A;
+    --border: #1E1D19;
+    --accent: #C9A84E;
+    --accent-light: #DBBF6A;
+    --accent-glow: rgba(201,168,78,0.08);
+    --radius: 20px;
+
+    /* Mineral palette */
+    --gold: #D4A853;
+    --tanzanite: #5B8DEF;
+    --serpentine: #4ADE80;
+    --amethyst: #B1A8BD;
+    --limestone: #C4BCB3;
+  }
+
+  @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  body {
+    font-family: var(--body); background: var(--bg); color: var(--text);
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; padding-bottom: 120px; cursor: none;
+    animation: pageIn 0.3s ease;
+  }
+  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
+  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ─── SCROLL PROGRESS ─── */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2px; z-index: 10001;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    width: 0%; transform-origin: left;
+  }
+
+  /* ─── BLOBS ─── */
+  .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .bl { position: absolute; border-radius: 50%; filter: blur(130px); }
+  .bl-1 { width: 600px; height: 600px; top: -10%; left: -5%; background: var(--accent); opacity: 0.08; animation: bd1 25s ease-in-out infinite; }
+  .bl-2 { width: 450px; height: 450px; bottom: 10%; right: -5%; background: var(--accent); opacity: 0.045; animation: bd2 30s ease-in-out infinite; }
+
+  /* ─── GRAIN ─── */
+  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* ─── CURSOR ─── */
+  .cur { position: fixed; width: 14px; height: 14px; border-radius: 50%;
+    border: 1.5px solid rgba(237,232,219,0.18); pointer-events: none; z-index: 10000;
+    transition: width 0.35s cubic-bezier(.23,1,.32,1), height 0.35s cubic-bezier(.23,1,.32,1), background 0.35s, border-color 0.35s;
+    transform: translate(-50%,-50%); }
+  .cur.hov { width: 56px; height: 56px; background: rgba(201,168,78,0.06); border-color: rgba(201,168,78,0.3); }
+  .glow { position: fixed; width: 500px; height: 500px; border-radius: 50%;
+    pointer-events: none; z-index: 1;
+    background: radial-gradient(circle, rgba(201,168,78,0.04) 0%, transparent 70%);
+    transform: translate(-50%,-50%); }
+
+  /* ─── NAV ─── */
+  .bnav {
+    position: fixed; bottom: 28px; left: 50%; z-index: 1000;
+    display: flex; align-items: center; gap: 2px;
+    padding: 5px 5px 5px 18px; border-radius: 100px;
+    background:
+      linear-gradient(rgba(14,14,20,0.92), rgba(14,14,20,0.92)) padding-box,
+      conic-gradient(from var(--angle), transparent 20%, rgba(201,168,78,0.4) 40%, rgba(219,191,106,0.6) 50%, rgba(201,168,78,0.4) 60%, transparent 80%) border-box;
+    border: 1.5px solid transparent;
+    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+    box-shadow: 0 0 60px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3), 0 0 24px rgba(201,168,78,0.06);
+    opacity: 0; transform: translateX(-50%) translateY(20px);
+    animation: navIn 0.6s 0.8s forwards, rotateBorder 6s linear infinite;
+  }
+  .bnav .nn { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--text); margin-right: 10px; letter-spacing: -0.01em; }
+  .bnav .ns { width: 1px; height: 18px; background: var(--border); margin: 0 6px; }
+  .nav-links { position: relative; display: flex; align-items: center; gap: 2px; }
+  .nav-ind {
+    position: absolute; height: 30px; border-radius: 100px; top: 50%; transform: translateY(-50%);
+    background: linear-gradient(135deg, rgba(201,168,78,0.12), rgba(219,191,106,0.06));
+    border: 1px solid rgba(201,168,78,0.1);
+    box-shadow: 0 0 14px rgba(201,168,78,0.08);
+    transition: all 0.4s cubic-bezier(.23,1,.32,1); pointer-events: none; opacity: 0;
+  }
+  .nav-ind.ready { opacity: 1; }
+  .nl {
+    font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none;
+    padding: 7px 13px; border-radius: 100px; cursor: none; position: relative; z-index: 1;
+    transition: color 0.3s, transform 0.25s cubic-bezier(.23,1,.32,1);
+  }
+  .nl:hover { color: var(--dim); }
+  .nl.ac { color: var(--text); }
+  .nl.ac::after {
+    content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 8px rgba(201,168,78,0.6);
+  }
+  .nc {
+    font-size: 13px; font-weight: 600; background: var(--accent); color: #08080C; text-decoration: none;
+    padding: 7px 18px; border-radius: 100px; margin-left: 4px; cursor: none;
+    box-shadow: 0 2px 20px rgba(201,168,78,0.25);
+    transition: all 0.3s cubic-bezier(.23,1,.32,1);
+  }
+  .nc:hover { box-shadow: 0 4px 28px rgba(201,168,78,0.45); transform: translateY(-1px) scale(1.03); }
+
+  /* ─── MOBILE MENU ─── */
+  .mob-btn {
+    display: none; background: none; border: none; color: var(--dim);
+    padding: 7px; border-radius: 8px; cursor: pointer; transition: color 0.3s;
+  }
+  .mob-btn:hover { color: var(--text); }
+  .mob-menu {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(8,8,12,0.96);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .mob-menu.open { opacity: 1; pointer-events: all; }
+  .mob-nav { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .mob-link {
+    font-family: var(--display); font-size: 36px; font-weight: 700;
+    color: var(--dim); text-decoration: none;
+    padding: 10px 32px; border-radius: 12px; transition: color 0.3s;
+  }
+  .mob-link:hover { color: var(--text); }
+  .mob-link.mob-ac { color: var(--accent); }
+  .mob-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: 1px solid var(--border);
+    color: var(--dim); font-size: 22px;
+    cursor: pointer; transition: all 0.3s; font-family: var(--body);
+  }
+  .mob-close:hover { border-color: rgba(201,168,78,0.3); color: var(--text); }
+
+  /* ─── CASE STUDY HERO ─── */
+  .cs-hero {
+    position: relative; z-index: 2;
+    min-height: 80vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    padding: 120px 48px 80px;
+  }
+  .cs-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(201,168,78,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(201,168,78,0.04) 0%, transparent 50%);
+  }
+  .cs-hero-metric {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(180px, 25vw, 360px);
+    letter-spacing: -0.06em; line-height: 1;
+    color: var(--text); opacity: 0.03;
+    pointer-events: none; user-select: none;
+    white-space: nowrap;
+  }
+  .cs-hero-content {
+    position: relative; z-index: 2;
+    max-width: 720px; text-align: center;
+    opacity: 0; animation: fu 0.8s 0.2s forwards;
+  }
+  .cs-hero-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    text-decoration: none; cursor: none;
+    margin-bottom: 40px; transition: color 0.3s;
+  }
+  .cs-hero-back:hover { color: var(--accent); }
+  .cs-hero-back svg { transition: transform 0.3s; }
+  .cs-hero-back:hover svg { transform: translateX(-3px); }
+  .cs-hero-company {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .cs-hero-company::before, .cs-hero-company::after {
+    content: ''; width: 24px; height: 1px; background: rgba(201,168,78,0.3);
+  }
+  .cs-logo {
+    width: 24px; height: 24px; border-radius: 6px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800; letter-spacing: 0; text-transform: none;
+    background: rgba(201,168,78,0.15); color: var(--accent);
+    border: 1px solid rgba(201,168,78,0.12);
+  }
+  .cs-hero h1 {
+    font-family: var(--display); font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+    color: var(--text); margin-bottom: 20px;
+  }
+  .cs-hero-hook {
+    font-family: var(--display); font-size: 19px; font-weight: 400;
+    color: var(--dim); line-height: 1.6; letter-spacing: -0.01em;
+    max-width: 600px; margin: 0 auto 32px;
+  }
+  .cs-hero-meta {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  }
+  .cs-meta-pill {
+    font-size: 11px; font-weight: 500; padding: 5px 14px;
+    border-radius: 100px; color: var(--dim);
+    border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+  }
+
+  /* ─── BRAND STRIP ─── */
+  .cs-brand-strip {
+    position: relative; z-index: 2;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 24px;
+    text-align: center;
+    background: rgba(14,14,20,0.5);
+  }
+  .cs-brand-words {
+    font-family: var(--display);
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 800; letter-spacing: 0.04em;
+    color: var(--muted);
+    line-height: 1;
+  }
+  .cs-brand-words span { color: var(--accent); }
+  .cs-brand-sub {
+    font-size: 16px; color: var(--dim);
+    max-width: 500px; margin: 24px auto 0; line-height: 1.7;
+  }
+
+  /* ─── ARTICLE BODY ─── */
+  .article {
+    position: relative; z-index: 2;
+    max-width: 720px; margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Section headers */
+  .cs-section {
+    margin-top: 72px;
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1);
+  }
+  .cs-section.visible { opacity: 1; transform: translateY(0); }
+
+  .cs-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cs-label::before {
+    content: ''; width: 20px; height: 1px; background: var(--muted);
+  }
+
+  .cs-heading {
+    font-family: var(--display); font-size: clamp(24px, 3.5vw, 32px);
+    font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;
+    color: var(--text); margin-bottom: 20px;
+  }
+
+  .cs-subheading {
+    font-family: var(--display); font-size: 20px; font-weight: 600;
+    color: var(--text); margin-top: 48px; margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Body text */
+  .cs-body {
+    font-size: 16px; color: var(--dim); line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .cs-body strong { color: var(--text); font-weight: 600; }
+  .cs-body em { color: var(--dim); font-style: italic; }
+
+  /* Pull quote */
+  .cs-quote {
+    margin: 36px 0;
+    padding: 24px 28px;
+    border-left: 2px solid var(--accent);
+    background: rgba(201,168,78,0.03);
+    border-radius: 0 14px 14px 0;
+  }
+  .cs-quote p {
+    font-family: var(--display); font-size: 18px; font-weight: 400;
+    font-style: italic; color: var(--dim); line-height: 1.7; margin: 0;
+  }
+  .cs-quote p strong { color: var(--text); font-weight: 600; font-style: normal; }
+
+  /* Stat callout blocks */
+  .cs-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px; margin: 36px 0;
+  }
+  .cs-stat {
+    padding: 20px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .cs-stat-num {
+    font-family: var(--display); font-size: 28px; font-weight: 700;
+    color: var(--accent); letter-spacing: -0.02em; line-height: 1;
+  }
+  .cs-stat-label {
+    font-size: 12px; color: var(--dim); margin-top: 6px; line-height: 1.4;
+  }
+
+  /* Visual placeholder */
+  .cs-visual {
+    margin: 36px 0;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+  .cs-visual-inner {
+    aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--muted);
+    padding: 32px; text-align: center;
+  }
+  .cs-visual::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(201,168,78,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cs-visual-caption {
+    padding: 12px 20px;
+    font-size: 12px; color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Comparison block (before/after) */
+  .cs-compare {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin: 36px 0;
+  }
+  .cs-compare-side {
+    padding: 24px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .cs-compare-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .cs-compare-side:first-child .cs-compare-label { color: var(--muted); }
+  .cs-compare-side:last-child .cs-compare-label { color: var(--accent); }
+  .cs-compare-content {
+    font-size: 14px; color: var(--dim); line-height: 1.7;
+  }
+  .cs-compare-content strong { color: var(--text); font-weight: 600; }
+
+  /* Numbered steps */
+  .cs-steps {
+    margin: 28px 0;
+  }
+  .cs-step {
+    display: flex; gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cs-step:last-child { border-bottom: none; }
+  .cs-step-num {
+    font-family: var(--display); font-size: 24px; font-weight: 700;
+    color: var(--accent); line-height: 1; flex-shrink: 0;
+    width: 36px;
+  }
+  .cs-step-content {
+    flex: 1;
+  }
+  .cs-step-title {
+    font-family: var(--display); font-size: 16px; font-weight: 600;
+    color: var(--text); margin-bottom: 4px;
+  }
+  .cs-step-desc {
+    font-size: 14px; color: var(--dim); line-height: 1.6;
+  }
+
+  /* Inline list */
+  .cs-list {
+    margin: 16px 0 20px;
+    padding-left: 0;
+    list-style: none;
+  }
+  .cs-list li {
+    font-size: 15px; color: var(--dim); line-height: 1.7;
+    padding: 6px 0 6px 20px;
+    position: relative;
+  }
+  .cs-list li::before {
+    content: '';
+    position: absolute; left: 0; top: 14px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); opacity: 0.5;
+  }
+  .cs-list li strong { color: var(--text); font-weight: 600; }
+
+  /* Divider */
+  .cs-divider {
+    width: 48px; height: 1px; background: var(--border);
+    margin: 48px auto;
+  }
+
+  /* ─── PRINCIPLE CARDS (2x2) ─── */
+  .cs-principle-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px; margin: 36px 0;
+  }
+  .cs-principle-card {
+    padding: 24px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .cs-principle-num {
+    font-family: var(--mono);
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .cs-principle-title {
+    font-family: var(--display); font-size: 16px; font-weight: 600;
+    color: var(--text); margin-bottom: 8px;
+  }
+  .cs-principle-desc {
+    font-size: 13px; color: var(--dim); line-height: 1.6;
+  }
+
+  /* ─── MINERAL SWATCHES ─── */
+  .cs-mineral-row {
+    display: flex; gap: 12px; margin: 36px 0;
+    flex-wrap: wrap;
+  }
+  .cs-mineral-swatch {
+    flex: 1; min-width: 90px;
+    padding: 20px 12px;
+    text-align: center;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .cs-mineral-circle {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    margin: 0 auto 10px;
+  }
+  .cs-mineral-name {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-bottom: 2px;
+  }
+  .cs-mineral-use {
+    font-size: 10px; color: var(--muted);
+  }
+
+  /* ─── ARCHITECTURE LAYERS ─── */
+  .cs-arch-layers {
+    margin: 36px 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .cs-arch-layer {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px 24px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+  }
+  .cs-arch-layer:last-child { border-bottom: none; }
+  .cs-arch-tag {
+    font-family: var(--mono);
+    font-size: 10px; font-weight: 700; color: var(--accent);
+    background: rgba(201,168,78,0.08);
+    padding: 4px 10px; border-radius: 6px;
+    min-width: 100px; text-align: center;
+  }
+  .cs-arch-name {
+    font-size: 14px; font-weight: 600; color: var(--text);
+  }
+  .cs-arch-desc {
+    font-size: 12px; color: var(--muted); margin-left: auto;
+  }
+
+  /* ─── PLATFORM COLUMNS ─── */
+  .cs-platform-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin: 36px 0;
+  }
+  .cs-platform-col {
+    padding: 24px 20px;
+    text-align: center;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .cs-platform-icon {
+    font-size: 28px; margin-bottom: 12px;
+  }
+  .cs-platform-name {
+    font-family: var(--display); font-size: 15px; font-weight: 600;
+    color: var(--text); margin-bottom: 4px;
+  }
+  .cs-platform-status {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 8px;
+  }
+  .cs-platform-status.live { color: var(--serpentine); }
+  .cs-platform-status.migrating { color: var(--tanzanite); }
+  .cs-platform-desc {
+    font-size: 12px; color: var(--muted); line-height: 1.5;
+  }
+  .cs-platform-shared {
+    background: rgba(201,168,78,0.04);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .cs-platform-shared span {
+    font-family: var(--mono);
+    font-size: 12px; font-weight: 600; color: var(--accent);
+  }
+
+  /* ─── CODE BLOCK ─── */
+  .cs-code-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+  .cs-code-block .cb-comment { color: var(--muted); }
+  .cs-code-block .cb-token { color: var(--accent); }
+  .cs-code-block .cb-method { color: var(--tanzanite); }
+
+  /* ─── MIGRATION BAR ─── */
+  .cs-migration-bar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 24px;
+    margin: 36px 0;
+  }
+  .cs-migration-labels {
+    display: flex; justify-content: space-between;
+  }
+  .cs-migration-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .cs-migration-label.old { color: var(--muted); }
+  .cs-migration-label.new { color: var(--accent); }
+  .cs-migration-track {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    position: relative;
+    margin: 24px 0;
+  }
+  .cs-migration-fill {
+    position: absolute; top: 0; left: 0;
+    height: 100%; width: 100%;
+    background: linear-gradient(90deg, var(--muted), var(--accent));
+    border-radius: 2px;
+  }
+  .cs-migration-date {
+    text-align: center; margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 12px; color: var(--dim);
+  }
+  .cs-migration-date span { color: var(--accent); font-weight: 700; }
+
+  /* ─── FLYWHEEL ─── */
+  .cs-flywheel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 40px 24px;
+    margin: 36px 0;
+    text-align: center;
+  }
+  .cs-flywheel-ring {
+    display: flex; justify-content: center; gap: 16px;
+    flex-wrap: wrap; margin-bottom: 24px;
+  }
+  .cs-flywheel-node {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    min-width: 140px;
+  }
+  .cs-flywheel-node.primary {
+    border-color: rgba(201,168,78,0.3);
+    background: rgba(201,168,78,0.05);
+  }
+  .cs-flywheel-label {
+    font-family: var(--display); font-size: 13px; font-weight: 600; color: var(--text);
+  }
+  .cs-flywheel-sub {
+    font-size: 10px; color: var(--muted); margin-top: 2px;
+  }
+  .cs-flywheel-arrow {
+    color: var(--muted); font-size: 18px;
+    display: flex; align-items: center;
+  }
+
+  /* ─── IMPACT LIST ─── */
+  .cs-impact-list {
+    list-style: none; margin: 28px 0; padding: 0;
+  }
+  .cs-impact-list li {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px; color: var(--dim); line-height: 1.6;
+  }
+  .cs-impact-list li:last-child { border-bottom: none; }
+  .cs-impact-list li::before {
+    content: '';
+    width: 6px; height: 6px; flex-shrink: 0;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 8px;
+  }
+  .cs-impact-list li strong { color: var(--text); font-weight: 600; }
+
+  /* Learning cards */
+  .cs-learnings {
+    display: flex; flex-direction: column; gap: 16px;
+    margin: 32px 0;
+  }
+  .cs-learning {
+    display: flex; gap: 20px;
+    padding: 24px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .cs-learning:hover { border-color: rgba(201,168,78,0.15); }
+  .cs-learning-num {
+    font-family: var(--display); font-size: 32px; font-weight: 800;
+    color: rgba(201,168,78,0.15); line-height: 1; flex-shrink: 0;
+  }
+  .cs-learning-content { flex: 1; }
+  .cs-learning-title {
+    font-family: var(--display); font-size: 17px; font-weight: 600;
+    color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em;
+  }
+  .cs-learning-desc {
+    font-size: 14px; color: var(--dim); line-height: 1.7;
+  }
+
+  /* ─── CASE NAV (next/prev) ─── */
+  .cs-nav {
+    position: relative; z-index: 2;
+    max-width: 720px; margin: 80px auto 0;
+    padding: 0 32px;
+    display: flex; justify-content: space-between; gap: 16px;
+  }
+  .cs-nav-link {
+    display: flex; flex-direction: column; gap: 4px;
+    text-decoration: none; cursor: none;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    flex: 1;
+  }
+  .cs-nav-link:hover {
+    border-color: rgba(201,168,78,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+  .cs-nav-link:last-child { text-align: right; }
+  .cs-nav-dir {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cs-nav-title {
+    font-family: var(--display); font-size: 16px; font-weight: 600;
+    color: var(--text); letter-spacing: -0.01em;
+  }
+
+  /* ─── FOOTER ─── */
+  footer { position: relative; z-index: 2; max-width: 1000px; margin: 100px auto 0; padding: 0 48px; text-align: center; }
+  .fh { font-family: var(--display); font-size: clamp(28px, 4.5vw, 48px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+  .fh .gw { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .fs { font-size: 15px; color: var(--muted); margin-bottom: 36px; }
+  .fa { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+  .fl { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--card);
+    color: var(--dim); text-decoration: none; font-size: 14px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; transition: all 0.3s; cursor: none; }
+  .fl:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(201,168,78,0.1); }
+  .fd { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--accent);
+    text-decoration: none; padding: 10px 24px; border-radius: 100px; border: 1px solid rgba(201,168,78,0.18); transition: all 0.3s; cursor: none; }
+  .fd:hover { background: var(--accent); color: #08080C; box-shadow: 0 4px 20px rgba(201,168,78,0.2); }
+  .fb { padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+  .fb-social { display: flex; gap: 8px; }
+  .fbs {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--muted); text-decoration: none;
+    font-size: 11px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s; cursor: none;
+  }
+  .fbs:hover { border-color: rgba(201,168,78,0.3); color: var(--accent); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes navIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+  @keyframes rotateBorder { to { --angle: 360deg; } }
+  @keyframes bd1 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(80px,60px) scale(1.1); } 100% { transform: translate(-40px,30px) scale(.95); } }
+  @keyframes bd2 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px,-40px) scale(1.15); } 100% { transform: translate(30px,-60px) scale(.9); } }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    body { cursor: auto; } .cur, .glow { display: none; }
+    .cs-hero { padding: 100px 24px 60px; min-height: 60vh; }
+    .cs-hero-metric { font-size: 140px; }
+    .article { padding: 0 20px; }
+    .cs-compare { grid-template-columns: 1fr; }
+    .cs-platform-grid { grid-template-columns: 1fr; }
+    .cs-nav { padding: 0 20px; }
+    footer { padding-left: 20px; padding-right: 20px; }
+    .nl.hsm { display: none; }
+    .mob-btn { display: flex; align-items: center; }
+    .cs-arch-layer { flex-wrap: wrap; }
+    .cs-arch-desc { margin-left: 0; }
+  }
+  @media (max-width: 640px) {
+    .cs-hero { min-height: 50vh; padding: 80px 20px 48px; }
+    .cs-hero h1 { font-size: 28px; }
+    .cs-hero-hook { font-size: 16px; }
+    .cs-hero-metric { font-size: 100px; }
+    .cs-stats { grid-template-columns: 1fr 1fr; }
+    .cs-principle-grid { grid-template-columns: 1fr; }
+    .cs-mineral-row { gap: 8px; }
+    .cs-mineral-swatch { min-width: calc(33% - 8px); }
+    .cs-flywheel-ring { flex-direction: column; align-items: center; }
+    .cs-flywheel-arrow { transform: rotate(90deg); }
+    .cs-nav { flex-direction: column; }
+    .cs-nav-link:last-child { text-align: left; }
+    .fb { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="sp"></div>
+<div class="blobs"><div class="bl bl-1"></div><div class="bl bl-2"></div></div>
+<div class="grain"></div>
+<div class="cur" id="cur"></div>
+<div class="glow" id="glo"></div>
+
+<!-- NAV -->
+<nav class="bnav">
+  <span class="nn">ABM</span><span class="ns"></span>
+  <div class="nav-links">
+    <div class="nav-ind" id="navInd"></div>
+    <a href="/" class="nl ac">Work</a>
+    <a href="/about/" class="nl hsm">About</a>
+    <a href="/writing/" class="nl hsm">Writing</a>
+    <span style="color:var(--muted);font-size:12px;margin:0 2px;font-weight:400;">-</span>
+    <a href="/resume/" class="nl hsm">Resume</a>
+  </div>
+  <button class="mob-btn" id="mobBtn" aria-label="Menu">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+  <a href="/contact/" class="nc">Contact</a>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose">&times;</button>
+  <nav class="mob-nav">
+    <a href="/" class="mob-link mob-ac">Work</a>
+    <a href="/about/" class="mob-link">About</a>
+    <a href="/writing/" class="mob-link">Writing</a>
+    <span style="color:var(--muted);font-size:14px;margin:0 4px;">-</span>
+    <a href="/resume/" class="mob-link">Resume</a>
+    <a href="/contact/" class="mob-link">Contact</a>
+  </nav>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--              HERO                       -->
+<!-- ═══════════════════════════════════════ -->
+<div class="cs-hero">
+  <div class="cs-hero-metric">670</div>
+  <div class="cs-hero-content">
+    <a href="/work/zar/" class="cs-hero-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      ZAR
+    </a>
+    <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; Jan &ndash; Feb 2026</div>
+    <h1>Techtonic Design System</h1>
+    <p class="cs-hero-hook">A brand vision existed as ten beautiful PDFs. I built the system that ships it &mdash; 670 components, three platforms, zero drift.</p>
+    <div class="cs-hero-meta">
+      <span class="cs-meta-pill">Lead Product Designer</span>
+      <span class="cs-meta-pill">Design Systems</span>
+      <span class="cs-meta-pill">Flutter, React Native, Web</span>
+      <span class="cs-meta-pill">Token Architecture</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--           BRAND STRIP                   -->
+<!-- ═══════════════════════════════════════ -->
+<div class="cs-brand-strip">
+  <div class="cs-brand-words"><span>Rock.</span> Solid. <span>Dollars.</span></div>
+  <p class="cs-brand-sub">A complete brand vision &mdash; strategy, identity, motion, UI principles &mdash; distilled into three words. Beautiful as intent. Missing as code.</p>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--           ARTICLE BODY                  -->
+<!-- ═══════════════════════════════════════ -->
+<div class="article">
+
+  <!-- THE GAP -->
+  <section class="cs-section reveal">
+    <div class="cs-label">The Gap</div>
+    <h2 class="cs-heading">PDFs don&rsquo;t ship products.</h2>
+
+    <p class="cs-body">We&rsquo;d partnered with <strong>Ragged Edge</strong> &mdash; the London agency behind the Wise rebrand &mdash; on brand strategy and identity. Ten PDFs covering everything from verbal identity to motion design.</p>
+
+    <p class="cs-body">The brand described how ZAR should <strong>feel</strong> &mdash; heavy, grounded, certain. How the UI should <strong>behave</strong> &mdash; anchored grids, stone textures, no glass effects. How motion should <strong>land</strong> &mdash; with the weight of rock, not the bounce of rubber.</p>
+
+    <p class="cs-body">All of this existed as intent. None of it existed as code. My job was to close that gap.</p>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">Brand PDFs (stacked) &rarr; gap &rarr; ZAR app on phone</div>
+      <div class="cs-visual-caption">The distance between brand intent and production reality.</div>
+    </div>
+  </section>
+
+  <!-- BRAND VISION -->
+  <section class="cs-section reveal">
+    <div class="cs-label">The Brand Vision</div>
+    <h2 class="cs-heading">A geological metaphor for money.</h2>
+
+    <p class="cs-body">The brand isn&rsquo;t a fintech identity. It&rsquo;s an idea: <strong>money should feel solid</strong>. Like rock. Like something you can hold. This materializes as four UI principles:</p>
+
+    <div class="cs-principle-grid">
+      <div class="cs-principle-card">
+        <div class="cs-principle-num">01</div>
+        <div class="cs-principle-title">Structure</div>
+        <div class="cs-principle-desc">Strict tectonic grid. Elements feel anchored. Nothing floats or drifts.</div>
+      </div>
+      <div class="cs-principle-card">
+        <div class="cs-principle-num">02</div>
+        <div class="cs-principle-title">Physicality</div>
+        <div class="cs-principle-desc">No glassy blurs or transparency. Solid and tangible. No lightweight aesthetics.</div>
+      </div>
+      <div class="cs-principle-card">
+        <div class="cs-principle-num">03</div>
+        <div class="cs-principle-title">Rocks</div>
+        <div class="cs-principle-desc">Stone textures on dollar bills and balances. Dollars look like they weigh something.</div>
+      </div>
+      <div class="cs-principle-card">
+        <div class="cs-principle-num">04</div>
+        <div class="cs-principle-title">Haptics</div>
+        <div class="cs-principle-desc">Roomy tap targets. Strong physical feedback. Not bouncy. Solid.</div>
+      </div>
+    </div>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">Tectonic UI principles &mdash; visual examples from the app</div>
+      <div class="cs-visual-caption">Four principles that govern every design decision in the system.</div>
+    </div>
+  </section>
+
+  <!-- MINERAL PALETTE -->
+  <section class="cs-section reveal">
+    <div class="cs-label">The Palette</div>
+    <h2 class="cs-heading">Colors named after minerals.</h2>
+
+    <p class="cs-body">Not abstract variables. Geological names that carry the brand in every code reference. When an engineer writes <strong>Tanzanite/Core</strong> instead of <strong>blue500</strong>, they&rsquo;re speaking the brand language.</p>
+
+    <div class="cs-mineral-row">
+      <div class="cs-mineral-swatch">
+        <div class="cs-mineral-circle" style="background: #D4A853;"></div>
+        <div class="cs-mineral-name" style="color: #D4A853;">Gold</div>
+        <div class="cs-mineral-use">Primary CTAs</div>
+      </div>
+      <div class="cs-mineral-swatch">
+        <div class="cs-mineral-circle" style="background: #E8D5B0;"></div>
+        <div class="cs-mineral-name" style="color: #E8D5B0;">Quartz</div>
+        <div class="cs-mineral-use">Secondary</div>
+      </div>
+      <div class="cs-mineral-swatch">
+        <div class="cs-mineral-circle" style="background: #5B8DEF;"></div>
+        <div class="cs-mineral-name" style="color: #5B8DEF;">Tanzanite</div>
+        <div class="cs-mineral-use">Info / Links</div>
+      </div>
+      <div class="cs-mineral-swatch">
+        <div class="cs-mineral-circle" style="background: #4ADE80;"></div>
+        <div class="cs-mineral-name" style="color: #4ADE80;">Serpentine</div>
+        <div class="cs-mineral-use">Success</div>
+      </div>
+      <div class="cs-mineral-swatch">
+        <div class="cs-mineral-circle" style="background: #B1A8BD;"></div>
+        <div class="cs-mineral-name" style="color: #B1A8BD;">Amethyst</div>
+        <div class="cs-mineral-use">Status</div>
+      </div>
+      <div class="cs-mineral-swatch">
+        <div class="cs-mineral-circle" style="background: #C4BCB3;"></div>
+        <div class="cs-mineral-name" style="color: #C4BCB3;">Limestone</div>
+        <div class="cs-mineral-use">Neutrals</div>
+      </div>
+    </div>
+
+    <p class="cs-body">Each family has a <strong>/Core</strong> value and numbered variants (100&ndash;600). 41 fill styles. 29 text styles. EK Modena Heavy for dollar amounts that feel immovable. Baikal for everything else.</p>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">Full color token grid from Figma + typography scale</div>
+      <div class="cs-visual-caption">41 fill styles, 29 text styles &mdash; every color named after a mineral.</div>
+    </div>
+  </section>
+
+  <div class="cs-divider"></div>
+
+  <!-- BUILDING TECHTONIC -->
+  <section class="cs-section reveal">
+    <div class="cs-label">Building Techtonic</div>
+    <h2 class="cs-heading">Token-first architecture.</h2>
+
+    <p class="cs-body">I named the design system <strong>Techtonic</strong> &mdash; &ldquo;tech&rdquo; meets &ldquo;tectonic.&rdquo; The same geological metaphor encoded into every layer:</p>
+
+    <div class="cs-arch-layers">
+      <div class="cs-arch-layer">
+        <div class="cs-arch-tag">LAYER 1</div>
+        <div class="cs-arch-name">Tokens</div>
+        <div class="cs-arch-desc">Colors, type, spacing, borders</div>
+      </div>
+      <div class="cs-arch-layer">
+        <div class="cs-arch-tag">LAYER 2</div>
+        <div class="cs-arch-name">Components</div>
+        <div class="cs-arch-desc">Buttons, inputs, cards, sheets</div>
+      </div>
+      <div class="cs-arch-layer">
+        <div class="cs-arch-tag">LAYER 3</div>
+        <div class="cs-arch-name">Templates</div>
+        <div class="cs-arch-desc">14 full-screen assemblies</div>
+      </div>
+      <div class="cs-arch-layer">
+        <div class="cs-arch-tag">LAYER 4</div>
+        <div class="cs-arch-name">Documentation</div>
+        <div class="cs-arch-desc">Machine + human readable</div>
+      </div>
+    </div>
+
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <div class="cs-stat-num">670+</div>
+        <div class="cs-stat-label">Components</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">37</div>
+        <div class="cs-stat-label">Figma Pages</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">41</div>
+        <div class="cs-stat-label">Fill Styles</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">29</div>
+        <div class="cs-stat-label">Text Styles</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">103</div>
+        <div class="cs-stat-label">Icons</div>
+      </div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">24K+</div>
+        <div class="cs-stat-label">Lines of Code</div>
+      </div>
+    </div>
+
+    <p class="cs-body">37 Figma pages with lifecycle management &mdash; active, deprecated, changelog, and a &ldquo;Future&rdquo; page for proposals. Everything versioned. Everything traceable.</p>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">Techtonic Figma file overview &mdash; page structure and component inventory</div>
+      <div class="cs-visual-caption">37 pages of organized, versioned, living design system.</div>
+    </div>
+  </section>
+
+  <!-- MULTI-PLATFORM -->
+  <section class="cs-section reveal">
+    <div class="cs-label">Multi-Platform</div>
+    <h2 class="cs-heading">One system. Three platforms.</h2>
+
+    <p class="cs-body">Most design systems break when they cross platforms. Techtonic was built to ship everywhere.</p>
+
+    <div class="cs-platform-grid">
+      <div class="cs-platform-col">
+        <div class="cs-platform-icon">&#x1F4F1;</div>
+        <div class="cs-platform-name">Flutter</div>
+        <div class="cs-platform-status live">PRODUCTION</div>
+        <div class="cs-platform-desc">~90 components. Context extensions for token access.</div>
+      </div>
+      <div class="cs-platform-col">
+        <div class="cs-platform-icon">&#x269B;&#xFE0F;</div>
+        <div class="cs-platform-name">React Native</div>
+        <div class="cs-platform-status migrating">MIGRATING</div>
+        <div class="cs-platform-desc">Same tokens via Unistyles. Same vocabulary, different runtime.</div>
+      </div>
+      <div class="cs-platform-col">
+        <div class="cs-platform-icon">&#x1F310;</div>
+        <div class="cs-platform-name">Web (Rails)</div>
+        <div class="cs-platform-status live">PRODUCTION</div>
+        <div class="cs-platform-desc">CSS custom properties. Ambassador Hub.</div>
+      </div>
+    </div>
+    <div class="cs-platform-shared">
+      <span>SHARED TECHTONIC TOKENS &mdash; One brand. Three platforms. Zero drift.</span>
+    </div>
+
+    <div class="cs-code-block">
+      <span class="cb-comment">// Flutter &mdash; tokens via context extensions</span><br>
+      color: <span class="cb-method">context</span>.<span class="cb-token">tectonicColors</span>.primaryGold<br>
+      textStyle: <span class="cb-method">context</span>.<span class="cb-token">tectonicTextStyles</span>.headingH5Bold<br>
+      spacing: <span class="cb-method">context</span>.<span class="cb-token">tectonicDimensions</span>.spacing24
+    </div>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">Same screen rendered across Flutter, React Native, and Web</div>
+      <div class="cs-visual-caption">One design system, three platforms, identical output.</div>
+    </div>
+  </section>
+
+  <div class="cs-divider"></div>
+
+  <!-- THE MIGRATION -->
+  <section class="cs-section reveal">
+    <div class="cs-label">The Migration</div>
+    <h2 class="cs-heading">Killing common_widgets.</h2>
+
+    <p class="cs-body">Building a new system is half the work. Killing the old one is the other half. The inherited codebase had no documentation, no naming convention &mdash; just hex values scattered across files.</p>
+
+    <p class="cs-body"><strong>Strategy: parallel run, then cut.</strong> New features used Techtonic exclusively. Existing screens migrated one at a time. When a component hit zero references &mdash; delete.</p>
+
+    <div class="cs-migration-bar">
+      <div class="cs-migration-labels">
+        <div class="cs-migration-label old">common_widgets</div>
+        <div class="cs-migration-label new">Techtonic</div>
+      </div>
+      <div class="cs-migration-track">
+        <div class="cs-migration-fill"></div>
+      </div>
+      <div class="cs-migration-date">Legacy fully decommissioned: <span>January 28, 2026</span></div>
+    </div>
+  </section>
+
+  <!-- AI MULTIPLIER -->
+  <section class="cs-section reveal">
+    <div class="cs-label">The AI Multiplier</div>
+    <h2 class="cs-heading">Design systems are AI infrastructure.</h2>
+
+    <p class="cs-body">When I built the Engineer Self-Serve workflow, the AI needed a design system to work with. Not descriptions &mdash; the actual system. Components with real names. Tokens with real values.</p>
+
+    <p class="cs-body"><strong>Techtonic was that system.</strong> 670 components accessible via MCP. When Chothu (our AI design consultant) recommends a screen, it uses specific Techtonic components by name.</p>
+
+    <div class="cs-quote">
+      <p>The quality of AI-generated design is <strong>directly proportional</strong> to the quality of your design system.</p>
+    </div>
+
+    <div class="cs-flywheel">
+      <div class="cs-flywheel-ring">
+        <div class="cs-flywheel-node primary">
+          <div class="cs-flywheel-label">Techtonic</div>
+          <div class="cs-flywheel-sub">670 components</div>
+        </div>
+        <div class="cs-flywheel-arrow">&rarr;</div>
+        <div class="cs-flywheel-node">
+          <div class="cs-flywheel-label">AI Output</div>
+          <div class="cs-flywheel-sub">Chothu</div>
+        </div>
+        <div class="cs-flywheel-arrow">&rarr;</div>
+        <div class="cs-flywheel-node">
+          <div class="cs-flywheel-label">Adoption</div>
+          <div class="cs-flywheel-sub">Engineers self-serve</div>
+        </div>
+        <div class="cs-flywheel-arrow">&rarr;</div>
+        <div class="cs-flywheel-node">
+          <div class="cs-flywheel-label">Feedback</div>
+          <div class="cs-flywheel-sub">System improves</div>
+        </div>
+      </div>
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">Better system &rarr; Better AI &rarr; More adoption &rarr; Better system</p>
+    </div>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">AI output without Techtonic vs. with Techtonic (side-by-side)</div>
+      <div class="cs-visual-caption">Structured design systems unlock structured AI output.</div>
+    </div>
+  </section>
+
+  <div class="cs-divider"></div>
+
+  <!-- CRAFT DETAILS -->
+  <section class="cs-section reveal">
+    <div class="cs-label">Craft</div>
+    <h2 class="cs-heading">The details that matter.</h2>
+
+    <h3 class="cs-subheading">The Slab Slam</h3>
+    <p class="cs-body">Elements don&rsquo;t fade or bounce &mdash; they <strong>land</strong>. With weight. With finality. Haptic feedback synchronized to the animation velocity curve. Motion curves delivered as JSON, translated into Flutter animation controllers. Every Techtonic element inherits this vocabulary.</p>
+
+    <div class="cs-visual">
+      <div class="cs-visual-inner">Slab slam animation sequence &mdash; 4 frames showing element landing with weight</div>
+      <div class="cs-visual-caption">Motion with mass. Elements land, they don&rsquo;t bounce.</div>
+    </div>
+
+    <h3 class="cs-subheading">Copy as Component</h3>
+    <p class="cs-body">The verbal identity encoded into the system &mdash; not as guidelines, but as constraints:</p>
+
+    <div class="cs-compare">
+      <div class="cs-compare-side">
+        <div class="cs-compare-label">Generic</div>
+        <div class="cs-compare-content">
+          &ldquo;Enter amount&rdquo;<br>
+          &ldquo;Let&rsquo;s go!&rdquo;<br>
+          &ldquo;Add funds to your account&rdquo;
+        </div>
+      </div>
+      <div class="cs-compare-side">
+        <div class="cs-compare-label">Techtonic</div>
+        <div class="cs-compare-content">
+          &ldquo;Amount&rdquo;<br>
+          &ldquo;Continue&rdquo;<br>
+          &ldquo;Put dollars in your wallet&rdquo;
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-divider"></div>
+
+  <!-- IMPACT -->
+  <section class="cs-section reveal">
+    <div class="cs-label">Impact</div>
+    <h2 class="cs-heading">What Techtonic delivers.</h2>
+
+    <ul class="cs-impact-list">
+      <li><strong>Zero visual drift</strong> across three platforms</li>
+      <li><strong>2x faster feature shipping</strong> &mdash; engineers assemble, not build from scratch</li>
+      <li><strong>Automatic brand consistency</strong> &mdash; tokens enforce it, not reviews</li>
+      <li><strong>Survived a platform migration</strong> &mdash; Flutter to React Native, same output</li>
+      <li><strong>AI enabled</strong> &mdash; 670 components power the Engineer Self-Serve workflow</li>
+      <li><strong>Brand investment protected</strong> &mdash; world-class identity expressed in code, not just PDFs</li>
+    </ul>
+  </section>
+
+  <div class="cs-divider"></div>
+
+  <!-- LEARNINGS -->
+  <section class="cs-section reveal">
+    <div class="cs-label">Learnings</div>
+    <h2 class="cs-heading">Four lessons.</h2>
+
+    <div class="cs-learnings">
+      <div class="cs-learning">
+        <div class="cs-learning-num">01</div>
+        <div class="cs-learning-content">
+          <div class="cs-learning-title">Vision without infrastructure is a PDF on a shelf.</div>
+          <div class="cs-learning-desc">The best measure of a brand is whether the 50th screen an engineer builds looks as intentional as the first.</div>
+        </div>
+      </div>
+      <div class="cs-learning">
+        <div class="cs-learning-num">02</div>
+        <div class="cs-learning-content">
+          <div class="cs-learning-title">Naming is governance.</div>
+          <div class="cs-learning-desc">Tanzanite/Core instead of Color(0xFF1A73E8). The name carries intent and makes drift visible in every PR.</div>
+        </div>
+      </div>
+      <div class="cs-learning">
+        <div class="cs-learning-num">03</div>
+        <div class="cs-learning-content">
+          <div class="cs-learning-title">Kill the old system or it kills the new one.</div>
+          <div class="cs-learning-desc">As long as the legacy existed, engineers had a choice. Decommission day made adoption universal overnight.</div>
+        </div>
+      </div>
+      <div class="cs-learning">
+        <div class="cs-learning-num">04</div>
+        <div class="cs-learning-content">
+          <div class="cs-learning-title">Design systems are AI infrastructure.</div>
+          <div class="cs-learning-desc">Built for consistency. Turned out to be the reason AI-assisted design worked. Good systems are inherently machine-readable.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!--            CASE NAV                     -->
+<!-- ═══════════════════════════════════════ -->
+<div class="cs-nav reveal">
+  <a href="/work/zar/golden-flow/" class="cs-nav-link">
+    <span class="cs-nav-dir">&larr; Previous</span>
+    <span class="cs-nav-title">Golden Flow</span>
+  </a>
+  <a href="/work/zar/engineer-self-serve/" class="cs-nav-link">
+    <span class="cs-nav-dir">Next &rarr;</span>
+    <span class="cs-nav-title">Engineer Self-Serve</span>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer class="reveal">
+  <div class="fb">
+    <span>&copy; 2026 ABM</span>
+    <div class="fb-social">
+      <a href="#" class="fbs" title="LinkedIn">in</a>
+      <a href="#" class="fbs" title="X">X</a>
+      <a href="mailto:hello@abm.design" class="fbs" title="Email">@</a>
+    </div>
+    <span>Designed with intention</span>
+  </div>
+</footer>
+
+<script>
+  // ─── CURSOR ───
+  const cur=document.getElementById('cur'),glo=document.getElementById('glo');
+  let mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;glo.style.left=mx+'px';glo.style.top=my+'px';});
+  (function l(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(l)})();
+  document.querySelectorAll('a,button,.cs-learning').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hov'));el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));});
+
+  // ─── SCROLL PROGRESS ───
+  window.addEventListener('scroll',()=>{
+    const p=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+    document.getElementById('sp').style.width=p+'%';
+  });
+
+  // ─── NAV SLIDING INDICATOR ───
+  const navLinks=document.querySelector('.nav-links');
+  const navInd=document.getElementById('navInd');
+  const nls=document.querySelectorAll('.nl');
+  const activeNl=document.querySelector('.nl.ac');
+  function setInd(el){
+    const r=el.getBoundingClientRect(),pr=navLinks.getBoundingClientRect();
+    navInd.style.width=r.width+'px';
+    navInd.style.left=(r.left-pr.left)+'px';
+  }
+  setTimeout(()=>{if(activeNl){setInd(activeNl);navInd.classList.add('ready');}},1000);
+  nls.forEach(l=>{
+    l.addEventListener('mouseenter',()=>setInd(l));
+    l.addEventListener('mousemove',e=>{
+      const r=l.getBoundingClientRect();
+      const x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
+      l.style.transform=`translate(${x*0.25}px,${y*0.4}px)`;
+    });
+    l.addEventListener('mouseleave',()=>{l.style.transform='';});
+  });
+  navLinks.addEventListener('mouseleave',()=>{if(activeNl)setInd(activeNl);});
+
+  // ─── REVEALS ───
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('visible');
+  })},{threshold:.06});
+  document.querySelectorAll('.cs-section, .reveal').forEach(el=>obs.observe(el));
+
+  // ─── MOBILE MENU ───
+  const mobBtn=document.getElementById('mobBtn'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
+  if(mobBtn&&mobMenu){
+    mobBtn.addEventListener('click',()=>mobMenu.classList.add('open'));
+    mobClose.addEventListener('click',()=>mobMenu.classList.remove('open'));
+    mobMenu.addEventListener('click',e=>{if(e.target===mobMenu)mobMenu.classList.remove('open');});
+  }
+
+  // ─── PAGE TRANSITIONS ───
+  if(location.protocol!=='file:'){
+    document.querySelectorAll('a[href]').forEach(a=>{
+      const h=a.getAttribute('href');
+      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(()=>window.location.href=h,150);
+      });
+    });
+  }
+</script>
+</body>
+</html>
