@@ -164,9 +164,9 @@
   .avail { display: inline-flex; align-items: center; gap: 8px;
     font-size: 13px; font-weight: 500; color: var(--dim); margin-bottom: 44px;
     opacity: 0; animation: fu 0.5s 0.2s forwards; }
-  .dw { position: relative; width: 8px; height: 8px; }
-  .dc { width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; position: absolute; }
-  .dr { position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid #4ADE80; opacity: 0; animation: rp 2.5s ease-out infinite; }
+  .dw { position: relative; width: 8px; height: 8px; flex-shrink: 0; }
+  .dc { width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; position: absolute; top: 0; left: 0; z-index: 1; }
+  .dr { position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; margin-top: -4px; margin-left: -4px; border-radius: 50%; border: 1.5px solid #4ADE80; opacity: 0; animation: rp 2.5s ease-out infinite; }
   .dr:nth-child(3) { animation-delay: 1.25s; }
 
   .hero-statement {
@@ -362,7 +362,7 @@
   @keyframes navIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
   @keyframes rotateBorder { to { --angle: 360deg; } }
   @keyframes ctaPulse { 0%, 100% { box-shadow: 0 2px 20px rgba(212,101,74,0.25); } 50% { box-shadow: 0 4px 28px rgba(212,101,74,0.4), 0 0 40px rgba(212,101,74,0.1); } }
-  @keyframes rp { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(3.5); opacity: 0; } }
+  @keyframes rp { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(2.5); opacity: 0; } }
   @keyframes bd1 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(80px,60px) scale(1.1); } 100% { transform: translate(-40px,30px) scale(.95); } }
   @keyframes bd2 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px,-40px) scale(1.15); } 100% { transform: translate(30px,-60px) scale(.9); } }
   @keyframes bd3 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px,-30px) scale(1.05); } 100% { transform: translate(-30px,40px) scale(1.1); } }
