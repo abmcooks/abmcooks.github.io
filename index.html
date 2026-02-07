@@ -313,9 +313,7 @@
     mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   }
   .trow { display: flex; gap: 16px; padding: 8px 0; width: max-content; }
-  .trow-left { animation: mql 45s linear infinite; }
-  .trow-right { animation: mqr 50s linear infinite; }
-  .trow:hover { animation-play-state: paused; }
+  .trow-left, .trow-right { will-change: transform; }
   .tcard {
     flex-shrink: 0; width: 380px; padding: 24px 28px;
     background: var(--card); border: 1px solid var(--border); border-radius: 16px;
@@ -377,11 +375,16 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
   .rd1 { transition-delay: .1s; } .rd2 { transition-delay: .18s; } .rd3 { transition-delay: .26s; } .rd4 { transition-delay: .34s; }
 
+  /* ─── DRAG CURSOR FOR TESTIMONIALS ─── */
+  .trow { cursor: grab; }
+  .trow.dragging { cursor: grabbing; user-select: none; }
+
   @media (max-width: 900px) {
     body { cursor: auto; } .cur, .glow { display: none; }
     .mob-btn { display: flex; align-items: center; }
     .hero, .companies, .stats, footer { padding-left: 20px; padding-right: 20px; }
     .cg { grid-template-columns: 1fr; }
+    .co-h .ci { aspect-ratio: 2/1; }
     .stats-inner { grid-template-columns: 1fr 1fr; }
     .st:nth-child(2) { border-right: none; }
     .st:nth-child(1), .st:nth-child(2) { border-bottom: 1px solid var(--border); }
@@ -390,6 +393,11 @@
   }
   @media (max-width: 640px) {
     .hero-statement { font-size: 30px; }
+    .co-h .ci { aspect-ratio: 1.6/1; }
+    .co-h .co-logo { width: 48px; height: 48px; border-radius: 12px; font-size: 20px; }
+    .co-h .cn { font-size: 22px; }
+    .cm { padding: 20px; }
+    .cm .cd { font-size: 12px; margin-top: 6px; }
     .co-h .wm { font-size: 160px; }
     .fb { flex-direction: column; gap: 8px; text-align: center; }
     .nl.hsm { display: none; }
@@ -683,6 +691,75 @@
     mobClose.addEventListener('click',()=>mobMenu.classList.remove('open'));
     mobMenu.addEventListener('click',e=>{if(e.target===mobMenu)mobMenu.classList.remove('open');});
   }
+
+  // ─── DRAGGABLE TESTIMONIALS ───
+  document.querySelectorAll('.trow').forEach(row=>{
+    const isLeft=row.classList.contains('trow-left');
+    const autoSpeed=isLeft?-0.4:0.4; // px per frame
+    const halfW=row.scrollWidth/2;
+    let pos=isLeft?0:-halfW;
+    let isDrag=false,isHover=false;
+    let startX=0,dragStart=0;
+    let vel=0,lastX=0,lastT=0;
+    let momentum=0;
+
+    function wrap(){
+      if(pos<=-halfW)pos+=halfW;
+      if(pos>0)pos-=halfW;
+    }
+
+    (function tick(){
+      if(!isDrag){
+        if(Math.abs(momentum)>0.3){
+          pos+=momentum;
+          momentum*=0.95;
+        } else {
+          momentum=0;
+          if(!isHover) pos+=autoSpeed;
+        }
+        wrap();
+      }
+      row.style.transform=`translateX(${pos}px)`;
+      requestAnimationFrame(tick);
+    })();
+
+    function onStart(x){
+      isDrag=true;
+      startX=x;
+      dragStart=pos;
+      lastX=x;
+      lastT=Date.now();
+      vel=0;
+      momentum=0;
+      row.classList.add('dragging');
+    }
+    function onMove(x){
+      if(!isDrag)return;
+      pos=dragStart+(x-startX);
+      const now=Date.now(),dt=now-lastT;
+      if(dt>0){vel=(x-lastX)/dt;lastX=x;lastT=now;}
+    }
+    function onEnd(){
+      if(!isDrag)return;
+      isDrag=false;
+      row.classList.remove('dragging');
+      momentum=vel*18;
+    }
+
+    // Mouse
+    row.addEventListener('mousedown',e=>{e.preventDefault();onStart(e.clientX);});
+    window.addEventListener('mousemove',e=>{if(isDrag)onMove(e.clientX);});
+    window.addEventListener('mouseup',()=>onEnd());
+
+    // Touch
+    row.addEventListener('touchstart',e=>onStart(e.touches[0].clientX),{passive:true});
+    row.addEventListener('touchmove',e=>{if(isDrag)onMove(e.touches[0].clientX);},{passive:true});
+    row.addEventListener('touchend',()=>onEnd());
+
+    // Hover pause
+    row.addEventListener('mouseenter',()=>{isHover=true;});
+    row.addEventListener('mouseleave',()=>{isHover=false;});
+  });
 
   // ─── PAGE TRANSITIONS ───
   if(location.protocol!=='file:'){
