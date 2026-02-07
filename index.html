@@ -328,19 +328,6 @@
   @keyframes mql { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @keyframes mqr { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-  /* ─── STATS ─── */
-  .stats { position: relative; z-index: 2; max-width: 1200px; margin: 80px auto 0; padding: 0 48px; }
-  .stats-inner {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; position: relative;
-  }
-  .stats-inner::before { content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(212,101,74,0.03) 0%, transparent 60%); pointer-events: none; }
-  .st { padding: 40px 24px; text-align: center; border-right: 1px solid var(--border); position: relative; }
-  .st:last-child { border-right: none; }
-  .st .sn { font-family: var(--display); font-size: clamp(32px, 4vw, 48px); font-weight: 600; letter-spacing: -0.02em; color: var(--text); }
-  .st .sl { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 2px; }
-
   /* ─── FOOTER ─── */
   footer { position: relative; z-index: 2; max-width: 1200px; margin: 80px auto 0; padding: 0 48px; text-align: center; }
   .fh { font-family: var(--display); font-size: clamp(28px, 4.5vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
@@ -382,12 +369,9 @@
   @media (max-width: 900px) {
     body { cursor: auto; } .cur, .glow { display: none; }
     .mob-btn { display: flex; align-items: center; }
-    .hero, .companies, .stats, footer { padding-left: 20px; padding-right: 20px; }
+    .hero, .companies, footer { padding-left: 20px; padding-right: 20px; }
     .cg { grid-template-columns: 1fr; }
     .co-h .ci { aspect-ratio: 2/1; }
-    .stats-inner { grid-template-columns: 1fr 1fr; }
-    .st:nth-child(2) { border-right: none; }
-    .st:nth-child(1), .st:nth-child(2) { border-bottom: 1px solid var(--border); }
     .tcard { width: 300px; }
     .mk-ph { width: 90px; height: 180px; }
   }
@@ -583,24 +567,14 @@
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats reveal">
-  <div class="stats-inner">
-    <div class="st"><div class="sn" data-t="5" data-s="M+">0</div><div class="sl">Users shipped for</div></div>
-    <div class="st"><div class="sn" data-t="1.5" data-p="$" data-s="B">0</div><div class="sl">Payment volume</div></div>
-    <div class="st"><div class="sn" data-t="100" data-s="+">0</div><div class="sl">Countries</div></div>
-    <div class="st"><div class="sn" data-t="70" data-p="$" data-s="M+">0</div><div class="sl">Funding raised</div></div>
-  </div>
-</div>
-
 <!-- FOOTER -->
 <footer class="reveal">
   <div class="fh">Let's build <span class="gw">trust.</span></div>
   <p class="fs">I design financial products that earn it.</p>
   <div class="fa">
-    <a href="#" class="fl" title="LinkedIn">in</a>
+    <a href="https://linkedin.com/in/iabm" class="fl" title="LinkedIn" target="_blank">in</a>
     <a href="#" class="fl" title="X">X</a>
-    <a href="#" class="fl" title="Email">@</a>
+    <a href="mailto:basitmasood999@gmail.com" class="fl" title="Email">@</a>
     <a href="/resume/" class="fd">Download Resume &darr;</a>
   </div>
   <div class="fb"><span>&copy; 2026 ABM</span><span>Designed with intention</span></div>
@@ -675,14 +649,6 @@
       card.style.transform='perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)';
     });
   });
-
-  // ─── COUNTERS ───
-  document.querySelectorAll('.sn[data-t]').forEach(el=>{
-    const co=new IntersectionObserver(es=>{es.forEach(en=>{
-      if(en.isIntersecting&&!en.target.dataset.d){en.target.dataset.d='1';
-        const t=parseFloat(en.target.dataset.t),p=en.target.dataset.p||'',s=en.target.dataset.s||'',dc=t%1!==0,du=2000,st=performance.now();
-        (function tk(n){const pr=Math.min((n-st)/du,1),ea=1-Math.pow(1-pr,4);en.target.textContent=p+(dc?(t*ea).toFixed(1):Math.floor(t*ea))+s;if(pr<1)requestAnimationFrame(tk)})(st);
-      }})},{threshold:.5});co.observe(el);});
 
   // ─── MOBILE MENU ───
   const mobBtn=document.getElementById('mobBtn'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
