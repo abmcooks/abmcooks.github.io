@@ -178,10 +178,12 @@
     opacity: 0; animation: fu 0.8s 0.2s forwards;
   }
   .cs-hero-back {
+    position: absolute; top: 28px; left: 48px; z-index: 10;
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 13px; font-weight: 500; color: var(--muted);
     text-decoration: none; cursor: none;
-    margin-bottom: 40px; transition: color 0.3s;
+    transition: color 0.3s;
+    opacity: 0; animation: fu 0.4s 0.3s forwards;
   }
   .cs-hero-back:hover { color: var(--accent); }
   .cs-hero-back svg { transition: transform 0.3s; }
@@ -650,6 +652,7 @@
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     body { cursor: auto; } .cur, .glow { display: none; }
+    .cs-hero-back { left: 24px; }
     .cs-hero { padding: 100px 24px 60px; min-height: 60vh; }
     .cs-hero-metric { font-size: 140px; }
     .article { padding: 0 20px; }
@@ -662,6 +665,7 @@
     .decision-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
+    .cs-hero-back { left: 20px; top: 20px; }
     .cs-hero { min-height: 50vh; padding: 80px 20px 48px; }
     .cs-hero h1 { font-size: 28px; }
     .cs-hero-hook { font-size: 16px; }
@@ -714,12 +718,12 @@
 <!--              HERO                       -->
 <!-- ═══════════════════════════════════════ -->
 <div class="cs-hero">
+  <a href="/work/zar/" class="cs-hero-back">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    ZAR
+  </a>
   <div class="cs-hero-metric">19&rarr;4</div>
   <div class="cs-hero-content">
-    <a href="/work/zar/" class="cs-hero-back">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      ZAR
-    </a>
     <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; Jan &ndash; Feb 2026</div>
     <h1>Merchant Onboarding</h1>
     <p class="cs-hero-hook">19 steps to become a merchant. Target: 100,000 stores. The math didn&rsquo;t work. The onboarding had to change.</p>

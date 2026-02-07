@@ -167,10 +167,11 @@
     opacity: 0; animation: fu 0.8s 0.2s forwards;
   }
   .art-back {
+    position: absolute; top: 28px; left: 32px; z-index: 10;
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 13px; font-weight: 500; color: var(--muted);
     text-decoration: none; cursor: none;
-    margin-bottom: 40px; transition: color 0.3s;
+    transition: color 0.3s;
   }
   .art-back:hover { color: var(--accent); }
   .art-back svg { transition: transform 0.3s; }
@@ -409,6 +410,7 @@
     .mob-btn { display: flex; align-items: center; }
   }
   @media (max-width: 640px) {
+    .art-back { left: 20px; top: 20px; }
     .art-hero { padding-top: 120px; }
     .art-hero h1 { font-size: 28px; }
     .art-nav { flex-direction: column; }
