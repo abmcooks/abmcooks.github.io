@@ -4,21 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>404 — ABM</title>
+<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
   :root {
-    --display: 'Bricolage Grotesque', sans-serif;
-    --body: 'Inter', sans-serif;
-    --bg: #08080C;
-    --card: #0E0E14;
-    --text: #EDE8DB;
-    --dim: #8F8A7B;
-    --muted: #53504A;
-    --border: #1E1D19;
-    --accent: #D4654A;
-    --accent-light: #E8856C;
+    --display: 'AKONY', serif;
+    --body: 'Space Grotesk', sans-serif;
+    --serif: 'Gentium Book Plus', serif;
+    --espresso: #2E1A12;
+    --espresso-dim: #4f3a32;
+    --espresso-muted: #7a6a62;
+    --cream: #ebf4f5;
+    --cream-dim: #A69D91;
+    --red: #cc2936;
+    --bg: #f8f5f0;
+    --text: #2E1A12;
+    --text-dim: #6b5d54;
+    --text-muted: #9a8d84;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,29 +30,8 @@
     -webkit-font-smoothing: antialiased; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
     min-height: 100vh; min-height: 100dvh;
-    cursor: none;
   }
 
-  /* ─── BLOBS ─── */
-  .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-  .bl { position: absolute; border-radius: 50%; filter: blur(130px); }
-  .bl-1 { width: 500px; height: 500px; top: 20%; left: 30%; background: var(--accent); opacity: 0.07; animation: bd1 25s ease-in-out infinite; }
-  .bl-2 { width: 400px; height: 400px; bottom: 10%; right: 20%; background: #D4A853; opacity: 0.04; animation: bd2 30s ease-in-out infinite; }
-  @keyframes bd1 { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(60px,-40px) scale(1.1); } 66% { transform: translate(-30px,50px) scale(0.95); } }
-  @keyframes bd2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-70px,-50px) scale(1.15); } }
-
-  /* ─── GRAIN ─── */
-  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-
-  /* ─── CURSOR ─── */
-  .cur { position: fixed; width: 14px; height: 14px; border-radius: 50%;
-    border: 1.5px solid rgba(237,232,219,0.18); pointer-events: none; z-index: 100;
-    transition: width 0.35s cubic-bezier(.23,1,.32,1), height 0.35s cubic-bezier(.23,1,.32,1), background 0.35s, border-color 0.35s;
-    transform: translate(-50%,-50%); }
-  .cur.hov { width: 56px; height: 56px; background: rgba(212,101,74,0.05); border-color: rgba(212,101,74,0.25); }
-
-  /* ─── CONTENT ─── */
   .c404 {
     position: relative; z-index: 1;
     text-align: center; padding: 32px;
@@ -58,36 +39,36 @@
   }
 
   .num {
-    font-family: var(--display); font-size: clamp(100px, 20vw, 200px);
-    font-weight: 800; letter-spacing: -0.04em; line-height: 1;
-    background: linear-gradient(180deg, var(--text) 0%, var(--muted) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 16px;
+    font-family: var(--display); font-size: clamp(100px, 20vw, 220px);
+    font-weight: 400; text-transform: uppercase;
+    letter-spacing: 0.02em; line-height: 1;
+    color: var(--text);
+    margin-bottom: 20px;
     user-select: none;
   }
 
   .msg {
-    font-family: var(--display); font-size: clamp(18px, 3vw, 24px);
+    font-family: var(--body); font-size: clamp(18px, 3vw, 24px);
     font-weight: 600; color: var(--text); letter-spacing: -0.02em;
     margin-bottom: 8px;
   }
 
   .sub {
-    font-size: 14px; color: var(--dim); max-width: 340px; margin: 0 auto 36px;
-    line-height: 1.6;
+    font-family: var(--serif); font-size: 15px;
+    color: var(--text-dim); max-width: 360px; margin: 0 auto 40px;
+    line-height: 1.7;
   }
 
   .back {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 14px; font-weight: 600; color: white; text-decoration: none;
-    background: var(--accent); padding: 12px 28px; border-radius: 100px;
-    box-shadow: 0 2px 24px rgba(212,101,74,0.3);
+    font-family: var(--body); font-size: 14px; font-weight: 600;
+    color: white; text-decoration: none;
+    background: var(--red); padding: 12px 28px; border-radius: 100px;
+    box-shadow: 0 2px 24px rgba(204,41,54,0.35);
     transition: all 0.3s cubic-bezier(.23,1,.32,1);
-    cursor: none;
   }
   .back:hover {
-    box-shadow: 0 4px 32px rgba(212,101,74,0.5);
+    box-shadow: 0 4px 32px rgba(204,41,54,0.55);
     transform: translateY(-2px) scale(1.03);
   }
   .back svg { width: 16px; height: 16px; transition: transform 0.3s; }
@@ -101,10 +82,6 @@
 </head>
 <body>
 
-<div class="blobs"><div class="bl bl-1"></div><div class="bl bl-2"></div></div>
-<div class="grain"></div>
-<div class="cur"></div>
-
 <div class="c404">
   <div class="num">404</div>
   <div class="msg">This page doesn't exist</div>
@@ -114,13 +91,6 @@
     Back to Work
   </a>
 </div>
-
-<script>
-  const cur = document.querySelector('.cur');
-  document.addEventListener('mousemove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; });
-  document.querySelector('.back').addEventListener('mouseenter', () => cur.classList.add('hov'));
-  document.querySelector('.back').addEventListener('mouseleave', () => cur.classList.remove('hov'));
-</script>
 
 </body>
 </html>

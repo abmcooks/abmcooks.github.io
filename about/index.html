@@ -3,179 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ABM (Basit Masood) — Lead Product Designer at ZAR. 6+ years in fintech product design. Two-time founding designer who builds design orgs and products that raise millions.">
+<meta name="description" content="ABM (Basit Masood) — Lead Product Designer at ZAR. 6+ years in fintech product design. Founding designer who builds design orgs and products from zero.">
 <meta name="author" content="ABM (Basit Masood)">
 <meta property="og:title" content="About — ABM">
-<meta property="og:description" content="6+ years in fintech product design. Two-time founding designer.">
+<meta property="og:description" content="6+ years in fintech product design. Founding designer. Systems, teams, products from zero.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About — ABM">
-<meta name="twitter:description" content="6+ years in fintech product design. Two-time founding designer.">
+<meta name="twitter:description" content="6+ years in fintech product design. Founding designer. Systems, teams, products from zero.">
 <title>About — ABM</title>
+<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
   :root {
-    --display: 'Bricolage Grotesque', sans-serif;
-    --body: 'Inter', sans-serif;
-    --bg: #08080C;
-    --card: #0E0E14;
-    --text: #EDE8DB;
-    --dim: #8F8A7B;
-    --muted: #53504A;
-    --border: #1E1D19;
-    --accent: #D4654A;
-    --accent-light: #E8856C;
-    --gold: #C9A84E;
-    --blue: #4A7BF7;
-    --teal: #4ECDC4;
-    --emerald: #34D399;
-    --violet: #A78BFA;
+    --display: 'AKONY', serif;
+    --body: 'Space Grotesk', sans-serif;
+    --serif: 'Gentium Book Plus', serif;
+    --espresso: #2E1A12;
+    --espresso-dim: #4f3a32;
+    --espresso-muted: #7a6a62;
+    --cream: #ebf4f5;
+    --cream-dim: #A69D91;
+    --red: #cc2936;
+    --gold: #c4ad54;
+    --blue: #003a78;
+    --teal: #ff7b66;
+    --emerald: #6200ee;
+    --violet: #bc204b;
     --radius: 20px;
+    --bg: #f8f5f0;
+    --text: #2E1A12;
+    --text-dim: #6b5d54;
+    --text-muted: #9a8d84;
+    --card-bg: #ffffff;
+    --card-border: rgba(0,0,0,0.07);
   }
-
-  @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; background: var(--bg); }
   body {
     font-family: var(--body); background: var(--bg); color: var(--text);
     line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px; cursor: none;
+    overflow-x: hidden; padding-bottom: 120px;
     animation: pageIn 0.3s ease;
   }
   body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
 
-  /* ─── SCROLL PROGRESS ─── */
-  .scroll-progress {
-    position: fixed; top: 0; left: 0; height: 2px; z-index: 10001;
-    background: linear-gradient(90deg, var(--accent), var(--accent-light));
-    width: 0%; transform-origin: left;
+  /* --- NAV --- */
+  .nav-bar {
+    position: fixed; top: 64px; right: 48px; z-index: 100;
+    background: var(--espresso); border-radius: 8px;
+    padding: 8px 32px 8px 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
+  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: #f8f5f0; display: none; }
+  .nav-bar-item.active .nav-bar-dot { display: block; }
+  .nav-bar-item a {
+    font-family: var(--body); font-size: 14px; font-weight: 500;
+    color: rgba(248,245,240,0.6); text-decoration: none;
+    letter-spacing: 0.01em; transition: color 0.2s;
+  }
+  .nav-bar-item.active a {
+    font-weight: 700; color: #f8f5f0;
+    text-decoration: underline; text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+  }
+  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
+  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(248,245,240,0.3); transform: rotate(-40deg); }
+
+  .mobile-nav {
+    display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px);
+    border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px;
+  }
+  .mobile-nav a {
+    font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none;
+    padding: 8px 15px; border-radius: 100px; transition: all 0.3s;
+  }
+  .mobile-nav a.active { color: var(--cream); background: rgba(235,244,245,0.08); }
+
+  @media (max-width: 768px) {
+    .nav-bar { display: none; }
+    .mobile-nav { display: flex; }
   }
 
-  /* ─── BLOBS ─── */
-  .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-  .bl { position: absolute; border-radius: 50%; filter: blur(130px); }
-  .bl-1 { width: 600px; height: 600px; top: -8%; left: -5%; background: var(--accent); opacity: 0.08; animation: bd1 25s ease-in-out infinite; }
-  .bl-2 { width: 500px; height: 500px; top: 35%; right: -8%; background: #D4A853; opacity: 0.055; animation: bd2 30s ease-in-out infinite; }
-  .bl-3 { width: 400px; height: 400px; bottom: 5%; left: 15%; background: var(--blue); opacity: 0.045; animation: bd3 22s ease-in-out infinite; }
-
-  /* ─── GRAIN ─── */
-  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-
-  /* ─── CURSOR ─── */
-  .cur { position: fixed; width: 14px; height: 14px; border-radius: 50%;
-    border: 1.5px solid rgba(237,232,219,0.18); pointer-events: none; z-index: 10000;
-    transition: width 0.35s cubic-bezier(.23,1,.32,1), height 0.35s cubic-bezier(.23,1,.32,1), background 0.35s, border-color 0.35s;
-    transform: translate(-50%,-50%); }
-  .cur.hov { width: 56px; height: 56px; background: rgba(212,101,74,0.05); border-color: rgba(212,101,74,0.25); }
-  .glow { position: fixed; width: 500px; height: 500px; border-radius: 50%;
-    pointer-events: none; z-index: 1;
-    background: radial-gradient(circle, rgba(212,101,74,0.04) 0%, transparent 70%);
-    transform: translate(-50%,-50%); }
-
-  /* ─── NAV ─── */
-  .bnav {
-    position: fixed; bottom: 28px; left: 50%; z-index: 1000;
-    display: flex; align-items: center; gap: 2px;
-    padding: 5px 5px 5px 18px; border-radius: 100px;
-    background:
-      linear-gradient(rgba(14,14,20,0.92), rgba(14,14,20,0.92)) padding-box,
-      conic-gradient(from var(--angle), transparent 20%, rgba(212,101,74,0.4) 40%, rgba(232,133,108,0.6) 50%, rgba(212,101,74,0.4) 60%, transparent 80%) border-box;
-    border: 1.5px solid transparent;
-    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
-    box-shadow: 0 0 60px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3), 0 0 24px rgba(212,101,74,0.06);
-    opacity: 0; transform: translateX(-50%) translateY(20px);
-    animation: navIn 0.6s 0.8s forwards, rotateBorder 6s linear infinite;
-  }
-  .bnav .nn { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--text); margin-right: 10px; letter-spacing: -0.01em; }
-  .bnav .ns { width: 1px; height: 18px; background: var(--border); margin: 0 6px; }
-  .nav-links { position: relative; display: flex; align-items: center; gap: 2px; }
-  .nav-ind {
-    position: absolute; height: 30px; border-radius: 100px; top: 50%; transform: translateY(-50%);
-    background: linear-gradient(135deg, rgba(212,101,74,0.12), rgba(232,133,108,0.06));
-    border: 1px solid rgba(212,101,74,0.1);
-    box-shadow: 0 0 14px rgba(212,101,74,0.08), 0 2px 8px rgba(212,101,74,0.04);
-    transition: all 0.4s cubic-bezier(.23,1,.32,1); pointer-events: none; opacity: 0;
-  }
-  .nav-ind.ready { opacity: 1; }
-  .nl {
-    font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none;
-    padding: 7px 13px; border-radius: 100px; cursor: none; position: relative; z-index: 1;
-    transition: color 0.3s, transform 0.25s cubic-bezier(.23,1,.32,1);
-  }
-  .nl:hover { color: var(--dim); }
-  .nl.ac { color: var(--text); }
-  .nl.ac::after {
-    content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
-    width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 8px rgba(212,101,74,0.6), 0 0 16px rgba(212,101,74,0.2);
-  }
-  .nc {
-    font-size: 13px; font-weight: 600; background: var(--accent); color: white; text-decoration: none;
-    padding: 7px 18px; border-radius: 100px; margin-left: 4px; cursor: none;
-    box-shadow: 0 2px 20px rgba(212,101,74,0.25);
-    transition: all 0.3s cubic-bezier(.23,1,.32,1);
-    animation: ctaPulse 4s ease-in-out infinite;
-  }
-  .nc:hover { box-shadow: 0 4px 28px rgba(212,101,74,0.45); transform: translateY(-1px) scale(1.03); }
-
-  /* ─── MOBILE MENU ─── */
-  .mob-btn {
-    display: none; background: none; border: none; color: var(--dim);
-    padding: 7px; border-radius: 8px; cursor: pointer; transition: color 0.3s;
-  }
-  .mob-btn:hover { color: var(--text); }
-  .mob-menu {
-    position: fixed; inset: 0; z-index: 9999;
-    background: rgba(8,8,12,0.96);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-  }
-  .mob-menu.open { opacity: 1; pointer-events: all; }
-  .mob-nav { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .mob-link {
-    font-family: var(--display); font-size: 36px; font-weight: 700;
-    color: var(--dim); text-decoration: none;
-    padding: 10px 32px; border-radius: 12px; transition: color 0.3s;
-  }
-  .mob-link:hover { color: var(--text); }
-  .mob-link.mob-ac { color: #D4654A; }
-  .mob-close {
-    position: absolute; top: 24px; right: 24px;
-    width: 44px; height: 44px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    background: none; border: 1px solid var(--border);
-    color: var(--dim); font-size: 22px;
-    cursor: pointer; transition: all 0.3s; font-family: var(--body);
-  }
-  .mob-close:hover { border-color: rgba(212,101,74,0.3); color: var(--text); }
-
-  /* ─── WRAPPER ─── */
+  /* --- WRAPPER --- */
   .wrap { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 48px; }
 
-  /* ─── ABOUT HERO ─── */
+  /* --- ABOUT HERO --- */
   .about-hero {
     padding: 80px 0 0;
     display: grid; grid-template-columns: 1fr 280px; gap: 60px; align-items: start;
   }
   .about-label {
     font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 20px;
+    color: var(--red); margin-bottom: 20px;
     opacity: 0; animation: fu 0.5s 0.2s forwards;
   }
   .about-name {
     font-family: var(--display); font-size: clamp(40px, 5vw, 56px);
-    font-weight: 700; line-height: 1.08; letter-spacing: -0.03em;
+    font-weight: 700; line-height: 1.08; letter-spacing: -0.01em;
+    text-transform: uppercase;
     margin-bottom: 24px;
     opacity: 0; animation: fu 0.7s 0.4s forwards;
   }
   .about-intro {
-    font-family: var(--display); font-size: 20px; font-weight: 500;
-    line-height: 1.4; color: var(--dim); letter-spacing: -0.01em;
+    font-family: var(--serif); font-size: 20px; font-weight: 400;
+    line-height: 1.5; color: var(--text-dim); font-style: italic;
     opacity: 0; animation: fu 0.6s 0.6s forwards;
   }
 
@@ -185,22 +120,24 @@
   }
   .photo {
     width: 280px; height: 340px; border-radius: var(--radius);
-    background: var(--card); border: 1px solid var(--border);
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     position: relative; overflow: hidden;
   }
   .photo::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 40%, rgba(212,101,74,0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 40%, rgba(204,41,54,0.06) 0%, transparent 60%);
   }
   .photo-initials {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     font-family: var(--display); font-size: 80px; font-weight: 700;
-    color: rgba(237,232,219,0.04); letter-spacing: -0.04em;
+    color: rgba(0,0,0,0.04); letter-spacing: -0.04em;
+    text-transform: uppercase;
   }
   .photo-label {
     position: absolute; bottom: 20px; left: 20px; right: 20px;
-    font-size: 11px; color: var(--muted); text-align: center;
-    padding: 8px; border-radius: 8px; background: rgba(8,8,12,0.6);
+    font-size: 11px; color: var(--text-dim); text-align: center;
+    padding: 8px; border-radius: 8px; background: rgba(255,255,255,0.8);
     backdrop-filter: blur(8px);
   }
   .photo-dots {
@@ -209,43 +146,44 @@
   }
   .photo-dots span {
     width: 6px; height: 6px; border-radius: 50%;
-    background: rgba(237,232,219,0.06);
+    background: rgba(0,0,0,0.07);
   }
-  .photo-dots span:first-child { background: rgba(212,101,74,0.3); }
+  .photo-dots span:first-child { background: rgba(204,41,54,0.3); }
 
-  /* ─── WHO I AM ─── */
+  /* --- WHO I AM --- */
   .who {
     padding: 100px 0 0;
   }
   .section-label {
     font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 24px;
+    color: var(--text-muted); margin-bottom: 24px;
     display: flex; align-items: center; gap: 12px;
   }
   .section-label::before {
-    content: ''; width: 24px; height: 1px; background: var(--muted);
+    content: ''; width: 24px; height: 1px; background: var(--text-muted);
   }
   .who-statement {
-    font-family: var(--display); font-size: clamp(22px, 3vw, 28px);
+    font-family: var(--body); font-size: clamp(22px, 3vw, 28px);
     font-weight: 600; line-height: 1.45; letter-spacing: -0.02em;
     color: var(--text); max-width: 680px; margin-bottom: 40px;
   }
   .who-statement .wh-em {
-    color: var(--accent);
+    color: var(--red);
   }
   .who-facts {
     display: flex; flex-wrap: wrap; gap: 10px;
   }
   .who-fact {
-    font-size: 13px; font-weight: 500; color: var(--dim);
+    font-size: 13px; font-weight: 500; color: var(--text-dim);
     padding: 8px 16px; border-radius: 100px;
-    background: var(--card); border: 1px solid var(--border);
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     transition: border-color 0.3s;
   }
-  .who-fact:hover { border-color: rgba(212,101,74,0.15); }
+  .who-fact:hover { border-color: rgba(204,41,54,0.15); }
   .who-fact .wf-icon { margin-right: 6px; }
 
-  /* ─── JOURNEY TIMELINE ─── */
+  /* --- JOURNEY TIMELINE --- */
   .journey {
     padding: 100px 0 0;
   }
@@ -254,7 +192,7 @@
   }
   .timeline::before {
     content: ''; position: absolute; left: 7px; top: 10px; bottom: 10px;
-    width: 1px; background: linear-gradient(to bottom, var(--border), rgba(30,29,25,0.3));
+    width: 1px; background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.03));
   }
   .tl-item {
     position: relative; padding: 0 0 56px;
@@ -263,31 +201,31 @@
   .tl-dot {
     position: absolute; left: -48px; top: 6px;
     width: 15px; height: 15px; border-radius: 50%;
-    border: 2px solid var(--border); background: var(--bg);
+    border: 2px solid rgba(0,0,0,0.08); background: var(--bg);
     display: flex; align-items: center; justify-content: center;
     z-index: 2;
   }
   .tl-dot::after {
     content: ''; width: 5px; height: 5px; border-radius: 50%;
   }
-  .tl-item.current .tl-dot { border-color: var(--accent); }
-  .tl-item.current .tl-dot::after { background: var(--accent); box-shadow: 0 0 8px rgba(212,101,74,0.5); }
+  .tl-item.current .tl-dot { border-color: var(--red); }
+  .tl-item.current .tl-dot::after { background: var(--red); box-shadow: 0 0 8px rgba(204,41,54,0.5); }
 
   .tl-date {
-    font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 6px;
+    font-size: 12px; font-weight: 500; color: var(--text-muted); margin-bottom: 6px;
     letter-spacing: 0.02em;
   }
   .tl-company {
-    font-family: var(--display); font-size: 22px; font-weight: 600;
+    font-family: var(--body); font-size: 22px; font-weight: 700;
     letter-spacing: -0.01em; margin-bottom: 2px;
   }
   .tl-role {
-    font-size: 14px; color: var(--dim); margin-bottom: 12px;
+    font-size: 14px; color: var(--text-dim); margin-bottom: 12px;
   }
   .tl-desc {
-    font-size: 14px; line-height: 1.7; color: var(--muted); max-width: 560px;
+    font-family: var(--serif); font-size: 16px; line-height: 1.7; color: var(--text-dim); max-width: 560px;
   }
-  .tl-desc strong { color: var(--dim); font-weight: 500; }
+  .tl-desc strong { color: var(--text); font-weight: 700; }
   .tl-tags {
     display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px;
   }
@@ -298,17 +236,17 @@
 
   /* Company colors */
   .tl-zar .tl-company { color: var(--gold); }
-  .tl-zar .tl-tag { color: var(--gold); border-color: rgba(201,168,78,0.15); background: rgba(201,168,78,0.04); }
+  .tl-zar .tl-tag { color: var(--gold); border-color: rgba(196,173,84,0.15); background: rgba(196,173,84,0.04); }
   .tl-adib .tl-company { color: var(--blue); }
-  .tl-adib .tl-tag { color: var(--blue); border-color: rgba(74,123,247,0.15); background: rgba(74,123,247,0.04); }
+  .tl-adib .tl-tag { color: var(--blue); border-color: rgba(0,58,120,0.15); background: rgba(0,58,120,0.04); }
   .tl-sp .tl-company { color: var(--teal); }
-  .tl-sp .tl-tag { color: var(--teal); border-color: rgba(78,205,196,0.15); background: rgba(78,205,196,0.04); }
+  .tl-sp .tl-tag { color: var(--teal); border-color: rgba(255,123,102,0.15); background: rgba(255,123,102,0.04); }
   .tl-xp .tl-company { color: var(--emerald); }
-  .tl-xp .tl-tag { color: var(--emerald); border-color: rgba(52,211,153,0.15); background: rgba(52,211,153,0.04); }
+  .tl-xp .tl-tag { color: var(--emerald); border-color: rgba(98,0,238,0.15); background: rgba(98,0,238,0.04); }
   .tl-wtt .tl-company { color: var(--violet); }
-  .tl-wtt .tl-tag { color: var(--violet); border-color: rgba(167,139,250,0.15); background: rgba(167,139,250,0.04); }
+  .tl-wtt .tl-tag { color: var(--violet); border-color: rgba(188,32,75,0.15); background: rgba(188,32,75,0.04); }
 
-  /* ─── PHILOSOPHY ─── */
+  /* --- PHILOSOPHY --- */
   .philosophy {
     padding: 100px 0 0;
   }
@@ -316,53 +254,53 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px;
   }
   .phil-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     padding: 32px; position: relative; overflow: hidden;
     transition: border-color 0.4s, box-shadow 0.4s;
   }
   .phil-card:hover {
-    border-color: rgba(212,101,74,0.12);
-    box-shadow: 0 0 40px rgba(212,101,74,0.04);
+    border-color: rgba(204,41,54,0.12);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
   .phil-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(212,101,74,0.15), transparent);
+    background: linear-gradient(90deg, transparent, rgba(204,41,54,0.15), transparent);
     opacity: 0; transition: opacity 0.4s;
   }
   .phil-card:hover::before { opacity: 1; }
   .phil-num {
     font-family: var(--display); font-size: 48px; font-weight: 700;
-    color: rgba(237,232,219,0.04); line-height: 1; margin-bottom: 16px;
+    color: rgba(0,0,0,0.04); line-height: 1; margin-bottom: 16px;
     letter-spacing: -0.04em;
   }
   .phil-title {
-    font-family: var(--display); font-size: 17px; font-weight: 600;
+    font-family: var(--body); font-size: 17px; font-weight: 700;
     color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em;
   }
   .phil-text {
-    font-size: 14px; line-height: 1.7; color: var(--muted);
+    font-family: var(--serif); font-size: 14px; line-height: 1.7; color: var(--text-dim);
   }
 
-  /* ─── LEADERSHIP ─── */
+  /* --- LEADERSHIP --- */
   .leadership {
     padding: 100px 0 0;
   }
   .lead-quote {
-    font-family: var(--display); font-size: clamp(24px, 3.5vw, 36px);
+    font-family: var(--body); font-size: clamp(24px, 3.5vw, 36px);
     font-weight: 600; line-height: 1.35; letter-spacing: -0.02em;
     color: var(--text); max-width: 720px; margin-bottom: 32px;
   }
   .lead-quote .lq-em {
-    background: linear-gradient(135deg, var(--accent), var(--accent-light));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    color: var(--red);
   }
   .lead-body {
-    font-size: 16px; line-height: 1.75; color: var(--dim); max-width: 640px;
+    font-family: var(--serif); font-size: 16px; line-height: 1.75; color: var(--text-dim); max-width: 640px;
   }
   .lead-body p { margin-bottom: 20px; }
   .lead-body p:last-child { margin-bottom: 0; }
 
-  /* ─── TESTIMONIAL MARQUEE ─── */
+  /* --- TESTIMONIAL MARQUEE --- */
   .testimonials {
     position: relative; z-index: 2; margin: 100px 0 0; overflow: hidden;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
@@ -374,78 +312,58 @@
   .trow:hover { animation-play-state: paused; }
   .tcard {
     flex-shrink: 0; width: 380px; padding: 24px 28px;
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     transition: border-color 0.3s;
   }
-  .tcard:hover { border-color: rgba(212,101,74,0.1); }
-  .tcard .tq { font-size: 14px; color: var(--dim); line-height: 1.65; font-style: italic; margin-bottom: 16px; }
-  .tcard .tq strong { color: var(--text); font-style: normal; font-weight: 600; }
+  .tcard:hover { border-color: rgba(204,41,54,0.1); }
+  .tcard .tq { font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.65; font-style: italic; margin-bottom: 16px; }
+  .tcard .tq strong { color: var(--text); font-style: normal; font-weight: 700; }
   .tcard .ta { font-size: 12px; font-weight: 600; color: var(--text); }
-  .tcard .tt { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .tcard .tt { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
   @keyframes mql { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @keyframes mqr { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-  /* ─── STATS ─── */
+  /* --- STATS --- */
   .stats {
     padding: 100px 0 0;
     position: relative; z-index: 2; max-width: 900px; margin: 0 auto;
   }
   .stats-inner {
     display: grid; grid-template-columns: repeat(5, 1fr);
-    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; position: relative;
+    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); overflow: hidden; position: relative;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
-  .stats-inner::before { content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(212,101,74,0.03) 0%, transparent 60%); pointer-events: none; }
-  .st { padding: 36px 16px; text-align: center; border-right: 1px solid var(--border); position: relative; }
+  .st { padding: 36px 16px; text-align: center; border-right: 1px solid var(--card-border); position: relative; }
   .st:last-child { border-right: none; }
-  .st .sn { font-family: var(--display); font-size: clamp(28px, 3.5vw, 40px); font-weight: 600; letter-spacing: -0.02em; color: var(--text); }
-  .st .sl { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 4px; line-height: 1.4; }
+  .st .sn { font-family: var(--body); font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+  .st .sl { font-size: 11px; color: var(--text-muted); font-weight: 500; margin-top: 4px; line-height: 1.4; }
 
-  /* ─── FOOTER ─── */
+  /* --- FOOTER --- */
   footer { position: relative; z-index: 2; max-width: 900px; margin: 100px auto 0; padding: 0 48px; text-align: center; }
-  .fh { font-family: var(--display); font-size: clamp(28px, 4.5vw, 48px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
-  .fh .gw { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .fs { font-size: 15px; color: var(--muted); margin-bottom: 36px; }
-  .fa { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
-  .fl { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--card);
-    color: var(--dim); text-decoration: none; font-size: 14px; font-weight: 600;
-    display: flex; align-items: center; justify-content: center; transition: all 0.3s; cursor: none; }
-  .fl:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(212,101,74,0.1); }
-  .fd { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--accent);
-    text-decoration: none; padding: 10px 24px; border-radius: 100px; border: 1px solid rgba(212,101,74,0.18); transition: all 0.3s; cursor: none; }
-  .fd:hover { background: var(--accent); color: white; box-shadow: 0 4px 20px rgba(212,101,74,0.2); }
-  .fb { padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+  .fb { padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
   .fb-social { display: flex; gap: 8px; }
   .fbs {
     width: 28px; height: 28px; border-radius: 50%;
-    border: 1px solid var(--border); background: transparent;
-    color: var(--muted); text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.07); background: transparent;
+    color: var(--text-muted); text-decoration: none;
     font-size: 11px; font-weight: 600;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.3s; cursor: none;
+    transition: all 0.3s;
   }
-  .fbs:hover { border-color: rgba(212,101,74,0.3); color: #D4654A; }
+  .fbs:hover { border-color: rgba(204,41,54,0.3); color: var(--red); }
 
-  /* ─── ANIMATIONS ─── */
+  /* --- ANIMATIONS --- */
   @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes navIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-  @keyframes rotateBorder { to { --angle: 360deg; } }
-  @keyframes ctaPulse { 0%, 100% { box-shadow: 0 2px 20px rgba(212,101,74,0.25); } 50% { box-shadow: 0 4px 28px rgba(212,101,74,0.4), 0 0 40px rgba(212,101,74,0.1); } }
-  @keyframes bd1 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(80px,60px) scale(1.1); } 100% { transform: translate(-40px,30px) scale(.95); } }
-  @keyframes bd2 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px,-40px) scale(1.15); } 100% { transform: translate(30px,-60px) scale(.9); } }
-  @keyframes bd3 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px,-30px) scale(1.05); } 100% { transform: translate(-30px,40px) scale(1.1); } }
   @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
 
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   .rd1 { transition-delay: .08s; } .rd2 { transition-delay: .16s; } .rd3 { transition-delay: .24s; } .rd4 { transition-delay: .32s; } .rd5 { transition-delay: .40s; } .rd6 { transition-delay: .48s; }
 
-  /* ─── RESPONSIVE ─── */
+  /* --- RESPONSIVE --- */
   @media (max-width: 900px) {
-    body { cursor: auto; } .cur, .glow { display: none; }
-    .mob-btn { display: flex; align-items: center; }
     .wrap, footer { padding-left: 20px; padding-right: 20px; }
     .about-hero { grid-template-columns: 1fr; gap: 40px; }
     .photo-wrap { order: -1; }
@@ -453,8 +371,7 @@
     .phil-grid { grid-template-columns: 1fr; }
     .stats-inner { grid-template-columns: repeat(3, 1fr); }
     .st:nth-child(3) { border-right: none; }
-    .st:nth-child(1), .st:nth-child(2), .st:nth-child(3) { border-bottom: 1px solid var(--border); }
-    .nl.hsm { display: none; }
+    .st:nth-child(1), .st:nth-child(2), .st:nth-child(3) { border-bottom: 1px solid var(--card-border); }
     .tcard { width: 300px; }
   }
   @media (max-width: 640px) {
@@ -462,7 +379,7 @@
     .who-statement { font-size: 20px; }
     .stats-inner { grid-template-columns: 1fr 1fr; }
     .st:nth-child(even) { border-right: none; }
-    .st { border-bottom: 1px solid var(--border); }
+    .st { border-bottom: 1px solid var(--card-border); }
     .st:last-child { border-bottom: none; }
     .fb { flex-direction: column; gap: 8px; text-align: center; }
     .tcard { width: 280px; padding: 20px; }
@@ -471,48 +388,30 @@
 </head>
 <body>
 
-<div class="scroll-progress" id="sp"></div>
-<div class="blobs"><div class="bl bl-1"></div><div class="bl bl-2"></div><div class="bl bl-3"></div></div>
-<div class="grain"></div>
-<div class="cur" id="cur"></div>
-<div class="glow" id="glo"></div>
-
 <!-- NAV -->
-<nav class="bnav">
-  <span class="nn">ABM</span><span class="ns"></span>
-  <div class="nav-links">
-    <div class="nav-ind" id="navInd"></div>
-    <a href="/" class="nl">Work</a>
-    <a href="/about/" class="nl ac hsm">About</a>
-    <a href="/writing/" class="nl hsm">Writing</a>
-    <span style="color:var(--muted);font-size:12px;margin:0 2px;font-weight:400;">-</span>
-    <a href="/resume/" class="nl hsm">Resume</a>
-  </div>
-  <button class="mob-btn" id="mobBtn" aria-label="Menu">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-  </button>
-  <a href="/contact/" class="nc">Contact</a>
-</nav>
-<div class="mob-menu" id="mobMenu">
-  <button class="mob-close" id="mobClose">&times;</button>
-  <nav class="mob-nav">
-    <a href="/" class="mob-link">Work</a>
-    <a href="/about/" class="mob-link mob-ac">About</a>
-    <a href="/writing/" class="mob-link">Writing</a>
-    <span style="color:var(--muted);font-size:14px;margin:0 4px;">-</span>
-    <a href="/resume/" class="mob-link">Resume</a>
-    <a href="/contact/" class="mob-link">Contact</a>
-  </nav>
+<div class="nav-bar" id="navBar">
+  <div class="nav-bar-item" data-section="craft"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
+  <div class="nav-bar-slash"></div>
+  <div class="nav-bar-item active" data-section="story"><span class="nav-bar-dot"></span><a href="/about/">My Story</a></div>
+  <div class="nav-bar-slash"></div>
+  <div class="nav-bar-item" data-section="thoughts"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
 </div>
+
+<nav class="mobile-nav">
+  <a href="/">Craft</a>
+  <a href="/about/" class="active">My Story</a>
+  <a href="/writing/">Thoughts</a>
+  <a href="/contact/">Contact</a>
+</nav>
 
 <div class="wrap">
 
   <!-- HERO -->
   <section class="about-hero">
     <div>
-      <div class="about-label">About</div>
+      <div class="about-label">Story</div>
       <h1 class="about-name">Basit Masood</h1>
-      <p class="about-intro">Making complex things feel simple.</p>
+      <p class="about-intro">I keep starting over. On purpose.</p>
     </div>
     <div class="photo-wrap">
       <div class="photo">
@@ -527,15 +426,15 @@
   <section class="who reveal">
     <div class="section-label">Who I Am</div>
     <div class="who-statement">
-      Product designer obsessed with <span class="wh-em">craft, systems, and earning user trust.</span> Based in Dubai. 6+ years building products in high-stakes domains — where a single confusing screen means people walk away forever.
+      Product designer who builds <span class="wh-em">teams, systems, and products</span> at every stage — from founding a startup's first design org to leading enterprise banking redesigns. 6+ years in fintech, where a single confusing screen means people walk away with their money.
     </div>
     <div class="who-facts">
       <span class="who-fact"><span class="wf-icon">&#127462;&#127466;</span> Dubai, UAE</span>
       <span class="who-fact">Lead Designer at ZAR</span>
       <span class="who-fact">Previously SadaPay, ADIB</span>
-      <span class="who-fact">Design systems nerd</span>
-      <span class="who-fact">High-stakes products</span>
-      <span class="who-fact">Team builder</span>
+      <span class="who-fact">Systems thinker</span>
+      <span class="who-fact">Fintech &amp; emerging markets</span>
+      <span class="who-fact">Hires &amp; grows teams</span>
     </div>
   </section>
 
@@ -559,7 +458,7 @@
 
       <div class="tl-item tl-adib reveal rd2">
         <div class="tl-dot"></div>
-        <div class="tl-date">2023 — 2024</div>
+        <div class="tl-date">2024 — 2025</div>
         <div class="tl-company">ADIB</div>
         <div class="tl-role">Lead Product Designer</div>
         <div class="tl-desc">One of the world's largest Islamic banks. Delivered the Open Banking experience and Visa Direct remittance product — <strong>the first bank worldwide to offer 11+ billion endpoints.</strong></div>
@@ -571,10 +470,10 @@
 
       <div class="tl-item tl-sp reveal rd3">
         <div class="tl-dot"></div>
-        <div class="tl-date">2020 — 2023</div>
+        <div class="tl-date">2020 — 2024</div>
         <div class="tl-company">SadaPay</div>
         <div class="tl-role">IC &rarr; Senior &rarr; Lead &rarr; Head of Product Design</div>
-        <div class="tl-desc">Pakistan's first neobank. First in-house designer — grew with the company over 3.5 years. Built the design system connected to production code. Scaled team from <strong>1 to 12 designers.</strong> Led service design that reduced fraud. Product helped secure <strong>$7.2M pre-seed, $20M+ Series A, and a $50M acquisition.</strong></div>
+        <div class="tl-desc">Pakistan's largest digital wallet. First in-house designer — grew with the company over 4 years. Built the design system connected to production code. Scaled team from <strong>1 to 12 designers.</strong> Led service design that reduced fraud. Product helped secure <strong>$20M+ in funding and a $50M acquisition by Papara.</strong></div>
         <div class="tl-tags">
           <span class="tl-tag">Design System</span>
           <span class="tl-tag">Team Building</span>
@@ -584,10 +483,10 @@
 
       <div class="tl-item tl-xp reveal">
         <div class="tl-dot"></div>
-        <div class="tl-date">VentureDive</div>
+        <div class="tl-date">2020</div>
         <div class="tl-company">Xpence</div>
-        <div class="tl-role">Product Designer</div>
-        <div class="tl-desc">Smart business spend management platform for SMEs in the UAE.</div>
+        <div class="tl-role">Product Designer &middot; VentureDive</div>
+        <div class="tl-desc">Smart business spend platform for the UAE. Built an atomic design system in weeks. Designed the core experience.</div>
         <div class="tl-tags">
           <span class="tl-tag">B2B Fintech</span>
         </div>
@@ -595,12 +494,13 @@
 
       <div class="tl-item tl-wtt reveal">
         <div class="tl-dot"></div>
-        <div class="tl-date">Earlier</div>
+        <div class="tl-date">2023 — 2024</div>
         <div class="tl-company">Walking the Talk / ZRG</div>
-        <div class="tl-role">Designer</div>
-        <div class="tl-desc">Culture transformation consultancy. 200+ organizations across 40+ countries.</div>
+        <div class="tl-role">Consultant Product Designer</div>
+        <div class="tl-desc">Culture transformation platform for 200+ organizations across 40+ countries. Acquired by ZRG Partners — designed multiple products end-to-end across both brands.</div>
         <div class="tl-tags">
           <span class="tl-tag">Enterprise</span>
+          <span class="tl-tag">Behavior Change</span>
         </div>
       </div>
 
@@ -614,32 +514,32 @@
       <div class="phil-card reveal rd1">
         <div class="phil-num">01</div>
         <div class="phil-title">User-first, always</div>
-        <div class="phil-text">When people trust you with what matters to them, every interaction counts. A confusing flow doesn't just frustrate — it erodes trust entirely.</div>
+        <div class="phil-text">Trust is hard to build and easy to lose.</div>
       </div>
       <div class="phil-card reveal rd2">
         <div class="phil-num">02</div>
         <div class="phil-title">Systems over screens</div>
-        <div class="phil-text">I build foundations — design tokens connected to code, governance frameworks, service blueprints. Things that let teams move fast without breaking things.</div>
+        <div class="phil-text">Tokens, governance, blueprints. The stuff nobody sees.</div>
       </div>
       <div class="phil-card reveal rd3">
         <div class="phil-num">03</div>
         <div class="phil-title">Simplicity is the hardest work</div>
-        <div class="phil-text">Anyone can add complexity. The real craft is removing it — finding the clearest path through a complicated domain, making interfaces feel obvious.</div>
+        <div class="phil-text">If it feels obvious, I did my job.</div>
       </div>
       <div class="phil-card reveal rd4">
         <div class="phil-num">04</div>
         <div class="phil-title">Trust through craft</div>
-        <div class="phil-text">Visual polish, smooth interactions, thoughtful micro-moments — these aren't nice-to-haves. They're signals that say "you're in good hands."</div>
+        <div class="phil-text">Polish isn't decoration. It's a signal.</div>
       </div>
       <div class="phil-card reveal rd5">
         <div class="phil-num">05</div>
         <div class="phil-title">Ship, then polish</div>
-        <div class="phil-text">I'd rather ship 80% and learn from real users than perfect in isolation. The best designs come from contact with reality, not longer review cycles.</div>
+        <div class="phil-text">80% shipped beats 100% in Figma.</div>
       </div>
       <div class="phil-card reveal rd6">
         <div class="phil-num">06</div>
         <div class="phil-title">Study what shipped</div>
-        <div class="phil-text">I study Wise, Airbnb, Stripe — real products with real rationale. Not concept shots. The best inspiration comes from what survived production.</div>
+        <div class="phil-text">Wise, Airbnb, Stripe. Not Dribbble.</div>
       </div>
     </div>
   </section>
@@ -661,20 +561,24 @@
 <!-- TESTIMONIALS MARQUEE -->
 <section class="testimonials reveal">
   <div class="trow trow-left">
-    <div class="tcard"><div class="tq">"SadaPay was praised for how well designed the product is — this is thanks to <strong>Basit</strong> and the exceptional product design team he built."</div><div class="ta">Brandon Timinsky</div><div class="tt">CEO, SadaPay & ZAR</div></div>
-    <div class="tcard"><div class="tq">"<strong>Basit</strong> is an insanely good UX designer. He has a keen eye for detail, delight, simplicity, and a deep focus on users and customers."</div><div class="ta">Sergio Sch&uuml;ler</div><div class="tt">Product Leader</div></div>
-    <div class="tcard"><div class="tq">"Among all the Product Designers I've worked with, <strong>Basit</strong> stands out as the most user-focused and data-driven designer."</div><div class="ta">Swaleha Muhammad Saleem</div><div class="tt">Solutions Architect</div></div>
-    <div class="tcard"><div class="tq">"SadaPay was praised for how well designed the product is — this is thanks to <strong>Basit</strong> and the exceptional product design team he built."</div><div class="ta">Brandon Timinsky</div><div class="tt">CEO, SadaPay & ZAR</div></div>
-    <div class="tcard"><div class="tq">"<strong>Basit</strong> is an insanely good UX designer. He has a keen eye for detail, delight, simplicity, and a deep focus on users and customers."</div><div class="ta">Sergio Sch&uuml;ler</div><div class="tt">Product Leader</div></div>
-    <div class="tcard"><div class="tq">"Among all the Product Designers I've worked with, <strong>Basit</strong> stands out as the most user-focused and data-driven designer."</div><div class="ta">Swaleha Muhammad Saleem</div><div class="tt">Solutions Architect</div></div>
+    <div class="tcard"><div class="tq">"SadaPay was praised for how well designed the product is — this is thanks to <strong>Basit</strong> and the exceptional product design team he built."</div><div class="ta">Brandon Timinsky</div><div class="tt">CEO, SadaPay &amp; ZAR</div></div>
+    <div class="tcard"><div class="tq">"Under <strong>Basit's</strong> leadership of our design team, we were able to achieve this both consistently, and at a high level. I considered him our Head of Design, and one of my peers."</div><div class="ta">Eli Mydlarz</div><div class="tt">Head of Engineering, SadaPay</div></div>
+    <div class="tcard"><div class="tq">"He added value from day one. He's a <strong>fearless problem solver</strong> and moves the needle whenever he enters a room."</div><div class="ta">Batsi Madzonga</div><div class="tt">Head of Design, ADIB</div></div>
+    <div class="tcard"><div class="tq">"<strong>Basit</strong> is an insanely good UX designer. He has a keen eye for detail, delight, simplicity, and a deep focus on users and customers."</div><div class="ta">Sergio Sch&uuml;ler</div><div class="tt">Head of Product, SadaPay</div></div>
+    <div class="tcard"><div class="tq">"SadaPay was praised for how well designed the product is — this is thanks to <strong>Basit</strong> and the exceptional product design team he built."</div><div class="ta">Brandon Timinsky</div><div class="tt">CEO, SadaPay &amp; ZAR</div></div>
+    <div class="tcard"><div class="tq">"Under <strong>Basit's</strong> leadership of our design team, we were able to achieve this both consistently, and at a high level. I considered him our Head of Design, and one of my peers."</div><div class="ta">Eli Mydlarz</div><div class="tt">Head of Engineering, SadaPay</div></div>
+    <div class="tcard"><div class="tq">"He added value from day one. He's a <strong>fearless problem solver</strong> and moves the needle whenever he enters a room."</div><div class="ta">Batsi Madzonga</div><div class="tt">Head of Design, ADIB</div></div>
+    <div class="tcard"><div class="tq">"<strong>Basit</strong> is an insanely good UX designer. He has a keen eye for detail, delight, simplicity, and a deep focus on users and customers."</div><div class="ta">Sergio Sch&uuml;ler</div><div class="tt">Head of Product, SadaPay</div></div>
   </div>
   <div class="trow trow-right">
-    <div class="tcard"><div class="tq">"His design decisions were always grounded in thorough analysis and strong rationale. He articulated insights in a clear and structured manner."</div><div class="ta">Daniel Young</div><div class="tt">Head of Digital Products, ADIB</div></div>
-    <div class="tcard"><div class="tq">"He pushed hard on improving our design processes and culture, introduced our design system which gave our app a great consistent design."</div><div class="ta">Jon Sheppard</div><div class="tt">Product & Technology Leader, ex-SadaPay</div></div>
-    <div class="tcard"><div class="tq">"His ability to balance providing support while encouraging independence made all the difference in our productivity and morale."</div><div class="ta">Sohaib Arif</div><div class="tt">Direct Report &middot; Now at Revolut</div></div>
-    <div class="tcard"><div class="tq">"His design decisions were always grounded in thorough analysis and strong rationale. He articulated insights in a clear and structured manner."</div><div class="ta">Daniel Young</div><div class="tt">Head of Digital Products, ADIB</div></div>
-    <div class="tcard"><div class="tq">"He pushed hard on improving our design processes and culture, introduced our design system which gave our app a great consistent design."</div><div class="ta">Jon Sheppard</div><div class="tt">Product & Technology Leader, ex-SadaPay</div></div>
-    <div class="tcard"><div class="tq">"His ability to balance providing support while encouraging independence made all the difference in our productivity and morale."</div><div class="ta">Sohaib Arif</div><div class="tt">Direct Report &middot; Now at Revolut</div></div>
+    <div class="tcard"><div class="tq">"His design decisions were always grounded in thorough analysis and strong rationale. He articulated insights in a clear and structured manner."</div><div class="ta">Daniel Young</div><div class="tt">Head of Digital Products &amp; Design, ADIB</div></div>
+    <div class="tcard"><div class="tq">"He pushed hard on improving our design processes and culture, introduced our design system which gave our app a great consistent design."</div><div class="ta">Jon Sheppard</div><div class="tt">CTO, SadaPay</div></div>
+    <div class="tcard"><div class="tq">"His vision for implementing a design system to ensure consistency across Android and iOS was a <strong>game-changer</strong>, significantly reducing design discrepancies and accelerating our delivery timelines."</div><div class="ta">Shoaib Akhtar</div><div class="tt">Lead Engineer, ZAR</div></div>
+    <div class="tcard"><div class="tq">"His ability to balance providing support while encouraging independence made all the difference in our productivity and morale."</div><div class="ta">Sohaib Arif</div><div class="tt">Product Designer, Revolut</div></div>
+    <div class="tcard"><div class="tq">"His design decisions were always grounded in thorough analysis and strong rationale. He articulated insights in a clear and structured manner."</div><div class="ta">Daniel Young</div><div class="tt">Head of Digital Products &amp; Design, ADIB</div></div>
+    <div class="tcard"><div class="tq">"He pushed hard on improving our design processes and culture, introduced our design system which gave our app a great consistent design."</div><div class="ta">Jon Sheppard</div><div class="tt">CTO, SadaPay</div></div>
+    <div class="tcard"><div class="tq">"His vision for implementing a design system to ensure consistency across Android and iOS was a <strong>game-changer</strong>, significantly reducing design discrepancies and accelerating our delivery timelines."</div><div class="ta">Shoaib Akhtar</div><div class="tt">Lead Engineer, ZAR</div></div>
+    <div class="tcard"><div class="tq">"His ability to balance providing support while encouraging independence made all the difference in our productivity and morale."</div><div class="ta">Sohaib Arif</div><div class="tt">Product Designer, Revolut</div></div>
   </div>
 </section>
 
@@ -682,11 +586,11 @@
   <!-- STATS -->
   <div class="stats reveal">
     <div class="stats-inner">
-      <div class="st"><div class="sn" data-t="70" data-p="$" data-s="M+">0</div><div class="sl">Funding raised</div></div>
-      <div class="st"><div class="sn" data-t="12" data-s=" designers">0</div><div class="sl">Team built at SadaPay</div></div>
+      <div class="st"><div class="sn" data-t="90" data-p="$" data-s="M+">0</div><div class="sl">In funding &amp; acquisitions</div></div>
+      <div class="st"><div class="sn" data-t="20" data-s="+">0</div><div class="sl">Designers hired &amp; led</div></div>
       <div class="st"><div class="sn" data-t="6" data-s="+">0</div><div class="sl">Years in fintech</div></div>
       <div class="st"><div class="sn" data-t="5" data-s="+">0</div><div class="sl">Design systems built</div></div>
-      <div class="st"><div class="sn" data-t="220" data-s="M">0</div><div class="sl">Market population</div></div>
+      <div class="st"><div class="sn" data-t="4" data-s="M+">0</div><div class="sl">Users at peak</div></div>
     </div>
   </div>
 </div>
@@ -697,7 +601,7 @@
     <span>&copy; 2026 ABM</span>
     <div class="fb-social">
       <a href="https://linkedin.com/in/iabm" class="fbs" title="LinkedIn" target="_blank">in</a>
-      <a href="#" class="fbs" title="X">X</a>
+      <a href="https://github.com/abmcooks" class="fbs" title="GitHub" target="_blank">GH</a>
       <a href="mailto:basitmasood999@gmail.com" class="fbs" title="Email">@</a>
     </div>
     <span>Designed with intention</span>
@@ -705,49 +609,13 @@
 </footer>
 
 <script>
-  // ─── CURSOR ───
-  const cur=document.getElementById('cur'),glo=document.getElementById('glo');
-  let mx=0,my=0,cx=0,cy=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;glo.style.left=mx+'px';glo.style.top=my+'px';});
-  (function l(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(l)})();
-  document.querySelectorAll('a,button,.phil-card,.tcard').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hov'));el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));});
-
-  // ─── SCROLL PROGRESS ───
-  window.addEventListener('scroll',()=>{
-    const p=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
-    document.getElementById('sp').style.width=p+'%';
-  });
-
-  // ─── NAV SLIDING INDICATOR ───
-  const navLinks=document.querySelector('.nav-links');
-  const navInd=document.getElementById('navInd');
-  const nls=document.querySelectorAll('.nl');
-  const activeNl=document.querySelector('.nl.ac');
-
-  function setInd(el){
-    const r=el.getBoundingClientRect(),pr=navLinks.getBoundingClientRect();
-    navInd.style.width=r.width+'px';
-    navInd.style.left=(r.left-pr.left)+'px';
-  }
-  setTimeout(()=>{if(activeNl){setInd(activeNl);navInd.classList.add('ready');}},1000);
-  nls.forEach(l=>{
-    l.addEventListener('mouseenter',()=>setInd(l));
-    l.addEventListener('mousemove',e=>{
-      const r=l.getBoundingClientRect();
-      const x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
-      l.style.transform=`translate(${x*0.25}px,${y*0.4}px)`;
-    });
-    l.addEventListener('mouseleave',()=>{l.style.transform='';});
-  });
-  navLinks.addEventListener('mouseleave',()=>{if(activeNl)setInd(activeNl);});
-
-  // ─── REVEALS ───
+  // --- REVEALS ---
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{
     if(e.isIntersecting) e.target.classList.add('visible');
   })},{threshold:.06});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  // ─── COUNTERS ───
+  // --- COUNTERS ---
   document.querySelectorAll('.sn[data-t]').forEach(el=>{
     const co=new IntersectionObserver(es=>{es.forEach(en=>{
       if(en.isIntersecting&&!en.target.dataset.d){en.target.dataset.d='1';
@@ -755,15 +623,7 @@
         (function tk(n){const pr=Math.min((n-st)/du,1),ea=1-Math.pow(1-pr,4);en.target.textContent=p+(dc?(t*ea).toFixed(1):Math.floor(t*ea))+s;if(pr<1)requestAnimationFrame(tk)})(st);
       }})},{threshold:.5});co.observe(el);});
 
-  // ─── MOBILE MENU ───
-  const mobBtn=document.getElementById('mobBtn'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
-  if(mobBtn&&mobMenu){
-    mobBtn.addEventListener('click',()=>mobMenu.classList.add('open'));
-    mobClose.addEventListener('click',()=>mobMenu.classList.remove('open'));
-    mobMenu.addEventListener('click',e=>{if(e.target===mobMenu)mobMenu.classList.remove('open');});
-  }
-
-  // ─── PAGE TRANSITIONS ───
+  // --- PAGE TRANSITIONS ---
   if(location.protocol!=='file:'){
     document.querySelectorAll('a[href]').forEach(a=>{
       const h=a.getAttribute('href');

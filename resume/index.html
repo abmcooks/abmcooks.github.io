@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Basit Masood — Lead Product Designer. 6+ years in fintech. Two-time founding designer (SadaPay, ZAR). $70M+ in funding connected to design work. Currently at ZAR (a16z-backed).">
+<meta name="description" content="Basit Masood — Lead Product Designer. 6+ years in fintech. Founding designer at SadaPay and ZAR. $90M+ in funding and acquisitions connected to design work. Currently at ZAR (a16z-backed).">
 <meta property="og:title" content="Resume — Basit Masood (ABM)">
-<meta property="og:description" content="Lead Product Designer. Two-time founding designer (SadaPay, ZAR). $70M+ in funding connected to design work. Pioneering AI-enabled design operations.">
+<meta property="og:description" content="Lead Product Designer. 6+ years in fintech. $90M+ in funding and acquisitions. Founding designer. Currently at ZAR (a16z-backed).">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://abmcooks.github.io/resume/og.png">
 <meta property="og:image:width" content="1200">
@@ -13,23 +13,30 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://abmcooks.github.io/resume/og.png">
 <meta name="twitter:title" content="Resume — Basit Masood (ABM)">
-<meta name="twitter:description" content="Lead Product Designer. Two-time founding designer (SadaPay, ZAR). $70M+ in funding connected to design work.">
+<meta name="twitter:description" content="Lead Product Designer. 6+ years in fintech. $90M+ in funding and acquisitions. Currently at ZAR (a16z-backed).">
 <title>Resume — Basit Masood (ABM)</title>
+<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
   :root {
-    --display: 'Bricolage Grotesque', sans-serif;
-    --body: 'Inter', sans-serif;
-    --bg: #08080C;
-    --surface: #0E0E14;
-    --text: #EDE8DB;
-    --dim: #8F8A7B;
-    --muted: #53504A;
-    --border: #1E1D19;
-    --accent: #D4654A;
-    --accent-light: #E8856C;
+    --display: 'AKONY', serif;
+    --heading: 'Space Grotesk', sans-serif;
+    --body: 'Space Grotesk', sans-serif;
+    --serif: 'Gentium Book Plus', serif;
+    --espresso: #2E1A12;
+    --espresso-dim: #4f3a32;
+    --espresso-muted: #7a6a62;
+    --cream: #ebf4f5;
+    --cream-dim: #A69D91;
+    --red: #cc2936;
+    --bg: #f8f5f0;
+    --surface: #ffffff;
+    --text: #2E1A12;
+    --dim: #6b5d54;
+    --muted: #9a8d84;
+    --border: rgba(0,0,0,0.08);
+    --accent: var(--red);
+    --accent-light: #e03e4a;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -44,14 +51,14 @@
     padding: 0;
   }
 
-  /* ─── PAGE WRAPPER ─── */
+  /* --- PAGE WRAPPER --- */
   .page {
     max-width: 800px;
     margin: 0 auto;
     padding: 60px 40px 80px;
   }
 
-  /* ─── HEADER ─── */
+  /* --- HEADER --- */
   .header {
     margin-bottom: 40px;
     padding-bottom: 32px;
@@ -68,11 +75,12 @@
     font-family: var(--display);
     font-size: 32px;
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: 0.02em;
     line-height: 1.1;
     color: var(--text);
   }
   .title {
+    font-family: var(--heading);
     font-size: 14px;
     font-weight: 500;
     color: var(--accent);
@@ -94,7 +102,7 @@
   .contact a:hover { color: var(--accent-light); }
   .contact .sep { color: var(--muted); }
 
-  /* ─── SUMMARY ─── */
+  /* --- SUMMARY --- */
   .summary {
     font-size: 13.5px;
     color: var(--dim);
@@ -102,12 +110,12 @@
     max-width: 680px;
   }
 
-  /* ─── SECTIONS ─── */
+  /* --- SECTIONS --- */
   .section {
     margin-top: 36px;
   }
   .section-title {
-    font-family: var(--display);
+    font-family: var(--heading);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -118,7 +126,7 @@
     border-bottom: 1px solid var(--border);
   }
 
-  /* ─── EXPERIENCE ENTRY ─── */
+  /* --- EXPERIENCE ENTRY --- */
   .entry {
     margin-bottom: 28px;
   }
@@ -132,7 +140,7 @@
     margin-bottom: 2px;
   }
   .entry-company {
-    font-family: var(--display);
+    font-family: var(--heading);
     font-size: 16px;
     font-weight: 700;
     color: var(--text);
@@ -178,7 +186,7 @@
     background: var(--muted);
   }
 
-  /* ─── CONSULTING ─── */
+  /* --- CONSULTING --- */
   .consult-entry {
     margin-bottom: 14px;
   }
@@ -191,7 +199,7 @@
     flex-wrap: wrap;
   }
   .consult-name {
-    font-family: var(--display);
+    font-family: var(--heading);
     font-size: 14px;
     font-weight: 700;
     color: var(--text);
@@ -209,13 +217,14 @@
     margin-top: 2px;
   }
 
-  /* ─── EXPERTISE ─── */
+  /* --- EXPERTISE --- */
   .expertise-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px 32px;
   }
   .expertise-cat {
+    font-family: var(--heading);
     font-size: 12px;
     font-weight: 600;
     color: var(--text);
@@ -228,7 +237,7 @@
     line-height: 1.6;
   }
 
-  /* ─── EDUCATION ─── */
+  /* --- EDUCATION --- */
   .edu-row {
     display: flex;
     align-items: baseline;
@@ -236,7 +245,7 @@
     gap: 12px;
   }
   .edu-school {
-    font-family: var(--display);
+    font-family: var(--heading);
     font-size: 14px;
     font-weight: 700;
     color: var(--text);
@@ -252,14 +261,15 @@
     flex-shrink: 0;
   }
 
-  /* ─── BACK LINK ─── */
+  /* --- BACK LINK --- */
   .back-link {
     position: fixed;
     top: 24px;
     left: 24px;
+    font-family: var(--body);
     font-size: 13px;
     font-weight: 500;
-    color: var(--muted);
+    color: var(--dim);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -267,10 +277,10 @@
     transition: color 0.2s;
     z-index: 10;
   }
-  .back-link:hover { color: var(--accent-light); }
+  .back-link:hover { color: var(--text); }
   .back-link svg { width: 14px; height: 14px; }
 
-  /* ─── PRINT BUTTON ─── */
+  /* --- PRINT BUTTON --- */
   .print-btn {
     position: fixed;
     top: 24px;
@@ -292,11 +302,11 @@
   }
   .print-btn:hover {
     color: var(--text);
-    border-color: var(--muted);
+    border-color: rgba(0,0,0,0.15);
   }
   .print-btn svg { width: 14px; height: 14px; }
 
-  /* ─── MOBILE ─── */
+  /* --- MOBILE --- */
   @media (max-width: 640px) {
     .page { padding: 40px 24px 60px; }
     .name { font-size: 26px; }
@@ -309,9 +319,9 @@
     .top-bar { display: flex; justify-content: space-between; margin-bottom: 20px; }
   }
 
-  /* ═══════════════════════════════════════
+  /* ===================================
      PRINT STYLES
-     ═══════════════════════════════════════ */
+     =================================== */
   @media print {
     :root {
       --bg: #ffffff;
@@ -322,6 +332,9 @@
       --border: #e0e0e0;
       --accent: #C04530;
       --accent-light: #C04530;
+      --cream: #1a1a1a;
+      --cream-dim: #444444;
+      --espresso-muted: #777777;
     }
 
     html, body { background: white; }
@@ -409,7 +422,7 @@
     </button>
   </div>
 
-  <!-- ─── HEADER ─── -->
+  <!-- --- HEADER --- -->
   <header class="header">
     <div class="header-top">
       <div>
@@ -427,11 +440,11 @@
       <a href="https://abmcooks.github.io" target="_blank">abmcooks.github.io</a>
     </div>
     <p class="summary" style="margin-top: 16px;">
-      Fintech product design leader with 6+ years building products that raised $70M+ in funding. Two-time founding designer (SadaPay, ZAR). Scaled a design org from 1 to 8 and grew from IC to Head of Design. Now pioneering AI-enabled design operations&mdash;building systems where engineers self-serve design, AI handles design consulting, and governance runs automatically.
+      Fintech product design leader with 6+ years building products connected to $90M+ in funding and acquisitions. Founding designer at SadaPay and ZAR. Scaled a design org from 1 to 12 and grew from IC to Head of Design. Now pioneering AI-enabled design operations&mdash;building systems where engineers self-serve design, AI handles design consulting, and governance runs automatically.
     </p>
   </header>
 
-  <!-- ─── EXPERIENCE ─── -->
+  <!-- --- EXPERIENCE --- -->
   <section class="section">
     <div class="section-title">Experience</div>
 
@@ -465,10 +478,10 @@
         </div>
         <span class="entry-meta">Dec 2020 &ndash; Aug 2024 &middot; Pakistan</span>
       </div>
-      <div class="entry-desc">First in-house designer at Pakistan's leading neobank (220M population, 87% unbanked). Grew from sole IC to leading a team of 8.</div>
+      <div class="entry-desc">First in-house designer at Pakistan's largest digital wallet (220M population, 87% unbanked). Grew from sole IC to leading a team of 12.</div>
       <ul>
-        <li>Designed the app experience that secured $7.2M pre-seed funding; continued shaping the product through $20M+ Series A and $50M acquisition by Papara</li>
-        <li>Scaled design team from 1&rarr;8: headhunted, hired, mentored, and built career progression frameworks. Created a design chapter with learning culture and self-assessment programs</li>
+        <li>Designed the app experience that helped secure $20M+ in funding and a $50M acquisition by Papara</li>
+        <li>Scaled design team from 1&rarr;12: headhunted, hired, mentored, and built career progression frameworks. Created a design chapter with learning culture and self-assessment programs</li>
         <li>Built and maintained the design system with tokens connected to production code; established a dedicated design system squad with executive buy-in from Head of Engineering and CTO</li>
         <li>Led fraud reduction through service design blueprints&mdash;mapped end-to-end risk analyst workflows, refined SOPs, and significantly reduced fraud rate</li>
         <li>Optimized chatbot flows through research and data analysis, creating service blueprints that reduced contact volume and improved customer experience</li>
@@ -544,14 +557,14 @@
       <div class="consult-entry">
         <div class="consult-header">
           <span class="consult-name">Walking the Talk / ZRG Partners &mdash; Product Design Consultant</span>
-          <span class="consult-meta"></span>
+          <span class="consult-meta">2023 &ndash; 2024</span>
         </div>
         <div class="consult-desc">Designed web-based culture assessment tools for global culture consulting firm (acquired by ZRG Partners). Built the Taylor Assessment&mdash;a psychometric tool measuring leadership culture contribution across six archetypes. Also designed 360-degree feedback survey and Culture Insights Survey used by hundreds of global organizations.</div>
       </div>
     </div>
   </section>
 
-  <!-- ─── EXPERTISE ─── -->
+  <!-- --- EXPERTISE --- -->
   <section class="section">
     <div class="section-title">Expertise</div>
     <div class="expertise-grid">
@@ -561,7 +574,7 @@
       </div>
       <div>
         <div class="expertise-cat">Leadership</div>
-        <div class="expertise-items">Design Org Scaling (1&rarr;8) · Design Governance · Career Frameworks · Cross-Functional Collaboration · Stakeholder Management</div>
+        <div class="expertise-items">Design Org Scaling (1&rarr;12) · Design Governance · Career Frameworks · Cross-Functional Collaboration · Stakeholder Management</div>
       </div>
       <div>
         <div class="expertise-cat">Domain</div>
@@ -574,7 +587,7 @@
     </div>
   </section>
 
-  <!-- ─── EDUCATION ─── -->
+  <!-- --- EDUCATION --- -->
   <section class="section">
     <div class="section-title">Education</div>
     <div class="edu-row">

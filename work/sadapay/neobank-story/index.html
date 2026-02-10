@@ -12,153 +12,55 @@
 <meta name="twitter:title" content="SadaPay — One Designer, 220 Million People — ABM">
 <meta name="twitter:description" content="First designer to Head of Design. 4M users. $1.5B annual volume. Pakistan's first neobank.">
 <title>SadaPay &mdash; One Designer, 220 Million People &mdash; ABM</title>
+<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
   :root {
-    --display: 'Bricolage Grotesque', sans-serif;
-    --body: 'Inter', sans-serif;
-    --mono: 'JetBrains Mono', monospace;
-    --bg: #08080C;
-    --card: #0E0E14;
-    --elevated: #161B22;
-    --text: #EDE8DB;
-    --dim: #8F8A7B;
-    --muted: #53504A;
-    --border: #1E1D19;
+    --display: 'AKONY', serif;
+    --body: 'Space Grotesk', sans-serif;
+    --serif: 'Gentium Book Plus', serif;
+    --espresso: #2E1A12;
+    --espresso-dim: #4f3a32;
+    --espresso-muted: #7a6a62;
+    --cream: #ebf4f5;
+    --cream-dim: #A69D91;
+    --red: #cc2936;
     --accent: #4ECDC4;
     --accent-light: #7EDDDA;
-    --accent-glow: rgba(78,205,196,0.08);
-    --accent-dim: rgba(78,205,196,0.18);
-    --peach: #FFB5A7;
-    --peach-dim: rgba(255,181,167,0.18);
-    --peach-glow: rgba(255,181,167,0.44);
-    --red: #FF4D4D;
-    --red-dim: rgba(255,77,77,0.10);
-    --green: #4ADE80;
-    --green-dim: rgba(74,222,128,0.10);
-    --radius: 20px;
+    --bg: #f8f5f0;
+    --text: #2E1A12;
+    --text-dim: #6b5d54;
+    --text-muted: #9a8d84;
+    --card-bg: #ffffff;
+    --card-border: rgba(0,0,0,0.07);
   }
-
-  @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; background: var(--bg); }
   body {
     font-family: var(--body); background: var(--bg); color: var(--text);
     line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px; cursor: none;
+    overflow-x: hidden; padding-bottom: 120px;
     animation: pageIn 0.3s ease;
   }
   body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
   @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* ─── SCROLL PROGRESS ─── */
-  .scroll-progress {
-    position: fixed; top: 0; left: 0; height: 2px; z-index: 10001;
-    background: linear-gradient(90deg, var(--accent), var(--accent-light));
-    width: 0%; transform-origin: left;
-  }
-
-  /* ─── BLOBS ─── */
-  .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-  .bl { position: absolute; border-radius: 50%; filter: blur(130px); }
-  .bl-1 { width: 600px; height: 600px; top: -10%; left: -5%; background: var(--accent); opacity: 0.08; animation: bd1 25s ease-in-out infinite; }
-  .bl-2 { width: 450px; height: 450px; bottom: 10%; right: -5%; background: var(--peach); opacity: 0.045; animation: bd2 30s ease-in-out infinite; }
-
-  /* ─── GRAIN ─── */
-  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-
-  /* ─── CURSOR ─── */
-  .cur { position: fixed; width: 14px; height: 14px; border-radius: 50%;
-    border: 1.5px solid rgba(237,232,219,0.18); pointer-events: none; z-index: 10000;
-    transition: width 0.35s cubic-bezier(.23,1,.32,1), height 0.35s cubic-bezier(.23,1,.32,1), background 0.35s, border-color 0.35s;
-    transform: translate(-50%,-50%); }
-  .cur.hov { width: 56px; height: 56px; background: rgba(78,205,196,0.06); border-color: rgba(78,205,196,0.3); }
-  .glow { position: fixed; width: 500px; height: 500px; border-radius: 50%;
-    pointer-events: none; z-index: 1;
-    background: radial-gradient(circle, rgba(78,205,196,0.04) 0%, transparent 70%);
-    transform: translate(-50%,-50%); }
-
   /* ─── NAV ─── */
-  .bnav {
-    position: fixed; bottom: 28px; left: 50%; z-index: 1000;
-    display: flex; align-items: center; gap: 2px;
-    padding: 5px 5px 5px 18px; border-radius: 100px;
-    background:
-      linear-gradient(rgba(14,14,20,0.92), rgba(14,14,20,0.92)) padding-box,
-      conic-gradient(from var(--angle), transparent 20%, rgba(78,205,196,0.4) 40%, rgba(126,221,218,0.6) 50%, rgba(78,205,196,0.4) 60%, transparent 80%) border-box;
-    border: 1.5px solid transparent;
-    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
-    box-shadow: 0 0 60px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3), 0 0 24px rgba(78,205,196,0.06);
-    opacity: 0; transform: translateX(-50%) translateY(20px);
-    animation: navIn 0.6s 0.8s forwards, rotateBorder 6s linear infinite;
-  }
-  .bnav .nn { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--text); margin-right: 10px; letter-spacing: -0.01em; }
-  .bnav .ns { width: 1px; height: 18px; background: var(--border); margin: 0 6px; }
-  .nav-links { position: relative; display: flex; align-items: center; gap: 2px; }
-  .nav-ind {
-    position: absolute; height: 30px; border-radius: 100px; top: 50%; transform: translateY(-50%);
-    background: linear-gradient(135deg, rgba(78,205,196,0.12), rgba(126,221,218,0.06));
-    border: 1px solid rgba(78,205,196,0.1);
-    box-shadow: 0 0 14px rgba(78,205,196,0.08);
-    transition: all 0.4s cubic-bezier(.23,1,.32,1); pointer-events: none; opacity: 0;
-  }
-  .nav-ind.ready { opacity: 1; }
-  .nl {
-    font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none;
-    padding: 7px 13px; border-radius: 100px; cursor: none; position: relative; z-index: 1;
-    transition: color 0.3s, transform 0.25s cubic-bezier(.23,1,.32,1);
-  }
-  .nl:hover { color: var(--dim); }
-  .nl.ac { color: var(--text); }
-  .nl.ac::after {
-    content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
-    width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 8px rgba(78,205,196,0.6);
-  }
-  .nc {
-    font-size: 13px; font-weight: 600; background: var(--accent); color: #08080C; text-decoration: none;
-    padding: 7px 18px; border-radius: 100px; margin-left: 4px; cursor: none;
-    box-shadow: 0 2px 20px rgba(78,205,196,0.25);
-    transition: all 0.3s cubic-bezier(.23,1,.32,1);
-  }
-  .nc:hover { box-shadow: 0 4px 28px rgba(78,205,196,0.45); transform: translateY(-1px) scale(1.03); }
-
-  /* ─── MOBILE MENU ─── */
-  .mob-btn {
-    display: none; background: none; border: none; color: var(--dim);
-    padding: 7px; border-radius: 8px; cursor: pointer; transition: color 0.3s;
-  }
-  .mob-btn:hover { color: var(--text); }
-  .mob-menu {
-    position: fixed; inset: 0; z-index: 9999;
-    background: rgba(8,8,12,0.96);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-  }
-  .mob-menu.open { opacity: 1; pointer-events: all; }
-  .mob-nav { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .mob-link {
-    font-family: var(--display); font-size: 36px; font-weight: 700;
-    color: var(--dim); text-decoration: none;
-    padding: 10px 32px; border-radius: 12px; transition: color 0.3s;
-  }
-  .mob-link:hover { color: var(--text); }
-  .mob-link.mob-ac { color: var(--accent); }
-  .mob-close {
-    position: absolute; top: 24px; right: 24px;
-    width: 44px; height: 44px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    background: none; border: 1px solid var(--border);
-    color: var(--dim); font-size: 22px;
-    cursor: pointer; transition: all 0.3s; font-family: var(--body);
-  }
-  .mob-close:hover { border-color: rgba(78,205,196,0.3); color: var(--text); }
+  .back-link { position: fixed; top: 64px; left: 48px; z-index: 100; font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+  .back-link:hover { color: var(--text); }
+  .nav-bar { position: fixed; top: 64px; right: 48px; z-index: 100; background: var(--espresso); border-radius: 8px; padding: 8px 32px 8px 24px; display: flex; align-items: center; gap: 12px; }
+  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
+  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cream); display: none; }
+  .nav-bar-item.active .nav-bar-dot { display: block; }
+  .nav-bar-item a { font-family: var(--body); font-size: 14px; font-weight: 500; color: rgba(235,244,245,0.6); text-decoration: none; }
+  .nav-bar-item.active a { font-weight: 700; color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
+  .nav-bar-slash { width: 12px; height: 10px; position: relative; }
+  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(235,244,245,0.3); transform: rotate(-40deg); }
+  .mobile-nav { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px); border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; }
+  .mobile-nav a { font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none; padding: 8px 15px; border-radius: 100px; }
+  .mobile-nav a.active { color: var(--cream); background: rgba(235,244,245,0.08); }
+  @media (max-width: 768px) { .nav-bar { display: none; } .mobile-nav { display: flex; } .back-link { top: 24px; left: 24px; } }
 
   /* ─── CASE STUDY HERO ─── */
   .cs-hero {
@@ -168,18 +70,12 @@
     overflow: hidden;
     padding: 120px 48px 80px;
   }
-  .cs-hero::before {
-    content: ''; position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse at 30% 50%, rgba(78,205,196,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 30%, rgba(78,205,196,0.04) 0%, transparent 50%);
-  }
   .cs-hero-metric {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     font-family: var(--display); font-weight: 800;
     font-size: clamp(180px, 25vw, 360px);
     letter-spacing: -0.06em; line-height: 1;
-    color: var(--text); opacity: 0.03;
+    color: var(--text); opacity: 0.04;
     pointer-events: none; user-select: none;
     white-space: nowrap;
   }
@@ -188,31 +84,20 @@
     max-width: 720px; text-align: center;
     opacity: 0; animation: fu 0.8s 0.2s forwards;
   }
-  .cs-hero-back {
-    position: absolute; top: 28px; left: 48px; z-index: 10;
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 500; color: var(--muted);
-    text-decoration: none; cursor: none;
-    transition: color 0.3s;
-    opacity: 0; animation: fu 0.4s 0.3s forwards;
-  }
-  .cs-hero-back:hover { color: var(--accent); }
-  .cs-hero-back svg { transition: transform 0.3s; }
-  .cs-hero-back:hover svg { transform: translateX(-3px); }
   .cs-hero-company {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--accent); margin-bottom: 20px;
     display: flex; align-items: center; justify-content: center; gap: 10px;
   }
   .cs-hero-company::before, .cs-hero-company::after {
-    content: ''; width: 24px; height: 1px; background: rgba(78,205,196,0.3);
+    content: ''; width: 24px; height: 1px; background: rgba(78,205,196,0.4);
   }
   .cs-logo {
     width: 24px; height: 24px; border-radius: 6px;
     display: inline-flex; align-items: center; justify-content: center;
     font-size: 11px; font-weight: 800; letter-spacing: 0; text-transform: none;
-    background: rgba(78,205,196,0.15); color: var(--accent);
-    border: 1px solid rgba(78,205,196,0.12);
+    background: rgba(78,205,196,0.12); color: var(--accent);
+    border: 1px solid rgba(78,205,196,0.15);
   }
   .cs-hero h1 {
     font-family: var(--display); font-size: clamp(36px, 5vw, 56px);
@@ -227,13 +112,11 @@
   }
   .cs-hero h1 .peach-em {
     font-style: normal;
-    background: linear-gradient(135deg, var(--peach), #FFD4CC);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-dim);
   }
   .cs-hero-hook {
-    font-family: var(--display); font-size: 19px; font-weight: 400;
-    color: var(--dim); line-height: 1.6; letter-spacing: -0.01em;
+    font-family: var(--serif); font-size: 19px; font-weight: 400;
+    color: var(--text-dim); line-height: 1.6; letter-spacing: -0.01em;
     max-width: 600px; margin: 0 auto 32px;
     font-style: italic;
   }
@@ -242,8 +125,8 @@
   }
   .cs-meta-pill {
     font-size: 11px; font-weight: 500; padding: 5px 14px;
-    border-radius: 100px; color: var(--dim);
-    border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+    border-radius: 100px; color: var(--text-dim);
+    border: 1px solid rgba(0,0,0,0.08); background: rgba(0,0,0,0.03);
   }
 
   /* ─── ARTICLE BODY ─── */
@@ -262,44 +145,45 @@
   .cs-section.visible { opacity: 1; transform: translateY(0); }
 
   .cs-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 12px;
+    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 12px;
     display: flex; align-items: center; gap: 10px;
   }
   .cs-label::before {
-    content: ''; width: 20px; height: 1px; background: var(--muted);
+    content: ''; width: 20px; height: 1px; background: var(--text-muted);
   }
 
   .cs-heading {
-    font-family: var(--display); font-size: clamp(24px, 3.5vw, 32px);
+    font-family: var(--body); font-size: clamp(24px, 3.5vw, 32px);
     font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;
     color: var(--text); margin-bottom: 20px;
   }
 
   /* Body text */
   .cs-body {
-    font-size: 16px; color: var(--dim); line-height: 1.8;
+    font-family: var(--serif); font-size: 16px; color: var(--text-dim); line-height: 1.8;
     margin-bottom: 20px;
   }
   .cs-body strong { color: var(--text); font-weight: 600; }
-  .cs-body em { color: var(--dim); font-style: italic; }
+  .cs-body em { color: var(--text-dim); font-style: italic; }
 
   /* Pull quote */
   .cs-quote {
     margin: 36px 0;
     padding: 24px 28px;
     border-left: 2px solid var(--accent);
-    background: rgba(78,205,196,0.03);
+    background: var(--card-bg);
     border-radius: 0 14px 14px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .cs-quote p {
-    font-family: var(--display); font-size: 18px; font-weight: 400;
-    font-style: italic; color: var(--dim); line-height: 1.7; margin: 0;
+    font-family: var(--serif); font-size: 18px; font-weight: 400;
+    font-style: italic; color: var(--text-dim); line-height: 1.7; margin: 0;
   }
   .cs-quote p strong { color: var(--text); font-weight: 600; font-style: normal; }
   .cs-quote cite {
     display: block; font-style: normal;
-    font-size: 13px; color: var(--muted); margin-top: 8px; font-weight: 400;
+    font-family: var(--body); font-size: 13px; color: var(--text-muted); margin-top: 8px; font-weight: 400;
   }
 
   /* Stat callout blocks */
@@ -310,48 +194,44 @@
   .cs-stat {
     padding: 20px;
     border-radius: 14px;
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     text-align: center;
   }
   .cs-stat-num {
-    font-family: var(--display); font-size: 28px; font-weight: 700;
+    font-family: var(--body); font-size: 28px; font-weight: 700;
     color: var(--accent); letter-spacing: -0.02em; line-height: 1;
   }
   .cs-stat-label {
-    font-size: 12px; color: var(--dim); margin-top: 6px; line-height: 1.4;
+    font-family: var(--body); font-size: 12px; color: var(--text-muted); margin-top: 6px; line-height: 1.4;
   }
 
   /* Visual placeholder */
   .cs-visual {
     margin: 36px 0;
     border-radius: 16px;
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: rgba(0,0,0,0.04);
+    border: 1px solid var(--card-border);
     overflow: hidden;
     position: relative;
   }
   .cs-visual-inner {
     aspect-ratio: 16/9;
     display: flex; align-items: center; justify-content: center;
-    font-size: 13px; color: var(--muted);
+    font-family: var(--body); font-size: 13px; color: var(--text-muted);
     padding: 32px; text-align: center;
     flex-direction: column; gap: 8px;
   }
-  .cs-visual::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(78,205,196,0.04) 0%, transparent 70%);
-    pointer-events: none;
-  }
   .cs-visual-caption {
     padding: 12px 20px;
-    font-size: 12px; color: var(--muted);
-    border-top: 1px solid var(--border);
+    font-family: var(--body); font-size: 12px; color: var(--text-muted);
+    border-top: 1px solid rgba(0,0,0,0.08);
   }
   .cs-visual.tall .cs-visual-inner { aspect-ratio: 16/10; }
   .cs-visual.video .cs-visual-tag {
-    font-family: var(--mono); font-size: 9px; font-weight: 700;
-    color: var(--peach); background: var(--peach-dim);
+    font-family: var(--body); font-size: 9px; font-weight: 700;
+    color: var(--accent); background: rgba(78,205,196,0.12);
     padding: 2px 6px; border-radius: 3px;
   }
 
@@ -363,17 +243,18 @@
   .cs-compare-side {
     padding: 24px;
     border-radius: 14px;
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .cs-compare-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
     margin-bottom: 12px;
   }
-  .cs-compare-side:first-child .cs-compare-label { color: var(--muted); }
+  .cs-compare-side:first-child .cs-compare-label { color: var(--text-muted); }
   .cs-compare-side:last-child .cs-compare-label { color: var(--accent); }
   .cs-compare-content {
-    font-size: 14px; color: var(--dim); line-height: 1.7;
+    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.7;
   }
   .cs-compare-content strong { color: var(--text); font-weight: 600; }
 
@@ -384,21 +265,21 @@
   .cs-step {
     display: flex; gap: 16px;
     padding: 16px 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
   .cs-step:last-child { border-bottom: none; }
   .cs-step-num {
-    font-family: var(--display); font-size: 24px; font-weight: 700;
+    font-family: var(--body); font-size: 24px; font-weight: 700;
     color: var(--accent); line-height: 1; flex-shrink: 0;
     width: 36px;
   }
   .cs-step-content { flex: 1; }
   .cs-step-title {
-    font-family: var(--display); font-size: 16px; font-weight: 600;
+    font-family: var(--body); font-size: 16px; font-weight: 600;
     color: var(--text); margin-bottom: 4px;
   }
   .cs-step-desc {
-    font-size: 14px; color: var(--dim); line-height: 1.6;
+    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.6;
   }
 
   /* Impact table */
@@ -408,17 +289,17 @@
     border-collapse: collapse;
   }
   .cs-impact-table th {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--muted); text-align: left; padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
+    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); text-align: left; padding: 12px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
   .cs-impact-table td {
-    font-size: 14px; color: var(--dim); padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
+    font-family: var(--serif); font-size: 14px; color: var(--text-dim); padding: 14px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
     vertical-align: top;
   }
   .cs-impact-table td:first-child {
-    font-family: var(--display); font-weight: 600; color: var(--text);
+    font-family: var(--body); font-weight: 600; color: var(--text);
     font-size: 14px;
   }
 
@@ -431,22 +312,23 @@
     display: flex; gap: 20px;
     padding: 24px;
     border-radius: 14px;
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     transition: border-color 0.3s;
   }
-  .cs-learning:hover { border-color: rgba(78,205,196,0.15); }
+  .cs-learning:hover { border-color: rgba(78,205,196,0.25); }
   .cs-learning-num {
-    font-family: var(--display); font-size: 32px; font-weight: 800;
-    color: rgba(78,205,196,0.15); line-height: 1; flex-shrink: 0;
+    font-family: var(--body); font-size: 32px; font-weight: 800;
+    color: rgba(78,205,196,0.25); line-height: 1; flex-shrink: 0;
   }
   .cs-learning-content { flex: 1; }
   .cs-learning-title {
-    font-family: var(--display); font-size: 17px; font-weight: 600;
+    font-family: var(--body); font-size: 17px; font-weight: 600;
     color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em;
   }
   .cs-learning-desc {
-    font-size: 14px; color: var(--dim); line-height: 1.7;
+    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.7;
   }
 
   /* Inline list */
@@ -456,7 +338,7 @@
     list-style: none;
   }
   .cs-list li {
-    font-size: 15px; color: var(--dim); line-height: 1.7;
+    font-family: var(--serif); font-size: 15px; color: var(--text-dim); line-height: 1.7;
     padding: 6px 0 6px 20px;
     position: relative;
   }
@@ -470,16 +352,15 @@
 
   /* Divider */
   .cs-divider {
-    width: 48px; height: 1px; background: var(--border);
+    width: 48px; height: 1px; background: rgba(0,0,0,0.08);
     margin: 48px auto;
   }
 
   /* ─── RATIO STRIP ─── */
   .ratio-strip {
     position: relative; z-index: 2;
-    background: rgba(14,14,20,0.6);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
     padding: 80px 24px;
     text-align: center;
   }
@@ -488,25 +369,25 @@
     flex-wrap: wrap;
   }
   .ratio-num {
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: clamp(48px, 10vw, 96px); font-weight: 700;
   }
   .ratio-num.small { color: var(--accent); }
-  .ratio-num.big { color: var(--muted); }
+  .ratio-num.big { color: var(--text-dim); }
   .ratio-colon {
     font-size: clamp(32px, 6vw, 56px); font-weight: 800;
-    color: var(--muted);
+    color: var(--text-dim);
   }
   .ratio-labels {
     display: flex; gap: 80px; justify-content: center; margin-top: 16px;
   }
   .ratio-label {
-    font-size: 14px; color: var(--muted); text-transform: uppercase;
+    font-family: var(--body); font-size: 14px; color: var(--text-dim); text-transform: uppercase;
     letter-spacing: 0.05em; font-weight: 600;
   }
   .ratio-label.accent-label { color: var(--accent); }
   .ratio-sub {
-    font-size: 16px; color: var(--dim);
+    font-family: var(--serif); font-size: 16px; color: var(--text-dim);
     max-width: 600px; margin: 32px auto 0;
     line-height: 1.7;
   }
@@ -515,50 +396,45 @@
   /* ─── CONSTRAINT / PRINCIPLE GRIDS ─── */
   .constraint-grid, .principle-grid {
     display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 2px; background: var(--border);
+    gap: 2px; background: rgba(0,0,0,0.08);
     border-radius: 12px; overflow: hidden;
     margin: 32px 0;
   }
   .constraint-card, .principle-card {
-    background: var(--card);
+    background: var(--card-bg);
     padding: 24px;
   }
   .constraint-card .cc-icon { font-size: 24px; margin-bottom: 12px; }
   .constraint-card .cc-title {
-    font-family: var(--display); font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--text);
+    font-family: var(--body); font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--text);
   }
   .constraint-card .cc-desc {
-    font-size: 13px; color: var(--muted); line-height: 1.5;
+    font-family: var(--serif); font-size: 13px; color: var(--text-dim); line-height: 1.5;
   }
   .principle-card { padding: 28px 24px; }
   .principle-card .pc-num {
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: 11px; font-weight: 700; color: var(--accent);
     margin-bottom: 12px;
   }
   .principle-card .pc-title {
-    font-family: var(--display); font-size: 16px; font-weight: 700; margin-bottom: 8px;
+    font-family: var(--body); font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text);
   }
   .principle-card .pc-desc {
-    font-size: 13px; color: var(--muted); line-height: 1.5;
+    font-family: var(--serif); font-size: 13px; color: var(--text-dim); line-height: 1.5;
   }
 
   /* ─── CARD SHOWCASE ─── */
   .card-showcase {
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px;
     padding: 48px 32px;
     margin: 40px 0;
     text-align: center;
     position: relative;
     overflow: hidden;
-  }
-  .card-showcase::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, var(--accent-dim) 0%, var(--peach-dim) 100%);
-    pointer-events: none;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .card-render {
     display: flex; justify-content: center; gap: 32px; align-items: center;
@@ -569,7 +445,7 @@
     width: 140px; height: 220px;
     border-radius: 12px;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
   }
   .mock-card.teal-card {
     background: linear-gradient(180deg, #4ECDC4 0%, #3BADA6 100%);
@@ -589,7 +465,7 @@
   }
   .mock-card .mc-logo {
     position: absolute; bottom: 20px; right: 16px;
-    font-size: 9px; font-weight: 800; letter-spacing: 0.05em;
+    font-family: var(--body); font-size: 9px; font-weight: 800; letter-spacing: 0.05em;
     color: rgba(255,255,255,0.5);
   }
   .mock-card .mc-nfc {
@@ -597,81 +473,82 @@
     font-size: 14px; color: rgba(255,255,255,0.3);
   }
   .mock-card-label {
-    font-size: 12px; color: var(--muted); margin-top: 12px; font-weight: 500;
+    font-family: var(--body); font-size: 12px; color: var(--text-muted); margin-top: 12px; font-weight: 500;
   }
   .card-showcase .cs-tag {
     display: inline-block;
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: 11px; font-weight: 700; color: var(--accent);
-    background: var(--accent-dim);
+    background: rgba(78,205,196,0.12);
     padding: 4px 12px; border-radius: 4px;
     position: relative; z-index: 1;
     margin-bottom: 16px;
   }
   .card-showcase .cs-title {
-    font-family: var(--display); font-size: 18px; font-weight: 700; position: relative; z-index: 1;
-    margin-bottom: 8px;
+    font-family: var(--body); font-size: 18px; font-weight: 700; position: relative; z-index: 1;
+    margin-bottom: 8px; color: var(--text);
   }
   .card-showcase .cs-desc {
-    font-size: 14px; color: var(--dim); max-width: 500px;
+    font-family: var(--serif); font-size: 14px; color: var(--text-dim); max-width: 500px;
     margin: 0 auto; position: relative; z-index: 1; line-height: 1.6;
   }
   .card-details {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 2px; background: var(--border);
+    gap: 2px; background: rgba(0,0,0,0.08);
     border-radius: 8px; overflow: hidden;
     margin-top: 24px; position: relative; z-index: 1;
   }
   .card-detail {
-    background: var(--elevated);
+    background: var(--bg);
     padding: 16px;
     text-align: center;
   }
   .card-detail .cd-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+    font-family: var(--body); font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;
   }
   .card-detail .cd-value {
-    font-size: 13px; font-weight: 600; color: var(--text);
+    font-family: var(--body); font-size: 13px; font-weight: 600; color: var(--text);
   }
 
   /* ─── SYSTEM ARCHITECTURE ─── */
   .system-layers {
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 32px;
     margin: 32px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .system-layer {
     display: flex; align-items: center; gap: 16px;
     padding: 16px 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
   .system-layer:last-child { border-bottom: none; }
   .system-layer .sl-level {
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: 10px; font-weight: 700; color: var(--accent);
-    background: var(--accent-dim);
+    background: rgba(78,205,196,0.12);
     padding: 4px 10px; border-radius: 4px;
     white-space: nowrap; min-width: 90px; text-align: center;
   }
   .system-layer .sl-name {
-    font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--text);
+    font-family: var(--body); font-size: 15px; font-weight: 700; color: var(--text);
   }
   .system-layer .sl-examples {
-    font-size: 13px; color: var(--muted); margin-left: auto;
+    font-family: var(--body); font-size: 13px; color: var(--text-muted); margin-left: auto;
   }
 
   /* ─── SADABIZ FLOW ─── */
   .biz-flow {
     display: grid; grid-template-columns: repeat(5, 1fr);
-    gap: 2px; background: var(--border);
+    gap: 2px; background: rgba(0,0,0,0.08);
     border-radius: 12px; overflow: hidden;
     margin: 32px 0;
   }
   .biz-step {
-    background: var(--card);
+    background: var(--card-bg);
     padding: 20px 12px;
     text-align: center;
     position: relative;
@@ -680,97 +557,99 @@
     content: '\2192';
     position: absolute; right: -8px; top: 50%;
     transform: translateY(-50%);
-    color: var(--muted); font-size: 14px;
+    color: var(--text-muted); font-size: 14px;
     z-index: 1;
   }
   .biz-step:last-child::after { display: none; }
   .biz-step .bs-num {
-    font-family: var(--mono);
-    font-size: 10px; font-weight: 700; color: var(--peach);
+    font-family: var(--body);
+    font-size: 10px; font-weight: 700; color: var(--accent);
     margin-bottom: 8px;
   }
   .biz-step .bs-icon { font-size: 22px; margin-bottom: 8px; }
   .biz-step .bs-title {
-    font-family: var(--display); font-size: 12px; font-weight: 700; margin-bottom: 4px;
+    font-family: var(--body); font-size: 12px; font-weight: 700; margin-bottom: 4px; color: var(--text);
   }
   .biz-step .bs-desc {
-    font-size: 10px; color: var(--muted); line-height: 1.4;
+    font-family: var(--body); font-size: 10px; color: var(--text-muted); line-height: 1.4;
   }
 
   /* ─── FEE COMPARE ─── */
   .fee-compare {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2px; background: var(--border);
+    gap: 2px; background: rgba(0,0,0,0.08);
     border-radius: 12px; overflow: hidden;
     margin: 24px 0;
   }
   .fee-col {
-    background: var(--card);
+    background: var(--card-bg);
     padding: 24px;
     text-align: center;
   }
   .fee-col .fc-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+    font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;
   }
   .fee-col .fc-number {
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: 48px; font-weight: 700;
   }
   .fee-col .fc-number.good { color: var(--accent); }
   .fee-col .fc-number.bad { color: var(--red); text-decoration: line-through; opacity: 0.6; }
   .fee-col .fc-desc {
-    font-size: 13px; color: var(--muted); margin-top: 8px;
+    font-family: var(--body); font-size: 13px; color: var(--text-muted); margin-top: 8px;
   }
 
   /* ─── BLUEPRINT ─── */
   .blueprint {
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 32px;
     margin: 32px 0;
     overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .blueprint-lane {
     padding: 20px 0;
   }
-  .blueprint-lane:first-child { border-bottom: 2px dashed var(--border); }
+  .blueprint-lane:first-child { border-bottom: 2px dashed rgba(0,0,0,0.08); }
   .blueprint-lane .bl-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
     text-transform: uppercase; margin-bottom: 16px;
   }
   .blueprint-lane:first-child .bl-label { color: var(--accent); }
-  .blueprint-lane:last-child .bl-label { color: var(--peach); }
+  .blueprint-lane:last-child .bl-label { color: var(--text-muted); }
   .blueprint-nodes {
     display: flex; gap: 8px; flex-wrap: wrap;
   }
   .bp-node {
-    background: var(--elevated);
-    border: 1px solid var(--border);
+    background: rgba(0,0,0,0.04);
+    border: 1px solid var(--card-border);
     border-radius: 6px;
     padding: 8px 14px;
-    font-size: 12px; font-weight: 500; color: var(--dim);
+    font-family: var(--body); font-size: 12px; font-weight: 500; color: var(--text-dim);
   }
   .bp-node.gap {
     border-color: var(--red);
-    background: var(--red-dim);
+    background: rgba(204,41,54,0.06);
     color: var(--red);
   }
   .bp-node.fix {
-    border-color: var(--green);
-    background: var(--green-dim);
-    color: var(--green);
+    border-color: #4ADE80;
+    background: rgba(74,222,128,0.06);
+    color: #16a34a;
   }
 
   /* ─── TEAM TIMELINE ─── */
   .team-timeline {
     display: flex; align-items: flex-end; gap: 2px;
     height: 200px; margin: 40px 0;
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 32px 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .tt-bar-wrap {
     flex: 1; display: flex; flex-direction: column;
@@ -784,16 +663,16 @@
     transition: height 0.6s ease;
   }
   .tt-count {
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: 20px; font-weight: 700; color: var(--accent);
     margin-bottom: 8px;
   }
   .tt-year {
-    font-size: 12px; font-weight: 600; color: var(--muted);
+    font-family: var(--body); font-size: 12px; font-weight: 600; color: var(--text-muted);
     margin-top: 8px;
   }
   .tt-label {
-    font-size: 10px; color: var(--muted); text-align: center;
+    font-family: var(--body); font-size: 10px; color: var(--text-muted); text-align: center;
     margin-top: 4px; line-height: 1.3;
   }
 
@@ -802,39 +681,39 @@
     width: 100%; border-collapse: collapse; margin: 32px 0;
   }
   .product-table th {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--muted);
+    font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted);
     text-align: left; padding: 12px 16px;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid rgba(0,0,0,0.08);
   }
   .product-table td {
-    font-size: 14px; padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
-    color: var(--dim); vertical-align: top;
+    font-family: var(--serif); font-size: 14px; padding: 14px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    color: var(--text-dim); vertical-align: top;
   }
   .product-table td:first-child {
-    font-family: var(--display); font-weight: 600; color: var(--text); white-space: nowrap;
+    font-family: var(--body); font-weight: 600; color: var(--text); white-space: nowrap;
   }
 
   /* ─── METRICS GRID ─── */
   .metrics-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 2px; background: var(--border);
+    gap: 2px; background: rgba(0,0,0,0.08);
     border-radius: 12px; overflow: hidden;
     margin: 40px 0;
   }
   .metric-card {
-    background: var(--card);
+    background: var(--card-bg);
     padding: 28px 20px;
     text-align: center;
   }
   .metric-card .mc-value {
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: 28px; font-weight: 700; color: var(--accent);
     margin-bottom: 4px;
   }
   .metric-card .mc-label {
-    font-size: 12px; font-weight: 600; color: var(--muted);
+    font-family: var(--body); font-size: 12px; font-weight: 600; color: var(--text-muted);
     text-transform: uppercase; letter-spacing: 0.05em;
   }
 
@@ -844,16 +723,17 @@
     gap: 16px; margin: 32px 0;
   }
   .quote-card {
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 32px;
     text-align: center;
     transition: border-color 0.3s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
-  .quote-card:hover { border-color: rgba(78,205,196,0.15); }
+  .quote-card:hover { border-color: rgba(78,205,196,0.25); }
   .quote-card .qc-text {
-    font-family: var(--display); font-size: 18px; font-weight: 500;
+    font-family: var(--serif); font-size: 18px; font-weight: 400;
     color: var(--text);
     font-style: italic;
     line-height: 1.6;
@@ -861,46 +741,22 @@
     margin: 0 auto;
   }
   .quote-card .qc-source {
-    font-size: 13px; color: var(--muted);
+    font-family: var(--body); font-size: 13px; color: var(--text-muted);
     margin-top: 16px; font-weight: 500;
   }
 
-  /* ─── FOOTER ─── */
-  footer { position: relative; z-index: 2; max-width: 1000px; margin: 100px auto 0; padding: 0 48px; text-align: center; }
-  .fb { padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
-  .fb-social { display: flex; gap: 8px; }
-  .fbs {
-    width: 28px; height: 28px; border-radius: 50%;
-    border: 1px solid var(--border); background: transparent;
-    color: var(--muted); text-decoration: none;
-    font-size: 11px; font-weight: 600;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.3s; cursor: none;
-  }
-  .fbs:hover { border-color: rgba(78,205,196,0.3); color: var(--accent); }
-
   /* ─── ANIMATIONS ─── */
   @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes navIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-  @keyframes rotateBorder { to { --angle: 360deg; } }
-  @keyframes bd1 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(80px,60px) scale(1.1); } 100% { transform: translate(-40px,30px) scale(.95); } }
-  @keyframes bd2 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px,-40px) scale(1.15); } 100% { transform: translate(30px,-60px) scale(.9); } }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
-    body { cursor: auto; } .cur, .glow { display: none; }
-    .cs-hero-back { left: 24px; }
     .cs-hero { padding: 100px 24px 60px; min-height: 60vh; }
     .cs-hero-metric { font-size: 140px; }
     .article { padding: 0 20px; }
     .cs-compare { grid-template-columns: 1fr; }
     .ratio-strip { padding: 60px 20px; }
-    .nl.hsm { display: none; }
-    .mob-btn { display: flex; align-items: center; }
-    footer { padding-left: 20px; padding-right: 20px; }
   }
   @media (max-width: 640px) {
-    .cs-hero-back { left: 20px; top: 20px; }
     .cs-hero { min-height: 50vh; padding: 80px 20px 48px; }
     .cs-hero h1 { font-size: 28px; }
     .cs-hero-hook { font-size: 16px; }
@@ -917,54 +773,31 @@
     .metrics-grid { grid-template-columns: 1fr; }
     .ratio-labels { gap: 40px; }
     .team-timeline { padding: 24px 16px; }
-    .fb { flex-direction: column; gap: 8px; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<div class="scroll-progress" id="sp"></div>
-<div class="blobs"><div class="bl bl-1"></div><div class="bl bl-2"></div></div>
-<div class="grain"></div>
-<div class="cur" id="cur"></div>
-<div class="glow" id="glo"></div>
-
 <!-- NAV -->
-<nav class="bnav">
-  <span class="nn">ABM</span><span class="ns"></span>
-  <div class="nav-links">
-    <div class="nav-ind" id="navInd"></div>
-    <a href="/" class="nl ac">Work</a>
-    <a href="/about/" class="nl hsm">About</a>
-    <a href="/writing/" class="nl hsm">Writing</a>
-    <span style="color:var(--muted);font-size:12px;margin:0 2px;font-weight:400;">-</span>
-    <a href="/resume/" class="nl hsm">Resume</a>
-  </div>
-  <button class="mob-btn" id="mobBtn" aria-label="Menu">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-  </button>
-  <a href="/contact/" class="nc">Contact</a>
-</nav>
-<div class="mob-menu" id="mobMenu">
-  <button class="mob-close" id="mobClose">&times;</button>
-  <nav class="mob-nav">
-    <a href="/" class="mob-link mob-ac">Work</a>
-    <a href="/about/" class="mob-link">About</a>
-    <a href="/writing/" class="mob-link">Writing</a>
-    <span style="color:var(--muted);font-size:14px;margin:0 4px;">-</span>
-    <a href="/resume/" class="mob-link">Resume</a>
-    <a href="/contact/" class="mob-link">Contact</a>
-  </nav>
+<a href="/work/sadapay/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to SadaPay</a>
+<div class="nav-bar">
+  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
+  <div class="nav-bar-slash"></div>
+  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
+  <div class="nav-bar-slash"></div>
+  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
 </div>
+<nav class="mobile-nav">
+  <a href="/">Craft</a>
+  <a href="/about/">Story</a>
+  <a href="/writing/">Thoughts</a>
+  <a href="/contact/">Contact</a>
+</nav>
 
 <!-- ═══════════════════════════════════════ -->
 <!--              HERO                       -->
 <!-- ═══════════════════════════════════════ -->
 <div class="cs-hero">
-  <a href="/work/sadapay/" class="cs-hero-back">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    SadaPay
-  </a>
   <div class="cs-hero-metric">1:220M</div>
   <div class="cs-hero-content">
     <div class="cs-hero-company"><span class="cs-logo">S</span>SadaPay &mdash; 2020&ndash;2023</div>
@@ -998,7 +831,7 @@
   <div class="cs-visual tall cs-section" style="max-width: 800px; margin: 40px auto 0;">
     <div class="cs-visual-inner">
       <div style="font-size: 32px; margin-bottom: 8px;">&#127463;&#127472;</div>
-      <div style="font-weight: 600; color: var(--dim);">Pakistan Market Context</div>
+      <div style="font-weight: 600; color: var(--text-dim);">Pakistan Market Context</div>
       <div>Map or infographic: 220M population, 87% unbanked, 81M smartphone users, 200K+ waitlist</div>
     </div>
   </div>
@@ -1050,7 +883,7 @@
     <div class="cs-visual">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#128247;</div>
-        <div style="font-weight: 600; color: var(--dim);">Before / After: Outsourced vs. ABM&rsquo;s Design</div>
+        <div style="font-weight: 600; color: var(--text-dim);">Before / After: Outsourced vs. ABM&rsquo;s Design</div>
         <div>Side-by-side comparison of the outsourced Western-style screens vs. the redesigned approach</div>
       </div>
       <div class="cs-visual-caption">The gap between outsourced design and designing for Pakistan.</div>
@@ -1092,7 +925,7 @@
     <div class="cs-visual tall">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#128179;</div>
-        <div style="font-weight: 600; color: var(--dim);">Real Card Photography</div>
+        <div style="font-weight: 600; color: var(--text-dim);">Real Card Photography</div>
         <div>High-res photos of the teal/peach numberless card &mdash; front, back, and the Founders Club black edition</div>
       </div>
     </div>
@@ -1144,7 +977,7 @@
     <div class="cs-visual video">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#127909; <span class="cs-visual-tag">VIDEO</span></div>
-        <div style="font-weight: 600; color: var(--dim);">Card Unboxing Experience</div>
+        <div style="font-weight: 600; color: var(--text-dim);">Card Unboxing Experience</div>
         <div>Video of the premium unboxing &mdash; card slides out smoothly from packaging. The physical moment that built brand love.</div>
       </div>
     </div>
@@ -1169,7 +1002,7 @@
     <div class="cs-visual">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#127912;</div>
-        <div style="font-weight: 600; color: var(--dim);">SadaDS in Figma</div>
+        <div style="font-weight: 600; color: var(--text-dim);">SadaDS in Figma</div>
         <div>Screenshot of the design system library &mdash; component grid, token swatches, documentation pages</div>
       </div>
       <div class="cs-visual-caption">SadaDS: the system that made consistency automatic.</div>
@@ -1208,7 +1041,7 @@
     <div class="cs-visual">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#128260;</div>
-        <div style="font-weight: 600; color: var(--dim);">Token Propagation: Figma &rarr; Code</div>
+        <div style="font-weight: 600; color: var(--text-dim);">Token Propagation: Figma &rarr; Code</div>
         <div>Visual showing how a token change in Figma flows through to production code automatically</div>
       </div>
     </div>
@@ -1281,7 +1114,7 @@
     <div class="cs-visual tall">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#128241;</div>
-        <div style="font-weight: 600; color: var(--dim);">SadaBiz App Screenshots</div>
+        <div style="font-weight: 600; color: var(--text-dim);">SadaBiz App Screenshots</div>
         <div>Payment link creation, client payment screen (Apple Pay / Google Pay), Available Earnings widget with USD balance, PKR conversion screen</div>
       </div>
     </div>
@@ -1289,7 +1122,7 @@
     <div class="cs-visual video">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#127909; <span class="cs-visual-tag">VIDEO</span></div>
-        <div style="font-weight: 600; color: var(--dim);">SadaBiz Payment Flow Demo</div>
+        <div style="font-weight: 600; color: var(--text-dim);">SadaBiz Payment Flow Demo</div>
         <div>Screen recording: freelancer creates link &rarr; client pays via Apple Pay &rarr; USD lands in balance</div>
       </div>
     </div>
@@ -1335,7 +1168,7 @@
     <div class="cs-visual tall">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#128506;</div>
-        <div style="font-weight: 600; color: var(--dim);">Full Service Blueprint (Sanitized)</div>
+        <div style="font-weight: 600; color: var(--text-dim);">Full Service Blueprint (Sanitized)</div>
         <div>The complete service blueprint document showing all touchpoints, front stage and back stage. Sensitive details redacted.</div>
       </div>
     </div>
@@ -1399,7 +1232,7 @@
     <div class="cs-visual">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#128101;</div>
-        <div style="font-weight: 600; color: var(--dim);">Team Culture Artifacts</div>
+        <div style="font-weight: 600; color: var(--text-dim);">Team Culture Artifacts</div>
         <div>Design crit sessions, career framework diagram, team photos, weekly showcase moments</div>
       </div>
     </div>
@@ -1407,7 +1240,7 @@
     <div class="cs-visual">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#127760;</div>
-        <div style="font-weight: 600; color: var(--dim);">Team Alumni Map</div>
+        <div style="font-weight: 600; color: var(--text-dim);">Team Alumni Map</div>
         <div>Where the team went after: Sohaib &rarr; Revolut (London), Nikita &rarr; Contrast (Georgia), Uzair &rarr; Overjet, Omar &rarr; ZAR</div>
       </div>
     </div>
@@ -1423,7 +1256,7 @@
     <div class="cs-visual tall">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#128242;</div>
-        <div style="font-weight: 600; color: var(--dim);">Product Surface Grid</div>
+        <div style="font-weight: 600; color: var(--text-dim);">Product Surface Grid</div>
         <div>8 phone mockup thumbnails &mdash; one for each product surface. Core App, Card, SadaBiz, Chatbot, Mission Control, SadaSchool, Stories, Website</div>
       </div>
     </div>
@@ -1455,7 +1288,7 @@
     <div class="cs-visual video">
       <div class="cs-visual-inner">
         <div style="font-size: 32px; margin-bottom: 8px;">&#127909; <span class="cs-visual-tag">VIDEO</span></div>
-        <div style="font-weight: 600; color: var(--dim);">SadaPay App Walkthrough</div>
+        <div style="font-weight: 600; color: var(--text-dim);">SadaPay App Walkthrough</div>
         <div>Full app demo video: onboarding, dashboard, send money, card management, SadaBiz flow. The complete experience.</div>
       </div>
     </div>
@@ -1552,67 +1385,14 @@
 </div>
 
 <!-- FOOTER -->
-<footer class="cs-section">
-  <div class="fb">
-    <span>&copy; 2026 ABM</span>
-    <div class="fb-social">
-      <a href="https://linkedin.com/in/iabm" class="fbs" title="LinkedIn" target="_blank">in</a>
-      <a href="#" class="fbs" title="X">X</a>
-      <a href="mailto:basitmasood999@gmail.com" class="fbs" title="Email">@</a>
-    </div>
-    <span>Designed with intention</span>
-  </div>
-</footer>
+<footer style="max-width:900px;margin:80px auto 0;padding:0 48px;"><div style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);padding-bottom:80px;"><span>&copy; 2026 ABM</span><span>Designed with intention</span></div></footer>
 
 <script>
-  // ─── CURSOR ───
-  const cur=document.getElementById('cur'),glo=document.getElementById('glo');
-  let mx=0,my=0,cx=0,cy=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;glo.style.left=mx+'px';glo.style.top=my+'px';});
-  (function l(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(l)})();
-  document.querySelectorAll('a,button,.cs-learning,.quote-card').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hov'));el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));});
-
-  // ─── SCROLL PROGRESS ───
-  window.addEventListener('scroll',()=>{
-    const p=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
-    document.getElementById('sp').style.width=p+'%';
-  });
-
-  // ─── NAV SLIDING INDICATOR ───
-  const navLinks=document.querySelector('.nav-links');
-  const navInd=document.getElementById('navInd');
-  const nls=document.querySelectorAll('.nl');
-  const activeNl=document.querySelector('.nl.ac');
-  function setInd(el){
-    const r=el.getBoundingClientRect(),pr=navLinks.getBoundingClientRect();
-    navInd.style.width=r.width+'px';
-    navInd.style.left=(r.left-pr.left)+'px';
-  }
-  setTimeout(()=>{if(activeNl){setInd(activeNl);navInd.classList.add('ready');}},1000);
-  nls.forEach(l=>{
-    l.addEventListener('mouseenter',()=>setInd(l));
-    l.addEventListener('mousemove',e=>{
-      const r=l.getBoundingClientRect();
-      const x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
-      l.style.transform=`translate(${x*0.25}px,${y*0.4}px)`;
-    });
-    l.addEventListener('mouseleave',()=>{l.style.transform='';});
-  });
-  navLinks.addEventListener('mouseleave',()=>{if(activeNl)setInd(activeNl);});
-
   // ─── REVEALS ───
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{
     if(e.isIntersecting) e.target.classList.add('visible');
   })},{threshold:.06});
   document.querySelectorAll('.cs-section').forEach(el=>obs.observe(el));
-
-  // ─── MOBILE MENU ───
-  const mobBtn=document.getElementById('mobBtn'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
-  if(mobBtn&&mobMenu){
-    mobBtn.addEventListener('click',()=>mobMenu.classList.add('open'));
-    mobClose.addEventListener('click',()=>mobMenu.classList.remove('open'));
-    mobMenu.addEventListener('click',e=>{if(e.target===mobMenu)mobMenu.classList.remove('open');});
-  }
 
   // ─── PAGE TRANSITIONS ───
   if(location.protocol!=='file:'){
