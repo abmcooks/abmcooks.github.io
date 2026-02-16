@@ -1,547 +1,1084 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ABM at SadaPay — First designer to Head of Product Design. Built Nukta design system, designed MEA's first numberless card, scaled team 1→12. $50M acquisition.">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="SadaPay — ABM">
-<meta property="og:description" content="First designer → Head of Design. Numberless card. 4M users. $50M acquisition.">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SadaPay — ABM">
-<meta name="twitter:description" content="First designer → Head of Design. Numberless card. 4M users. $50M acquisition.">
-<title>SadaPay — ABM</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --display: 'AKONY', serif;
-    --body: 'Space Grotesk', sans-serif;
-    --serif: 'Gentium Book Plus', serif;
-    --bg: #f8f5f0;
-    --text: #2E1A12;
-    --text-dim: #6b5d54;
-    --text-muted: #9a8d84;
-    --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.07);
-    --card-hover: rgba(0,0,0,0.12);
-    --espresso: #2E1A12;
-    --cream: #f8f5f0;
-    --cream-light: #ffffff;
-    --red: #cc2936;
-    --accent: #ff7b66;
-    --accent-light: #ff9d8d;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="ABM at SadaPay — First designer to Head of Product Design. Built Nukta design system, designed MEA's first numberless card, scaled team 1→12. $50M acquisition.">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="SadaPay — ABM">
+  <meta property="og:description"
+    content="First designer → Head of Design. Numberless card. 4M users. $50M acquisition.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abmcooks.github.io/work/sadapay/">
+  <meta property="og:image" content="https://abmcooks.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SadaPay — ABM">
+  <meta name="twitter:description"
+    content="First designer → Head of Design. Numberless card. 4M users. $50M acquisition.">
+  <meta name="twitter:image" content="https://abmcooks.github.io/og.png">
+  <title>SadaPay — ABM</title>
+  <link rel="canonical" href="https://abmcooks.github.io/work/sadapay/">
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+      --bg: #f8f5f0;
+      --text: #2E1A12;
+      --text-dim: #6b5d54;
+      --text-muted: #9a8d84;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.07);
+      --card-hover: rgba(0, 0, 0, 0.12);
+      --espresso: #2E1A12;
+      --cream: #f8f5f0;
+      --cream-light: #ffffff;
+      --red: #cc2936;
+      --accent: #ff7b66;
+      --accent-light: #ff9d8d;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body {
-    font-family: var(--body); background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px;
-    animation: pageIn 0.3s ease;
-  }
-  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
-  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ─── BACK LINK ─── */
-  .back-link { position: fixed; top: 64px; left: 48px; z-index: 100; font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-  .back-link:hover { color: var(--text); }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
-  /* ─── NAV BAR (dark espresso on light page) ─── */
-  .nav-bar { position: fixed; top: 64px; right: 48px; z-index: 100; background: var(--espresso); border-radius: 8px; padding: 8px 32px 8px 24px; display: flex; align-items: center; gap: 12px; }
-  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
-  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: #f8f5f0; display: none; }
-  .nav-bar-item.active .nav-bar-dot { display: block; }
-  .nav-bar-item a { font-family: var(--body); font-size: 14px; font-weight: 500; color: rgba(248,245,240,0.6); text-decoration: none; }
-  .nav-bar-item.active a { font-weight: 700; color: #f8f5f0; text-decoration: underline; text-underline-offset: 3px; }
-  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(248,245,240,0.3); transform: rotate(-40deg); }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      animation: pageIn 0.3s ease;
+    }
 
-  /* ─── MOBILE NAV ─── */
-  .mobile-nav { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px); border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; }
-  .mobile-nav a { font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none; padding: 8px 15px; border-radius: 100px; }
-  .mobile-nav a.active { color: #f8f5f0; background: rgba(235,244,245,0.08); }
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
 
-  @media (max-width: 768px) { .nav-bar { display: none; } .mobile-nav { display: flex; } .back-link { top: 24px; left: 24px; } }
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+      }
 
-  /* ─── WRAPPER ─── */
-  .wrap { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 48px; }
+      to {
+        opacity: 1;
+      }
+    }
 
-  /* ─── HERO SECTION ─── */
-  .hero {
-    position: relative; z-index: 2;
-    padding: 180px 0 80px;
-    text-align: center;
-    display: flex; flex-direction: column; align-items: center;
-    opacity: 0; animation: fu 0.8s 0.1s forwards;
-  }
-  .co-meta {
-    display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px;
-    opacity: 0; animation: fu 0.5s 0.3s forwards;
-  }
-  .co-dot {
-    width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 12px rgba(255,123,102,0.4);
-  }
-  .co-tenure {
-    font-family: var(--body); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--accent);
-  }
-  .co-name {
-    font-family: var(--display); font-size: clamp(48px, 7vw, 80px);
-    font-weight: 400; line-height: 1; letter-spacing: 0;
-    color: #ff7b66; text-transform: uppercase;
-    width: fit-content; margin: 0 auto 20px;
-    opacity: 0; animation: fu 0.7s 0.4s forwards;
-  }
-  .co-links {
-    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px;
-    opacity: 0; animation: fu 0.6s 0.5s forwards;
-  }
-  .co-link {
-    display: flex; align-items: center; gap: 5px;
-    font-family: var(--body); font-size: 12px; font-weight: 500; color: var(--text-dim);
-    text-decoration: none;
-    padding: 5px 12px; border-radius: 100px;
-    border: 1px solid rgba(255,123,102,0.2);
-    background: rgba(255,123,102,0.06);
-    transition: all 0.3s;
-  }
-  .co-link:hover { color: var(--accent); border-color: rgba(255,123,102,0.4); background: rgba(255,123,102,0.1); }
-  .co-link svg { flex-shrink: 0; }
+    /* ─── BACK LINK ─── */
+    .back-link {
+      position: fixed;
+      top: 64px;
+      left: 48px;
+      z-index: 100;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
 
-  /* ─── SECTION STYLES ─── */
-  .section-label {
-    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 24px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::before {
-    content: ''; width: 24px; height: 1px; background: var(--accent);
-  }
+    .back-link:hover {
+      color: var(--text);
+    }
 
-  /* ─── OVERVIEW ─── */
-  .overview { padding: 0 0 0; }
-  .overview-brief {
-    font-family: var(--serif); font-size: 19px; font-weight: 400;
-    color: var(--text-dim); line-height: 1.8; max-width: 750px;
-  }
-  .overview-brief strong { color: var(--text); font-weight: 700; }
-  .overview-pills {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;
-  }
-  .ov-pill {
-    font-family: var(--body); font-size: 11px; font-weight: 500; padding: 4px 12px;
-    border-radius: 100px; color: var(--accent);
-    border: 1px solid rgba(255,123,102,0.2);
-    background: rgba(255,123,102,0.06);
-  }
+    /* ─── NAV BAR (dark espresso on light page) ─── */
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--espresso);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  /* ─── STATS ─── */
-  .stats-inline {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-    margin-top: 28px; padding: 24px 0;
-    border-top: 1px solid rgba(0,0,0,0.08);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-  .si { text-align: center; position: relative; }
-  .si + .si::before {
-    content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-    width: 1px; height: 28px; background: rgba(0,0,0,0.08);
-  }
-  .si-num {
-    font-family: var(--body); font-size: clamp(22px, 2.8vw, 30px);
-    font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1;
-  }
-  .si-label {
-    font-family: var(--body); font-size: 11px; color: var(--text-muted); font-weight: 500; margin-top: 4px;
-  }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  /* ─── TESTIMONIALS ─── */
-  .testimonial {
-    padding: 24px 28px;
-    border-left: 2px solid var(--accent);
-    background: var(--card-bg);
-    border-radius: 0 12px 12px 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .testimonial p {
-    font-family: var(--serif); font-size: 16px; font-weight: 400; font-style: italic;
-    color: var(--text-dim); line-height: 1.7; margin: 0;
-  }
-  .testimonial span {
-    display: block; margin-top: 12px;
-    font-family: var(--body); font-size: 13px; color: var(--accent);
-  }
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f8f5f0;
+      display: none;
+    }
 
-  /* ─── CASE STUDIES CAROUSEL ─── */
-  .cases {
-    padding: 48px 0 0;
-    position: relative; z-index: 2;
-  }
-  .cases-header {
-    max-width: 900px; margin: 0 auto; padding: 0 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 24px;
-  }
-  .cases-hint {
-    font-family: var(--body); font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;
-  }
-  .cases-hint svg { opacity: 0.5; animation: hintSlide 2s ease-in-out infinite; }
-  @keyframes hintSlide { 0%,100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
 
-  .cases-track {
-    display: flex; gap: 18px;
-    align-items: flex-start;
-    overflow-x: auto; overflow-y: visible;
-    scroll-snap-type: x mandatory;
-    padding: 20px max(48px, calc((100vw - 804px) / 2)) 40px;
-    -ms-overflow-style: none; scrollbar-width: none;
-    cursor: grab;
-  }
-  .cases-track::-webkit-scrollbar { display: none; }
-  .cases-track.grabbing { cursor: grabbing; scroll-snap-type: none; }
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(248, 245, 240, 0.6);
+      text-decoration: none;
+    }
 
-  /* ─── CARD BASE ─── */
-  .case-card {
-    flex: 0 0 320px; height: 380px;
-    scroll-snap-align: start;
-    border-radius: 18px; overflow: hidden;
-    text-decoration: none; color: inherit;
-    position: relative;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: transform 0.5s cubic-bezier(.23,1,.32,1), box-shadow 0.5s, border-color 0.3s;
-  }
-  .case-card.wide { flex: 0 0 440px; }
-  .case-card.stagger { margin-top: 40px; }
-  .case-card:hover {
-    transform: translateY(-6px) scale(1.015);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1), 0 0 30px var(--card-glow, rgba(255,123,102,0.06));
-    border-color: var(--accent);
-  }
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: #f8f5f0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
-  /* ─── HERO METRIC ─── */
-  .case-hero {
-    position: absolute; z-index: 2;
-    top: 50%; left: 50%; transform: translate(-50%, -60%);
-    text-align: center; pointer-events: none;
-    transition: transform 0.5s cubic-bezier(.23,1,.32,1), opacity 0.5s;
-  }
-  .case-card:hover .case-hero { transform: translate(-50%, -65%); }
-  .case-hero-num {
-    font-family: var(--body); font-weight: 700; letter-spacing: -0.04em;
-    line-height: 1; color: var(--accent); opacity: 0.1;
-    font-size: clamp(72px, 10vw, 120px);
-    transition: opacity 0.5s;
-  }
-  .case-card.wide .case-hero-num { font-size: clamp(80px, 12vw, 140px); }
-  .case-card:hover .case-hero-num { opacity: 0.18; }
-  .case-hero-sub {
-    font-family: var(--body); font-size: 11px; font-weight: 500; color: var(--text-muted); opacity: 0;
-    margin-top: 4px; letter-spacing: 0.04em; text-transform: uppercase;
-    transition: opacity 0.4s 0.1s;
-  }
-  .case-card:hover .case-hero-sub { opacity: 0.6; }
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  /* ─── NUMBER BADGE ─── */
-  .case-num {
-    position: absolute; top: 18px; left: 20px; z-index: 3;
-    font-family: var(--body); font-size: 12px; font-weight: 700;
-    color: var(--text-muted); opacity: 0.4;
-  }
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: rgba(248, 245, 240, 0.3);
+      transform: rotate(-40deg);
+    }
 
-  /* ─── BOTTOM OVERLAY ─── */
-  .case-overlay {
-    position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
-    padding: 24px;
-    background: linear-gradient(to top, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.85) 55%, transparent 100%);
-  }
-  .case-title {
-    font-family: var(--body); font-size: 20px; font-weight: 700;
-    color: var(--text); letter-spacing: -0.02em; line-height: 1.2;
-    margin-bottom: 6px;
-    transition: color 0.3s;
-  }
-  .case-card:hover .case-title { color: var(--text); }
-  .case-hook {
-    font-family: var(--serif); font-size: 15px; color: var(--text-dim); line-height: 1.5;
-    margin-bottom: 12px;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-  }
-  .case-footer {
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .case-tags {
-    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
-  }
-  .case-tag {
-    font-family: var(--body); font-size: 10px; font-weight: 500; padding: 3px 10px;
-    border-radius: 100px;
-    color: var(--text-dim); border: 1px solid rgba(0,0,0,0.07);
-    background: rgba(0,0,0,0.02);
-    white-space: nowrap; transition: border-color 0.3s, color 0.3s;
-  }
-  .case-card:hover .case-tag { border-color: rgba(0,0,0,0.15); color: var(--text); }
-  .case-arrow {
-    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.07);
-    opacity: 0; transform: translateX(-4px) scale(0.9);
-    transition: all 0.35s cubic-bezier(.23,1,.32,1);
-  }
-  .case-card:hover .case-arrow {
-    opacity: 1; transform: translateX(0) scale(1);
-  }
+    /* ─── MOBILE NAV ─── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+    }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+    }
 
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .rd1 { transition-delay: .08s; } .rd2 { transition-delay: .16s; } .rd3 { transition-delay: .24s; } .rd4 { transition-delay: .32s; }
+    .mobile-nav a.active {
+      color: #f8f5f0;
+      background: rgba(235, 244, 245, 0.08);
+    }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    .wrap { padding-left: 20px; padding-right: 20px; }
-    .hero { padding: 140px 0 60px; }
-    .cases-header { padding: 0 20px; }
-    .cases-track { padding: 16px 20px 32px; gap: 14px; }
-    .case-card { flex: 0 0 280px; height: 340px; }
-    .case-card.wide { flex: 0 0 340px; }
-    .case-card.stagger { margin-top: 28px; }
-    .case-hero-num { font-size: 64px !important; }
-    .stats-inline { grid-template-columns: 1fr 1fr; gap: 16px 0; }
-    .si:nth-child(2)::before { display: none; }
-    .co-links { flex-wrap: wrap; justify-content: center; }
-  }
-  @media (max-width: 640px) {
-    .co-name { font-size: 48px; }
-    .case-card { flex: 0 0 260px; height: 320px; }
-    .case-card.wide { flex: 0 0 300px; }
-    .case-card.stagger { margin-top: 20px; }
-  }
-</style>
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .back-link {
+        top: 24px;
+        left: 24px;
+      }
+    }
+
+    /* ─── WRAPPER ─── */
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+      position: relative;
+      z-index: 2;
+      padding: 180px 0 80px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      animation: fu 0.8s 0.1s forwards;
+    }
+
+    .co-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fu 0.5s 0.3s forwards;
+    }
+
+    .co-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(255, 123, 102, 0.4);
+    }
+
+    .co-tenure {
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .co-name {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0;
+      color: #ff7b66;
+      text-transform: uppercase;
+      width: fit-content;
+      margin: 0 auto 20px;
+      opacity: 0;
+      animation: fu 0.7s 0.4s forwards;
+    }
+
+    .co-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+      opacity: 0;
+      animation: fu 0.6s 0.5s forwards;
+    }
+
+    .co-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 123, 102, 0.2);
+      background: rgba(255, 123, 102, 0.06);
+      transition: all 0.3s;
+    }
+
+    .co-link:hover {
+      color: var(--accent);
+      border-color: rgba(255, 123, 102, 0.4);
+      background: rgba(255, 123, 102, 0.1);
+    }
+
+    .co-link svg {
+      flex-shrink: 0;
+    }
+
+    /* ─── SECTION STYLES ─── */
+    .section-label {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* ─── OVERVIEW ─── */
+    .overview {
+      padding: 0 0 0;
+    }
+
+    .overview-brief {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 750px;
+    }
+
+    .overview-brief strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .overview-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .ov-pill {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+      color: var(--accent);
+      border: 1px solid rgba(255, 123, 102, 0.2);
+      background: rgba(255, 123, 102, 0.06);
+    }
+
+    /* ─── STATS ─── */
+    .stats-inline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 28px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .si {
+      text-align: center;
+      position: relative;
+    }
+
+    .si+.si::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 28px;
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .si-num {
+      font-family: var(--body);
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .si-label {
+      font-family: var(--body);
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonial {
+      padding: 24px 28px;
+      border-left: 2px solid var(--accent);
+      background: var(--card-bg);
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .testimonial p {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .testimonial span {
+      display: block;
+      margin-top: 12px;
+      font-family: var(--body);
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* ─── CASE STUDIES CAROUSEL ─── */
+    .cases {
+      padding: 48px 0 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cases-header {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .cases-hint {
+      font-family: var(--body);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cases-hint svg {
+      opacity: 0.5;
+      animation: hintSlide 2s ease-in-out infinite;
+    }
+
+    @keyframes hintSlide {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(4px);
+      }
+    }
+
+    .cases-track {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-snap-type: x mandatory;
+      padding: 20px max(48px, calc((100vw - 804px) / 2)) 40px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+
+    .cases-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cases-track.grabbing {
+      cursor: grabbing;
+      scroll-snap-type: none;
+    }
+
+    /* ─── CARD BASE ─── */
+    .case-card {
+      flex: 0 0 320px;
+      height: 380px;
+      scroll-snap-align: start;
+      border-radius: 18px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: transform 0.5s cubic-bezier(.23, 1, .32, 1), box-shadow 0.5s, border-color 0.3s;
+    }
+
+    .case-card.wide {
+      flex: 0 0 440px;
+    }
+
+    .case-card.stagger {
+      margin-top: 40px;
+    }
+
+    .case-card:hover {
+      transform: translateY(-6px) scale(1.015);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 0 30px var(--card-glow, rgba(255, 123, 102, 0.06));
+      border-color: var(--accent);
+    }
+
+    /* ─── HERO METRIC ─── */
+    .case-hero {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      text-align: center;
+      pointer-events: none;
+      transition: transform 0.5s cubic-bezier(.23, 1, .32, 1), opacity 0.5s;
+    }
+
+    .case-card:hover .case-hero {
+      transform: translate(-50%, -65%);
+    }
+
+    .case-hero-num {
+      font-family: var(--body);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.1;
+      font-size: clamp(72px, 10vw, 120px);
+      transition: opacity 0.5s;
+    }
+
+    .case-card.wide .case-hero-num {
+      font-size: clamp(80px, 12vw, 140px);
+    }
+
+    .case-card:hover .case-hero-num {
+      opacity: 0.18;
+    }
+
+    .case-hero-sub {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      opacity: 0;
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: opacity 0.4s 0.1s;
+    }
+
+    .case-card:hover .case-hero-sub {
+      opacity: 0.6;
+    }
+
+    /* ─── NUMBER BADGE ─── */
+    .case-num {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      z-index: 3;
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      opacity: 0.4;
+    }
+
+    /* ─── BOTTOM OVERLAY ─── */
+    .case-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.85) 55%, transparent 100%);
+    }
+
+    .case-title {
+      font-family: var(--body);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+
+    .case-card:hover .case-title {
+      color: var(--text);
+    }
+
+    .case-hook {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .case-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .case-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .case-tag {
+      font-family: var(--body);
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 100px;
+      color: var(--text-dim);
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      background: rgba(0, 0, 0, 0.02);
+      white-space: nowrap;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .case-card:hover .case-tag {
+      border-color: rgba(0, 0, 0, 0.15);
+      color: var(--text);
+    }
+
+    .case-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      opacity: 0;
+      transform: translateX(-4px) scale(0.9);
+      transition: all 0.35s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .case-card:hover .case-arrow {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rd1 {
+      transition-delay: .08s;
+    }
+
+    .rd2 {
+      transition-delay: .16s;
+    }
+
+    .rd3 {
+      transition-delay: .24s;
+    }
+
+    .rd4 {
+      transition-delay: .32s;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero {
+        padding: 140px 0 60px;
+      }
+
+      .cases-header {
+        padding: 0 20px;
+      }
+
+      .cases-track {
+        padding: 16px 20px 32px;
+        gap: 14px;
+      }
+
+      .case-card {
+        flex: 0 0 280px;
+        height: 340px;
+      }
+
+      .case-card.wide {
+        flex: 0 0 340px;
+      }
+
+      .case-card.stagger {
+        margin-top: 28px;
+      }
+
+      .case-hero-num {
+        font-size: 64px !important;
+      }
+
+      .stats-inline {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 0;
+      }
+
+      .si:nth-child(2)::before {
+        display: none;
+      }
+
+      .co-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .co-name {
+        font-size: 48px;
+      }
+
+      .case-card {
+        flex: 0 0 260px;
+        height: 320px;
+      }
+
+      .case-card.wide {
+        flex: 0 0 300px;
+      }
+
+      .case-card.stagger {
+        margin-top: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- BACK LINK -->
-<a href="/" class="back-link">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-  Back
-</a>
+  <!-- BACK LINK -->
+  <a href="/" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round" width="16" height="16">
+      <path d="M19 12H5" />
+      <path d="M12 19l-7-7 7-7" />
+    </svg>
+    Back
+  </a>
 
-<!-- NAV -->
-<div class="nav-bar">
-  <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-</div>
+  <!-- NAV -->
+  <div class="nav-bar">
+    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
+  </div>
 
-<nav class="mobile-nav">
-  <a href="/" class="active">Craft</a>
-  <a href="/about/">Story</a>
-  <a href="/writing/">Thoughts</a>
-  <a href="/contact/">Contact</a>
-</nav>
+  <nav class="mobile-nav">
+    <a href="/" class="active">My Craft</a>
+    <a href="/about/">Story</a>
+    <a href="/writing/">Thoughts</a>
+    <a href="/contact/">Contact</a>
+  </nav>
 
-<!-- HERO -->
-<div class="wrap">
-  <section class="hero">
-    <div class="co-meta">
-      <div class="co-dot"></div>
-      <span class="co-tenure">Head of Product Design · 2020 — 2024</span>
+  <!-- HERO -->
+  <div class="wrap">
+    <section class="hero">
+      <div class="co-meta">
+        <div class="co-dot"></div>
+        <span class="co-tenure">Head of Product Design · 2020 — 2024</span>
+      </div>
+      <h1 class="co-name">SadaPay</h1>
+      <div class="co-links">
+        <a href="https://sadapay.pk" class="co-link" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M6 3H3.5A1.5 1.5 0 002 4.5v8A1.5 1.5 0 003.5 14h8a1.5 1.5 0 001.5-1.5V10M10 2h4v4M7 9l7-7"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Website
+        </a>
+        <a href="https://www.linkedin.com/company/sadapay/" class="co-link" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M4.5 10.5c0-1 2-1.5 3.5-1.5s3.5.5 3.5 1.5M8 7.5a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor"
+              stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.3" />
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://www.instagram.com/sadapay/" class="co-link" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="currentColor" stroke-width="1.3" />
+            <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.3" />
+            <circle cx="11.8" cy="4.2" r="0.8" fill="currentColor" />
+          </svg>
+          Instagram
+        </a>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="overview reveal">
+      <p class="overview-brief">
+        <strong>Founding designer.</strong> I joined SadaPay as the first in-house designer when it was just an idea
+        &mdash; bring digital wallets to 220 million people, 87% of whom had never used a bank. The app I designed in
+        year one helped secure a <strong>$7.2M seed round</strong> &mdash; the largest by a Pakistani startup at the
+        time.
+      </p>
+      <p class="overview-brief" style="margin-top:16px;">
+        Over 4 years, I built the entire design foundation: the core wallet app, <strong>Nukta</strong> (our design
+        system &mdash; &ldquo;the dot, the center point of everything&rdquo; &mdash; with tokens connected to production
+        code), the MEA region&rsquo;s <strong>first numberless debit card</strong>, <strong>SadaBiz</strong> (a
+        freelancer payment platform with Apple Pay and Google Pay), and the fraud service blueprint the CEO calls my
+        &ldquo;superpower.&rdquo; I scaled the design team from 1 to 12+, built the career framework, and created a
+        culture where the newest junior could challenge the lead&rsquo;s work.
+      </p>
+      <p class="overview-brief" style="margin-top:16px;">
+        SadaPay didn&rsquo;t just build a product &mdash; it started a movement. We were the <strong>first to get an
+          e-money license</strong> and launch in Pakistan, setting the foundation for digital finance in the country.
+        The quality of our UX forced every traditional bank to finally care about their apps. The company grew from seed
+        to <strong>$50M acquisition</strong> by Papara, with a 4.8-star rating and $1.5B+ in annual volume built on a
+        design foundation made to earn trust where trust didn&rsquo;t exist.
+      </p>
+      <div class="overview-pills">
+        <span class="ov-pill">First Designer &rarr; Head of Design</span>
+        <span class="ov-pill">Nukta Design System</span>
+        <span class="ov-pill">Numberless Card</span>
+        <span class="ov-pill">1&rarr;12+ Team</span>
+        <span class="ov-pill">Service Design</span>
+      </div>
+      <div class="stats-inline">
+        <div class="si">
+          <div class="si-num" data-t="4" data-s="M+">0</div>
+          <div class="si-label">Users</div>
+        </div>
+        <div class="si">
+          <div class="si-num" data-p="$" data-t="1.5" data-s="B+">$0</div>
+          <div class="si-label">Annual volume</div>
+        </div>
+        <div class="si">
+          <div class="si-num" data-t="1" data-s="&rarr;12+">0</div>
+          <div class="si-label">Designers</div>
+        </div>
+        <div class="si">
+          <div class="si-num" data-p="$" data-t="50" data-s="M">$0</div>
+          <div class="si-label">Acquired</div>
+        </div>
+      </div>
+
+      <!-- TESTIMONIALS -->
+      <div style="margin-top:40px;display:flex;flex-direction:column;gap:20px;">
+        <div class="testimonial">
+          <p>&ldquo;SadaPay was praised for how well designed the product is &mdash; this is thanks to Basit and the
+            exceptional product design team he built.&rdquo;</p>
+          <span>&mdash; Brandon Timinsky, Former CEO of SadaPay</span>
+        </div>
+        <div class="testimonial">
+          <p>&ldquo;Under Basit&rsquo;s leadership of our design team, we were able to achieve this both consistently,
+            and at a high level. I considered him our Head of Design, and one of my peers.&rdquo;</p>
+          <span>&mdash; Eli Mydlarz, Head of Engineering, SadaPay</span>
+        </div>
+        <div class="testimonial">
+          <p>&ldquo;Basit is an insanely good UX designer. He has a keen eye for detail, delight, simplicity, and a deep
+            focus on users and customers.&rdquo;</p>
+          <span>&mdash; Sergio Sch&uuml;ler, Head of Product, SadaPay</span>
+        </div>
+        <div class="testimonial">
+          <p>&ldquo;He pushed hard on improving our design processes and culture, introduced our design system which
+            gave our app a great consistent design.&rdquo;</p>
+          <span>&mdash; Jon Sheppard, CTO, SadaPay</span>
+        </div>
+        <div class="testimonial">
+          <p>&ldquo;He consistently trusted and empowered us to take ownership of our projects, fostering an environment
+            of creativity and innovation.&rdquo;</p>
+          <span>&mdash; Sohaib Arif, Designer at SadaPay (now at Revolut)</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CASE STUDIES -->
+  <section class="cases reveal">
+    <div class="cases-header">
+      <div class="section-label">Case Studies</div>
+      <div class="cases-hint">
+        Drag to explore
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M10 5l3 3-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
     </div>
-    <h1 class="co-name">SadaPay</h1>
-    <div class="co-links">
-      <a href="https://sadapay.pk" class="co-link" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 3H3.5A1.5 1.5 0 002 4.5v8A1.5 1.5 0 003.5 14h8a1.5 1.5 0 001.5-1.5V10M10 2h4v4M7 9l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Website
+    <div class="cases-track" id="casesTrack">
+
+      <a href="/writing/waitlist-gamification/" class="case-card wide" style="--card-glow:rgba(255,123,102,0.1)">
+        <span class="case-num">01</span>
+        <div class="case-hero">
+          <div class="case-hero-num">700K</div>
+          <div class="case-hero-sub">waitlist signups</div>
+        </div>
+        <div class="case-overlay">
+          <div class="case-title">Gamified Waitlists</div>
+          <div class="case-hook">Designed hook systems that turned waitlists into power user factories &mdash; zero paid
+            acquisition.</div>
+          <div class="case-footer">
+            <div class="case-tags">
+              <span class="case-tag">Growth Design</span>
+              <span class="case-tag">Gamification</span>
+            </div>
+            <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H5M12 2V9" stroke="var(--text)" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></div>
+          </div>
+        </div>
       </a>
-      <a href="https://www.linkedin.com/company/sadapay/" class="co-link" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4.5 10.5c0-1 2-1.5 3.5-1.5s3.5.5 3.5 1.5M8 7.5a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-        LinkedIn
+
+      <a href="/work/sadapay/neobank-story/" class="case-card wide" style="--card-glow:rgba(255,123,102,0.1)">
+        <span class="case-num">02</span>
+        <div class="case-hero">
+          <div class="case-hero-num">4.8&#9733;</div>
+          <div class="case-hero-sub">App Store rating</div>
+        </div>
+        <div class="case-overlay">
+          <div class="case-title">Building Pakistan's Digital Wallet</div>
+          <div class="case-hook">From first designer to Head of Design &mdash; the full SadaPay story. Numberless card,
+            design system, team of 12+.</div>
+          <div class="case-footer">
+            <div class="case-tags">
+              <span class="case-tag">Product Design</span>
+              <span class="case-tag">Leadership</span>
+            </div>
+            <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H5M12 2V9" stroke="var(--text)" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></div>
+          </div>
+        </div>
       </a>
-      <a href="https://www.instagram.com/sadapay/" class="co-link" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.3"/><circle cx="11.8" cy="4.2" r="0.8" fill="currentColor"/></svg>
-        Instagram
-      </a>
+
     </div>
   </section>
 
-  <!-- OVERVIEW -->
-  <section class="overview reveal">
-    <p class="overview-brief">
-      <strong>Founding designer.</strong> I joined SadaPay as the first in-house designer when it was just an idea &mdash; bring digital wallets to 220 million people, 87% of whom had never used a bank. The app I designed in year one helped secure a <strong>$7.2M seed round</strong> &mdash; the largest by a Pakistani startup at the time.
-    </p>
-    <p class="overview-brief" style="margin-top:16px;">
-      Over 4 years, I built the entire design foundation: the core wallet app, <strong>Nukta</strong> (our design system &mdash; &ldquo;the dot, the center point of everything&rdquo; &mdash; with tokens connected to production code), the MEA region&rsquo;s <strong>first numberless debit card</strong>, <strong>SadaBiz</strong> (a freelancer payment platform with Apple Pay and Google Pay), and the fraud service blueprint the CEO calls my &ldquo;superpower.&rdquo; I scaled the design team from 1 to 12+, built the career framework, and created a culture where the newest junior could challenge the lead&rsquo;s work.
-    </p>
-    <p class="overview-brief" style="margin-top:16px;">
-      SadaPay didn&rsquo;t just build a product &mdash; it started a movement. We were the <strong>first to get an e-money license</strong> and launch in Pakistan, setting the foundation for digital finance in the country. The quality of our UX forced every traditional bank to finally care about their apps. The company grew from seed to <strong>$50M acquisition</strong> by Papara, with a 4.8-star rating and $1.5B+ in annual volume built on a design foundation made to earn trust where trust didn&rsquo;t exist.
-    </p>
-    <div class="overview-pills">
-      <span class="ov-pill">First Designer &rarr; Head of Design</span>
-      <span class="ov-pill">Nukta Design System</span>
-      <span class="ov-pill">Numberless Card</span>
-      <span class="ov-pill">1&rarr;12+ Team</span>
-      <span class="ov-pill">Service Design</span>
+  <!-- FOOTER -->
+  <footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
+    <div
+      style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
+      <span>&copy; 2026 ABM</span>
+      <span>Designed with intention</span>
     </div>
-    <div class="stats-inline">
-      <div class="si"><div class="si-num" data-t="4" data-s="M+">0</div><div class="si-label">Users</div></div>
-      <div class="si"><div class="si-num" data-p="$" data-t="1.5" data-s="B+">$0</div><div class="si-label">Annual volume</div></div>
-      <div class="si"><div class="si-num" data-t="1" data-s="&rarr;12+">0</div><div class="si-label">Designers</div></div>
-      <div class="si"><div class="si-num" data-p="$" data-t="50" data-s="M">$0</div><div class="si-label">Acquired</div></div>
-    </div>
+  </footer>
 
-    <!-- TESTIMONIALS -->
-    <div style="margin-top:40px;display:flex;flex-direction:column;gap:20px;">
-      <div class="testimonial">
-        <p>&ldquo;SadaPay was praised for how well designed the product is &mdash; this is thanks to Basit and the exceptional product design team he built.&rdquo;</p>
-        <span>&mdash; Brandon Timinsky, Former CEO of SadaPay</span>
-      </div>
-      <div class="testimonial">
-        <p>&ldquo;Under Basit&rsquo;s leadership of our design team, we were able to achieve this both consistently, and at a high level. I considered him our Head of Design, and one of my peers.&rdquo;</p>
-        <span>&mdash; Eli Mydlarz, Head of Engineering, SadaPay</span>
-      </div>
-      <div class="testimonial">
-        <p>&ldquo;Basit is an insanely good UX designer. He has a keen eye for detail, delight, simplicity, and a deep focus on users and customers.&rdquo;</p>
-        <span>&mdash; Sergio Sch&uuml;ler, Head of Product, SadaPay</span>
-      </div>
-      <div class="testimonial">
-        <p>&ldquo;He pushed hard on improving our design processes and culture, introduced our design system which gave our app a great consistent design.&rdquo;</p>
-        <span>&mdash; Jon Sheppard, CTO, SadaPay</span>
-      </div>
-      <div class="testimonial">
-        <p>&ldquo;He consistently trusted and empowered us to take ownership of our projects, fostering an environment of creativity and innovation.&rdquo;</p>
-        <span>&mdash; Sohaib Arif, Designer at SadaPay (now at Revolut)</span>
-      </div>
-    </div>
-  </section>
-</div>
+  <script>
+    // ─── REVEALS ───
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, { threshold: .06 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-<!-- CASE STUDIES -->
-<section class="cases reveal">
-  <div class="cases-header">
-    <div class="section-label">Case Studies</div>
-    <div class="cases-hint">
-      Drag to explore
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M10 5l3 3-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-  </div>
-  <div class="cases-track" id="casesTrack">
-
-    <a href="/writing/waitlist-gamification/" class="case-card wide" style="--card-glow:rgba(255,123,102,0.1)">
-      <span class="case-num">01</span>
-      <div class="case-hero">
-        <div class="case-hero-num">700K</div>
-        <div class="case-hero-sub">waitlist signups</div>
-      </div>
-      <div class="case-overlay">
-        <div class="case-title">Gamified Waitlists</div>
-        <div class="case-hook">Designed hook systems that turned waitlists into power user factories &mdash; zero paid acquisition.</div>
-        <div class="case-footer">
-          <div class="case-tags">
-            <span class="case-tag">Growth Design</span>
-            <span class="case-tag">Gamification</span>
-          </div>
-          <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="var(--text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </div>
-    </a>
-
-    <a href="/work/sadapay/neobank-story/" class="case-card wide" style="--card-glow:rgba(255,123,102,0.1)">
-      <span class="case-num">02</span>
-      <div class="case-hero">
-        <div class="case-hero-num">4.8&#9733;</div>
-        <div class="case-hero-sub">App Store rating</div>
-      </div>
-      <div class="case-overlay">
-        <div class="case-title">Building Pakistan's Digital Wallet</div>
-        <div class="case-hook">From first designer to Head of Design &mdash; the full SadaPay story. Numberless card, design system, team of 12+.</div>
-        <div class="case-footer">
-          <div class="case-tags">
-            <span class="case-tag">Product Design</span>
-            <span class="case-tag">Leadership</span>
-          </div>
-          <div class="case-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="var(--text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
-  <div style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
-    <span>&copy; 2026 ABM</span>
-    <span>Designed with intention</span>
-  </div>
-</footer>
-
-<script>
-  // ─── REVEALS ───
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  })},{threshold:.06});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-  // ─── COUNTERS ───
-  document.querySelectorAll('.si-num[data-t]').forEach(el=>{
-    const co=new IntersectionObserver(es=>{es.forEach(en=>{
-      if(en.isIntersecting&&!en.target.dataset.d){en.target.dataset.d='1';
-        const t=parseFloat(en.target.dataset.t),p=en.target.dataset.p||'',s=en.target.dataset.s||'',dc=t%1!==0,du=2000,st=performance.now();
-        (function tk(n){const pr=Math.min((n-st)/du,1),ea=1-Math.pow(1-pr,4);en.target.textContent=p+(dc?(t*ea).toFixed(1):Math.floor(t*ea))+s;if(pr<1)requestAnimationFrame(tk)})(st);
-      }})},{threshold:.5});co.observe(el);});
-
-  // ─── CAROUSEL DRAG TO SCROLL ───
-  const track=document.getElementById('casesTrack');
-  if(track){
-    let isDown=false,startX,scrollL,hasDragged=false;
-    track.addEventListener('mousedown',e=>{
-      isDown=true;hasDragged=false;
-      track.classList.add('grabbing');
-      startX=e.pageX-track.offsetLeft;
-      scrollL=track.scrollLeft;
+    // ─── COUNTERS ───
+    document.querySelectorAll('.si-num[data-t]').forEach(el => {
+      const co = new IntersectionObserver(es => {
+        es.forEach(en => {
+          if (en.isIntersecting && !en.target.dataset.d) {
+            en.target.dataset.d = '1';
+            const t = parseFloat(en.target.dataset.t), p = en.target.dataset.p || '', s = en.target.dataset.s || '', dc = t % 1 !== 0, du = 2000, st = performance.now();
+            (function tk(n) { const pr = Math.min((n - st) / du, 1), ea = 1 - Math.pow(1 - pr, 4); en.target.textContent = p + (dc ? (t * ea).toFixed(1) : Math.floor(t * ea)) + s; if (pr < 1) requestAnimationFrame(tk) })(st);
+          }
+        })
+      }, { threshold: .5 }); co.observe(el);
     });
-    track.addEventListener('mouseleave',()=>{isDown=false;track.classList.remove('grabbing');});
-    track.addEventListener('mouseup',()=>{isDown=false;track.classList.remove('grabbing');});
-    track.addEventListener('mousemove',e=>{
-      if(!isDown)return;
-      e.preventDefault();
-      const x=e.pageX-track.offsetLeft;
-      const walk=(x-startX)*1.8;
-      if(Math.abs(walk)>5)hasDragged=true;
-      track.scrollLeft=scrollL-walk;
-    });
-    track.querySelectorAll('.case-card').forEach(card=>{
-      card.addEventListener('click',e=>{if(hasDragged){e.preventDefault();hasDragged=false;}});
-    });
-    track.addEventListener('wheel',e=>{
-      if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
-      e.preventDefault();
-      track.scrollBy({left:e.deltaY*2,behavior:'smooth'});
-    },{passive:false});
-  }
 
-  // ─── PAGE TRANSITIONS ───
-  if(location.protocol!=='file:'){
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const h=a.getAttribute('href');
-      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(()=>window.location.href=h,150);
+    // ─── CAROUSEL DRAG TO SCROLL ───
+    const track = document.getElementById('casesTrack');
+    if (track) {
+      let isDown = false, startX, scrollL, hasDragged = false;
+      track.addEventListener('mousedown', e => {
+        isDown = true; hasDragged = false;
+        track.classList.add('grabbing');
+        startX = e.pageX - track.offsetLeft;
+        scrollL = track.scrollLeft;
       });
-    });
-  }
-</script>
+      track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('grabbing'); });
+      track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('grabbing'); });
+      track.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.8;
+        if (Math.abs(walk) > 5) hasDragged = true;
+        track.scrollLeft = scrollL - walk;
+      });
+      track.querySelectorAll('.case-card').forEach(card => {
+        card.addEventListener('click', e => { if (hasDragged) { e.preventDefault(); hasDragged = false; } });
+      });
+      track.addEventListener('wheel', e => {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+        e.preventDefault();
+        track.scrollBy({ left: e.deltaY * 2, behavior: 'smooth' });
+      }, { passive: false });
+    }
+
+    // ─── PAGE TRANSITIONS ───
+    if (location.protocol !== 'file:') {
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => window.location.href = h, 150);
+        });
+      });
+    }
+  </script>
 </body>
+
 </html>

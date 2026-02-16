@@ -1,935 +1,1579 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Merchant Onboarding — 19 steps to become a merchant. Target: 100,000 stores. The math didn't work. The onboarding had to change.">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="Merchant Onboarding — ABM">
-<meta property="og:description" content="19 steps to 4. Designing for 100,000 stores.">
-<meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Merchant Onboarding — ABM">
-<meta name="twitter:description" content="19 steps to 4. Designing for 100,000 stores.">
-<title>Merchant Onboarding — ABM</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --display: 'AKONY', serif;
-    --body: 'Space Grotesk', sans-serif;
-    --serif: 'Gentium Book Plus', serif;
-    --bg: #f8f5f0;
-    --text: #2E1A12;
-    --text-dim: #6b5d54;
-    --text-muted: #9a8d84;
-    --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.07);
-    --red: #cc2936;
-    --accent: #C9A84E;
-    --accent-light: #DBBF6A;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Merchant Onboarding — 19 steps to become a merchant. Target: 100,000 stores. The math didn't work. The onboarding had to change.">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="Merchant Onboarding — ABM">
+  <meta property="og:description" content="19 steps to 4. Designing for 100,000 stores.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Merchant Onboarding — ABM">
+  <meta name="twitter:description" content="19 steps to 4. Designing for 100,000 stores.">
+  <title>Merchant Onboarding — ABM</title>
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+      --bg: #f8f5f0;
+      --text: #2E1A12;
+      --text-dim: #6b5d54;
+      --text-muted: #9a8d84;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.07);
+      --red: #cc2936;
+      --accent: #C9A84E;
+      --accent-light: #DBBF6A;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body {
-    font-family: var(--body); background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px;
-    animation: pageIn 0.3s ease;
-  }
-  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
-  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* --- NAV --- */
-  .back-link { position: fixed; top: 64px; left: 48px; z-index: 100; font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-  .back-link:hover { color: var(--text); }
-  .nav-bar { position: fixed; top: 64px; right: 48px; z-index: 100; background: var(--text); border-radius: 8px; padding: 8px 32px 8px 24px; display: flex; align-items: center; gap: 12px; }
-  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
-  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: #f8f5f0; display: none; }
-  .nav-bar-item.active .nav-bar-dot { display: block; }
-  .nav-bar-item a { font-family: var(--body); font-size: 14px; font-weight: 500; color: rgba(248,245,240,0.6); text-decoration: none; }
-  .nav-bar-item.active a { font-weight: 700; color: #f8f5f0; text-decoration: underline; text-underline-offset: 3px; }
-  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(248,245,240,0.3); transform: rotate(-40deg); }
-  .mobile-nav { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px); border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; }
-  .mobile-nav a { font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none; padding: 8px 15px; border-radius: 100px; }
-  .mobile-nav a.active { color: #f8f5f0; background: rgba(235,244,245,0.08); }
-  @media (max-width: 768px) { .nav-bar { display: none; } .mobile-nav { display: flex; } .back-link { top: 24px; left: 24px; } }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
-  /* --- CASE STUDY HERO --- */
-  .cs-hero {
-    position: relative;
-    min-height: 80vh;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    padding: 160px 48px 80px;
-  }
-  .cs-hero-metric {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    font-family: var(--body); font-weight: 700;
-    font-size: clamp(180px, 25vw, 360px);
-    letter-spacing: -0.06em; line-height: 1;
-    color: var(--accent); opacity: 0.08;
-    pointer-events: none; user-select: none;
-    white-space: nowrap;
-  }
-  .cs-hero-content {
-    position: relative; z-index: 2;
-    max-width: 720px; text-align: center;
-    opacity: 0; animation: fu 0.8s 0.2s forwards;
-  }
-  .cs-hero-company {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 20px;
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-  }
-  .cs-hero-company::before, .cs-hero-company::after {
-    content: ''; width: 24px; height: 1px; background: rgba(201,168,78,0.3);
-  }
-  .cs-logo {
-    width: 24px; height: 24px; border-radius: 6px;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 800; letter-spacing: 0; text-transform: none;
-    background: rgba(201,168,78,0.15); color: var(--accent);
-    border: 1px solid rgba(201,168,78,0.12);
-  }
-  .cs-hero h1 {
-    font-family: var(--display); font-size: clamp(36px, 5vw, 56px);
-    font-weight: 400; letter-spacing: 0.02em; line-height: 1.1;
-    color: var(--text); margin-bottom: 20px;
-    text-transform: uppercase;
-  }
-  .cs-hero-hook {
-    font-family: var(--serif); font-size: 19px; font-weight: 400;
-    color: var(--text-dim); line-height: 1.6;
-    max-width: 600px; margin: 0 auto 32px;
-    font-style: italic;
-  }
-  .cs-hero-meta {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-  }
-  .cs-meta-pill {
-    font-size: 11px; font-weight: 500; padding: 5px 14px;
-    border-radius: 100px; color: var(--text-dim);
-    border: 1px solid var(--card-border); background: var(--card-bg);
-  }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      animation: pageIn 0.3s ease;
+    }
 
-  /* --- ARTICLE BODY --- */
-  .article {
-    position: relative;
-    max-width: 720px; margin: 0 auto;
-    padding: 0 32px;
-  }
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
 
-  .cs-section {
-    margin-top: 72px;
-    opacity: 0; transform: translateY(28px);
-    transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1);
-  }
-  .cs-section.visible { opacity: 1; transform: translateY(0); }
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+      }
 
-  .cs-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 12px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .cs-label::before {
-    content: ''; width: 20px; height: 1px; background: var(--accent);
-  }
+      to {
+        opacity: 1;
+      }
+    }
 
-  .cs-heading {
-    font-family: var(--body); font-size: clamp(24px, 3.5vw, 32px);
-    font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;
-    color: var(--text); margin-bottom: 20px;
-  }
+    /* --- NAV --- */
+    .back-link {
+      position: fixed;
+      top: 64px;
+      left: 48px;
+      z-index: 100;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
 
-  .cs-body {
-    font-family: var(--serif); font-size: 16px; color: var(--text-dim); line-height: 1.8;
-    margin-bottom: 20px;
-  }
-  .cs-body strong { color: var(--text); font-weight: 700; }
-  .cs-body em { color: var(--text-dim); font-style: italic; }
+    .back-link:hover {
+      color: var(--text);
+    }
 
-  .cs-quote {
-    margin: 36px 0;
-    padding: 24px 28px;
-    border-left: 2px solid var(--accent);
-    background: rgba(201,168,78,0.06);
-    border-radius: 0 14px 14px 0;
-  }
-  .cs-quote p {
-    font-family: var(--serif); font-size: 18px; font-weight: 400;
-    font-style: italic; color: var(--text-dim); line-height: 1.7; margin: 0;
-  }
-  .cs-quote p strong { color: var(--text); font-weight: 700; font-style: normal; }
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--text);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  .cs-stats {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 16px; margin: 36px 0;
-  }
-  .cs-stat {
-    padding: 20px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    text-align: center;
-  }
-  .cs-stat-num {
-    font-family: var(--body); font-size: 28px; font-weight: 700;
-    color: var(--accent); letter-spacing: -0.02em; line-height: 1;
-  }
-  .cs-stat-label {
-    font-size: 12px; color: var(--text-dim); margin-top: 6px; line-height: 1.4;
-  }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  .cs-visual {
-    margin: 36px 0;
-    border-radius: 16px;
-    background: rgba(0,0,0,0.04);
-    border: 1px solid var(--card-border);
-    overflow: hidden;
-    position: relative;
-  }
-  .cs-visual-inner {
-    aspect-ratio: 16/9;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; color: var(--text-dim);
-    padding: 32px; text-align: center;
-  }
-  .cs-visual-caption {
-    padding: 12px 20px;
-    font-size: 12px; color: var(--text-dim);
-    border-top: 1px solid var(--card-border);
-  }
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f8f5f0;
+      display: none;
+    }
 
-  .cs-compare {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 16px; margin: 36px 0;
-  }
-  .cs-compare-side {
-    padding: 24px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .cs-compare-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .cs-compare-side:first-child .cs-compare-label { color: var(--text-dim); }
-  .cs-compare-side:last-child .cs-compare-label { color: var(--accent); }
-  .cs-compare-content {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.7;
-  }
-  .cs-compare-content strong { color: var(--text); font-weight: 700; }
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
 
-  .cs-steps { margin: 28px 0; }
-  .cs-step {
-    display: flex; gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-  .cs-step:last-child { border-bottom: none; }
-  .cs-step-num {
-    font-family: var(--body); font-size: 24px; font-weight: 700;
-    color: var(--accent); line-height: 1; flex-shrink: 0;
-    width: 36px;
-  }
-  .cs-step-content { flex: 1; }
-  .cs-step-title {
-    font-family: var(--body); font-size: 16px; font-weight: 600;
-    color: var(--text); margin-bottom: 4px;
-  }
-  .cs-step-desc {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.6;
-  }
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(248, 245, 240, 0.6);
+      text-decoration: none;
+    }
 
-  .cs-impact-table {
-    width: 100%;
-    margin: 32px 0;
-    border-collapse: collapse;
-  }
-  .cs-impact-table th {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--text-dim); text-align: left; padding: 12px 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-  .cs-impact-table td {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); padding: 14px 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    vertical-align: top;
-  }
-  .cs-impact-table td:first-child {
-    font-family: var(--body); font-weight: 600; color: var(--text);
-    font-size: 14px;
-  }
-  .cs-impact-table td:last-child {
-    color: var(--accent);
-  }
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: #f8f5f0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
-  .cs-learnings {
-    display: flex; flex-direction: column; gap: 16px;
-    margin: 32px 0;
-  }
-  .cs-learning {
-    display: flex; gap: 20px;
-    padding: 24px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: border-color 0.3s;
-  }
-  .cs-learning:hover { border-color: rgba(201,168,78,0.3); }
-  .cs-learning-num {
-    font-family: var(--body); font-size: 32px; font-weight: 700;
-    color: rgba(201,168,78,0.25); line-height: 1; flex-shrink: 0;
-  }
-  .cs-learning-content { flex: 1; }
-  .cs-learning-title {
-    font-family: var(--body); font-size: 17px; font-weight: 600;
-    color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em;
-  }
-  .cs-learning-desc {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.7;
-  }
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  .cs-nav {
-    position: relative;
-    max-width: 720px; margin: 80px auto 0;
-    padding: 0 32px;
-    display: flex; justify-content: space-between; gap: 16px;
-  }
-  .cs-nav-link {
-    display: flex; flex-direction: column; gap: 4px;
-    text-decoration: none;
-    padding: 20px 24px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: all 0.3s;
-    flex: 1;
-  }
-  .cs-nav-link:hover {
-    border-color: rgba(201,168,78,0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-  }
-  .cs-nav-link:last-child { text-align: right; }
-  .cs-nav-dir {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--text-dim);
-  }
-  .cs-nav-title {
-    font-family: var(--body); font-size: 16px; font-weight: 600;
-    color: var(--text); letter-spacing: -0.01em;
-  }
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: rgba(248, 245, 240, 0.3);
+      transform: rotate(-40deg);
+    }
 
-  .cs-list {
-    margin: 16px 0 20px;
-    padding-left: 0;
-    list-style: none;
-  }
-  .cs-list li {
-    font-family: var(--serif); font-size: 15px; color: var(--text-dim); line-height: 1.7;
-    padding: 6px 0 6px 20px;
-    position: relative;
-  }
-  .cs-list li::before {
-    content: '';
-    position: absolute; left: 0; top: 14px;
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); opacity: 0.5;
-  }
-  .cs-list li strong { color: var(--text); font-weight: 700; }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+    }
 
-  .cs-divider {
-    width: 48px; height: 1px; background: rgba(0,0,0,0.08);
-    margin: 48px auto;
-  }
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+    }
 
-  /* --- SCALE STRIP --- */
-  .scale-strip {
-    position: relative;
-    max-width: 720px; margin: 0 auto;
-    padding: 48px 32px; text-align: center;
-  }
-  .scale-tension {
-    display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap;
-  }
-  .scale-num {
-    font-family: var(--body); font-weight: 700; line-height: 1;
-  }
-  .scale-num.bad { font-size: clamp(48px, 10vw, 80px); color: #cc2936; }
-  .scale-num.target { font-size: clamp(48px, 10vw, 80px); color: var(--accent); }
-  .scale-label {
-    font-size: 12px; color: var(--text-dim); text-transform: uppercase;
-    letter-spacing: 0.08em; font-weight: 600; margin-top: 4px;
-  }
-  .scale-arrow {
-    font-size: 32px; color: var(--text-muted);
-  }
-  .scale-sub {
-    font-family: var(--serif); font-size: 15px; color: var(--text-dim); max-width: 500px; margin: 24px auto 0; line-height: 1.7;
-  }
+    .mobile-nav a.active {
+      color: #f8f5f0;
+      background: rgba(235, 244, 245, 0.08);
+    }
 
-  /* --- PERSONA GRID --- */
-  .persona-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 16px; margin: 32px 0;
-  }
-  .persona-card {
-    padding: 24px 20px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .persona-card .pe-name { font-family: var(--body); font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
-  .persona-card .pe-role {
-    font-size: 11px; color: var(--text-muted); text-transform: uppercase;
-    letter-spacing: 0.05em; font-weight: 600; margin-bottom: 12px;
-  }
-  .persona-card .pe-quote {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); font-style: italic; line-height: 1.5; margin-bottom: 12px;
-  }
-  .persona-card .pe-desc {
-    font-family: var(--serif); font-size: 12px; color: var(--text-dim); line-height: 1.5;
-    border-top: 1px solid var(--card-border); padding-top: 12px;
-  }
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
 
-  /* --- QR LIFECYCLE --- */
-  .qr-lifecycle {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 16px; margin: 32px 0;
-  }
-  .qr-state {
-    padding: 24px 20px; text-align: center;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .qr-state .qs-icon { font-size: 28px; margin-bottom: 12px; }
-  .qr-state .qs-name { font-family: var(--body); font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-  .qr-state .qs-tag {
-    font-size: 10px; font-weight: 700;
-    color: var(--accent); background: rgba(201,168,78,0.08);
-    display: inline-block; padding: 2px 8px; border-radius: 100px; margin-bottom: 8px;
-  }
-  .qr-state .qs-desc { font-family: var(--serif); font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+      .mobile-nav {
+        display: flex;
+      }
 
-  /* --- GHOST WALLET --- */
-  .ghost-wallet {
-    border-radius: 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    padding: 48px 32px; margin: 36px 0;
-    text-align: center; position: relative; overflow: hidden;
-  }
-  .ghost-wallet::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 30%, rgba(201,168,78,0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .ghost-wallet .gw-amount {
-    font-family: var(--body); font-size: 56px; font-weight: 700;
-    color: var(--text); position: relative; z-index: 1; letter-spacing: -0.02em;
-  }
-  .ghost-wallet .gw-copy {
-    font-family: var(--body); font-size: 22px; font-weight: 700; color: var(--accent);
-    margin-top: 8px; position: relative; z-index: 1;
-  }
-  .ghost-wallet .gw-equiv {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); margin-top: 8px; position: relative; z-index: 1;
-  }
-  .ghost-wallet .gw-pitch {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); margin-top: 4px; position: relative; z-index: 1;
-  }
-  .ghost-wallet .gw-cta {
-    display: inline-block; margin-top: 24px; padding: 12px 32px;
-    background: var(--accent); color: #fff; font-weight: 700;
-    font-size: 14px; border-radius: 100px; position: relative; z-index: 1;
-  }
-  .ghost-wallet .gw-tags {
-    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px; position: relative; z-index: 1;
-  }
-  .ghost-wallet .gw-tag {
-    font-size: 10px; font-weight: 600;
-    color: var(--text-dim); background: var(--bg);
-    padding: 4px 10px; border-radius: 100px; border: 1px solid var(--card-border);
-  }
+      .back-link {
+        top: 24px;
+        left: 24px;
+      }
+    }
 
-  /* --- DECISION GRID --- */
-  .decision-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 16px; margin: 32px 0;
-  }
-  .decision-card {
-    padding: 24px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .decision-card .dc-title { font-family: var(--body); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-  .decision-card .dc-desc { font-family: var(--serif); font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+    /* --- CASE STUDY HERO --- */
+    .cs-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 160px 48px 80px;
+    }
 
-  /* --- GROUND FORCE PILLARS --- */
-  .gf-pillars {
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    overflow: hidden; margin: 32px 0;
-  }
-  .gf-pillar {
-    display: flex; align-items: center; gap: 16px;
-    padding: 18px 24px; border-bottom: 1px solid var(--card-border);
-  }
-  .gf-pillar:last-child { border-bottom: none; }
-  .gf-pillar .gfp-icon { font-size: 20px; flex-shrink: 0; }
-  .gf-pillar .gfp-title { font-family: var(--body); font-size: 14px; font-weight: 700; color: var(--text); }
-  .gf-pillar .gfp-desc { font-family: var(--serif); font-size: 12px; color: var(--text-dim); margin-left: auto; }
+    .cs-hero-metric {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(180px, 25vw, 360px);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.08;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
 
-  /* --- ANIMATIONS --- */
-  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .cs-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      text-align: center;
+      opacity: 0;
+      animation: fu 0.8s 0.2s forwards;
+    }
 
-  /* --- RESPONSIVE --- */
-  @media (max-width: 900px) {
-    .cs-hero { padding: 140px 24px 60px; min-height: 60vh; }
-    .cs-hero-metric { font-size: 140px; }
-    .article { padding: 0 20px; }
-    .cs-compare { grid-template-columns: 1fr; }
-    .cs-nav { padding: 0 20px; }
-    .persona-grid, .qr-lifecycle { grid-template-columns: 1fr; }
-    .decision-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 640px) {
-    .cs-hero { min-height: 50vh; padding: 120px 20px 48px; }
-    .cs-hero h1 { font-size: 28px; }
-    .cs-hero-hook { font-size: 16px; }
-    .cs-hero-metric { font-size: 100px; }
-    .cs-stats { grid-template-columns: 1fr 1fr; }
-    .cs-nav { flex-direction: column; }
-    .cs-nav-link:last-child { text-align: left; }
-    .scale-tension { flex-direction: column; gap: 12px; }
-  }
-</style>
+    .cs-hero-company {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .cs-hero-company::before,
+    .cs-hero-company::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: rgba(201, 168, 78, 0.3);
+    }
+
+    .cs-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: none;
+      background: rgba(201, 168, 78, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(201, 168, 78, 0.12);
+    }
+
+    .cs-hero h1 {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .cs-hero-hook {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      font-style: italic;
+    }
+
+    .cs-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .cs-meta-pill {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 100px;
+      color: var(--text-dim);
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+    }
+
+    /* --- ARTICLE BODY --- */
+    .article {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .cs-section {
+      margin-top: 72px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .cs-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cs-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cs-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .cs-heading {
+      font-family: var(--body);
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .cs-body {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .cs-body strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cs-body em {
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    .cs-quote {
+      margin: 36px 0;
+      padding: 24px 28px;
+      border-left: 2px solid var(--accent);
+      background: rgba(201, 168, 78, 0.06);
+      border-radius: 0 14px 14px 0;
+    }
+
+    .cs-quote p {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .cs-quote p strong {
+      color: var(--text);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .cs-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin: 36px 0;
+    }
+
+    .cs-stat {
+      padding: 20px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      text-align: center;
+    }
+
+    .cs-stat-num {
+      font-family: var(--body);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .cs-stat-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .cs-visual {
+      margin: 36px 0;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cs-visual-inner {
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .cs-visual-caption {
+      padding: 12px 20px;
+      font-size: 12px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--card-border);
+    }
+
+    .cs-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 36px 0;
+    }
+
+    .cs-compare-side {
+      padding: 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .cs-compare-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .cs-compare-side:first-child .cs-compare-label {
+      color: var(--text-dim);
+    }
+
+    .cs-compare-side:last-child .cs-compare-label {
+      color: var(--accent);
+    }
+
+    .cs-compare-content {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .cs-compare-content strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cs-steps {
+      margin: 28px 0;
+    }
+
+    .cs-step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-step:last-child {
+      border-bottom: none;
+    }
+
+    .cs-step-num {
+      font-family: var(--body);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+    }
+
+    .cs-step-content {
+      flex: 1;
+    }
+
+    .cs-step-title {
+      font-family: var(--body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .cs-step-desc {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .cs-impact-table {
+      width: 100%;
+      margin: 32px 0;
+      border-collapse: collapse;
+    }
+
+    .cs-impact-table th {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-impact-table td {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      vertical-align: top;
+    }
+
+    .cs-impact-table td:first-child {
+      font-family: var(--body);
+      font-weight: 600;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .cs-impact-table td:last-child {
+      color: var(--accent);
+    }
+
+    .cs-learnings {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .cs-learning {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.3s;
+    }
+
+    .cs-learning:hover {
+      border-color: rgba(201, 168, 78, 0.3);
+    }
+
+    .cs-learning-num {
+      font-family: var(--body);
+      font-size: 32px;
+      font-weight: 700;
+      color: rgba(201, 168, 78, 0.25);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .cs-learning-content {
+      flex: 1;
+    }
+
+    .cs-learning-title {
+      font-family: var(--body);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .cs-learning-desc {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .cs-nav {
+      position: relative;
+      max-width: 720px;
+      margin: 80px auto 0;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .cs-nav-link {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-decoration: none;
+      padding: 20px 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s;
+      flex: 1;
+    }
+
+    .cs-nav-link:hover {
+      border-color: rgba(201, 168, 78, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-nav-link:last-child {
+      text-align: right;
+    }
+
+    .cs-nav-dir {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .cs-nav-title {
+      font-family: var(--body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .cs-list {
+      margin: 16px 0 20px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .cs-list li {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      padding: 6px 0 6px 20px;
+      position: relative;
+    }
+
+    .cs-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .cs-list li strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cs-divider {
+      width: 48px;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.08);
+      margin: 48px auto;
+    }
+
+    /* --- SCALE STRIP --- */
+    .scale-strip {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 32px;
+      text-align: center;
+    }
+
+    .scale-tension {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .scale-num {
+      font-family: var(--body);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .scale-num.bad {
+      font-size: clamp(48px, 10vw, 80px);
+      color: #cc2936;
+    }
+
+    .scale-num.target {
+      font-size: clamp(48px, 10vw, 80px);
+      color: var(--accent);
+    }
+
+    .scale-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .scale-arrow {
+      font-size: 32px;
+      color: var(--text-muted);
+    }
+
+    .scale-sub {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--text-dim);
+      max-width: 500px;
+      margin: 24px auto 0;
+      line-height: 1.7;
+    }
+
+    /* --- PERSONA GRID --- */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .persona-card {
+      padding: 24px 20px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .persona-card .pe-name {
+      font-family: var(--body);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .persona-card .pe-role {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .persona-card .pe-quote {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .persona-card .pe-desc {
+      font-family: var(--serif);
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      border-top: 1px solid var(--card-border);
+      padding-top: 12px;
+    }
+
+    /* --- QR LIFECYCLE --- */
+    .qr-lifecycle {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .qr-state {
+      padding: 24px 20px;
+      text-align: center;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .qr-state .qs-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .qr-state .qs-name {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .qr-state .qs-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(201, 168, 78, 0.08);
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+
+    .qr-state .qs-desc {
+      font-family: var(--serif);
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* --- GHOST WALLET --- */
+    .ghost-wallet {
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      padding: 48px 32px;
+      margin: 36px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ghost-wallet::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(201, 168, 78, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .ghost-wallet .gw-amount {
+      font-family: var(--body);
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .ghost-wallet .gw-copy {
+      font-family: var(--body);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ghost-wallet .gw-equiv {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ghost-wallet .gw-pitch {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ghost-wallet .gw-cta {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 32px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ghost-wallet .gw-tags {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ghost-wallet .gw-tag {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-dim);
+      background: var(--bg);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid var(--card-border);
+    }
+
+    /* --- DECISION GRID --- */
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .decision-card {
+      padding: 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .decision-card .dc-title {
+      font-family: var(--body);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .decision-card .dc-desc {
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* --- GROUND FORCE PILLARS --- */
+    .gf-pillars {
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      margin: 32px 0;
+    }
+
+    .gf-pillar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .gf-pillar:last-child {
+      border-bottom: none;
+    }
+
+    .gf-pillar .gfp-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .gf-pillar .gfp-title {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .gf-pillar .gfp-desc {
+      font-family: var(--serif);
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-left: auto;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .cs-hero {
+        padding: 140px 24px 60px;
+        min-height: 60vh;
+      }
+
+      .cs-hero-metric {
+        font-size: 140px;
+      }
+
+      .article {
+        padding: 0 20px;
+      }
+
+      .cs-compare {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-nav {
+        padding: 0 20px;
+      }
+
+      .persona-grid,
+      .qr-lifecycle {
+        grid-template-columns: 1fr;
+      }
+
+      .decision-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cs-hero {
+        min-height: 50vh;
+        padding: 120px 20px 48px;
+      }
+
+      .cs-hero h1 {
+        font-size: 28px;
+      }
+
+      .cs-hero-hook {
+        font-size: 16px;
+      }
+
+      .cs-hero-metric {
+        font-size: 100px;
+      }
+
+      .cs-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cs-nav {
+        flex-direction: column;
+      }
+
+      .cs-nav-link:last-child {
+        text-align: left;
+      }
+
+      .scale-tension {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<a href="/work/zar/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to ZAR</a>
-<div class="nav-bar">
-  <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-</div>
-<nav class="mobile-nav"><a href="/" class="active">Craft</a><a href="/about/">Story</a><a href="/writing/">Thoughts</a><a href="/contact/">Contact</a></nav>
+  <!-- NAV -->
+  <a href="/work/zar/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+      <path d="M19 12H5" />
+      <path d="M12 19l-7-7 7-7" />
+    </svg> Back to ZAR</a>
+  <div class="nav-bar">
+    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
+  </div>
+  <nav class="mobile-nav"><a href="/" class="active">My Craft</a><a href="/about/">Story</a><a
+      href="/writing/">Thoughts</a><a href="/contact/">Contact</a></nav>
 
-<!-- HERO -->
-<div class="cs-hero">
-  <div class="cs-hero-metric">19&rarr;4</div>
-  <div class="cs-hero-content">
-    <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; Jan &ndash; Feb 2026</div>
-    <h1>Merchant Onboarding</h1>
-    <p class="cs-hero-hook">19 steps to become a merchant. Target: 100,000 stores. The math didn&rsquo;t work. The onboarding had to change.</p>
-    <div class="cs-hero-meta">
-      <span class="cs-meta-pill">Lead Product Designer</span>
-      <span class="cs-meta-pill">Service Design</span>
-      <span class="cs-meta-pill">Ground Force</span>
-      <span class="cs-meta-pill">iOS &amp; Android</span>
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-metric">19&rarr;4</div>
+    <div class="cs-hero-content">
+      <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; Jan &ndash; Feb 2026</div>
+      <h1>Merchant Onboarding</h1>
+      <p class="cs-hero-hook">19 steps to become a merchant. Target: 100,000 stores. The math didn&rsquo;t work. The
+        onboarding had to change.</p>
+      <div class="cs-hero-meta">
+        <span class="cs-meta-pill">Lead Product Designer</span>
+        <span class="cs-meta-pill">Service Design</span>
+        <span class="cs-meta-pill">Ground Force</span>
+        <span class="cs-meta-pill">iOS &amp; Android</span>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- SCALE STRIP -->
-<div class="scale-strip reveal">
-  <div class="scale-tension">
-    <div>
-      <div class="scale-num bad">19</div>
-      <div class="scale-label">Steps Per Merchant</div>
+  <!-- SCALE STRIP -->
+  <div class="scale-strip reveal">
+    <div class="scale-tension">
+      <div>
+        <div class="scale-num bad">19</div>
+        <div class="scale-label">Steps Per Merchant</div>
+      </div>
+      <div class="scale-arrow">&rarr;</div>
+      <div>
+        <div class="scale-num target">100K</div>
+        <div class="scale-label">Merchant Target</div>
+      </div>
     </div>
-    <div class="scale-arrow">&rarr;</div>
-    <div>
-      <div class="scale-num target">100K</div>
-      <div class="scale-label">Merchant Target</div>
-    </div>
+    <p class="scale-sub">At 19 steps per merchant, 100,000 was fantasy. 0.3% activation. 63% churn after first order.
+      The onboarding was designed for a pilot, not for scale.</p>
   </div>
-  <p class="scale-sub">At 19 steps per merchant, 100,000 was fantasy. 0.3% activation. 63% churn after first order. The onboarding was designed for a pilot, not for scale.</p>
-</div>
 
-<!-- ARTICLE BODY -->
-<div class="article">
+  <!-- ARTICLE BODY -->
+  <div class="article">
 
-  <!-- THE SCALE PROBLEM -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Scale Problem</div>
-    <h2 class="cs-heading">19 steps. Ambassador required at every one.</h2>
+    <!-- THE SCALE PROBLEM -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Scale Problem</div>
+      <h2 class="cs-heading">19 steps. Ambassador required at every one.</h2>
 
-    <ul class="cs-list">
-      <li><strong>19-step onboarding</strong> across fragmented screens and flows</li>
-      <li><strong>Phone-number-based linking</strong> &mdash; fragile, created broken records</li>
-      <li><strong>English-only interface</strong> for merchants who may not read English</li>
-      <li><strong>Complete ambassador dependency</strong> at every step</li>
-      <li><strong>0.3% activation</strong> &mdash; 573 onboarded, 2 transacting</li>
-      <li><strong>63% churn</strong> after first order</li>
-    </ul>
+      <ul class="cs-list">
+        <li><strong>19-step onboarding</strong> across fragmented screens and flows</li>
+        <li><strong>Phone-number-based linking</strong> &mdash; fragile, created broken records</li>
+        <li><strong>English-only interface</strong> for merchants who may not read English</li>
+        <li><strong>Complete ambassador dependency</strong> at every step</li>
+        <li><strong>0.3% activation</strong> &mdash; 573 onboarded, 2 transacting</li>
+        <li><strong>63% churn</strong> after first order</li>
+      </ul>
 
-    <div class="cs-visual">
-      <div class="cs-visual-inner">19-step old onboarding flow &mdash; annotated with friction points</div>
-      <div class="cs-visual-caption">The original flow had 19 steps, each requiring ambassador presence.</div>
-    </div>
-  </section>
-
-  <!-- THE PERSONAS -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Personas</div>
-    <h2 class="cs-heading">You have 10 seconds. Don&rsquo;t explain. Demonstrate.</h2>
-
-    <div class="persona-grid">
-      <div class="persona-card">
-        <div class="pe-name">Tariq</div>
-        <div class="pe-role">Kiryana Owner, Pakistan</div>
-        <div class="pe-quote">&ldquo;I already have Easypaisa. It works fine.&rdquo;</div>
-        <div class="pe-desc">Dismissive. Pitched by dozens of agents. Leave your card &mdash; he won&rsquo;t call.</div>
+      <div class="cs-visual">
+        <div class="cs-visual-inner">19-step old onboarding flow &mdash; annotated with friction points</div>
+        <div class="cs-visual-caption">The original flow had 19 steps, each requiring ambassador presence.</div>
       </div>
-      <div class="persona-card">
-        <div class="pe-name">Samuel</div>
-        <div class="pe-role">Mobile Money Agent, Africa</div>
-        <div class="pe-quote">&ldquo;What&rsquo;s the float requirement? Let me see it work first.&rdquo;</div>
-        <div class="pe-desc">Calculating. Comparing against current setup in real-time.</div>
-      </div>
-      <div class="persona-card">
-        <div class="pe-name">Joseph</div>
-        <div class="pe-role">Corner Store Owner</div>
-        <div class="pe-quote">&ldquo;I sell groceries. I&rsquo;m not a bank.&rdquo;</div>
-        <div class="pe-desc">Fundamentally uninterested. You&rsquo;re asking him to add complexity.</div>
-      </div>
-    </div>
+    </section>
 
-    <p class="cs-body">A 19-step onboarding gives you zero seconds. By step 3, Tariq has already put his phone down.</p>
+    <!-- THE PERSONAS -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Personas</div>
+      <h2 class="cs-heading">You have 10 seconds. Don&rsquo;t explain. Demonstrate.</h2>
 
-    <div class="cs-visual">
-      <div class="cs-visual-inner">On-ground research photos &mdash; merchant visits</div>
-      <div class="cs-visual-caption">Field research across merchant locations revealed the urgency gap.</div>
-    </div>
-  </section>
-
-  <div class="cs-divider"></div>
-
-  <!-- QR SELF-SERVICE -->
-  <section class="cs-section reveal">
-    <div class="cs-label">QR Self-Service</div>
-    <h2 class="cs-heading">One QR code. Three lifecycle states.</h2>
-
-    <p class="cs-body">Inspired by BharatPe &mdash; 13 million merchants, 4&ndash;5 step onboarding &mdash; I redesigned everything around a single artifact: a <strong>pre-printed QR code</strong> that routes the entire flow.</p>
-
-    <div class="qr-lifecycle">
-      <div class="qr-state">
-        <div class="qs-icon">&#128230;</div>
-        <div class="qs-tag">STATE 1</div>
-        <div class="qs-name">Unassigned</div>
-        <div class="qs-desc">Batch-generated. Sitting in inventory. Not linked to anyone.</div>
-      </div>
-      <div class="qr-state">
-        <div class="qs-icon">&#129309;</div>
-        <div class="qs-tag">STATE 2</div>
-        <div class="qs-name">Ambassador-Claimed</div>
-        <div class="qs-desc">Ambassador picks it up. Pre-fills merchant name, location, photo.</div>
-      </div>
-      <div class="qr-state">
-        <div class="qs-icon">&#127978;</div>
-        <div class="qs-tag">STATE 3</div>
-        <div class="qs-name">Merchant-Assigned</div>
-        <div class="qs-desc">Merchant scans. Onboarding complete. Transacting.</div>
-      </div>
-    </div>
-
-    <p class="cs-body">No phone numbers. No passwords. No manual linking. The QR code IS the authentication. The app detects which state it&rsquo;s in and branches accordingly.</p>
-  </section>
-
-  <!-- THE NEW FLOW -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The New Flow</div>
-    <h2 class="cs-heading">From 19 steps to 4.</h2>
-
-    <div class="cs-steps">
-      <div class="cs-step">
-        <div class="cs-step-num">1</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Scan QR</div>
-          <div class="cs-step-desc">Pre-printed QR at the store.</div>
+      <div class="persona-grid">
+        <div class="persona-card">
+          <div class="pe-name">Tariq</div>
+          <div class="pe-role">Kiryana Owner, Pakistan</div>
+          <div class="pe-quote">&ldquo;I already have Easypaisa. It works fine.&rdquo;</div>
+          <div class="pe-desc">Dismissive. Pitched by dozens of agents. Leave your card &mdash; he won&rsquo;t call.
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="pe-name">Samuel</div>
+          <div class="pe-role">Mobile Money Agent, Africa</div>
+          <div class="pe-quote">&ldquo;What&rsquo;s the float requirement? Let me see it work first.&rdquo;</div>
+          <div class="pe-desc">Calculating. Comparing against current setup in real-time.</div>
+        </div>
+        <div class="persona-card">
+          <div class="pe-name">Joseph</div>
+          <div class="pe-role">Corner Store Owner</div>
+          <div class="pe-quote">&ldquo;I sell groceries. I&rsquo;m not a bank.&rdquo;</div>
+          <div class="pe-desc">Fundamentally uninterested. You&rsquo;re asking him to add complexity.</div>
         </div>
       </div>
-      <div class="cs-step">
-        <div class="cs-step-num">2</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">See $5</div>
-          <div class="cs-step-desc">Store pre-configured. Ghost wallet ready.</div>
+
+      <p class="cs-body">A 19-step onboarding gives you zero seconds. By step 3, Tariq has already put his phone down.
+      </p>
+
+      <div class="cs-visual">
+        <div class="cs-visual-inner">On-ground research photos &mdash; merchant visits</div>
+        <div class="cs-visual-caption">Field research across merchant locations revealed the urgency gap.</div>
+      </div>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- QR SELF-SERVICE -->
+    <section class="cs-section reveal">
+      <div class="cs-label">QR Self-Service</div>
+      <h2 class="cs-heading">One QR code. Three lifecycle states.</h2>
+
+      <p class="cs-body">Inspired by BharatPe &mdash; 13 million merchants, 4&ndash;5 step onboarding &mdash; I
+        redesigned everything around a single artifact: a <strong>pre-printed QR code</strong> that routes the entire
+        flow.</p>
+
+      <div class="qr-lifecycle">
+        <div class="qr-state">
+          <div class="qs-icon">&#128230;</div>
+          <div class="qs-tag">STATE 1</div>
+          <div class="qs-name">Unassigned</div>
+          <div class="qs-desc">Batch-generated. Sitting in inventory. Not linked to anyone.</div>
+        </div>
+        <div class="qr-state">
+          <div class="qs-icon">&#129309;</div>
+          <div class="qs-tag">STATE 2</div>
+          <div class="qs-name">Ambassador-Claimed</div>
+          <div class="qs-desc">Ambassador picks it up. Pre-fills merchant name, location, photo.</div>
+        </div>
+        <div class="qr-state">
+          <div class="qs-icon">&#127978;</div>
+          <div class="qs-tag">STATE 3</div>
+          <div class="qs-name">Merchant-Assigned</div>
+          <div class="qs-desc">Merchant scans. Onboarding complete. Transacting.</div>
         </div>
       </div>
-      <div class="cs-step">
-        <div class="cs-step-num">3</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Set Rate</div>
-          <div class="cs-step-desc">One input. Choose your margin.</div>
+
+      <p class="cs-body">No phone numbers. No passwords. No manual linking. The QR code IS the authentication. The app
+        detects which state it&rsquo;s in and branches accordingly.</p>
+    </section>
+
+    <!-- THE NEW FLOW -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The New Flow</div>
+      <h2 class="cs-heading">From 19 steps to 4.</h2>
+
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">1</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Scan QR</div>
+            <div class="cs-step-desc">Pre-printed QR at the store.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">2</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">See $5</div>
+            <div class="cs-step-desc">Store pre-configured. Ghost wallet ready.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">3</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Set Rate</div>
+            <div class="cs-step-desc">One input. Choose your margin.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">4</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">First Sale</div>
+            <div class="cs-step-desc">Transact with ambassador. Right now.</div>
+          </div>
         </div>
       </div>
-      <div class="cs-step">
-        <div class="cs-step-num">4</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">First Sale</div>
-          <div class="cs-step-desc">Transact with ambassador. Right now.</div>
+
+      <p class="cs-body">The ambassador pre-fills everything <strong>before</strong> entering the store. The merchant
+        scans and sees magic &mdash; their store already configured, $5 ready to sell.</p>
+
+      <!-- GHOST WALLET -->
+      <div class="ghost-wallet">
+        <div class="gw-amount">$5.00</div>
+        <div class="gw-copy">Yours to sell.</div>
+        <div class="gw-equiv">&asymp; PKR 1,480 at market rate</div>
+        <div class="gw-pitch">You keep the difference.</div>
+        <div class="gw-cta">Set rate</div>
+        <div class="gw-tags">
+          <span class="gw-tag">SELL-ONLY</span>
+          <span class="gw-tag">NON-WITHDRAWABLE</span>
+          <span class="gw-tag">CONVERTS WHEN SOLD</span>
         </div>
       </div>
-    </div>
 
-    <p class="cs-body">The ambassador pre-fills everything <strong>before</strong> entering the store. The merchant scans and sees magic &mdash; their store already configured, $5 ready to sell.</p>
+      <p class="cs-body">The $5 ghost wallet costs ZAR nothing until it creates real economic activity. Three words of
+        copy create psychological ownership before a single form field.</p>
 
-    <!-- GHOST WALLET -->
-    <div class="ghost-wallet">
-      <div class="gw-amount">$5.00</div>
-      <div class="gw-copy">Yours to sell.</div>
-      <div class="gw-equiv">&asymp; PKR 1,480 at market rate</div>
-      <div class="gw-pitch">You keep the difference.</div>
-      <div class="gw-cta">Set rate</div>
-      <div class="gw-tags">
-        <span class="gw-tag">SELL-ONLY</span>
-        <span class="gw-tag">NON-WITHDRAWABLE</span>
-        <span class="gw-tag">CONVERTS WHEN SOLD</span>
+      <div class="cs-visual">
+        <div class="cs-visual-inner">Post-QR merchant screen &mdash; Figma mockup with &ldquo;Yours to sell&rdquo; copy
+        </div>
+        <div class="cs-visual-caption">The first thing a merchant sees: their store, $5, and three words.</div>
       </div>
-    </div>
+    </section>
 
-    <p class="cs-body">The $5 ghost wallet costs ZAR nothing until it creates real economic activity. Three words of copy create psychological ownership before a single form field.</p>
+    <div class="cs-divider"></div>
 
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Post-QR merchant screen &mdash; Figma mockup with &ldquo;Yours to sell&rdquo; copy</div>
-      <div class="cs-visual-caption">The first thing a merchant sees: their store, $5, and three words.</div>
-    </div>
-  </section>
+    <!-- KEY DECISIONS -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Key Decisions</div>
+      <h2 class="cs-heading">What made it scale.</h2>
 
-  <div class="cs-divider"></div>
-
-  <!-- KEY DECISIONS -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Key Decisions</div>
-    <h2 class="cs-heading">What made it scale.</h2>
-
-    <div class="decision-grid">
-      <div class="decision-card">
-        <div class="dc-title">Immediate Role Grant</div>
-        <div class="dc-desc">No approval queue. Scan, fill one screen, you&rsquo;re a merchant. Bottleneck eliminated.</div>
-      </div>
-      <div class="decision-card">
-        <div class="dc-title">Unified Screen</div>
-        <div class="dc-desc">Multiple onboarding screens consolidated into one Store Details submission. Ambassador pre-filled most of it.</div>
-      </div>
-      <div class="decision-card">
-        <div class="dc-title">Authless Architecture</div>
-        <div class="dc-desc">No phone verification. No OTPs. The QR&rsquo;s lifecycle states handle all routing and authentication.</div>
-      </div>
-      <div class="decision-card">
-        <div class="dc-title">First Sale = Completion</div>
-        <div class="dc-desc">Ambassador becomes the first customer. Activation happens during onboarding, not &ldquo;sometime later.&rdquo;</div>
-      </div>
-    </div>
-
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Before/after: 19-step flow vs. 4-step QR flow</div>
-      <div class="cs-visual-caption">Side-by-side comparison of the original and redesigned onboarding.</div>
-    </div>
-  </section>
-
-  <!-- THE GROUND FORCE -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Ground Force</div>
-    <h2 class="cs-heading">100,000 merchants. Zero employees.</h2>
-
-    <p class="cs-body">Merchant onboarding doesn&rsquo;t scale with headcount. It scales with a system. I contributed to the design of ZAR&rsquo;s ambassador network &mdash; the system that recruits, qualifies, and distributes the right people to carry QR codes into the right stores.</p>
-
-    <div class="gf-pillars">
-      <div class="gf-pillar">
-        <div class="gfp-icon">&#127891;</div>
-        <div class="gfp-title">Earned Qualification</div>
-        <div class="gfp-desc">30 days, 10 txns, training, 5 recruits</div>
-      </div>
-      <div class="gf-pillar">
-        <div class="gfp-icon">&#128176;</div>
-        <div class="gfp-title">$10 Cost Ceiling</div>
-        <div class="gfp-desc">Per verified merchant, all-in</div>
-      </div>
-      <div class="gf-pillar">
-        <div class="gfp-icon">&#128737;&#65039;</div>
-        <div class="gfp-title">Anti-Fraud by Design</div>
-        <div class="gfp-desc">20% single detection &rarr; 99% at scale</div>
-      </div>
-      <div class="gf-pillar">
-        <div class="gfp-icon">&#128205;</div>
-        <div class="gfp-title">Geographic Distribution</div>
-        <div class="gfp-desc">Dynamic zone multipliers prevent clustering</div>
-      </div>
-    </div>
-
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Ground Force qualification ladder + anti-fraud compounding diagram</div>
-      <div class="cs-visual-caption">The system behind the system: how ambassadors earn their role.</div>
-    </div>
-  </section>
-
-  <!-- SERVICE BLUEPRINT -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Service Design</div>
-    <h2 class="cs-heading">The ambassador is trust. The app is onboarding.</h2>
-
-    <p class="cs-body">I mapped the full onboarding service &mdash; three swim lanes. The critical insight: the ambassador&rsquo;s job ends when the QR is scanned. Everything after is self-service. Separating trust-building from flow execution is what makes this scale without linear headcount growth.</p>
-
-    <div class="cs-visual">
-      <div class="cs-visual-inner" style="aspect-ratio: 16/7;">Service blueprint &mdash; Ambassador, Merchant, and System swim lanes</div>
-      <div class="cs-visual-caption">Three swim lanes: ambassador builds trust, merchant scans QR, system handles the rest.</div>
-    </div>
-  </section>
-
-  <div class="cs-divider"></div>
-
-  <!-- IMPACT -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Impact</div>
-    <h2 class="cs-heading">What the redesign delivered.</h2>
-
-    <table class="cs-impact-table">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Before</th>
-          <th>After</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Onboarding steps</td>
-          <td>19</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Ambassador dependency</td>
-          <td>Every step</td>
-          <td>Pre-fill only</td>
-        </tr>
-        <tr>
-          <td>Authentication</td>
-          <td>Phone + OTP</td>
-          <td>Authless (QR)</td>
-        </tr>
-        <tr>
-          <td>First transaction</td>
-          <td>Days later</td>
-          <td>During onboarding</td>
-        </tr>
-        <tr>
-          <td>First screen</td>
-          <td>Form fields</td>
-          <td>$5 + &ldquo;Yours to sell&rdquo;</td>
-        </tr>
-        <tr>
-          <td>Cost per merchant</td>
-          <td>Unstructured</td>
-          <td>$10 ceiling</td>
-        </tr>
-        <tr>
-          <td>Scale target</td>
-          <td>Pilot (573)</td>
-          <td>100,000</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p class="cs-body">22 of 23 implementation issues completed. Before/after presented to investors at a ZAR board meeting.</p>
-  </section>
-
-  <div class="cs-divider"></div>
-
-  <!-- LEARNINGS -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Learnings</div>
-    <h2 class="cs-heading">What this taught me.</h2>
-
-    <div class="cs-learnings">
-      <div class="cs-learning">
-        <div class="cs-learning-num">01</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Onboarding IS the growth engine.</div>
-          <div class="cs-learning-desc">Every friction in onboarding is friction in the entire flywheel. 19 steps doesn&rsquo;t slow one merchant &mdash; it caps the whole network.</div>
+      <div class="decision-grid">
+        <div class="decision-card">
+          <div class="dc-title">Immediate Role Grant</div>
+          <div class="dc-desc">No approval queue. Scan, fill one screen, you&rsquo;re a merchant. Bottleneck eliminated.
+          </div>
+        </div>
+        <div class="decision-card">
+          <div class="dc-title">Unified Screen</div>
+          <div class="dc-desc">Multiple onboarding screens consolidated into one Store Details submission. Ambassador
+            pre-filled most of it.</div>
+        </div>
+        <div class="decision-card">
+          <div class="dc-title">Authless Architecture</div>
+          <div class="dc-desc">No phone verification. No OTPs. The QR&rsquo;s lifecycle states handle all routing and
+            authentication.</div>
+        </div>
+        <div class="decision-card">
+          <div class="dc-title">First Sale = Completion</div>
+          <div class="dc-desc">Ambassador becomes the first customer. Activation happens during onboarding, not
+            &ldquo;sometime later.&rdquo;</div>
         </div>
       </div>
-      <div class="cs-learning">
-        <div class="cs-learning-num">02</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Pre-fill creates magic.</div>
-          <div class="cs-learning-desc">When a merchant scans and sees their store already configured &mdash; name, photo, $5 &mdash; something shifts. Invisible work before creates the wow moment after.</div>
+
+      <div class="cs-visual">
+        <div class="cs-visual-inner">Before/after: 19-step flow vs. 4-step QR flow</div>
+        <div class="cs-visual-caption">Side-by-side comparison of the original and redesigned onboarding.</div>
+      </div>
+    </section>
+
+    <!-- THE GROUND FORCE -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Ground Force</div>
+      <h2 class="cs-heading">100,000 merchants. Zero employees.</h2>
+
+      <p class="cs-body">Merchant onboarding doesn&rsquo;t scale with headcount. It scales with a system. I contributed
+        to the design of ZAR&rsquo;s ambassador network &mdash; the system that recruits, qualifies, and distributes the
+        right people to carry QR codes into the right stores.</p>
+
+      <div class="gf-pillars">
+        <div class="gf-pillar">
+          <div class="gfp-icon">&#127891;</div>
+          <div class="gfp-title">Earned Qualification</div>
+          <div class="gfp-desc">30 days, 10 txns, training, 5 recruits</div>
+        </div>
+        <div class="gf-pillar">
+          <div class="gfp-icon">&#128176;</div>
+          <div class="gfp-title">$10 Cost Ceiling</div>
+          <div class="gfp-desc">Per verified merchant, all-in</div>
+        </div>
+        <div class="gf-pillar">
+          <div class="gfp-icon">&#128737;&#65039;</div>
+          <div class="gfp-title">Anti-Fraud by Design</div>
+          <div class="gfp-desc">20% single detection &rarr; 99% at scale</div>
+        </div>
+        <div class="gf-pillar">
+          <div class="gfp-icon">&#128205;</div>
+          <div class="gfp-title">Geographic Distribution</div>
+          <div class="gfp-desc">Dynamic zone multipliers prevent clustering</div>
         </div>
       </div>
-      <div class="cs-learning">
-        <div class="cs-learning-num">03</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">First transaction during onboarding.</div>
-          <div class="cs-learning-desc">If the merchant leaves without transacting, 63% never come back. The ambassador as first customer ensures activation in the moment.</div>
+
+      <div class="cs-visual">
+        <div class="cs-visual-inner">Ground Force qualification ladder + anti-fraud compounding diagram</div>
+        <div class="cs-visual-caption">The system behind the system: how ambassadors earn their role.</div>
+      </div>
+    </section>
+
+    <!-- SERVICE BLUEPRINT -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Service Design</div>
+      <h2 class="cs-heading">The ambassador is trust. The app is onboarding.</h2>
+
+      <p class="cs-body">I mapped the full onboarding service &mdash; three swim lanes. The critical insight: the
+        ambassador&rsquo;s job ends when the QR is scanned. Everything after is self-service. Separating trust-building
+        from flow execution is what makes this scale without linear headcount growth.</p>
+
+      <div class="cs-visual">
+        <div class="cs-visual-inner" style="aspect-ratio: 16/7;">Service blueprint &mdash; Ambassador, Merchant, and
+          System swim lanes</div>
+        <div class="cs-visual-caption">Three swim lanes: ambassador builds trust, merchant scans QR, system handles the
+          rest.</div>
+      </div>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- IMPACT -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Impact</div>
+      <h2 class="cs-heading">What the redesign delivered.</h2>
+
+      <table class="cs-impact-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Before</th>
+            <th>After</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Onboarding steps</td>
+            <td>19</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>Ambassador dependency</td>
+            <td>Every step</td>
+            <td>Pre-fill only</td>
+          </tr>
+          <tr>
+            <td>Authentication</td>
+            <td>Phone + OTP</td>
+            <td>Authless (QR)</td>
+          </tr>
+          <tr>
+            <td>First transaction</td>
+            <td>Days later</td>
+            <td>During onboarding</td>
+          </tr>
+          <tr>
+            <td>First screen</td>
+            <td>Form fields</td>
+            <td>$5 + &ldquo;Yours to sell&rdquo;</td>
+          </tr>
+          <tr>
+            <td>Cost per merchant</td>
+            <td>Unstructured</td>
+            <td>$10 ceiling</td>
+          </tr>
+          <tr>
+            <td>Scale target</td>
+            <td>Pilot (573)</td>
+            <td>100,000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="cs-body">22 of 23 implementation issues completed. Before/after presented to investors at a ZAR board
+        meeting.</p>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- LEARNINGS -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Learnings</div>
+      <h2 class="cs-heading">What this taught me.</h2>
+
+      <div class="cs-learnings">
+        <div class="cs-learning">
+          <div class="cs-learning-num">01</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Onboarding IS the growth engine.</div>
+            <div class="cs-learning-desc">Every friction in onboarding is friction in the entire flywheel. 19 steps
+              doesn&rsquo;t slow one merchant &mdash; it caps the whole network.</div>
+          </div>
+        </div>
+        <div class="cs-learning">
+          <div class="cs-learning-num">02</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Pre-fill creates magic.</div>
+            <div class="cs-learning-desc">When a merchant scans and sees their store already configured &mdash; name,
+              photo, $5 &mdash; something shifts. Invisible work before creates the wow moment after.</div>
+          </div>
+        </div>
+        <div class="cs-learning">
+          <div class="cs-learning-num">03</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">First transaction during onboarding.</div>
+            <div class="cs-learning-desc">If the merchant leaves without transacting, 63% never come back. The
+              ambassador as first customer ensures activation in the moment.</div>
+          </div>
+        </div>
+        <div class="cs-learning">
+          <div class="cs-learning-num">04</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Design the system, not just the screen.</div>
+            <div class="cs-learning-desc">Ground Force &mdash; qualification, economics, anti-fraud, distribution
+              &mdash; is as much a design problem as any UI. The flow only works because the system behind it works.
+            </div>
+          </div>
         </div>
       </div>
-      <div class="cs-learning">
-        <div class="cs-learning-num">04</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Design the system, not just the screen.</div>
-          <div class="cs-learning-desc">Ground Force &mdash; qualification, economics, anti-fraud, distribution &mdash; is as much a design problem as any UI. The flow only works because the system behind it works.</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-</div>
+  </div>
 
-<!-- CASE NAV -->
-<div class="cs-nav reveal">
-  <a href="/work/zar/engineer-self-serve/" class="cs-nav-link">
-    <span class="cs-nav-dir">&larr; Previous</span>
-    <span class="cs-nav-title">Engineer Self-Serve</span>
-  </a>
-  <a href="/work/zar/cash-qr-consolidation/" class="cs-nav-link">
-    <span class="cs-nav-dir">Next &rarr;</span>
-    <span class="cs-nav-title">Cash QR Consolidation</span>
-  </a>
-</div>
+  <!-- CASE NAV -->
+  <div class="cs-nav reveal">
+    <a href="/work/zar/engineer-self-serve/" class="cs-nav-link">
+      <span class="cs-nav-dir">&larr; Previous</span>
+      <span class="cs-nav-title">Engineer Self-Serve</span>
+    </a>
+    <a href="/work/zar/cash-qr-consolidation/" class="cs-nav-link">
+      <span class="cs-nav-dir">Next &rarr;</span>
+      <span class="cs-nav-title">Cash QR Consolidation</span>
+    </a>
+  </div>
 
-<!-- FOOTER -->
-<footer style="max-width:900px;margin:80px auto 0;padding:0 48px;"><div style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim);"><span>&copy; 2026 ABM</span><span>Designed with intention</span></div></footer>
+  <!-- FOOTER -->
+  <footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
+    <div
+      style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim);">
+      <span>&copy; 2026 ABM</span><span>Designed with intention</span></div>
+  </footer>
 
-<script>
-  // --- REVEALS ---
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  })},{threshold:.06});
-  document.querySelectorAll('.cs-section, .reveal').forEach(el=>obs.observe(el));
+  <script>
+    // --- REVEALS ---
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, { threshold: .06 });
+    document.querySelectorAll('.cs-section, .reveal').forEach(el => obs.observe(el));
 
-  // --- PAGE TRANSITIONS ---
-  if(location.protocol!=='file:'){
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const h=a.getAttribute('href');
-      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(()=>window.location.href=h,150);
+    // --- PAGE TRANSITIONS ---
+    if (location.protocol !== 'file:') {
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => window.location.href = h, 150);
+        });
       });
-    });
-  }
-</script>
+    }
+  </script>
 </body>
+
 </html>

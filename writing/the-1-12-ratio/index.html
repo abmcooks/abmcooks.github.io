@@ -1,477 +1,873 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Lessons from being the first and only designer at two startups, surrounded by engineers who needed design decisions faster than I could make them.">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="The 1:12 Ratio — ABM">
-<meta property="og:description" content="What being the only designer taught me about systems, taste, and leadership.">
-<meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The 1:12 Ratio — ABM">
-<meta name="twitter:description" content="What being the only designer taught me about systems, taste, and leadership.">
-<title>The 1:12 Ratio — ABM</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --display: 'AKONY', serif;
-    --body: 'Space Grotesk', sans-serif;
-    --serif: 'Gentium Book Plus', serif;
-    --espresso: #2E1A12;
-    --espresso-dim: #4f3a32;
-    --espresso-muted: #7a6a62;
-    --cream: #ebf4f5;
-    --cream-dim: #A69D91;
-    --red: #cc2936;
-    --accent: #cc2936;
-    --accent-light: #e04550;
-    --bg: #f8f5f0;
-    --text: #2E1A12;
-    --text-dim: #6b5d54;
-    --text-muted: #9a8d84;
-    --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.07);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Lessons from being the first and only designer at two startups, surrounded by engineers who needed design decisions faster than I could make them.">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="The 1:12 Ratio — ABM">
+  <meta property="og:description"
+    content="What being the only designer taught me about systems, taste, and leadership.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The 1:12 Ratio — ABM">
+  <meta name="twitter:description"
+    content="What being the only designer taught me about systems, taste, and leadership.">
+  <title>The 1:12 Ratio — ABM</title>
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+      --espresso: #2E1A12;
+      --espresso-dim: #4f3a32;
+      --espresso-muted: #7a6a62;
+      --cream: #ebf4f5;
+      --cream-dim: #A69D91;
+      --red: #cc2936;
+      --accent: #cc2936;
+      --accent-light: #e04550;
+      --bg: #f8f5f0;
+      --text: #2E1A12;
+      --text-dim: #6b5d54;
+      --text-muted: #9a8d84;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.07);
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body {
-    font-family: var(--body); background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px;
-    animation: pageIn 0.3s ease;
-  }
-  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
-  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ─── NAV ─── */
-  .back-link { position: fixed; top: 64px; left: 48px; z-index: 100; font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-  .back-link:hover { color: var(--text); }
-  .nav-bar { position: fixed; top: 64px; right: 48px; z-index: 100; background: var(--espresso); border-radius: 8px; padding: 8px 32px 8px 24px; display: flex; align-items: center; gap: 12px; }
-  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
-  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cream); display: none; }
-  .nav-bar-item.active .nav-bar-dot { display: block; }
-  .nav-bar-item a { font-family: var(--body); font-size: 14px; font-weight: 500; color: rgba(235,244,245,0.6); text-decoration: none; }
-  .nav-bar-item.active a { font-weight: 700; color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
-  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(235,244,245,0.3); transform: rotate(-40deg); }
-  .mobile-nav { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px); border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; }
-  .mobile-nav a { font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none; padding: 8px 15px; border-radius: 100px; }
-  .mobile-nav a.active { color: var(--cream); background: rgba(235,244,245,0.08); }
-  @media (max-width: 768px) { .nav-bar { display: none; } .mobile-nav { display: flex; } .back-link { top: 24px; left: 24px; } }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
-  /* ─── ARTICLE HERO ─── */
-  .art-hero {
-    position: relative; z-index: 2;
-    max-width: 720px; margin: 0 auto;
-    padding: 160px 32px 60px;
-    text-align: center;
-    opacity: 0; animation: fu 0.8s 0.2s forwards;
-  }
-  .art-meta-top {
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    font-family: var(--body); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;
-    flex-wrap: wrap;
-  }
-  .art-meta-top .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-muted); }
-  .art-hero h1 {
-    font-family: var(--display); font-size: clamp(32px, 5vw, 48px);
-    font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
-    color: var(--text); margin-bottom: 20px;
-  }
-  .art-hook {
-    font-family: var(--serif); font-size: 18px; font-weight: 400;
-    color: var(--text-dim); line-height: 1.65; letter-spacing: -0.01em;
-    max-width: 560px; margin: 0 auto 28px;
-  }
-  .art-tags {
-    display: flex; justify-content: center; gap: 8px;
-  }
-  .art-tag {
-    font-family: var(--body); font-size: 11px; font-weight: 500; padding: 4px 14px;
-    border-radius: 100px; color: var(--accent);
-    border: 1px solid rgba(204,41,54,0.15);
-    background: rgba(204,41,54,0.04);
-  }
-  .art-divider {
-    width: 48px; height: 1px; background: rgba(0,0,0,0.08);
-    margin: 0 auto;
-  }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      animation: pageIn 0.3s ease;
+    }
 
-  /* ─── ARTICLE BODY ─── */
-  .article {
-    position: relative; z-index: 2;
-    max-width: 680px; margin: 0 auto;
-    padding: 48px 32px 0;
-  }
-  .article p {
-    font-family: var(--serif); font-size: 16.5px; color: var(--text-dim); line-height: 1.85;
-    margin-bottom: 24px;
-  }
-  .article p strong { color: var(--text); font-weight: 600; }
-  .article p em { font-style: italic; }
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
 
-  .article h2 {
-    font-family: var(--body); font-size: 26px; font-weight: 700;
-    letter-spacing: -0.02em; line-height: 1.2;
-    color: var(--text); margin: 56px 0 20px;
-  }
-  .article h3 {
-    font-family: var(--body); font-size: 20px; font-weight: 600;
-    letter-spacing: -0.01em; line-height: 1.3;
-    color: var(--text); margin: 40px 0 16px;
-  }
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+      }
 
-  /* Blockquote */
-  .article blockquote {
-    margin: 36px 0;
-    padding: 24px 28px;
-    border-left: 2px solid var(--accent);
-    background: var(--card-bg);
-    border-radius: 0 14px 14px 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .article blockquote p {
-    font-family: var(--serif); font-size: 18px; font-weight: 400;
-    font-style: italic; color: var(--text-dim); line-height: 1.7;
-    margin-bottom: 0;
-  }
-  .article blockquote p strong { font-style: normal; color: var(--text); }
+      to {
+        opacity: 1;
+      }
+    }
 
-  /* Lists */
-  .article ul, .article ol {
-    margin: 16px 0 24px;
-    padding-left: 0;
-    list-style: none;
-  }
-  .article li {
-    font-family: var(--serif); font-size: 16px; color: var(--text-dim); line-height: 1.8;
-    padding: 4px 0 4px 22px;
-    position: relative;
-  }
-  .article ul li::before {
-    content: '';
-    position: absolute; left: 0; top: 13px;
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); opacity: 0.5;
-  }
-  .article ol { counter-reset: item; }
-  .article ol li { counter-increment: item; }
-  .article ol li::before {
-    content: counter(item) '.';
-    position: absolute; left: 0; top: 4px;
-    font-family: var(--body); font-size: 14px; font-weight: 700;
-    color: var(--accent); opacity: 0.6;
-  }
-  .article li strong { color: var(--text); font-weight: 600; }
+    /* ─── NAV ─── */
+    .back-link {
+      position: fixed;
+      top: 64px;
+      left: 48px;
+      z-index: 100;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
 
-  /* Divider */
-  .article hr {
-    border: none; height: 1px; background: rgba(0,0,0,0.08);
-    margin: 48px auto; width: 48px;
-  }
+    .back-link:hover {
+      color: var(--text);
+    }
 
-  /* Image placeholder */
-  .article .img-placeholder {
-    margin: 36px 0;
-    border-radius: 14px;
-    background: rgba(0,0,0,0.04);
-    border: 1px solid var(--card-border);
-    overflow: hidden;
-    position: relative;
-  }
-  .article .img-inner {
-    aspect-ratio: 16/9;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--body); font-size: 13px; color: var(--text-muted);
-    padding: 32px; text-align: center;
-  }
-  .article .img-cap {
-    padding: 12px 20px;
-    font-family: var(--body); font-size: 12px; color: var(--text-muted);
-    border-top: 1px solid rgba(0,0,0,0.08);
-  }
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--espresso);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  /* ─── AUTHOR CARD ─── */
-  .author {
-    max-width: 680px; margin: 64px auto 0;
-    padding: 0 32px;
-    position: relative; z-index: 2;
-  }
-  .author-card {
-    display: flex; align-items: center; gap: 20px;
-    padding: 28px;
-    border-radius: 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .author-avatar {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: linear-gradient(135deg, rgba(204,41,54,0.12), rgba(204,41,54,0.06));
-    border: 1px solid rgba(204,41,54,0.12);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--body); font-size: 20px; font-weight: 700;
-    color: var(--accent); flex-shrink: 0;
-  }
-  .author-info { flex: 1; }
-  .author-name {
-    font-family: var(--body); font-size: 16px; font-weight: 600;
-    color: var(--text); margin-bottom: 2px;
-  }
-  .author-role {
-    font-family: var(--serif); font-size: 13px; color: var(--text-dim); line-height: 1.4;
-  }
-  .author-links {
-    display: flex; gap: 8px;
-  }
-  .author-link {
-    width: 36px; height: 36px; border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.08); background: transparent;
-    color: var(--text-muted); text-decoration: none;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--body); font-size: 12px; font-weight: 600;
-    transition: all 0.3s;
-  }
-  .author-link:hover { border-color: var(--accent); color: var(--accent); }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  /* ─── ARTICLE NAV ─── */
-  .art-nav {
-    position: relative; z-index: 2;
-    max-width: 680px; margin: 48px auto 0;
-    padding: 0 32px;
-    display: flex; justify-content: space-between; gap: 16px;
-  }
-  .art-nav-link {
-    display: flex; flex-direction: column; gap: 4px;
-    text-decoration: none;
-    padding: 20px 24px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    transition: all 0.3s;
-    flex: 1;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .art-nav-link:hover {
-    border-color: rgba(204,41,54,0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-  }
-  .art-nav-link:last-child { text-align: right; }
-  .art-nav-dir {
-    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .art-nav-title {
-    font-family: var(--body); font-size: 15px; font-weight: 600;
-    color: var(--text); letter-spacing: -0.01em;
-    line-height: 1.3;
-  }
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: none;
+    }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    .art-hero, .article, .author, .art-nav { padding-left: 20px; padding-right: 20px; }
-  }
-  @media (max-width: 640px) {
-    .art-hero { padding-top: 120px; }
-    .art-hero h1 { font-size: 28px; }
-    .art-nav { flex-direction: column; }
-    .art-nav-link:last-child { text-align: left; }
-    .author-card { flex-direction: column; text-align: center; }
-    .author-links { justify-content: center; }
-  }
-</style>
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.6);
+      text-decoration: none;
+    }
+
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: var(--cream);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: rgba(235, 244, 245, 0.3);
+      transform: rotate(-40deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+    }
+
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+    }
+
+    .mobile-nav a.active {
+      color: var(--cream);
+      background: rgba(235, 244, 245, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .back-link {
+        top: 24px;
+        left: 24px;
+      }
+    }
+
+    /* ─── ARTICLE HERO ─── */
+    .art-hero {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 160px 32px 60px;
+      text-align: center;
+      opacity: 0;
+      animation: fu 0.8s 0.2s forwards;
+    }
+
+    .art-meta-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-family: var(--body);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .art-meta-top .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--text-muted);
+    }
+
+    .art-hero h1 {
+      font-family: var(--display);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .art-hook {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.65;
+      letter-spacing: -0.01em;
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+
+    .art-tags {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .art-tag {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 14px;
+      border-radius: 100px;
+      color: var(--accent);
+      border: 1px solid rgba(204, 41, 54, 0.15);
+      background: rgba(204, 41, 54, 0.04);
+    }
+
+    .art-divider {
+      width: 48px;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.08);
+      margin: 0 auto;
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 32px 0;
+    }
+
+    .article p {
+      font-family: var(--serif);
+      font-size: 16.5px;
+      color: var(--text-dim);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+
+    .article p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .article p em {
+      font-style: italic;
+    }
+
+    .article h2 {
+      font-family: var(--body);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text);
+      margin: 56px 0 20px;
+    }
+
+    .article h3 {
+      font-family: var(--body);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      color: var(--text);
+      margin: 40px 0 16px;
+    }
+
+    /* Blockquote */
+    .article blockquote {
+      margin: 36px 0;
+      padding: 24px 28px;
+      border-left: 2px solid var(--accent);
+      background: var(--card-bg);
+      border-radius: 0 14px 14px 0;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .article blockquote p {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    .article blockquote p strong {
+      font-style: normal;
+      color: var(--text);
+    }
+
+    /* Lists */
+    .article ul,
+    .article ol {
+      margin: 16px 0 24px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .article li {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      padding: 4px 0 4px 22px;
+      position: relative;
+    }
+
+    .article ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 13px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .article ol {
+      counter-reset: item;
+    }
+
+    .article ol li {
+      counter-increment: item;
+    }
+
+    .article ol li::before {
+      content: counter(item) '.';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.6;
+    }
+
+    .article li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Divider */
+    .article hr {
+      border: none;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.08);
+      margin: 48px auto;
+      width: 48px;
+    }
+
+    /* Image placeholder */
+    .article .img-placeholder {
+      margin: 36px 0;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .article .img-inner {
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--body);
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .article .img-cap {
+      padding: 12px 20px;
+      font-family: var(--body);
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    /* ─── AUTHOR CARD ─── */
+    .author {
+      max-width: 680px;
+      margin: 64px auto 0;
+      padding: 0 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .author-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(204, 41, 54, 0.12), rgba(204, 41, 54, 0.06));
+      border: 1px solid rgba(204, 41, 54, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--body);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .author-info {
+      flex: 1;
+    }
+
+    .author-name {
+      font-family: var(--body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .author-role {
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .author-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .author-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: transparent;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .author-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ─── ARTICLE NAV ─── */
+    .art-nav {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 48px auto 0;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .art-nav-link {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-decoration: none;
+      padding: 20px 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      transition: all 0.3s;
+      flex: 1;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .art-nav-link:hover {
+      border-color: rgba(204, 41, 54, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .art-nav-link:last-child {
+      text-align: right;
+    }
+
+    .art-nav-dir {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .art-nav-title {
+      font-family: var(--body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+
+      .art-hero,
+      .article,
+      .author,
+      .art-nav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .art-hero {
+        padding-top: 120px;
+      }
+
+      .art-hero h1 {
+        font-size: 28px;
+      }
+
+      .art-nav {
+        flex-direction: column;
+      }
+
+      .art-nav-link:last-child {
+        text-align: left;
+      }
+
+      .author-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .author-links {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<a href="/writing/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to Writing</a>
-<div class="nav-bar">
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">My Thoughts</a></div>
-</div>
-<nav class="mobile-nav">
-  <a href="/">Craft</a>
-  <a href="/about/">Story</a>
-  <a href="/writing/" class="active">My Thoughts</a>
-  <a href="/contact/">Contact</a>
-</nav>
-
-<!-- ═══════════════════════════════════════ -->
-<!--           ARTICLE HERO                  -->
-<!-- ═══════════════════════════════════════ -->
-<div class="art-hero">
-  <div class="art-meta-top">
-    <span>December 2025</span>
-    <span class="dot"></span>
-    <span>7 min read</span>
+  <!-- NAV -->
+  <a href="/writing/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+      <path d="M19 12H5" />
+      <path d="M12 19l-7-7 7-7" />
+    </svg> Back to Writing</a>
+  <div class="nav-bar">
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/writing/">My Thoughts</a></div>
   </div>
-  <h1>The 1:12 ratio &mdash; what being the only designer taught me</h1>
-  <p class="art-hook">Lessons from being the first and only designer at two startups, surrounded by engineers who needed design decisions faster than I could make them.</p>
-  <div class="art-tags">
-    <span class="art-tag">Leadership</span>
-    <span class="art-tag">Startups</span>
-    <span class="art-tag">Design Culture</span>
-  </div>
-</div>
-<div class="art-divider"></div>
+  <nav class="mobile-nav">
+    <a href="/">Craft</a>
+    <a href="/about/">Story</a>
+    <a href="/writing/" class="active">My Thoughts</a>
+    <a href="/contact/">Contact</a>
+  </nav>
 
-<!-- ═══════════════════════════════════════ -->
-<!--           ARTICLE BODY                  -->
-<!-- ═══════════════════════════════════════ -->
-<div class="article">
-
-  <p>Twice in my career, I&rsquo;ve been the first designer at a startup. Not the first <em>senior</em> designer, not the first <em>product</em> designer &mdash; the first designer, period. One person responsible for every screen, every icon, every flow, every pixel that would touch users.</p>
-
-  <p>At SadaPay, it was <strong>1 designer to 12 engineers</strong> building Pakistan&rsquo;s first neobank for 220 million people. At ZAR, it was founding designer for an a16z-backed Solana wallet with no design system, no established patterns, and a product thesis that needed proving in the streets of Lahore.</p>
-
-  <p>Being the only designer in the room teaches you things that managing a team of 8 never will.</p>
-
-  <h2>You can&rsquo;t design every screen</h2>
-
-  <p>This was the hardest lesson. When you&rsquo;re the only designer and there are 12 engineers shipping features in parallel, you physically cannot design every screen before it gets built. Something has to give.</p>
-
-  <p>At first, I tried to keep up. Late nights, weekends, a Figma file that grew like an organism. It lasted about two months before the quality started dropping. Not because I was less capable, but because speed and craft are in tension when there&rsquo;s no system backing you up.</p>
-
-  <p><strong>The fix wasn&rsquo;t working harder. It was building systems.</strong></p>
-
-  <p>I stopped designing screens and started designing decisions. A design system (SadaDS at SadaPay, Techtonic at ZAR) meant that 80% of design decisions were pre-made. Engineers didn&rsquo;t need to wait for me to decide what a button looks like. The system already knew.</p>
-
-  <blockquote>
-    <p>The most productive thing a solo designer can do is <strong>make themselves unnecessary for the routine</strong> so they can focus on the novel.</p>
-  </blockquote>
-
-  <h2>Every decision is a bottleneck</h2>
-
-  <p>When you&rsquo;re the only designer, you are the bottleneck for every visual decision in the company. Every &ldquo;should this be a bottom sheet or a full screen?&rdquo; question routes through you. Every icon request. Every color choice. Every &ldquo;quick review&rdquo; that takes 45 minutes.</p>
-
-  <p>I had to learn to triage ruthlessly:</p>
-
-  <ul>
-    <li><strong>High-stakes flows</strong> (onboarding, KYC, money movement) &mdash; I designed these myself, pixel-perfect, no delegation</li>
-    <li><strong>Standard screens</strong> (settings, profile, lists) &mdash; I created patterns and let engineers assemble from the system</li>
-    <li><strong>Edge cases</strong> (error states, empty states, loading) &mdash; I documented principles and let the team apply them</li>
-  </ul>
-
-  <p>This isn&rsquo;t about lowering standards. It&rsquo;s about knowing <strong>where craft matters most</strong> and investing your limited time there.</p>
-
-  <h2>Engineers become your design team</h2>
-
-  <p>Here&rsquo;s the counterintuitive part: when you&rsquo;re the only designer, engineers don&rsquo;t just build your designs &mdash; they start <em>making</em> design decisions. Whether you want them to or not.</p>
-
-  <p>You have two choices: fight this (and lose), or embrace it and give them the tools to make good decisions.</p>
-
-  <p>I chose the second. At both SadaPay and ZAR, I invested heavily in documentation that wasn&rsquo;t for designers &mdash; it was for engineers. Not &ldquo;here&rsquo;s the design system showcase.&rdquo; More like: &ldquo;when a user encounters an error, here are the three patterns you can use, here&rsquo;s when to use which, here&rsquo;s the Figma component, here&rsquo;s the code snippet.&rdquo;</p>
-
-  <p>The result? Engineers started shipping screens I hadn&rsquo;t designed that <em>looked</em> and <em>felt</em> like I had designed them. That&rsquo;s not a sign of less design quality. It&rsquo;s a sign the system is working.</p>
-
-  <div class="img-placeholder">
-    <div class="img-inner">Diagram &mdash; The solo designer&rsquo;s time allocation shift. Year 1: 90% designing screens, 10% systems. Year 2: 40% screens, 40% systems, 20% strategy.</div>
-    <div class="img-cap">How my time allocation changed as the system matured.</div>
-  </div>
-
-  <h2>Your taste is your moat</h2>
-
-  <p>If engineers can assemble 80% of screens from a design system, what&rsquo;s the designer for?</p>
-
-  <p><strong>The 20% that can&rsquo;t be systematized.</strong></p>
-
-  <p>The moment a user sends their first digital transfer and deserves a celebration, not a green checkmark. The physical debit card that has <em>nothing printed on it</em> and becomes a cultural icon. The decision to kill an entire order system because you stood in a merchant&rsquo;s shop and watched them ignore it.</p>
-
-  <p>Systems handle consistency. Taste handles the moments that make people feel something. The 1:12 ratio forces you to understand the difference, because you don&rsquo;t have time to apply taste to everything.</p>
-
-  <h2>It changes how you hire</h2>
-
-  <p>When I finally got to build a team at SadaPay (1 to 8 designers over two years), the 1:12 experience shaped everything about how I hired.</p>
-
-  <p>I didn&rsquo;t want designers who needed to be told what to design. I&rsquo;d been that person for too long &mdash; I knew the company needed people who could operate independently. So I designed the hiring process around autonomy:</p>
-
-  <ol>
-    <li><strong>Portfolio reviews tested problem-solving,</strong> not visual polish. &ldquo;Walk me through a decision you made that was wrong, and how you knew.&rdquo;</li>
-    <li><strong>Design challenges mirrored real constraints.</strong> &ldquo;Design a first-time KYC flow for someone who&rsquo;s never held a bank account.&rdquo; Not &ldquo;redesign Spotify.&rdquo;</li>
-    <li><strong>Culture fit meant craft culture.</strong> Weekly crits where the newest junior could challenge the lead&rsquo;s work. If you couldn&rsquo;t handle that, you wouldn&rsquo;t thrive here.</li>
-  </ol>
-
-  <p>The team I built went on to design at Revolut, at top agencies, at their own startups. I&rsquo;m prouder of that than any screen I shipped.</p>
-
-  <blockquote>
-    <p>&ldquo;He consistently trusted and empowered us to take ownership of our projects, fostering an environment of creativity and innovation.&rdquo;<br><strong>&mdash; Sohaib Arif, now at Revolut</strong></p>
-  </blockquote>
-
-  <h2>The ratio gets easier. Then it gets hard again.</h2>
-
-  <p>At SadaPay, the ratio went from 1:12 to 8:60. At ZAR, I&rsquo;m scaling again. Each time, the early ratio forces a discipline that pays dividends later:</p>
-
-  <ul>
-    <li>You build systems before you need them</li>
-    <li>You document decisions instead of hoarding them</li>
-    <li>You learn what actually requires design craft vs. what just requires a pattern</li>
-    <li>You stop seeing &ldquo;I didn&rsquo;t design that screen&rdquo; as failure</li>
-  </ul>
-
-  <p>The 1:12 ratio is brutal. But it teaches you something that a comfortable 1:4 ratio never will: <strong>design leadership isn&rsquo;t about designing more. It&rsquo;s about designing what matters and enabling everything else.</strong></p>
-
-  <hr>
-
-  <p><em>If you&rsquo;re the only designer at your company right now: build the system first. The screens can wait. Your future team will thank you.</em></p>
-
-</div>
-
-<!-- ═══════════════════════════════════════ -->
-<!--           AUTHOR                        -->
-<!-- ═══════════════════════════════════════ -->
-<div class="author">
-  <div class="author-card">
-    <div class="author-avatar">B</div>
-    <div class="author-info">
-      <div class="author-name">ABM (Basit Masood)</div>
-      <div class="author-role">Lead Product Designer at ZAR. Two-time founding designer. Building design orgs and products that raise millions.</div>
+  <!-- ═══════════════════════════════════════ -->
+  <!--           ARTICLE HERO                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="art-hero">
+    <div class="art-meta-top">
+      <span>December 2025</span>
+      <span class="dot"></span>
+      <span>7 min read</span>
     </div>
-    <div class="author-links">
-      <a href="https://linkedin.com/in/iabm" class="author-link" title="LinkedIn" target="_blank">in</a>
+    <h1>The 1:12 ratio &mdash; what being the only designer taught me</h1>
+    <p class="art-hook">Lessons from being the first and only designer at two startups, surrounded by engineers who
+      needed design decisions faster than I could make them.</p>
+    <div class="art-tags">
+      <span class="art-tag">Leadership</span>
+      <span class="art-tag">Startups</span>
+      <span class="art-tag">Design Culture</span>
     </div>
   </div>
-</div>
+  <div class="art-divider"></div>
 
-<!-- ═══════════════════════════════════════ -->
-<!--           ARTICLE NAV                   -->
-<!-- ═══════════════════════════════════════ -->
-<div class="art-nav">
-  <a href="#" class="art-nav-link" style="opacity:0.4;pointer-events:none;">
-    <span class="art-nav-dir">&larr; Previous</span>
-    <span class="art-nav-title">Coming soon</span>
-  </a>
-  <a href="/writing/waitlist-gamification/" class="art-nav-link">
-    <span class="art-nav-dir">Next &rarr;</span>
-    <span class="art-nav-title">Gamified Waitlists</span>
-  </a>
-</div>
+  <!-- ═══════════════════════════════════════ -->
+  <!--           ARTICLE BODY                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="article">
 
-<!-- FOOTER -->
-<footer style="max-width:900px;margin:80px auto 0;padding:0 48px;"><div style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);padding-bottom:80px;"><span>&copy; 2026 ABM</span><span>Designed with intention</span></div></footer>
+    <p>Twice in my career, I&rsquo;ve been the first designer at a startup. Not the first <em>senior</em> designer, not
+      the first <em>product</em> designer &mdash; the first designer, period. One person responsible for every screen,
+      every icon, every flow, every pixel that would touch users.</p>
 
-<script>
-  // ─── PAGE TRANSITIONS ───
-  if(location.protocol!=='file:'){
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const h=a.getAttribute('href');
-      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(()=>window.location.href=h,150);
+    <p>At SadaPay, it was <strong>1 designer to 12 engineers</strong> building Pakistan&rsquo;s first neobank for 220
+      million people. At ZAR, it was founding designer for an a16z-backed Solana wallet with no design system, no
+      established patterns, and a product thesis that needed proving in the streets of Lahore.</p>
+
+    <p>Being the only designer in the room teaches you things that managing a team of 8 never will.</p>
+
+    <h2>You can&rsquo;t design every screen</h2>
+
+    <p>This was the hardest lesson. When you&rsquo;re the only designer and there are 12 engineers shipping features in
+      parallel, you physically cannot design every screen before it gets built. Something has to give.</p>
+
+    <p>At first, I tried to keep up. Late nights, weekends, a Figma file that grew like an organism. It lasted about two
+      months before the quality started dropping. Not because I was less capable, but because speed and craft are in
+      tension when there&rsquo;s no system backing you up.</p>
+
+    <p><strong>The fix wasn&rsquo;t working harder. It was building systems.</strong></p>
+
+    <p>I stopped designing screens and started designing decisions. A design system (SadaDS at SadaPay, Techtonic at
+      ZAR) meant that 80% of design decisions were pre-made. Engineers didn&rsquo;t need to wait for me to decide what a
+      button looks like. The system already knew.</p>
+
+    <blockquote>
+      <p>The most productive thing a solo designer can do is <strong>make themselves unnecessary for the
+          routine</strong> so they can focus on the novel.</p>
+    </blockquote>
+
+    <h2>Every decision is a bottleneck</h2>
+
+    <p>When you&rsquo;re the only designer, you are the bottleneck for every visual decision in the company. Every
+      &ldquo;should this be a bottom sheet or a full screen?&rdquo; question routes through you. Every icon request.
+      Every color choice. Every &ldquo;quick review&rdquo; that takes 45 minutes.</p>
+
+    <p>I had to learn to triage ruthlessly:</p>
+
+    <ul>
+      <li><strong>High-stakes flows</strong> (onboarding, KYC, money movement) &mdash; I designed these myself,
+        pixel-perfect, no delegation</li>
+      <li><strong>Standard screens</strong> (settings, profile, lists) &mdash; I created patterns and let engineers
+        assemble from the system</li>
+      <li><strong>Edge cases</strong> (error states, empty states, loading) &mdash; I documented principles and let the
+        team apply them</li>
+    </ul>
+
+    <p>This isn&rsquo;t about lowering standards. It&rsquo;s about knowing <strong>where craft matters most</strong> and
+      investing your limited time there.</p>
+
+    <h2>Engineers become your design team</h2>
+
+    <p>Here&rsquo;s the counterintuitive part: when you&rsquo;re the only designer, engineers don&rsquo;t just build
+      your designs &mdash; they start <em>making</em> design decisions. Whether you want them to or not.</p>
+
+    <p>You have two choices: fight this (and lose), or embrace it and give them the tools to make good decisions.</p>
+
+    <p>I chose the second. At both SadaPay and ZAR, I invested heavily in documentation that wasn&rsquo;t for designers
+      &mdash; it was for engineers. Not &ldquo;here&rsquo;s the design system showcase.&rdquo; More like: &ldquo;when a
+      user encounters an error, here are the three patterns you can use, here&rsquo;s when to use which, here&rsquo;s
+      the Figma component, here&rsquo;s the code snippet.&rdquo;</p>
+
+    <p>The result? Engineers started shipping screens I hadn&rsquo;t designed that <em>looked</em> and <em>felt</em>
+      like I had designed them. That&rsquo;s not a sign of less design quality. It&rsquo;s a sign the system is working.
+    </p>
+
+    <div class="img-placeholder">
+      <div class="img-inner">Diagram &mdash; The solo designer&rsquo;s time allocation shift. Year 1: 90% designing
+        screens, 10% systems. Year 2: 40% screens, 40% systems, 20% strategy.</div>
+      <div class="img-cap">How my time allocation changed as the system matured.</div>
+    </div>
+
+    <h2>Your taste is your moat</h2>
+
+    <p>If engineers can assemble 80% of screens from a design system, what&rsquo;s the designer for?</p>
+
+    <p><strong>The 20% that can&rsquo;t be systematized.</strong></p>
+
+    <p>The moment a user sends their first digital transfer and deserves a celebration, not a green checkmark. The
+      physical debit card that has <em>nothing printed on it</em> and becomes a cultural icon. The decision to kill an
+      entire order system because you stood in a merchant&rsquo;s shop and watched them ignore it.</p>
+
+    <p>Systems handle consistency. Taste handles the moments that make people feel something. The 1:12 ratio forces you
+      to understand the difference, because you don&rsquo;t have time to apply taste to everything.</p>
+
+    <h2>It changes how you hire</h2>
+
+    <p>When I finally got to build a team at SadaPay (1 to 8 designers over two years), the 1:12 experience shaped
+      everything about how I hired.</p>
+
+    <p>I didn&rsquo;t want designers who needed to be told what to design. I&rsquo;d been that person for too long
+      &mdash; I knew the company needed people who could operate independently. So I designed the hiring process around
+      autonomy:</p>
+
+    <ol>
+      <li><strong>Portfolio reviews tested problem-solving,</strong> not visual polish. &ldquo;Walk me through a
+        decision you made that was wrong, and how you knew.&rdquo;</li>
+      <li><strong>Design challenges mirrored real constraints.</strong> &ldquo;Design a first-time KYC flow for someone
+        who&rsquo;s never held a bank account.&rdquo; Not &ldquo;redesign Spotify.&rdquo;</li>
+      <li><strong>Culture fit meant craft culture.</strong> Weekly crits where the newest junior could challenge the
+        lead&rsquo;s work. If you couldn&rsquo;t handle that, you wouldn&rsquo;t thrive here.</li>
+    </ol>
+
+    <p>The team I built went on to design at Revolut, at top agencies, at their own startups. I&rsquo;m prouder of that
+      than any screen I shipped.</p>
+
+    <blockquote>
+      <p>&ldquo;He consistently trusted and empowered us to take ownership of our projects, fostering an environment of
+        creativity and innovation.&rdquo;<br><strong>&mdash; Sohaib Arif, now at Revolut</strong></p>
+    </blockquote>
+
+    <h2>The ratio gets easier. Then it gets hard again.</h2>
+
+    <p>At SadaPay, the ratio went from 1:12 to 8:60. At ZAR, I&rsquo;m scaling again. Each time, the early ratio forces
+      a discipline that pays dividends later:</p>
+
+    <ul>
+      <li>You build systems before you need them</li>
+      <li>You document decisions instead of hoarding them</li>
+      <li>You learn what actually requires design craft vs. what just requires a pattern</li>
+      <li>You stop seeing &ldquo;I didn&rsquo;t design that screen&rdquo; as failure</li>
+    </ul>
+
+    <p>The 1:12 ratio is brutal. But it teaches you something that a comfortable 1:4 ratio never will: <strong>design
+        leadership isn&rsquo;t about designing more. It&rsquo;s about designing what matters and enabling everything
+        else.</strong></p>
+
+    <hr>
+
+    <p><em>If you&rsquo;re the only designer at your company right now: build the system first. The screens can wait.
+        Your future team will thank you.</em></p>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--           AUTHOR                        -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="author">
+    <div class="author-card">
+      <div class="author-avatar">B</div>
+      <div class="author-info">
+        <div class="author-name">ABM (Basit Masood)</div>
+        <div class="author-role">Lead Product Designer at ZAR. Two-time founding designer. Building design orgs and
+          products that raise millions.</div>
+      </div>
+      <div class="author-links">
+        <a href="https://linkedin.com/in/iabm" class="author-link" title="LinkedIn" target="_blank">in</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--           ARTICLE NAV                   -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="art-nav">
+    <a href="#" class="art-nav-link" style="opacity:0.4;pointer-events:none;">
+      <span class="art-nav-dir">&larr; Previous</span>
+      <span class="art-nav-title">Coming soon</span>
+    </a>
+    <a href="/writing/waitlist-gamification/" class="art-nav-link">
+      <span class="art-nav-dir">Next &rarr;</span>
+      <span class="art-nav-title">Gamified Waitlists</span>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
+    <div
+      style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);padding-bottom:80px;">
+      <span>&copy; 2026 ABM</span><span>Designed with intention</span></div>
+  </footer>
+
+  <script>
+    // ─── PAGE TRANSITIONS ───
+    if (location.protocol !== 'file:') {
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => window.location.href = h, 150);
+        });
       });
-    });
-  }
-</script>
+    }
+  </script>
 </body>
+
 </html>

@@ -1,342 +1,710 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ABM at ADIB — Rescued chaotic design system, shipped Open Banking UX and Visa Direct remittances. First bank worldwide with 11B+ payment endpoints.">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="ADIB — ABM">
-<meta property="og:description" content="Design system rescue. Open Banking. 11B+ endpoints globally.">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ADIB — ABM">
-<meta name="twitter:description" content="Design system rescue. Open Banking. 11B+ endpoints globally.">
-<title>ADIB — ABM</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --display: 'AKONY', serif;
-    --body: 'Space Grotesk', sans-serif;
-    --serif: 'Gentium Book Plus', serif;
-    --bg: #f8f5f0;
-    --text: #2E1A12;
-    --text-dim: #6b5d54;
-    --text-muted: #9a8d84;
-    --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.07);
-    --card-hover: rgba(0,0,0,0.12);
-    --espresso: #2E1A12;
-    --cream: #f8f5f0;
-    --cream-light: #ffffff;
-    --red: #cc2936;
-    --accent: #4A7BF7;
-    --accent-light: #7BA0FA;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="ABM at ADIB — Rescued chaotic design system, shipped Open Banking UX and Visa Direct remittances. First bank worldwide with 11B+ payment endpoints.">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="ADIB — ABM">
+  <meta property="og:description" content="Design system rescue. Open Banking. 11B+ endpoints globally.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abmcooks.github.io/work/adib/">
+  <meta property="og:image" content="https://abmcooks.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ADIB — ABM">
+  <meta name="twitter:description" content="Design system rescue. Open Banking. 11B+ endpoints globally.">
+  <meta name="twitter:image" content="https://abmcooks.github.io/og.png">
+  <title>ADIB — ABM</title>
+  <link rel="canonical" href="https://abmcooks.github.io/work/adib/">
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+      --bg: #f8f5f0;
+      --text: #2E1A12;
+      --text-dim: #6b5d54;
+      --text-muted: #9a8d84;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.07);
+      --card-hover: rgba(0, 0, 0, 0.12);
+      --espresso: #2E1A12;
+      --cream: #f8f5f0;
+      --cream-light: #ffffff;
+      --red: #cc2936;
+      --accent: #4A7BF7;
+      --accent-light: #7BA0FA;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body {
-    font-family: var(--body); background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px;
-    animation: pageIn 0.3s ease;
-  }
-  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
-  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ─── BACK LINK ─── */
-  .back-link { position: fixed; top: 64px; left: 48px; z-index: 100; font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-  .back-link:hover { color: var(--text); }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
-  /* ─── NAV BAR (dark espresso on light page) ─── */
-  .nav-bar { position: fixed; top: 64px; right: 48px; z-index: 100; background: var(--espresso); border-radius: 8px; padding: 8px 32px 8px 24px; display: flex; align-items: center; gap: 12px; }
-  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
-  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: #f8f5f0; display: none; }
-  .nav-bar-item.active .nav-bar-dot { display: block; }
-  .nav-bar-item a { font-family: var(--body); font-size: 14px; font-weight: 500; color: rgba(248,245,240,0.6); text-decoration: none; }
-  .nav-bar-item.active a { font-weight: 700; color: #f8f5f0; text-decoration: underline; text-underline-offset: 3px; }
-  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(248,245,240,0.3); transform: rotate(-40deg); }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      animation: pageIn 0.3s ease;
+    }
 
-  /* ─── MOBILE NAV ─── */
-  .mobile-nav { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px); border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; }
-  .mobile-nav a { font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none; padding: 8px 15px; border-radius: 100px; }
-  .mobile-nav a.active { color: #f8f5f0; background: rgba(235,244,245,0.08); }
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
 
-  @media (max-width: 768px) { .nav-bar { display: none; } .mobile-nav { display: flex; } .back-link { top: 24px; left: 24px; } }
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+      }
 
-  /* ─── WRAPPER ─── */
-  .wrap { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 48px; }
+      to {
+        opacity: 1;
+      }
+    }
 
-  /* ─── HERO SECTION ─── */
-  .hero {
-    position: relative; z-index: 2;
-    padding: 180px 0 80px;
-    text-align: center;
-    opacity: 0; animation: fu 0.8s 0.1s forwards;
-  }
-  .co-meta {
-    display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px;
-    opacity: 0; animation: fu 0.5s 0.3s forwards;
-  }
-  .co-dot {
-    width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 12px rgba(74,123,247,0.4);
-  }
-  .co-tenure {
-    font-family: var(--body); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--accent);
-  }
-  .co-name {
-    font-family: var(--display); font-size: clamp(64px, 10vw, 120px);
-    font-weight: 400; line-height: 1; letter-spacing: 0.04em;
-    color: var(--text); text-transform: uppercase;
-    margin-bottom: 20px;
-    opacity: 0; animation: fu 0.7s 0.4s forwards;
-  }
-  .co-links {
-    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px;
-    opacity: 0; animation: fu 0.6s 0.5s forwards;
-  }
-  .co-link {
-    display: flex; align-items: center; gap: 5px;
-    font-family: var(--body); font-size: 12px; font-weight: 500; color: var(--text-dim);
-    text-decoration: none;
-    padding: 5px 12px; border-radius: 100px;
-    border: 1px solid rgba(74,123,247,0.2);
-    background: rgba(74,123,247,0.06);
-    transition: all 0.3s;
-  }
-  .co-link:hover { color: var(--accent); border-color: rgba(74,123,247,0.4); background: rgba(74,123,247,0.1); }
-  .co-link svg { flex-shrink: 0; }
+    /* ─── BACK LINK ─── */
+    .back-link {
+      position: fixed;
+      top: 64px;
+      left: 48px;
+      z-index: 100;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
 
-  /* ─── SECTION STYLES ─── */
-  .section-label {
-    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 24px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::before {
-    content: ''; width: 24px; height: 1px; background: var(--accent);
-  }
+    .back-link:hover {
+      color: var(--text);
+    }
 
-  /* ─── OVERVIEW ─── */
-  .overview { padding: 0 0 0; }
-  .overview-brief {
-    font-family: var(--serif); font-size: 19px; font-weight: 400;
-    color: var(--text-dim); line-height: 1.8; max-width: 750px;
-  }
-  .overview-brief strong { color: var(--text); font-weight: 700; }
-  .overview-pills {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;
-  }
-  .ov-pill {
-    font-family: var(--body); font-size: 11px; font-weight: 500; padding: 4px 12px;
-    border-radius: 100px; color: var(--accent);
-    border: 1px solid rgba(74,123,247,0.2);
-    background: rgba(74,123,247,0.06);
-  }
+    /* ─── NAV BAR (dark espresso on light page) ─── */
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--espresso);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  /* ─── STATS ─── */
-  .stats-inline {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-    margin-top: 28px; padding: 24px 0;
-    border-top: 1px solid rgba(0,0,0,0.08);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-  .si { text-align: center; position: relative; }
-  .si + .si::before {
-    content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-    width: 1px; height: 28px; background: rgba(0,0,0,0.08);
-  }
-  .si-num {
-    font-family: var(--body); font-size: clamp(22px, 2.8vw, 30px);
-    font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1;
-  }
-  .si-num-text {
-    font-family: var(--body); font-size: 20px;
-    font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1;
-  }
-  .si-label {
-    font-family: var(--body); font-size: 11px; color: var(--text-muted); font-weight: 500; margin-top: 4px;
-  }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  /* ─── TESTIMONIAL ─── */
-  .testimonial {
-    padding: 24px 28px;
-    border-left: 2px solid var(--accent);
-    background: var(--card-bg);
-    border-radius: 0 12px 12px 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .testimonial p {
-    font-family: var(--serif); font-size: 16px; font-weight: 400; font-style: italic;
-    color: var(--text-dim); line-height: 1.7; margin: 0;
-  }
-  .testimonial span {
-    display: block; margin-top: 12px;
-    font-family: var(--body); font-size: 13px; color: var(--accent);
-  }
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f8f5f0;
+      display: none;
+    }
 
-  /* ─── NDA NOTE ─── */
-  .work-note-card {
-    padding: 32px; border-radius: 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    text-align: center;
-  }
-  .work-note-card p {
-    font-family: var(--serif); font-size: 17px; font-weight: 400;
-    color: var(--text-dim); line-height: 1.6;
-  }
-  .work-note-card p span { color: var(--text); }
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(248, 245, 240, 0.6);
+      text-decoration: none;
+    }
 
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .rd1 { transition-delay: .08s; } .rd2 { transition-delay: .16s; } .rd3 { transition-delay: .24s; } .rd4 { transition-delay: .32s; }
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: #f8f5f0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    .wrap { padding-left: 20px; padding-right: 20px; }
-    .hero { padding: 140px 0 60px; }
-    .stats-inline { grid-template-columns: 1fr 1fr; gap: 16px 0; }
-    .si:nth-child(2)::before { display: none; }
-    .co-links { flex-wrap: wrap; justify-content: center; }
-  }
-  @media (max-width: 640px) {
-    .co-name { font-size: 56px; }
-  }
-</style>
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: rgba(248, 245, 240, 0.3);
+      transform: rotate(-40deg);
+    }
+
+    /* ─── MOBILE NAV ─── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+    }
+
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+    }
+
+    .mobile-nav a.active {
+      color: #f8f5f0;
+      background: rgba(235, 244, 245, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .back-link {
+        top: 24px;
+        left: 24px;
+      }
+    }
+
+    /* ─── WRAPPER ─── */
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+      position: relative;
+      z-index: 2;
+      padding: 180px 0 80px;
+      text-align: center;
+      opacity: 0;
+      animation: fu 0.8s 0.1s forwards;
+    }
+
+    .co-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fu 0.5s 0.3s forwards;
+    }
+
+    .co-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(74, 123, 247, 0.4);
+    }
+
+    .co-tenure {
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .co-name {
+      font-family: var(--display);
+      font-size: clamp(64px, 10vw, 120px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fu 0.7s 0.4s forwards;
+    }
+
+    .co-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+      opacity: 0;
+      animation: fu 0.6s 0.5s forwards;
+    }
+
+    .co-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(74, 123, 247, 0.2);
+      background: rgba(74, 123, 247, 0.06);
+      transition: all 0.3s;
+    }
+
+    .co-link:hover {
+      color: var(--accent);
+      border-color: rgba(74, 123, 247, 0.4);
+      background: rgba(74, 123, 247, 0.1);
+    }
+
+    .co-link svg {
+      flex-shrink: 0;
+    }
+
+    /* ─── SECTION STYLES ─── */
+    .section-label {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* ─── OVERVIEW ─── */
+    .overview {
+      padding: 0 0 0;
+    }
+
+    .overview-brief {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 750px;
+    }
+
+    .overview-brief strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .overview-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .ov-pill {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+      color: var(--accent);
+      border: 1px solid rgba(74, 123, 247, 0.2);
+      background: rgba(74, 123, 247, 0.06);
+    }
+
+    /* ─── STATS ─── */
+    .stats-inline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 28px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .si {
+      text-align: center;
+      position: relative;
+    }
+
+    .si+.si::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 28px;
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .si-num {
+      font-family: var(--body);
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .si-num-text {
+      font-family: var(--body);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .si-label {
+      font-family: var(--body);
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* ─── TESTIMONIAL ─── */
+    .testimonial {
+      padding: 24px 28px;
+      border-left: 2px solid var(--accent);
+      background: var(--card-bg);
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .testimonial p {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .testimonial span {
+      display: block;
+      margin-top: 12px;
+      font-family: var(--body);
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* ─── NDA NOTE ─── */
+    .work-note-card {
+      padding: 32px;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      text-align: center;
+    }
+
+    .work-note-card p {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .work-note-card p span {
+      color: var(--text);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rd1 {
+      transition-delay: .08s;
+    }
+
+    .rd2 {
+      transition-delay: .16s;
+    }
+
+    .rd3 {
+      transition-delay: .24s;
+    }
+
+    .rd4 {
+      transition-delay: .32s;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero {
+        padding: 140px 0 60px;
+      }
+
+      .stats-inline {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 0;
+      }
+
+      .si:nth-child(2)::before {
+        display: none;
+      }
+
+      .co-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .co-name {
+        font-size: 56px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- BACK LINK -->
-<a href="/" class="back-link">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-  Back
-</a>
+  <!-- BACK LINK -->
+  <a href="/" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round" width="16" height="16">
+      <path d="M19 12H5" />
+      <path d="M12 19l-7-7 7-7" />
+    </svg>
+    Back
+  </a>
 
-<!-- NAV -->
-<div class="nav-bar">
-  <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-</div>
+  <!-- NAV -->
+  <div class="nav-bar">
+    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
+  </div>
 
-<nav class="mobile-nav">
-  <a href="/" class="active">Craft</a>
-  <a href="/about/">Story</a>
-  <a href="/writing/">Thoughts</a>
-  <a href="/contact/">Contact</a>
-</nav>
+  <nav class="mobile-nav">
+    <a href="/" class="active">My Craft</a>
+    <a href="/about/">Story</a>
+    <a href="/writing/">Thoughts</a>
+    <a href="/contact/">Contact</a>
+  </nav>
 
-<!-- HERO -->
-<div class="wrap">
-  <section class="hero">
-    <div class="co-meta">
-      <div class="co-dot"></div>
-      <span class="co-tenure">2024 — 2025</span>
-    </div>
-    <h1 class="co-name">ADIB</h1>
-    <div class="co-links">
-      <a href="https://adib.ae" class="co-link" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 3H3.5A1.5 1.5 0 002 4.5v8A1.5 1.5 0 003.5 14h8a1.5 1.5 0 001.5-1.5V10M10 2h4v4M7 9l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Website
-      </a>
-      <a href="#" class="co-link" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4.5 10.5c0-1 2-1.5 3.5-1.5s3.5.5 3.5 1.5M8 7.5a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-        LinkedIn
-      </a>
-      <a href="#" class="co-link" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.3"/><circle cx="11.8" cy="4.2" r="0.8" fill="currentColor"/></svg>
-        Instagram
-      </a>
-    </div>
-  </section>
-
-  <!-- OVERVIEW -->
-  <section class="overview reveal">
-    <p class="overview-brief">
-      <strong>ADIB&rsquo;s design system was chaotic</strong> &mdash; inconsistent components, no atomic structure, engineers interpreting specs differently across teams. I came in to fix it. Rebuilt the system from chaotic to atomic, established design governance, and created documentation that engineering teams actually followed.
-    </p>
-    <p class="overview-brief" style="margin-top:16px;">
-      Alongside the system rescue, I shipped two major products: the <strong>Open Banking experience</strong> (built from zero with Lean Technologies) and <strong>Remit!</strong> &mdash; a Visa Direct remittance product that made ADIB the first bank worldwide to offer <strong>11+ billion payment endpoints</strong>. Enterprise banking, regulatory constraints, stakeholder complexity &mdash; a different kind of design challenge from startup speed.
-    </p>
-    <div class="overview-pills">
-      <span class="ov-pill">Lead Product Designer</span>
-      <span class="ov-pill">Design System Rescue</span>
-      <span class="ov-pill">Open Banking</span>
-      <span class="ov-pill">Design Governance</span>
-    </div>
-    <div class="stats-inline">
-      <div class="si"><div class="si-num" data-t="1" data-s="M+">0</div><div class="si-label">App users</div></div>
-      <div class="si"><div class="si-num" data-t="11" data-s="B+">0</div><div class="si-label">Endpoints (first globally)</div></div>
-      <div class="si"><div class="si-num" data-p="#" data-t="1" data-s="">0</div><div class="si-label">Islamic bank in UAE</div></div>
-      <div class="si"><div class="si-num-text">Open Banking</div><div class="si-label">Launched</div></div>
-    </div>
-
-    <!-- TESTIMONIAL -->
-    <div style="margin-top:40px;">
-      <div class="testimonial">
-        <p>&ldquo;What stood out most was his ability to engage with stakeholders at all levels &mdash; thoughtfully considering feedback, incorporating diverse perspectives, and articulating his own insights in a clear and structured manner.&rdquo;</p>
-        <span>&mdash; Daniel Young, Head of Digital Products at ADIB</span>
+  <!-- HERO -->
+  <div class="wrap">
+    <section class="hero">
+      <div class="co-meta">
+        <div class="co-dot"></div>
+        <span class="co-tenure">2024 — 2025</span>
       </div>
+      <h1 class="co-name">ADIB</h1>
+      <div class="co-links">
+        <a href="https://adib.ae" class="co-link" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M6 3H3.5A1.5 1.5 0 002 4.5v8A1.5 1.5 0 003.5 14h8a1.5 1.5 0 001.5-1.5V10M10 2h4v4M7 9l7-7"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Website
+        </a>
+        <a href="https://www.linkedin.com/company/abu-dhabi-islamic-bank/posts/?feedView=all" class="co-link"
+          target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M4.5 10.5c0-1 2-1.5 3.5-1.5s3.5.5 3.5 1.5M8 7.5a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor"
+              stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.3" />
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://www.instagram.com/adib_bank/" class="co-link" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="currentColor" stroke-width="1.3" />
+            <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.3" />
+            <circle cx="11.8" cy="4.2" r="0.8" fill="currentColor" />
+          </svg>
+          Instagram
+        </a>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="overview reveal">
+      <p class="overview-brief">
+        <strong>ADIB&rsquo;s design system was chaotic</strong> &mdash; inconsistent components, no atomic structure,
+        engineers interpreting specs differently across teams. I came in to fix it. Rebuilt the system from chaotic to
+        atomic, established design governance, and created documentation that engineering teams actually followed.
+      </p>
+      <p class="overview-brief" style="margin-top:16px;">
+        Alongside the system rescue, I shipped two major products: the <strong>Open Banking experience</strong> (built
+        from zero with Lean Technologies) and <strong>Remit!</strong> &mdash; a Visa Direct remittance product that made
+        ADIB the first bank worldwide to offer <strong>11+ billion payment endpoints</strong>. Enterprise banking,
+        regulatory constraints, stakeholder complexity &mdash; a different kind of design challenge from startup speed.
+      </p>
+      <div class="overview-pills">
+        <span class="ov-pill">Lead Product Designer</span>
+        <span class="ov-pill">Design System Rescue</span>
+        <span class="ov-pill">Open Banking</span>
+        <span class="ov-pill">Design Governance</span>
+      </div>
+      <div class="stats-inline">
+        <div class="si">
+          <div class="si-num" data-t="1" data-s="M+">0</div>
+          <div class="si-label">App users</div>
+        </div>
+        <div class="si">
+          <div class="si-num" data-t="11" data-s="B+">0</div>
+          <div class="si-label">Endpoints (first globally)</div>
+        </div>
+        <div class="si">
+          <div class="si-num" data-p="#" data-t="1" data-s="">0</div>
+          <div class="si-label">Islamic bank in UAE</div>
+        </div>
+        <div class="si">
+          <div class="si-num-text">Open Banking</div>
+          <div class="si-label">Launched</div>
+        </div>
+      </div>
+
+      <!-- TESTIMONIAL -->
+      <div style="margin-top:40px;">
+        <div class="testimonial">
+          <p>&ldquo;What stood out most was his ability to engage with stakeholders at all levels &mdash; thoughtfully
+            considering feedback, incorporating diverse perspectives, and articulating his own insights in a clear and
+            structured manner.&rdquo;</p>
+          <span>&mdash; Daniel Young, Head of Digital Products at ADIB</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- NDA NOTE -->
+  <section class="reveal" style="max-width:900px;margin:48px auto 0;padding:0 48px;">
+    <div class="work-note-card">
+      <p>
+        Detailed case studies for ADIB work are under NDA.<br>
+        <span>Happy to discuss the approach and process in person.</span>
+      </p>
     </div>
   </section>
-</div>
 
-<!-- NDA NOTE -->
-<section class="reveal" style="max-width:900px;margin:48px auto 0;padding:0 48px;">
-  <div class="work-note-card">
-    <p>
-      Detailed case studies for ADIB work are under NDA.<br>
-      <span>Happy to discuss the approach and process in person.</span>
-    </p>
-  </div>
-</section>
+  <!-- FOOTER -->
+  <footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
+    <div
+      style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
+      <span>&copy; 2026 ABM</span>
+      <span>Designed with intention</span>
+    </div>
+  </footer>
 
-<!-- FOOTER -->
-<footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
-  <div style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
-    <span>&copy; 2026 ABM</span>
-    <span>Designed with intention</span>
-  </div>
-</footer>
+  <script>
+    // ─── REVEALS ───
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, { threshold: .06 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-<script>
-  // ─── REVEALS ───
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  })},{threshold:.06});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-  // ─── COUNTERS ───
-  document.querySelectorAll('.si-num[data-t]').forEach(el=>{
-    const co=new IntersectionObserver(es=>{es.forEach(en=>{
-      if(en.isIntersecting&&!en.target.dataset.d){en.target.dataset.d='1';
-        const t=parseFloat(en.target.dataset.t),p=en.target.dataset.p||'',s=en.target.dataset.s||'',dc=t%1!==0,du=2000,st=performance.now();
-        (function tk(n){const pr=Math.min((n-st)/du,1),ea=1-Math.pow(1-pr,4);en.target.textContent=p+(dc?(t*ea).toFixed(1):Math.floor(t*ea))+s;if(pr<1)requestAnimationFrame(tk)})(st);
-      }})},{threshold:.5});co.observe(el);});
-
-  // ─── PAGE TRANSITIONS ───
-  if(location.protocol!=='file:'){
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const h=a.getAttribute('href');
-      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(()=>window.location.href=h,150);
-      });
+    // ─── COUNTERS ───
+    document.querySelectorAll('.si-num[data-t]').forEach(el => {
+      const co = new IntersectionObserver(es => {
+        es.forEach(en => {
+          if (en.isIntersecting && !en.target.dataset.d) {
+            en.target.dataset.d = '1';
+            const t = parseFloat(en.target.dataset.t), p = en.target.dataset.p || '', s = en.target.dataset.s || '', dc = t % 1 !== 0, du = 2000, st = performance.now();
+            (function tk(n) { const pr = Math.min((n - st) / du, 1), ea = 1 - Math.pow(1 - pr, 4); en.target.textContent = p + (dc ? (t * ea).toFixed(1) : Math.floor(t * ea)) + s; if (pr < 1) requestAnimationFrame(tk) })(st);
+          }
+        })
+      }, { threshold: .5 }); co.observe(el);
     });
-  }
-</script>
+
+    // ─── PAGE TRANSITIONS ───
+    if (location.protocol !== 'file:') {
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => window.location.href = h, 150);
+        });
+      });
+    }
+  </script>
 </body>
+
 </html>

@@ -1,697 +1,2075 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The Golden Flow — 18 steps to 4. What if users had money in their wallet before they even had an account?">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="The Golden Flow — ABM">
-<meta property="og:description" content="18 steps to 4. We flipped the onboarding model: value first, identity later.">
-<meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Golden Flow — ABM">
-<meta name="twitter:description" content="18 steps to 4. We flipped the onboarding model: value first, identity later.">
-<title>The Golden Flow — ABM</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --display: 'AKONY', serif;
-    --body: 'Space Grotesk', sans-serif;
-    --serif: 'Gentium Book Plus', serif;
-    --bg: #f8f5f0;
-    --text: #2E1A12;
-    --text-dim: #6b5d54;
-    --text-muted: #9a8d84;
-    --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.07);
-    --accent: #C9A84E;
-    --accent-light: #DBBF6A;
-    --red: #cc2936;
-    --espresso: #2E1A12;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="The Golden Flow — 18 steps to 4. What if users had money in their wallet before they even had an account?">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="The Golden Flow — ABM">
+  <meta property="og:description"
+    content="18 steps to 4. We flipped the onboarding model: value first, identity later.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Golden Flow — ABM">
+  <meta name="twitter:description"
+    content="18 steps to 4. We flipped the onboarding model: value first, identity later.">
+  <title>The Golden Flow — ABM</title>
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+      --bg: #f8f5f0;
+      --text: #2E1A12;
+      --text-dim: #6b5d54;
+      --text-muted: #9a8d84;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.07);
+      --accent: #C9A84E;
+      --accent-light: #DBBF6A;
+      --red: #cc2936;
+      --espresso: #2E1A12;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body {
-    font-family: var(--body); background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px;
-    animation: pageIn 0.3s ease;
-  }
-  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
-  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .back-link { position: fixed; top: 64px; left: 48px; z-index: 100; font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-  .back-link:hover { color: var(--text); }
-  .nav-bar { position: fixed; top: 64px; right: 48px; z-index: 100; background: var(--text); border-radius: 8px; padding: 8px 32px 8px 24px; display: flex; align-items: center; gap: 12px; }
-  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
-  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: #f8f5f0; display: none; }
-  .nav-bar-item.active .nav-bar-dot { display: block; }
-  .nav-bar-item a { font-family: var(--body); font-size: 14px; font-weight: 500; color: rgba(248,245,240,0.6); text-decoration: none; }
-  .nav-bar-item.active a { font-weight: 700; color: #f8f5f0; text-decoration: underline; text-underline-offset: 3px; }
-  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(248,245,240,0.3); transform: rotate(-40deg); }
-  .mobile-nav { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px); border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; }
-  .mobile-nav a { font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none; padding: 8px 15px; border-radius: 100px; }
-  .mobile-nav a.active { color: #f8f5f0; background: rgba(235,244,245,0.08); }
-  @media (max-width: 768px) { .nav-bar { display: none; } .mobile-nav { display: flex; } .back-link { top: 24px; left: 24px; } }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
-  .cs-hero { position: relative; min-height: 80vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 160px 48px 80px; }
-  .cs-hero-metric { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--body); font-weight: 700; font-size: clamp(180px, 25vw, 360px); letter-spacing: -0.06em; line-height: 1; color: var(--accent); opacity: 0.08; pointer-events: none; user-select: none; white-space: nowrap; }
-  .cs-hero-content { position: relative; z-index: 2; max-width: 720px; text-align: center; opacity: 0; animation: fu 0.8s 0.2s forwards; }
-  .cs-hero-company { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .cs-hero-company::before, .cs-hero-company::after { content: ''; width: 24px; height: 1px; background: rgba(201,168,78,0.3); }
-  .cs-logo { width: 24px; height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; letter-spacing: 0; text-transform: none; background: rgba(201,168,78,0.15); color: var(--accent); border: 1px solid rgba(201,168,78,0.12); }
-  .cs-hero h1 { font-family: var(--display); font-size: clamp(36px, 5vw, 56px); font-weight: 400; letter-spacing: 0.02em; line-height: 1.1; color: var(--text); margin-bottom: 20px; text-transform: uppercase; }
-  .cs-hero-hook { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--text-dim); line-height: 1.6; max-width: 600px; margin: 0 auto 32px; font-style: italic; }
-  .cs-hero-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-  .cs-meta-pill { font-size: 11px; font-weight: 500; padding: 5px 14px; border-radius: 100px; color: var(--text-dim); border: 1px solid var(--card-border); background: var(--card-bg); box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      animation: pageIn 0.3s ease;
+    }
 
-  .article { position: relative; max-width: 720px; margin: 0 auto; padding: 0 32px; }
-  .cs-section { margin-top: 72px; opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1); }
-  .cs-section.visible { opacity: 1; transform: translateY(0); }
-  .cs-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-  .cs-label::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
-  .cs-heading { font-family: var(--body); font-size: clamp(24px, 3.5vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: var(--text); margin-bottom: 20px; }
-  .cs-body { font-family: var(--serif); font-size: 16px; color: var(--text-dim); line-height: 1.8; margin-bottom: 20px; }
-  .cs-body strong { color: var(--text); font-weight: 700; }
-  .cs-body em { color: var(--text-dim); font-style: italic; }
-  .cs-quote { margin: 36px 0; padding: 24px 28px; border-left: 2px solid var(--accent); background: rgba(201,168,78,0.06); border-radius: 0 14px 14px 0; }
-  .cs-quote p { font-family: var(--serif); font-size: 18px; font-weight: 400; font-style: italic; color: var(--text-dim); line-height: 1.7; margin: 0; }
-  .cs-quote p strong { color: var(--text); font-weight: 700; font-style: normal; }
-  .cs-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 36px 0; }
-  .cs-stat { padding: 20px; border-radius: 14px; background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: 0 1px 4px rgba(0,0,0,0.04); text-align: center; }
-  .cs-stat-num { font-family: var(--body); font-size: 28px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1; }
-  .cs-stat-label { font-size: 12px; color: var(--text-dim); margin-top: 6px; line-height: 1.4; }
-  .cs-visual { margin: 36px 0; border-radius: 16px; background: rgba(0,0,0,0.04); border: 1px solid var(--card-border); overflow: hidden; position: relative; }
-  .cs-visual-inner { aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--text-dim); padding: 32px; text-align: center; }
-  .cs-visual-caption { padding: 12px 20px; font-size: 12px; color: var(--text-dim); border-top: 1px solid var(--card-border); }
-  .cs-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 36px 0; }
-  .cs-compare-side { padding: 24px; border-radius: 14px; background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-  .cs-compare-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
-  .cs-compare-side:first-child .cs-compare-label { color: var(--text-muted); }
-  .cs-compare-side:last-child .cs-compare-label { color: var(--accent); }
-  .cs-compare-content { font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.7; }
-  .cs-compare-content strong { color: var(--text); font-weight: 700; }
-  .cs-steps { margin: 28px 0; }
-  .cs-step { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
-  .cs-step:last-child { border-bottom: none; }
-  .cs-step-num { font-family: var(--body); font-size: 24px; font-weight: 700; color: var(--accent); line-height: 1; flex-shrink: 0; width: 36px; }
-  .cs-step-content { flex: 1; }
-  .cs-step-title { font-family: var(--body); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .cs-step-desc { font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.6; }
-  .cs-learnings { display: flex; flex-direction: column; gap: 16px; margin: 32px 0; }
-  .cs-learning { display: flex; gap: 20px; padding: 24px; border-radius: 14px; background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: 0 1px 4px rgba(0,0,0,0.04); transition: border-color 0.3s; }
-  .cs-learning:hover { border-color: rgba(201,168,78,0.3); }
-  .cs-learning-num { font-family: var(--body); font-size: 32px; font-weight: 700; color: rgba(201,168,78,0.25); line-height: 1; flex-shrink: 0; }
-  .cs-learning-content { flex: 1; }
-  .cs-learning-title { font-family: var(--body); font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em; }
-  .cs-learning-desc { font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.7; }
-  .cs-list { margin: 16px 0 20px; padding-left: 0; list-style: none; }
-  .cs-list li { font-family: var(--serif); font-size: 15px; color: var(--text-dim); line-height: 1.7; padding: 6px 0 6px 20px; position: relative; }
-  .cs-list li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.5; }
-  .cs-list li strong { color: var(--text); font-weight: 700; }
-  .cs-divider { width: 48px; height: 1px; background: rgba(0,0,0,0.08); margin: 48px auto; }
-  .cs-nav { position: relative; max-width: 720px; margin: 80px auto 0; padding: 0 32px; display: flex; justify-content: space-between; gap: 16px; }
-  .cs-nav-link { display: flex; flex-direction: column; gap: 4px; text-decoration: none; padding: 20px 24px; border-radius: 14px; background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: 0 1px 4px rgba(0,0,0,0.04); transition: all 0.3s; flex: 1; }
-  .cs-nav-link:hover { border-color: rgba(201,168,78,0.3); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-  .cs-nav-link:last-child { text-align: right; }
-  .cs-nav-dir { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
-  .cs-nav-title { font-family: var(--body); font-size: 16px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
 
-  /* Old flow grid */
-  .old-flow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; margin-top: 24px; background: var(--card-border); border-radius: 12px; overflow: hidden; }
-  .old-step { background: var(--card-bg); padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; }
-  .old-step .num { font-family: var(--body); font-size: 11px; font-weight: 700; color: var(--text-dim); background: var(--bg); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; flex-shrink: 0; }
-  .old-step .text { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
-  .old-step.pain .num { background: rgba(204,41,54,0.08); color: var(--red); }
-  .old-step .pain-note { font-size: 11px; color: var(--red); font-weight: 500; display: block; margin-top: 4px; }
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+      }
 
-  /* Flow comparison bars */
-  .flow-bars { margin: 36px 0; display: flex; flex-direction: column; gap: 16px; }
-  .flow-bar { padding: 20px 24px; border-radius: 14px; background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: 0 1px 4px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 12px; }
-  .flow-bar.old { opacity: 0.5; }
-  .flow-bar.new { border-color: rgba(201,168,78,0.3); }
-  .flow-bar .bar-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); width: 80px; flex-shrink: 0; }
-  .flow-bar.new .bar-label { color: var(--accent); }
-  .flow-bar .bar-steps { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .bar-step { font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; white-space: nowrap; background: var(--bg); color: var(--text-dim); border: 1px solid var(--card-border); }
-  .flow-bar.new .bar-step { color: var(--text-dim); }
-  .flow-bar.new .bar-step.value { background: var(--accent); color: #fff; font-weight: 700; border-color: var(--accent); font-size: 14px; padding: 7px 18px; }
-  .bar-arrow { color: var(--text-muted); font-size: 14px; flex-shrink: 0; }
+      to {
+        opacity: 1;
+      }
+    }
 
-  /* Deferred table */
-  .cs-defer-table { width: 100%; margin: 32px 0; border-collapse: collapse; }
-  .cs-defer-table th { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,0.08); }
-  .cs-defer-table td { font-family: var(--serif); font-size: 14px; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,0.08); vertical-align: top; }
-  .cs-defer-table td:first-child { color: var(--text-muted); text-decoration: line-through; }
-  .cs-defer-table td:last-child { color: #16a34a; font-weight: 500; }
+    .back-link {
+      position: fixed;
+      top: 64px;
+      left: 48px;
+      z-index: 100;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
 
-  /* Phone mockup grid */
-  .phone-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 36px 0; max-width: 900px; margin-left: auto; margin-right: auto; }
-  .phone-frame { background: #000; border-radius: 24px; border: 2px solid #2A2A2A; overflow: hidden; aspect-ratio: 375 / 812; position: relative; box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
-  .phone-frame .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 50%; height: 24px; background: #000; border-radius: 0 0 16px 16px; z-index: 2; }
-  .phone-frame .phone-screen { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 12px 16px; position: relative; overflow: hidden; }
-  .phone-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); text-align: center; margin-top: 12px; }
-  .phone-label span { color: var(--accent); }
+    .back-link:hover {
+      color: var(--text);
+    }
 
-  .phone-wa .phone-screen { background: #0B141A; justify-content: flex-start; padding-top: 56px; }
-  .wa-header { position: absolute; top: 0; left: 0; right: 0; height: 48px; background: #1F2C34; display: flex; align-items: center; gap: 8px; padding: 0 10px; }
-  .wa-avatar { width: 28px; height: 28px; border-radius: 50%; background: #2A3942; }
-  .wa-name { font-size: 11px; color: #E9EDEF; font-weight: 500; }
-  .wa-bubble { background: #1F2C34; border-radius: 0 8px 8px 8px; padding: 8px 10px; margin: 8px; align-self: flex-start; max-width: 85%; }
-  .wa-bubble .wa-link-preview { background: #12202A; border-radius: 6px; padding: 6px 8px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-  .wa-link-preview .wa-zar-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: var(--body); font-size: 14px; font-weight: 800; color: #000; }
-  .wa-link-preview .wa-meta { font-size: 9px; color: #8696A0; }
-  .wa-link-preview .wa-meta strong { color: #E9EDEF; font-weight: 500; display: block; font-size: 10px; }
-  .wa-bubble .wa-text { font-size: 10px; color: #E9EDEF; line-height: 1.4; }
-  .wa-bubble .wa-text a { color: #53BDEB; text-decoration: none; }
-  .wa-bubble .wa-time { font-size: 8px; color: #8696A0; text-align: right; margin-top: 2px; }
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--text);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  .phone-claim .phone-screen { background: #000; justify-content: flex-end; padding-bottom: 24px; }
-  .claim-note { width: 70%; aspect-ratio: 289/514; background: linear-gradient(145deg, #6B6560, #4A4540, #3A3530); border-radius: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%); display: flex; flex-direction: column; justify-content: space-between; padding: 8px; box-shadow: 0 12px 40px rgba(0,0,0,0.6); }
-  .claim-note .cn-amount { font-family: var(--body); font-size: 14px; font-weight: 800; color: #2A2520; }
-  .claim-note .cn-center { text-align: center; }
-  .claim-note .cn-rsd { font-family: var(--body); font-size: 7px; font-weight: 800; color: #2A2520; letter-spacing: 0.05em; line-height: 1.3; }
-  .claim-note .cn-qr { width: 48%; aspect-ratio: 1; background: rgba(42,37,32,0.3); margin: 6px auto; border-radius: 2px; }
-  .claim-note .cn-bottom { font-family: var(--body); font-size: 14px; font-weight: 800; color: #2A2520; text-align: right; transform: rotate(180deg); }
-  .claim-heading { font-family: var(--body); font-size: 14px; font-weight: 800; color: #fff; text-align: center; line-height: 1.1; margin-bottom: 8px; }
-  .claim-btn { width: 85%; padding: 8px; background: var(--accent); border-radius: 6px; font-family: var(--body); font-size: 11px; font-weight: 700; color: #000; text-align: center; }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  .phone-sheet .phone-screen { background: #000; justify-content: flex-end; padding: 0; }
-  .sheet-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
-  .sheet-card-bg { width: 70%; aspect-ratio: 289/514; background: linear-gradient(145deg, #6B6560, #4A4540, #3A3530); border-radius: 8px; position: absolute; top: 12%; left: 50%; transform: translateX(-50%); opacity: 0.4; }
-  .sheet-bottom { position: relative; z-index: 1; background: #2D1F4E; border-radius: 16px 16px 0 0; padding: 20px 12px 24px; text-align: center; width: 100%; }
-  .sheet-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #5A5A5A, #3A3A3A); border-radius: 8px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-family: var(--body); font-size: 18px; font-weight: 800; color: #888; }
-  .sheet-title { font-family: var(--body); font-size: 13px; font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 4px; }
-  .sheet-sub { font-size: 8px; color: #B5AFA5; margin-bottom: 12px; }
-  .sheet-btn-primary { width: 100%; padding: 8px; background: #7C5CBF; border-radius: 6px; font-family: var(--body); font-size: 10px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 6px; }
-  .sheet-btn-secondary { width: 100%; padding: 8px; background: var(--accent); border-radius: 6px; font-family: var(--body); font-size: 10px; font-weight: 700; color: #000; text-align: center; }
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f8f5f0;
+      display: none;
+    }
 
-  .phone-dash .phone-screen { background: linear-gradient(180deg, #F5F0E8 0%, #F5F0E8 55%, #1A1A1A 55%, #1A1A1A 100%); justify-content: flex-start; padding-top: 48px; }
-  .dash-dollar { font-family: var(--body); font-size: 10px; font-weight: 800; color: #888; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; margin-bottom: 2px; }
-  .dash-amount { font-family: var(--body); font-size: 28px; font-weight: 800; color: #1A1A1A; line-height: 1; }
-  .dash-buttons { display: flex; gap: 6px; margin: 10px 0; }
-  .dash-btn { padding: 6px 14px; border-radius: 6px; font-family: var(--body); font-size: 8px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
-  .dash-btn.topup { background: var(--accent); color: #000; }
-  .dash-btn.send { background: #FF6ECE; color: #000; }
-  .dash-activity { background: #1A1A1A; border-radius: 12px 12px 0 0; width: calc(100% + 24px); padding: 10px 12px; margin-top: auto; flex: 1; }
-  .dash-activity-title { font-family: var(--body); font-size: 11px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-  .dash-tx { display: flex; align-items: center; gap: 6px; padding: 6px 0; }
-  .dash-tx-icon { width: 24px; height: 24px; border-radius: 50%; background: #2A2A2A; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--accent); }
-  .dash-tx-text { font-size: 8px; color: #B5AFA5; flex: 1; }
-  .dash-tx-amount { font-family: var(--body); font-size: 9px; font-weight: 700; color: #4ADE80; }
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
 
-  /* Merchant screen */
-  .merchant-screen { background: var(--espresso); border: 1px solid rgba(235,244,245,0.06); border-radius: 24px; max-width: 320px; margin: 32px auto; padding: 48px 24px 32px; text-align: center; position: relative; overflow: hidden; }
-  .merchant-screen::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,168,78,0.08) 0%, transparent 60%); pointer-events: none; }
-  .merchant-screen .ms-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #A69D91; margin-bottom: 8px; }
-  .merchant-screen .ms-amount { font-family: var(--body); font-size: 56px; font-weight: 800; color: #ebf4f5; line-height: 1; }
-  .merchant-screen .ms-tagline { font-family: var(--serif); font-size: 18px; font-weight: 400; color: #A69D91; margin-top: 8px; }
-  .merchant-screen .ms-local { font-size: 13px; color: #A69D91; margin-top: 12px; }
-  .merchant-screen .ms-earn { font-size: 14px; color: var(--accent); font-weight: 500; margin-top: 8px; }
-  .merchant-screen .ms-cta { font-family: var(--body); background: var(--accent); color: var(--espresso); font-weight: 700; font-size: 15px; padding: 14px; border-radius: 8px; margin-top: 32px; width: 100%; }
-  .merchant-screen .ms-skip { font-size: 13px; color: #A69D91; margin-top: 12px; }
-  .merchant-annotation { max-width: 320px; margin: 16px auto 0; }
-  .merchant-annotation .ann { display: flex; gap: 8px; align-items: flex-start; padding: 6px 0; }
-  .merchant-annotation .ann-arrow { color: var(--accent); font-size: 14px; flex-shrink: 0; margin-top: 2px; }
-  .merchant-annotation .ann-text { font-family: var(--serif); font-size: 13px; color: var(--text-dim); line-height: 1.5; }
-  .merchant-annotation .ann-text strong { color: var(--text-dim); font-weight: 600; }
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(248, 245, 240, 0.6);
+      text-decoration: none;
+    }
 
-  /* Animation placeholder */
-  .cs-anim-placeholder { margin: 36px 0; border-radius: 16px; background: rgba(0,0,0,0.04); border: 1px solid var(--card-border); overflow: hidden; position: relative; aspect-ratio: 16/9; cursor: pointer; }
-  .cs-anim-frames { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 24px; padding: 24px; }
-  .cs-anim-frame { flex: 1; height: 100%; background: #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-  .cs-anim-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); border-radius: 16px; }
-  .cs-anim-play-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 20px; color: #000; }
-  .cs-anim-caption { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 13px; font-weight: 500; color: var(--text-dim); white-space: nowrap; }
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: #f8f5f0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
-  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  @media (max-width: 900px) {
-    .cs-hero { padding: 140px 24px 60px; min-height: 60vh; }
-    .cs-hero-metric { font-size: 140px; }
-    .article { padding: 0 20px; }
-    .cs-compare { grid-template-columns: 1fr; }
-    .cs-nav { padding: 0 20px; }
-    .phone-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .flow-bar { flex-direction: column; align-items: flex-start; }
-    .flow-bar .bar-label { width: auto; }
-  }
-  @media (max-width: 640px) {
-    .cs-hero { min-height: 50vh; padding: 120px 20px 48px; }
-    .cs-hero h1 { font-size: 28px; }
-    .cs-hero-hook { font-size: 16px; }
-    .cs-hero-metric { font-size: 100px; }
-    .cs-stats { grid-template-columns: 1fr 1fr; }
-    .cs-nav { flex-direction: column; }
-    .cs-nav-link:last-child { text-align: left; }
-    .old-flow-grid { grid-template-columns: 1fr; }
-  }
-</style>
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: rgba(248, 245, 240, 0.3);
+      transform: rotate(-40deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+    }
+
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+    }
+
+    .mobile-nav a.active {
+      color: #f8f5f0;
+      background: rgba(235, 244, 245, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .back-link {
+        top: 24px;
+        left: 24px;
+      }
+    }
+
+    .cs-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 160px 48px 80px;
+    }
+
+    .cs-hero-metric {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(180px, 25vw, 360px);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.08;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .cs-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      text-align: center;
+      opacity: 0;
+      animation: fu 0.8s 0.2s forwards;
+    }
+
+    .cs-hero-company {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .cs-hero-company::before,
+    .cs-hero-company::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: rgba(201, 168, 78, 0.3);
+    }
+
+    .cs-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: none;
+      background: rgba(201, 168, 78, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(201, 168, 78, 0.12);
+    }
+
+    .cs-hero h1 {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .cs-hero-hook {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      font-style: italic;
+    }
+
+    .cs-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .cs-meta-pill {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 100px;
+      color: var(--text-dim);
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .article {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .cs-section {
+      margin-top: 72px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .cs-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cs-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cs-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .cs-heading {
+      font-family: var(--body);
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .cs-body {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .cs-body strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cs-body em {
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    .cs-quote {
+      margin: 36px 0;
+      padding: 24px 28px;
+      border-left: 2px solid var(--accent);
+      background: rgba(201, 168, 78, 0.06);
+      border-radius: 0 14px 14px 0;
+    }
+
+    .cs-quote p {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .cs-quote p strong {
+      color: var(--text);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .cs-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin: 36px 0;
+    }
+
+    .cs-stat {
+      padding: 20px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      text-align: center;
+    }
+
+    .cs-stat-num {
+      font-family: var(--body);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .cs-stat-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .cs-visual {
+      margin: 36px 0;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cs-visual-inner {
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .cs-visual-caption {
+      padding: 12px 20px;
+      font-size: 12px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--card-border);
+    }
+
+    .cs-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 36px 0;
+    }
+
+    .cs-compare-side {
+      padding: 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .cs-compare-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .cs-compare-side:first-child .cs-compare-label {
+      color: var(--text-muted);
+    }
+
+    .cs-compare-side:last-child .cs-compare-label {
+      color: var(--accent);
+    }
+
+    .cs-compare-content {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .cs-compare-content strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cs-steps {
+      margin: 28px 0;
+    }
+
+    .cs-step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-step:last-child {
+      border-bottom: none;
+    }
+
+    .cs-step-num {
+      font-family: var(--body);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+    }
+
+    .cs-step-content {
+      flex: 1;
+    }
+
+    .cs-step-title {
+      font-family: var(--body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .cs-step-desc {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .cs-learnings {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .cs-learning {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.3s;
+    }
+
+    .cs-learning:hover {
+      border-color: rgba(201, 168, 78, 0.3);
+    }
+
+    .cs-learning-num {
+      font-family: var(--body);
+      font-size: 32px;
+      font-weight: 700;
+      color: rgba(201, 168, 78, 0.25);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .cs-learning-content {
+      flex: 1;
+    }
+
+    .cs-learning-title {
+      font-family: var(--body);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .cs-learning-desc {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .cs-list {
+      margin: 16px 0 20px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .cs-list li {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      padding: 6px 0 6px 20px;
+      position: relative;
+    }
+
+    .cs-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .cs-list li strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cs-divider {
+      width: 48px;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.08);
+      margin: 48px auto;
+    }
+
+    .cs-nav {
+      position: relative;
+      max-width: 720px;
+      margin: 80px auto 0;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .cs-nav-link {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-decoration: none;
+      padding: 20px 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s;
+      flex: 1;
+    }
+
+    .cs-nav-link:hover {
+      border-color: rgba(201, 168, 78, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-nav-link:last-child {
+      text-align: right;
+    }
+
+    .cs-nav-dir {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .cs-nav-title {
+      font-family: var(--body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    /* Old flow grid */
+    .old-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+      margin-top: 24px;
+      background: var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .old-step {
+      background: var(--card-bg);
+      padding: 14px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .old-step .num {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dim);
+      background: var(--bg);
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .old-step .text {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .old-step.pain .num {
+      background: rgba(204, 41, 54, 0.08);
+      color: var(--red);
+    }
+
+    .old-step .pain-note {
+      font-size: 11px;
+      color: var(--red);
+      font-weight: 500;
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* Flow comparison bars */
+    .flow-bars {
+      margin: 36px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .flow-bar {
+      padding: 20px 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .flow-bar.old {
+      opacity: 0.5;
+    }
+
+    .flow-bar.new {
+      border-color: rgba(201, 168, 78, 0.3);
+    }
+
+    .flow-bar .bar-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .flow-bar.new .bar-label {
+      color: var(--accent);
+    }
+
+    .flow-bar .bar-steps {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .bar-step {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+      background: var(--bg);
+      color: var(--text-dim);
+      border: 1px solid var(--card-border);
+    }
+
+    .flow-bar.new .bar-step {
+      color: var(--text-dim);
+    }
+
+    .flow-bar.new .bar-step.value {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      border-color: var(--accent);
+      font-size: 14px;
+      padding: 7px 18px;
+    }
+
+    .bar-arrow {
+      color: var(--text-muted);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Deferred table */
+    .cs-defer-table {
+      width: 100%;
+      margin: 32px 0;
+      border-collapse: collapse;
+    }
+
+    .cs-defer-table th {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-defer-table td {
+      font-family: var(--serif);
+      font-size: 14px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      vertical-align: top;
+    }
+
+    .cs-defer-table td:first-child {
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .cs-defer-table td:last-child {
+      color: #16a34a;
+      font-weight: 500;
+    }
+
+    /* Phone mockup grid */
+    .phone-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 36px 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .phone-frame {
+      background: #000;
+      border-radius: 24px;
+      border: 2px solid #2A2A2A;
+      overflow: hidden;
+      aspect-ratio: 375 / 812;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .phone-frame .phone-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 24px;
+      background: #000;
+      border-radius: 0 0 16px 16px;
+      z-index: 2;
+    }
+
+    .phone-frame .phone-screen {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 12px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .phone-label span {
+      color: var(--accent);
+    }
+
+    .phone-wa .phone-screen {
+      background: #0B141A;
+      justify-content: flex-start;
+      padding-top: 56px;
+    }
+
+    .wa-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      background: #1F2C34;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 10px;
+    }
+
+    .wa-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #2A3942;
+    }
+
+    .wa-name {
+      font-size: 11px;
+      color: #E9EDEF;
+      font-weight: 500;
+    }
+
+    .wa-bubble {
+      background: #1F2C34;
+      border-radius: 0 8px 8px 8px;
+      padding: 8px 10px;
+      margin: 8px;
+      align-self: flex-start;
+      max-width: 85%;
+    }
+
+    .wa-bubble .wa-link-preview {
+      background: #12202A;
+      border-radius: 6px;
+      padding: 6px 8px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .wa-link-preview .wa-zar-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 800;
+      color: #000;
+    }
+
+    .wa-link-preview .wa-meta {
+      font-size: 9px;
+      color: #8696A0;
+    }
+
+    .wa-link-preview .wa-meta strong {
+      color: #E9EDEF;
+      font-weight: 500;
+      display: block;
+      font-size: 10px;
+    }
+
+    .wa-bubble .wa-text {
+      font-size: 10px;
+      color: #E9EDEF;
+      line-height: 1.4;
+    }
+
+    .wa-bubble .wa-text a {
+      color: #53BDEB;
+      text-decoration: none;
+    }
+
+    .wa-bubble .wa-time {
+      font-size: 8px;
+      color: #8696A0;
+      text-align: right;
+      margin-top: 2px;
+    }
+
+    .phone-claim .phone-screen {
+      background: #000;
+      justify-content: flex-end;
+      padding-bottom: 24px;
+    }
+
+    .claim-note {
+      width: 70%;
+      aspect-ratio: 289/514;
+      background: linear-gradient(145deg, #6B6560, #4A4540, #3A3530);
+      border-radius: 8px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 8px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .claim-note .cn-amount {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 800;
+      color: #2A2520;
+    }
+
+    .claim-note .cn-center {
+      text-align: center;
+    }
+
+    .claim-note .cn-rsd {
+      font-family: var(--body);
+      font-size: 7px;
+      font-weight: 800;
+      color: #2A2520;
+      letter-spacing: 0.05em;
+      line-height: 1.3;
+    }
+
+    .claim-note .cn-qr {
+      width: 48%;
+      aspect-ratio: 1;
+      background: rgba(42, 37, 32, 0.3);
+      margin: 6px auto;
+      border-radius: 2px;
+    }
+
+    .claim-note .cn-bottom {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 800;
+      color: #2A2520;
+      text-align: right;
+      transform: rotate(180deg);
+    }
+
+    .claim-heading {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .claim-btn {
+      width: 85%;
+      padding: 8px;
+      background: var(--accent);
+      border-radius: 6px;
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 700;
+      color: #000;
+      text-align: center;
+    }
+
+    .phone-sheet .phone-screen {
+      background: #000;
+      justify-content: flex-end;
+      padding: 0;
+    }
+
+    .sheet-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .sheet-card-bg {
+      width: 70%;
+      aspect-ratio: 289/514;
+      background: linear-gradient(145deg, #6B6560, #4A4540, #3A3530);
+      border-radius: 8px;
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.4;
+    }
+
+    .sheet-bottom {
+      position: relative;
+      z-index: 1;
+      background: #2D1F4E;
+      border-radius: 16px 16px 0 0;
+      padding: 20px 12px 24px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .sheet-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #5A5A5A, #3A3A3A);
+      border-radius: 8px;
+      margin: 0 auto 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--body);
+      font-size: 18px;
+      font-weight: 800;
+      color: #888;
+    }
+
+    .sheet-title {
+      font-family: var(--body);
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .sheet-sub {
+      font-size: 8px;
+      color: #B5AFA5;
+      margin-bottom: 12px;
+    }
+
+    .sheet-btn-primary {
+      width: 100%;
+      padding: 8px;
+      background: #7C5CBF;
+      border-radius: 6px;
+      font-family: var(--body);
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .sheet-btn-secondary {
+      width: 100%;
+      padding: 8px;
+      background: var(--accent);
+      border-radius: 6px;
+      font-family: var(--body);
+      font-size: 10px;
+      font-weight: 700;
+      color: #000;
+      text-align: center;
+    }
+
+    .phone-dash .phone-screen {
+      background: linear-gradient(180deg, #F5F0E8 0%, #F5F0E8 55%, #1A1A1A 55%, #1A1A1A 100%);
+      justify-content: flex-start;
+      padding-top: 48px;
+    }
+
+    .dash-dollar {
+      font-family: var(--body);
+      font-size: 10px;
+      font-weight: 800;
+      color: #888;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2px;
+    }
+
+    .dash-amount {
+      font-family: var(--body);
+      font-size: 28px;
+      font-weight: 800;
+      color: #1A1A1A;
+      line-height: 1;
+    }
+
+    .dash-buttons {
+      display: flex;
+      gap: 6px;
+      margin: 10px 0;
+    }
+
+    .dash-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-family: var(--body);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .dash-btn.topup {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .dash-btn.send {
+      background: #FF6ECE;
+      color: #000;
+    }
+
+    .dash-activity {
+      background: #1A1A1A;
+      border-radius: 12px 12px 0 0;
+      width: calc(100% + 24px);
+      padding: 10px 12px;
+      margin-top: auto;
+      flex: 1;
+    }
+
+    .dash-activity-title {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .dash-tx {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 0;
+    }
+
+    .dash-tx-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #2A2A2A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--accent);
+    }
+
+    .dash-tx-text {
+      font-size: 8px;
+      color: #B5AFA5;
+      flex: 1;
+    }
+
+    .dash-tx-amount {
+      font-family: var(--body);
+      font-size: 9px;
+      font-weight: 700;
+      color: #4ADE80;
+    }
+
+    /* Merchant screen */
+    .merchant-screen {
+      background: var(--espresso);
+      border: 1px solid rgba(235, 244, 245, 0.06);
+      border-radius: 24px;
+      max-width: 320px;
+      margin: 32px auto;
+      padding: 48px 24px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .merchant-screen::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(201, 168, 78, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .merchant-screen .ms-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A69D91;
+      margin-bottom: 8px;
+    }
+
+    .merchant-screen .ms-amount {
+      font-family: var(--body);
+      font-size: 56px;
+      font-weight: 800;
+      color: #ebf4f5;
+      line-height: 1;
+    }
+
+    .merchant-screen .ms-tagline {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: #A69D91;
+      margin-top: 8px;
+    }
+
+    .merchant-screen .ms-local {
+      font-size: 13px;
+      color: #A69D91;
+      margin-top: 12px;
+    }
+
+    .merchant-screen .ms-earn {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .merchant-screen .ms-cta {
+      font-family: var(--body);
+      background: var(--accent);
+      color: var(--espresso);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px;
+      border-radius: 8px;
+      margin-top: 32px;
+      width: 100%;
+    }
+
+    .merchant-screen .ms-skip {
+      font-size: 13px;
+      color: #A69D91;
+      margin-top: 12px;
+    }
+
+    .merchant-annotation {
+      max-width: 320px;
+      margin: 16px auto 0;
+    }
+
+    .merchant-annotation .ann {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      padding: 6px 0;
+    }
+
+    .merchant-annotation .ann-arrow {
+      color: var(--accent);
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .merchant-annotation .ann-text {
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .merchant-annotation .ann-text strong {
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    /* Animation placeholder */
+    .cs-anim-placeholder {
+      margin: 36px 0;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+    }
+
+    .cs-anim-frames {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    .cs-anim-frame {
+      flex: 1;
+      height: 100%;
+      background: #000;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cs-anim-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 16px;
+    }
+
+    .cs-anim-play-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #000;
+    }
+
+    .cs-anim-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .cs-hero {
+        padding: 140px 24px 60px;
+        min-height: 60vh;
+      }
+
+      .cs-hero-metric {
+        font-size: 140px;
+      }
+
+      .article {
+        padding: 0 20px;
+      }
+
+      .cs-compare {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-nav {
+        padding: 0 20px;
+      }
+
+      .phone-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .flow-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .flow-bar .bar-label {
+        width: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cs-hero {
+        min-height: 50vh;
+        padding: 120px 20px 48px;
+      }
+
+      .cs-hero h1 {
+        font-size: 28px;
+      }
+
+      .cs-hero-hook {
+        font-size: 16px;
+      }
+
+      .cs-hero-metric {
+        font-size: 100px;
+      }
+
+      .cs-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cs-nav {
+        flex-direction: column;
+      }
+
+      .cs-nav-link:last-child {
+        text-align: left;
+      }
+
+      .old-flow-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<a href="/work/zar/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to ZAR</a>
-<div class="nav-bar">
-  <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-</div>
-<nav class="mobile-nav"><a href="/" class="active">Craft</a><a href="/about/">Story</a><a href="/writing/">Thoughts</a><a href="/contact/">Contact</a></nav>
+  <!-- NAV -->
+  <a href="/work/zar/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+      <path d="M19 12H5" />
+      <path d="M12 19l-7-7 7-7" />
+    </svg> Back to ZAR</a>
+  <div class="nav-bar">
+    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
+  </div>
+  <nav class="mobile-nav"><a href="/" class="active">My Craft</a><a href="/about/">Story</a><a
+      href="/writing/">Thoughts</a><a href="/contact/">Contact</a></nav>
 
-<!-- HERO -->
-<div class="cs-hero">
-  <div class="cs-hero-metric">18&rarr;4</div>
-  <div class="cs-hero-content">
-    <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR</div>
-    <h1>The Golden Flow</h1>
-    <p class="cs-hero-hook">&ldquo;What if users had money in their wallet before they even had an account?&rdquo;</p>
-    <div class="cs-hero-meta">
-      <span class="cs-meta-pill">Lead Product Designer</span>
-      <span class="cs-meta-pill">1-Week Sprint + 3mo Refinement</span>
-      <span class="cs-meta-pill">iOS &amp; Android</span>
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-metric">18&rarr;4</div>
+    <div class="cs-hero-content">
+      <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR</div>
+      <h1>The Golden Flow</h1>
+      <p class="cs-hero-hook">&ldquo;What if users had money in their wallet before they even had an account?&rdquo;</p>
+      <div class="cs-hero-meta">
+        <span class="cs-meta-pill">Lead Product Designer</span>
+        <span class="cs-meta-pill">1-Week Sprint + 3mo Refinement</span>
+        <span class="cs-meta-pill">iOS &amp; Android</span>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ARTICLE BODY -->
-<div class="article">
+  <!-- ARTICLE BODY -->
+  <div class="article">
 
-  <!-- THE NUMBER -->
-  <section class="cs-section reveal">
-    <div class="cs-stats" style="grid-template-columns: repeat(4, 1fr);">
-      <div class="cs-stat">
-        <div class="cs-stat-num">-77.8%</div>
-        <div class="cs-stat-label">Fewer steps</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">-75%</div>
-        <div class="cs-stat-label">Fewer clicks</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">1 week</div>
-        <div class="cs-stat-label">Sprint to ship</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">Board</div>
-        <div class="cs-stat-label">Presented to investors</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE PROBLEM -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Problem</div>
-    <h2 class="cs-heading">18 screens between a user and their first dollar.</h2>
-
-    <p class="cs-body">ZAR is a digital dollar wallet for emerging markets &mdash; Pakistan, Zimbabwe, Argentina &mdash; where data costs money and trust is scarce. Our growth mechanic: someone sends you digital cash, you claim it, you&rsquo;re in. But every one of these steps stood in the way:</p>
-
-    <div class="old-flow-grid">
-      <div class="old-step"><span class="num">1</span><span class="text">Click link / scan QR</span></div>
-      <div class="old-step"><span class="num">2</span><span class="text">&ldquo;Welcome to ZAR&rdquo; &rarr; tap &ldquo;Join ZAR&rdquo;</span></div>
-      <div class="old-step pain"><span class="num">3</span><span class="text">Enter WhatsApp number, tap &ldquo;Get code&rdquo;<span class="pain-note">Why do you need my number?</span></span></div>
-      <div class="old-step pain"><span class="num">4</span><span class="text">Create a password, tap &ldquo;Continue&rdquo;<span class="pain-note">A password? For what?</span></span></div>
-      <div class="old-step"><span class="num">5</span><span class="text">WhatsApp OTP &rarr; enter code</span></div>
-      <div class="old-step pain"><span class="num">6</span><span class="text">Add email, tap &ldquo;Continue&rdquo;<span class="pain-note">Another form field?</span></span></div>
-      <div class="old-step"><span class="num">7</span><span class="text">Email OTP &rarr; enter code</span></div>
-      <div class="old-step"><span class="num">8</span><span class="text">Notification permissions &rarr; tap to continue</span></div>
-      <div class="old-step pain"><span class="num">9</span><span class="text">&ldquo;You are on waitlist&rdquo; &rarr; dismiss<span class="pain-note">Wait... a waitlist?</span></span></div>
-      <div class="old-step pain"><span class="num">10</span><span class="text">Land on waitlist &rarr; re-scan the QR code<span class="pain-note">I have to scan AGAIN?</span></span></div>
-      <div class="old-step"><span class="num">11</span><span class="text">Claim screen &rarr; tap &ldquo;Claim&rdquo;</span></div>
-      <div class="old-step"><span class="num">12</span><span class="text">&ldquo;You&rsquo;re in&rdquo; screen &rarr; tap &ldquo;Continue&rdquo;</span></div>
-      <div class="old-step"><span class="num">13</span><span class="text">Add name &rarr; enter first/last name</span></div>
-      <div class="old-step"><span class="num">14</span><span class="text">Create PIN &rarr; enter PIN</span></div>
-      <div class="old-step"><span class="num">15</span><span class="text">Confirm PIN &rarr; re-enter PIN</span></div>
-      <div class="old-step"><span class="num">16</span><span class="text">Face ID / biometric &rarr; tap to continue</span></div>
-      <div class="old-step"><span class="num">17</span><span class="text">&ldquo;Wallet being created&rdquo; &rarr; loading...</span></div>
-      <div class="old-step pain"><span class="num">18</span><span class="text">Finally see dashboard with money<span class="pain-note">I just wanted my dollar.</span></span></div>
-    </div>
-  </section>
-
-  <div class="cs-divider"></div>
-
-  <!-- THE INSIGHT -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Insight</div>
-    <h2 class="cs-heading">We were designing like a bank. ZAR isn&rsquo;t a bank.</h2>
-
-    <p class="cs-body">Banks verify first, value later. Wallets work the other way around &mdash; you put money in first, then decide how seriously to secure it.</p>
-
-    <div class="cs-quote">
-      <p>What if the first thing a new user sees is money &mdash; their money &mdash; already in their wallet?</p>
-    </div>
-
-    <p class="cs-body">Not a signup form. Not a waitlist. Not a verification flow. Just: here&rsquo;s your cash. Welcome. Everything else &mdash; security, identity, KYC &mdash; can come later, when users have a reason to care. When they have something to protect.</p>
-
-    <div class="flow-bars">
-      <div class="flow-bar old">
-        <div class="bar-label">Before</div>
-        <div class="bar-steps">
-          <span class="bar-step">Identity</span>
-          <span class="bar-arrow">&rarr;</span>
-          <span class="bar-step">Verification</span>
-          <span class="bar-arrow">&rarr;</span>
-          <span class="bar-step">Access</span>
-          <span class="bar-arrow">&rarr;</span>
-          <span class="bar-step">Value</span>
+    <!-- THE NUMBER -->
+    <section class="cs-section reveal">
+      <div class="cs-stats" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="cs-stat">
+          <div class="cs-stat-num">-77.8%</div>
+          <div class="cs-stat-label">Fewer steps</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">-75%</div>
+          <div class="cs-stat-label">Fewer clicks</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">1 week</div>
+          <div class="cs-stat-label">Sprint to ship</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">Board</div>
+          <div class="cs-stat-label">Presented to investors</div>
         </div>
       </div>
-      <div class="flow-bar new">
-        <div class="bar-label">Golden Flow</div>
-        <div class="bar-steps">
-          <span class="bar-step value">$ Value</span>
-          <span class="bar-arrow">&rarr;</span>
-          <span class="bar-step">Access</span>
-          <span class="bar-arrow">&rarr;</span>
-          <span class="bar-step">Identity</span>
-          <span class="bar-arrow">&rarr;</span>
-          <span class="bar-step">Verification</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="cs-divider"></div>
+    <!-- THE PROBLEM -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Problem</div>
+      <h2 class="cs-heading">18 screens between a user and their first dollar.</h2>
 
-  <!-- THE SOLUTION -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Solution</div>
-    <h2 class="cs-heading">4 steps. 3 clicks. Money visible.</h2>
+      <p class="cs-body">ZAR is a digital dollar wallet for emerging markets &mdash; Pakistan, Zimbabwe, Argentina
+        &mdash; where data costs money and trust is scarce. Our growth mechanic: someone sends you digital cash, you
+        claim it, you&rsquo;re in. But every one of these steps stood in the way:</p>
 
-    <div class="cs-steps">
-      <div class="cs-step">
-        <div class="cs-step-num">1</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Click link or scan QR</div>
-          <div class="cs-step-desc">Someone sends you digital cash via WhatsApp or shows you a QR code.</div>
+      <div class="old-flow-grid">
+        <div class="old-step"><span class="num">1</span><span class="text">Click link / scan QR</span></div>
+        <div class="old-step"><span class="num">2</span><span class="text">&ldquo;Welcome to ZAR&rdquo; &rarr; tap
+            &ldquo;Join ZAR&rdquo;</span></div>
+        <div class="old-step pain"><span class="num">3</span><span class="text">Enter WhatsApp number, tap &ldquo;Get
+            code&rdquo;<span class="pain-note">Why do you need my number?</span></span></div>
+        <div class="old-step pain"><span class="num">4</span><span class="text">Create a password, tap
+            &ldquo;Continue&rdquo;<span class="pain-note">A password? For what?</span></span></div>
+        <div class="old-step"><span class="num">5</span><span class="text">WhatsApp OTP &rarr; enter code</span></div>
+        <div class="old-step pain"><span class="num">6</span><span class="text">Add email, tap
+            &ldquo;Continue&rdquo;<span class="pain-note">Another form field?</span></span></div>
+        <div class="old-step"><span class="num">7</span><span class="text">Email OTP &rarr; enter code</span></div>
+        <div class="old-step"><span class="num">8</span><span class="text">Notification permissions &rarr; tap to
+            continue</span></div>
+        <div class="old-step pain"><span class="num">9</span><span class="text">&ldquo;You are on waitlist&rdquo; &rarr;
+            dismiss<span class="pain-note">Wait... a waitlist?</span></span></div>
+        <div class="old-step pain"><span class="num">10</span><span class="text">Land on waitlist &rarr; re-scan the QR
+            code<span class="pain-note">I have to scan AGAIN?</span></span></div>
+        <div class="old-step"><span class="num">11</span><span class="text">Claim screen &rarr; tap
+            &ldquo;Claim&rdquo;</span></div>
+        <div class="old-step"><span class="num">12</span><span class="text">&ldquo;You&rsquo;re in&rdquo; screen &rarr;
+            tap &ldquo;Continue&rdquo;</span></div>
+        <div class="old-step"><span class="num">13</span><span class="text">Add name &rarr; enter first/last name</span>
         </div>
+        <div class="old-step"><span class="num">14</span><span class="text">Create PIN &rarr; enter PIN</span></div>
+        <div class="old-step"><span class="num">15</span><span class="text">Confirm PIN &rarr; re-enter PIN</span></div>
+        <div class="old-step"><span class="num">16</span><span class="text">Face ID / biometric &rarr; tap to
+            continue</span></div>
+        <div class="old-step"><span class="num">17</span><span class="text">&ldquo;Wallet being created&rdquo; &rarr;
+            loading...</span></div>
+        <div class="old-step pain"><span class="num">18</span><span class="text">Finally see dashboard with money<span
+              class="pain-note">I just wanted my dollar.</span></span></div>
       </div>
-      <div class="cs-step">
-        <div class="cs-step-num">2</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Cash note appears &mdash; tap &ldquo;Claim&rdquo;</div>
-          <div class="cs-step-desc">App opens directly to a cash note showing the exact amount. No splash screen, no welcome page. Just money.</div>
-        </div>
-      </div>
-      <div class="cs-step">
-        <div class="cs-step-num">3</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Bottom sheet &mdash; tap &ldquo;Create wallet&rdquo;</div>
-          <div class="cs-step-desc">One confirmation. That&rsquo;s it.</div>
-        </div>
-      </div>
-      <div class="cs-step">
-        <div class="cs-step-num">4</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Dashboard with money visible</div>
-          <div class="cs-step-desc">Wallet created instantly. Balance showing. You&rsquo;re in.</div>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- PHONE MOCKUPS -->
-    <div class="phone-grid">
-      <div>
-        <div class="phone-frame phone-wa">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="wa-header">
-              <div class="wa-avatar"></div>
-              <div class="wa-name">Uzair</div>
-            </div>
-            <div class="wa-bubble">
-              <div class="wa-link-preview">
-                <div class="wa-zar-icon">Z</div>
-                <div class="wa-meta"><strong>ZAR</strong>wa.me</div>
+    <div class="cs-divider"></div>
+
+    <!-- THE INSIGHT -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Insight</div>
+      <h2 class="cs-heading">We were designing like a bank. ZAR isn&rsquo;t a bank.</h2>
+
+      <p class="cs-body">Banks verify first, value later. Wallets work the other way around &mdash; you put money in
+        first, then decide how seriously to secure it.</p>
+
+      <div class="cs-quote">
+        <p>What if the first thing a new user sees is money &mdash; their money &mdash; already in their wallet?</p>
+      </div>
+
+      <p class="cs-body">Not a signup form. Not a waitlist. Not a verification flow. Just: here&rsquo;s your cash.
+        Welcome. Everything else &mdash; security, identity, KYC &mdash; can come later, when users have a reason to
+        care. When they have something to protect.</p>
+
+      <div class="flow-bars">
+        <div class="flow-bar old">
+          <div class="bar-label">Before</div>
+          <div class="bar-steps">
+            <span class="bar-step">Identity</span>
+            <span class="bar-arrow">&rarr;</span>
+            <span class="bar-step">Verification</span>
+            <span class="bar-arrow">&rarr;</span>
+            <span class="bar-step">Access</span>
+            <span class="bar-arrow">&rarr;</span>
+            <span class="bar-step">Value</span>
+          </div>
+        </div>
+        <div class="flow-bar new">
+          <div class="bar-label">Golden Flow</div>
+          <div class="bar-steps">
+            <span class="bar-step value">$ Value</span>
+            <span class="bar-arrow">&rarr;</span>
+            <span class="bar-step">Access</span>
+            <span class="bar-arrow">&rarr;</span>
+            <span class="bar-step">Identity</span>
+            <span class="bar-arrow">&rarr;</span>
+            <span class="bar-step">Verification</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- THE SOLUTION -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Solution</div>
+      <h2 class="cs-heading">4 steps. 3 clicks. Money visible.</h2>
+
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">1</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Click link or scan QR</div>
+            <div class="cs-step-desc">Someone sends you digital cash via WhatsApp or shows you a QR code.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">2</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Cash note appears &mdash; tap &ldquo;Claim&rdquo;</div>
+            <div class="cs-step-desc">App opens directly to a cash note showing the exact amount. No splash screen, no
+              welcome page. Just money.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">3</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Bottom sheet &mdash; tap &ldquo;Create wallet&rdquo;</div>
+            <div class="cs-step-desc">One confirmation. That&rsquo;s it.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">4</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Dashboard with money visible</div>
+            <div class="cs-step-desc">Wallet created instantly. Balance showing. You&rsquo;re in.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHONE MOCKUPS -->
+      <div class="phone-grid">
+        <div>
+          <div class="phone-frame phone-wa">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="wa-header">
+                <div class="wa-avatar"></div>
+                <div class="wa-name">Uzair</div>
               </div>
-              <div class="wa-text">Here is $5 in digital cash.<br><br>Tap the link to claim it now:<br><a>https://zar.cash/#fh7i...</a></div>
-              <div class="wa-time">9:41 AM</div>
-            </div>
-          </div>
-        </div>
-        <div class="phone-label"><span>1</span> &mdash; Tap link</div>
-      </div>
-      <div>
-        <div class="phone-frame phone-claim">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="claim-note">
-              <div class="cn-amount">$25</div>
-              <div class="cn-center">
-                <div class="cn-rsd">ROCK. SOLID.<br>DOLLARS.</div>
-                <div class="cn-qr"></div>
-              </div>
-              <div class="cn-bottom">$25</div>
-            </div>
-            <div class="claim-heading">CLAIM YOUR<br>DIGITAL CASH</div>
-            <div class="claim-btn">Claim $25</div>
-          </div>
-        </div>
-        <div class="phone-label"><span>2</span> &mdash; Claim</div>
-      </div>
-      <div>
-        <div class="phone-frame phone-sheet">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="sheet-overlay"></div>
-            <div class="sheet-card-bg"></div>
-            <div class="sheet-bottom">
-              <div class="sheet-icon">$</div>
-              <div class="sheet-title">ADD YOUR<br>DOLLARS</div>
-              <div class="sheet-sub">Create a wallet or use an existing one.</div>
-              <div class="sheet-btn-primary">Create my wallet instantly</div>
-              <div class="sheet-btn-secondary">I already have a wallet</div>
-            </div>
-          </div>
-        </div>
-        <div class="phone-label"><span>3</span> &mdash; Create wallet</div>
-      </div>
-      <div>
-        <div class="phone-frame phone-dash">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="dash-dollar">$</div>
-            <div class="dash-amount">$5</div>
-            <div class="dash-buttons">
-              <div class="dash-btn topup">&darr; TOP-UP</div>
-              <div class="dash-btn send">&nearr; SEND</div>
-            </div>
-            <div class="dash-activity">
-              <div class="dash-activity-title">Activity</div>
-              <div class="dash-tx">
-                <div class="dash-tx-icon">&darr;</div>
-                <div class="dash-tx-text">Digital cash received<br>12:01 AM</div>
-                <div class="dash-tx-amount">+$5</div>
+              <div class="wa-bubble">
+                <div class="wa-link-preview">
+                  <div class="wa-zar-icon">Z</div>
+                  <div class="wa-meta"><strong>ZAR</strong>wa.me</div>
+                </div>
+                <div class="wa-text">Here is $5 in digital cash.<br><br>Tap the link to claim it
+                  now:<br><a>https://zar.cash/#fh7i...</a></div>
+                <div class="wa-time">9:41 AM</div>
               </div>
             </div>
           </div>
+          <div class="phone-label"><span>1</span> &mdash; Tap link</div>
         </div>
-        <div class="phone-label"><span>4</span> &mdash; Money visible</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT WE DEFERRED -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Resequencing</div>
-    <h2 class="cs-heading">What we deferred.</h2>
-
-    <p class="cs-body">This wasn&rsquo;t about removing security. It was about <strong>resequencing it.</strong></p>
-
-    <table class="cs-defer-table">
-      <thead>
-        <tr>
-          <th>Required Upfront (Before)</th>
-          <th>Deferred to Later (After)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Phone number + OTP</td><td>Optional &mdash; secure when ready</td></tr>
-        <tr><td>Email + OTP</td><td>Optional &mdash; add when convenient</td></tr>
-        <tr><td>Password creation</td><td>Eliminated &mdash; auth-less architecture</td></tr>
-        <tr><td>Name entry</td><td>Optional &mdash; auto-generated username</td></tr>
-        <tr><td>PIN + biometrics</td><td>Prompted after first value moment</td></tr>
-        <tr><td>KYC verification</td><td>Required only for cards, bank transfers</td></tr>
-      </tbody>
-    </table>
-
-    <div class="cs-quote">
-      <p>Earn the right to ask. Once users have something to protect, <strong>security becomes a feature &mdash; not a gate.</strong></p>
-    </div>
-  </section>
-
-  <div class="cs-divider"></div>
-
-  <!-- THE CRAFT -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Craft</div>
-    <h2 class="cs-heading">Numbers tell one story. How it <em>feels</em> tells another.</h2>
-
-    <p class="cs-body">When a user opens a cash link, they don&rsquo;t see a loading spinner. They see a choreographed entrance &mdash; the cash note slams into view with synchronized haptics, the amount fades up, and the claim button snaps to life. The whole sequence takes under a second.</p>
-
-    <div class="cs-anim-placeholder">
-      <div class="cs-anim-frames">
-        <div class="cs-anim-frame">
-          <div style="font-size: 11px; color: #A69D91;">Black</div>
+        <div>
+          <div class="phone-frame phone-claim">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="claim-note">
+                <div class="cn-amount">$25</div>
+                <div class="cn-center">
+                  <div class="cn-rsd">ROCK. SOLID.<br>DOLLARS.</div>
+                  <div class="cn-qr"></div>
+                </div>
+                <div class="cn-bottom">$25</div>
+              </div>
+              <div class="claim-heading">CLAIM YOUR<br>DIGITAL CASH</div>
+              <div class="claim-btn">Claim $25</div>
+            </div>
+          </div>
+          <div class="phone-label"><span>2</span> &mdash; Claim</div>
         </div>
-        <div class="cs-anim-frame">
-          <div style="width: 40%; aspect-ratio: 289/514; background: linear-gradient(145deg, #6B6560, #4A4540); border-radius: 4px; opacity: 0.4;"></div>
+        <div>
+          <div class="phone-frame phone-sheet">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="sheet-overlay"></div>
+              <div class="sheet-card-bg"></div>
+              <div class="sheet-bottom">
+                <div class="sheet-icon">$</div>
+                <div class="sheet-title">ADD YOUR<br>DOLLARS</div>
+                <div class="sheet-sub">Create a wallet or use an existing one.</div>
+                <div class="sheet-btn-primary">Create my wallet instantly</div>
+                <div class="sheet-btn-secondary">I already have a wallet</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label"><span>3</span> &mdash; Create wallet</div>
         </div>
-        <div class="cs-anim-frame">
-          <div style="width: 40%; aspect-ratio: 289/514; background: linear-gradient(145deg, #6B6560, #4A4540); border-radius: 4px;"></div>
-        </div>
-        <div class="cs-anim-frame" style="flex-direction: column; justify-content: flex-end; padding-bottom: 12px; gap: 6px;">
-          <div style="width: 40%; aspect-ratio: 289/514; background: linear-gradient(145deg, #6B6560, #4A4540); border-radius: 4px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%);"></div>
-          <div style="font-family: var(--body); font-size: 9px; font-weight: 800; color: #fff; text-align: center; line-height: 1.1; z-index: 1;">CLAIM YOUR<br>DIGITAL CASH</div>
-          <div style="width: 60%; padding: 4px; background: var(--accent); border-radius: 3px; font-family: var(--body); font-size: 8px; font-weight: 700; color: #000; text-align: center; z-index: 1;">Claim $25</div>
-        </div>
-      </div>
-      <div class="cs-anim-play">
-        <div class="cs-anim-play-btn">&#9654;</div>
-      </div>
-      <div class="cs-anim-caption">Claim Animation &mdash; Prototype Recording</div>
-    </div>
-
-    <p class="cs-body">The design principle: <strong>&ldquo;Rocks don&rsquo;t flinch.&rdquo;</strong> Motion has weight. Nothing bounces. Nothing floats. Things land with the certainty of stone. When you claim money, you should <em>feel</em> it arrive.</p>
-  </section>
-
-  <div class="cs-divider"></div>
-
-  <!-- THE RIPPLE EFFECT -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Ripple Effect</div>
-    <h2 class="cs-heading">Same philosophy. Different user. Same magic.</h2>
-
-    <p class="cs-body">The value-first principle transformed merchant onboarding too. <strong>~19 steps became 4-5.</strong> An ambassador walks into a shop with a QR code. The merchant scans it. Their store appears &mdash; already configured with a <strong>$5 seed balance</strong>.</p>
-
-    <div class="merchant-screen">
-      <div class="ms-label">Available to Sell</div>
-      <div class="ms-amount">$5</div>
-      <div class="ms-tagline">Yours to sell.</div>
-      <div class="ms-local">&asymp; PKR 1,480 at market rate</div>
-      <div class="ms-earn">You keep the difference.</div>
-      <div class="ms-cta">Set rate</div>
-      <div class="ms-skip">Do it later</div>
-    </div>
-
-    <div class="merchant-annotation">
-      <div class="ann">
-        <span class="ann-arrow">&rarr;</span>
-        <span class="ann-text"><strong>&ldquo;Yours to sell&rdquo;</strong> not &ldquo;You&rsquo;ve been credited&rdquo; &mdash; creates psychological ownership</span>
-      </div>
-      <div class="ann">
-        <span class="ann-arrow">&rarr;</span>
-        <span class="ann-text"><strong>Local currency equivalent</strong> &mdash; makes abstract dollars tangible</span>
-      </div>
-      <div class="ann">
-        <span class="ann-arrow">&rarr;</span>
-        <span class="ann-text"><strong>&ldquo;You keep the difference&rdquo;</strong> &mdash; the earnings pitch, embedded in the first screen</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="cs-divider"></div>
-
-  <!-- IMPACT -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Impact</div>
-    <h2 class="cs-heading">The numbers.</h2>
-
-    <div class="cs-stats" style="grid-template-columns: repeat(2, 1fr);">
-      <div class="cs-stat">
-        <div class="cs-stat-num">18 &rarr; 4</div>
-        <div class="cs-stat-label">Steps (app downloaded)<br><span style="color: #16a34a; font-weight: 500;">-77.8%</span></div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">12 &rarr; 3</div>
-        <div class="cs-stat-label">Clicks (app downloaded)<br><span style="color: #16a34a; font-weight: 500;">-75%</span></div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">19 &rarr; 5</div>
-        <div class="cs-stat-label">Steps (no app)<br><span style="color: #16a34a; font-weight: 500;">-73.7%</span></div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">~19 &rarr; 5</div>
-        <div class="cs-stat-label">Merchant onboarding<br><span style="color: #16a34a; font-weight: 500;">~75%</span></div>
-      </div>
-    </div>
-
-    <p class="cs-body"><strong>Initial sprint:</strong> Shipped in 1 week for the Solana Breakpoint deadline &mdash; full scope delivered.</p>
-    <p class="cs-body"><strong>Follow-up:</strong> 20+ tickets refining edge cases, animation, copy, and merchant flows.</p>
-    <p class="cs-body"><strong>Board impact:</strong> The before/after was presented to investors at a ZAR board meeting.</p>
-  </section>
-
-  <div class="cs-divider"></div>
-
-  <!-- LEARNINGS -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Learnings</div>
-    <h2 class="cs-heading">Three things this project taught me.</h2>
-
-    <div class="cs-learnings">
-      <div class="cs-learning">
-        <div class="cs-learning-num">01</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Sequence beats simplification.</div>
-          <div class="cs-learning-desc">We didn&rsquo;t remove security &mdash; we resequenced it. The same verification happens. But by flipping the order &mdash; value first, identity later &mdash; the entire experience transforms. Users who have something to protect are motivated to secure it.</div>
+        <div>
+          <div class="phone-frame phone-dash">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="dash-dollar">$</div>
+              <div class="dash-amount">$5</div>
+              <div class="dash-buttons">
+                <div class="dash-btn topup">&darr; TOP-UP</div>
+                <div class="dash-btn send">&nearr; SEND</div>
+              </div>
+              <div class="dash-activity">
+                <div class="dash-activity-title">Activity</div>
+                <div class="dash-tx">
+                  <div class="dash-tx-icon">&darr;</div>
+                  <div class="dash-tx-text">Digital cash received<br>12:01 AM</div>
+                  <div class="dash-tx-amount">+$5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label"><span>4</span> &mdash; Money visible</div>
         </div>
       </div>
-      <div class="cs-learning">
-        <div class="cs-learning-num">02</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Constraints force clarity.</div>
-          <div class="cs-learning-desc">A 1-week sprint sounds reckless. It wasn&rsquo;t. The deadline forced us to strip the experience to its essence: what is the absolute minimum between &ldquo;tapping a link&rdquo; and &ldquo;seeing money&rdquo;? Every screen had to justify its existence. Most couldn&rsquo;t.</div>
+    </section>
+
+    <!-- WHAT WE DEFERRED -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Resequencing</div>
+      <h2 class="cs-heading">What we deferred.</h2>
+
+      <p class="cs-body">This wasn&rsquo;t about removing security. It was about <strong>resequencing it.</strong></p>
+
+      <table class="cs-defer-table">
+        <thead>
+          <tr>
+            <th>Required Upfront (Before)</th>
+            <th>Deferred to Later (After)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Phone number + OTP</td>
+            <td>Optional &mdash; secure when ready</td>
+          </tr>
+          <tr>
+            <td>Email + OTP</td>
+            <td>Optional &mdash; add when convenient</td>
+          </tr>
+          <tr>
+            <td>Password creation</td>
+            <td>Eliminated &mdash; auth-less architecture</td>
+          </tr>
+          <tr>
+            <td>Name entry</td>
+            <td>Optional &mdash; auto-generated username</td>
+          </tr>
+          <tr>
+            <td>PIN + biometrics</td>
+            <td>Prompted after first value moment</td>
+          </tr>
+          <tr>
+            <td>KYC verification</td>
+            <td>Required only for cards, bank transfers</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cs-quote">
+        <p>Earn the right to ask. Once users have something to protect, <strong>security becomes a feature &mdash; not a
+            gate.</strong></p>
+      </div>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- THE CRAFT -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Craft</div>
+      <h2 class="cs-heading">Numbers tell one story. How it <em>feels</em> tells another.</h2>
+
+      <p class="cs-body">When a user opens a cash link, they don&rsquo;t see a loading spinner. They see a choreographed
+        entrance &mdash; the cash note slams into view with synchronized haptics, the amount fades up, and the claim
+        button snaps to life. The whole sequence takes under a second.</p>
+
+      <div class="cs-anim-placeholder">
+        <div class="cs-anim-frames">
+          <div class="cs-anim-frame">
+            <div style="font-size: 11px; color: #A69D91;">Black</div>
+          </div>
+          <div class="cs-anim-frame">
+            <div
+              style="width: 40%; aspect-ratio: 289/514; background: linear-gradient(145deg, #6B6560, #4A4540); border-radius: 4px; opacity: 0.4;">
+            </div>
+          </div>
+          <div class="cs-anim-frame">
+            <div
+              style="width: 40%; aspect-ratio: 289/514; background: linear-gradient(145deg, #6B6560, #4A4540); border-radius: 4px;">
+            </div>
+          </div>
+          <div class="cs-anim-frame"
+            style="flex-direction: column; justify-content: flex-end; padding-bottom: 12px; gap: 6px;">
+            <div
+              style="width: 40%; aspect-ratio: 289/514; background: linear-gradient(145deg, #6B6560, #4A4540); border-radius: 4px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%);">
+            </div>
+            <div
+              style="font-family: var(--body); font-size: 9px; font-weight: 800; color: #fff; text-align: center; line-height: 1.1; z-index: 1;">
+              CLAIM YOUR<br>DIGITAL CASH</div>
+            <div
+              style="width: 60%; padding: 4px; background: var(--accent); border-radius: 3px; font-family: var(--body); font-size: 8px; font-weight: 700; color: #000; text-align: center; z-index: 1;">
+              Claim $25</div>
+          </div>
+        </div>
+        <div class="cs-anim-play">
+          <div class="cs-anim-play-btn">&#9654;</div>
+        </div>
+        <div class="cs-anim-caption">Claim Animation &mdash; Prototype Recording</div>
+      </div>
+
+      <p class="cs-body">The design principle: <strong>&ldquo;Rocks don&rsquo;t flinch.&rdquo;</strong> Motion has
+        weight. Nothing bounces. Nothing floats. Things land with the certainty of stone. When you claim money, you
+        should <em>feel</em> it arrive.</p>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- THE RIPPLE EFFECT -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Ripple Effect</div>
+      <h2 class="cs-heading">Same philosophy. Different user. Same magic.</h2>
+
+      <p class="cs-body">The value-first principle transformed merchant onboarding too. <strong>~19 steps became
+          4-5.</strong> An ambassador walks into a shop with a QR code. The merchant scans it. Their store appears
+        &mdash; already configured with a <strong>$5 seed balance</strong>.</p>
+
+      <div class="merchant-screen">
+        <div class="ms-label">Available to Sell</div>
+        <div class="ms-amount">$5</div>
+        <div class="ms-tagline">Yours to sell.</div>
+        <div class="ms-local">&asymp; PKR 1,480 at market rate</div>
+        <div class="ms-earn">You keep the difference.</div>
+        <div class="ms-cta">Set rate</div>
+        <div class="ms-skip">Do it later</div>
+      </div>
+
+      <div class="merchant-annotation">
+        <div class="ann">
+          <span class="ann-arrow">&rarr;</span>
+          <span class="ann-text"><strong>&ldquo;Yours to sell&rdquo;</strong> not &ldquo;You&rsquo;ve been
+            credited&rdquo; &mdash; creates psychological ownership</span>
+        </div>
+        <div class="ann">
+          <span class="ann-arrow">&rarr;</span>
+          <span class="ann-text"><strong>Local currency equivalent</strong> &mdash; makes abstract dollars
+            tangible</span>
+        </div>
+        <div class="ann">
+          <span class="ann-arrow">&rarr;</span>
+          <span class="ann-text"><strong>&ldquo;You keep the difference&rdquo;</strong> &mdash; the earnings pitch,
+            embedded in the first screen</span>
         </div>
       </div>
-      <div class="cs-learning">
-        <div class="cs-learning-num">03</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Copy is UX.</div>
-          <div class="cs-learning-desc">&ldquo;Yours to sell&rdquo; versus &ldquo;You&rsquo;ve been credited.&rdquo; Same information, completely different emotional response. The first creates ownership. The second sounds like a bank statement. In fintech, every word is a trust signal.</div>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- IMPACT -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Impact</div>
+      <h2 class="cs-heading">The numbers.</h2>
+
+      <div class="cs-stats" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="cs-stat">
+          <div class="cs-stat-num">18 &rarr; 4</div>
+          <div class="cs-stat-label">Steps (app downloaded)<br><span
+              style="color: #16a34a; font-weight: 500;">-77.8%</span></div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">12 &rarr; 3</div>
+          <div class="cs-stat-label">Clicks (app downloaded)<br><span
+              style="color: #16a34a; font-weight: 500;">-75%</span></div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">19 &rarr; 5</div>
+          <div class="cs-stat-label">Steps (no app)<br><span style="color: #16a34a; font-weight: 500;">-73.7%</span>
+          </div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">~19 &rarr; 5</div>
+          <div class="cs-stat-label">Merchant onboarding<br><span style="color: #16a34a; font-weight: 500;">~75%</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-</div>
+      <p class="cs-body"><strong>Initial sprint:</strong> Shipped in 1 week for the Solana Breakpoint deadline &mdash;
+        full scope delivered.</p>
+      <p class="cs-body"><strong>Follow-up:</strong> 20+ tickets refining edge cases, animation, copy, and merchant
+        flows.</p>
+      <p class="cs-body"><strong>Board impact:</strong> The before/after was presented to investors at a ZAR board
+        meeting.</p>
+    </section>
 
-<!-- CASE NAV -->
-<div class="cs-nav reveal">
-  <a href="/work/zar/cash-qr-consolidation/" class="cs-nav-link">
-    <span class="cs-nav-dir">&larr; Previous</span>
-    <span class="cs-nav-title">Cash QR Consolidation</span>
-  </a>
-  <a href="/work/zar/techtonic/" class="cs-nav-link">
-    <span class="cs-nav-dir">Next &rarr;</span>
-    <span class="cs-nav-title">Techtonic</span>
-  </a>
-</div>
+    <div class="cs-divider"></div>
 
-<!-- FOOTER -->
-<footer style="max-width:900px;margin:80px auto 0;padding:0 48px;"><div style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim);"><span>&copy; 2026 ABM</span><span>Designed with intention</span></div></footer>
+    <!-- LEARNINGS -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Learnings</div>
+      <h2 class="cs-heading">Three things this project taught me.</h2>
 
-<script>
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  })},{threshold:.06});
-  document.querySelectorAll('.cs-section, .reveal').forEach(el=>obs.observe(el));
+      <div class="cs-learnings">
+        <div class="cs-learning">
+          <div class="cs-learning-num">01</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Sequence beats simplification.</div>
+            <div class="cs-learning-desc">We didn&rsquo;t remove security &mdash; we resequenced it. The same
+              verification happens. But by flipping the order &mdash; value first, identity later &mdash; the entire
+              experience transforms. Users who have something to protect are motivated to secure it.</div>
+          </div>
+        </div>
+        <div class="cs-learning">
+          <div class="cs-learning-num">02</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Constraints force clarity.</div>
+            <div class="cs-learning-desc">A 1-week sprint sounds reckless. It wasn&rsquo;t. The deadline forced us to
+              strip the experience to its essence: what is the absolute minimum between &ldquo;tapping a link&rdquo; and
+              &ldquo;seeing money&rdquo;? Every screen had to justify its existence. Most couldn&rsquo;t.</div>
+          </div>
+        </div>
+        <div class="cs-learning">
+          <div class="cs-learning-num">03</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Copy is UX.</div>
+            <div class="cs-learning-desc">&ldquo;Yours to sell&rdquo; versus &ldquo;You&rsquo;ve been credited.&rdquo;
+              Same information, completely different emotional response. The first creates ownership. The second sounds
+              like a bank statement. In fintech, every word is a trust signal.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  if(location.protocol!=='file:'){
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const h=a.getAttribute('href');
-      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(()=>window.location.href=h,150);
+  </div>
+
+  <!-- CASE NAV -->
+  <div class="cs-nav reveal">
+    <a href="/work/zar/cash-qr-consolidation/" class="cs-nav-link">
+      <span class="cs-nav-dir">&larr; Previous</span>
+      <span class="cs-nav-title">Cash QR Consolidation</span>
+    </a>
+    <a href="/work/zar/techtonic/" class="cs-nav-link">
+      <span class="cs-nav-dir">Next &rarr;</span>
+      <span class="cs-nav-title">Techtonic</span>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
+    <div
+      style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim);">
+      <span>&copy; 2026 ABM</span><span>Designed with intention</span></div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, { threshold: .06 });
+    document.querySelectorAll('.cs-section, .reveal').forEach(el => obs.observe(el));
+
+    if (location.protocol !== 'file:') {
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => window.location.href = h, 150);
+        });
       });
-    });
-  }
-</script>
+    }
+  </script>
 </body>
+
 </html>

@@ -1,845 +1,1763 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ABM (Basit Masood) — Product Designer. Founding designer. 6M+ people use products I've shaped. Building design orgs for fintech in emerging markets.">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="ABM — Product Designer">
-<meta property="og:description" content="Founding designer. 6M+ people use products I've shaped. Systems, teams, and products from zero.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://abmcooks.github.io/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://abmcooks.github.io/og.png">
-<meta name="twitter:title" content="ABM — Product Designer">
-<meta name="twitter:description" content="Founding designer. 6M+ people use products I've shaped. Systems, teams, and products from zero.">
-<title>ABM — Product Designer</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="ABM (Basit Masood) — Product Designer. Founding designer. 6M+ people use products I've shaped. Building design orgs for fintech in emerging markets.">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="ABM — Product Designer">
+  <meta property="og:description"
+    content="Founding designer. 6M+ people use products I've shaped. Systems, teams, and products from zero.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abmcooks.github.io/">
+  <meta property="og:image" content="https://abmcooks.github.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abmcooks.github.io/og.png">
+  <meta name="twitter:title" content="ABM — Product Designer">
+  <meta name="twitter:description"
+    content="Founding designer. 6M+ people use products I've shaped. Systems, teams, and products from zero.">
+  <title>ABM — Product Designer</title>
+  <link rel="canonical" href="https://abmcooks.github.io/">
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-:root {
-  --hero-bg: #9bafd9;
-  --hero-text: #ebf4f5;
-  --espresso: #2E1A12;
-  --espresso-dim: #4f3a32;
-  --espresso-muted: #7a6a62;
-  --red: #cc2936;
-  --display: 'AKONY', serif;
-  --body: 'Space Grotesk', sans-serif;
-  --serif: 'Gentium Book Plus', serif;
-}
+    :root {
+      --hero-bg: #9bafd9;
+      --hero-text: #ebf4f5;
+      --espresso: #2E1A12;
+      --espresso-dim: #4f3a32;
+      --espresso-muted: #7a6a62;
+      --red: #cc2936;
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+    }
 
-html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--espresso); }
-body { font-family: var(--body); background: var(--espresso); color: var(--hero-text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    html {
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      background: var(--espresso);
+    }
 
-/* ═══ NAV PILL BAR ═══ */
-.nav-bar {
-  position: fixed; top: 64px; right: 48px; z-index: 100;
-  background: var(--hero-text); border-radius: 8px;
-  padding: 8px 32px 8px 24px;
-  display: flex; align-items: center; gap: 12px;
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.nav-bar.scrolled { opacity: 0; transform: translateY(-8px); pointer-events: none; }
-.nav-bar-item { display: flex; align-items: center; gap: 8px; position: relative; }
-.nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--espresso); display: none; flex-shrink: 0; }
-.nav-bar-item.active .nav-bar-dot { display: block; }
-.nav-bar-item a {
-  font-family: var(--body); font-size: 14px; font-weight: 500;
-  color: var(--espresso-dim); text-decoration: none;
-  letter-spacing: 0.01em; transition: color 0.2s;
-}
-.nav-bar-item.active a {
-  font-weight: 700; color: var(--espresso);
-  text-decoration: underline; text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px; text-decoration-color: var(--espresso);
-}
-.nav-bar-item a:hover {
-  color: var(--espresso);
-  text-decoration: underline; text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px; text-decoration-color: var(--espresso);
-}
-.nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-.nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: var(--espresso-muted); transform: rotate(-40deg); }
+    body {
+      font-family: var(--body);
+      background: var(--espresso);
+      color: var(--hero-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-/* Index trigger — visible on scroll */
-.nav-trigger {
-  position: fixed; top: 64px; right: 48px; z-index: 100;
-  font-family: var(--body); font-size: 14px; font-weight: 500;
-  color: var(--espresso-dim); background: var(--hero-text);
-  border: none; cursor: pointer; border-radius: 8px;
-  padding: 8px 12px; letter-spacing: 0.01em;
-  display: flex; align-items: center; gap: 8px;
-  opacity: 0; transform: translateY(8px); pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.nav-trigger:hover { opacity: 0.85 !important; }
-.nav-trigger.scrolled { opacity: 1; transform: translateY(0); pointer-events: all; }
-.nav-trigger svg { flex-shrink: 0; }
+    /* ═══ NAV PILL BAR ═══ */
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--hero-text);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
 
-/* ═══ NAV OVERLAY ═══ */
-.nav-overlay {
-  position: fixed; inset: 0; z-index: 999;
-  background: rgba(16, 14, 12, 0.97); backdrop-filter: blur(40px);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
-}
-.nav-overlay.open { opacity: 1; pointer-events: all; }
-.nav-overlay-close {
-  position: absolute; top: 32px; right: 48px;
-  font-family: var(--body); font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.6);
-  background: none; border: none; cursor: pointer;
-  text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.3s;
-}
-.nav-overlay-close:hover { color: var(--hero-text); }
-.nav-overlay-links { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.nav-overlay-links a {
-  font-family: var(--display); font-size: clamp(32px, 5.5vw, 60px);
-  color: rgba(235,244,245,0.4); text-decoration: none;
-  padding: 6px 20px; border-radius: 8px;
-  transition: color 0.3s, transform 0.3s;
-}
-.nav-overlay-links a:hover { color: var(--hero-text); transform: translateX(8px); }
+    .nav-bar.scrolled {
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+    }
 
-/* ═══ HERO ═══ */
-.hero {
-  height: 100vh; position: relative; overflow: hidden;
-  background: var(--hero-bg); padding: 0 48px;
-  scroll-snap-align: start;
-}
-.hero-inner { position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
 
-.hero-greeting {
-  font-size: 18px; font-weight: 400; color: var(--espresso);
-  display: flex; align-items: center; gap: 12px;
-  letter-spacing: -0.03em; margin-bottom: 20px;
-  opacity: 0; animation: fadeUp 0.6s 0.15s ease forwards;
-}
-.hero-greeting::before { content: ''; display: block; width: 24px; height: 1.5px; background: var(--espresso); flex-shrink: 0; }
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--espresso);
+      display: none;
+      flex-shrink: 0;
+    }
 
-.hero-headline {
-  display: flex; flex-direction: column;
-  font-family: var(--display); font-size: clamp(56px, 8vw, 100px);
-  line-height: 0.8; letter-spacing: -3px;
-}
-.hero-line { overflow: hidden; animation: clipRelease 0s 1.8s forwards; }
-.hero-line span {
-  display: block; color: var(--hero-text);
-  transform: translateY(120%); animation: lineReveal 0.9s cubic-bezier(0.62, 0.05, 0.18, 1) forwards;
-}
-@keyframes clipRelease { to { overflow: visible; } }
-.hero-line .hl-accent { color: var(--red); }
-.hl-1 span { animation-delay: 0.4s; }
-.hl-2 span { animation-delay: 0.6s; }
-.hl-3 span { animation-delay: 0.8s; }
-@keyframes lineReveal { to { transform: translateY(0); } }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
 
-.hero-content-bottom {
-  display: flex; flex-direction: column; gap: 24px; margin-top: 48px;
-  opacity: 0; animation: fadeUp 0.6s 1.3s ease forwards;
-}
-.hero-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-.hero-meta span { font-size: 18px; color: var(--espresso); font-weight: 400; letter-spacing: -0.03em; }
-.hero-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--espresso); flex-shrink: 0; }
-.micro-text { height: 24px; }
-.micro-text span {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 18px; color: var(--espresso); font-weight: 500;
-  letter-spacing: -0.03em; transition: opacity 0.35s, transform 0.35s;
-}
-.micro-text span::before { content: ''; display: block; width: 16px; height: 1.5px; background: var(--espresso); flex-shrink: 0; }
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--espresso-dim);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
 
-/* Scroll cue */
-.scroll-cue {
-  position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  opacity: 0; animation: fadeUp 0.5s 2.2s ease forwards;
-}
-.scroll-cue span { font-size: 10px; font-weight: 700; color: var(--espresso); text-transform: uppercase; letter-spacing: 0.15em; }
-.scroll-lines { display: flex; gap: 8px; align-items: center; }
-.scroll-lines div { width: 1px; position: relative; overflow: hidden; background: rgba(46,26,18,0.18); }
-.scroll-lines div::after {
-  content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 40%;
-  background: linear-gradient(to bottom, transparent, rgba(46,26,18,0.9), transparent);
-  animation: glitterDrip 3.5s ease-in-out infinite;
-}
-.scroll-lines div:nth-child(1) { height: 16px; }
-.scroll-lines div:nth-child(2) { height: 36px; }
-.scroll-lines div:nth-child(3) { height: 16px; }
-.scroll-lines div:nth-child(1)::after { animation-delay: 0.6s; }
-.scroll-lines div:nth-child(2)::after { animation-delay: 0s; }
-.scroll-lines div:nth-child(3)::after { animation-delay: 1.2s; }
-@keyframes glitterDrip {
-  0% { top: -40%; opacity: 0; } 10% { opacity: 0.6; }
-  50% { opacity: 0.4; } 90% { opacity: 0; } 100% { top: 100%; opacity: 0; }
-}
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: var(--espresso);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      text-decoration-color: var(--espresso);
+    }
 
-/* Hero CTAs */
-.hero-ctas {
-  position: absolute; bottom: 48px; right: 0;
-  display: flex; align-items: center;
-  background: var(--hero-text); border-radius: 8px;
-  padding: 4px 4px 4px 32px; gap: 24px;
-  opacity: 0; animation: fadeUp 0.5s 2.0s ease forwards;
-}
-.hero-ctas .cta-text {
-  font-family: var(--body); font-size: 14px; font-weight: 700;
-  color: var(--espresso); letter-spacing: 0.01em; text-decoration: none;
-}
-.hero-ctas .cta-text:hover {
-  text-decoration: underline; text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px; text-decoration-color: var(--espresso);
-}
-.hero-ctas .cta-btn {
-  display: flex; align-items: center; gap: 8px;
-  font-family: var(--body); font-size: 14px; font-weight: 700;
-  color: var(--hero-text); background: var(--red);
-  padding: 8px 24px; border-radius: 8px; text-decoration: none;
-  letter-spacing: 0.01em; transition: background 0.3s;
-}
-.hero-ctas .cta-btn:hover { background: #b82230; }
-.hero-ctas .cta-btn svg { flex-shrink: 0; }
+    .nav-bar-item a:hover {
+      color: var(--espresso);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      text-decoration-color: var(--espresso);
+    }
 
-/* ═══ COMPANY SECTIONS — SHARED ═══ */
-.cs {
-  height: 100vh; position: relative; overflow: hidden;
-  display: flex; align-items: flex-start; justify-content: center;
-  padding: 80px 48px; scroll-snap-align: start;
-}
-.cs-inner {
-  display: flex; flex-direction: column; align-items: center; gap: 32px;
-  text-align: center; width: 100%; max-width: 766px;
-  height: 100%;
-}
-.cs-text { display: flex; flex-direction: column; align-items: center; }
-.cs-text-top { display: flex; flex-direction: column; gap: 24px; align-items: center; width: 100%; }
-.cs-role { font-family: var(--body); font-size: 18px; font-weight: 500; letter-spacing: -0.03em; }
-.cs-name { font-family: var(--display); font-size: clamp(72px, 9vw, 124px); letter-spacing: -3px; line-height: normal; }
-.cs-desc { font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: -0.03em; line-height: normal; }
-.cs-screens-wrap { display: flex; flex-direction: column; gap: 16px; align-items: center; width: 100%; flex: 1; min-height: 0; }
-.cs-screens { display: flex; gap: 24px; width: 100%; flex: 1; min-height: 0; }
-.cs-screen {
-  flex: 1; border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
-}
-.cs-screen:hover { transform: translateY(-6px) scale(1.01); }
-/* Section link overlay */
-.cs-link {
-  position: absolute; inset: 0; z-index: 2; cursor: pointer;
-}
-.cs { cursor: pointer; transition: filter 0.3s ease; }
-.cs:hover .cs-screen { transform: translateY(-6px) scale(1.01); }
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-/* Light section screens */
-.cs-light .cs-screen {
-  background: rgba(21,18,16,0.1); border: 1.5px dashed rgba(21,18,16,0.18); color: rgba(21,18,16,0.35);
-}
-/* Dark section screens */
-.cs-dark .cs-screen {
-  background: rgba(235,244,245,0.1); border: 1.5px dashed rgba(235,244,245,0.18); color: rgba(235,244,245,0.35);
-}
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: var(--espresso-muted);
+      transform: rotate(-40deg);
+    }
 
-/* ═══ COMPANY LOGO PILL ═══ */
-.cs-logo {
-  position: absolute; top: 40px; left: 48px;
-  display: flex; align-items: center; justify-content: center;
-  min-width: 56px; min-height: 56px;
-  background: var(--hero-text); border-radius: 8px;
-  padding: 8px;
-  font-family: var(--body); font-size: 13px; font-weight: 600;
-  color: var(--espresso); letter-spacing: 0.01em;
-  aspect-ratio: 1;
-}
-.cs-logo img { height: 18px; width: auto; }
+    /* Index trigger — visible on scroll */
+    .nav-trigger {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--espresso-dim);
+      background: var(--hero-text);
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      padding: 8px 12px;
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
 
-/* ═══ SECTION COLORS ═══ */
-.cs-zar { background: #c4ad54; }
-.cs-zar .cs-role { color: var(--espresso); }
-.cs-zar .cs-name { color: var(--espresso); }
-.cs-zar .cs-desc { color: var(--espresso-dim); }
+    .nav-trigger:hover {
+      opacity: 0.85 !important;
+    }
 
-.cs-sadapay { background: #ffffff; }
-.cs-sadapay .cs-role { color: #02c3a3; }
-.cs-sadapay .cs-name { color: #ff7b66; }
-.cs-sadapay .cs-desc { color: var(--espresso-dim); }
+    .nav-trigger.scrolled {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
 
-.cs-adib { background: #003a78; }
-.cs-adib .cs-role { color: var(--hero-text); }
-.cs-adib .cs-name { color: white; }
-.cs-adib .cs-desc { color: var(--hero-text); }
+    .nav-trigger svg {
+      flex-shrink: 0;
+    }
 
-.cs-xpence { background: #6200ee; }
-.cs-xpence .cs-role { color: var(--hero-text); }
-.cs-xpence .cs-name { color: white; }
-.cs-xpence .cs-desc { color: var(--hero-text); }
+    /* ═══ NAV OVERLAY ═══ */
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(16, 14, 12, 0.97);
+      backdrop-filter: blur(40px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
 
-.cs-wtt { background: #bc204b; }
-.cs-wtt .cs-inner { max-width: none; }
-.cs-wtt .cs-role { color: var(--hero-text); }
-.cs-wtt .cs-name { color: white; line-height: 0.8; font-size: clamp(56px, 7.5vw, 104px); white-space: nowrap; }
-.cs-wtt .cs-desc { color: var(--hero-text); }
+    .nav-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
 
-/* ═══ TESTIMONIALS ═══ */
-.sec-test {
-  background: #efebe0; overflow: hidden;
-  padding: 64px 0; scroll-snap-align: start;
-}
-.test-title {
-  font-family: var(--body); font-size: 18px; font-weight: 500;
-  color: var(--espresso); letter-spacing: -0.03em;
-  text-align: center; margin-bottom: 60px;
-}
-.test-strip {
-  display: flex; gap: 16px; overflow-x: auto; padding: 0 48px 20px;
-  scroll-snap-type: x proximity; -ms-overflow-style: none; scrollbar-width: none;
-}
-.test-strip::-webkit-scrollbar { display: none; }
-.test-card {
-  flex-shrink: 0; width: 323px; padding: 24px; background: white;
-  border-radius: 16px; scroll-snap-align: start;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  display: flex; flex-direction: column; justify-content: space-between;
-  min-height: 240px; transition: transform 0.3s ease;
-}
-.test-card:hover { transform: translateY(-3px); }
-.test-quote {
-  font-family: var(--serif); font-size: 16px; color: var(--espresso-dim);
-  line-height: 24px; letter-spacing: -0.03em;
-}
-.test-author-block { margin-top: auto; padding-top: 20px; }
-.test-author { font-family: var(--body); font-size: 14px; font-weight: 500; color: #151210; letter-spacing: -0.03em; }
-.test-author-title { font-family: var(--body); font-size: 12px; font-weight: 400; color: #7a756b; letter-spacing: -0.03em; margin-top: 4px; }
+    .nav-overlay-close {
+      position: absolute;
+      top: 32px;
+      right: 48px;
+      font-family: var(--body);
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.6);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.3s;
+    }
 
-/* ═══ FOOTER ═══ */
-.sec-footer {
-  background: var(--espresso); height: 700px; position: relative;
-  display: flex; align-items: center; justify-content: center;
-  padding: 0 48px; scroll-snap-align: start; overflow: hidden;
-}
-.footer-inner {
-  display: flex; flex-direction: column; align-items: center; gap: 40px;
-  text-align: center;
-}
-.footer-text { display: flex; flex-direction: column; align-items: center; }
-.footer-headline {
-  font-family: var(--display); font-size: clamp(44px, 6vw, 72px);
-  letter-spacing: -3px; line-height: 0.8; color: var(--hero-text);
-}
-.footer-headline .ft-accent { color: var(--red); }
-.footer-sub {
-  font-family: var(--serif); font-size: 24px; color: var(--hero-text);
-  letter-spacing: -0.03em; line-height: normal;
-}
-.footer-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.footer-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--body); font-size: 14px; font-weight: 700;
-  text-decoration: none; padding: 8px 24px; border-radius: 8px;
-  letter-spacing: 0.01em; transition: all 0.3s ease; cursor: pointer;
-}
-.footer-btn.primary { background: var(--red); color: var(--hero-text); border: 1px solid var(--red); }
-.footer-btn.primary:hover { background: #b82230; transform: translateY(-2px); }
-.footer-btn.primary svg { flex-shrink: 0; }
-.footer-btn.secondary { background: transparent; color: var(--hero-text); border: 1px solid rgba(235,244,245,0.6); }
-.footer-btn.secondary:hover { border-color: var(--hero-text); transform: translateY(-2px); }
+    .nav-overlay-close:hover {
+      color: var(--hero-text);
+    }
 
-.footer-bottom {
-  position: absolute; bottom: 0; left: 48px; right: 48px;
-}
-.footer-line { height: 1px; background: var(--hero-text); opacity: 0.6; margin-bottom: 20px; }
-.footer-credits { display: flex; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 12px; color: var(--hero-text); padding-bottom: 24px; }
-.footer-easter {
-  font-family: 'Inter', sans-serif; font-size: 14px; color: var(--hero-text);
-  text-align: center; padding: 40px 0 20px;
-}
+    .nav-overlay-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
 
-/* ═══ CURSOR WORD ═══ */
-.cursor-word {
-  position: fixed; z-index: 50; pointer-events: none;
-  font-family: var(--body); font-size: 15px; font-weight: 600;
-  color: var(--hero-text); opacity: 0; transition: opacity 0.25s;
-  transform: translate(24px, -50%); white-space: nowrap;
-  background: rgba(21,18,16,0.75); backdrop-filter: blur(8px);
-  padding: 7px 16px; border-radius: 100px;
-}
-.cursor-word.vis { opacity: 0.95; }
+    .nav-overlay-links a {
+      font-family: var(--display);
+      font-size: clamp(32px, 5.5vw, 60px);
+      color: rgba(235, 244, 245, 0.4);
+      text-decoration: none;
+      padding: 6px 20px;
+      border-radius: 8px;
+      transition: color 0.3s, transform 0.3s;
+    }
 
-/* ═══ MOBILE NAV ═══ */
-.mobile-nav {
-  display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-  z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px);
-  border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; align-items: center;
-}
-.mobile-nav a {
-  font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none;
-  padding: 8px 15px; border-radius: 100px; transition: all 0.3s;
-}
-.mobile-nav a.active { color: var(--hero-text); background: rgba(235,244,245,0.08); }
+    .nav-overlay-links a:hover {
+      color: var(--hero-text);
+      transform: translateX(8px);
+    }
 
-/* ═══ REVEAL ═══ */
-.rg .ri {
-  opacity: 0; transform: translateY(32px);
-  transition: opacity 0.75s cubic-bezier(0.23,1,0.32,1), transform 0.75s cubic-bezier(0.23,1,0.32,1);
-}
-.rg.vis .ri { opacity: 1; transform: translateY(0); }
-.rg.vis .ri:nth-child(1) { transition-delay: 0s; }
-.rg.vis .ri:nth-child(2) { transition-delay: 0.07s; }
-.rg.vis .ri:nth-child(3) { transition-delay: 0.14s; }
-.rg.vis .ri:nth-child(4) { transition-delay: 0.21s; }
+    /* ═══ HERO ═══ */
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: var(--hero-bg);
+      padding: 0 48px;
+      scroll-snap-align: start;
+    }
 
-/* ═══ RESPONSIVE ═══ */
-@media (max-width: 768px) {
-  /* Nav — hide desktop nav & Index trigger, show bottom nav */
-  .nav-bar { display: none; }
-  .nav-trigger { display: none !important; }
-  .mobile-nav { display: flex; }
-  .cursor-word { display: none; }
+    .hero-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-  /* Hero — natural flow, no absolute positioning */
-  .hero { height: auto; min-height: 100dvh; padding: 80px 24px 100px; overflow: hidden; scroll-snap-align: none; }
-  .hero-inner { display: flex; flex-direction: column; justify-content: flex-end; min-height: calc(100dvh - 180px); }
-  .hero-headline { font-size: 11vw; }
-  .hero-greeting { font-size: 16px; margin-bottom: 16px; }
-  .hero-content-bottom { margin-top: 32px; }
-  .hero-meta span { font-size: 16px; }
-  .micro-text span { font-size: 16px; }
-  .hero-ctas { position: static; margin-top: 32px; padding: 4px 4px 4px 20px; gap: 16px; align-self: flex-start; }
-  .scroll-cue { display: none; }
+    .hero-greeting {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--espresso);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.15s ease forwards;
+    }
 
-  /* Disable scroll snap on mobile */
-  html { scroll-snap-type: none; }
+    .hero-greeting::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--espresso);
+      flex-shrink: 0;
+    }
 
-  /* Company sections — content-driven height */
-  .cs { height: auto; padding: 60px 24px 40px; overflow: hidden; scroll-snap-align: none; }
-  .cs-inner { height: auto; gap: 20px; }
-  .cs-text-top { gap: 10px; }
-  .cs-role { font-size: 13px; }
-  .cs-name { font-size: 10vw; }
-  .cs-desc { font-size: 16px; }
-  .cs-screens-wrap { flex: none; }
-  .cs-screens { flex: none; height: 220px; gap: 10px; }
-  .cs-screen { border-radius: 12px; }
-  .cs-logo { left: 24px; top: 20px; padding: 5px 10px; font-size: 11px; }
+    .hero-headline {
+      display: flex;
+      flex-direction: column;
+      font-family: var(--display);
+      font-size: clamp(56px, 8vw, 100px);
+      line-height: 0.8;
+      letter-spacing: -3px;
+    }
 
-  /* WTT — allow wrapping on mobile */
-  .cs-wtt .cs-name { white-space: normal; font-size: clamp(40px, 11vw, 72px); }
-  .cs-wtt .cs-inner { max-width: 100%; }
+    .hero-line {
+      overflow: hidden;
+      animation: clipRelease 0s 1.8s forwards;
+    }
 
-  /* Testimonials */
-  .sec-test { padding: 48px 0; scroll-snap-align: none; }
-  .test-title { font-size: 16px; margin-bottom: 32px; }
-  .test-strip { padding: 0 24px 16px; }
-  .test-card { width: 280px; min-height: 200px; }
+    .hero-line span {
+      display: block;
+      color: var(--hero-text);
+      transform: translateY(120%);
+      animation: lineReveal 0.9s cubic-bezier(0.62, 0.05, 0.18, 1) forwards;
+    }
 
-  /* Footer — no absolute positioning */
-  .sec-footer { height: auto; padding: 80px 24px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .footer-inner { margin-bottom: 48px; }
-  .footer-headline { font-size: clamp(40px, 10vw, 60px); }
-  .footer-sub { font-size: 18px; }
-  .footer-actions { flex-direction: column; align-items: center; }
-  .footer-bottom { position: static; padding: 0 0 24px; width: 100%; }
-  .footer-credits { flex-direction: column; gap: 8px; text-align: center; }
-  .footer-easter { font-size: 12px; padding: 20px 0 60px; }
-}
+    @keyframes clipRelease {
+      to {
+        overflow: visible;
+      }
+    }
 
-@media (max-width: 480px) {
-  .hero { padding: 60px 20px 80px; }
-  .hero-headline { font-size: 10vw; }
-  .hero-greeting { font-size: 14px; }
-  .hero-meta { flex-direction: column; gap: 4px; align-items: flex-start; }
-  .hero-meta-dot { display: none; }
-  .hero-meta span { font-size: 14px; }
-  .micro-text span { font-size: 14px; }
+    .hero-line .hl-accent {
+      color: var(--red);
+    }
 
-  .cs { padding: 48px 20px 32px; }
-  .cs-inner { gap: 14px; }
-  .cs-role { font-size: 11px; }
-  .cs-name { font-size: 9vw; }
-  .cs-desc { font-size: 14px; }
-  .cs-screens { height: 180px; gap: 8px; }
-  .cs-screen { border-radius: 10px; }
-  .cs-logo { left: 20px; top: 16px; }
+    .hl-1 span {
+      animation-delay: 0.4s;
+    }
 
-  .cs-wtt .cs-name { font-size: clamp(32px, 11vw, 52px); }
+    .hl-2 span {
+      animation-delay: 0.6s;
+    }
 
-  .sec-footer { padding: 60px 20px 32px; }
-  .footer-headline { font-size: clamp(36px, 10vw, 52px); }
-}
-</style>
+    .hl-3 span {
+      animation-delay: 0.8s;
+    }
+
+    @keyframes lineReveal {
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 48px;
+      opacity: 0;
+      animation: fadeUp 0.6s 1.3s ease forwards;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span {
+      font-size: 18px;
+      color: var(--espresso);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--espresso);
+      flex-shrink: 0;
+    }
+
+    .micro-text {
+      height: 24px;
+    }
+
+    .micro-text span {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      color: var(--espresso);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      transition: opacity 0.35s, transform 0.35s;
+    }
+
+    .micro-text span::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--espresso);
+      flex-shrink: 0;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 0.5s 2.2s ease forwards;
+    }
+
+    .scroll-cue span {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--espresso);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .scroll-lines {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .scroll-lines div {
+      width: 1px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(46, 26, 18, 0.18);
+    }
+
+    .scroll-lines div::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to bottom, transparent, rgba(46, 26, 18, 0.9), transparent);
+      animation: glitterDrip 3.5s ease-in-out infinite;
+    }
+
+    .scroll-lines div:nth-child(1) {
+      height: 16px;
+    }
+
+    .scroll-lines div:nth-child(2) {
+      height: 36px;
+    }
+
+    .scroll-lines div:nth-child(3) {
+      height: 16px;
+    }
+
+    .scroll-lines div:nth-child(1)::after {
+      animation-delay: 0.6s;
+    }
+
+    .scroll-lines div:nth-child(2)::after {
+      animation-delay: 0s;
+    }
+
+    .scroll-lines div:nth-child(3)::after {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes glitterDrip {
+      0% {
+        top: -40%;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.6;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+
+      90% {
+        opacity: 0;
+      }
+
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+
+    /* Hero CTAs */
+    .hero-ctas {
+      position: absolute;
+      bottom: 48px;
+      right: 0;
+      display: flex;
+      align-items: center;
+      background: var(--hero-text);
+      border-radius: 8px;
+      padding: 4px 4px 4px 32px;
+      gap: 24px;
+      opacity: 0;
+      animation: fadeUp 0.5s 2.0s ease forwards;
+    }
+
+    .hero-ctas .cta-text {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--espresso);
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+
+    .hero-ctas .cta-text:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      text-decoration-color: var(--espresso);
+    }
+
+    .hero-ctas .cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--hero-text);
+      background: var(--red);
+      padding: 8px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.3s;
+    }
+
+    .hero-ctas .cta-btn:hover {
+      background: #b82230;
+    }
+
+    .hero-ctas .cta-btn svg {
+      flex-shrink: 0;
+    }
+
+    /* ═══ COMPANY SECTIONS — SHARED ═══ */
+    .cs {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px 48px;
+      scroll-snap-align: start;
+    }
+
+    .cs-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      text-align: center;
+      width: 100%;
+      max-width: 766px;
+      height: 100%;
+    }
+
+    .cs-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cs-text-top {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .cs-role {
+      font-family: var(--body);
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .cs-name {
+      font-family: var(--display);
+      font-size: clamp(72px, 9vw, 124px);
+      letter-spacing: -3px;
+      line-height: normal;
+    }
+
+    .cs-desc {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: normal;
+    }
+
+    .cs-screens-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .cs-screens {
+      display: flex;
+      gap: 24px;
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .cs-screen {
+      flex: 1;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .cs-screen:hover {
+      transform: translateY(-6px) scale(1.01);
+    }
+
+    /* Section link overlay */
+    .cs-link {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .cs {
+      cursor: pointer;
+      transition: filter 0.3s ease;
+    }
+
+    .cs:hover .cs-screen {
+      transform: translateY(-6px) scale(1.01);
+    }
+
+    /* Light section screens */
+    .cs-light .cs-screen {
+      background: rgba(21, 18, 16, 0.1);
+      border: 1.5px dashed rgba(21, 18, 16, 0.18);
+      color: rgba(21, 18, 16, 0.35);
+    }
+
+    /* Dark section screens */
+    .cs-dark .cs-screen {
+      background: rgba(235, 244, 245, 0.1);
+      border: 1.5px dashed rgba(235, 244, 245, 0.18);
+      color: rgba(235, 244, 245, 0.35);
+    }
+
+    /* ═══ COMPANY LOGO PILL ═══ */
+    .cs-logo {
+      position: absolute;
+      top: 40px;
+      left: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 56px;
+      min-height: 56px;
+      background: var(--hero-text);
+      border-radius: 8px;
+      padding: 8px;
+      font-family: var(--body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--espresso);
+      letter-spacing: 0.01em;
+      aspect-ratio: 1;
+    }
+
+    .cs-logo img {
+      height: 18px;
+      width: auto;
+    }
+
+    /* ═══ SECTION COLORS ═══ */
+    .cs-zar {
+      background: #c4ad54;
+    }
+
+    .cs-zar .cs-role {
+      color: var(--espresso);
+    }
+
+    .cs-zar .cs-name {
+      color: var(--espresso);
+    }
+
+    .cs-zar .cs-desc {
+      color: var(--espresso-dim);
+    }
+
+    .cs-sadapay {
+      background: #ffffff;
+    }
+
+    .cs-sadapay .cs-role {
+      color: #02c3a3;
+    }
+
+    .cs-sadapay .cs-name {
+      color: #ff7b66;
+    }
+
+    .cs-sadapay .cs-desc {
+      color: var(--espresso-dim);
+    }
+
+    .cs-adib {
+      background: #003a78;
+    }
+
+    .cs-adib .cs-role {
+      color: var(--hero-text);
+    }
+
+    .cs-adib .cs-name {
+      color: white;
+    }
+
+    .cs-adib .cs-desc {
+      color: var(--hero-text);
+    }
+
+    .cs-xpence {
+      background: #6200ee;
+    }
+
+    .cs-xpence .cs-role {
+      color: var(--hero-text);
+    }
+
+    .cs-xpence .cs-name {
+      color: white;
+    }
+
+    .cs-xpence .cs-desc {
+      color: var(--hero-text);
+    }
+
+    .cs-wtt {
+      background: #bc204b;
+    }
+
+    .cs-wtt .cs-inner {
+      max-width: none;
+    }
+
+    .cs-wtt .cs-role {
+      color: var(--hero-text);
+    }
+
+    .cs-wtt .cs-name {
+      color: white;
+      line-height: 0.8;
+      font-size: clamp(56px, 7.5vw, 104px);
+      white-space: nowrap;
+    }
+
+    .cs-wtt .cs-desc {
+      color: var(--hero-text);
+    }
+
+    /* ═══ TESTIMONIALS ═══ */
+    .sec-test {
+      background: #efebe0;
+      overflow: hidden;
+      padding: 64px 0;
+      scroll-snap-align: start;
+    }
+
+    .test-title {
+      font-family: var(--body);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--espresso);
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .test-strip {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 0 48px 20px;
+      scroll-snap-type: x proximity;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .test-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .test-card {
+      flex-shrink: 0;
+      width: 323px;
+      padding: 24px;
+      background: white;
+      border-radius: 16px;
+      scroll-snap-align: start;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 240px;
+      transition: transform 0.3s ease;
+    }
+
+    .test-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .test-quote {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--espresso-dim);
+      line-height: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .test-author-block {
+      margin-top: auto;
+      padding-top: 20px;
+    }
+
+    .test-author {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: #151210;
+      letter-spacing: -0.03em;
+    }
+
+    .test-author-title {
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 400;
+      color: #7a756b;
+      letter-spacing: -0.03em;
+      margin-top: 4px;
+    }
+
+    /* ═══ FOOTER ═══ */
+    .sec-footer {
+      background: var(--espresso);
+      height: 700px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 48px;
+      scroll-snap-align: start;
+      overflow: hidden;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .footer-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-headline {
+      font-family: var(--display);
+      font-size: clamp(44px, 6vw, 72px);
+      letter-spacing: -3px;
+      line-height: 0.8;
+      color: var(--hero-text);
+    }
+
+    .footer-headline .ft-accent {
+      color: var(--red);
+    }
+
+    .footer-sub {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--hero-text);
+      letter-spacing: -0.03em;
+      line-height: normal;
+    }
+
+    .footer-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 8px 24px;
+      border-radius: 8px;
+      letter-spacing: 0.01em;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .footer-btn.primary {
+      background: var(--red);
+      color: var(--hero-text);
+      border: 1px solid var(--red);
+    }
+
+    .footer-btn.primary:hover {
+      background: #b82230;
+      transform: translateY(-2px);
+    }
+
+    .footer-btn.primary svg {
+      flex-shrink: 0;
+    }
+
+    .footer-btn.secondary {
+      background: transparent;
+      color: var(--hero-text);
+      border: 1px solid rgba(235, 244, 245, 0.6);
+    }
+
+    .footer-btn.secondary:hover {
+      border-color: var(--hero-text);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 48px;
+      right: 48px;
+    }
+
+    .footer-line {
+      height: 1px;
+      background: var(--hero-text);
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+
+    .footer-credits {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--hero-text);
+      padding-bottom: 24px;
+    }
+
+    .footer-easter {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--hero-text);
+      text-align: center;
+      padding: 40px 0 20px;
+    }
+
+    /* ═══ CURSOR WORD ═══ */
+    .cursor-word {
+      position: fixed;
+      z-index: 50;
+      pointer-events: none;
+      font-family: var(--body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--hero-text);
+      opacity: 0;
+      transition: opacity 0.25s;
+      transform: translate(24px, -50%);
+      white-space: nowrap;
+      background: rgba(21, 18, 16, 0.75);
+      backdrop-filter: blur(8px);
+      padding: 7px 16px;
+      border-radius: 100px;
+    }
+
+    .cursor-word.vis {
+      opacity: 0.95;
+    }
+
+    /* ═══ MOBILE NAV ═══ */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+      align-items: center;
+    }
+
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+      transition: all 0.3s;
+    }
+
+    .mobile-nav a.active {
+      color: var(--hero-text);
+      background: rgba(235, 244, 245, 0.08);
+    }
+
+    /* ═══ REVEAL ═══ */
+    .rg .ri {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s cubic-bezier(0.23, 1, 0.32, 1), transform 0.75s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .rg.vis .ri {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rg.vis .ri:nth-child(1) {
+      transition-delay: 0s;
+    }
+
+    .rg.vis .ri:nth-child(2) {
+      transition-delay: 0.07s;
+    }
+
+    .rg.vis .ri:nth-child(3) {
+      transition-delay: 0.14s;
+    }
+
+    .rg.vis .ri:nth-child(4) {
+      transition-delay: 0.21s;
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 768px) {
+
+      /* Nav — hide desktop nav & Index trigger, show bottom nav */
+      .nav-bar {
+        display: none;
+      }
+
+      .nav-trigger {
+        display: none !important;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .cursor-word {
+        display: none;
+      }
+
+      /* Hero — natural flow, no absolute positioning */
+      .hero {
+        height: auto;
+        min-height: 100dvh;
+        padding: 80px 24px 100px;
+        overflow: hidden;
+        scroll-snap-align: none;
+      }
+
+      .hero-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: calc(100dvh - 180px);
+      }
+
+      .hero-headline {
+        font-size: 11vw;
+      }
+
+      .hero-greeting {
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      .hero-content-bottom {
+        margin-top: 32px;
+      }
+
+      .hero-meta span {
+        font-size: 16px;
+      }
+
+      .micro-text span {
+        font-size: 16px;
+      }
+
+      .hero-ctas {
+        position: static;
+        margin-top: 32px;
+        padding: 4px 4px 4px 20px;
+        gap: 16px;
+        align-self: flex-start;
+      }
+
+      .scroll-cue {
+        display: none;
+      }
+
+      /* Disable scroll snap on mobile */
+      html {
+        scroll-snap-type: none;
+      }
+
+      /* Company sections — content-driven height */
+      .cs {
+        height: auto;
+        padding: 60px 24px 40px;
+        overflow: hidden;
+        scroll-snap-align: none;
+      }
+
+      .cs-inner {
+        height: auto;
+        gap: 20px;
+      }
+
+      .cs-text-top {
+        gap: 10px;
+      }
+
+      .cs-role {
+        font-size: 13px;
+      }
+
+      .cs-name {
+        font-size: 10vw;
+      }
+
+      .cs-desc {
+        font-size: 16px;
+      }
+
+      .cs-screens-wrap {
+        flex: none;
+      }
+
+      .cs-screens {
+        flex: none;
+        height: 220px;
+        gap: 10px;
+      }
+
+      .cs-screen {
+        border-radius: 12px;
+      }
+
+      .cs-logo {
+        left: 24px;
+        top: 20px;
+        padding: 5px 10px;
+        font-size: 11px;
+      }
+
+      /* WTT — allow wrapping on mobile */
+      .cs-wtt .cs-name {
+        white-space: normal;
+        font-size: clamp(40px, 11vw, 72px);
+      }
+
+      .cs-wtt .cs-inner {
+        max-width: 100%;
+      }
+
+      /* Testimonials */
+      .sec-test {
+        padding: 48px 0;
+        scroll-snap-align: none;
+      }
+
+      .test-title {
+        font-size: 16px;
+        margin-bottom: 32px;
+      }
+
+      .test-strip {
+        padding: 0 24px 16px;
+      }
+
+      .test-card {
+        width: 280px;
+        min-height: 200px;
+      }
+
+      /* Footer — no absolute positioning */
+      .sec-footer {
+        height: auto;
+        padding: 80px 24px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer-inner {
+        margin-bottom: 48px;
+      }
+
+      .footer-headline {
+        font-size: clamp(40px, 10vw, 60px);
+      }
+
+      .footer-sub {
+        font-size: 18px;
+      }
+
+      .footer-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-bottom {
+        position: static;
+        padding: 0 0 24px;
+        width: 100%;
+      }
+
+      .footer-credits {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .footer-easter {
+        font-size: 12px;
+        padding: 20px 0 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 60px 20px 80px;
+      }
+
+      .hero-headline {
+        font-size: 10vw;
+      }
+
+      .hero-greeting {
+        font-size: 14px;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+      }
+
+      .hero-meta-dot {
+        display: none;
+      }
+
+      .hero-meta span {
+        font-size: 14px;
+      }
+
+      .micro-text span {
+        font-size: 14px;
+      }
+
+      .cs {
+        padding: 48px 20px 32px;
+      }
+
+      .cs-inner {
+        gap: 14px;
+      }
+
+      .cs-role {
+        font-size: 11px;
+      }
+
+      .cs-name {
+        font-size: 9vw;
+      }
+
+      .cs-desc {
+        font-size: 14px;
+      }
+
+      .cs-screens {
+        height: 180px;
+        gap: 8px;
+      }
+
+      .cs-screen {
+        border-radius: 10px;
+      }
+
+      .cs-logo {
+        left: 20px;
+        top: 16px;
+      }
+
+      .cs-wtt .cs-name {
+        font-size: clamp(32px, 11vw, 52px);
+      }
+
+      .sec-footer {
+        padding: 60px 20px 32px;
+      }
+
+      .footer-headline {
+        font-size: clamp(36px, 10vw, 52px);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV PILL BAR -->
-<div class="nav-bar" id="navBar">
-  <div class="nav-bar-item active" data-section="craft">
-    <span class="nav-bar-dot"></span>
-    <a href="#">My Craft</a>
+  <!-- NAV PILL BAR -->
+  <div class="nav-bar" id="navBar">
+    <div class="nav-bar-item active" data-section="craft">
+      <span class="nav-bar-dot"></span>
+      <a href="#">My Craft</a>
+    </div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item" data-section="story">
+      <span class="nav-bar-dot"></span>
+      <a href="/about/">Story</a>
+    </div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item" data-section="thoughts">
+      <span class="nav-bar-dot"></span>
+      <a href="/writing/">Thoughts</a>
+    </div>
   </div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item" data-section="story">
-    <span class="nav-bar-dot"></span>
-    <a href="/about/">Story</a>
-  </div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item" data-section="thoughts">
-    <span class="nav-bar-dot"></span>
-    <a href="/writing/">Thoughts</a>
-  </div>
-</div>
 
-<!-- Index trigger -->
-<button class="nav-trigger" id="navOpen">
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="5" cy="5" r="2.5" fill="#4f3a32"/><circle cx="15" cy="5" r="2.5" fill="#4f3a32"/><circle cx="5" cy="15" r="2.5" fill="#4f3a32"/><circle cx="15" cy="15" r="2.5" fill="#4f3a32"/></svg>
-  Index
-</button>
+  <!-- Index trigger -->
+  <button class="nav-trigger" id="navOpen">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <circle cx="5" cy="5" r="2.5" fill="#4f3a32" />
+      <circle cx="15" cy="5" r="2.5" fill="#4f3a32" />
+      <circle cx="5" cy="15" r="2.5" fill="#4f3a32" />
+      <circle cx="15" cy="15" r="2.5" fill="#4f3a32" />
+    </svg>
+    Index
+  </button>
 
-<!-- NAV OVERLAY -->
-<div class="nav-overlay" id="navOverlay">
-  <button class="nav-overlay-close" id="navClose">Close</button>
-  <div class="nav-overlay-links">
-    <a href="#">My Craft</a>
+  <!-- NAV OVERLAY -->
+  <div class="nav-overlay" id="navOverlay">
+    <button class="nav-overlay-close" id="navClose">Close</button>
+    <div class="nav-overlay-links">
+      <a href="#">My Craft</a>
+      <a href="/about/">Story</a>
+      <a href="/writing/">Thoughts</a>
+      <a href="/resume/">Resume</a>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+
+  <!-- CURSOR WORD -->
+  <div class="cursor-word" id="cw"></div>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-greeting" id="greeting"></p>
+
+      <div class="hero-headline">
+        <div class="hero-line"><span class="hl-1">Trusted,</span></div>
+        <div class="hero-line"><span class="hl-2 hl-accent">6M+</span></div>
+        <div class="hero-line"><span class="hl-3">times.</span></div>
+      </div>
+
+      <div class="hero-content-bottom">
+        <div class="hero-meta">
+          <span>I'm Basit Masood</span>
+          <span class="hero-meta-dot"></span>
+          <span>a Product Designer &nbsp;&middot;&nbsp; &#127462;&#127466; Dubai, UAE</span>
+        </div>
+        <div class="micro-text"><span id="microText">I build design teams where none exist</span></div>
+      </div>
+
+      <div class="scroll-cue">
+        <span>Scroll</span>
+        <div class="scroll-lines">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="/contact/" class="cta-text">CONTACT</a>
+        <a href="/resume/" class="cta-btn">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 3v10m0 0l-3.5-3.5M10 13l3.5-3.5" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M4 15.5c0 .465 0 .697.038.89a2 2 0 0 0 1.572 1.572C5.803 18 6.035 18 6.5 18h7c.465 0 .697 0 .89-.038a2 2 0 0 0 1.572-1.572c.038-.193.038-.425.038-.89"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+          RESUME
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ ZAR ════════════ -->
+  <section class="cs cs-zar cs-light" data-word="building this right now" onclick="window.location='/work/zar/'">
+    <a href="/work/zar/" class="cs-link" aria-label="ZAR case studies"></a>
+    <div class="cs-logo">Z</div>
+    <div class="cs-inner rg">
+      <div class="cs-text ri">
+        <div class="cs-text-top">
+          <span class="cs-role">Founding Product Designer &nbsp;&middot;&nbsp; 2024 – Present</span>
+          <h2 class="cs-name">ZAR</h2>
+        </div>
+        <p class="cs-desc">Backed by a16z, Coinbase, and Solana. Dollar wallet for the Global South<br>— building the
+          product, design system, and team from the ground up.</p>
+      </div>
+      <div class="cs-screens-wrap ri">
+        <div class="cs-screens">
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ SADAPAY ════════════ -->
+  <section class="cs cs-sadapay cs-light" data-word="my proudest work" onclick="window.location='/work/sadapay/'">
+    <a href="/work/sadapay/" class="cs-link" aria-label="SadaPay case studies"></a>
+    <div class="cs-logo">S</div>
+    <div class="cs-inner rg">
+      <div class="cs-text ri">
+        <div class="cs-text-top">
+          <span class="cs-role">Head of Product Design &nbsp;&middot;&nbsp; 2020 – 2024</span>
+          <h2 class="cs-name">Sadapay</h2>
+        </div>
+        <p class="cs-desc">Pakistan's largest digital wallet. Built the design team, shaped the<br>product — zero to 4M+
+          users and a $50M acquisition.</p>
+      </div>
+      <div class="cs-screens-wrap ri">
+        <div class="cs-screens">
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ ADIB ════════════ -->
+  <section class="cs cs-adib cs-dark" data-word="5 months, but did a lot" onclick="window.location='/work/adib/'">
+    <a href="/work/adib/" class="cs-link" aria-label="ADIB overview"></a>
+    <div class="cs-logo">A</div>
+    <div class="cs-inner rg">
+      <div class="cs-text ri">
+        <div class="cs-text-top">
+          <span class="cs-role">LEAD PRODUCT DESIGNER &middot; 2024–2025</span>
+          <h2 class="cs-name">ADIB</h2>
+        </div>
+        <p class="cs-desc">Abu Dhabi Islamic Bank. Led open banking and Visa Remit<br>design for 1M+ app users. Rebuilt
+          design governance from the ground up.</p>
+      </div>
+      <div class="cs-screens-wrap ri">
+        <div class="cs-screens">
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ XPENCE ════════════ -->
+  <section class="cs cs-xpence cs-dark" data-word="where it all started" onclick="window.location='/work/xpence/'">
+    <a href="/work/xpence/" class="cs-link" aria-label="Xpence overview"></a>
+    <div class="cs-logo">X</div>
+    <div class="cs-inner rg">
+      <div class="cs-text ri">
+        <div class="cs-text-top">
+          <span class="cs-role">PRODUCT DESIGNER &middot; 2020</span>
+          <h2 class="cs-name">Xpence</h2>
+        </div>
+        <p class="cs-desc">Smart business spend platform for the UAE.<br>Built an atomic design system in weeks.
+          Designed the core experience.</p>
+      </div>
+      <div class="cs-screens-wrap ri">
+        <div class="cs-screens">
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ WALKING THE TALK ════════════ -->
+  <section class="cs cs-wtt cs-dark" data-word="design for behavior change" onclick="window.location='/work/wtt/'">
+    <a href="/work/wtt/" class="cs-link" aria-label="Walking the Talk case studies"></a>
+    <div class="cs-logo">W</div>
+    <div class="cs-inner rg">
+      <div class="cs-text ri">
+        <div class="cs-text-top">
+          <span class="cs-role">CONSULTANT PRODUCT DESIGNER &middot; 2023–2024</span>
+          <h2 class="cs-name">Walking<br>the talk</h2>
+        </div>
+        <p class="cs-desc">Culture transformation platform for 200+ organizations across 40+ countries.<br>Acquired by
+          ZRG Partners — designed multiple products end-to-end across both brands.</p>
+      </div>
+      <div class="cs-screens-wrap ri">
+        <div class="cs-screens">
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+          <div class="cs-screen"><span>Screen</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ TESTIMONIALS ════════════ -->
+  <section class="sec-test">
+    <p class="test-title"></p>
+    <div class="test-strip">
+      <div class="test-card">
+        <div class="test-quote">"SadaPay was praised for how well designed the product is — this is thanks to Basit and
+          the exceptional product design team he built."</div>
+        <div class="test-author-block">
+          <div class="test-author">Brandon Timinsky</div>
+          <div class="test-author-title">CEO, SadaPay &amp; ZAR</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"Under Basit's leadership of our design team, we were able to achieve this both
+          consistently, and at a high level. I considered him our Head of Design, and one of my peers."</div>
+        <div class="test-author-block">
+          <div class="test-author">Eli Mydlarz</div>
+          <div class="test-author-title">Head of Engineering, SadaPay</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"He added value from day one. He's a fearless problem solver and moves the needle
+          whenever he enters a room."</div>
+        <div class="test-author-block">
+          <div class="test-author">Batsi Madzonga</div>
+          <div class="test-author-title">Head of Design, ADIB</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"His design decisions were always grounded in thorough analysis and strong rationale. He
+          articulated insights in a clear and structured manner."</div>
+        <div class="test-author-block">
+          <div class="test-author">Daniel Young</div>
+          <div class="test-author-title">Head of Digital Products &amp; Design, ADIB</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"Basit is an insanely good UX designer. He has a keen eye for detail, delight,
+          simplicity, and a deep focus on users and customers."</div>
+        <div class="test-author-block">
+          <div class="test-author">Sergio Sch&uuml;ler</div>
+          <div class="test-author-title">Head of Product, SadaPay</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"He pushed hard on improving our design processes and culture, introduced our design
+          system which gave our app a great consistent design."</div>
+        <div class="test-author-block">
+          <div class="test-author">Jon Sheppard</div>
+          <div class="test-author-title">CTO, SadaPay</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"His vision for implementing a design system to ensure consistency across Android and
+          iOS was a game-changer, reducing design discrepancies and accelerating our delivery timelines."</div>
+        <div class="test-author-block">
+          <div class="test-author">Shoaib Akhtar</div>
+          <div class="test-author-title">Lead Engineer, ZAR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <section class="sec-footer">
+    <div class="footer-inner rg">
+      <div class="footer-text ri">
+        <div class="footer-headline">Let's<br><span class="ft-accent">Build</span></div>
+        <p class="footer-sub">Systems. Teams. Products from zero.</p>
+      </div>
+      <div class="footer-actions ri">
+        <a href="/contact/" class="footer-btn primary">
+          Get in Touch
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="https://linkedin.com/in/iabm" class="footer-btn secondary" target="_blank">Linkedin</a>
+        <a href="/resume/" class="footer-btn secondary">Resume</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-line"></div>
+      <div class="footer-credits">
+        <span>&copy; 2026 ABM</span>
+        <span>Designed with intention</span>
+      </div>
+      <p class="footer-easter">You scrolled all the way down. That says something about both of us.</p>
+    </div>
+  </section>
+
+  <nav class="mobile-nav">
+    <a href="#" class="active">My Craft</a>
     <a href="/about/">Story</a>
     <a href="/writing/">Thoughts</a>
-    <a href="/resume/">Resume</a>
     <a href="/contact/">Contact</a>
-  </div>
-</div>
+  </nav>
 
-<!-- CURSOR WORD -->
-<div class="cursor-word" id="cw"></div>
+  <script>
+    // ─── NAV SCROLL BEHAVIOR ───
+    (function () {
+      const navBar = document.getElementById('navBar');
+      const trigger = document.getElementById('navOpen');
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 80) { navBar.classList.add('scrolled'); trigger.classList.add('scrolled'); }
+        else { navBar.classList.remove('scrolled'); trigger.classList.remove('scrolled'); }
+      }, { passive: true });
+    })();
 
-<!-- ════════════ HERO ════════════ -->
-<section class="hero">
-  <div class="hero-inner">
-    <p class="hero-greeting" id="greeting"></p>
+    // ─── TIME-AWARE GREETING ───
+    (function () {
+      const h = new Date().getHours();
+      let g;
+      if (h >= 0 && h < 5) g = "You're up late. Me too.";
+      else if (h >= 5 && h < 12) g = "Good morning.";
+      else if (h >= 12 && h < 17) g = "Good afternoon.";
+      else if (h >= 17 && h < 21) g = "Good evening.";
+      else g = "It's late. Still designing.";
+      document.getElementById('greeting').textContent = g;
+    })();
 
-    <div class="hero-headline">
-      <div class="hero-line"><span class="hl-1">Trusted,</span></div>
-      <div class="hero-line"><span class="hl-2 hl-accent">6M+</span></div>
-      <div class="hero-line"><span class="hl-3">times.</span></div>
-    </div>
+    // ─── ROTATING MICRO-TEXT ───
+    (function () {
+      const phrases = [
+        "I build design teams where none exist",
+        "Zero to scale. That's my thing.",
+        "My work led to a $50M acquisition",
+        "Fintech for emerging markets",
+        "Components are easy. Governance is the real work."
+      ];
+      let i = 0;
+      const el = document.getElementById('microText');
+      setInterval(() => {
+        el.style.opacity = '0'; el.style.transform = 'translateY(8px)';
+        setTimeout(() => {
+          i = (i + 1) % phrases.length;
+          el.textContent = phrases[i];
+          el.style.opacity = '1'; el.style.transform = 'translateY(0)';
+        }, 350);
+      }, 3200);
+    })();
 
-    <div class="hero-content-bottom">
-      <div class="hero-meta">
-        <span>I'm Basit Masood</span>
-        <span class="hero-meta-dot"></span>
-        <span>a Product Designer &nbsp;&middot;&nbsp; &#127462;&#127466; Dubai, UAE</span>
-      </div>
-      <div class="micro-text"><span id="microText">I build design teams where none exist</span></div>
-    </div>
+    // ─── NAV OVERLAY ───
+    (function () {
+      const overlay = document.getElementById('navOverlay');
+      document.getElementById('navOpen').addEventListener('click', () => overlay.classList.add('open'));
+      document.getElementById('navClose').addEventListener('click', () => overlay.classList.remove('open'));
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.classList.remove('open'); });
+    })();
 
-    <div class="scroll-cue">
-      <span>Scroll</span>
-      <div class="scroll-lines"><div></div><div></div><div></div></div>
-    </div>
+    // ─── CURSOR WORD ───
+    (function () {
+      const cw = document.getElementById('cw');
+      let active = false;
+      document.addEventListener('mousemove', (e) => {
+        if (!active) return;
+        cw.style.left = e.clientX + 'px'; cw.style.top = e.clientY + 'px';
+      });
+      document.querySelectorAll('.cs').forEach(sec => {
+        sec.addEventListener('mouseenter', () => {
+          const word = sec.dataset.word;
+          if (word) { cw.textContent = word; cw.classList.add('vis'); active = true; }
+        });
+        sec.addEventListener('mouseleave', () => { cw.classList.remove('vis'); active = false; });
+      });
+    })();
 
-    <div class="hero-ctas">
-      <a href="/contact/" class="cta-text">CONTACT</a>
-      <a href="/resume/" class="cta-btn">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v10m0 0l-3.5-3.5M10 13l3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15.5c0 .465 0 .697.038.89a2 2 0 0 0 1.572 1.572C5.803 18 6.035 18 6.5 18h7c.465 0 .697 0 .89-.038a2 2 0 0 0 1.572-1.572c.038-.193.038-.425.038-.89" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        RESUME
-      </a>
-    </div>
-  </div>
-</section>
+    // ─── SCROLL REVEAL ───
+    (function () {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.rg').forEach(el => obs.observe(el));
+    })();
 
-<!-- ════════════ ZAR ════════════ -->
-<section class="cs cs-zar cs-light" data-word="building this right now" onclick="window.location='/work/zar/'">
-  <a href="/work/zar/" class="cs-link" aria-label="ZAR case studies"></a>
-  <div class="cs-logo">Z</div>
-  <div class="cs-inner rg">
-    <div class="cs-text ri">
-      <div class="cs-text-top">
-        <span class="cs-role">Founding Product Designer &nbsp;&middot;&nbsp; 2024 – Present</span>
-        <h2 class="cs-name">ZAR</h2>
-      </div>
-      <p class="cs-desc">Backed by a16z, Coinbase, and Solana. Dollar wallet for the Global South<br>— building the product, design system, and team from the ground up.</p>
-    </div>
-    <div class="cs-screens-wrap ri">
-      <div class="cs-screens">
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+    // ─── TAB TITLE ───
+    (function () {
+      const original = document.title;
+      document.addEventListener('visibilitychange', () => {
+        document.title = document.hidden ? '...still here' : original;
+      });
+    })();
 
-<!-- ════════════ SADAPAY ════════════ -->
-<section class="cs cs-sadapay cs-light" data-word="my proudest work" onclick="window.location='/work/sadapay/'">
-  <a href="/work/sadapay/" class="cs-link" aria-label="SadaPay case studies"></a>
-  <div class="cs-logo">S</div>
-  <div class="cs-inner rg">
-    <div class="cs-text ri">
-      <div class="cs-text-top">
-        <span class="cs-role">Head of Product Design &nbsp;&middot;&nbsp; 2020 – 2024</span>
-        <h2 class="cs-name">Sadapay</h2>
-      </div>
-      <p class="cs-desc">Pakistan's largest digital wallet. Built the design team, shaped the<br>product — zero to 4M+ users and a $50M acquisition.</p>
-    </div>
-    <div class="cs-screens-wrap ri">
-      <div class="cs-screens">
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ ADIB ════════════ -->
-<section class="cs cs-adib cs-dark" data-word="5 months, but did a lot" onclick="window.location='/work/adib/'">
-  <a href="/work/adib/" class="cs-link" aria-label="ADIB overview"></a>
-  <div class="cs-logo">A</div>
-  <div class="cs-inner rg">
-    <div class="cs-text ri">
-      <div class="cs-text-top">
-        <span class="cs-role">LEAD PRODUCT DESIGNER &middot; 2024–2025</span>
-        <h2 class="cs-name">ADIB</h2>
-      </div>
-      <p class="cs-desc">Abu Dhabi Islamic Bank. Led open banking and Visa Remit<br>design for 1M+ app users. Rebuilt design governance from the ground up.</p>
-    </div>
-    <div class="cs-screens-wrap ri">
-      <div class="cs-screens">
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ TESTIMONIALS ════════════ -->
-<section class="sec-test">
-  <p class="test-title"></p>
-  <div class="test-strip">
-    <div class="test-card">
-      <div class="test-quote">"SadaPay was praised for how well designed the product is — this is thanks to Basit and the exceptional product design team he built."</div>
-      <div class="test-author-block">
-        <div class="test-author">Brandon Timinsky</div>
-        <div class="test-author-title">CEO, SadaPay &amp; ZAR</div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-quote">"Under Basit's leadership of our design team, we were able to achieve this both consistently, and at a high level. I considered him our Head of Design, and one of my peers."</div>
-      <div class="test-author-block">
-        <div class="test-author">Eli Mydlarz</div>
-        <div class="test-author-title">Head of Engineering, SadaPay</div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-quote">"He added value from day one. He's a fearless problem solver and moves the needle whenever he enters a room."</div>
-      <div class="test-author-block">
-        <div class="test-author">Batsi Madzonga</div>
-        <div class="test-author-title">Head of Design, ADIB</div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-quote">"His design decisions were always grounded in thorough analysis and strong rationale. He articulated insights in a clear and structured manner."</div>
-      <div class="test-author-block">
-        <div class="test-author">Daniel Young</div>
-        <div class="test-author-title">Head of Digital Products &amp; Design, ADIB</div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-quote">"Basit is an insanely good UX designer. He has a keen eye for detail, delight, simplicity, and a deep focus on users and customers."</div>
-      <div class="test-author-block">
-        <div class="test-author">Sergio Sch&uuml;ler</div>
-        <div class="test-author-title">Head of Product, SadaPay</div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-quote">"He pushed hard on improving our design processes and culture, introduced our design system which gave our app a great consistent design."</div>
-      <div class="test-author-block">
-        <div class="test-author">Jon Sheppard</div>
-        <div class="test-author-title">CTO, SadaPay</div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-quote">"His vision for implementing a design system to ensure consistency across Android and iOS was a game-changer, reducing design discrepancies and accelerating our delivery timelines."</div>
-      <div class="test-author-block">
-        <div class="test-author">Shoaib Akhtar</div>
-        <div class="test-author-title">Lead Engineer, ZAR</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ XPENCE ════════════ -->
-<section class="cs cs-xpence cs-dark" data-word="where it all started" onclick="window.location='/work/xpence/'">
-  <a href="/work/xpence/" class="cs-link" aria-label="Xpence overview"></a>
-  <div class="cs-logo">X</div>
-  <div class="cs-inner rg">
-    <div class="cs-text ri">
-      <div class="cs-text-top">
-        <span class="cs-role">PRODUCT DESIGNER &middot; 2020</span>
-        <h2 class="cs-name">Xpence</h2>
-      </div>
-      <p class="cs-desc">Smart business spend platform for the UAE.<br>Built an atomic design system in weeks. Designed the core experience.</p>
-    </div>
-    <div class="cs-screens-wrap ri">
-      <div class="cs-screens">
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ WALKING THE TALK ════════════ -->
-<section class="cs cs-wtt cs-dark" data-word="design for behavior change" onclick="window.location='/work/wtt/'">
-  <a href="/work/wtt/" class="cs-link" aria-label="Walking the Talk case studies"></a>
-  <div class="cs-logo">W</div>
-  <div class="cs-inner rg">
-    <div class="cs-text ri">
-      <div class="cs-text-top">
-        <span class="cs-role">CONSULTANT PRODUCT DESIGNER &middot; 2023–2024</span>
-        <h2 class="cs-name">Walking<br>the talk</h2>
-      </div>
-      <p class="cs-desc">Culture transformation platform for 200+ organizations across 40+ countries.<br>Acquired by ZRG Partners — designed multiple products end-to-end across both brands.</p>
-    </div>
-    <div class="cs-screens-wrap ri">
-      <div class="cs-screens">
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-        <div class="cs-screen"><span>Screen</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ FOOTER ════════════ -->
-<section class="sec-footer">
-  <div class="footer-inner rg">
-    <div class="footer-text ri">
-      <div class="footer-headline">Let's<br><span class="ft-accent">Build</span></div>
-      <p class="footer-sub">Systems. Teams. Products from zero.</p>
-    </div>
-    <div class="footer-actions ri">
-      <a href="/contact/" class="footer-btn primary">
-        Get in Touch
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="https://linkedin.com/in/iabm" class="footer-btn secondary" target="_blank">Linkedin</a>
-      <a href="/resume/" class="footer-btn secondary">Resume</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-line"></div>
-    <div class="footer-credits">
-      <span>&copy; 2026 ABM</span>
-      <span>Designed with intention</span>
-    </div>
-    <p class="footer-easter">You scrolled all the way down. That says something about both of us.</p>
-  </div>
-</section>
-
-<nav class="mobile-nav">
-  <a href="#" class="active">My Craft</a>
-  <a href="/about/">Story</a>
-  <a href="/writing/">Thoughts</a>
-  <a href="/contact/">Contact</a>
-</nav>
-
-<script>
-// ─── NAV SCROLL BEHAVIOR ───
-(function() {
-  const navBar = document.getElementById('navBar');
-  const trigger = document.getElementById('navOpen');
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y > 80) { navBar.classList.add('scrolled'); trigger.classList.add('scrolled'); }
-    else { navBar.classList.remove('scrolled'); trigger.classList.remove('scrolled'); }
-  }, { passive: true });
-})();
-
-// ─── TIME-AWARE GREETING ───
-(function() {
-  const h = new Date().getHours();
-  let g;
-  if (h >= 0 && h < 5) g = "You're up late. Me too.";
-  else if (h >= 5 && h < 12) g = "Good morning.";
-  else if (h >= 12 && h < 17) g = "Good afternoon.";
-  else if (h >= 17 && h < 21) g = "Good evening.";
-  else g = "It's late. Still designing.";
-  document.getElementById('greeting').textContent = g;
-})();
-
-// ─── ROTATING MICRO-TEXT ───
-(function() {
-  const phrases = [
-    "I build design teams where none exist",
-    "Zero to scale. That's my thing.",
-    "My work led to a $50M acquisition",
-    "Fintech for emerging markets",
-    "Components are easy. Governance is the real work."
-  ];
-  let i = 0;
-  const el = document.getElementById('microText');
-  setInterval(() => {
-    el.style.opacity = '0'; el.style.transform = 'translateY(8px)';
-    setTimeout(() => {
-      i = (i + 1) % phrases.length;
-      el.textContent = phrases[i];
-      el.style.opacity = '1'; el.style.transform = 'translateY(0)';
-    }, 350);
-  }, 3200);
-})();
-
-// ─── NAV OVERLAY ───
-(function() {
-  const overlay = document.getElementById('navOverlay');
-  document.getElementById('navOpen').addEventListener('click', () => overlay.classList.add('open'));
-  document.getElementById('navClose').addEventListener('click', () => overlay.classList.remove('open'));
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.classList.remove('open'); });
-})();
-
-// ─── CURSOR WORD ───
-(function() {
-  const cw = document.getElementById('cw');
-  let active = false;
-  document.addEventListener('mousemove', (e) => {
-    if (!active) return;
-    cw.style.left = e.clientX + 'px'; cw.style.top = e.clientY + 'px';
-  });
-  document.querySelectorAll('.cs').forEach(sec => {
-    sec.addEventListener('mouseenter', () => {
-      const word = sec.dataset.word;
-      if (word) { cw.textContent = word; cw.classList.add('vis'); active = true; }
-    });
-    sec.addEventListener('mouseleave', () => { cw.classList.remove('vis'); active = false; });
-  });
-})();
-
-// ─── SCROLL REVEAL ───
-(function() {
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.rg').forEach(el => obs.observe(el));
-})();
-
-// ─── TAB TITLE ───
-(function() {
-  const original = document.title;
-  document.addEventListener('visibilitychange', () => {
-    document.title = document.hidden ? '...still here' : original;
-  });
-})();
-
-// ─── CONSOLE ───
-console.log('%c Hey, you found the console.', 'font-size: 18px; font-weight: bold; color: #cc2936;');
-console.log('%c If you\'re reading this, we should talk.', 'font-size: 14px; color: #A69D91;');
-console.log('%c \u2192 basitmasood999@gmail.com', 'font-size: 14px; color: #EDE8DB;');
-</script>
+    // ─── CONSOLE ───
+    console.log('%c Hey, you found the console.', 'font-size: 18px; font-weight: bold; color: #cc2936;');
+    console.log('%c If you\'re reading this, we should talk.', 'font-size: 14px; color: #A69D91;');
+    console.log('%c \u2192 basitmasood999@gmail.com', 'font-size: 14px; color: #EDE8DB;');
+  </script>
 </body>
+
 </html>

@@ -1,349 +1,671 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Writing by ABM (Basit Masood) — Notes on design leadership, fintech UX, building teams, and emerging markets.">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="Writing — ABM">
-<meta property="og:description" content="Notes on design leadership, fintech UX, building teams, and emerging markets.">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Writing — ABM">
-<meta name="twitter:description" content="Notes on design leadership, fintech UX, building teams.">
-<title>Writing — ABM</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --display: 'AKONY', serif;
-    --body: 'Space Grotesk', sans-serif;
-    --serif: 'Gentium Book Plus', serif;
-    --espresso: #2E1A12;
-    --espresso-dim: #4f3a32;
-    --espresso-muted: #7a6a62;
-    --cream: #ebf4f5;
-    --cream-dim: #A69D91;
-    --red: #cc2936;
-    --accent: #cc2936;
-    --accent-light: #e04550;
-    --bg: #f8f5f0;
-    --text: #2E1A12;
-    --text-dim: #6b5d54;
-    --text-muted: #9a8d84;
-    --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.07);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Writing by ABM (Basit Masood) — Notes on design leadership, fintech UX, building teams, and emerging markets.">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="Writing — ABM">
+  <meta property="og:description"
+    content="Notes on design leadership, fintech UX, building teams, and emerging markets.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abmcooks.github.io/writing/">
+  <meta property="og:image" content="https://abmcooks.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Writing — ABM">
+  <meta name="twitter:description" content="Notes on design leadership, fintech UX, building teams.">
+  <meta name="twitter:image" content="https://abmcooks.github.io/og.png">
+  <title>Writing — ABM</title>
+  <link rel="canonical" href="https://abmcooks.github.io/writing/">
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+      --espresso: #2E1A12;
+      --espresso-dim: #4f3a32;
+      --espresso-muted: #7a6a62;
+      --cream: #ebf4f5;
+      --cream-dim: #A69D91;
+      --red: #cc2936;
+      --accent: #cc2936;
+      --accent-light: #e04550;
+      --bg: #f8f5f0;
+      --text: #2E1A12;
+      --text-dim: #6b5d54;
+      --text-muted: #9a8d84;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.07);
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body {
-    font-family: var(--body); background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px;
-    animation: pageIn 0.3s ease;
-  }
-  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
-  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ─── NAV ─── */
-  .nav-bar { position: fixed; top: 64px; right: 48px; z-index: 100; background: var(--espresso); border-radius: 8px; padding: 8px 32px 8px 24px; display: flex; align-items: center; gap: 12px; }
-  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
-  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cream); display: none; }
-  .nav-bar-item.active .nav-bar-dot { display: block; }
-  .nav-bar-item a { font-family: var(--body); font-size: 14px; font-weight: 500; color: rgba(235,244,245,0.6); text-decoration: none; }
-  .nav-bar-item.active a { font-weight: 700; color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
-  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(235,244,245,0.3); transform: rotate(-40deg); }
-  .mobile-nav { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px); border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; }
-  .mobile-nav a { font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none; padding: 8px 15px; border-radius: 100px; }
-  .mobile-nav a.active { color: var(--cream); background: rgba(235,244,245,0.08); }
-  @media (max-width: 768px) { .nav-bar { display: none; } .mobile-nav { display: flex; } }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
-  /* ─── HERO ─── */
-  .hero {
-    position: relative; z-index: 2;
-    min-height: 50vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 140px 48px 40px;
-    text-align: center;
-  }
-  .hero-inner {
-    position: relative; z-index: 2;
-    max-width: 600px;
-    opacity: 0; animation: fu 0.8s 0.2s forwards;
-  }
-  .hero-label {
-    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 24px;
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-  }
-  .hero-label::before, .hero-label::after {
-    content: ''; width: 24px; height: 1px; background: rgba(204,41,54,0.3);
-  }
-  .hero h1 {
-    font-family: var(--display); font-size: clamp(40px, 6vw, 60px);
-    font-weight: 800; letter-spacing: -0.04em; line-height: 1.05;
-    color: var(--text);
-    margin-bottom: 20px;
-  }
-  .hero h1 .accent { color: var(--accent); }
-  .hero-sub {
-    font-family: var(--serif); font-size: 18px; font-weight: 400;
-    color: var(--text-dim); line-height: 1.6; letter-spacing: -0.01em;
-    max-width: 480px; margin: 0 auto;
-  }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      animation: pageIn 0.3s ease;
+    }
 
-  /* ─── WRAP ─── */
-  .wrap {
-    position: relative; z-index: 2;
-    max-width: 800px; margin: 0 auto;
-    padding: 0 48px;
-  }
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
 
-  /* ─── SECTION LABEL ─── */
-  .section-label {
-    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-muted); margin-bottom: 24px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::before {
-    content: ''; width: 24px; height: 1px; background: var(--text-muted);
-  }
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+      }
 
-  /* ─── ARTICLE LIST ─── */
-  .articles {
-    display: flex; flex-direction: column; gap: 0;
-    margin-top: 20px;
-  }
-  .article-row {
-    display: flex; align-items: flex-start; gap: 24px;
-    padding: 28px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    text-decoration: none; color: inherit;
-    transition: all 0.3s;
-  }
-  .article-row:first-child { padding-top: 0; }
-  .article-row:last-child { border-bottom: none; }
-  .article-row:hover { padding-left: 8px; }
+      to {
+        opacity: 1;
+      }
+    }
 
-  .ar-date {
-    font-family: var(--body); font-size: 12px; font-weight: 500; color: var(--text-muted);
-    white-space: nowrap; min-width: 80px; padding-top: 4px;
-  }
-  .ar-content { flex: 1; }
-  .ar-title {
-    font-family: var(--body); font-size: 19px; font-weight: 600;
-    color: var(--text); letter-spacing: -0.01em; line-height: 1.3;
-    margin-bottom: 6px;
-    transition: color 0.3s;
-  }
-  .article-row:hover .ar-title { color: var(--accent); }
-  .ar-desc {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.6;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-  }
-  .ar-tags {
-    display: flex; gap: 6px; margin-top: 10px;
-  }
-  .ar-tag {
-    font-family: var(--body); font-size: 10px; font-weight: 500; padding: 3px 10px;
-    border-radius: 100px; color: var(--text-muted);
-    border: 1px solid rgba(0,0,0,0.08);
-    background: rgba(0,0,0,0.03);
-    transition: border-color 0.3s, color 0.3s;
-  }
-  .article-row:hover .ar-tag { border-color: rgba(204,41,54,0.15); color: var(--text); }
-  .ar-arrow {
-    flex-shrink: 0; padding-top: 6px;
-    color: var(--text-muted);
-    opacity: 0; transform: translateX(-6px);
-    transition: all 0.35s cubic-bezier(.23,1,.32,1);
-  }
-  .article-row:hover .ar-arrow { opacity: 1; transform: translateX(0); }
+    /* ─── NAV ─── */
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--espresso);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  /* ─── FEATURED ARTICLE ─── */
-  .featured {
-    display: block;
-    padding: 32px;
-    border-radius: 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    text-decoration: none; color: inherit;
-    position: relative; overflow: hidden;
-    transition: all 0.4s cubic-bezier(.23,1,.32,1);
-    margin-bottom: 48px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .featured:hover {
-    border-color: rgba(204,41,54,0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.08);
-  }
-  .featured-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: var(--body); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 16px;
-    padding: 4px 12px; border-radius: 100px;
-    background: rgba(204,41,54,0.06);
-    border: 1px solid rgba(204,41,54,0.12);
-  }
-  .featured-badge::before {
-    content: ''; width: 5px; height: 5px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 8px rgba(204,41,54,0.5);
-  }
-  .featured-title {
-    font-family: var(--body); font-size: clamp(22px, 3vw, 28px);
-    font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;
-    color: var(--text); margin-bottom: 10px;
-    transition: color 0.3s;
-  }
-  .featured:hover .featured-title { color: var(--accent); }
-  .featured-desc {
-    font-family: var(--serif); font-size: 15px; color: var(--text-dim); line-height: 1.7;
-    max-width: 580px; margin-bottom: 16px;
-  }
-  .featured-meta {
-    display: flex; align-items: center; gap: 16px;
-    font-family: var(--body); font-size: 12px; color: var(--text-muted);
-  }
-  .featured-meta span { display: flex; align-items: center; gap: 4px; }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: none;
+    }
+
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
+
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.6);
+      text-decoration: none;
+    }
+
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: var(--cream);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: rgba(235, 244, 245, 0.3);
+      transform: rotate(-40deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+    }
+
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+    }
+
+    .mobile-nav a.active {
+      color: var(--cream);
+      background: rgba(235, 244, 245, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      z-index: 2;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 140px 48px 40px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      opacity: 0;
+      animation: fu 0.8s 0.2s forwards;
+    }
+
+    .hero-label {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .hero-label::before,
+    .hero-label::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: rgba(204, 41, 54, 0.3);
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(40px, 6vw, 60px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .accent {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ─── WRAP ─── */
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ─── SECTION LABEL ─── */
+    .section-label {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--text-muted);
+    }
+
+    /* ─── ARTICLE LIST ─── */
+    .articles {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 20px;
+    }
+
+    .article-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s;
+    }
+
+    .article-row:first-child {
+      padding-top: 0;
+    }
+
+    .article-row:last-child {
+      border-bottom: none;
+    }
+
+    .article-row:hover {
+      padding-left: 8px;
+    }
+
+    .ar-date {
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      white-space: nowrap;
+      min-width: 80px;
+      padding-top: 4px;
+    }
+
+    .ar-content {
+      flex: 1;
+    }
+
+    .ar-title {
+      font-family: var(--body);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+
+    .article-row:hover .ar-title {
+      color: var(--accent);
+    }
+
+    .ar-desc {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .ar-tags {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .ar-tag {
+      font-family: var(--body);
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 100px;
+      color: var(--text-muted);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: rgba(0, 0, 0, 0.03);
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .article-row:hover .ar-tag {
+      border-color: rgba(204, 41, 54, 0.15);
+      color: var(--text);
+    }
+
+    .ar-arrow {
+      flex-shrink: 0;
+      padding-top: 6px;
+      color: var(--text-muted);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: all 0.35s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .article-row:hover .ar-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ─── FEATURED ARTICLE ─── */
+    .featured {
+      display: block;
+      padding: 32px;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(.23, 1, .32, 1);
+      margin-bottom: 48px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .featured:hover {
+      border-color: rgba(204, 41, 54, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+    }
+
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(204, 41, 54, 0.06);
+      border: 1px solid rgba(204, 41, 54, 0.12);
+    }
+
+    .featured-badge::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(204, 41, 54, 0.5);
+    }
+
+    .featured-title {
+      font-family: var(--body);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .featured:hover .featured-title {
+      color: var(--accent);
+    }
+
+    .featured-desc {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 16px;
+    }
+
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--body);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .featured-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
 
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    /* ─── ANIMATIONS ─── */
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
 
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    .wrap { padding-left: 20px; padding-right: 20px; }
-    .hero { padding: 120px 24px 32px; }
-    .article-row { flex-direction: column; gap: 4px; }
-    .ar-date { min-width: auto; padding-top: 0; }
-    .subscribe-form { flex-direction: column; }
-  }
-  @media (max-width: 640px) {
-    .hero h1 { font-size: 36px; }
-  }
-</style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero {
+        padding: 120px 24px 32px;
+      }
+
+      .article-row {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .ar-date {
+        min-width: auto;
+        padding-top: 0;
+      }
+
+      .subscribe-form {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<div class="nav-bar">
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/writing/">My Thoughts</a></div>
-</div>
-<nav class="mobile-nav">
-  <a href="/">Craft</a>
-  <a href="/about/">Story</a>
-  <a href="/writing/" class="active">My Thoughts</a>
-  <a href="/contact/">Contact</a>
-</nav>
-
-<!-- ═══════════════════════════════════════ -->
-<!--              HERO                       -->
-<!-- ═══════════════════════════════════════ -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-label">Writing</div>
-    <h1>Thinking<br><span style="white-space:nowrap">out <span class="accent">loud.</span></span></h1>
-    <p class="hero-sub">Notes on design leadership, fintech UX, building teams, and the things I&rsquo;m figuring out along the way.</p>
+  <!-- NAV -->
+  <div class="nav-bar">
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/writing/">My Thoughts</a></div>
   </div>
-</div>
+  <nav class="mobile-nav">
+    <a href="/">Craft</a>
+    <a href="/about/">Story</a>
+    <a href="/writing/" class="active">My Thoughts</a>
+    <a href="/contact/">Contact</a>
+  </nav>
 
-<!-- ═══════════════════════════════════════ -->
-<!--          CONTENT                        -->
-<!-- ═══════════════════════════════════════ -->
-<div class="wrap">
-
-  <!-- FEATURED -->
-  <section class="reveal">
-    <a href="/writing/the-1-12-ratio/" class="featured">
-      <div class="featured-badge">Featured</div>
-      <div class="featured-title">The 1:12 ratio &mdash; what being the only designer taught me</div>
-      <p class="featured-desc">Lessons from being the first and only designer at two startups, surrounded by engineers who needed design decisions faster than I could make them.</p>
-      <div class="featured-meta">
-        <span>Dec 2025</span>
-        <span>&middot;</span>
-        <span>7 min read</span>
-        <span>&middot;</span>
-        <span>Leadership, Startups</span>
-      </div>
-    </a>
-  </section>
-
-  <!-- ALL ARTICLES -->
-  <section class="reveal">
-    <div class="section-label">All Articles</div>
-    <div class="articles">
-
-      <a href="/writing/the-1-12-ratio/" class="article-row">
-        <div class="ar-date">Dec 2025</div>
-        <div class="ar-content">
-          <div class="ar-title">The 1:12 ratio &mdash; what being the only designer taught me</div>
-          <div class="ar-desc">Lessons from being the first and only designer at two startups, surrounded by engineers who needed design decisions faster than I could make them.</div>
-          <div class="ar-tags">
-            <span class="ar-tag">Leadership</span>
-            <span class="ar-tag">Startups</span>
-          </div>
-        </div>
-        <div class="ar-arrow">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-      </a>
-
-      <a href="/writing/waitlist-gamification/" class="article-row">
-        <div class="ar-date">Dec 2025</div>
-        <div class="ar-content">
-          <div class="ar-title">Gamified waitlists &mdash; turning anticipation into activation</div>
-          <div class="ar-desc">How we used gamification mechanics to turn 700K waitlist signups into engaged power users at SadaPay &mdash; with zero paid acquisition.</div>
-          <div class="ar-tags">
-            <span class="ar-tag">Growth Design</span>
-            <span class="ar-tag">Gamification</span>
-          </div>
-        </div>
-        <div class="ar-arrow">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-      </a>
-
+  <!-- ═══════════════════════════════════════ -->
+  <!--              HERO                       -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-label">Writing</div>
+      <h1>Thinking<br><span style="white-space:nowrap">out <span class="accent">loud.</span></span></h1>
+      <p class="hero-sub">Notes on design leadership, fintech UX, building teams, and the things I&rsquo;m figuring out
+        along the way.</p>
     </div>
-  </section>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--          CONTENT                        -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="wrap">
+
+    <!-- FEATURED -->
+    <section class="reveal">
+      <a href="/writing/the-1-12-ratio/" class="featured">
+        <div class="featured-badge">Featured</div>
+        <div class="featured-title">The 1:12 ratio &mdash; what being the only designer taught me</div>
+        <p class="featured-desc">Lessons from being the first and only designer at two startups, surrounded by engineers
+          who needed design decisions faster than I could make them.</p>
+        <div class="featured-meta">
+          <span>Dec 2025</span>
+          <span>&middot;</span>
+          <span>7 min read</span>
+          <span>&middot;</span>
+          <span>Leadership, Startups</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- ALL ARTICLES -->
+    <section class="reveal">
+      <div class="section-label">All Articles</div>
+      <div class="articles">
+
+        <a href="/writing/the-1-12-ratio/" class="article-row">
+          <div class="ar-date">Dec 2025</div>
+          <div class="ar-content">
+            <div class="ar-title">The 1:12 ratio &mdash; what being the only designer taught me</div>
+            <div class="ar-desc">Lessons from being the first and only designer at two startups, surrounded by engineers
+              who needed design decisions faster than I could make them.</div>
+            <div class="ar-tags">
+              <span class="ar-tag">Leadership</span>
+              <span class="ar-tag">Startups</span>
+            </div>
+          </div>
+          <div class="ar-arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+        </a>
+
+        <a href="/writing/waitlist-gamification/" class="article-row">
+          <div class="ar-date">Dec 2025</div>
+          <div class="ar-content">
+            <div class="ar-title">Gamified waitlists &mdash; turning anticipation into activation</div>
+            <div class="ar-desc">How we used gamification mechanics to turn 700K waitlist signups into engaged power
+              users at SadaPay &mdash; with zero paid acquisition.</div>
+            <div class="ar-tags">
+              <span class="ar-tag">Growth Design</span>
+              <span class="ar-tag">Gamification</span>
+            </div>
+          </div>
+          <div class="ar-arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+        </a>
+
+      </div>
+    </section>
 
 
 
-</div>
+  </div>
 
-<!-- FOOTER -->
-<footer style="max-width:900px;margin:80px auto 0;padding:0 48px;"><div style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);padding-bottom:80px;"><span>&copy; 2026 ABM</span><span>Designed with intention</span></div></footer>
+  <!-- FOOTER -->
+  <footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
+    <div
+      style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);padding-bottom:80px;">
+      <span>&copy; 2026 ABM</span><span>Designed with intention</span>
+    </div>
+  </footer>
 
-<script>
-  // ─── REVEALS ───
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  })},{threshold:.06});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  <script>
+    // ─── REVEALS ───
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, { threshold: .06 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // ─── PAGE TRANSITIONS ───
-  if(location.protocol!=='file:'){
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const h=a.getAttribute('href');
-      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(()=>window.location.href=h,150);
+    // ─── PAGE TRANSITIONS ───
+    if (location.protocol !== 'file:') {
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => window.location.href = h, 150);
+        });
       });
-    });
-  }
-</script>
+    }
+  </script>
 </body>
+
 </html>

@@ -1,640 +1,1341 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ABM (Basit Masood) — Lead Product Designer at ZAR. 6+ years in fintech product design. Founding designer who builds design orgs and products from zero.">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="About — ABM">
-<meta property="og:description" content="6+ years in fintech product design. Founding designer. Systems, teams, products from zero.">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="About — ABM">
-<meta name="twitter:description" content="6+ years in fintech product design. Founding designer. Systems, teams, products from zero.">
-<title>About — ABM</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --display: 'AKONY', serif;
-    --body: 'Space Grotesk', sans-serif;
-    --serif: 'Gentium Book Plus', serif;
-    --espresso: #2E1A12;
-    --espresso-dim: #4f3a32;
-    --espresso-muted: #7a6a62;
-    --cream: #ebf4f5;
-    --cream-dim: #A69D91;
-    --red: #cc2936;
-    --gold: #c4ad54;
-    --blue: #003a78;
-    --teal: #ff7b66;
-    --emerald: #6200ee;
-    --violet: #bc204b;
-    --radius: 20px;
-    --bg: #f8f5f0;
-    --text: #2E1A12;
-    --text-dim: #6b5d54;
-    --text-muted: #9a8d84;
-    --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.07);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="ABM (Basit Masood) — Lead Product Designer at ZAR. 6+ years in fintech product design. Founding designer who builds design orgs and products from zero.">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="About — ABM">
+  <meta property="og:description"
+    content="6+ years in fintech product design. Founding designer. Systems, teams, products from zero.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abmcooks.github.io/about/">
+  <meta property="og:image" content="https://abmcooks.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About — ABM">
+  <meta name="twitter:description"
+    content="6+ years in fintech product design. Founding designer. Systems, teams, products from zero.">
+  <meta name="twitter:image" content="https://abmcooks.github.io/og.png">
+  <title>About — ABM</title>
+  <link rel="canonical" href="https://abmcooks.github.io/about/">
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+      --espresso: #2E1A12;
+      --espresso-dim: #4f3a32;
+      --espresso-muted: #7a6a62;
+      --cream: #ebf4f5;
+      --cream-dim: #A69D91;
+      --red: #cc2936;
+      --gold: #c4ad54;
+      --blue: #003a78;
+      --teal: #ff7b66;
+      --emerald: #6200ee;
+      --violet: #bc204b;
+      --radius: 20px;
+      --bg: #f8f5f0;
+      --text: #2E1A12;
+      --text-dim: #6b5d54;
+      --text-muted: #9a8d84;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.07);
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body {
-    font-family: var(--body); background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px;
-    animation: pageIn 0.3s ease;
-  }
-  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* --- NAV --- */
-  .nav-bar {
-    position: fixed; top: 64px; right: 48px; z-index: 100;
-    background: var(--espresso); border-radius: 8px;
-    padding: 8px 32px 8px 24px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
-  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: #f8f5f0; display: none; }
-  .nav-bar-item.active .nav-bar-dot { display: block; }
-  .nav-bar-item a {
-    font-family: var(--body); font-size: 14px; font-weight: 500;
-    color: rgba(248,245,240,0.6); text-decoration: none;
-    letter-spacing: 0.01em; transition: color 0.2s;
-  }
-  .nav-bar-item.active a {
-    font-weight: 700; color: #f8f5f0;
-    text-decoration: underline; text-underline-offset: 3px;
-    text-decoration-thickness: 1.5px;
-  }
-  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(248,245,240,0.3); transform: rotate(-40deg); }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
-  .mobile-nav {
-    display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-    z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px);
-    border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px;
-  }
-  .mobile-nav a {
-    font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none;
-    padding: 8px 15px; border-radius: 100px; transition: all 0.3s;
-  }
-  .mobile-nav a.active { color: var(--cream); background: rgba(235,244,245,0.08); }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      animation: pageIn 0.3s ease;
+    }
 
-  @media (max-width: 768px) {
-    .nav-bar { display: none; }
-    .mobile-nav { display: flex; }
-  }
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
 
-  /* --- WRAPPER --- */
-  .wrap { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 48px; }
+    /* --- NAV --- */
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--espresso);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  /* --- ABOUT HERO --- */
-  .about-hero {
-    padding: 80px 0 0;
-    display: grid; grid-template-columns: 1fr 280px; gap: 60px; align-items: start;
-  }
-  .about-label {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--red); margin-bottom: 20px;
-    opacity: 0; animation: fu 0.5s 0.2s forwards;
-  }
-  .about-name {
-    font-family: var(--display); font-size: clamp(40px, 5vw, 56px);
-    font-weight: 700; line-height: 1.08; letter-spacing: -0.01em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    opacity: 0; animation: fu 0.7s 0.4s forwards;
-  }
-  .about-intro {
-    font-family: var(--serif); font-size: 20px; font-weight: 400;
-    line-height: 1.5; color: var(--text-dim); font-style: italic;
-    opacity: 0; animation: fu 0.6s 0.6s forwards;
-  }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  /* Photo placeholder */
-  .photo-wrap {
-    opacity: 0; animation: fu 0.8s 0.5s forwards;
-  }
-  .photo {
-    width: 280px; height: 340px; border-radius: var(--radius);
-    background: var(--card-bg); border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    position: relative; overflow: hidden;
-  }
-  .photo::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 40%, rgba(204,41,54,0.06) 0%, transparent 60%);
-  }
-  .photo-initials {
-    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    font-family: var(--display); font-size: 80px; font-weight: 700;
-    color: rgba(0,0,0,0.04); letter-spacing: -0.04em;
-    text-transform: uppercase;
-  }
-  .photo-label {
-    position: absolute; bottom: 20px; left: 20px; right: 20px;
-    font-size: 11px; color: var(--text-dim); text-align: center;
-    padding: 8px; border-radius: 8px; background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(8px);
-  }
-  .photo-dots {
-    position: absolute; top: 16px; right: 16px;
-    display: flex; gap: 4px;
-  }
-  .photo-dots span {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: rgba(0,0,0,0.07);
-  }
-  .photo-dots span:first-child { background: rgba(204,41,54,0.3); }
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f8f5f0;
+      display: none;
+    }
 
-  /* --- WHO I AM --- */
-  .who {
-    padding: 100px 0 0;
-  }
-  .section-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-muted); margin-bottom: 24px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::before {
-    content: ''; width: 24px; height: 1px; background: var(--text-muted);
-  }
-  .who-statement {
-    font-family: var(--body); font-size: clamp(22px, 3vw, 28px);
-    font-weight: 600; line-height: 1.45; letter-spacing: -0.02em;
-    color: var(--text); max-width: 680px; margin-bottom: 40px;
-  }
-  .who-statement .wh-em {
-    color: var(--red);
-  }
-  .who-facts {
-    display: flex; flex-wrap: wrap; gap: 10px;
-  }
-  .who-fact {
-    font-size: 13px; font-weight: 500; color: var(--text-dim);
-    padding: 8px 16px; border-radius: 100px;
-    background: var(--card-bg); border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: border-color 0.3s;
-  }
-  .who-fact:hover { border-color: rgba(204,41,54,0.15); }
-  .who-fact .wf-icon { margin-right: 6px; }
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
 
-  /* --- JOURNEY TIMELINE --- */
-  .journey {
-    padding: 100px 0 0;
-  }
-  .timeline {
-    position: relative; padding-left: 48px; margin-top: 8px;
-  }
-  .timeline::before {
-    content: ''; position: absolute; left: 7px; top: 10px; bottom: 10px;
-    width: 1px; background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.03));
-  }
-  .tl-item {
-    position: relative; padding: 0 0 56px;
-  }
-  .tl-item:last-child { padding-bottom: 0; }
-  .tl-dot {
-    position: absolute; left: -48px; top: 6px;
-    width: 15px; height: 15px; border-radius: 50%;
-    border: 2px solid rgba(0,0,0,0.08); background: var(--bg);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 2;
-  }
-  .tl-dot::after {
-    content: ''; width: 5px; height: 5px; border-radius: 50%;
-  }
-  .tl-item.current .tl-dot { border-color: var(--red); }
-  .tl-item.current .tl-dot::after { background: var(--red); box-shadow: 0 0 8px rgba(204,41,54,0.5); }
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(248, 245, 240, 0.6);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
 
-  .tl-date {
-    font-size: 12px; font-weight: 500; color: var(--text-muted); margin-bottom: 6px;
-    letter-spacing: 0.02em;
-  }
-  .tl-company {
-    font-family: var(--body); font-size: 22px; font-weight: 700;
-    letter-spacing: -0.01em; margin-bottom: 2px;
-  }
-  .tl-role {
-    font-size: 14px; color: var(--text-dim); margin-bottom: 12px;
-  }
-  .tl-desc {
-    font-family: var(--serif); font-size: 16px; line-height: 1.7; color: var(--text-dim); max-width: 560px;
-  }
-  .tl-desc strong { color: var(--text); font-weight: 700; }
-  .tl-tags {
-    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px;
-  }
-  .tl-tag {
-    font-size: 11px; font-weight: 500; padding: 4px 10px;
-    border-radius: 100px; border: 1px solid;
-  }
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: #f8f5f0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+    }
 
-  /* Company colors */
-  .tl-zar .tl-company { color: var(--gold); }
-  .tl-zar .tl-tag { color: var(--gold); border-color: rgba(196,173,84,0.15); background: rgba(196,173,84,0.04); }
-  .tl-adib .tl-company { color: var(--blue); }
-  .tl-adib .tl-tag { color: var(--blue); border-color: rgba(0,58,120,0.15); background: rgba(0,58,120,0.04); }
-  .tl-sp .tl-company { color: var(--teal); }
-  .tl-sp .tl-tag { color: var(--teal); border-color: rgba(255,123,102,0.15); background: rgba(255,123,102,0.04); }
-  .tl-xp .tl-company { color: var(--emerald); }
-  .tl-xp .tl-tag { color: var(--emerald); border-color: rgba(98,0,238,0.15); background: rgba(98,0,238,0.04); }
-  .tl-wtt .tl-company { color: var(--violet); }
-  .tl-wtt .tl-tag { color: var(--violet); border-color: rgba(188,32,75,0.15); background: rgba(188,32,75,0.04); }
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  /* --- PHILOSOPHY --- */
-  .philosophy {
-    padding: 100px 0 0;
-  }
-  .phil-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px;
-  }
-  .phil-card {
-    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    padding: 32px; position: relative; overflow: hidden;
-    transition: border-color 0.4s, box-shadow 0.4s;
-  }
-  .phil-card:hover {
-    border-color: rgba(204,41,54,0.12);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  }
-  .phil-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(204,41,54,0.15), transparent);
-    opacity: 0; transition: opacity 0.4s;
-  }
-  .phil-card:hover::before { opacity: 1; }
-  .phil-num {
-    font-family: var(--display); font-size: 48px; font-weight: 700;
-    color: rgba(0,0,0,0.04); line-height: 1; margin-bottom: 16px;
-    letter-spacing: -0.04em;
-  }
-  .phil-title {
-    font-family: var(--body); font-size: 17px; font-weight: 700;
-    color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em;
-  }
-  .phil-text {
-    font-family: var(--serif); font-size: 14px; line-height: 1.7; color: var(--text-dim);
-  }
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: rgba(248, 245, 240, 0.3);
+      transform: rotate(-40deg);
+    }
 
-  /* --- LEADERSHIP --- */
-  .leadership {
-    padding: 100px 0 0;
-  }
-  .lead-quote {
-    font-family: var(--body); font-size: clamp(24px, 3.5vw, 36px);
-    font-weight: 600; line-height: 1.35; letter-spacing: -0.02em;
-    color: var(--text); max-width: 720px; margin-bottom: 32px;
-  }
-  .lead-quote .lq-em {
-    color: var(--red);
-  }
-  .lead-body {
-    font-family: var(--serif); font-size: 16px; line-height: 1.75; color: var(--text-dim); max-width: 640px;
-  }
-  .lead-body p { margin-bottom: 20px; }
-  .lead-body p:last-child { margin-bottom: 0; }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+    }
 
-  /* --- TESTIMONIAL MARQUEE --- */
-  .testimonials {
-    position: relative; z-index: 2; margin: 100px 0 0; overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  }
-  .trow { display: flex; gap: 16px; padding: 8px 0; width: max-content; }
-  .trow-left { animation: mql 45s linear infinite; }
-  .trow-right { animation: mqr 50s linear infinite; }
-  .trow:hover { animation-play-state: paused; }
-  .tcard {
-    flex-shrink: 0; width: 380px; padding: 24px 28px;
-    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: border-color 0.3s;
-  }
-  .tcard:hover { border-color: rgba(204,41,54,0.1); }
-  .tcard .tq { font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.65; font-style: italic; margin-bottom: 16px; }
-  .tcard .tq strong { color: var(--text); font-style: normal; font-weight: 700; }
-  .tcard .ta { font-size: 12px; font-weight: 600; color: var(--text); }
-  .tcard .tt { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+      transition: all 0.3s;
+    }
 
-  @keyframes mql { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  @keyframes mqr { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    .mobile-nav a.active {
+      color: var(--cream);
+      background: rgba(235, 244, 245, 0.08);
+    }
 
-  /* --- STATS --- */
-  .stats {
-    padding: 100px 0 0;
-    position: relative; z-index: 2; max-width: 900px; margin: 0 auto;
-  }
-  .stats-inner {
-    display: grid; grid-template-columns: repeat(5, 1fr);
-    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); overflow: hidden; position: relative;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .st { padding: 36px 16px; text-align: center; border-right: 1px solid var(--card-border); position: relative; }
-  .st:last-child { border-right: none; }
-  .st .sn { font-family: var(--body); font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
-  .st .sl { font-size: 11px; color: var(--text-muted); font-weight: 500; margin-top: 4px; line-height: 1.4; }
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
 
-  /* --- FOOTER --- */
-  footer { position: relative; z-index: 2; max-width: 900px; margin: 100px auto 0; padding: 0 48px; text-align: center; }
-  .fb { padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
-  .fb-social { display: flex; gap: 8px; }
-  .fbs {
-    width: 28px; height: 28px; border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.07); background: transparent;
-    color: var(--text-muted); text-decoration: none;
-    font-size: 11px; font-weight: 600;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.3s;
-  }
-  .fbs:hover { border-color: rgba(204,41,54,0.3); color: var(--red); }
+      .mobile-nav {
+        display: flex;
+      }
+    }
 
-  /* --- ANIMATIONS --- */
-  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    /* --- WRAPPER --- */
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
 
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .rd1 { transition-delay: .08s; } .rd2 { transition-delay: .16s; } .rd3 { transition-delay: .24s; } .rd4 { transition-delay: .32s; } .rd5 { transition-delay: .40s; } .rd6 { transition-delay: .48s; }
+    /* --- ABOUT HERO --- */
+    .about-hero {
+      padding: 80px 0 0;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 60px;
+      align-items: start;
+    }
 
-  /* --- RESPONSIVE --- */
-  @media (max-width: 900px) {
-    .wrap, footer { padding-left: 20px; padding-right: 20px; }
-    .about-hero { grid-template-columns: 1fr; gap: 40px; }
-    .photo-wrap { order: -1; }
-    .photo { width: 200px; height: 240px; }
-    .phil-grid { grid-template-columns: 1fr; }
-    .stats-inner { grid-template-columns: repeat(3, 1fr); }
-    .st:nth-child(3) { border-right: none; }
-    .st:nth-child(1), .st:nth-child(2), .st:nth-child(3) { border-bottom: 1px solid var(--card-border); }
-    .tcard { width: 300px; }
-  }
-  @media (max-width: 640px) {
-    .about-name { font-size: 36px; }
-    .who-statement { font-size: 20px; }
-    .stats-inner { grid-template-columns: 1fr 1fr; }
-    .st:nth-child(even) { border-right: none; }
-    .st { border-bottom: 1px solid var(--card-border); }
-    .st:last-child { border-bottom: none; }
-    .fb { flex-direction: column; gap: 8px; text-align: center; }
-    .tcard { width: 280px; padding: 20px; }
-  }
-</style>
+    .about-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fu 0.5s 0.2s forwards;
+    }
+
+    .about-name {
+      font-family: var(--display);
+      font-size: clamp(40px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fu 0.7s 0.4s forwards;
+    }
+
+    .about-intro {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--text-dim);
+      font-style: italic;
+      opacity: 0;
+      animation: fu 0.6s 0.6s forwards;
+    }
+
+    /* Photo placeholder */
+    .photo-wrap {
+      opacity: 0;
+      animation: fu 0.8s 0.5s forwards;
+    }
+
+    .photo {
+      width: 280px;
+      height: 340px;
+      border-radius: var(--radius);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 40%, rgba(204, 41, 54, 0.06) 0%, transparent 60%);
+    }
+
+    .photo-initials {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 80px;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.04);
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .photo-label {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      font-size: 11px;
+      color: var(--text-dim);
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+    }
+
+    .photo-dots {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 4px;
+    }
+
+    .photo-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.07);
+    }
+
+    .photo-dots span:first-child {
+      background: rgba(204, 41, 54, 0.3);
+    }
+
+    /* --- WHO I AM --- */
+    .who {
+      padding: 100px 0 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--text-muted);
+    }
+
+    .who-statement {
+      font-family: var(--body);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 680px;
+      margin-bottom: 40px;
+    }
+
+    .who-statement .wh-em {
+      color: var(--red);
+    }
+
+    .who-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .who-fact {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      padding: 8px 16px;
+      border-radius: 100px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.3s;
+    }
+
+    .who-fact:hover {
+      border-color: rgba(204, 41, 54, 0.15);
+    }
+
+    .who-fact .wf-icon {
+      margin-right: 6px;
+    }
+
+    /* --- JOURNEY TIMELINE --- */
+    .journey {
+      padding: 100px 0 0;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 48px;
+      margin-top: 8px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.03));
+    }
+
+    .tl-item {
+      position: relative;
+      padding: 0 0 56px;
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: -48px;
+      top: 6px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.08);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .tl-dot::after {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+
+    .tl-item.current .tl-dot {
+      border-color: var(--red);
+    }
+
+    .tl-item.current .tl-dot::after {
+      background: var(--red);
+      box-shadow: 0 0 8px rgba(204, 41, 54, 0.5);
+    }
+
+    .tl-date {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .tl-company {
+      font-family: var(--body);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 2px;
+    }
+
+    .tl-role {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .tl-desc {
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-dim);
+      max-width: 560px;
+    }
+
+    .tl-desc strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .tl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .tl-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+
+    /* Company colors */
+    .tl-zar .tl-company {
+      color: var(--gold);
+    }
+
+    .tl-zar .tl-tag {
+      color: var(--gold);
+      border-color: rgba(196, 173, 84, 0.15);
+      background: rgba(196, 173, 84, 0.04);
+    }
+
+    .tl-adib .tl-company {
+      color: var(--blue);
+    }
+
+    .tl-adib .tl-tag {
+      color: var(--blue);
+      border-color: rgba(0, 58, 120, 0.15);
+      background: rgba(0, 58, 120, 0.04);
+    }
+
+    .tl-sp .tl-company {
+      color: var(--teal);
+    }
+
+    .tl-sp .tl-tag {
+      color: var(--teal);
+      border-color: rgba(255, 123, 102, 0.15);
+      background: rgba(255, 123, 102, 0.04);
+    }
+
+    .tl-xp .tl-company {
+      color: var(--emerald);
+    }
+
+    .tl-xp .tl-tag {
+      color: var(--emerald);
+      border-color: rgba(98, 0, 238, 0.15);
+      background: rgba(98, 0, 238, 0.04);
+    }
+
+    .tl-wtt .tl-company {
+      color: var(--violet);
+    }
+
+    .tl-wtt .tl-tag {
+      color: var(--violet);
+      border-color: rgba(188, 32, 75, 0.15);
+      background: rgba(188, 32, 75, 0.04);
+    }
+
+    /* --- PHILOSOPHY --- */
+    .philosophy {
+      padding: 100px 0 0;
+    }
+
+    .phil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .phil-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.4s, box-shadow 0.4s;
+    }
+
+    .phil-card:hover {
+      border-color: rgba(204, 41, 54, 0.12);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .phil-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(204, 41, 54, 0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .phil-card:hover::before {
+      opacity: 1;
+    }
+
+    .phil-num {
+      font-family: var(--display);
+      font-size: 48px;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.04);
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -0.04em;
+    }
+
+    .phil-title {
+      font-family: var(--body);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .phil-text {
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-dim);
+    }
+
+    /* --- LEADERSHIP --- */
+    .leadership {
+      padding: 100px 0 0;
+    }
+
+    .lead-quote {
+      font-family: var(--body);
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    .lead-quote .lq-em {
+      color: var(--red);
+    }
+
+    .lead-body {
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-dim);
+      max-width: 640px;
+    }
+
+    .lead-body p {
+      margin-bottom: 20px;
+    }
+
+    .lead-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* --- TESTIMONIAL MARQUEE --- */
+    .testimonials {
+      position: relative;
+      z-index: 2;
+      margin: 100px 0 0;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .trow {
+      display: flex;
+      gap: 16px;
+      padding: 8px 0;
+      width: max-content;
+    }
+
+    .trow-left {
+      animation: mql 45s linear infinite;
+    }
+
+    .trow-right {
+      animation: mqr 50s linear infinite;
+    }
+
+    .trow:hover {
+      animation-play-state: paused;
+    }
+
+    .tcard {
+      flex-shrink: 0;
+      width: 380px;
+      padding: 24px 28px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.3s;
+    }
+
+    .tcard:hover {
+      border-color: rgba(204, 41, 54, 0.1);
+    }
+
+    .tcard .tq {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.65;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .tcard .tq strong {
+      color: var(--text);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .tcard .ta {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .tcard .tt {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    @keyframes mql {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes mqr {
+      from {
+        transform: translateX(-50%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    /* --- STATS --- */
+    .stats {
+      padding: 100px 0 0;
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .st {
+      padding: 36px 16px;
+      text-align: center;
+      border-right: 1px solid var(--card-border);
+      position: relative;
+    }
+
+    .st:last-child {
+      border-right: none;
+    }
+
+    .st .sn {
+      font-family: var(--body);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .st .sl {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 100px auto 0;
+      padding: 0 48px;
+      text-align: center;
+    }
+
+    .fb {
+      padding-top: 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .fb-social {
+      display: flex;
+      gap: 8px;
+    }
+
+    .fbs {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      background: transparent;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .fbs:hover {
+      border-color: rgba(204, 41, 54, 0.3);
+      color: var(--red);
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rd1 {
+      transition-delay: .08s;
+    }
+
+    .rd2 {
+      transition-delay: .16s;
+    }
+
+    .rd3 {
+      transition-delay: .24s;
+    }
+
+    .rd4 {
+      transition-delay: .32s;
+    }
+
+    .rd5 {
+      transition-delay: .40s;
+    }
+
+    .rd6 {
+      transition-delay: .48s;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+
+      .wrap,
+      footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .about-hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .photo-wrap {
+        order: -1;
+      }
+
+      .photo {
+        width: 200px;
+        height: 240px;
+      }
+
+      .phil-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-inner {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .st:nth-child(3) {
+        border-right: none;
+      }
+
+      .st:nth-child(1),
+      .st:nth-child(2),
+      .st:nth-child(3) {
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .tcard {
+        width: 300px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-name {
+        font-size: 36px;
+      }
+
+      .who-statement {
+        font-size: 20px;
+      }
+
+      .stats-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .st:nth-child(even) {
+        border-right: none;
+      }
+
+      .st {
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .st:last-child {
+        border-bottom: none;
+      }
+
+      .fb {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .tcard {
+        width: 280px;
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<div class="nav-bar" id="navBar">
-  <div class="nav-bar-item" data-section="craft"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item active" data-section="story"><span class="nav-bar-dot"></span><a href="/about/">My Story</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item" data-section="thoughts"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-</div>
-
-<nav class="mobile-nav">
-  <a href="/">Craft</a>
-  <a href="/about/" class="active">My Story</a>
-  <a href="/writing/">Thoughts</a>
-  <a href="/contact/">Contact</a>
-</nav>
-
-<div class="wrap">
-
-  <!-- HERO -->
-  <section class="about-hero">
-    <div>
-      <div class="about-label">Story</div>
-      <h1 class="about-name">Basit Masood</h1>
-      <p class="about-intro">I keep starting over. On purpose.</p>
-    </div>
-    <div class="photo-wrap">
-      <div class="photo">
-        <div class="photo-dots"><span></span><span></span><span></span></div>
-        <div class="photo-initials">ABM</div>
-        <div class="photo-label">Your photo here</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO I AM -->
-  <section class="who reveal">
-    <div class="section-label">Who I Am</div>
-    <div class="who-statement">
-      Product designer who builds <span class="wh-em">teams, systems, and products</span> at every stage — from founding a startup's first design org to leading enterprise banking redesigns. 6+ years in fintech, where a single confusing screen means people walk away with their money.
-    </div>
-    <div class="who-facts">
-      <span class="who-fact"><span class="wf-icon">&#127462;&#127466;</span> Dubai, UAE</span>
-      <span class="who-fact">Lead Designer at ZAR</span>
-      <span class="who-fact">Previously SadaPay, ADIB</span>
-      <span class="who-fact">Systems thinker</span>
-      <span class="who-fact">Fintech &amp; emerging markets</span>
-      <span class="who-fact">Hires &amp; grows teams</span>
-    </div>
-  </section>
-
-  <!-- JOURNEY -->
-  <section class="journey reveal">
-    <div class="section-label">Journey</div>
-    <div class="timeline">
-
-      <div class="tl-item current tl-zar reveal rd1">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2024 — Present</div>
-        <div class="tl-company">ZAR</div>
-        <div class="tl-role">Lead Product Designer &middot; Founding Designer</div>
-        <div class="tl-desc">Solana-based digital dollar wallet backed by a16z. Built the design system from zero, led on-ground user research, redesigned core flows based on behavioral data, and hired the design team.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">Design System</span>
-          <span class="tl-tag">User Research</span>
-          <span class="tl-tag">Hiring</span>
-        </div>
-      </div>
-
-      <div class="tl-item tl-adib reveal rd2">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2024 — 2025</div>
-        <div class="tl-company">ADIB</div>
-        <div class="tl-role">Lead Product Designer</div>
-        <div class="tl-desc">One of the world's largest Islamic banks. Delivered the Open Banking experience and Visa Direct remittance product — <strong>the first bank worldwide to offer 11+ billion endpoints.</strong></div>
-        <div class="tl-tags">
-          <span class="tl-tag">Open Banking</span>
-          <span class="tl-tag">Remittance</span>
-        </div>
-      </div>
-
-      <div class="tl-item tl-sp reveal rd3">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2020 — 2024</div>
-        <div class="tl-company">SadaPay</div>
-        <div class="tl-role">IC &rarr; Senior &rarr; Lead &rarr; Head of Product Design</div>
-        <div class="tl-desc">Pakistan's largest digital wallet. First in-house designer — grew with the company over 4 years. Built the design system connected to production code. Scaled team from <strong>1 to 12 designers.</strong> Led service design that reduced fraud. Product helped secure <strong>$20M+ in funding and a $50M acquisition by Papara.</strong></div>
-        <div class="tl-tags">
-          <span class="tl-tag">Design System</span>
-          <span class="tl-tag">Team Building</span>
-          <span class="tl-tag">Service Design</span>
-        </div>
-      </div>
-
-      <div class="tl-item tl-xp reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2020</div>
-        <div class="tl-company">Xpence</div>
-        <div class="tl-role">Product Designer &middot; VentureDive</div>
-        <div class="tl-desc">Smart business spend platform for the UAE. Built an atomic design system in weeks. Designed the core experience.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">B2B Fintech</span>
-        </div>
-      </div>
-
-      <div class="tl-item tl-wtt reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2023 — 2024</div>
-        <div class="tl-company">Walking the Talk / ZRG</div>
-        <div class="tl-role">Consultant Product Designer</div>
-        <div class="tl-desc">Culture transformation platform for 200+ organizations across 40+ countries. Acquired by ZRG Partners — designed multiple products end-to-end across both brands.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">Enterprise</span>
-          <span class="tl-tag">Behavior Change</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section class="philosophy reveal">
-    <div class="section-label">How I Think</div>
-    <div class="phil-grid">
-      <div class="phil-card reveal rd1">
-        <div class="phil-num">01</div>
-        <div class="phil-title">User-first, always</div>
-        <div class="phil-text">Trust is hard to build and easy to lose.</div>
-      </div>
-      <div class="phil-card reveal rd2">
-        <div class="phil-num">02</div>
-        <div class="phil-title">Systems over screens</div>
-        <div class="phil-text">Tokens, governance, blueprints. The stuff nobody sees.</div>
-      </div>
-      <div class="phil-card reveal rd3">
-        <div class="phil-num">03</div>
-        <div class="phil-title">Simplicity is the hardest work</div>
-        <div class="phil-text">If it feels obvious, I did my job.</div>
-      </div>
-      <div class="phil-card reveal rd4">
-        <div class="phil-num">04</div>
-        <div class="phil-title">Trust through craft</div>
-        <div class="phil-text">Polish isn't decoration. It's a signal.</div>
-      </div>
-      <div class="phil-card reveal rd5">
-        <div class="phil-num">05</div>
-        <div class="phil-title">Ship, then polish</div>
-        <div class="phil-text">80% shipped beats 100% in Figma.</div>
-      </div>
-      <div class="phil-card reveal rd6">
-        <div class="phil-num">06</div>
-        <div class="phil-title">Study what shipped</div>
-        <div class="phil-text">Wise, Airbnb, Stripe. Not Dribbble.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LEADERSHIP -->
-  <section class="leadership reveal">
-    <div class="section-label">Leadership</div>
-    <div class="lead-quote">
-      My role isn't to have all the answers. It's to ask the right questions, remove blockers, set the bar high, and <span class="lq-em">get out of the way.</span>
-    </div>
-    <div class="lead-body">
-      <p>I believe in empowerment over micromanagement. The designers I've led — some now at Revolut, some building their own startups — will tell you: I trust my team to own their work.</p>
-      <p>I create systems so people can succeed independently. I push for craft culture while celebrating individual growth.</p>
-    </div>
-  </section>
-
-</div>
-
-<!-- TESTIMONIALS MARQUEE -->
-<section class="testimonials reveal">
-  <div class="trow trow-left">
-    <div class="tcard"><div class="tq">"SadaPay was praised for how well designed the product is — this is thanks to <strong>Basit</strong> and the exceptional product design team he built."</div><div class="ta">Brandon Timinsky</div><div class="tt">CEO, SadaPay &amp; ZAR</div></div>
-    <div class="tcard"><div class="tq">"Under <strong>Basit's</strong> leadership of our design team, we were able to achieve this both consistently, and at a high level. I considered him our Head of Design, and one of my peers."</div><div class="ta">Eli Mydlarz</div><div class="tt">Head of Engineering, SadaPay</div></div>
-    <div class="tcard"><div class="tq">"He added value from day one. He's a <strong>fearless problem solver</strong> and moves the needle whenever he enters a room."</div><div class="ta">Batsi Madzonga</div><div class="tt">Head of Design, ADIB</div></div>
-    <div class="tcard"><div class="tq">"<strong>Basit</strong> is an insanely good UX designer. He has a keen eye for detail, delight, simplicity, and a deep focus on users and customers."</div><div class="ta">Sergio Sch&uuml;ler</div><div class="tt">Head of Product, SadaPay</div></div>
-    <div class="tcard"><div class="tq">"SadaPay was praised for how well designed the product is — this is thanks to <strong>Basit</strong> and the exceptional product design team he built."</div><div class="ta">Brandon Timinsky</div><div class="tt">CEO, SadaPay &amp; ZAR</div></div>
-    <div class="tcard"><div class="tq">"Under <strong>Basit's</strong> leadership of our design team, we were able to achieve this both consistently, and at a high level. I considered him our Head of Design, and one of my peers."</div><div class="ta">Eli Mydlarz</div><div class="tt">Head of Engineering, SadaPay</div></div>
-    <div class="tcard"><div class="tq">"He added value from day one. He's a <strong>fearless problem solver</strong> and moves the needle whenever he enters a room."</div><div class="ta">Batsi Madzonga</div><div class="tt">Head of Design, ADIB</div></div>
-    <div class="tcard"><div class="tq">"<strong>Basit</strong> is an insanely good UX designer. He has a keen eye for detail, delight, simplicity, and a deep focus on users and customers."</div><div class="ta">Sergio Sch&uuml;ler</div><div class="tt">Head of Product, SadaPay</div></div>
-  </div>
-  <div class="trow trow-right">
-    <div class="tcard"><div class="tq">"His design decisions were always grounded in thorough analysis and strong rationale. He articulated insights in a clear and structured manner."</div><div class="ta">Daniel Young</div><div class="tt">Head of Digital Products &amp; Design, ADIB</div></div>
-    <div class="tcard"><div class="tq">"He pushed hard on improving our design processes and culture, introduced our design system which gave our app a great consistent design."</div><div class="ta">Jon Sheppard</div><div class="tt">CTO, SadaPay</div></div>
-    <div class="tcard"><div class="tq">"His vision for implementing a design system to ensure consistency across Android and iOS was a <strong>game-changer</strong>, significantly reducing design discrepancies and accelerating our delivery timelines."</div><div class="ta">Shoaib Akhtar</div><div class="tt">Lead Engineer, ZAR</div></div>
-    <div class="tcard"><div class="tq">"His ability to balance providing support while encouraging independence made all the difference in our productivity and morale."</div><div class="ta">Sohaib Arif</div><div class="tt">Product Designer, Revolut</div></div>
-    <div class="tcard"><div class="tq">"His design decisions were always grounded in thorough analysis and strong rationale. He articulated insights in a clear and structured manner."</div><div class="ta">Daniel Young</div><div class="tt">Head of Digital Products &amp; Design, ADIB</div></div>
-    <div class="tcard"><div class="tq">"He pushed hard on improving our design processes and culture, introduced our design system which gave our app a great consistent design."</div><div class="ta">Jon Sheppard</div><div class="tt">CTO, SadaPay</div></div>
-    <div class="tcard"><div class="tq">"His vision for implementing a design system to ensure consistency across Android and iOS was a <strong>game-changer</strong>, significantly reducing design discrepancies and accelerating our delivery timelines."</div><div class="ta">Shoaib Akhtar</div><div class="tt">Lead Engineer, ZAR</div></div>
-    <div class="tcard"><div class="tq">"His ability to balance providing support while encouraging independence made all the difference in our productivity and morale."</div><div class="ta">Sohaib Arif</div><div class="tt">Product Designer, Revolut</div></div>
-  </div>
-</section>
-
-<div class="wrap">
-  <!-- STATS -->
-  <div class="stats reveal">
-    <div class="stats-inner">
-      <div class="st"><div class="sn" data-t="90" data-p="$" data-s="M+">0</div><div class="sl">In funding &amp; acquisitions</div></div>
-      <div class="st"><div class="sn" data-t="20" data-s="+">0</div><div class="sl">Designers hired &amp; led</div></div>
-      <div class="st"><div class="sn" data-t="6" data-s="+">0</div><div class="sl">Years in fintech</div></div>
-      <div class="st"><div class="sn" data-t="5" data-s="+">0</div><div class="sl">Design systems built</div></div>
-      <div class="st"><div class="sn" data-t="4" data-s="M+">0</div><div class="sl">Users at peak</div></div>
+  <!-- NAV -->
+  <div class="nav-bar" id="navBar">
+    <div class="nav-bar-item" data-section="craft"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item active" data-section="story"><span class="nav-bar-dot"></span><a href="/about/">My
+        Story</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item" data-section="thoughts"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a>
     </div>
   </div>
-</div>
 
-<!-- FOOTER -->
-<footer class="reveal">
-  <div class="fb">
-    <span>&copy; 2026 ABM</span>
-    <div class="fb-social">
-      <a href="https://linkedin.com/in/iabm" class="fbs" title="LinkedIn" target="_blank">in</a>
-      <a href="https://github.com/abmcooks" class="fbs" title="GitHub" target="_blank">GH</a>
-      <a href="mailto:basitmasood999@gmail.com" class="fbs" title="Email">@</a>
-    </div>
-    <span>Designed with intention</span>
+  <nav class="mobile-nav">
+    <a href="/">Craft</a>
+    <a href="/about/" class="active">My Story</a>
+    <a href="/writing/">Thoughts</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="about-hero">
+      <div>
+        <div class="about-label">Story</div>
+        <h1 class="about-name">Basit Masood</h1>
+        <p class="about-intro">I keep starting over. On purpose.</p>
+      </div>
+      <div class="photo-wrap">
+        <div class="photo">
+          <div class="photo-dots"><span></span><span></span><span></span></div>
+          <div class="photo-initials">ABM</div>
+          <div class="photo-label">Your photo here</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO I AM -->
+    <section class="who reveal">
+      <div class="section-label">Who I Am</div>
+      <div class="who-statement">
+        Product designer who builds <span class="wh-em">teams, systems, and products</span> at every stage — from
+        founding a startup's first design org to leading enterprise banking redesigns. 6+ years in fintech, where a
+        single confusing screen means people walk away with their money.
+      </div>
+      <div class="who-facts">
+        <span class="who-fact"><span class="wf-icon">&#127462;&#127466;</span> Dubai, UAE</span>
+        <span class="who-fact">Lead Designer at ZAR</span>
+        <span class="who-fact">Previously SadaPay, ADIB</span>
+        <span class="who-fact">Systems thinker</span>
+        <span class="who-fact">Fintech &amp; emerging markets</span>
+        <span class="who-fact">Hires &amp; grows teams</span>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="journey reveal">
+      <div class="section-label">Journey</div>
+      <div class="timeline">
+
+        <div class="tl-item current tl-zar reveal rd1">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2024 — Present</div>
+          <div class="tl-company">ZAR</div>
+          <div class="tl-role">Lead Product Designer &middot; Founding Designer</div>
+          <div class="tl-desc">Solana-based digital dollar wallet backed by a16z. Built the design system from zero, led
+            on-ground user research, redesigned core flows based on behavioral data, and hired the design team.</div>
+          <div class="tl-tags">
+            <span class="tl-tag">Design System</span>
+            <span class="tl-tag">User Research</span>
+            <span class="tl-tag">Hiring</span>
+          </div>
+        </div>
+
+        <div class="tl-item tl-adib reveal rd2">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2024 — 2025</div>
+          <div class="tl-company">ADIB</div>
+          <div class="tl-role">Lead Product Designer</div>
+          <div class="tl-desc">One of the world's largest Islamic banks. Delivered the Open Banking experience and Visa
+            Direct remittance product — <strong>the first bank worldwide to offer 11+ billion endpoints.</strong></div>
+          <div class="tl-tags">
+            <span class="tl-tag">Open Banking</span>
+            <span class="tl-tag">Remittance</span>
+          </div>
+        </div>
+
+        <div class="tl-item tl-sp reveal rd3">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2020 — 2024</div>
+          <div class="tl-company">SadaPay</div>
+          <div class="tl-role">IC &rarr; Senior &rarr; Lead &rarr; Head of Product Design</div>
+          <div class="tl-desc">Pakistan's largest digital wallet. First in-house designer — grew with the company over 4
+            years. Built the design system connected to production code. Scaled team from <strong>1 to 12
+              designers.</strong> Led service design that reduced fraud. Product helped secure <strong>$20M+ in funding
+              and a $50M acquisition by Papara.</strong></div>
+          <div class="tl-tags">
+            <span class="tl-tag">Design System</span>
+            <span class="tl-tag">Team Building</span>
+            <span class="tl-tag">Service Design</span>
+          </div>
+        </div>
+
+        <div class="tl-item tl-xp reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2020</div>
+          <div class="tl-company">Xpence</div>
+          <div class="tl-role">Product Designer &middot; VentureDive</div>
+          <div class="tl-desc">Smart business spend platform for the UAE. Built an atomic design system in weeks.
+            Designed the core experience.</div>
+          <div class="tl-tags">
+            <span class="tl-tag">B2B Fintech</span>
+          </div>
+        </div>
+
+        <div class="tl-item tl-wtt reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2023 — 2024</div>
+          <div class="tl-company">Walking the Talk / ZRG</div>
+          <div class="tl-role">Consultant Product Designer</div>
+          <div class="tl-desc">Culture transformation platform for 200+ organizations across 40+ countries. Acquired by
+            ZRG Partners — designed multiple products end-to-end across both brands.</div>
+          <div class="tl-tags">
+            <span class="tl-tag">Enterprise</span>
+            <span class="tl-tag">Behavior Change</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy reveal">
+      <div class="section-label">How I Think</div>
+      <div class="phil-grid">
+        <div class="phil-card reveal rd1">
+          <div class="phil-num">01</div>
+          <div class="phil-title">User-first, always</div>
+          <div class="phil-text">Trust is hard to build and easy to lose.</div>
+        </div>
+        <div class="phil-card reveal rd2">
+          <div class="phil-num">02</div>
+          <div class="phil-title">Systems over screens</div>
+          <div class="phil-text">Tokens, governance, blueprints. The stuff nobody sees.</div>
+        </div>
+        <div class="phil-card reveal rd3">
+          <div class="phil-num">03</div>
+          <div class="phil-title">Simplicity is the hardest work</div>
+          <div class="phil-text">If it feels obvious, I did my job.</div>
+        </div>
+        <div class="phil-card reveal rd4">
+          <div class="phil-num">04</div>
+          <div class="phil-title">Trust through craft</div>
+          <div class="phil-text">Polish isn't decoration. It's a signal.</div>
+        </div>
+        <div class="phil-card reveal rd5">
+          <div class="phil-num">05</div>
+          <div class="phil-title">Ship, then polish</div>
+          <div class="phil-text">80% shipped beats 100% in Figma.</div>
+        </div>
+        <div class="phil-card reveal rd6">
+          <div class="phil-num">06</div>
+          <div class="phil-title">Study what shipped</div>
+          <div class="phil-text">Wise, Airbnb, Stripe. Not Dribbble.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="leadership reveal">
+      <div class="section-label">Leadership</div>
+      <div class="lead-quote">
+        My role isn't to have all the answers. It's to ask the right questions, remove blockers, set the bar high, and
+        <span class="lq-em">get out of the way.</span>
+      </div>
+      <div class="lead-body">
+        <p>I believe in empowerment over micromanagement. The designers I've led — some now at Revolut, some building
+          their own startups — will tell you: I trust my team to own their work.</p>
+        <p>I create systems so people can succeed independently. I push for craft culture while celebrating individual
+          growth.</p>
+      </div>
+    </section>
+
   </div>
-</footer>
 
-<script>
-  // --- REVEALS ---
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  })},{threshold:.06});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  <!-- TESTIMONIALS MARQUEE -->
+  <section class="testimonials reveal">
+    <div class="trow trow-left">
+      <div class="tcard">
+        <div class="tq">"SadaPay was praised for how well designed the product is — this is thanks to
+          <strong>Basit</strong> and the exceptional product design team he built."
+        </div>
+        <div class="ta">Brandon Timinsky</div>
+        <div class="tt">CEO, SadaPay &amp; ZAR</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"Under <strong>Basit's</strong> leadership of our design team, we were able to achieve this both
+          consistently, and at a high level. I considered him our Head of Design, and one of my peers."</div>
+        <div class="ta">Eli Mydlarz</div>
+        <div class="tt">Head of Engineering, SadaPay</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"He added value from day one. He's a <strong>fearless problem solver</strong> and moves the
+          needle whenever he enters a room."</div>
+        <div class="ta">Batsi Madzonga</div>
+        <div class="tt">Head of Design, ADIB</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"<strong>Basit</strong> is an insanely good UX designer. He has a keen eye for detail, delight,
+          simplicity, and a deep focus on users and customers."</div>
+        <div class="ta">Sergio Sch&uuml;ler</div>
+        <div class="tt">Head of Product, SadaPay</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"SadaPay was praised for how well designed the product is — this is thanks to
+          <strong>Basit</strong> and the exceptional product design team he built."
+        </div>
+        <div class="ta">Brandon Timinsky</div>
+        <div class="tt">CEO, SadaPay &amp; ZAR</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"Under <strong>Basit's</strong> leadership of our design team, we were able to achieve this both
+          consistently, and at a high level. I considered him our Head of Design, and one of my peers."</div>
+        <div class="ta">Eli Mydlarz</div>
+        <div class="tt">Head of Engineering, SadaPay</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"He added value from day one. He's a <strong>fearless problem solver</strong> and moves the
+          needle whenever he enters a room."</div>
+        <div class="ta">Batsi Madzonga</div>
+        <div class="tt">Head of Design, ADIB</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"<strong>Basit</strong> is an insanely good UX designer. He has a keen eye for detail, delight,
+          simplicity, and a deep focus on users and customers."</div>
+        <div class="ta">Sergio Sch&uuml;ler</div>
+        <div class="tt">Head of Product, SadaPay</div>
+      </div>
+    </div>
+    <div class="trow trow-right">
+      <div class="tcard">
+        <div class="tq">"His design decisions were always grounded in thorough analysis and strong rationale. He
+          articulated insights in a clear and structured manner."</div>
+        <div class="ta">Daniel Young</div>
+        <div class="tt">Head of Digital Products &amp; Design, ADIB</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"He pushed hard on improving our design processes and culture, introduced our design system
+          which gave our app a great consistent design."</div>
+        <div class="ta">Jon Sheppard</div>
+        <div class="tt">CTO, SadaPay</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"His vision for implementing a design system to ensure consistency across Android and iOS was a
+          <strong>game-changer</strong>, significantly reducing design discrepancies and accelerating our delivery
+          timelines."
+        </div>
+        <div class="ta">Shoaib Akhtar</div>
+        <div class="tt">Lead Engineer, ZAR</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"His ability to balance providing support while encouraging independence made all the difference
+          in our productivity and morale."</div>
+        <div class="ta">Sohaib Arif</div>
+        <div class="tt">Product Designer, Revolut</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"His design decisions were always grounded in thorough analysis and strong rationale. He
+          articulated insights in a clear and structured manner."</div>
+        <div class="ta">Daniel Young</div>
+        <div class="tt">Head of Digital Products &amp; Design, ADIB</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"He pushed hard on improving our design processes and culture, introduced our design system
+          which gave our app a great consistent design."</div>
+        <div class="ta">Jon Sheppard</div>
+        <div class="tt">CTO, SadaPay</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"His vision for implementing a design system to ensure consistency across Android and iOS was a
+          <strong>game-changer</strong>, significantly reducing design discrepancies and accelerating our delivery
+          timelines."
+        </div>
+        <div class="ta">Shoaib Akhtar</div>
+        <div class="tt">Lead Engineer, ZAR</div>
+      </div>
+      <div class="tcard">
+        <div class="tq">"His ability to balance providing support while encouraging independence made all the difference
+          in our productivity and morale."</div>
+        <div class="ta">Sohaib Arif</div>
+        <div class="tt">Product Designer, Revolut</div>
+      </div>
+    </div>
+  </section>
 
-  // --- COUNTERS ---
-  document.querySelectorAll('.sn[data-t]').forEach(el=>{
-    const co=new IntersectionObserver(es=>{es.forEach(en=>{
-      if(en.isIntersecting&&!en.target.dataset.d){en.target.dataset.d='1';
-        const t=parseFloat(en.target.dataset.t),p=en.target.dataset.p||'',s=en.target.dataset.s||'',dc=t%1!==0,du=2000,st=performance.now();
-        (function tk(n){const pr=Math.min((n-st)/du,1),ea=1-Math.pow(1-pr,4);en.target.textContent=p+(dc?(t*ea).toFixed(1):Math.floor(t*ea))+s;if(pr<1)requestAnimationFrame(tk)})(st);
-      }})},{threshold:.5});co.observe(el);});
+  <div class="wrap">
+    <!-- STATS -->
+    <div class="stats reveal">
+      <div class="stats-inner">
+        <div class="st">
+          <div class="sn" data-t="90" data-p="$" data-s="M+">0</div>
+          <div class="sl">In funding &amp; acquisitions</div>
+        </div>
+        <div class="st">
+          <div class="sn" data-t="20" data-s="+">0</div>
+          <div class="sl">Designers hired &amp; led</div>
+        </div>
+        <div class="st">
+          <div class="sn" data-t="6" data-s="+">0</div>
+          <div class="sl">Years in fintech</div>
+        </div>
+        <div class="st">
+          <div class="sn" data-t="5" data-s="+">0</div>
+          <div class="sl">Design systems built</div>
+        </div>
+        <div class="st">
+          <div class="sn" data-t="4" data-s="M+">0</div>
+          <div class="sl">Users at peak</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  // --- PAGE TRANSITIONS ---
-  if(location.protocol!=='file:'){
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const h=a.getAttribute('href');
-      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(()=>window.location.href=h,150);
-      });
+  <!-- FOOTER -->
+  <footer class="reveal">
+    <div class="fb">
+      <span>&copy; 2026 ABM</span>
+      <div class="fb-social">
+        <a href="https://linkedin.com/in/iabm" class="fbs" title="LinkedIn" target="_blank">in</a>
+        <a href="https://github.com/abmcooks" class="fbs" title="GitHub" target="_blank">GH</a>
+        <a href="mailto:basitmasood999@gmail.com" class="fbs" title="Email">@</a>
+      </div>
+      <span>Designed with intention</span>
+    </div>
+  </footer>
+
+  <script>
+    // --- REVEALS ---
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, { threshold: .06 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // --- COUNTERS ---
+    document.querySelectorAll('.sn[data-t]').forEach(el => {
+      const co = new IntersectionObserver(es => {
+        es.forEach(en => {
+          if (en.isIntersecting && !en.target.dataset.d) {
+            en.target.dataset.d = '1';
+            const t = parseFloat(en.target.dataset.t), p = en.target.dataset.p || '', s = en.target.dataset.s || '', dc = t % 1 !== 0, du = 2000, st = performance.now();
+            (function tk(n) { const pr = Math.min((n - st) / du, 1), ea = 1 - Math.pow(1 - pr, 4); en.target.textContent = p + (dc ? (t * ea).toFixed(1) : Math.floor(t * ea)) + s; if (pr < 1) requestAnimationFrame(tk) })(st);
+          }
+        })
+      }, { threshold: .5 }); co.observe(el);
     });
-  }
-</script>
+
+    // --- PAGE TRANSITIONS ---
+    if (location.protocol !== 'file:') {
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => window.location.href = h, 150);
+        });
+      });
+    }
+  </script>
 </body>
+
 </html>

@@ -1,711 +1,1185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cash QR Consolidation — 72% of transactions happened through Cash QR. ABM killed the order system and made the merchant workaround the actual product.">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="Cash QR Consolidation — ABM">
-<meta property="og:description" content="72% of transactions were through Cash QR. We killed the order system.">
-<meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cash QR Consolidation — ABM">
-<meta name="twitter:description" content="72% of transactions were through Cash QR. We killed the order system.">
-<title>Cash QR Consolidation — ABM</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --display: 'AKONY', serif;
-    --body: 'Space Grotesk', sans-serif;
-    --serif: 'Gentium Book Plus', serif;
-    --bg: #f8f5f0;
-    --text: #2E1A12;
-    --text-dim: #6b5d54;
-    --text-muted: #9a8d84;
-    --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.07);
-    --accent: #C9A84E;
-    --accent-light: #DBBF6A;
-    --red: #cc2936;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Cash QR Consolidation — 72% of transactions happened through Cash QR. ABM killed the order system and made the merchant workaround the actual product.">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="Cash QR Consolidation — ABM">
+  <meta property="og:description" content="72% of transactions were through Cash QR. We killed the order system.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cash QR Consolidation — ABM">
+  <meta name="twitter:description" content="72% of transactions were through Cash QR. We killed the order system.">
+  <title>Cash QR Consolidation — ABM</title>
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+      --bg: #f8f5f0;
+      --text: #2E1A12;
+      --text-dim: #6b5d54;
+      --text-muted: #9a8d84;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.07);
+      --accent: #C9A84E;
+      --accent-light: #DBBF6A;
+      --red: #cc2936;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body {
-    font-family: var(--body); background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px;
-    animation: pageIn 0.3s ease;
-  }
-  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
-  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* --- NAV --- */
-  .back-link { position: fixed; top: 64px; left: 48px; z-index: 100; font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-  .back-link:hover { color: var(--text); }
-  .nav-bar { position: fixed; top: 64px; right: 48px; z-index: 100; background: var(--text); border-radius: 8px; padding: 8px 32px 8px 24px; display: flex; align-items: center; gap: 12px; }
-  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
-  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: #f8f5f0; display: none; }
-  .nav-bar-item.active .nav-bar-dot { display: block; }
-  .nav-bar-item a { font-family: var(--body); font-size: 14px; font-weight: 500; color: rgba(248,245,240,0.6); text-decoration: none; }
-  .nav-bar-item.active a { font-weight: 700; color: #f8f5f0; text-decoration: underline; text-underline-offset: 3px; }
-  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(248,245,240,0.3); transform: rotate(-40deg); }
-  .mobile-nav { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px); border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; }
-  .mobile-nav a { font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none; padding: 8px 15px; border-radius: 100px; }
-  .mobile-nav a.active { color: #f8f5f0; background: rgba(235,244,245,0.08); }
-  @media (max-width: 768px) { .nav-bar { display: none; } .mobile-nav { display: flex; } .back-link { top: 24px; left: 24px; } }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
-  /* --- CASE STUDY HERO --- */
-  .cs-hero {
-    position: relative;
-    min-height: 80vh;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    padding: 160px 48px 80px;
-  }
-  .cs-hero-metric {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    font-family: var(--body); font-weight: 700;
-    font-size: clamp(180px, 25vw, 360px);
-    letter-spacing: -0.06em; line-height: 1;
-    color: var(--accent); opacity: 0.08;
-    pointer-events: none; user-select: none;
-    white-space: nowrap;
-  }
-  .cs-hero-content {
-    position: relative; z-index: 2;
-    max-width: 720px; text-align: center;
-    opacity: 0; animation: fu 0.8s 0.2s forwards;
-  }
-  .cs-hero-company {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 20px;
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-  }
-  .cs-hero-company::before, .cs-hero-company::after {
-    content: ''; width: 24px; height: 1px; background: rgba(201,168,78,0.3);
-  }
-  .cs-logo {
-    width: 24px; height: 24px; border-radius: 6px;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 800; letter-spacing: 0; text-transform: none;
-    background: rgba(201,168,78,0.15); color: var(--accent);
-    border: 1px solid rgba(201,168,78,0.12);
-  }
-  .cs-hero h1 {
-    font-family: var(--display); font-size: clamp(36px, 5vw, 56px);
-    font-weight: 400; letter-spacing: 0.02em; line-height: 1.1;
-    color: var(--text); margin-bottom: 20px;
-    text-transform: uppercase;
-  }
-  .cs-hero-hook {
-    font-family: var(--serif); font-size: 19px; font-weight: 400;
-    color: var(--text-dim); line-height: 1.6;
-    max-width: 600px; margin: 0 auto 32px;
-    font-style: italic;
-  }
-  .cs-hero-meta {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-  }
-  .cs-meta-pill {
-    font-size: 11px; font-weight: 500; padding: 5px 14px;
-    border-radius: 100px; color: var(--text-dim);
-    border: 1px solid var(--card-border); background: var(--card-bg);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      animation: pageIn 0.3s ease;
+    }
 
-  /* --- ARTICLE BODY --- */
-  .article {
-    position: relative;
-    max-width: 720px; margin: 0 auto;
-    padding: 0 32px;
-  }
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
 
-  .cs-section {
-    margin-top: 72px;
-    opacity: 0; transform: translateY(28px);
-    transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1);
-  }
-  .cs-section.visible { opacity: 1; transform: translateY(0); }
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+      }
 
-  .cs-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 12px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .cs-label::before {
-    content: ''; width: 20px; height: 1px; background: var(--accent);
-  }
+      to {
+        opacity: 1;
+      }
+    }
 
-  .cs-heading {
-    font-family: var(--body); font-size: clamp(24px, 3.5vw, 32px);
-    font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;
-    color: var(--text); margin-bottom: 20px;
-  }
+    /* --- NAV --- */
+    .back-link {
+      position: fixed;
+      top: 64px;
+      left: 48px;
+      z-index: 100;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
 
-  .cs-body {
-    font-family: var(--serif); font-size: 16px; color: var(--text-dim); line-height: 1.8;
-    margin-bottom: 20px;
-  }
-  .cs-body strong { color: var(--text); font-weight: 700; }
-  .cs-body em { color: var(--text-dim); font-style: italic; }
+    .back-link:hover {
+      color: var(--text);
+    }
 
-  .cs-quote {
-    margin: 36px 0;
-    padding: 24px 28px;
-    border-left: 2px solid var(--accent);
-    background: rgba(201,168,78,0.06);
-    border-radius: 0 14px 14px 0;
-  }
-  .cs-quote p {
-    font-family: var(--serif); font-size: 18px; font-weight: 400;
-    font-style: italic; color: var(--text-dim); line-height: 1.7; margin: 0;
-  }
-  .cs-quote p strong { color: var(--text); font-weight: 700; font-style: normal; }
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--text);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  .cs-stats {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 16px; margin: 36px 0;
-  }
-  .cs-stat {
-    padding: 20px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    text-align: center;
-  }
-  .cs-stat-num {
-    font-family: var(--body); font-size: 28px; font-weight: 700;
-    color: var(--accent); letter-spacing: -0.02em; line-height: 1;
-  }
-  .cs-stat-label {
-    font-size: 12px; color: var(--text-dim); margin-top: 6px; line-height: 1.4;
-  }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  .cs-visual {
-    margin: 36px 0;
-    border-radius: 16px;
-    background: rgba(0,0,0,0.04);
-    border: 1px solid var(--card-border);
-    overflow: hidden;
-    position: relative;
-  }
-  .cs-visual-inner {
-    aspect-ratio: 16/9;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; color: var(--text-dim);
-    padding: 32px; text-align: center;
-  }
-  .cs-visual-caption {
-    padding: 12px 20px;
-    font-size: 12px; color: var(--text-dim);
-    border-top: 1px solid var(--card-border);
-  }
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f8f5f0;
+      display: none;
+    }
 
-  .cs-compare {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 16px; margin: 36px 0;
-  }
-  .cs-compare-side {
-    padding: 24px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .cs-compare-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .cs-compare-side:first-child .cs-compare-label { color: var(--text-muted); }
-  .cs-compare-side:last-child .cs-compare-label { color: var(--accent); }
-  .cs-compare-content {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.7;
-  }
-  .cs-compare-content strong { color: var(--text); font-weight: 700; }
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
 
-  .cs-steps { margin: 28px 0; }
-  .cs-step {
-    display: flex; gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-  .cs-step:last-child { border-bottom: none; }
-  .cs-step-num {
-    font-family: var(--body); font-size: 24px; font-weight: 700;
-    color: var(--accent); line-height: 1; flex-shrink: 0;
-    width: 36px;
-  }
-  .cs-step-content { flex: 1; }
-  .cs-step-title {
-    font-family: var(--body); font-size: 16px; font-weight: 600;
-    color: var(--text); margin-bottom: 4px;
-  }
-  .cs-step-desc {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.6;
-  }
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(248, 245, 240, 0.6);
+      text-decoration: none;
+    }
 
-  .cs-impact-table {
-    width: 100%;
-    margin: 32px 0;
-    border-collapse: collapse;
-  }
-  .cs-impact-table th {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--text-muted); text-align: left; padding: 12px 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-  .cs-impact-table td {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); padding: 14px 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    vertical-align: top;
-  }
-  .cs-impact-table td:first-child {
-    font-family: var(--body); font-weight: 600; color: var(--text);
-    font-size: 14px;
-  }
-  .cs-impact-table td:last-child {
-    color: var(--accent);
-  }
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: #f8f5f0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
-  .cs-learnings {
-    display: flex; flex-direction: column; gap: 16px;
-    margin: 32px 0;
-  }
-  .cs-learning {
-    display: flex; gap: 20px;
-    padding: 24px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: border-color 0.3s;
-  }
-  .cs-learning:hover { border-color: rgba(201,168,78,0.3); }
-  .cs-learning-num {
-    font-family: var(--body); font-size: 32px; font-weight: 700;
-    color: rgba(201,168,78,0.25); line-height: 1; flex-shrink: 0;
-  }
-  .cs-learning-content { flex: 1; }
-  .cs-learning-title {
-    font-family: var(--body); font-size: 17px; font-weight: 600;
-    color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em;
-  }
-  .cs-learning-desc {
-    font-family: var(--serif); font-size: 14px; color: var(--text-dim); line-height: 1.7;
-  }
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  .cs-nav {
-    position: relative;
-    max-width: 720px; margin: 80px auto 0;
-    padding: 0 32px;
-    display: flex; justify-content: space-between; gap: 16px;
-  }
-  .cs-nav-link {
-    display: flex; flex-direction: column; gap: 4px;
-    text-decoration: none;
-    padding: 20px 24px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: all 0.3s;
-    flex: 1;
-  }
-  .cs-nav-link:hover {
-    border-color: rgba(201,168,78,0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-  }
-  .cs-nav-link:last-child { text-align: right; }
-  .cs-nav-dir {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .cs-nav-title {
-    font-family: var(--body); font-size: 16px; font-weight: 600;
-    color: var(--text); letter-spacing: -0.01em;
-  }
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: rgba(248, 245, 240, 0.3);
+      transform: rotate(-40deg);
+    }
 
-  .cs-list {
-    margin: 16px 0 20px;
-    padding-left: 0;
-    list-style: none;
-  }
-  .cs-list li {
-    font-family: var(--serif); font-size: 15px; color: var(--text-dim); line-height: 1.7;
-    padding: 6px 0 6px 20px;
-    position: relative;
-  }
-  .cs-list li::before {
-    content: '';
-    position: absolute; left: 0; top: 14px;
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); opacity: 0.5;
-  }
-  .cs-list li strong { color: var(--text); font-weight: 700; }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+    }
 
-  .cs-divider {
-    width: 48px; height: 1px; background: rgba(0,0,0,0.08);
-    margin: 48px auto;
-  }
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+    }
 
-  /* --- ANIMATIONS --- */
-  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .mobile-nav a.active {
+      color: #f8f5f0;
+      background: rgba(235, 244, 245, 0.08);
+    }
 
-  /* --- RESPONSIVE --- */
-  @media (max-width: 900px) {
-    .cs-hero { padding: 140px 24px 60px; min-height: 60vh; }
-    .cs-hero-metric { font-size: 140px; }
-    .article { padding: 0 20px; }
-    .cs-compare { grid-template-columns: 1fr; }
-    .cs-nav { padding: 0 20px; }
-  }
-  @media (max-width: 640px) {
-    .cs-hero { min-height: 50vh; padding: 120px 20px 48px; }
-    .cs-hero h1 { font-size: 28px; }
-    .cs-hero-hook { font-size: 16px; }
-    .cs-hero-metric { font-size: 100px; }
-    .cs-stats { grid-template-columns: 1fr 1fr; }
-    .cs-nav { flex-direction: column; }
-    .cs-nav-link:last-child { text-align: left; }
-  }
-</style>
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .back-link {
+        top: 24px;
+        left: 24px;
+      }
+    }
+
+    /* --- CASE STUDY HERO --- */
+    .cs-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 160px 48px 80px;
+    }
+
+    .cs-hero-metric {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(180px, 25vw, 360px);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.08;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .cs-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      text-align: center;
+      opacity: 0;
+      animation: fu 0.8s 0.2s forwards;
+    }
+
+    .cs-hero-company {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .cs-hero-company::before,
+    .cs-hero-company::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: rgba(201, 168, 78, 0.3);
+    }
+
+    .cs-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: none;
+      background: rgba(201, 168, 78, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(201, 168, 78, 0.12);
+    }
+
+    .cs-hero h1 {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .cs-hero-hook {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      font-style: italic;
+    }
+
+    .cs-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .cs-meta-pill {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 100px;
+      color: var(--text-dim);
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    /* --- ARTICLE BODY --- */
+    .article {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .cs-section {
+      margin-top: 72px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .cs-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cs-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cs-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .cs-heading {
+      font-family: var(--body);
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .cs-body {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .cs-body strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cs-body em {
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    .cs-quote {
+      margin: 36px 0;
+      padding: 24px 28px;
+      border-left: 2px solid var(--accent);
+      background: rgba(201, 168, 78, 0.06);
+      border-radius: 0 14px 14px 0;
+    }
+
+    .cs-quote p {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .cs-quote p strong {
+      color: var(--text);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .cs-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin: 36px 0;
+    }
+
+    .cs-stat {
+      padding: 20px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      text-align: center;
+    }
+
+    .cs-stat-num {
+      font-family: var(--body);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .cs-stat-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .cs-visual {
+      margin: 36px 0;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cs-visual-inner {
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .cs-visual-caption {
+      padding: 12px 20px;
+      font-size: 12px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--card-border);
+    }
+
+    .cs-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 36px 0;
+    }
+
+    .cs-compare-side {
+      padding: 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .cs-compare-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .cs-compare-side:first-child .cs-compare-label {
+      color: var(--text-muted);
+    }
+
+    .cs-compare-side:last-child .cs-compare-label {
+      color: var(--accent);
+    }
+
+    .cs-compare-content {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .cs-compare-content strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cs-steps {
+      margin: 28px 0;
+    }
+
+    .cs-step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-step:last-child {
+      border-bottom: none;
+    }
+
+    .cs-step-num {
+      font-family: var(--body);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+    }
+
+    .cs-step-content {
+      flex: 1;
+    }
+
+    .cs-step-title {
+      font-family: var(--body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .cs-step-desc {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .cs-impact-table {
+      width: 100%;
+      margin: 32px 0;
+      border-collapse: collapse;
+    }
+
+    .cs-impact-table th {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-impact-table td {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      vertical-align: top;
+    }
+
+    .cs-impact-table td:first-child {
+      font-family: var(--body);
+      font-weight: 600;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .cs-impact-table td:last-child {
+      color: var(--accent);
+    }
+
+    .cs-learnings {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .cs-learning {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.3s;
+    }
+
+    .cs-learning:hover {
+      border-color: rgba(201, 168, 78, 0.3);
+    }
+
+    .cs-learning-num {
+      font-family: var(--body);
+      font-size: 32px;
+      font-weight: 700;
+      color: rgba(201, 168, 78, 0.25);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .cs-learning-content {
+      flex: 1;
+    }
+
+    .cs-learning-title {
+      font-family: var(--body);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .cs-learning-desc {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .cs-nav {
+      position: relative;
+      max-width: 720px;
+      margin: 80px auto 0;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .cs-nav-link {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-decoration: none;
+      padding: 20px 24px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s;
+      flex: 1;
+    }
+
+    .cs-nav-link:hover {
+      border-color: rgba(201, 168, 78, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .cs-nav-link:last-child {
+      text-align: right;
+    }
+
+    .cs-nav-dir {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .cs-nav-title {
+      font-family: var(--body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .cs-list {
+      margin: 16px 0 20px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .cs-list li {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      padding: 6px 0 6px 20px;
+      position: relative;
+    }
+
+    .cs-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .cs-list li strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cs-divider {
+      width: 48px;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.08);
+      margin: 48px auto;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .cs-hero {
+        padding: 140px 24px 60px;
+        min-height: 60vh;
+      }
+
+      .cs-hero-metric {
+        font-size: 140px;
+      }
+
+      .article {
+        padding: 0 20px;
+      }
+
+      .cs-compare {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-nav {
+        padding: 0 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cs-hero {
+        min-height: 50vh;
+        padding: 120px 20px 48px;
+      }
+
+      .cs-hero h1 {
+        font-size: 28px;
+      }
+
+      .cs-hero-hook {
+        font-size: 16px;
+      }
+
+      .cs-hero-metric {
+        font-size: 100px;
+      }
+
+      .cs-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cs-nav {
+        flex-direction: column;
+      }
+
+      .cs-nav-link:last-child {
+        text-align: left;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<a href="/work/zar/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> Back to ZAR</a>
-<div class="nav-bar">
-  <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-</div>
-<nav class="mobile-nav"><a href="/" class="active">Craft</a><a href="/about/">Story</a><a href="/writing/">Thoughts</a><a href="/contact/">Contact</a></nav>
+  <!-- NAV -->
+  <a href="/work/zar/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+      <path d="M19 12H5" />
+      <path d="M12 19l-7-7 7-7" />
+    </svg> Back to ZAR</a>
+  <div class="nav-bar">
+    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
+  </div>
+  <nav class="mobile-nav"><a href="/" class="active">My Craft</a><a href="/about/">Story</a><a
+      href="/writing/">Thoughts</a><a href="/contact/">Contact</a></nav>
 
-<!-- HERO -->
-<div class="cs-hero">
-  <div class="cs-hero-metric">72%</div>
-  <div class="cs-hero-content">
-    <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; January 2026</div>
-    <h1>Cash QR Consolidation</h1>
-    <p class="cs-hero-hook">72% of transactions were happening through Cash QR. The order system we&rsquo;d built? Merchants were walking around it.</p>
-    <div class="cs-hero-meta">
-      <span class="cs-meta-pill">Lead Product Designer</span>
-      <span class="cs-meta-pill">On-Ground Research</span>
-      <span class="cs-meta-pill">Service Design</span>
-      <span class="cs-meta-pill">iOS &amp; Android</span>
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-metric">72%</div>
+    <div class="cs-hero-content">
+      <div class="cs-hero-company"><span class="cs-logo">Z</span>ZAR &mdash; January 2026</div>
+      <h1>Cash QR Consolidation</h1>
+      <p class="cs-hero-hook">72% of transactions were happening through Cash QR. The order system we&rsquo;d built?
+        Merchants were walking around it.</p>
+      <div class="cs-hero-meta">
+        <span class="cs-meta-pill">Lead Product Designer</span>
+        <span class="cs-meta-pill">On-Ground Research</span>
+        <span class="cs-meta-pill">Service Design</span>
+        <span class="cs-meta-pill">iOS &amp; Android</span>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ARTICLE BODY -->
-<div class="article">
+  <!-- ARTICLE BODY -->
+  <div class="article">
 
-  <!-- THE OBSERVATION -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Observation</div>
-    <h2 class="cs-heading">I went to Pakistan. Not to test screens &mdash; to watch.</h2>
+    <!-- THE OBSERVATION -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Observation</div>
+      <h2 class="cs-heading">I went to Pakistan. Not to test screens &mdash; to watch.</h2>
 
-    <p class="cs-body">What I found: <strong>over 60% of merchants were bypassing our order system entirely.</strong> In face-to-face transactions &mdash; a customer standing at the counter wanting to buy dollars &mdash; merchants ignored the formal merchant flow. Instead, they collected cash manually and used Send or Exchange. Features we&rsquo;d designed for peer-to-peer transfers, not merchant commerce.</p>
+      <p class="cs-body">What I found: <strong>over 60% of merchants were bypassing our order system entirely.</strong>
+        In face-to-face transactions &mdash; a customer standing at the counter wanting to buy dollars &mdash; merchants
+        ignored the formal merchant flow. Instead, they collected cash manually and used Send or Exchange. Features
+        we&rsquo;d designed for peer-to-peer transfers, not merchant commerce.</p>
 
-    <p class="cs-body">They weren&rsquo;t confused. They weren&rsquo;t untrained. They&rsquo;d figured out that the order system added steps without adding value for in-person transactions. The app had a formal merchant flow with order creation, status tracking, and multi-step confirmation. The street had cash, a QR code, and a handshake.</p>
+      <p class="cs-body">They weren&rsquo;t confused. They weren&rsquo;t untrained. They&rsquo;d figured out that the
+        order system added steps without adding value for in-person transactions. The app had a formal merchant flow
+        with order creation, status tracking, and multi-step confirmation. The street had cash, a QR code, and a
+        handshake.</p>
 
-    <div class="cs-quote">
-      <p>The merchants were telling us what the product should be. <strong>We just hadn&rsquo;t been listening.</strong></p>
-    </div>
-
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Split screen &mdash; Left: The formal order flow (multiple screens, status tracking, confirmations). Right: What actually happens on the street (cash exchanges hands, QR scan, done).</div>
-      <div class="cs-visual-caption">The gap between what we built and what merchants actually did.</div>
-    </div>
-  </section>
-
-  <!-- THE DATA -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Data</div>
-    <h2 class="cs-heading">The numbers confirmed what the streets showed.</h2>
-
-    <p class="cs-body">The on-ground research aligned perfectly with the data. <strong>Cash QR codes accounted for 72% of total transaction volume.</strong> The order system we&rsquo;d invested in &mdash; designed, engineered, iterated on &mdash; handled less than a third.</p>
-
-    <div class="cs-stats">
-      <div class="cs-stat">
-        <div class="cs-stat-num">72%</div>
-        <div class="cs-stat-label">Cash QR transactions</div>
+      <div class="cs-quote">
+        <p>The merchants were telling us what the product should be. <strong>We just hadn&rsquo;t been
+            listening.</strong></p>
       </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">8 min</div>
-        <div class="cs-stat-label">Per bank transfer (6 steps, 2 OTPs)</div>
+
+      <div class="cs-visual">
+        <div class="cs-visual-inner">Split screen &mdash; Left: The formal order flow (multiple screens, status
+          tracking, confirmations). Right: What actually happens on the street (cash exchanges hands, QR scan, done).
+        </div>
+        <div class="cs-visual-caption">The gap between what we built and what merchants actually did.</div>
       </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">63%</div>
-        <div class="cs-stat-label">Churn after first order</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">56%</div>
-        <div class="cs-stat-label">Users from top 3 merchants</div>
-      </div>
-    </div>
+    </section>
 
-    <p class="cs-body">Other signals painted the same picture:</p>
+    <!-- THE DATA -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Data</div>
+      <h2 class="cs-heading">The numbers confirmed what the streets showed.</h2>
 
-    <ul class="cs-list">
-      <li><strong>Lahore outskirts: 100 ambassador visits, zero conversions</strong> &mdash; the product wasn&rsquo;t matching the context</li>
-      <li><strong>Detail card had 8 fields</strong> &mdash; for a transaction that takes 30 seconds in person</li>
-      <li>The order system wasn&rsquo;t slightly misaligned. It was <strong>fundamentally wrong</strong> for face-to-face commerce</li>
-    </ul>
+      <p class="cs-body">The on-ground research aligned perfectly with the data. <strong>Cash QR codes accounted for 72%
+          of total transaction volume.</strong> The order system we&rsquo;d invested in &mdash; designed, engineered,
+        iterated on &mdash; handled less than a third.</p>
 
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Data visualization &mdash; 72% Cash QR vs. 28% Orders split. Supporting stat cards below.</div>
-      <div class="cs-visual-caption">We&rsquo;d built a digital marketplace for people standing three feet apart.</div>
-    </div>
-  </section>
-
-  <!-- THE INSIGHT -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Insight</div>
-    <h2 class="cs-heading">The transaction happens in the real world. The app just confirms it.</h2>
-
-    <p class="cs-body">ZAR&rsquo;s merchant transactions are <strong>physical-first.</strong> A customer walks into a store. Cash changes hands. The app confirms what already happened &mdash; it doesn&rsquo;t intermediate it.</p>
-
-    <p class="cs-body">But our product was designed as if the transaction started in the app. That makes sense for remote commerce. It makes zero sense when two people are standing next to each other.</p>
-
-    <div class="cs-compare">
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">Digital-First (what we built)</div>
-        <div class="cs-compare-content">
-          <strong>1.</strong> Create order<br>
-          <strong>2.</strong> Set terms<br>
-          <strong>3.</strong> Wait for acceptance<br>
-          <strong>4.</strong> Confirm payment<br>
-          <strong>5.</strong> Track status<br>
-          <strong>6.</strong> Complete
+      <div class="cs-stats">
+        <div class="cs-stat">
+          <div class="cs-stat-num">72%</div>
+          <div class="cs-stat-label">Cash QR transactions</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">8 min</div>
+          <div class="cs-stat-label">Per bank transfer (6 steps, 2 OTPs)</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">63%</div>
+          <div class="cs-stat-label">Churn after first order</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-stat-num">56%</div>
+          <div class="cs-stat-label">Users from top 3 merchants</div>
         </div>
       </div>
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">Physical-First (what merchants did)</div>
-        <div class="cs-compare-content">
-          <strong>1.</strong> Cash changes hands<br>
-          <strong>2.</strong> Scan QR<br>
-          <strong>3.</strong> Done
+
+      <p class="cs-body">Other signals painted the same picture:</p>
+
+      <ul class="cs-list">
+        <li><strong>Lahore outskirts: 100 ambassador visits, zero conversions</strong> &mdash; the product wasn&rsquo;t
+          matching the context</li>
+        <li><strong>Detail card had 8 fields</strong> &mdash; for a transaction that takes 30 seconds in person</li>
+        <li>The order system wasn&rsquo;t slightly misaligned. It was <strong>fundamentally wrong</strong> for
+          face-to-face commerce</li>
+      </ul>
+
+      <div class="cs-visual">
+        <div class="cs-visual-inner">Data visualization &mdash; 72% Cash QR vs. 28% Orders split. Supporting stat cards
+          below.</div>
+        <div class="cs-visual-caption">We&rsquo;d built a digital marketplace for people standing three feet apart.
         </div>
       </div>
-    </div>
+    </section>
 
-    <p class="cs-body">The merchants had already solved this. They just used the simplest tool available. Our job was to <strong>make their workaround the actual product.</strong></p>
-  </section>
+    <!-- THE INSIGHT -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Insight</div>
+      <h2 class="cs-heading">The transaction happens in the real world. The app just confirms it.</h2>
 
-  <div class="cs-divider"></div>
+      <p class="cs-body">ZAR&rsquo;s merchant transactions are <strong>physical-first.</strong> A customer walks into a
+        store. Cash changes hands. The app confirms what already happened &mdash; it doesn&rsquo;t intermediate it.</p>
 
-  <!-- THE REDESIGN -->
-  <section class="cs-section reveal">
-    <div class="cs-label">The Redesign</div>
-    <h2 class="cs-heading">Kill the order flow. Three steps.</h2>
+      <p class="cs-body">But our product was designed as if the transaction started in the app. That makes sense for
+        remote commerce. It makes zero sense when two people are standing next to each other.</p>
 
-    <p class="cs-body">For merchant-to-customer transactions, we <strong>deprecated the order system entirely.</strong> No partial fix. No iteration. Removed. Orders were retained only for merchant-to-trader interactions &mdash; bulk wholesale transactions where formal tracking adds legitimate value.</p>
-
-    <div class="cs-steps">
-      <div class="cs-step">
-        <div class="cs-step-num">1</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Visit store</div>
-          <div class="cs-step-desc">Customer finds the merchant on the map or walks in.</div>
+      <div class="cs-compare">
+        <div class="cs-compare-side">
+          <div class="cs-compare-label">Digital-First (what we built)</div>
+          <div class="cs-compare-content">
+            <strong>1.</strong> Create order<br>
+            <strong>2.</strong> Set terms<br>
+            <strong>3.</strong> Wait for acceptance<br>
+            <strong>4.</strong> Confirm payment<br>
+            <strong>5.</strong> Track status<br>
+            <strong>6.</strong> Complete
+          </div>
+        </div>
+        <div class="cs-compare-side">
+          <div class="cs-compare-label">Physical-First (what merchants did)</div>
+          <div class="cs-compare-content">
+            <strong>1.</strong> Cash changes hands<br>
+            <strong>2.</strong> Scan QR<br>
+            <strong>3.</strong> Done
+          </div>
         </div>
       </div>
-      <div class="cs-step">
-        <div class="cs-step-num">2</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Exchange cash</div>
-          <div class="cs-step-desc">Physical handoff. The real transaction.</div>
+
+      <p class="cs-body">The merchants had already solved this. They just used the simplest tool available. Our job was
+        to <strong>make their workaround the actual product.</strong></p>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- THE REDESIGN -->
+    <section class="cs-section reveal">
+      <div class="cs-label">The Redesign</div>
+      <h2 class="cs-heading">Kill the order flow. Three steps.</h2>
+
+      <p class="cs-body">For merchant-to-customer transactions, we <strong>deprecated the order system
+          entirely.</strong> No partial fix. No iteration. Removed. Orders were retained only for merchant-to-trader
+        interactions &mdash; bulk wholesale transactions where formal tracking adds legitimate value.</p>
+
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">1</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Visit store</div>
+            <div class="cs-step-desc">Customer finds the merchant on the map or walks in.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">2</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Exchange cash</div>
+            <div class="cs-step-desc">Physical handoff. The real transaction.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">3</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Scan QR</div>
+            <div class="cs-step-desc">The app confirms the exchange. Dollar amount. Rate. Done.</div>
+          </div>
         </div>
       </div>
-      <div class="cs-step">
-        <div class="cs-step-num">3</div>
-        <div class="cs-step-content">
-          <div class="cs-step-title">Scan QR</div>
-          <div class="cs-step-desc">The app confirms the exchange. Dollar amount. Rate. Done.</div>
+
+      <p class="cs-body">Three steps. No orders. No status tracking. No acceptance flow. The app serves the moment
+        &mdash; it doesn&rsquo;t replace it.</p>
+    </section>
+
+    <!-- RADICAL SIMPLIFICATION -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Simplification</div>
+      <h2 class="cs-heading">8 fields to 2. Discovery only. Present tense.</h2>
+
+      <p class="cs-body"><strong>The merchant map</strong> had been trying to do two things: help users find merchants
+        AND initiate transactions. I stripped transaction initiation entirely. The map became discovery-only with clear
+        instructions: &ldquo;1. Visit store. 2. Exchange cash. 3. Scan QR.&rdquo;</p>
+
+      <div class="cs-compare">
+        <div class="cs-compare-side">
+          <div class="cs-compare-label">Before</div>
+          <div class="cs-compare-content">
+            <strong>Detail card: 8 fields</strong><br>
+            Every data point we captured. Cluttered, unnecessary for a 30-second interaction.<br><br>
+            <strong>Screen title: &ldquo;Buy&rdquo;</strong><br>
+            Preparing a transaction.<br><br>
+            <strong>Map: discovery + transaction</strong><br>
+            Trying to do two things.
+          </div>
+        </div>
+        <div class="cs-compare-side">
+          <div class="cs-compare-label">After</div>
+          <div class="cs-compare-content">
+            <strong>Detail card: 2 fields</strong><br>
+            Paid and Exchange rate. What the merchant actually needs.<br><br>
+            <strong>Screen title: &ldquo;Buying&rdquo;</strong><br>
+            Present tense. It&rsquo;s happening now.<br><br>
+            <strong>Map: discovery only</strong><br>
+            Tells you where to go. What happens there is between you and the merchant.
+          </div>
         </div>
       </div>
-    </div>
 
-    <p class="cs-body">Three steps. No orders. No status tracking. No acceptance flow. The app serves the moment &mdash; it doesn&rsquo;t replace it.</p>
-  </section>
+      <div class="cs-visual">
+        <div class="cs-visual-inner">Before/after of the transaction detail card. Left: 8 fields. Right: 2 fields (Paid
+          + Exchange rate). The reduction should feel like relief.</div>
+        <div class="cs-visual-caption">Detail card &mdash; 8 fields reduced to 2.</div>
+      </div>
+    </section>
 
-  <!-- RADICAL SIMPLIFICATION -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Simplification</div>
-    <h2 class="cs-heading">8 fields to 2. Discovery only. Present tense.</h2>
+    <!-- MERCHANT CONTROL -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Merchant Control</div>
+      <h2 class="cs-heading">The merchant sets the terms.</h2>
 
-    <p class="cs-body"><strong>The merchant map</strong> had been trying to do two things: help users find merchants AND initiate transactions. I stripped transaction initiation entirely. The map became discovery-only with clear instructions: &ldquo;1. Visit store. 2. Exchange cash. 3. Scan QR.&rdquo;</p>
+      <p class="cs-body">One principle guided the redesign: <strong>the merchant sets the terms.</strong> In the old
+        flow, exchange rates were part of the order negotiation. In the new flow, the merchant sets their rate upfront.
+        It&rsquo;s displayed on their profile. Customers see it before they walk in. If they show up, they&rsquo;ve
+        already agreed.</p>
 
-    <div class="cs-compare">
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">Before</div>
-        <div class="cs-compare-content">
-          <strong>Detail card: 8 fields</strong><br>
-          Every data point we captured. Cluttered, unnecessary for a 30-second interaction.<br><br>
-          <strong>Screen title: &ldquo;Buy&rdquo;</strong><br>
-          Preparing a transaction.<br><br>
-          <strong>Map: discovery + transaction</strong><br>
-          Trying to do two things.
+      <p class="cs-body">Merchants can adjust their rate per transaction &mdash; responding to market conditions,
+        competition, or customer relationships. The system enables their business judgment instead of constraining it
+        with a formal order protocol.</p>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- IMPACT -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Impact</div>
+      <h2 class="cs-heading">We didn&rsquo;t change merchant behavior. We changed the product.</h2>
+
+      <table class="cs-impact-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Before</th>
+            <th>After</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Transaction model</td>
+            <td>Order-based (multi-step)</td>
+            <td>Cash QR (3 steps)</td>
+          </tr>
+          <tr>
+            <td>Detail card fields</td>
+            <td>8</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Merchant map</td>
+            <td>Discovery + transaction</td>
+            <td>Discovery only</td>
+          </tr>
+          <tr>
+            <td>Rate setting</td>
+            <td>Per-order negotiation</td>
+            <td>Merchant-controlled, pre-set</td>
+          </tr>
+          <tr>
+            <td>Organic adoption</td>
+            <td>60%+ already using Cash QR</td>
+            <td>Now the only option</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="cs-body">The strongest validation: <strong>we didn&rsquo;t change merchant behavior.</strong> We changed
+        the product to match the behavior that was already working. 72% of volume was already flowing through Cash QR.
+        We just removed the 28% that was fighting reality.</p>
+    </section>
+
+    <div class="cs-divider"></div>
+
+    <!-- LEARNINGS -->
+    <section class="cs-section reveal">
+      <div class="cs-label">Learnings</div>
+      <h2 class="cs-heading">What this taught me.</h2>
+
+      <div class="cs-learnings">
+        <div class="cs-learning">
+          <div class="cs-learning-num">01</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Watch before you design.</div>
+            <div class="cs-learning-desc">60% of merchants had already solved the problem we were trying to solve. They
+              didn&rsquo;t need a better order flow &mdash; they needed us to stop forcing one. The most important
+              research I did wasn&rsquo;t user testing. It was standing in a store and watching.</div>
+          </div>
+        </div>
+        <div class="cs-learning">
+          <div class="cs-learning-num">02</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Remove before you add.</div>
+            <div class="cs-learning-desc">The instinct is always to build: a better order flow, a smarter status system,
+              a more elegant confirmation screen. The right answer was to remove all of it. The feature that best served
+              merchants was the absence of features they didn&rsquo;t need.</div>
+          </div>
+        </div>
+        <div class="cs-learning">
+          <div class="cs-learning-num">03</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Digital should serve physical, not replace it.</div>
+            <div class="cs-learning-desc">In emerging market fintech, the transaction happens in the real world. Cash
+              changes hands. People shake on it. The app&rsquo;s job is to confirm and record &mdash; not to
+              intermediate. Products that try to digitize the human interaction will always lose to the workaround.
+            </div>
+          </div>
+        </div>
+        <div class="cs-learning">
+          <div class="cs-learning-num">04</div>
+          <div class="cs-learning-content">
+            <div class="cs-learning-title">Adoption data is design research.</div>
+            <div class="cs-learning-desc">72% Cash QR adoption wasn&rsquo;t a metric &mdash; it was a design brief. The
+              users had already voted with their behavior. Listening to adoption patterns is the fastest form of user
+              research, if you&rsquo;re willing to hear that your product is wrong.</div>
+          </div>
         </div>
       </div>
-      <div class="cs-compare-side">
-        <div class="cs-compare-label">After</div>
-        <div class="cs-compare-content">
-          <strong>Detail card: 2 fields</strong><br>
-          Paid and Exchange rate. What the merchant actually needs.<br><br>
-          <strong>Screen title: &ldquo;Buying&rdquo;</strong><br>
-          Present tense. It&rsquo;s happening now.<br><br>
-          <strong>Map: discovery only</strong><br>
-          Tells you where to go. What happens there is between you and the merchant.
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="cs-visual">
-      <div class="cs-visual-inner">Before/after of the transaction detail card. Left: 8 fields. Right: 2 fields (Paid + Exchange rate). The reduction should feel like relief.</div>
-      <div class="cs-visual-caption">Detail card &mdash; 8 fields reduced to 2.</div>
-    </div>
-  </section>
+  </div>
 
-  <!-- MERCHANT CONTROL -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Merchant Control</div>
-    <h2 class="cs-heading">The merchant sets the terms.</h2>
+  <!-- CASE NAV -->
+  <div class="cs-nav reveal">
+    <a href="/work/zar/merchant-onboarding/" class="cs-nav-link">
+      <span class="cs-nav-dir">&larr; Previous</span>
+      <span class="cs-nav-title">Merchant Onboarding</span>
+    </a>
+    <a href="/work/zar/golden-flow/" class="cs-nav-link">
+      <span class="cs-nav-dir">Next &rarr;</span>
+      <span class="cs-nav-title">The Golden Flow</span>
+    </a>
+  </div>
 
-    <p class="cs-body">One principle guided the redesign: <strong>the merchant sets the terms.</strong> In the old flow, exchange rates were part of the order negotiation. In the new flow, the merchant sets their rate upfront. It&rsquo;s displayed on their profile. Customers see it before they walk in. If they show up, they&rsquo;ve already agreed.</p>
+  <!-- FOOTER -->
+  <footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
+    <div
+      style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim);">
+      <span>&copy; 2026 ABM</span><span>Designed with intention</span></div>
+  </footer>
 
-    <p class="cs-body">Merchants can adjust their rate per transaction &mdash; responding to market conditions, competition, or customer relationships. The system enables their business judgment instead of constraining it with a formal order protocol.</p>
-  </section>
+  <script>
+    // --- REVEALS ---
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, { threshold: .06 });
+    document.querySelectorAll('.cs-section, .reveal').forEach(el => obs.observe(el));
 
-  <div class="cs-divider"></div>
-
-  <!-- IMPACT -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Impact</div>
-    <h2 class="cs-heading">We didn&rsquo;t change merchant behavior. We changed the product.</h2>
-
-    <table class="cs-impact-table">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Before</th>
-          <th>After</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Transaction model</td>
-          <td>Order-based (multi-step)</td>
-          <td>Cash QR (3 steps)</td>
-        </tr>
-        <tr>
-          <td>Detail card fields</td>
-          <td>8</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>Merchant map</td>
-          <td>Discovery + transaction</td>
-          <td>Discovery only</td>
-        </tr>
-        <tr>
-          <td>Rate setting</td>
-          <td>Per-order negotiation</td>
-          <td>Merchant-controlled, pre-set</td>
-        </tr>
-        <tr>
-          <td>Organic adoption</td>
-          <td>60%+ already using Cash QR</td>
-          <td>Now the only option</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p class="cs-body">The strongest validation: <strong>we didn&rsquo;t change merchant behavior.</strong> We changed the product to match the behavior that was already working. 72% of volume was already flowing through Cash QR. We just removed the 28% that was fighting reality.</p>
-  </section>
-
-  <div class="cs-divider"></div>
-
-  <!-- LEARNINGS -->
-  <section class="cs-section reveal">
-    <div class="cs-label">Learnings</div>
-    <h2 class="cs-heading">What this taught me.</h2>
-
-    <div class="cs-learnings">
-      <div class="cs-learning">
-        <div class="cs-learning-num">01</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Watch before you design.</div>
-          <div class="cs-learning-desc">60% of merchants had already solved the problem we were trying to solve. They didn&rsquo;t need a better order flow &mdash; they needed us to stop forcing one. The most important research I did wasn&rsquo;t user testing. It was standing in a store and watching.</div>
-        </div>
-      </div>
-      <div class="cs-learning">
-        <div class="cs-learning-num">02</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Remove before you add.</div>
-          <div class="cs-learning-desc">The instinct is always to build: a better order flow, a smarter status system, a more elegant confirmation screen. The right answer was to remove all of it. The feature that best served merchants was the absence of features they didn&rsquo;t need.</div>
-        </div>
-      </div>
-      <div class="cs-learning">
-        <div class="cs-learning-num">03</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Digital should serve physical, not replace it.</div>
-          <div class="cs-learning-desc">In emerging market fintech, the transaction happens in the real world. Cash changes hands. People shake on it. The app&rsquo;s job is to confirm and record &mdash; not to intermediate. Products that try to digitize the human interaction will always lose to the workaround.</div>
-        </div>
-      </div>
-      <div class="cs-learning">
-        <div class="cs-learning-num">04</div>
-        <div class="cs-learning-content">
-          <div class="cs-learning-title">Adoption data is design research.</div>
-          <div class="cs-learning-desc">72% Cash QR adoption wasn&rsquo;t a metric &mdash; it was a design brief. The users had already voted with their behavior. Listening to adoption patterns is the fastest form of user research, if you&rsquo;re willing to hear that your product is wrong.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<!-- CASE NAV -->
-<div class="cs-nav reveal">
-  <a href="/work/zar/merchant-onboarding/" class="cs-nav-link">
-    <span class="cs-nav-dir">&larr; Previous</span>
-    <span class="cs-nav-title">Merchant Onboarding</span>
-  </a>
-  <a href="/work/zar/golden-flow/" class="cs-nav-link">
-    <span class="cs-nav-dir">Next &rarr;</span>
-    <span class="cs-nav-title">The Golden Flow</span>
-  </a>
-</div>
-
-<!-- FOOTER -->
-<footer style="max-width:900px;margin:80px auto 0;padding:0 48px;"><div style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim);"><span>&copy; 2026 ABM</span><span>Designed with intention</span></div></footer>
-
-<script>
-  // --- REVEALS ---
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  })},{threshold:.06});
-  document.querySelectorAll('.cs-section, .reveal').forEach(el=>obs.observe(el));
-
-  // --- PAGE TRANSITIONS ---
-  if(location.protocol!=='file:'){
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const h=a.getAttribute('href');
-      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(()=>window.location.href=h,150);
+    // --- PAGE TRANSITIONS ---
+    if (location.protocol !== 'file:') {
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => window.location.href = h, 150);
+        });
       });
-    });
-  }
-</script>
+    }
+  </script>
 </body>
+
 </html>

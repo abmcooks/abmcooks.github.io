@@ -1,299 +1,644 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ABM at Walking the Talk / ZRG — First professional design role. Digital tools and visual systems for culture transformation across 200+ organizations.">
-<meta name="author" content="ABM (Basit Masood)">
-<meta property="og:title" content="Walking the Talk — ABM">
-<meta property="og:description" content="First design role. Culture transformation across 200+ global organizations.">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Walking the Talk — ABM">
-<meta name="twitter:description" content="First design role. Culture transformation across 200+ global organizations.">
-<title>Walking the Talk — ABM</title>
-<link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --display: 'AKONY', serif;
-    --body: 'Space Grotesk', sans-serif;
-    --serif: 'Gentium Book Plus', serif;
-    --bg: #f8f5f0;
-    --text: #2E1A12;
-    --text-dim: #6b5d54;
-    --text-muted: #9a8d84;
-    --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.07);
-    --card-hover: rgba(0,0,0,0.12);
-    --espresso: #2E1A12;
-    --cream: #f8f5f0;
-    --cream-light: #ffffff;
-    --red: #cc2936;
-    --accent: #A78BFA;
-    --accent-light: #C4B5FD;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="ABM at Walking the Talk / ZRG — First professional design role. Digital tools and visual systems for culture transformation across 200+ organizations.">
+  <meta name="author" content="ABM (Basit Masood)">
+  <meta property="og:title" content="Walking the Talk — ABM">
+  <meta property="og:description" content="First design role. Culture transformation across 200+ global organizations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abmcooks.github.io/work/wtt/">
+  <meta property="og:image" content="https://abmcooks.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Walking the Talk — ABM">
+  <meta name="twitter:description"
+    content="First design role. Culture transformation across 200+ global organizations.">
+  <meta name="twitter:image" content="https://abmcooks.github.io/og.png">
+  <title>Walking the Talk — ABM</title>
+  <link rel="canonical" href="https://abmcooks.github.io/work/wtt/">
+  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --display: 'AKONY', serif;
+      --body: 'Space Grotesk', sans-serif;
+      --serif: 'Gentium Book Plus', serif;
+      --bg: #f8f5f0;
+      --text: #2E1A12;
+      --text-dim: #6b5d54;
+      --text-muted: #9a8d84;
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.07);
+      --card-hover: rgba(0, 0, 0, 0.12);
+      --espresso: #2E1A12;
+      --cream: #f8f5f0;
+      --cream-light: #ffffff;
+      --red: #cc2936;
+      --accent: #A78BFA;
+      --accent-light: #C4B5FD;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body {
-    font-family: var(--body); background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; padding-bottom: 120px;
-    animation: pageIn 0.3s ease;
-  }
-  body.page-leaving { opacity: 0; transition: opacity 0.15s ease; }
-  @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ─── BACK LINK ─── */
-  .back-link { position: fixed; top: 64px; left: 48px; z-index: 100; font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-  .back-link:hover { color: var(--text); }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
-  /* ─── NAV BAR (dark espresso on light page) ─── */
-  .nav-bar { position: fixed; top: 64px; right: 48px; z-index: 100; background: var(--espresso); border-radius: 8px; padding: 8px 32px 8px 24px; display: flex; align-items: center; gap: 12px; }
-  .nav-bar-item { display: flex; align-items: center; gap: 8px; }
-  .nav-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: #f8f5f0; display: none; }
-  .nav-bar-item.active .nav-bar-dot { display: block; }
-  .nav-bar-item a { font-family: var(--body); font-size: 14px; font-weight: 500; color: rgba(248,245,240,0.6); text-decoration: none; }
-  .nav-bar-item.active a { font-weight: 700; color: #f8f5f0; text-decoration: underline; text-underline-offset: 3px; }
-  .nav-bar-slash { width: 12px; height: 16px; display: flex; align-items: center; justify-content: center; }
-  .nav-bar-slash::after { content: ''; display: block; width: 12px; height: 1px; background: rgba(248,245,240,0.3); transform: rotate(-40deg); }
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      animation: pageIn 0.3s ease;
+    }
 
-  /* ─── MOBILE NAV ─── */
-  .mobile-nav { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(21,18,16,0.92); backdrop-filter: blur(24px); border: 1px solid rgba(46,40,36,0.5); border-radius: 100px; padding: 5px; }
-  .mobile-nav a { font-size: 13px; font-weight: 500; color: rgba(235,244,245,0.5); text-decoration: none; padding: 8px 15px; border-radius: 100px; }
-  .mobile-nav a.active { color: #f8f5f0; background: rgba(235,244,245,0.08); }
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
 
-  @media (max-width: 768px) { .nav-bar { display: none; } .mobile-nav { display: flex; } .back-link { top: 24px; left: 24px; } }
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+      }
 
-  /* ─── WRAPPER ─── */
-  .wrap { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 48px; }
+      to {
+        opacity: 1;
+      }
+    }
 
-  /* ─── HERO SECTION ─── */
-  .hero {
-    position: relative; z-index: 2;
-    padding: 180px 0 80px;
-    text-align: center;
-    opacity: 0; animation: fu 0.8s 0.1s forwards;
-  }
-  .co-meta {
-    display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px;
-    opacity: 0; animation: fu 0.5s 0.3s forwards;
-  }
-  .co-dot {
-    width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 12px rgba(167,139,250,0.4);
-  }
-  .co-tenure {
-    font-family: var(--body); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--accent);
-  }
-  .co-name {
-    font-family: var(--display); font-size: clamp(40px, 6vw, 80px);
-    font-weight: 400; line-height: 1; letter-spacing: 0.04em;
-    color: var(--text); text-transform: uppercase;
-    margin-bottom: 20px;
-    opacity: 0; animation: fu 0.7s 0.4s forwards;
-  }
-  .co-links {
-    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px;
-    opacity: 0; animation: fu 0.6s 0.5s forwards;
-  }
-  .co-link {
-    display: flex; align-items: center; gap: 5px;
-    font-family: var(--body); font-size: 12px; font-weight: 500; color: var(--text-dim);
-    text-decoration: none;
-    padding: 5px 12px; border-radius: 100px;
-    border: 1px solid rgba(167,139,250,0.2);
-    background: rgba(167,139,250,0.06);
-    transition: all 0.3s;
-  }
-  .co-link:hover { color: var(--accent); border-color: rgba(167,139,250,0.4); background: rgba(167,139,250,0.1); }
-  .co-link svg { flex-shrink: 0; }
+    /* ─── BACK LINK ─── */
+    .back-link {
+      position: fixed;
+      top: 64px;
+      left: 48px;
+      z-index: 100;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
 
-  /* ─── SECTION STYLES ─── */
-  .section-label {
-    font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 24px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::before {
-    content: ''; width: 24px; height: 1px; background: var(--accent);
-  }
+    .back-link:hover {
+      color: var(--text);
+    }
 
-  /* ─── OVERVIEW ─── */
-  .overview { padding: 0 0 0; }
-  .overview-brief {
-    font-family: var(--serif); font-size: 19px; font-weight: 400;
-    color: var(--text-dim); line-height: 1.8; max-width: 750px;
-  }
-  .overview-brief strong { color: var(--text); font-weight: 700; }
-  .overview-pills {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;
-  }
-  .ov-pill {
-    font-family: var(--body); font-size: 11px; font-weight: 500; padding: 4px 12px;
-    border-radius: 100px; color: var(--accent);
-    border: 1px solid rgba(167,139,250,0.2);
-    background: rgba(167,139,250,0.06);
-  }
+    /* ─── NAV BAR (dark espresso on light page) ─── */
+    .nav-bar {
+      position: fixed;
+      top: 64px;
+      right: 48px;
+      z-index: 100;
+      background: var(--espresso);
+      border-radius: 8px;
+      padding: 8px 32px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  /* ─── STATS ─── */
-  .stats-inline {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-    margin-top: 28px; padding: 24px 0;
-    border-top: 1px solid rgba(0,0,0,0.08);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-  .si { text-align: center; position: relative; }
-  .si + .si::before {
-    content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-    width: 1px; height: 28px; background: rgba(0,0,0,0.08);
-  }
-  .si-num {
-    font-family: var(--body); font-size: clamp(22px, 2.8vw, 30px);
-    font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1;
-  }
-  .si-label {
-    font-family: var(--body); font-size: 11px; color: var(--text-muted); font-weight: 500; margin-top: 4px;
-  }
+    .nav-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  /* ─── WORK NOTE ─── */
-  .work-note-card {
-    padding: 32px; border-radius: 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    text-align: center;
-  }
-  .work-note-card p {
-    font-family: var(--serif); font-size: 17px; font-weight: 400;
-    color: var(--text-dim); line-height: 1.6;
-  }
-  .work-note-card p span { color: var(--text); }
+    .nav-bar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f8f5f0;
+      display: none;
+    }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fu { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-bar-item.active .nav-bar-dot {
+      display: block;
+    }
 
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(.23,1,.32,1), transform 0.8s cubic-bezier(.23,1,.32,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .rd1 { transition-delay: .08s; } .rd2 { transition-delay: .16s; } .rd3 { transition-delay: .24s; } .rd4 { transition-delay: .32s; }
+    .nav-bar-item a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(248, 245, 240, 0.6);
+      text-decoration: none;
+    }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    .wrap { padding-left: 20px; padding-right: 20px; }
-    .hero { padding: 140px 0 60px; }
-    .stats-inline { grid-template-columns: 1fr 1fr; gap: 16px 0; }
-    .co-links { flex-wrap: wrap; justify-content: center; }
-  }
-  @media (max-width: 640px) {
-    .co-name { font-size: 36px; }
-  }
-</style>
+    .nav-bar-item.active a {
+      font-weight: 700;
+      color: #f8f5f0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .nav-bar-slash {
+      width: 12px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-bar-slash::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 1px;
+      background: rgba(248, 245, 240, 0.3);
+      transform: rotate(-40deg);
+    }
+
+    /* ─── MOBILE NAV ─── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(21, 18, 16, 0.92);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(46, 40, 36, 0.5);
+      border-radius: 100px;
+      padding: 5px;
+    }
+
+    .mobile-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(235, 244, 245, 0.5);
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 100px;
+    }
+
+    .mobile-nav a.active {
+      color: #f8f5f0;
+      background: rgba(235, 244, 245, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .back-link {
+        top: 24px;
+        left: 24px;
+      }
+    }
+
+    /* ─── WRAPPER ─── */
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+      position: relative;
+      z-index: 2;
+      padding: 180px 0 80px;
+      text-align: center;
+      opacity: 0;
+      animation: fu 0.8s 0.1s forwards;
+    }
+
+    .co-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fu 0.5s 0.3s forwards;
+    }
+
+    .co-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(167, 139, 250, 0.4);
+    }
+
+    .co-tenure {
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .co-name {
+      font-family: var(--display);
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fu 0.7s 0.4s forwards;
+    }
+
+    .co-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+      opacity: 0;
+      animation: fu 0.6s 0.5s forwards;
+    }
+
+    .co-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      background: rgba(167, 139, 250, 0.06);
+      transition: all 0.3s;
+    }
+
+    .co-link:hover {
+      color: var(--accent);
+      border-color: rgba(167, 139, 250, 0.4);
+      background: rgba(167, 139, 250, 0.1);
+    }
+
+    .co-link svg {
+      flex-shrink: 0;
+    }
+
+    /* ─── SECTION STYLES ─── */
+    .section-label {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* ─── OVERVIEW ─── */
+    .overview {
+      padding: 0 0 0;
+    }
+
+    .overview-brief {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 750px;
+    }
+
+    .overview-brief strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .overview-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .ov-pill {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+      color: var(--accent);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      background: rgba(167, 139, 250, 0.06);
+    }
+
+    /* ─── STATS ─── */
+    .stats-inline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 28px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .si {
+      text-align: center;
+      position: relative;
+    }
+
+    .si+.si::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 28px;
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .si-num {
+      font-family: var(--body);
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .si-label {
+      font-family: var(--body);
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* ─── WORK NOTE ─── */
+    .work-note-card {
+      padding: 32px;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      text-align: center;
+    }
+
+    .work-note-card p {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .work-note-card p span {
+      color: var(--text);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rd1 {
+      transition-delay: .08s;
+    }
+
+    .rd2 {
+      transition-delay: .16s;
+    }
+
+    .rd3 {
+      transition-delay: .24s;
+    }
+
+    .rd4 {
+      transition-delay: .32s;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero {
+        padding: 140px 0 60px;
+      }
+
+      .stats-inline {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 0;
+      }
+
+      .co-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .co-name {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- BACK LINK -->
-<a href="/" class="back-link">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-  Back
-</a>
+  <!-- BACK LINK -->
+  <a href="/" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round" width="16" height="16">
+      <path d="M19 12H5" />
+      <path d="M12 19l-7-7 7-7" />
+    </svg>
+    Back
+  </a>
 
-<!-- NAV -->
-<div class="nav-bar">
-  <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-  <div class="nav-bar-slash"></div>
-  <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-</div>
+  <!-- NAV -->
+  <div class="nav-bar">
+    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
+    <div class="nav-bar-slash"></div>
+    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
+  </div>
 
-<nav class="mobile-nav">
-  <a href="/" class="active">Craft</a>
-  <a href="/about/">Story</a>
-  <a href="/writing/">Thoughts</a>
-  <a href="/contact/">Contact</a>
-</nav>
+  <nav class="mobile-nav">
+    <a href="/" class="active">My Craft</a>
+    <a href="/about/">Story</a>
+    <a href="/writing/">Thoughts</a>
+    <a href="/contact/">Contact</a>
+  </nav>
 
-<!-- HERO -->
-<div class="wrap">
-  <section class="hero">
-    <div class="co-meta">
-      <div class="co-dot"></div>
-      <span class="co-tenure">2018 — 2019</span>
-    </div>
-    <h1 class="co-name">Walking the Talk</h1>
-    <div class="co-links">
-      <a href="https://walkingthetalk.com" class="co-link" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 3H3.5A1.5 1.5 0 002 4.5v8A1.5 1.5 0 003.5 14h8a1.5 1.5 0 001.5-1.5V10M10 2h4v4M7 9l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Website
-      </a>
-      <a href="#" class="co-link" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4.5 10.5c0-1 2-1.5 3.5-1.5s3.5.5 3.5 1.5M8 7.5a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-        LinkedIn
-      </a>
+  <!-- HERO -->
+  <div class="wrap">
+    <section class="hero">
+      <div class="co-meta">
+        <div class="co-dot"></div>
+        <span class="co-tenure">2018 — 2019</span>
+      </div>
+      <h1 class="co-name">Walking the Talk</h1>
+      <div class="co-links">
+        <a href="https://walkingthetalk.com" class="co-link" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M6 3H3.5A1.5 1.5 0 002 4.5v8A1.5 1.5 0 003.5 14h8a1.5 1.5 0 001.5-1.5V10M10 2h4v4M7 9l7-7"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Website
+        </a>
+        <a href="https://www.linkedin.com/company/walking-the-talk-culture/" class="co-link" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M4.5 10.5c0-1 2-1.5 3.5-1.5s3.5.5 3.5 1.5M8 7.5a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor"
+              stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.3" />
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://www.linkedin.com/company/zrg-culture-practice/posts/?feedView=all" class="co-link"
+          target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M4.5 10.5c0-1 2-1.5 3.5-1.5s3.5.5 3.5 1.5M8 7.5a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor"
+              stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.3" />
+          </svg>
+          ZRG Culture
+        </a>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="overview reveal">
+      <p class="overview-brief">
+        <strong>My first professional design role.</strong> Walking the Talk is a culture transformation consultancy
+        &mdash; part of ZRG Partners &mdash; working with 200+ organizations across 40+ countries to shift how companies
+        operate and think.
+      </p>
+      <p class="overview-brief" style="margin-top:16px;">
+        I designed digital tools and visual systems for culture change programs across global enterprises. This is where
+        I learned the fundamentals: working within constraints, designing for diverse audiences, and understanding that
+        design isn&rsquo;t just screens &mdash; it&rsquo;s how systems shape behavior. The thread that runs from here to
+        fintech started with one question: <strong>how do you design trust?</strong>
+      </p>
+      <div class="overview-pills">
+        <span class="ov-pill">Designer</span>
+        <span class="ov-pill">First Design Role</span>
+        <span class="ov-pill">Digital Tools</span>
+        <span class="ov-pill">ZRG Partners</span>
+      </div>
+      <div class="stats-inline">
+        <div class="si">
+          <div class="si-num" style="font-size:22px;">200+</div>
+          <div class="si-label">Organizations</div>
+        </div>
+        <div class="si">
+          <div class="si-num" style="font-size:22px;">40+</div>
+          <div class="si-label">Countries</div>
+        </div>
+        <div class="si">
+          <div class="si-num" style="font-size:22px;">ZRG</div>
+          <div class="si-label">Partners network</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- WORK NOTE -->
+  <section class="reveal" style="max-width:900px;margin:48px auto 0;padding:0 48px;">
+    <div class="work-note-card">
+      <p>
+        Early career work in culture transformation design.<br>
+        <span>This is where the design journey began.</span>
+      </p>
     </div>
   </section>
 
-  <!-- OVERVIEW -->
-  <section class="overview reveal">
-    <p class="overview-brief">
-      <strong>My first professional design role.</strong> Walking the Talk is a culture transformation consultancy &mdash; part of ZRG Partners &mdash; working with 200+ organizations across 40+ countries to shift how companies operate and think.
-    </p>
-    <p class="overview-brief" style="margin-top:16px;">
-      I designed digital tools and visual systems for culture change programs across global enterprises. This is where I learned the fundamentals: working within constraints, designing for diverse audiences, and understanding that design isn&rsquo;t just screens &mdash; it&rsquo;s how systems shape behavior. The thread that runs from here to fintech started with one question: <strong>how do you design trust?</strong>
-    </p>
-    <div class="overview-pills">
-      <span class="ov-pill">Designer</span>
-      <span class="ov-pill">First Design Role</span>
-      <span class="ov-pill">Digital Tools</span>
-      <span class="ov-pill">ZRG Partners</span>
+  <!-- FOOTER -->
+  <footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
+    <div
+      style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
+      <span>&copy; 2026 ABM</span>
+      <span>Designed with intention</span>
     </div>
-    <div class="stats-inline">
-      <div class="si"><div class="si-num" style="font-size:22px;">200+</div><div class="si-label">Organizations</div></div>
-      <div class="si"><div class="si-num" style="font-size:22px;">40+</div><div class="si-label">Countries</div></div>
-      <div class="si"><div class="si-num" style="font-size:22px;">ZRG</div><div class="si-label">Partners network</div></div>
-    </div>
-  </section>
-</div>
+  </footer>
 
-<!-- WORK NOTE -->
-<section class="reveal" style="max-width:900px;margin:48px auto 0;padding:0 48px;">
-  <div class="work-note-card">
-    <p>
-      Early career work in culture transformation design.<br>
-      <span>This is where the design journey began.</span>
-    </p>
-  </div>
-</section>
+  <script>
+    // ─── REVEALS ───
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, { threshold: .06 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-<!-- FOOTER -->
-<footer style="max-width:900px;margin:80px auto 0;padding:0 48px;">
-  <div style="padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);">
-    <span>&copy; 2026 ABM</span>
-    <span>Designed with intention</span>
-  </div>
-</footer>
-
-<script>
-  // ─── REVEALS ───
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
-  })},{threshold:.06});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-  // ─── PAGE TRANSITIONS ───
-  if(location.protocol!=='file:'){
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const h=a.getAttribute('href');
-      if(!h||h==='#'||h.startsWith('#')||h.startsWith('mailto:')||a.target==='_blank')return;
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(()=>window.location.href=h,150);
+    // ─── PAGE TRANSITIONS ───
+    if (location.protocol !== 'file:') {
+      document.querySelectorAll('a[href]').forEach(a => {
+        const h = a.getAttribute('href');
+        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-leaving');
+          setTimeout(() => window.location.href = h, 150);
+        });
       });
-    });
-  }
-</script>
+    }
+  </script>
 </body>
+
 </html>
