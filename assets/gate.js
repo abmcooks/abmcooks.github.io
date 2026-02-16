@@ -7,11 +7,6 @@
   'use strict';
 
   var PASS = 'abmcooks';
-  var STORAGE_KEY = 'abm_gate_auth';
-  var TOKEN = btoa(PASS + '_ok');
-
-  // Already authenticated — skip gate entirely
-  if (localStorage.getItem(STORAGE_KEY) === TOKEN) return;
 
   // Lock the body
   document.body.classList.add('gated');
@@ -21,21 +16,21 @@
   overlay.className = 'gate-overlay';
   overlay.innerHTML =
     '<div class="gate-card">' +
-      '<div class="gate-lock">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-          '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>' +
-          '<path d="M7 11V7a5 5 0 0110 0v4"/>' +
-        '</svg>' +
-      '</div>' +
-      '<div class="gate-title">Password Protected</div>' +
-      '<div class="gate-sub">This case study is for recruiters.<br>Ask ABM for the password.</div>' +
-      '<form class="gate-form">' +
-        '<div class="gate-input-wrap">' +
-          '<input type="password" class="gate-input" placeholder="Enter password" autocomplete="off" autofocus>' +
-        '</div>' +
-        '<button type="submit" class="gate-btn">Unlock</button>' +
-        '<div class="gate-error-msg">Wrong password — try again</div>' +
-      '</form>' +
+    '<div class="gate-lock">' +
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+    '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>' +
+    '<path d="M7 11V7a5 5 0 0110 0v4"/>' +
+    '</svg>' +
+    '</div>' +
+    '<div class="gate-title">Password Protected</div>' +
+    '<div class="gate-sub">This case study is for recruiters.<br>Ask ABM for the password.</div>' +
+    '<form class="gate-form">' +
+    '<div class="gate-input-wrap">' +
+    '<input type="password" class="gate-input" placeholder="Enter password" autocomplete="off" autofocus>' +
+    '</div>' +
+    '<button type="submit" class="gate-btn">Unlock</button>' +
+    '<div class="gate-error-msg">Wrong password — try again</div>' +
+    '</form>' +
     '</div>';
 
   document.body.prepend(overlay);
@@ -50,8 +45,7 @@
     e.preventDefault();
 
     if (input.value === PASS) {
-      // Success — save auth and remove gate
-      localStorage.setItem(STORAGE_KEY, TOKEN);
+      // Success — remove gate
       overlay.classList.add('gate-leaving');
       document.body.classList.remove('gated');
       setTimeout(function () { overlay.remove(); }, 350);
