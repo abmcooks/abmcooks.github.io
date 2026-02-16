@@ -23,14 +23,15 @@
     '</svg>' +
     '</div>' +
     '<div class="gate-title">Password Protected</div>' +
-    '<div class="gate-sub">This case study is for recruiters.<br>Ask ABM for the password.</div>' +
+    '<div class="gate-sub">Enter password to view this case study.</div>' +
     '<form class="gate-form">' +
     '<div class="gate-input-wrap">' +
-    '<input type="password" class="gate-input" placeholder="Enter password" autocomplete="off" autofocus>' +
+    '<input type="password" class="gate-input" placeholder="Password" autocomplete="off" autofocus>' +
     '</div>' +
     '<button type="submit" class="gate-btn">Unlock</button>' +
-    '<div class="gate-error-msg">Wrong password — try again</div>' +
+    '<div class="gate-error-msg">Wrong password</div>' +
     '</form>' +
+    '<a href="/" class="gate-back">← Back to Home</a>' +
     '</div>';
 
   document.body.prepend(overlay);
