@@ -1,0 +1,264 @@
+---
+interface Props {
+  active: 'craft' | 'story' | 'thoughts' | 'contact';
+  variant?: 'home' | 'page';
+}
+
+const { active, variant = 'page' } = Astro.props;
+
+const isHome = variant === 'home';
+
+const desktopItems = [
+  { id: 'craft', label: isHome ? 'My Craft' : 'Craft', href: isHome ? '#' : '/' },
+  { id: 'story', label: isHome ? 'Story' : 'My Story', href: '/about/' },
+  { id: 'thoughts', label: 'Thoughts', href: '/writing/' },
+];
+
+const mobileItems = [
+  { id: 'craft', label: 'My Craft', href: '/' },
+  { id: 'story', label: 'Story', href: '/about/' },
+  { id: 'thoughts', label: 'Thoughts', href: '/writing/' },
+  ...(!isHome ? [{ id: 'contact', label: 'Contact', href: '/contact/' }] : []),
+];
+---
+
+<!-- Desktop nav bar -->
+<div class:list={['nav-bar', { 'nav-bar--home': isHome }]} id="navBar">
+  {desktopItems.map((item, i) => (
+    <>
+      {i > 0 && <div class="nav-bar-slash"></div>}
+      <div class:list={['nav-bar-item', { active: active === item.id }]} data-section={item.id}>
+        <span class="nav-bar-dot"></span>
+        <a href={item.href}>{item.label}</a>
+      </div>
+    </>
+  ))}
+</div>
+
+{isHome && (
+  <button class="nav-trigger" id="navOpen">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <circle cx="5" cy="5" r="2.5" fill="#4f3a32" />
+      <circle cx="15" cy="5" r="2.5" fill="#4f3a32" />
+      <circle cx="5" cy="15" r="2.5" fill="#4f3a32" />
+      <circle cx="15" cy="15" r="2.5" fill="#4f3a32" />
+    </svg>
+    Index
+  </button>
+)}
+
+<!-- Mobile nav -->
+<nav class="mobile-nav">
+  {mobileItems.map(item => (
+    <a href={item.href} class:list={[{ active: active === item.id }]}>{item.label}</a>
+  ))}
+</nav>
+
+<style>
+  /* ═══ DESKTOP NAV BAR ═══ */
+  .nav-bar {
+    position: fixed;
+    top: 64px;
+    right: 48px;
+    z-index: 100;
+    background: var(--espresso);
+    border-radius: 8px;
+    padding: 8px 32px 8px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .nav-bar--home {
+    background: var(--hero-text, #ebf4f5);
+  }
+
+  .nav-bar.scrolled {
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+  }
+
+  .nav-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+  }
+
+  .nav-bar-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: none;
+    flex-shrink: 0;
+  }
+
+  /* Dark nav (inner pages): light dot */
+  .nav-bar .nav-bar-dot {
+    background: #f8f5f0;
+  }
+
+  /* Home nav (light bg): dark dot */
+  .nav-bar--home .nav-bar-dot {
+    background: var(--espresso, #2E1A12);
+  }
+
+  .nav-bar-item.active .nav-bar-dot {
+    display: block;
+  }
+
+  .nav-bar-item a {
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+
+  /* Dark nav (inner pages): light text */
+  .nav-bar .nav-bar-item a {
+    color: rgba(248, 245, 240, 0.6);
+  }
+
+  .nav-bar .nav-bar-item.active a {
+    font-weight: 700;
+    color: #f8f5f0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+  }
+
+  /* Home nav (light bg): dark text */
+  .nav-bar--home .nav-bar-item a {
+    color: var(--espresso-dim, #4f3a32);
+  }
+
+  .nav-bar--home .nav-bar-item.active a {
+    font-weight: 700;
+    color: var(--espresso, #2E1A12);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: var(--espresso, #2E1A12);
+  }
+
+  .nav-bar--home .nav-bar-item a:hover {
+    color: var(--espresso, #2E1A12);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: var(--espresso, #2E1A12);
+  }
+
+  .nav-bar-slash {
+    width: 12px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-bar-slash::after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 1px;
+    transform: rotate(-40deg);
+  }
+
+  .nav-bar .nav-bar-slash::after {
+    background: rgba(248, 245, 240, 0.3);
+  }
+
+  .nav-bar--home .nav-bar-slash::after {
+    background: var(--espresso-muted, #7a6a62);
+  }
+
+  /* ═══ INDEX TRIGGER (home only) ═══ */
+  .nav-trigger {
+    position: fixed;
+    top: 40px;
+    right: 48px;
+    z-index: 100;
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--espresso-dim, #4f3a32);
+    background: var(--hero-text, #ebf4f5);
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 8px 12px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .nav-trigger:hover {
+    opacity: 0.85 !important;
+  }
+
+  .nav-trigger.scrolled {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .nav-trigger svg {
+    flex-shrink: 0;
+  }
+
+  /* ═══ MOBILE NAV ═══ */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    background: rgba(21, 18, 16, 0.92);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(46, 40, 36, 0.5);
+    border-radius: 100px;
+    padding: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .mobile-nav a {
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(235, 244, 245, 0.5);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 100px;
+    transition: all 0.3s;
+  }
+
+  .mobile-nav a.active {
+    color: var(--cream, #ebf4f5);
+    background: rgba(235, 244, 245, 0.08);
+  }
+
+  @media (max-width: 768px) {
+    .nav-bar {
+      display: none;
+    }
+
+    .nav-trigger {
+      display: none;
+    }
+
+    .mobile-nav {
+      display: flex;
+    }
+  }
+</style>

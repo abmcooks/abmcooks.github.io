@@ -1,211 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+---
 
-<head>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="dcd588fe-7465-4f25-b904-c044d2a17532"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Lessons from being the first and only designer at two startups, surrounded by engineers who needed design decisions faster than I could make them.">
-  <meta name="author" content="ABM (Basit Masood)">
-  <meta property="og:title" content="The 1:12 Ratio — ABM">
-  <meta property="og:description"
-    content="What being the only designer taught me about systems, taste, and leadership.">
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The 1:12 Ratio — ABM">
-  <meta name="twitter:description"
-    content="What being the only designer taught me about systems, taste, and leadership.">
-  <title>The 1:12 Ratio — ABM</title>
-  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --display: 'AKONY', serif;
-      --body: 'Space Grotesk', sans-serif;
-      --serif: 'Gentium Book Plus', serif;
-      --espresso: #2E1A12;
-      --espresso-dim: #4f3a32;
-      --espresso-muted: #7a6a62;
-      --cream: #ebf4f5;
-      --cream-dim: #A69D91;
-      --red: #cc2936;
-      --accent: #cc2936;
-      --accent-light: #e04550;
-      --bg: #f8f5f0;
-      --text: #2E1A12;
-      --text-dim: #6b5d54;
-      --text-muted: #9a8d84;
-      --card-bg: #ffffff;
-      --card-border: rgba(0, 0, 0, 0.07);
-    }
+<PageLayout
+  title="The 1:12 Ratio — ABM"
+  description="Lessons from being the first and only designer at two startups, surrounded by engineers who needed design decisions faster than I could make them."
+  canonicalUrl="https://abmcooks.github.io/writing/the-1-12-ratio/"
+  ogTitle="The 1:12 Ratio — ABM"
+  ogDescription="What being the only designer taught me about systems, taste, and leadership."
+  active="thoughts"
+>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style is:global>
+  :root {
+    --accent: #cc2936;
+    --accent-light: #e04550;
+  }
 
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg);
-    }
 
-    body {
-      font-family: var(--body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      padding-bottom: 120px;
-      animation: pageIn 0.3s ease;
-    }
-
-    body.page-leaving {
-      opacity: 0;
-      transition: opacity 0.15s ease;
-    }
-
-    @keyframes pageIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* ─── NAV ─── */
-    .back-link {
-      position: fixed;
-      top: 64px;
-      left: 48px;
-      z-index: 100;
-      font-family: var(--body);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-dim);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-
-    .back-link:hover {
-      color: var(--text);
-    }
-
-    .nav-bar {
-      position: fixed;
-      top: 64px;
-      right: 48px;
-      z-index: 100;
-      background: var(--espresso);
-      border-radius: 8px;
-      padding: 8px 32px 8px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-bar-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-bar-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--cream);
-      display: none;
-    }
-
-    .nav-bar-item.active .nav-bar-dot {
-      display: block;
-    }
-
-    .nav-bar-item a {
-      font-family: var(--body);
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(235, 244, 245, 0.6);
-      text-decoration: none;
-    }
-
-    .nav-bar-item.active a {
-      font-weight: 700;
-      color: var(--cream);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .nav-bar-slash {
-      width: 12px;
-      height: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-bar-slash::after {
-      content: '';
-      display: block;
-      width: 12px;
-      height: 1px;
-      background: rgba(235, 244, 245, 0.3);
-      transform: rotate(-40deg);
-    }
-
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      background: rgba(21, 18, 16, 0.92);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(46, 40, 36, 0.5);
-      border-radius: 100px;
-      padding: 5px;
-    }
-
-    .mobile-nav a {
-      white-space: nowrap;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(235, 244, 245, 0.5);
-      text-decoration: none;
-      padding: 8px 15px;
-      border-radius: 100px;
-    }
-
-    .mobile-nav a.active {
-      color: var(--cream);
-      background: rgba(235, 244, 245, 0.08);
-    }
-
-    @media (max-width: 768px) {
-      .nav-bar {
-        display: none;
-      }
-
-      .mobile-nav {
-        display: flex;
-      }
-
-      .back-link {
-        top: 24px;
-        left: 24px;
-      }
-    }
 
     /* ─── ARTICLE HERO ─── */
     .art-hero {
@@ -584,17 +396,6 @@
     }
 
     /* ─── ANIMATIONS ─── */
-    @keyframes fu {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
@@ -634,32 +435,9 @@
         justify-content: center;
       }
     }
-  </style>
-</head>
+</style>
 
-<body>
-
-  <!-- NAV -->
-  <a href="/writing/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-      <path d="M19 12H5" />
-      <path d="M12 19l-7-7 7-7" />
-    </svg> Back to Writing</a>
-  <div class="nav-bar">
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/writing/">My Thoughts</a></div>
-  </div>
-  <nav class="mobile-nav">
-    <a href="/">Craft</a>
-    <a href="/about/">Story</a>
-    <a href="/writing/" class="active">My Thoughts</a>
-    <a href="/contact/">Contact</a>
-  </nav>
-
-  <!-- ═══════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════ -->
   <!--           ARTICLE HERO                  -->
   <!-- ═══════════════════════════════════════ -->
   <div class="art-hero">
@@ -856,20 +634,4 @@
       <span>&copy; 2026 ABM</span><span>Designed with intention</span></div>
   </footer>
 
-  <script>
-    // ─── PAGE TRANSITIONS ───
-    if (location.protocol !== 'file:') {
-      document.querySelectorAll('a[href]').forEach(a => {
-        const h = a.getAttribute('href');
-        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          document.body.classList.add('page-leaving');
-          setTimeout(() => window.location.href = h, 150);
-        });
-      });
-    }
-  </script>
-</body>
-
-</html>
+</PageLayout>

@@ -1,171 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
 
-<head>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="dcd588fe-7465-4f25-b904-c044d2a17532"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Get in touch with ABM (Basit Masood) — open to design leadership roles, advisory, consulting, and interesting conversations.">
-  <meta name="author" content="ABM (Basit Masood)">
-  <meta property="og:title" content="Contact — ABM">
-  <meta property="og:description" content="Let's build something worth shipping.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://abmcooks.github.io/contact/">
-  <meta property="og:image" content="https://abmcooks.github.io/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact — ABM">
-  <meta name="twitter:description" content="Let's build something worth shipping.">
-  <meta name="twitter:image" content="https://abmcooks.github.io/og.png">
-  <title>Contact — ABM</title>
-  <link rel="canonical" href="https://abmcooks.github.io/contact/">
-  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --display: 'AKONY', serif;
-      --body: 'Space Grotesk', sans-serif;
-      --serif: 'Gentium Book Plus', serif;
-      --espresso: #2E1A12;
-      --espresso-dim: #4f3a32;
-      --espresso-muted: #7a6a62;
-      --cream: #ebf4f5;
-      --cream-dim: #A69D91;
-      --red: #cc2936;
-      --radius: 16px;
-      --bg: #f8f5f0;
-      --text: #2E1A12;
-      --text-dim: #6b5d54;
-      --text-muted: #9a8d84;
-      --card-bg: #ffffff;
-      --card-border: rgba(0, 0, 0, 0.07);
-    }
+<PageLayout
+  title="Contact — ABM"
+  description="Get in touch with ABM (Basit Masood) — open to design leadership roles, advisory, consulting, and interesting conversations."
+  canonicalUrl="https://abmcooks.github.io/contact/"
+  ogTitle="Contact — ABM"
+  ogDescription="Let's build something worth shipping."
+  active="contact"
+>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg);
-    }
-
-    body {
-      font-family: var(--body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      padding-bottom: 120px;
-      animation: pageIn 0.3s ease;
-    }
-
-    body.page-leaving {
-      opacity: 0;
-      transition: opacity 0.15s ease;
-    }
-
-    /* --- NAV: Desktop top-right pill --- */
-    .nav-bar {
-      position: fixed;
-      top: 64px;
-      right: 48px;
-      z-index: 100;
-      background: var(--espresso);
-      border-radius: 8px;
-      padding: 8px 32px 8px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-bar-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-bar-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #f8f5f0;
-      display: none;
-    }
-
-    .nav-bar-item.active .nav-bar-dot {
-      display: block;
-    }
-
-    .nav-bar-item a {
-      font-family: var(--body);
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(248, 245, 240, 0.6);
-      text-decoration: none;
-    }
-
-    .nav-bar-item.active a {
-      font-weight: 700;
-      color: #f8f5f0;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .nav-bar-slash {
-      width: 12px;
-      height: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-bar-slash::after {
-      content: '';
-      display: block;
-      width: 12px;
-      height: 1px;
-      background: rgba(248, 245, 240, 0.3);
-      transform: rotate(-40deg);
-    }
-
-    /* --- NAV: Mobile bottom pill --- */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      background: rgba(21, 18, 16, 0.92);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(46, 40, 36, 0.5);
-      border-radius: 100px;
-      padding: 5px;
-    }
-
-    .mobile-nav a {
-      white-space: nowrap;
-      font-family: var(--body);
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(235, 244, 245, 0.5);
-      text-decoration: none;
-      padding: 8px 15px;
-      border-radius: 100px;
-    }
-
-    .mobile-nav a.active {
-      color: var(--cream);
-      background: rgba(235, 244, 245, 0.08);
-    }
-
+<style is:global>
     /* --- HERO --- */
     .hero {
       position: relative;
@@ -391,51 +237,7 @@
       color: var(--text-muted);
     }
 
-    /* --- ANIMATIONS --- */
-    @keyframes fu {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes pageIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     /* --- RESPONSIVE --- */
-    @media (max-width: 768px) {
-      .nav-bar {
-        display: none;
-      }
-
-      .mobile-nav {
-        display: flex;
-      }
-    }
-
     @media (max-width: 900px) {
 
       .wrap,
@@ -473,27 +275,7 @@
         text-align: center;
       }
     }
-  </style>
-</head>
-
-<body>
-
-  <!-- NAV: Desktop -->
-  <div class="nav-bar">
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/">Craft</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-  </div>
-
-  <!-- NAV: Mobile -->
-  <nav class="mobile-nav">
-    <a href="/">Craft</a>
-    <a href="/about/">Story</a>
-    <a href="/writing/">Thoughts</a>
-    <a href="/contact/" class="active">Contact</a>
-  </nav>
+</style>
 
   <!-- HERO -->
   <div class="hero">
@@ -617,26 +399,4 @@
     <div class="fb"><span>&copy; 2026 ABM</span><span>Designed with intention</span></div>
   </footer>
 
-  <script>
-    // --- REVEALS ---
-    const obs = new IntersectionObserver(es => {
-      es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.06 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // --- PAGE TRANSITIONS ---
-    if (location.protocol !== 'file:') {
-      document.querySelectorAll('a[href]').forEach(a => {
-        const h = a.getAttribute('href');
-        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || h.startsWith('tel:') || h.startsWith('https://wa.me') || a.target === '_blank') return;
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          document.body.classList.add('page-leaving');
-          setTimeout(() => window.location.href = h, 150);
-        });
-      });
-    }
-  </script>
-</body>
-
-</html>
+</PageLayout>

@@ -1,86 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+---
 
-<head>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="dcd588fe-7465-4f25-b904-c044d2a17532"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="ABM at ZAR — Founding designer for an a16z-backed Solana wallet. Built 670+ component design system, led user research, scaled design team from zero.">
-  <meta name="author" content="ABM (Basit Masood)">
-  <meta property="og:title" content="ZAR — ABM">
-  <meta property="og:description"
-    content="Founding designer. $12.9M raised. 670+ components. On-ground research. 72% Cash QR.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://abmcooks.github.io/work/zar/">
-  <meta property="og:image" content="https://abmcooks.github.io/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ZAR — ABM">
-  <meta name="twitter:description" content="Founding designer. 670+ components. On-ground research. 72% Cash QR.">
-  <meta name="twitter:image" content="https://abmcooks.github.io/og.png">
-  <title>ZAR — ABM</title>
-  <link rel="canonical" href="https://abmcooks.github.io/work/zar/">
-  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --display: 'AKONY', serif;
-      --body: 'Space Grotesk', sans-serif;
-      --serif: 'Gentium Book Plus', serif;
-      --bg: #f8f5f0;
-      --text: #2E1A12;
-      --text-dim: #6b5d54;
-      --text-muted: #9a8d84;
-      --card-bg: #ffffff;
-      --card-border: rgba(0, 0, 0, 0.07);
-      --card-hover: rgba(0, 0, 0, 0.12);
-      --espresso: #2E1A12;
-      --cream: #f8f5f0;
-      --cream-light: #ffffff;
-      --red: #cc2936;
-      --accent: #C9A84E;
-      --accent-light: #DBBF6A;
-    }
+<PageLayout
+  title="ZAR — ABM"
+  description="ABM at ZAR — Founding designer for an a16z-backed Solana wallet. Built 670+ component design system, led user research, scaled design team from zero."
+  canonicalUrl="https://abmcooks.github.io/work/zar/"
+  ogTitle="ZAR — ABM"
+  ogDescription="Founding designer. $12.9M raised. 670+ components. On-ground research. 72% Cash QR."
+  active="craft"
+>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg);
-    }
-
-    body {
-      font-family: var(--body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      padding-bottom: 120px;
-      animation: pageIn 0.3s ease;
-    }
-
-    body.page-leaving {
-      opacity: 0;
-      transition: opacity 0.15s ease;
-    }
-
-    @keyframes pageIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
+<style is:global>
     /* ─── BACK LINK ─── */
     .back-link {
       position: fixed;
@@ -102,114 +33,9 @@
       color: var(--text);
     }
 
-    /* ─── NAV BAR (dark espresso on light page) ─── */
-    .nav-bar {
-      position: fixed;
-      top: 64px;
-      right: 48px;
-      z-index: 100;
-      background: var(--espresso);
-      border-radius: 8px;
-      padding: 8px 32px 8px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-bar-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-bar-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #f8f5f0;
-      display: none;
-    }
-
-    .nav-bar-item.active .nav-bar-dot {
-      display: block;
-    }
-
-    .nav-bar-item a {
-      font-family: var(--body);
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(248, 245, 240, 0.6);
-      text-decoration: none;
-    }
-
-    .nav-bar-item.active a {
-      font-weight: 700;
-      color: #f8f5f0;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .nav-bar-slash {
-      width: 12px;
-      height: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-bar-slash::after {
-      content: '';
-      display: block;
-      width: 12px;
-      height: 1px;
-      background: rgba(248, 245, 240, 0.3);
-      transform: rotate(-40deg);
-    }
-
-    /* ─── MOBILE NAV ─── */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      background: rgba(21, 18, 16, 0.92);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(46, 40, 36, 0.5);
-      border-radius: 100px;
-      padding: 5px;
-    }
-
-    .mobile-nav a {
-      white-space: nowrap;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(235, 244, 245, 0.5);
-      text-decoration: none;
-      padding: 8px 15px;
-      border-radius: 100px;
-    }
-
-    .mobile-nav a.active {
-      color: #f8f5f0;
-      background: rgba(235, 244, 245, 0.08);
-    }
-
-    @media (max-width: 768px) {
-      .nav-bar {
-        display: none;
-      }
-
-      .mobile-nav {
-        display: flex;
-      }
-
-      .back-link {
-        top: 24px;
-        left: 24px;
-      }
-    }
+    /* ─── PAGE ACCENT ─── */
+    --accent: #C9A84E;
+    --accent-light: #DBBF6A;
 
     /* ─── WRAPPER ─── */
     .wrap {
@@ -244,7 +70,7 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: var(--accent);
+      background: #C9A84E;
       box-shadow: 0 0 12px rgba(201, 168, 78, 0.4);
     }
 
@@ -254,7 +80,7 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #C9A84E;
     }
 
     .co-current {
@@ -308,7 +134,7 @@
     }
 
     .co-link:hover {
-      color: var(--accent);
+      color: #C9A84E;
       border-color: rgba(201, 168, 78, 0.4);
       background: rgba(201, 168, 78, 0.1);
     }
@@ -324,7 +150,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #C9A84E;
       margin-bottom: 24px;
       display: flex;
       align-items: center;
@@ -335,7 +161,7 @@
       content: '';
       width: 24px;
       height: 1px;
-      background: var(--accent);
+      background: #C9A84E;
     }
 
     /* ─── OVERVIEW ─── */
@@ -370,7 +196,7 @@
       font-weight: 500;
       padding: 4px 12px;
       border-radius: 100px;
-      color: var(--accent);
+      color: #C9A84E;
       border: 1px solid rgba(201, 168, 78, 0.2);
       background: rgba(201, 168, 78, 0.06);
     }
@@ -406,7 +232,7 @@
       font-family: var(--body);
       font-size: clamp(22px, 2.8vw, 30px);
       font-weight: 700;
-      color: var(--accent);
+      color: #C9A84E;
       letter-spacing: -0.02em;
       line-height: 1;
     }
@@ -451,15 +277,8 @@
     }
 
     @keyframes hintSlide {
-
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      50% {
-        transform: translateX(4px);
-      }
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
     }
 
     .cases-track {
@@ -511,7 +330,7 @@
     .case-card:hover {
       transform: translateY(-6px) scale(1.015);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 0 30px var(--card-glow, rgba(201, 168, 78, 0.06));
-      border-color: var(--accent);
+      border-color: #C9A84E;
     }
 
     /* ─── HERO METRIC ─── */
@@ -535,7 +354,7 @@
       font-weight: 700;
       letter-spacing: -0.04em;
       line-height: 1;
-      color: var(--accent);
+      color: #C9A84E;
       opacity: 0.1;
       font-size: clamp(72px, 10vw, 120px);
       transition: opacity 0.5s;
@@ -667,45 +486,11 @@
       transform: translateX(0) scale(1);
     }
 
-    /* ─── ANIMATIONS ─── */
-    @keyframes fu {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .rd1 {
-      transition-delay: .08s;
-    }
-
-    .rd2 {
-      transition-delay: .16s;
-    }
-
-    .rd3 {
-      transition-delay: .24s;
-    }
-
-    .rd4 {
-      transition-delay: .32s;
-    }
+    /* ─── DELAY CLASSES ─── */
+    .rd1 { transition-delay: .08s; }
+    .rd2 { transition-delay: .16s; }
+    .rd3 { transition-delay: .24s; }
+    .rd4 { transition-delay: .32s; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
@@ -759,6 +544,13 @@
       }
     }
 
+    @media (max-width: 768px) {
+      .back-link {
+        top: 24px;
+        left: 24px;
+      }
+    }
+
     @media (max-width: 640px) {
       .co-name {
         font-size: 56px;
@@ -777,10 +569,7 @@
         margin-top: 20px;
       }
     }
-  </style>
-</head>
-
-<body>
+</style>
 
   <!-- BACK LINK -->
   <a href="/" class="back-link">
@@ -791,22 +580,6 @@
     </svg>
     Back
   </a>
-
-  <!-- NAV -->
-  <div class="nav-bar">
-    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-  </div>
-
-  <nav class="mobile-nav">
-    <a href="/" class="active">My Craft</a>
-    <a href="/about/">Story</a>
-    <a href="/writing/">Thoughts</a>
-    <a href="/contact/">Contact</a>
-  </nav>
 
   <!-- HERO -->
   <div class="wrap">
@@ -903,8 +676,7 @@
         </div>
         <div class="case-overlay">
           <div class="case-title">The Golden Flow</div>
-          <div class="case-hook">Redesigned onboarding from 18 steps to 4. Removed everything that wasn't earning trust.
-          </div>
+          <div class="case-hook">Redesigned onboarding from 18 steps to 4. Removed everything that wasn't earning trust.</div>
           <div class="case-footer">
             <div class="case-tags">
               <span class="case-tag">UX Architecture</span>
@@ -926,8 +698,7 @@
         </div>
         <div class="case-overlay">
           <div class="case-title">Techtonic</div>
-          <div class="case-hook">Design system from brand book to production code. Zero visual drift between Figma and
-            Flutter.</div>
+          <div class="case-hook">Design system from brand book to production code. Zero visual drift between Figma and Flutter.</div>
           <div class="case-footer">
             <div class="case-tags">
               <span class="case-tag">Design System</span>
@@ -993,8 +764,7 @@
         </div>
         <div class="case-overlay">
           <div class="case-title">Cash QR Consolidation</div>
-          <div class="case-hook">Killed the order system for face-to-face commerce. Made the workaround the product.
-          </div>
+          <div class="case-hook">Killed the order system for face-to-face commerce. Made the workaround the product.</div>
           <div class="case-footer">
             <div class="case-tags">
               <span class="case-tag">Research</span>
@@ -1021,32 +791,11 @@
   </footer>
 
   <script>
-    // ─── REVEALS ───
-    const obs = new IntersectionObserver(es => {
-      es.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
-      })
-    }, { threshold: .06 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // ─── COUNTERS ───
-    document.querySelectorAll('.si-num[data-t]').forEach(el => {
-      const co = new IntersectionObserver(es => {
-        es.forEach(en => {
-          if (en.isIntersecting && !en.target.dataset.d) {
-            en.target.dataset.d = '1';
-            const t = parseFloat(en.target.dataset.t), p = en.target.dataset.p || '', s = en.target.dataset.s || '', dc = t % 1 !== 0, du = 2000, st = performance.now();
-            (function tk(n) { const pr = Math.min((n - st) / du, 1), ea = 1 - Math.pow(1 - pr, 4); en.target.textContent = p + (dc ? (t * ea).toFixed(1) : Math.floor(t * ea)) + s; if (pr < 1) requestAnimationFrame(tk) })(st);
-          }
-        })
-      }, { threshold: .5 }); co.observe(el);
-    });
-
     // ─── CAROUSEL DRAG TO SCROLL ───
     const track = document.getElementById('casesTrack');
     if (track) {
-      let isDown = false, startX, scrollL, hasDragged = false;
-      track.addEventListener('mousedown', e => {
+      let isDown = false, startX: number, scrollL: number, hasDragged = false;
+      track.addEventListener('mousedown', (e: MouseEvent) => {
         isDown = true; hasDragged = false;
         track.classList.add('grabbing');
         startX = e.pageX - track.offsetLeft;
@@ -1054,7 +803,7 @@
       });
       track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('grabbing'); });
       track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('grabbing'); });
-      track.addEventListener('mousemove', e => {
+      track.addEventListener('mousemove', (e: MouseEvent) => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - track.offsetLeft;
@@ -1063,28 +812,14 @@
         track.scrollLeft = scrollL - walk;
       });
       track.querySelectorAll('.case-card').forEach(card => {
-        card.addEventListener('click', e => { if (hasDragged) { e.preventDefault(); hasDragged = false; } });
+        card.addEventListener('click', (e: Event) => { if (hasDragged) { e.preventDefault(); hasDragged = false; } });
       });
-      track.addEventListener('wheel', e => {
+      track.addEventListener('wheel', (e: WheelEvent) => {
         if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
         e.preventDefault();
         track.scrollBy({ left: e.deltaY * 2, behavior: 'smooth' });
       }, { passive: false });
     }
-
-    // ─── PAGE TRANSITIONS ───
-    if (location.protocol !== 'file:') {
-      document.querySelectorAll('a[href]').forEach(a => {
-        const h = a.getAttribute('href');
-        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          document.body.classList.add('page-leaving');
-          setTimeout(() => window.location.href = h, 150);
-        });
-      });
-    }
   </script>
-</body>
 
-</html>
+</PageLayout>

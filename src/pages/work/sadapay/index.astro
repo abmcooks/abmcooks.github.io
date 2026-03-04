@@ -1,87 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+---
 
-<head>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="dcd588fe-7465-4f25-b904-c044d2a17532"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="ABM at SadaPay — First designer to Head of Product Design. Built Nukta design system, designed MEA's first numberless card, scaled team 1→12. $50M acquisition.">
-  <meta name="author" content="ABM (Basit Masood)">
-  <meta property="og:title" content="SadaPay — ABM">
-  <meta property="og:description"
-    content="First designer → Head of Design. Numberless card. 4M users. $50M acquisition.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://abmcooks.github.io/work/sadapay/">
-  <meta property="og:image" content="https://abmcooks.github.io/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SadaPay — ABM">
-  <meta name="twitter:description"
-    content="First designer → Head of Design. Numberless card. 4M users. $50M acquisition.">
-  <meta name="twitter:image" content="https://abmcooks.github.io/og.png">
-  <title>SadaPay — ABM</title>
-  <link rel="canonical" href="https://abmcooks.github.io/work/sadapay/">
-  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --display: 'AKONY', serif;
-      --body: 'Space Grotesk', sans-serif;
-      --serif: 'Gentium Book Plus', serif;
-      --bg: #f8f5f0;
-      --text: #2E1A12;
-      --text-dim: #6b5d54;
-      --text-muted: #9a8d84;
-      --card-bg: #ffffff;
-      --card-border: rgba(0, 0, 0, 0.07);
-      --card-hover: rgba(0, 0, 0, 0.12);
-      --espresso: #2E1A12;
-      --cream: #f8f5f0;
-      --cream-light: #ffffff;
-      --red: #cc2936;
-      --accent: #ff7b66;
-      --accent-light: #ff9d8d;
-    }
+<PageLayout
+  title="SadaPay — ABM"
+  description="ABM at SadaPay — First designer to Head of Product Design. Built Nukta design system, designed MEA's first numberless card, scaled team 1->12. $50M acquisition."
+  canonicalUrl="https://abmcooks.github.io/work/sadapay/"
+  ogTitle="SadaPay — ABM"
+  ogDescription="First designer -> Head of Design. Numberless card. 4M users. $50M acquisition."
+  active="craft"
+>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg);
-    }
-
-    body {
-      font-family: var(--body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      padding-bottom: 120px;
-      animation: pageIn 0.3s ease;
-    }
-
-    body.page-leaving {
-      opacity: 0;
-      transition: opacity 0.15s ease;
-    }
-
-    @keyframes pageIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
+<style is:global>
     /* ─── BACK LINK ─── */
     .back-link {
       position: fixed;
@@ -101,115 +31,6 @@
 
     .back-link:hover {
       color: var(--text);
-    }
-
-    /* ─── NAV BAR (dark espresso on light page) ─── */
-    .nav-bar {
-      position: fixed;
-      top: 64px;
-      right: 48px;
-      z-index: 100;
-      background: var(--espresso);
-      border-radius: 8px;
-      padding: 8px 32px 8px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-bar-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-bar-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #f8f5f0;
-      display: none;
-    }
-
-    .nav-bar-item.active .nav-bar-dot {
-      display: block;
-    }
-
-    .nav-bar-item a {
-      font-family: var(--body);
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(248, 245, 240, 0.6);
-      text-decoration: none;
-    }
-
-    .nav-bar-item.active a {
-      font-weight: 700;
-      color: #f8f5f0;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .nav-bar-slash {
-      width: 12px;
-      height: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-bar-slash::after {
-      content: '';
-      display: block;
-      width: 12px;
-      height: 1px;
-      background: rgba(248, 245, 240, 0.3);
-      transform: rotate(-40deg);
-    }
-
-    /* ─── MOBILE NAV ─── */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      background: rgba(21, 18, 16, 0.92);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(46, 40, 36, 0.5);
-      border-radius: 100px;
-      padding: 5px;
-    }
-
-    .mobile-nav a {
-      white-space: nowrap;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(235, 244, 245, 0.5);
-      text-decoration: none;
-      padding: 8px 15px;
-      border-radius: 100px;
-    }
-
-    .mobile-nav a.active {
-      color: #f8f5f0;
-      background: rgba(235, 244, 245, 0.08);
-    }
-
-    @media (max-width: 768px) {
-      .nav-bar {
-        display: none;
-      }
-
-      .mobile-nav {
-        display: flex;
-      }
-
-      .back-link {
-        top: 24px;
-        left: 24px;
-      }
     }
 
     /* ─── WRAPPER ─── */
@@ -248,7 +69,7 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: var(--accent);
+      background: #ff7b66;
       box-shadow: 0 0 12px rgba(255, 123, 102, 0.4);
     }
 
@@ -258,7 +79,7 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #ff7b66;
     }
 
     .co-name {
@@ -302,7 +123,7 @@
     }
 
     .co-link:hover {
-      color: var(--accent);
+      color: #ff7b66;
       border-color: rgba(255, 123, 102, 0.4);
       background: rgba(255, 123, 102, 0.1);
     }
@@ -318,7 +139,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #ff7b66;
       margin-bottom: 24px;
       display: flex;
       align-items: center;
@@ -329,13 +150,11 @@
       content: '';
       width: 24px;
       height: 1px;
-      background: var(--accent);
+      background: #ff7b66;
     }
 
     /* ─── OVERVIEW ─── */
-    .overview {
-      padding: 0 0 0;
-    }
+    .overview { padding: 0 0 0; }
 
     .overview-brief {
       font-family: var(--serif);
@@ -364,7 +183,7 @@
       font-weight: 500;
       padding: 4px 12px;
       border-radius: 100px;
-      color: var(--accent);
+      color: #ff7b66;
       border: 1px solid rgba(255, 123, 102, 0.2);
       background: rgba(255, 123, 102, 0.06);
     }
@@ -380,10 +199,7 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
-    .si {
-      text-align: center;
-      position: relative;
-    }
+    .si { text-align: center; position: relative; }
 
     .si+.si::before {
       content: '';
@@ -400,7 +216,7 @@
       font-family: var(--body);
       font-size: clamp(22px, 2.8vw, 30px);
       font-weight: 700;
-      color: var(--accent);
+      color: #ff7b66;
       letter-spacing: -0.02em;
       line-height: 1;
     }
@@ -416,7 +232,7 @@
     /* ─── TESTIMONIALS ─── */
     .testimonial {
       padding: 24px 28px;
-      border-left: 2px solid var(--accent);
+      border-left: 2px solid #ff7b66;
       background: var(--card-bg);
       border-radius: 0 12px 12px 0;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
@@ -437,15 +253,11 @@
       margin-top: 12px;
       font-family: var(--body);
       font-size: 13px;
-      color: var(--accent);
+      color: #ff7b66;
     }
 
     /* ─── CASE STUDIES CAROUSEL ─── */
-    .cases {
-      padding: 48px 0 0;
-      position: relative;
-      z-index: 2;
-    }
+    .cases { padding: 48px 0 0; position: relative; z-index: 2; }
 
     .cases-header {
       max-width: 900px;
@@ -466,21 +278,11 @@
       gap: 6px;
     }
 
-    .cases-hint svg {
-      opacity: 0.5;
-      animation: hintSlide 2s ease-in-out infinite;
-    }
+    .cases-hint svg { opacity: 0.5; animation: hintSlide 2s ease-in-out infinite; }
 
     @keyframes hintSlide {
-
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      50% {
-        transform: translateX(4px);
-      }
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
     }
 
     .cases-track {
@@ -496,14 +298,8 @@
       cursor: grab;
     }
 
-    .cases-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .cases-track.grabbing {
-      cursor: grabbing;
-      scroll-snap-type: none;
-    }
+    .cases-track::-webkit-scrollbar { display: none; }
+    .cases-track.grabbing { cursor: grabbing; scroll-snap-type: none; }
 
     /* ─── CARD BASE ─── */
     .case-card {
@@ -521,21 +317,15 @@
       transition: transform 0.5s cubic-bezier(.23, 1, .32, 1), box-shadow 0.5s, border-color 0.3s;
     }
 
-    .case-card.wide {
-      flex: 0 0 440px;
-    }
-
-    .case-card.stagger {
-      margin-top: 40px;
-    }
+    .case-card.wide { flex: 0 0 440px; }
+    .case-card.stagger { margin-top: 40px; }
 
     .case-card:hover {
       transform: translateY(-6px) scale(1.015);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 0 30px var(--card-glow, rgba(255, 123, 102, 0.06));
-      border-color: var(--accent);
+      border-color: #ff7b66;
     }
 
-    /* ─── HERO METRIC ─── */
     .case-hero {
       position: absolute;
       z-index: 2;
@@ -547,28 +337,21 @@
       transition: transform 0.5s cubic-bezier(.23, 1, .32, 1), opacity 0.5s;
     }
 
-    .case-card:hover .case-hero {
-      transform: translate(-50%, -65%);
-    }
+    .case-card:hover .case-hero { transform: translate(-50%, -65%); }
 
     .case-hero-num {
       font-family: var(--body);
       font-weight: 700;
       letter-spacing: -0.04em;
       line-height: 1;
-      color: var(--accent);
+      color: #ff7b66;
       opacity: 0.1;
       font-size: clamp(72px, 10vw, 120px);
       transition: opacity 0.5s;
     }
 
-    .case-card.wide .case-hero-num {
-      font-size: clamp(80px, 12vw, 140px);
-    }
-
-    .case-card:hover .case-hero-num {
-      opacity: 0.18;
-    }
+    .case-card.wide .case-hero-num { font-size: clamp(80px, 12vw, 140px); }
+    .case-card:hover .case-hero-num { opacity: 0.18; }
 
     .case-hero-sub {
       font-family: var(--body);
@@ -582,11 +365,8 @@
       transition: opacity 0.4s 0.1s;
     }
 
-    .case-card:hover .case-hero-sub {
-      opacity: 0.6;
-    }
+    .case-card:hover .case-hero-sub { opacity: 0.6; }
 
-    /* ─── NUMBER BADGE ─── */
     .case-num {
       position: absolute;
       top: 18px;
@@ -599,7 +379,6 @@
       opacity: 0.4;
     }
 
-    /* ─── BOTTOM OVERLAY ─── */
     .case-overlay {
       position: absolute;
       bottom: 0;
@@ -621,10 +400,6 @@
       transition: color 0.3s;
     }
 
-    .case-card:hover .case-title {
-      color: var(--text);
-    }
-
     .case-hook {
       font-family: var(--serif);
       font-size: 15px;
@@ -637,18 +412,8 @@
       overflow: hidden;
     }
 
-    .case-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .case-tags {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
+    .case-footer { display: flex; align-items: center; justify-content: space-between; }
+    .case-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 
     .case-tag {
       font-family: var(--body);
@@ -663,10 +428,7 @@
       transition: border-color 0.3s, color 0.3s;
     }
 
-    .case-card:hover .case-tag {
-      border-color: rgba(0, 0, 0, 0.15);
-      color: var(--text);
-    }
+    .case-card:hover .case-tag { border-color: rgba(0, 0, 0, 0.15); color: var(--text); }
 
     .case-arrow {
       width: 32px;
@@ -683,125 +445,40 @@
       transition: all 0.35s cubic-bezier(.23, 1, .32, 1);
     }
 
-    .case-card:hover .case-arrow {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
+    .case-card:hover .case-arrow { opacity: 1; transform: translateX(0) scale(1); }
 
-    /* ─── ANIMATIONS ─── */
-    @keyframes fu {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s cubic-bezier(.23, 1, .32, 1), transform 0.8s cubic-bezier(.23, 1, .32, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .rd1 {
-      transition-delay: .08s;
-    }
-
-    .rd2 {
-      transition-delay: .16s;
-    }
-
-    .rd3 {
-      transition-delay: .24s;
-    }
-
-    .rd4 {
-      transition-delay: .32s;
-    }
+    /* ─── DELAY CLASSES ─── */
+    .rd1 { transition-delay: .08s; }
+    .rd2 { transition-delay: .16s; }
+    .rd3 { transition-delay: .24s; }
+    .rd4 { transition-delay: .32s; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .wrap {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
+      .wrap { padding-left: 20px; padding-right: 20px; }
+      .hero { padding: 140px 0 60px; }
+      .cases-header { padding: 0 20px; }
+      .cases-track { padding: 16px 20px 32px; gap: 14px; }
+      .case-card { flex: 0 0 280px; height: 340px; }
+      .case-card.wide { flex: 0 0 340px; }
+      .case-card.stagger { margin-top: 28px; }
+      .case-hero-num { font-size: 64px !important; }
+      .stats-inline { grid-template-columns: 1fr 1fr; gap: 16px 0; }
+      .si:nth-child(2)::before { display: none; }
+      .co-links { flex-wrap: wrap; justify-content: center; }
+    }
 
-      .hero {
-        padding: 140px 0 60px;
-      }
-
-      .cases-header {
-        padding: 0 20px;
-      }
-
-      .cases-track {
-        padding: 16px 20px 32px;
-        gap: 14px;
-      }
-
-      .case-card {
-        flex: 0 0 280px;
-        height: 340px;
-      }
-
-      .case-card.wide {
-        flex: 0 0 340px;
-      }
-
-      .case-card.stagger {
-        margin-top: 28px;
-      }
-
-      .case-hero-num {
-        font-size: 64px !important;
-      }
-
-      .stats-inline {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px 0;
-      }
-
-      .si:nth-child(2)::before {
-        display: none;
-      }
-
-      .co-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+    @media (max-width: 768px) {
+      .back-link { top: 24px; left: 24px; }
     }
 
     @media (max-width: 640px) {
-      .co-name {
-        font-size: 48px;
-      }
-
-      .case-card {
-        flex: 0 0 260px;
-        height: 320px;
-      }
-
-      .case-card.wide {
-        flex: 0 0 300px;
-      }
-
-      .case-card.stagger {
-        margin-top: 20px;
-      }
+      .co-name { font-size: 48px; }
+      .case-card { flex: 0 0 260px; height: 320px; }
+      .case-card.wide { flex: 0 0 300px; }
+      .case-card.stagger { margin-top: 20px; }
     }
-  </style>
-</head>
-
-<body>
+</style>
 
   <!-- BACK LINK -->
   <a href="/" class="back-link">
@@ -812,22 +489,6 @@
     </svg>
     Back
   </a>
-
-  <!-- NAV -->
-  <div class="nav-bar">
-    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-  </div>
-
-  <nav class="mobile-nav">
-    <a href="/" class="active">My Craft</a>
-    <a href="/about/">Story</a>
-    <a href="/writing/">Thoughts</a>
-    <a href="/contact/">Contact</a>
-  </nav>
 
   <!-- HERO -->
   <div class="wrap">
@@ -869,8 +530,7 @@
       <p class="overview-brief">
         <strong>Founding designer.</strong> I joined SadaPay as the first in-house designer when it was just an idea
         &mdash; bring digital wallets to 220 million people, 87% of whom had never used a bank. The app I designed in
-        year one helped secure a <strong>$7.2M seed round</strong> &mdash; the largest by a Pakistani startup at the
-        time.
+        year one helped secure a <strong>$7.2M seed round</strong> &mdash; the largest by a Pakistani startup at the time.
       </p>
       <p class="overview-brief" style="margin-top:16px;">
         Over 4 years, I built the entire design foundation: the core wallet app, <strong>Nukta</strong> (our design
@@ -1017,32 +677,11 @@
   </footer>
 
   <script>
-    // ─── REVEALS ───
-    const obs = new IntersectionObserver(es => {
-      es.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
-      })
-    }, { threshold: .06 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // ─── COUNTERS ───
-    document.querySelectorAll('.si-num[data-t]').forEach(el => {
-      const co = new IntersectionObserver(es => {
-        es.forEach(en => {
-          if (en.isIntersecting && !en.target.dataset.d) {
-            en.target.dataset.d = '1';
-            const t = parseFloat(en.target.dataset.t), p = en.target.dataset.p || '', s = en.target.dataset.s || '', dc = t % 1 !== 0, du = 2000, st = performance.now();
-            (function tk(n) { const pr = Math.min((n - st) / du, 1), ea = 1 - Math.pow(1 - pr, 4); en.target.textContent = p + (dc ? (t * ea).toFixed(1) : Math.floor(t * ea)) + s; if (pr < 1) requestAnimationFrame(tk) })(st);
-          }
-        })
-      }, { threshold: .5 }); co.observe(el);
-    });
-
     // ─── CAROUSEL DRAG TO SCROLL ───
     const track = document.getElementById('casesTrack');
     if (track) {
-      let isDown = false, startX, scrollL, hasDragged = false;
-      track.addEventListener('mousedown', e => {
+      let isDown = false, startX: number, scrollL: number, hasDragged = false;
+      track.addEventListener('mousedown', (e: MouseEvent) => {
         isDown = true; hasDragged = false;
         track.classList.add('grabbing');
         startX = e.pageX - track.offsetLeft;
@@ -1050,7 +689,7 @@
       });
       track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('grabbing'); });
       track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('grabbing'); });
-      track.addEventListener('mousemove', e => {
+      track.addEventListener('mousemove', (e: MouseEvent) => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - track.offsetLeft;
@@ -1059,28 +698,14 @@
         track.scrollLeft = scrollL - walk;
       });
       track.querySelectorAll('.case-card').forEach(card => {
-        card.addEventListener('click', e => { if (hasDragged) { e.preventDefault(); hasDragged = false; } });
+        card.addEventListener('click', (e: Event) => { if (hasDragged) { e.preventDefault(); hasDragged = false; } });
       });
-      track.addEventListener('wheel', e => {
+      track.addEventListener('wheel', (e: WheelEvent) => {
         if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
         e.preventDefault();
         track.scrollBy({ left: e.deltaY * 2, behavior: 'smooth' });
       }, { passive: false });
     }
-
-    // ─── PAGE TRANSITIONS ───
-    if (location.protocol !== 'file:') {
-      document.querySelectorAll('a[href]').forEach(a => {
-        const h = a.getAttribute('href');
-        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          document.body.classList.add('page-leaving');
-          setTimeout(() => window.location.href = h, 150);
-        });
-      });
-    }
   </script>
-</body>
 
-</html>
+</PageLayout>

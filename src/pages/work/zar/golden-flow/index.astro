@@ -1,206 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+import PageLayout from '../../../../layouts/PageLayout.astro';
+---
 
-<head>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="dcd588fe-7465-4f25-b904-c044d2a17532"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="The Golden Flow — 18 steps to 4. What if users had money in their wallet before they even had an account?">
-  <meta name="author" content="ABM (Basit Masood)">
-  <meta property="og:title" content="The Golden Flow — ABM">
-  <meta property="og:description"
-    content="18 steps to 4. We flipped the onboarding model: value first, identity later.">
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Golden Flow — ABM">
-  <meta name="twitter:description"
-    content="18 steps to 4. We flipped the onboarding model: value first, identity later.">
-  <title>The Golden Flow — ABM</title>
-  <link href="https://fonts.cdnfonts.com/css/akony" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --display: 'AKONY', serif;
-      --body: 'Space Grotesk', sans-serif;
-      --serif: 'Gentium Book Plus', serif;
-      --bg: #f8f5f0;
-      --text: #2E1A12;
-      --text-dim: #6b5d54;
-      --text-muted: #9a8d84;
-      --card-bg: #ffffff;
-      --card-border: rgba(0, 0, 0, 0.07);
-      --accent: #C9A84E;
-      --accent-light: #DBBF6A;
-      --red: #cc2936;
-      --espresso: #2E1A12;
-    }
+<PageLayout
+  title="The Golden Flow — ABM"
+  description="The Golden Flow — 18 steps to 4. What if users had money in their wallet before they even had an account?"
+  canonicalUrl="https://abmcooks.github.io/work/zar/golden-flow/"
+  ogTitle="The Golden Flow — ABM"
+  ogDescription="18 steps to 4. We flipped the onboarding model: value first, identity later."
+  active="craft"
+>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link rel="stylesheet" href="/assets/gate.css" slot="head" />
+<script src="/assets/gate.js" defer slot="head"></script>
 
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg);
-    }
+<style is:global>
+  :root {
+    --accent: #C9A84E;
+    --accent-light: #DBBF6A;
+  }
 
-    body {
-      font-family: var(--body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      padding-bottom: 120px;
-      animation: pageIn 0.3s ease;
-    }
 
-    body.page-leaving {
-      opacity: 0;
-      transition: opacity 0.15s ease;
-    }
-
-    @keyframes pageIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    .back-link {
-      position: fixed;
-      top: 64px;
-      left: 48px;
-      z-index: 100;
-      font-family: var(--body);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-dim);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-
-    .back-link:hover {
-      color: var(--text);
-    }
-
-    .nav-bar {
-      position: fixed;
-      top: 64px;
-      right: 48px;
-      z-index: 100;
-      background: var(--text);
-      border-radius: 8px;
-      padding: 8px 32px 8px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-bar-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-bar-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #f8f5f0;
-      display: none;
-    }
-
-    .nav-bar-item.active .nav-bar-dot {
-      display: block;
-    }
-
-    .nav-bar-item a {
-      font-family: var(--body);
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(248, 245, 240, 0.6);
-      text-decoration: none;
-    }
-
-    .nav-bar-item.active a {
-      font-weight: 700;
-      color: #f8f5f0;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .nav-bar-slash {
-      width: 12px;
-      height: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-bar-slash::after {
-      content: '';
-      display: block;
-      width: 12px;
-      height: 1px;
-      background: rgba(248, 245, 240, 0.3);
-      transform: rotate(-40deg);
-    }
-
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      background: rgba(21, 18, 16, 0.92);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(46, 40, 36, 0.5);
-      border-radius: 100px;
-      padding: 5px;
-    }
-
-    .mobile-nav a {
-      white-space: nowrap;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(235, 244, 245, 0.5);
-      text-decoration: none;
-      padding: 8px 15px;
-      border-radius: 100px;
-    }
-
-    .mobile-nav a.active {
-      color: #f8f5f0;
-      background: rgba(235, 244, 245, 0.08);
-    }
-
-    @media (max-width: 768px) {
-      .nav-bar {
-        display: none;
-      }
-
-      .mobile-nav {
-        display: flex;
-      }
-
-      .back-link {
-        top: 24px;
-        left: 24px;
-      }
-    }
 
     .cs-hero {
       position: relative;
@@ -370,13 +190,7 @@
       margin-bottom: 20px;
     }
 
-    .cs-body {
-      font-family: var(--serif);
-      font-size: 16px;
-      color: var(--text-dim);
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
+    .cs-
 
     .cs-body strong {
       color: var(--text);
@@ -1468,18 +1282,6 @@
       white-space: nowrap;
     }
 
-    @keyframes fu {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     @media (max-width: 900px) {
       .cs-hero {
         padding: 140px 24px 60px;
@@ -1551,30 +1353,9 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
-  <link rel="stylesheet" href="../../../assets/gate.css">
-  <script src="../../../assets/gate.js" defer></script>
-</head>
+</style>
 
-<body>
-
-  <!-- NAV -->
-  <a href="/work/zar/" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-      <path d="M19 12H5" />
-      <path d="M12 19l-7-7 7-7" />
-    </svg> Back to ZAR</a>
-  <div class="nav-bar">
-    <div class="nav-bar-item active"><span class="nav-bar-dot"></span><a href="/">My Craft</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/about/">Story</a></div>
-    <div class="nav-bar-slash"></div>
-    <div class="nav-bar-item"><span class="nav-bar-dot"></span><a href="/writing/">Thoughts</a></div>
-  </div>
-  <nav class="mobile-nav"><a href="/" class="active">My Craft</a><a href="/about/">Story</a><a
-      href="/writing/">Thoughts</a><a href="/contact/">Contact</a></nav>
-
-  <!-- HERO -->
+<!-- HERO -->
   <div class="cs-hero">
     <div class="cs-hero-metric">18&rarr;4</div>
     <div class="cs-hero-content">
@@ -2061,26 +1842,4 @@
       <span>&copy; 2026 ABM</span><span>Designed with intention</span></div>
   </footer>
 
-  <script>
-    const obs = new IntersectionObserver(es => {
-      es.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
-      })
-    }, { threshold: .06 });
-    document.querySelectorAll('.cs-section, .reveal').forEach(el => obs.observe(el));
-
-    if (location.protocol !== 'file:') {
-      document.querySelectorAll('a[href]').forEach(a => {
-        const h = a.getAttribute('href');
-        if (!h || h === '#' || h.startsWith('#') || h.startsWith('mailto:') || a.target === '_blank') return;
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          document.body.classList.add('page-leaving');
-          setTimeout(() => window.location.href = h, 150);
-        });
-      });
-    }
-  </script>
-</body>
-
-</html>
+</PageLayout>
