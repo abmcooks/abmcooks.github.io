@@ -1405,9 +1405,11 @@
       /* Company sections — content-driven height */
       .cs {
         height: auto;
-        padding: 60px 24px 40px;
+        padding: 40px 24px 40px;
         overflow: hidden;
         scroll-snap-align: none;
+        flex-direction: column;
+        align-items: center;
       }
 
       .cs-inner {
@@ -1429,6 +1431,10 @@
 
       .cs-desc {
         font-size: 16px;
+      }
+
+      .cs-desc br {
+        display: none;
       }
 
       .cs-screens-wrap {
@@ -1455,11 +1461,12 @@
       }
 
       .cs-logo {
-        left: 24px;
-        top: 20px;
+        position: static;
         width: 52px;
         height: 52px;
         padding: 8px;
+        align-self: center;
+        margin-bottom: -8px;
       }
 
       /* WTT — allow wrapping on mobile */
@@ -1564,7 +1571,7 @@
       }
 
       .cs {
-        padding: 48px 20px 32px;
+        padding: 32px 20px 32px;
       }
 
       .cs-inner {
@@ -1614,11 +1621,12 @@
       }
 
       .cs-logo {
-        left: 20px;
-        top: 16px;
+        position: static;
         width: 52px;
         height: 52px;
         padding: 8px;
+        align-self: center;
+        margin-bottom: -6px;
       }
 
       .cs-wtt .cs-name {
