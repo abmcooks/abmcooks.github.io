@@ -151,7 +151,7 @@
     /* Index trigger — visible on scroll */
     .nav-trigger {
       position: fixed;
-      top: 64px;
+      top: 40px;
       right: 48px;
       z-index: 100;
       font-family: var(--body);
@@ -290,6 +290,33 @@
       flex-shrink: 0;
     }
 
+    .hero-identity {
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.3s ease forwards;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .hero-name {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--hero-text);
+      margin: 0;
+    }
+
+    .hero-role {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--hero-text);
+      opacity: 0.45;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
     .hero-headline {
       display: flex;
       flex-direction: column;
@@ -301,7 +328,7 @@
 
     .hero-line {
       overflow: hidden;
-      animation: clipRelease 0s 1.8s forwards;
+      animation: clipRelease 0s 2s forwards;
     }
 
     .hero-line span {
@@ -310,6 +337,11 @@
       transform: translateY(120%);
       animation: lineReveal 0.9s cubic-bezier(0.62, 0.05, 0.18, 1) forwards;
     }
+
+    .hl-1 { animation-delay: 0s; }
+    .hl-1 span { animation-delay: 0.5s !important; }
+    .hl-2 span { animation-delay: 0.7s !important; }
+    .hl-3 span { animation-delay: 0.9s !important; }
 
     @keyframes clipRelease {
       to {
@@ -321,17 +353,7 @@
       color: var(--red);
     }
 
-    .hl-1 span {
-      animation-delay: 0.4s;
-    }
-
-    .hl-2 span {
-      animation-delay: 0.6s;
-    }
-
-    .hl-3 span {
-      animation-delay: 0.8s;
-    }
+    /* animation delays moved above with identity timing */
 
     @keyframes lineReveal {
       to {
@@ -354,33 +376,12 @@
     .hero-content-bottom {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 12px;
       margin-top: 48px;
       opacity: 0;
-      animation: fadeUp 0.6s 1.3s ease forwards;
+      animation: fadeUp 0.6s 1.5s ease forwards;
     }
 
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .hero-meta span {
-      font-size: 18px;
-      color: var(--hero-text);
-      font-weight: 400;
-      letter-spacing: -0.03em;
-    }
-
-    .hero-meta-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--hero-text);
-      flex-shrink: 0;
-    }
 
     .micro-text {
       height: 24px;
@@ -390,10 +391,12 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      font-family: var(--serif);
+      font-style: italic;
       font-size: 18px;
       color: var(--hero-text);
-      font-weight: 500;
-      letter-spacing: -0.03em;
+      font-weight: 400;
+      letter-spacing: -0.01em;
       transition: opacity 0.35s, transform 0.35s;
     }
 
@@ -622,6 +625,8 @@
       width: 100%;
       flex: 1;
       min-height: 0;
+      position: relative;
+      z-index: 3;
     }
 
     .cs-screens {
@@ -634,7 +639,7 @@
 
     .cs-screen {
       flex: 1;
-      border-radius: 16px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -680,6 +685,235 @@
       color: rgba(235, 244, 245, 0.35);
     }
 
+    /* ═══ VIDEO PLAYER ═══ */
+    .cs-video-player {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 9 / 19;
+      z-index: 10;
+      pointer-events: auto;
+      background: url('/assets/videos/zar/poster.jpg') center/cover no-repeat;
+    }
+
+    /* Let clicks pass through the link overlay onto the video player */
+    .cs-zar .cs-link {
+      pointer-events: none;
+    }
+
+    .cs-zar {
+      cursor: default;
+    }
+
+    .cs-zar .cs-text {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .cs-video-player video {
+      display: none;
+    }
+
+    .cs-video-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.25);
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      z-index: 3;
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    .cs-video-play:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .cs-video-play svg {
+      width: 56px;
+      height: 56px;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    }
+
+    .cs-video-play span {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .cs-video-player.playing .cs-video-play {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ═══ ZAR DOWNLOAD CTA ═══ */
+    .cs-media-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cs-download {
+      position: absolute;
+      bottom: 24px;
+      right: 32px;
+      display: flex;
+      align-items: center;
+      padding: 12px 14px;
+      background: var(--hero-text);
+      border-radius: 8px;
+      pointer-events: auto;
+      z-index: 20;
+    }
+
+    .cs-download-qr {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+    }
+
+    .cs-download-label {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--espresso-dim);
+      letter-spacing: -0.01em;
+    }
+
+    .cs-download-qr-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cs-download-badges {
+      display: none;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .cs-download-badges a {
+      display: block;
+      transition: opacity 0.2s ease;
+    }
+
+    .cs-download-badges a:hover {
+      opacity: 0.8;
+    }
+
+    .cs-download-badges img {
+      height: 40px;
+      width: auto;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .cs-download {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        padding: 12px 16px;
+        justify-content: center;
+      }
+      .cs-download-qr-wrap { display: none; }
+      .cs-download-badges { display: flex; }
+    }
+
+    /* Fullscreen video overlay */
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: background 0.5s ease;
+    }
+
+    .video-overlay.active {
+      background: rgba(0, 0, 0, 0.95);
+      pointer-events: all;
+    }
+
+    .video-overlay video {
+      width: auto;
+      height: 95vh;
+      max-width: 95vw;
+      border-radius: 8px;
+      object-fit: contain;
+      transform: scale(0.5);
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease;
+    }
+
+    .video-overlay.active video {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .video-overlay-close {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.3s, background 0.2s ease;
+      z-index: 10001;
+    }
+
+    .video-overlay.active .video-overlay-close {
+      opacity: 1;
+    }
+
+    .video-overlay-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .video-overlay-close svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .video-overlay video {
+        height: auto;
+        width: 85vw;
+        max-height: 85vh;
+      }
+
+      .video-overlay-close {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
     /* ═══ COMPANY LOGO PILL ═══ */
     .cs-logo {
       position: absolute;
@@ -702,6 +936,10 @@
       max-height: 100%;
       object-fit: contain;
     }
+
+    .cs-zar .cs-logo { padding: 4px; }
+    .cs-sadapay .cs-logo { padding: 4px; }
+    .cs-adib .cs-logo { padding: 4px; }
 
     /* ═══ SECTION COLORS ═══ */
     .cs-zar {
@@ -828,7 +1066,7 @@
       width: 323px;
       padding: 24px;
       background: white;
-      border-radius: 16px;
+      border-radius: 8px;
       scroll-snap-align: start;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       display: flex;
@@ -1125,12 +1363,20 @@
         margin-bottom: 16px;
       }
 
-      .hero-content-bottom {
-        margin-top: 32px;
+      .hero-identity {
+        margin-bottom: 12px;
       }
 
-      .hero-meta span {
+      .hero-name {
         font-size: 16px;
+      }
+
+      .hero-role {
+        font-size: 13px;
+      }
+
+      .hero-content-bottom {
+        margin-top: 32px;
       }
 
       .micro-text span {
@@ -1194,7 +1440,16 @@
       }
 
       .cs-screen {
-        border-radius: 12px;
+        border-radius: 8px;
+      }
+
+      .cs-video-player {
+        max-width: 280px;
+      }
+
+      .cs-video-play svg {
+        width: 44px;
+        height: 44px;
       }
 
       .cs-logo {
@@ -1293,18 +1548,12 @@
         font-size: 14px;
       }
 
-      .hero-meta {
-        flex-direction: column;
-        gap: 4px;
-        align-items: flex-start;
-      }
-
-      .hero-meta-dot {
-        display: none;
-      }
-
-      .hero-meta span {
+      .hero-name {
         font-size: 14px;
+      }
+
+      .hero-role {
+        font-size: 12px;
       }
 
       .micro-text span {
@@ -1336,8 +1585,29 @@
         gap: 8px;
       }
 
+      .cs-video-player {
+        max-width: 220px;
+        border-radius: 8px;
+      }
+
+      .cs-video-player video {
+        border-radius: 8px;
+      }
+
+      .cs-video-play {
+        border-radius: 8px;
+      }
+
+      .cs-video-play span {
+        font-size: 11px;
+      }
+
+      .cs-download-badges img {
+        height: 36px;
+      }
+
       .cs-screen {
-        border-radius: 10px;
+        border-radius: 8px;
       }
 
       .cs-logo {
@@ -1414,6 +1684,11 @@
     <div class="hero-inner">
       <p class="hero-greeting" id="greeting"></p>
 
+      <div class="hero-identity">
+        <h1 class="hero-name">Basit Masood</h1>
+        <p class="hero-role">Lead Product Designer</p>
+      </div>
+
       <div class="hero-headline">
         <div class="hero-line"><span class="hl-1">Trusted,</span></div>
         <div class="hero-line"><span class="hl-2 hl-accent">6M+</span></div>
@@ -1421,12 +1696,7 @@
       </div>
 
       <div class="hero-content-bottom">
-        <div class="hero-meta">
-          <span>I'm Basit Masood</span>
-          <span class="hero-meta-dot"></span>
-          <span>a Product Designer &nbsp;&middot;&nbsp; &#127462;&#127466; Dubai, UAE</span>
-        </div>
-        <div class="micro-text"><span id="microText">I build design teams where none exist</span></div>
+        <div class="micro-text"><span id="microText">Design leader who builds teams, systems, and products from zero.</span></div>
       </div>
 
       <div class="scroll-cue">
@@ -1455,24 +1725,48 @@
   </section>
 
   <!-- ════════════ ZAR ════════════ -->
-  <section class="cs cs-zar cs-light" data-word="building this right now" onclick="window.location='/work/zar/'">
+  <section class="cs cs-zar cs-light" data-word="building this right now">
     <a href="/work/zar/" class="cs-link" aria-label="ZAR case studies"></a>
     <div class="cs-logo"><img src="/assets/logos/ZAR-icon.png" alt="ZAR"></div>
     <div class="cs-inner rg">
-      <div class="cs-text ri">
+      <a href="/work/zar/" class="cs-text ri" style="text-decoration:none;color:inherit;">
         <div class="cs-text-top">
           <span class="cs-role">Founding Product Designer &nbsp;&middot;&nbsp; 2024 – Present</span>
           <h2 class="cs-name">ZAR</h2>
         </div>
-        <p class="cs-desc">Backed by a16z, Coinbase, and Solana. Dollar wallet for the Global South<br>— building the
-          product, design system, and team from the ground up.</p>
-      </div>
+        <p class="cs-desc">Dollar wallet for the Global South — backed by a16z, Coinbase,<br>and Solana. Zero to launch.</p>
+      </a>
       <div class="cs-screens-wrap ri">
-        <div class="cs-screens">
-          <div class="cs-screen"><span>Screen</span></div>
-          <div class="cs-screen"><span>Screen</span></div>
-          <div class="cs-screen"><span>Screen</span></div>
+        <div class="cs-video-player" id="zarVideoPlayer" onclick="event.stopPropagation(); document.getElementById('videoOverlay').classList.add('active'); document.body.style.overflow='hidden'; setTimeout(()=>document.getElementById('overlayVideo').play(),200);">
+          <video
+            id="zarVideo"
+            poster="/assets/videos/zar/poster.jpg"
+            preload="none"
+            playsinline
+            webkit-playsinline>
+            <source src="/assets/videos/zar/intro.mp4" type="video/mp4">
+          </video>
+          <button class="cs-video-play" id="zarPlayBtn" aria-label="Play ZAR brand film">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="28" r="28" fill="var(--red)"/>
+              <path d="M23 18l14 10-14 10V18z" fill="white"/>
+            </svg>
+          </button>
         </div>
+      </div>
+    </div>
+    <div class="cs-download">
+      <div class="cs-download-qr-wrap">
+        <span class="cs-download-label">Experience<br>the craft</span>
+        <img src="/assets/images/zar-qr.svg" alt="Scan to download ZAR" class="cs-download-qr">
+      </div>
+      <div class="cs-download-badges">
+        <a href="https://apps.apple.com/gb/app/zar-global-usd-wallet-card/id6670760051" target="_blank" rel="noopener">
+          <img src="/assets/images/app-store-badge.png" alt="Download on the App Store">
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.mobile.zarpay" target="_blank" rel="noopener">
+          <img src="/assets/images/google-play-badge.png" alt="Get it on Google Play">
+        </a>
       </div>
     </div>
   </section>
@@ -1695,11 +1989,11 @@
     // ─── ROTATING MICRO-TEXT ───
     (function () {
       const phrases = [
-        "I build design teams where none exist",
-        "Zero to scale. That's my thing.",
-        "My work led to a $50M acquisition",
-        "Fintech for emerging markets",
-        "Components are easy. Governance is the real work."
+        "Design leader who builds teams, systems, and products from zero.",
+        "Zero to 4M+ users at SadaPay. $50M acquisition.",
+        "Currently founding designer at ZAR, backed by a16z.",
+        "5 design systems built. 20+ designers hired and led.",
+        "Fintech \u00b7 Emerging Markets \u00b7 Dubai, UAE"
       ];
       let i = 0;
       const el = document.getElementById('microText');
@@ -1711,6 +2005,51 @@
           el.style.opacity = '1'; el.style.transform = 'translateY(0)';
         }, 350);
       }, 3200);
+    })();
+
+    // ─── ZAR VIDEO PLAYER (CINEMATIC OVERLAY) ───
+    (function () {
+      const player = document.getElementById('zarVideoPlayer');
+      const overlay = document.getElementById('videoOverlay');
+      const overlayVideo = document.getElementById('overlayVideo');
+      const closeBtn = document.getElementById('videoOverlayClose');
+      if (!player || !overlay) return;
+
+      function openVideo() {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => { overlayVideo.play(); }, 200);
+      }
+
+      function closeVideo() {
+        overlayVideo.pause();
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => { overlayVideo.currentTime = 0; }, 500);
+      }
+
+      // Entire player div is the click target
+      player.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openVideo();
+        return false;
+      };
+
+      closeBtn.onclick = function(e) {
+        e.stopPropagation();
+        closeVideo();
+      };
+
+      overlay.onclick = function(e) {
+        if (e.target === overlay) closeVideo();
+      };
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) closeVideo();
+      });
+
+      overlayVideo.addEventListener('ended', closeVideo);
     })();
 
     // ─── NAV OVERLAY ───
@@ -1760,6 +2099,16 @@
     console.log('%c If you\'re reading this, we should talk.', 'font-size: 14px; color: #A69D91;');
     console.log('%c \u2192 basitmasood999@gmail.com', 'font-size: 14px; color: #EDE8DB;');
   </script>
+
+  <!-- Video Overlay -->
+  <div class="video-overlay" id="videoOverlay">
+    <button class="video-overlay-close" id="videoOverlayClose" aria-label="Close video" onclick="event.stopPropagation(); document.getElementById('overlayVideo').pause(); document.getElementById('videoOverlay').classList.remove('active'); document.body.style.overflow=''; setTimeout(()=>document.getElementById('overlayVideo').currentTime=0, 500);"
+      <span style="font-size:24px;line-height:1;color:white;">&times;</span>
+    </button>
+    <video id="overlayVideo" playsinline webkit-playsinline preload="none">
+      <source src="/assets/videos/zar/intro.mp4" type="video/mp4">
+    </video>
+  </div>
 </body>
 
 </html>

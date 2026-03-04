@@ -196,7 +196,7 @@
     .about-hero {
       padding: 80px 0 0;
       display: grid;
-      grid-template-columns: 1fr 280px;
+      grid-template-columns: 280px 1fr;
       gap: 60px;
       align-items: start;
     }
@@ -243,67 +243,35 @@
 
     .photo {
       width: 280px;
+      max-width: 280px;
       height: 340px;
       border-radius: var(--radius);
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+      flex-shrink: 0;
     }
 
-    .photo::before {
+    .photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-fit: cover;
+      object-position: right bottom;
+      transform: scale(1.2);
+      transform-origin: right bottom;
+      display: block;
+    }
+
+    .photo::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 40%, rgba(204, 41, 54, 0.06) 0%, transparent 60%);
-    }
-
-    .photo-initials {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--display);
-      font-size: 80px;
-      font-weight: 700;
-      color: rgba(0, 0, 0, 0.04);
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-    }
-
-    .photo-label {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      font-size: 11px;
-      color: var(--text-dim);
-      text-align: center;
-      padding: 8px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(8px);
-    }
-
-    .photo-dots {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      display: flex;
-      gap: 4px;
-    }
-
-    .photo-dots span {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.07);
-    }
-
-    .photo-dots span:first-child {
-      background: rgba(204, 41, 54, 0.3);
+      border-radius: var(--radius);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+      pointer-events: none;
     }
 
     /* --- WHO I AM --- */
@@ -899,8 +867,8 @@
       }
 
       .photo {
-        width: 200px;
-        height: 240px;
+        width: 180px;
+        height: 220px;
       }
 
       .phil-grid {
@@ -989,17 +957,15 @@
 
     <!-- HERO -->
     <section class="about-hero">
+      <div class="photo-wrap">
+        <div class="photo">
+          <img src="/assets/images/about/abm.jpg" alt="ABM — Basit Masood" loading="eager">
+        </div>
+      </div>
       <div>
         <div class="about-label">Story</div>
         <h1 class="about-name">Basit Masood</h1>
         <p class="about-intro">I keep starting over. On purpose.</p>
-      </div>
-      <div class="photo-wrap">
-        <div class="photo">
-          <div class="photo-dots"><span></span><span></span><span></span></div>
-          <div class="photo-initials">ABM</div>
-          <div class="photo-label">Your photo here</div>
-        </div>
       </div>
     </section>
 
