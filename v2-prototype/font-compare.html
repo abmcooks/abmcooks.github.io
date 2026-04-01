@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Comparison v2 — Wide, Heavy, Grounded</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@100,800;100,900;125,700;125,800;125,900;150,700;150,800;150,900&family=Syne:wght@700;800&family=Saira:wdth,wght@100,800;100,900;125,700;125,800;125,900&family=Chivo:wght@800;900&family=Big+Shoulders+Display:wght@800;900&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #060606;
+    color: #f5f0e8;
+    font-family: 'Satoshi', sans-serif;
+    padding: 48px;
+  }
+
+  .header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+  }
+
+  .header h1 {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e11d48;
+    margin-bottom: 12px;
+  }
+
+  .header p {
+    font-size: 15px;
+    color: rgba(245,240,232,0.35);
+    max-width: 640px;
+    line-height: 1.6;
+  }
+
+  .font-block {
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+    cursor: default;
+    transition: background 0.3s;
+  }
+
+  .font-block:hover {
+    background: rgba(245,240,232,0.015);
+  }
+
+  .font-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .font-name {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.25);
+  }
+
+  .font-source {
+    font-size: 11px;
+    color: rgba(245,240,232,0.12);
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 100px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .badge.top { background: rgba(225,29,72,0.2); color: #e11d48; }
+  .badge.good { background: rgba(245,240,232,0.06); color: rgba(245,240,232,0.35); }
+
+  .font-hero {
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    color: #f5f0e8;
+    margin-bottom: 8px;
+    font-size: clamp(52px, 8.5vw, 120px);
+    transition: color 0.2s;
+  }
+
+  .font-block:hover .font-hero { color: #fff; }
+
+  .font-sub {
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: rgba(245,240,232,0.35);
+    font-size: clamp(22px, 3vw, 36px);
+    margin-top: 12px;
+  }
+
+  .font-note {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 12px;
+    color: rgba(245,240,232,0.15);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* ═══ FONT FAMILIES ═══ */
+
+  /* Anybody — Variable: width 150, weight 800 */
+  .f-anybody-wide .font-hero,
+  .f-anybody-wide .font-sub {
+    font-family: 'Anybody', sans-serif;
+    font-weight: 800;
+    font-stretch: 150%;
+  }
+
+  /* Anybody — Variable: width 125, weight 900 */
+  .f-anybody-mid .font-hero,
+  .f-anybody-mid .font-sub {
+    font-family: 'Anybody', sans-serif;
+    font-weight: 900;
+    font-stretch: 125%;
+  }
+
+  /* Anybody — Variable: width 100, weight 900 */
+  .f-anybody-normal .font-hero,
+  .f-anybody-normal .font-sub {
+    font-family: 'Anybody', sans-serif;
+    font-weight: 900;
+    font-stretch: 100%;
+  }
+
+  /* Syne ExtraBold */
+  .f-syne .font-hero,
+  .f-syne .font-sub {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+  }
+
+  /* Saira — width 125, weight 900 */
+  .f-saira-wide .font-hero,
+  .f-saira-wide .font-sub {
+    font-family: 'Saira', sans-serif;
+    font-weight: 900;
+    font-stretch: 125%;
+  }
+
+  /* Saira — normal width, weight 900 */
+  .f-saira .font-hero,
+  .f-saira .font-sub {
+    font-family: 'Saira', sans-serif;
+    font-weight: 900;
+  }
+
+  /* Chivo Black */
+  .f-chivo .font-hero,
+  .f-chivo .font-sub {
+    font-family: 'Chivo', sans-serif;
+    font-weight: 900;
+  }
+
+  /* Clash Display Bold */
+  .f-clash .font-hero,
+  .f-clash .font-sub {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 700;
+  }
+
+  /* Big Shoulders Display */
+  .f-big .font-hero,
+  .f-big .font-sub {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 900;
+  }
+
+  .divider {
+    padding: 48px 0 16px;
+    border-bottom: 1px solid rgba(225,29,72,0.15);
+  }
+
+  .divider h2 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e11d48;
+  }
+
+  .note-box {
+    margin-top: 64px;
+    padding: 32px;
+    border: 1px solid rgba(245,240,232,0.06);
+    border-radius: 12px;
+    background: rgba(245,240,232,0.02);
+  }
+
+  .note-box h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: rgba(245,240,232,0.5);
+  }
+
+  .note-box p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.3);
+  }
+
+  .note-box strong { color: rgba(245,240,232,0.5); }
+  .note-box a { color: #e11d48; text-decoration: none; }
+  .note-box a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Font Comparison v2</h1>
+  <p>Wide. Heavy. Symmetrical. Grounded. Not condensed. These fonts match the Tusker Grotesk Semibold energy — all free for commercial use.</p>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<div class="divider"><h2>Top Picks — Closest to Tusker</h2></div>
+<!-- ═══════════════════════════════════════ -->
+
+<!-- Anybody Wide 800 -->
+<div class="font-block f-anybody-wide">
+  <div class="font-meta">
+    <span class="font-name">Anybody — Width 150%, Weight 800 <span class="badge top">Best Match</span></span>
+    <span class="font-source">Google Fonts — Variable — Free</span>
+  </div>
+  <div class="font-hero">I build fintech people actually trust.</div>
+  <div class="font-sub">Pakistan's first neobank. Zero to four million users.</div>
+  <div class="font-note">Variable font — you can dial width (50-150%) and weight (100-900) to match Tusker exactly. This is the most flexible option.</div>
+</div>
+
+<!-- Anybody Mid 900 -->
+<div class="font-block f-anybody-mid">
+  <div class="font-meta">
+    <span class="font-name">Anybody — Width 125%, Weight 900 <span class="badge top">Runner Up</span></span>
+    <span class="font-source">Google Fonts — Variable — Free</span>
+  </div>
+  <div class="font-hero">I build fintech people actually trust.</div>
+  <div class="font-sub">Pakistan's first neobank. Zero to four million users.</div>
+  <div class="font-note">Slightly narrower than 150% but heavier. More planted. Closer to Tusker 5600 Semibold proportions.</div>
+</div>
+
+<!-- Anybody Normal 900 -->
+<div class="font-block f-anybody-normal">
+  <div class="font-meta">
+    <span class="font-name">Anybody — Width 100%, Weight 900 <span class="badge good">Standard Width</span></span>
+    <span class="font-source">Google Fonts — Variable — Free</span>
+  </div>
+  <div class="font-hero">I build fintech people actually trust.</div>
+  <div class="font-sub">Pakistan's first neobank. Zero to four million users.</div>
+  <div class="font-note">Normal width but maximum weight. Heavy and grounded without being wide. Compare this against the wider versions above.</div>
+</div>
+
+<!-- Syne ExtraBold -->
+<div class="font-block f-syne">
+  <div class="font-meta">
+    <span class="font-name">Syne — ExtraBold 800 <span class="badge good">Gets Wider as Heavier</span></span>
+    <span class="font-source">Google Fonts — Free</span>
+  </div>
+  <div class="font-hero">I build fintech people actually trust.</div>
+  <div class="font-sub">Pakistan's first neobank. Zero to four million users.</div>
+  <div class="font-note">Eurostile-influenced. At ExtraBold, letters naturally widen. Geometric with character. You rejected this last round — see if it looks different in this context alongside the others.</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<div class="divider"><h2>Strong Alternatives</h2></div>
+<!-- ═══════════════════════════════════════ -->
+
+<!-- Saira Wide 900 -->
+<div class="font-block f-saira-wide">
+  <div class="font-meta">
+    <span class="font-name">Saira — Width 125%, Weight 900 <span class="badge good">Industrial</span></span>
+    <span class="font-source">Google Fonts — Variable — Free</span>
+  </div>
+  <div class="font-hero">I build fintech people actually trust.</div>
+  <div class="font-sub">Pakistan's first neobank. Zero to four million users.</div>
+  <div class="font-note">Rectangular/DIN-influenced. Industrial feel. Variable width + weight. Wider and heavier than standard Saira.</div>
+</div>
+
+<!-- Saira Normal 900 -->
+<div class="font-block f-saira">
+  <div class="font-meta">
+    <span class="font-name">Saira — Normal Width, Weight 900 <span class="badge good">Geometric</span></span>
+    <span class="font-source">Google Fonts — Free</span>
+  </div>
+  <div class="font-hero">I build fintech people actually trust.</div>
+  <div class="font-sub">Pakistan's first neobank. Zero to four million users.</div>
+  <div class="font-note">Standard width. Very geometric, rectangular shapes. DIN/Eurostile DNA. Grounded.</div>
+</div>
+
+<!-- Chivo Black -->
+<div class="font-block f-chivo">
+  <div class="font-meta">
+    <span class="font-name">Chivo — Black 900 <span class="badge good">Grotesk</span></span>
+    <span class="font-source">Google Fonts — Free</span>
+  </div>
+  <div class="font-hero">I build fintech people actually trust.</div>
+  <div class="font-sub">Pakistan's first neobank. Zero to four million users.</div>
+  <div class="font-note">Grotesque family by Omnibus-Type. At Black weight, heavy and grounded. More organic curves than Anybody/Saira but still impactful.</div>
+</div>
+
+<!-- Clash Display -->
+<div class="font-block f-clash">
+  <div class="font-meta">
+    <span class="font-name">Clash Display — Bold 700 <span class="badge good">Current Pick</span></span>
+    <span class="font-source">Fontshare — Free</span>
+  </div>
+  <div class="font-hero">I build fintech people actually trust.</div>
+  <div class="font-sub">Pakistan's first neobank. Zero to four million users.</div>
+  <div class="font-note">What we have now. Showing for comparison. Not as heavy or grounded as the others above.</div>
+</div>
+
+<!-- Big Shoulders -->
+<div class="font-block f-big">
+  <div class="font-meta">
+    <span class="font-name">Big Shoulders Display — 900 <span class="badge good">Condensed Reference</span></span>
+    <span class="font-source">Google Fonts — Free</span>
+  </div>
+  <div class="font-hero">I build fintech people actually trust.</div>
+  <div class="font-sub">Pakistan's first neobank. Zero to four million users.</div>
+  <div class="font-note">Condensed — included for comparison. This is NOT the direction but shows how the wide options above feel fundamentally different.</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<div class="note-box">
+  <h3>Self-hosted options (need to download)</h3>
+  <p>
+    These can't load from a CDN but are worth checking if nothing above clicks:<br><br>
+    <strong>Lineal Heavy</strong> — <a href="https://velvetyne.fr/fonts/lineal/">velvetyne.fr/fonts/lineal/</a> — Modular geometric, brutalist Futura. 7 weights. Open source.<br>
+    <strong>BBH Sans Bartle</strong> — <a href="https://fontesk.com/bbh-sans-bartle-font/">fontesk.com</a> — Wide, bold, geometric, assertive. Free OFL.<br>
+    <strong>Geomanist Ultra</strong> — <a href="https://www.atipofoundry.com/fonts/geomanist">atipofoundry.com</a> — Clean geometric, ultra weight. Pay-what-you-want (can be free).<br>
+    <strong>Gros Ventre</strong> — <a href="https://fontesk.com/gros-ventre-font/">fontesk.com</a> — Wide geometric sans. 270 chars. Free.<br>
+    <strong>Klory</strong> — <a href="https://fontesk.com/klory-font/">fontesk.com</a> — Futuristic horizontal heavy monospaced. Free OFL.<br><br>
+    Download any that catch your eye → drop the files in <code>portfolio-v2/public/fonts/</code> → I'll add them to this page.
+  </p>
+</div>
+
+</body>
+</html>
