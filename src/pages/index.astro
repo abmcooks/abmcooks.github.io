@@ -474,7 +474,6 @@ import '../styles/global.css';
 
   // ═══ Loader ═══
   const loader = document.getElementById('loader');
-  const isReturn = sessionStorage.getItem('loaderSeen');
 
   function revealPage(skipFlicker) {
     loader?.classList.add('done');
@@ -523,18 +522,10 @@ import '../styles/global.css';
   }
 
   if (loader) {
-    sessionStorage.setItem('loaderSeen', '1');
-    if (isReturn) {
-      // Return visit: 2s minimum brand moment + wait for assets
-      const minDelay = new Promise(r => setTimeout(r, 2000));
-      const assets = new Promise(r => waitForAssets(r));
-      Promise.all([minDelay, assets]).then(() => revealPage(true));
-    } else {
-      // First visit: full brand animation + wait for assets
-      const minDelay = new Promise(r => setTimeout(r, 3600));
-      const assets = new Promise(r => waitForAssets(r));
-      Promise.all([minDelay, assets]).then(() => revealPage(false));
-    }
+    // Always: 2s minimum + wait for assets, then reveal with flicker
+    const minDelay = new Promise(r => setTimeout(r, 2000));
+    const assets = new Promise(r => waitForAssets(r));
+    Promise.all([minDelay, assets]).then(() => revealPage(false));
   }
 
   // ═══ Counter animation ═══
