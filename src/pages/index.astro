@@ -525,8 +525,10 @@ import '../styles/global.css';
   if (loader) {
     sessionStorage.setItem('loaderSeen', '1');
     if (isReturn) {
-      // Return visit: wait for assets, no animation delay
-      waitForAssets(() => revealPage(true));
+      // Return visit: 2s minimum brand moment + wait for assets
+      const minDelay = new Promise(r => setTimeout(r, 2000));
+      const assets = new Promise(r => waitForAssets(r));
+      Promise.all([minDelay, assets]).then(() => revealPage(true));
     } else {
       // First visit: full brand animation + wait for assets
       const minDelay = new Promise(r => setTimeout(r, 3600));
