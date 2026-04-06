@@ -474,53 +474,65 @@ import '../styles/global.css';
 
   // ═══ Loader ═══
   const loader = document.getElementById('loader');
-  const skipLoader = sessionStorage.getItem('loaderSeen');
-  if (loader && skipLoader) {
-    loader.classList.add('done');
+  const isReturn = sessionStorage.getItem('loaderSeen');
+
+  function revealPage(skipFlicker) {
+    loader?.classList.add('done');
     document.body.classList.add('loaded');
     document.getElementById('nav')?.classList.add('visible');
     document.getElementById('heroContent')?.classList.add('visible');
-    document.querySelectorAll('.fl').forEach(el => el.classList.add('on'));
-    animateCounters();
-  } else if (loader) {
-    sessionStorage.setItem('loaderSeen', '1');
-    setTimeout(() => {
-      loader.classList.add('done');
-      document.body.classList.add('loaded');
-      setTimeout(() => {
-        document.getElementById('nav')?.classList.add('visible');
 
-        // Some letters flicker, others turn on instantly
-        const letters = document.querySelectorAll('.fl');
-        const flickerers = [];
-        letters.forEach(el => {
-          if (Math.random() > 0.4) {
-            el.classList.add('on');
-          } else {
-            const dur = 0.8 + Math.random() * 0.4;
-            el.style.setProperty('--fd', (Math.random() * 0.3).toFixed(2) + 's');
-            el.style.setProperty('--dur', dur.toFixed(2) + 's');
-            el.classList.add('go');
-            flickerers.push({ el, dur });
-          }
-        });
-        // Make the last flickerer struggle longer
-        if (flickerers.length) {
-          const last = flickerers.reduce((a, b) => a.dur > b.dur ? a : b);
-          last.el.style.setProperty('--dur', '1.8s');
+    if (skipFlicker) {
+      document.querySelectorAll('.fl').forEach(el => el.classList.add('on'));
+      animateCounters();
+    } else {
+      const letters = document.querySelectorAll('.fl');
+      const flickerers = [];
+      letters.forEach(el => {
+        if (Math.random() > 0.4) {
+          el.classList.add('on');
+        } else {
+          const dur = 0.8 + Math.random() * 0.4;
+          el.style.setProperty('--fd', (Math.random() * 0.3).toFixed(2) + 's');
+          el.style.setProperty('--dur', dur.toFixed(2) + 's');
+          el.classList.add('go');
+          flickerers.push({ el, dur });
         }
+      });
+      if (flickerers.length) {
+        const last = flickerers.reduce((a, b) => a.dur > b.dur ? a : b);
+        last.el.style.setProperty('--dur', '1.8s');
+      }
+      animateCounters();
+      setTimeout(() => {
+        document.querySelectorAll('.fl').forEach(el => el.classList.add('on'));
+      }, 2800);
+    }
+  }
 
-        // Show everything instantly, only name flickers
-        document.getElementById('heroContent')?.classList.add('visible');
-        animateCounters();
+  // Wait for fonts + hero image before revealing
+  function waitForAssets(callback) {
+    const heroImg = document.querySelector('.hero-bg-img');
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    const imgReady = new Promise(resolve => {
+      if (!heroImg || heroImg.complete) resolve();
+      else { heroImg.addEventListener('load', resolve); heroImg.addEventListener('error', resolve); }
+    });
+    Promise.all([fontsReady, imgReady]).then(callback);
+    setTimeout(callback, 4000); // safety fallback
+  }
 
-        // After flicker settles, lock letters
-        setTimeout(() => {
-          document.querySelectorAll('.fl').forEach(el => el.classList.add('on'));
-        }, 2800);
-      }, 200);
-      // document.getElementById('aiWidget')?.classList.add('visible'); // TODO: enable when AI backend is ready
-    }, 3600);
+  if (loader) {
+    sessionStorage.setItem('loaderSeen', '1');
+    if (isReturn) {
+      // Return visit: wait for assets, no animation delay
+      waitForAssets(() => revealPage(true));
+    } else {
+      // First visit: full brand animation + wait for assets
+      const minDelay = new Promise(r => setTimeout(r, 3600));
+      const assets = new Promise(r => waitForAssets(r));
+      Promise.all([minDelay, assets]).then(() => revealPage(false));
+    }
   }
 
   // ═══ Counter animation ═══
