@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════
+   SELF-HOSTED FONTS
+   ═══════════════════════════════════════════ */
+@font-face { font-family: 'Tanker'; src: url('/fonts/Tanker-Regular.woff2') format('woff2'), url('/fonts/Tanker-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Light.otf') format('opentype'); font-weight: 300; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Medium.otf') format('opentype'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Semibold.otf') format('opentype'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Bold.otf') format('opentype'); font-weight: 700; font-display: swap; }
+
+@font-face { font-family: 'Literata'; src: url('/fonts/Literata-Light.otf') format('opentype'); font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Literata'; src: url('/fonts/Literata-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Literata'; src: url('/fonts/Literata-Italic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Literata'; src: url('/fonts/Literata-Medium.otf') format('opentype'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Literata'; src: url('/fonts/Literata-SemiBold.otf') format('opentype'); font-weight: 600; font-display: swap; }
+
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+   ═══════════════════════════════════════════ */
+@theme {
+  --color-void: #060606;
+  --color-obsidian: #0a0a0a;
+  --color-basalt: #111110;
+  --color-slate: #1a1a18;
+  --color-ash: #242422;
+  --color-stone: #333330;
+  --color-white: #f5f0e8;
+  --color-white-80: rgba(245, 240, 232, 0.8);
+  --color-white-50: rgba(245, 240, 232, 0.5);
+  --color-white-25: rgba(245, 240, 232, 0.25);
+  --color-white-12: rgba(245, 240, 232, 0.12);
+  --color-white-06: rgba(245, 240, 232, 0.06);
+  --color-white-03: rgba(245, 240, 232, 0.03);
+  --color-rose: #e11d48;
+  --color-rose-50: rgba(225, 29, 72, 0.5);
+  --color-rose-20: rgba(225, 29, 72, 0.2);
+  --color-rose-08: rgba(225, 29, 72, 0.08);
+
+  /* Light section — cool tube-light glow tint, softened */
+  --color-light: #E8ECEB;
+  --color-light-border: rgba(14, 15, 16, 0.08);
+
+  /* Dark section bg — obsidian depth, not pure black */
+  --color-depth: #0E0F10;
+
+  --font-display: 'Tanker', serif;
+  --font-heading: 'General Sans', sans-serif;
+  --font-body: 'Literata', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ═══════════════════════════════════════════
+   BASE
+   ═══════════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-void);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-void);
+  color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-rose);
+  color: var(--color-white);
+}
+
+/* Tanker = always ALL CAPS, default letter-spacing — never override */
+
+/* ═══════════════════════════════════════════
+   GRAIN OVERLAY
+   ═══════════════════════════════════════════ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* Lenis removed — using CSS scroll-snap instead */

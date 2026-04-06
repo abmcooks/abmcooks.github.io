@@ -1,0 +1,477 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/global.css';
+import '../styles/about.css';
+---
+
+<Base title="About — Basit Masood" description="The person behind the products. From a village in Pakistan to designing fintech for millions.">
+
+<!-- ═══════════════════════════════════════════
+     LOADER
+     ═══════════════════════════════════════════ -->
+<div class="loader" id="loader">
+  <div class="loader-mark">
+    <svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <circle class="glow" cx="308" cy="389" r="55.5"/>
+      <circle class="dot" cx="308" cy="389" r="55.5"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CUSTOM CURSOR
+     ═══════════════════════════════════════════ -->
+<div class="custom-cursor" id="customCursor">
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     NAV
+     ═══════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <a href="/" class="nav-logo">
+      <svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/>
+        <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/>
+        <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/>
+      </svg>
+    </a>
+  </div>
+  <div class="nav-right">
+    <a href="/stories">Stories</a>
+    <a href="/writing">Writing</a>
+    <a href="/about" class="nav-active">About</a>
+    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <i class="ph-bold ph-list"></i>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     FULLSCREEN MENU
+     ═══════════════════════════════════════════ -->
+<div class="fs-menu" id="fsMenu">
+  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu">
+    <i class="ph-bold ph-x"></i>
+  </button>
+  <nav class="fs-menu-nav">
+    <a href="/" class="fs-menu-link">HOME</a>
+    <a href="/stories" class="fs-menu-link">STORIES</a>
+    <a href="/writing" class="fs-menu-link">WRITING</a>
+    <a href="/about" class="fs-menu-link">ABOUT</a>
+    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
+  </nav>
+  <div class="fs-menu-footer">
+    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
+    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO — Photo + hook
+     ═══════════════════════════════════════════ -->
+<section class="ab-hero">
+  <div class="ab-hero-inner">
+    <div class="ab-photo-col reveal">
+      <img src="/images/abm.jpg" alt="Basit Masood" class="ab-photo" />
+    </div>
+    <div class="ab-intro-col reveal" style="transition-delay: 150ms;">
+      <p class="ab-label">About</p>
+      <h1 class="ab-hook">THE PERSON BEHIND<br/>THE PRODUCTS.</h1>
+      <p class="ab-intro">I'm Basit. I design products that move money for millions of people. But if you asked my family back in a small village in Pakistan, they'd say I'm the one who left and ended up staring at screens all day.</p>
+      <p class="ab-intro">They're not entirely wrong.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STORY — Origin
+     ═══════════════════════════════════════════ -->
+<section class="ab-story">
+  <div class="ab-story-inner">
+    <div class="ab-story-text reveal">
+      <p>I grew up in a village in rural Pakistan. My family had a small piece of agricultural land — pomegranate trees, guava, shah toot berries. We grew wheat and fruit, just enough for ourselves.</p>
+
+      <p>The biggest adventure for me and my brothers was when our father would take us through the KFC drive-thru. Not for a meal — for a vanilla ice cream cone. The cheapest thing on the menu.</p>
+    </div>
+
+    <p class="ab-standalone reveal">We thought we had everything.</p>
+
+    <div class="ab-story-text reveal">
+      <p class="ab-father">My father worked to put all of us through university. Everything I have started with that.</p>
+    </div>
+
+    <div class="ab-story-text reveal">
+      <p>I studied computer science, graduated, and started working as a software engineer. I could write the code. I was good at it. But something kept bothering me — nobody could explain <em>why</em> we were building any of it.</p>
+    </div>
+
+    <blockquote class="ab-pullquote reveal" id="pullquote">
+      <span class="ab-pullquote-mark">"</span>
+      <span class="pq-word">Why</span> <span class="pq-word">are</span> <span class="pq-word">we</span> <span class="pq-word">building</span> <span class="pq-word">this?</span>
+    </blockquote>
+
+    <div class="ab-story-text reveal">
+      <p>That question pulled me into design. Not the pixels. Not the tools. The why.</p>
+
+      <p>Eight years later, that same question has followed me from SadaPay to ADIB to ZAR — into arguments with central banks, product debates with CEOs, and late-night whiteboard sessions that turned into products used by millions.</p>
+    </div>
+
+    <div class="ab-logo-strip reveal">
+      <img src="/images/logo-sadapay.svg" alt="SadaPay" class="ab-logo" />
+      <img src="/images/logo-zar.svg" alt="ZAR" class="ab-logo" />
+      <img src="/images/logo-wtt.svg" alt="Walking the Talk" class="ab-logo" />
+    </div>
+
+    <div class="ab-story-text reveal">
+      <p>Some of those chapters ended on my terms. Some didn't. Every one of them taught me something I couldn't have learned by staying comfortable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BELIEFS
+     ═══════════════════════════════════════════ -->
+<section class="ab-lens">
+  <div class="ab-lens-inner">
+    <h2 class="ab-lens-heading reveal">THINGS I BELIEVE</h2>
+    <div class="ab-beliefs reveal-stagger">
+      <div class="ab-belief reveal-child">
+        <p class="ab-belief-text">The best research happens in the field, not in a meeting room. I've stood in shops for hours watching merchants ignore our product. That taught me more than any user test ever did.</p>
+      </div>
+      <div class="ab-belief reveal-child">
+        <p class="ab-belief-text">If it feels obvious to the user, I did my job. Simplicity is the hardest kind of work — everyone wants to add, almost nobody wants to remove.</p>
+      </div>
+      <div class="ab-belief reveal-child">
+        <p class="ab-belief-text">I'd rather hire someone curious with a messy portfolio than someone polished with no opinions. Taste and judgment matter more than tools.</p>
+      </div>
+      <div class="ab-belief reveal-child">
+        <p class="ab-belief-text">Design systems aren't about consistency. They're about giving your future self — and the team that replaces you — a fighting chance.</p>
+      </div>
+      <div class="ab-belief ab-belief--hero reveal-child">
+        <p class="ab-belief-text ab-belief-text--big">80% shipped beats 100% in Figma. Every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FULL-BLEED — Cinematic break
+     ═══════════════════════════════════════════ -->
+<div class="ab-bleed-img" id="bleedImg">
+  <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1800&q=80" alt="Dramatic mountain valley with mist and river" loading="lazy" />
+  <div class="ab-bleed-overlay"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HOW I WORK — Leadership
+     ═══════════════════════════════════════════ -->
+<section class="ab-how">
+  <div class="ab-how-inner">
+    <h2 class="ab-how-heading reveal">PEOPLE FIRST.<br/>ALWAYS.</h2>
+
+    <div class="ab-how-grid">
+      <div class="ab-how-block reveal">
+        <p>When someone on my team is struggling, I don't start with feedback. I cover for them — quietly — so the product and the team don't suffer while we figure it out.</p>
+        <p>Then I have the real conversation. Not in a meeting room. Over chai, casually. <em>"What's actually going on?"</em> There's always a reason. Nobody loses their talent overnight.</p>
+        <p>I give people time. A month, sometimes two. And if it still doesn't work, I make the call. I've let people go. Empathy and hard decisions are not opposites — one just makes the other more honest.</p>
+      </div>
+      <div class="ab-how-block reveal" style="transition-delay: 100ms;">
+        <p>I'm quiet in most meetings. But when something doesn't make sense, I say it — and I don't say it quietly. The people who understand what I'm trying to protect appreciate it. That's enough for me.</p>
+        <p>Most of the designers I hired at SadaPay came straight from university with messy portfolios and no experience. I saw something in them.</p>
+        <p class="ab-how-accent">Some of them are now senior designers at Revolut in London. That's the work I'm most proud of — not the products, the people.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BEYOND THE SCREEN — Personal / Light section
+     ═══════════════════════════════════════════ -->
+<section class="ab-personal">
+  <div class="ab-personal-inner">
+
+    <div class="ab-personal-lead reveal">
+      <p class="ab-personal-label">Beyond the screen</p>
+      <p class="ab-kharoos">People who meet me for the first time usually think I'm <em>kharoos</em> — it's an Urdu word, somewhere between stern and unapproachable. Give it a few conversations and you'll find I'm the opposite. I remember things about people. I get close. I just take my time getting there.</p>
+    </div>
+
+    <div class="ab-personal-split" id="travelSplit">
+      <div class="ab-personal-text-col">
+        <p class="reveal">In university I didn't have the money to travel, but I knew Pakistan held a gem of places I needed to see. So I did my research — found places that are hard to reach, where you take a bus, then switch to a 4x4 jeep, then hike or camp. Places between snow-capped peaks with cold deserts and waterfalls that don't look real. I had zero experience. I planned everything from scratch.</p>
+        <p class="reveal">I started a small adventure club called <strong>Travelogue.</strong> I'd plan the whole trip, post an ad, calculate per-head budgets, book the coaster. Everyone paid their share. I went for free. But I had to earn that — so I offered two things no agency did: free photography for every trip, and my own chef who cooked homemade food on the road. That chef now owns a fast food chain in Islamabad.</p>
+        <p class="reveal">That curiosity never stopped. I lived in Malaysia for a year as a digital nomad, working remotely from SadaPay. Six months in Bali. Jakarta, Gili Islands, Singapore — always the places fewer people visit, always walking, always eating something I can't pronounce.</p>
+        <p class="reveal">Marriage slowed that down. I miss it. Every few months I find a way to disappear into the mountains for a bit.</p>
+        <p class="reveal">I can't do work I'm not passionate about. Not won't — <em>can't.</em> I lose all energy for it. My wife knows this. My career shows it. Every role has been a deliberate choice.</p>
+        <p class="reveal">At home, I cook. I'm genuinely good at it, and I've tried more cuisines than I can count. But my comfort food is still embarrassingly simple — rice, chicken, a raw onion or tomato. That's it.</p>
+        <p class="reveal ab-emotional">Though if I'm honest, the food I miss most is my mother's parathas. She's back in Pakistan. That distance doesn't get easier.</p>
+        <p class="reveal">The orange trees back home are still there. Someday I want to bring what I've learned back to that land — technology and agriculture, together. But that's a later chapter.</p>
+      </div>
+      <div class="ab-sticky-carousel reveal">
+        <div class="ab-carousel" id="travelCarousel">
+          <div class="ab-carousel-track" id="carouselTrack">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Dramatic mountain peaks in northern Pakistan" loading="lazy" class="ab-carousel-img active" />
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Snow-capped peaks above the clouds" loading="lazy" class="ab-carousel-img" />
+            <img src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=800&q=80" alt="Lush green valley in Southeast Asia" loading="lazy" class="ab-carousel-img" />
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80" alt="Bali temple and rice terraces" loading="lazy" class="ab-carousel-img" />
+          </div>
+          <div class="ab-carousel-controls">
+            <button class="ab-carousel-btn" id="carouselPrev" aria-label="Previous image">
+              <i class="ph-bold ph-caret-left"></i>
+            </button>
+            <button class="ab-carousel-btn" id="carouselNext" aria-label="Next image">
+              <i class="ph-bold ph-caret-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STORY ENDING — Quiet full stop
+     ═══════════════════════════════════════════ -->
+<div class="ab-ending">
+  <p class="ab-ending-text reveal">Still designing.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+<footer class="the-footer" id="footer">
+  <div class="footer-bg">
+    <img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" />
+    <div class="footer-bg-fade"></div>
+  </div>
+
+  <div class="footer-mark" id="footerMark">
+    <svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo">
+      <path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
+      <path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
+      <circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/>
+      <circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/>
+    </svg>
+  </div>
+
+  <div class="footer-center">
+    <h2 class="footer-headline">Let's build<br/>something together.</h2>
+    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
+      <a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a>
+      <span class="footer-loc">UAE · Open to relocation</span>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-nav-row">
+      <a href="/">Home</a>
+      <span class="footer-nav-dot"></span>
+      <a href="/stories">Stories</a>
+      <span class="footer-nav-dot"></span>
+      <a href="/writing">Writing</a>
+      <span class="footer-nav-dot"></span>
+      <a href="/about">About</a>
+      <span class="footer-nav-dot"></span>
+      <a href="/resume">Resume</a>
+    </div>
+    <span class="footer-copy">Designed & built by hand · © 2026</span>
+  </div>
+</footer>
+
+<script>
+  // ═══ Custom cursor (safe — class-based) ═══
+  const cursor = document.getElementById('customCursor');
+  if (cursor && window.matchMedia('(pointer: fine)').matches) {
+    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+    function animateCursor() {
+      curX += (mouseX - curX) * 0.15;
+      curY += (mouseY - curY) * 0.15;
+      cursor.style.transform = `translate(${curX}px, ${curY}px)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    document.body.classList.add('cursor-active');
+    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+  }
+
+  // ═══ Nav hide on scroll + light/dark detection ═══
+  let lastScroll = 0;
+  const nav = document.getElementById('nav');
+  const lightSections = document.querySelectorAll('.ab-personal, .ab-ending');
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (current > lastScroll && current > 100) nav?.classList.add('nav-hidden');
+    else nav?.classList.remove('nav-hidden');
+    lastScroll = current;
+
+    let isLight = false;
+    lightSections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top < 60 && rect.bottom > 60) isLight = true;
+    });
+    if (isLight) {
+      nav?.classList.add('nav-light');
+      cursor?.classList.add('cursor-dark');
+    } else {
+      nav?.classList.remove('nav-light');
+      cursor?.classList.remove('cursor-dark');
+    }
+  }, { passive: true });
+
+  // ═══ Fullscreen menu ═══
+  const burger = document.getElementById('navBurger');
+  const fsMenu = document.getElementById('fsMenu');
+  const fsClose = document.getElementById('fsMenuClose');
+  if (burger && fsMenu) {
+    burger.addEventListener('click', () => {
+      fsMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    fsClose?.addEventListener('click', () => {
+      fsMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    fsMenu.querySelectorAll('.fs-menu-link').forEach(link => {
+      link.addEventListener('click', () => {
+        fsMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // ═══ Loader ═══
+  const loader = document.getElementById('loader');
+  if (loader) {
+    setTimeout(() => {
+      loader.classList.add('done');
+      document.body.classList.add('loaded');
+    }, 2400);
+  }
+
+  // ═══ Scroll-reveal ═══
+  const reveals = document.querySelectorAll('.reveal');
+  const staggerGroups = document.querySelectorAll('.reveal-stagger');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => io.observe(el));
+
+  const sio = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const children = entry.target.querySelectorAll('.reveal-child');
+        children.forEach((child, i) => {
+          child.style.transitionDelay = `${i * 80}ms`;
+          child.classList.add('revealed');
+        });
+        sio.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  staggerGroups.forEach(el => sio.observe(el));
+
+  // ═══ Pull quote word-by-word reveal ═══
+  const pullquote = document.getElementById('pullquote');
+  if (pullquote) {
+    const words = pullquote.querySelectorAll('.pq-word');
+    const pqio = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          words.forEach((word, i) => {
+            setTimeout(() => word.classList.add('pq-visible'), i * 150);
+          });
+          pqio.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    pqio.observe(pullquote);
+  }
+
+  // ═══ Parallax on full-bleed image ═══
+  const bleedImg = document.getElementById('bleedImg');
+  if (bleedImg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const img = bleedImg.querySelector('img');
+    window.addEventListener('scroll', () => {
+      const rect = bleedImg.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      if (rect.top < viewH && rect.bottom > 0) {
+        const progress = (viewH - rect.top) / (viewH + rect.offsetHeight);
+        const offset = (progress - 0.5) * 60;
+        if (img) img.style.transform = `translateY(${offset}px) scale(1.08)`;
+      }
+    }, { passive: true });
+  }
+
+  // ═══ Travel carousel — scroll-driven + arrow navigation ═══
+  (function() {
+    const split = document.getElementById('travelSplit');
+    const imgs = document.querySelectorAll('.ab-carousel-img');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const countEl = document.getElementById('carouselCount');
+    if (!split || !imgs.length) return;
+
+    const paragraphs = split.querySelectorAll('.ab-personal-text-col p');
+    const total = imgs.length;
+    let currentIndex = 0;
+
+    function setActive(index) {
+      index = Math.max(0, Math.min(total - 1, index));
+      if (index === currentIndex) return;
+      currentIndex = index;
+      imgs.forEach((img, i) => img.classList.toggle('active', i === index));
+      if (countEl) countEl.textContent = (index + 1) + ' / ' + total;
+    }
+
+    // Arrow buttons
+    prevBtn?.addEventListener('click', () => setActive(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => setActive(currentIndex + 1));
+
+    // Scroll-driven: switch image based on which paragraph is in view
+    if (paragraphs.length >= total) {
+      const pio = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const idx = Array.from(paragraphs).indexOf(entry.target);
+            if (idx >= 0 && idx < total) setActive(idx);
+          }
+        });
+      }, { threshold: 0.6 });
+      paragraphs.forEach(p => pio.observe(p));
+    }
+  })();
+
+  // ═══ Reduced motion ═══
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal, .reveal-child').forEach(el => {
+      el.classList.add('revealed');
+      el.style.transitionDelay = '0ms';
+    });
+    document.querySelectorAll('.pq-word').forEach(el => el.classList.add('pq-visible'));
+  }
+</script>
+
+</Base>

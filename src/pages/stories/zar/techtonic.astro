@@ -1,0 +1,196 @@
+---
+import Base from '../../../layouts/Base.astro';
+import '../../../styles/global.css';
+import '../../../styles/stories.css';
+import '../../../styles/casestudy.css';
+---
+
+<Base title="Techtonic — ZAR — Basit Masood" description="670+ components, 37 Figma pages, 103 icons, 3 platforms. Building a design system three times as the product evolved.">
+
+<!-- Loader -->
+<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+
+<!-- Cursor -->
+<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
+  <div class="nav-right">
+    <a href="/stories" class="nav-active">Stories</a>
+    <a href="/writing">Writing</a>
+    <a href="/about">About</a>
+    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
+</nav>
+
+<!-- Fullscreen Menu -->
+<div class="fs-menu" id="fsMenu">
+  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
+  <nav class="fs-menu-nav">
+    <a href="/" class="fs-menu-link">HOME</a>
+    <a href="/stories" class="fs-menu-link">STORIES</a>
+    <a href="/writing" class="fs-menu-link">WRITING</a>
+    <a href="/about" class="fs-menu-link">ABOUT</a>
+    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
+  </nav>
+  <div class="fs-menu-footer">
+    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
+    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="cs-hero">
+  <div class="cs-hero-inner reveal">
+    <div class="cs-breadcrumb">
+      <a href="/stories">Stories</a>
+      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
+      <a href="/stories/zar">ZAR</a>
+      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
+      <span class="cs-breadcrumb-current">Techtonic</span>
+    </div>
+    <h1 class="cs-hero-title">TECHTONIC — BUILT THREE TIMES, SHIPPED ONCE</h1>
+    <p class="cs-hero-desc">670+ components, 37 Figma pages, 103 icons, 3 platforms. A design system built, rebuilt, and rebuilt again as ZAR's product evolved beneath it.</p>
+    <div class="cs-hero-meta">
+      <span><span class="cs-meta-label">Company</span> <span class="cs-meta-value">ZAR</span></span>
+      <span><span class="cs-meta-label">Year</span> <span class="cs-meta-value">2024 – 2025</span></span>
+      <span><span class="cs-meta-label">Role</span> <span class="cs-meta-value">Head of Design</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHALLENGE ═══ -->
+<section class="cs-section">
+  <div class="cs-section-inner reveal">
+    <h2 class="cs-section-heading">THE CHALLENGE</h2>
+    <div class="cs-body">
+      <p>ZAR's product was built by freelancers. Multiple designers, multiple engineers, no shared system, no shared language. The Figma files were a graveyard of duplicated components, orphaned frames, and styles that varied by who designed them and when. Every screen looked slightly different.</p>
+      <p>The product spanned three platforms — iOS, Android, and web — each with its own visual inconsistencies. Engineers had no reliable source of truth for design specifications. Every feature handoff was a negotiation: "Which version of this button do I use? What's the correct spacing? Is this the right shade of gray?"</p>
+      <p>To make it harder, the product itself was evolving rapidly. ZAR pivoted its positioning multiple times, which meant the design system couldn't be a static artifact — it had to keep pace with a moving target.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ METRIC HIGHLIGHT ═══ -->
+<div class="cs-highlight">
+  <div class="cs-highlight-inner reveal">
+    <span class="cs-highlight-value">670+</span>
+    <span class="cs-highlight-label">components across 3 platforms</span>
+  </div>
+</div>
+
+<!-- ═══ APPROACH ═══ -->
+<section class="cs-section">
+  <div class="cs-section-inner reveal">
+    <h2 class="cs-section-heading">THE APPROACH</h2>
+    <div class="cs-body">
+      <p>I built Techtonic three times. Not because of poor planning — because the product changed underneath it. Each version was a response to a new product direction, new platform requirements, and new scale demands.</p>
+      <p><strong>Version 1</strong> was a cleanup: audit everything, consolidate duplicates, establish base tokens and core components. It brought order to chaos but was designed for a product scope that soon expanded.</p>
+      <p><strong>Version 2</strong> introduced platform-specific adaptations. iOS, Android, and web each got their own component sets that shared the same tokens but respected platform conventions. This version also introduced the icon library — 103 custom icons designed specifically for ZAR's product vocabulary.</p>
+      <p><strong>Version 3</strong> was the system that shipped. It integrated with GitHub and Storybook, giving engineers a coded component library that mirrored Figma 1:1. Design tokens were synced between Figma and code. 37 Figma pages organized by component category, pattern, and platform. Full documentation for every component.</p>
+    </div>
+    <div class="cs-img-placeholder">
+      <i class="ph-bold ph-image"></i>
+      <span>Add screenshot — Techtonic Figma structure</span>
+    </div>
+    <div class="cs-img-placeholder">
+      <i class="ph-bold ph-image"></i>
+      <span>Add screenshot — component library overview</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUTION ═══ -->
+<section class="cs-section">
+  <div class="cs-section-inner reveal">
+    <h2 class="cs-section-heading">THE SOLUTION</h2>
+    <div class="cs-body">
+      <p>Techtonic in its final form was a comprehensive multi-platform design system. 670+ components spanning iOS, Android, and web. 103 custom icons. Design tokens managed in Figma and synced to GitHub. Storybook documentation for engineering self-service. 37 organized Figma pages covering primitives, patterns, templates, and platform-specific adaptations.</p>
+      <p>The system was designed for engineer self-service. Component documentation included not just visual specs but behavior descriptions, state management guidelines, and accessibility requirements. An engineer could pick up a component from Storybook and implement it without needing a designer in the room.</p>
+      <p>Token architecture followed a three-tier model: primitive tokens (raw values), semantic tokens (contextual meaning), and component tokens (specific to individual components). This gave the system both flexibility and specificity.</p>
+    </div>
+    <div class="cs-img-placeholder cs-img-placeholder--lg">
+      <i class="ph-bold ph-image"></i>
+      <span>Add screenshot — Techtonic design system overview</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMPACT ═══ -->
+<section class="cs-section">
+  <div class="cs-section-inner reveal">
+    <h2 class="cs-section-heading">THE IMPACT</h2>
+    <div class="cs-impact-grid">
+      <div class="cs-impact-stat">
+        <span class="cs-impact-val">670+</span>
+        <span class="cs-impact-label">Components</span>
+      </div>
+      <div class="cs-impact-stat">
+        <span class="cs-impact-val">37</span>
+        <span class="cs-impact-label">Figma pages</span>
+      </div>
+      <div class="cs-impact-stat">
+        <span class="cs-impact-val">103</span>
+        <span class="cs-impact-label">Custom icons</span>
+      </div>
+      <div class="cs-impact-stat">
+        <span class="cs-impact-val">3</span>
+        <span class="cs-impact-label">Platforms</span>
+      </div>
+    </div>
+    <div class="cs-body">
+      <p>Techtonic transformed ZAR's development workflow. Engineers stopped waiting for designers to hand off specs — they could self-serve from Storybook. Design reviews shifted from "does this match the design?" to "does this solve the user problem?" — a much more valuable conversation.</p>
+      <p>The three-time rebuild was actually an advantage. Each version incorporated lessons from the last, and the final system was battle-tested against real product changes. It wasn't theoretical — it was proven to survive pivots.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CASE STUDY NAV ═══ -->
+<nav class="cs-nav">
+  <a href="/stories/zar/golden-flow" class="cs-nav-link cs-nav-link--prev">
+    <span class="cs-nav-label">Previous Case Study</span>
+    <span class="cs-nav-title"><i class="ph-bold ph-arrow-left"></i> GOLDEN FLOW</span>
+  </a>
+  <a href="/stories/zar/machina" class="cs-nav-link cs-nav-link--next">
+    <span class="cs-nav-label">Next Case Study</span>
+    <span class="cs-nav-title">MACHINA <i class="ph-bold ph-arrow-right"></i></span>
+  </a>
+</nav>
+<div class="cs-back-link">
+  <a href="/stories/zar"><i class="ph-bold ph-arrow-left"></i> Back to ZAR</a>
+</div>
+
+<!-- Footer -->
+<footer class="the-footer" id="footer">
+  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
+  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
+  <div class="footer-center">
+    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
+    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
+    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('customCursor');
+  if (cursor && window.matchMedia('(pointer: fine)').matches) {
+    let mouseX=0,mouseY=0,curX=0,curY=0;
+    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
+    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
+    ac(); document.body.classList.add('cursor-active');
+    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  }
+  let ls=0; const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
+  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
+  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
+  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
+  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
+</script>
+
+</Base>

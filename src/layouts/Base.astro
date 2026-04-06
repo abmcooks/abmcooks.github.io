@@ -1,0 +1,37 @@
+---
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Basit Masood — Head of Product Design. Two-time founding designer. Fintech." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <ClientRouter />
+
+  <!-- Fontshare: JetBrains Mono -->
+  <link href="https://api.fontshare.com/v2/css?f[]=jet-brains-mono@400,700&display=swap" rel="stylesheet" />
+
+  <!-- Phosphor Icons (CSS) -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+
+  <slot name="head" />
+</head>
+<body>
+  <slot />
+
+  <script>
+    // No GSAP — using pure CSS/JS for scroll
+  </script>
+</body>
+</html>
