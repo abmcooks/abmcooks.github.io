@@ -27,11 +27,14 @@ import '../styles/global.css';
     background: var(--color-depth); padding: 40px 24px;
     text-align: center;
   }
-  .four-content { max-width: 480px; }
+  .four-content {
+    max-width: 480px;
+    animation: fourFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
   .four-code {
     font-family: var(--font-display); font-size: clamp(100px, 20vw, 200px);
     font-weight: 400; line-height: 0.85; text-transform: uppercase;
-    color: var(--color-white-06);
+    color: var(--color-white-12);
     margin-bottom: 16px;
   }
   .four-title {
@@ -39,15 +42,18 @@ import '../styles/global.css';
     font-weight: 400; line-height: 1.05; text-transform: uppercase;
     color: var(--color-white);
     margin-bottom: 16px;
+    animation: fourFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.08s both;
   }
   .four-desc {
     font-family: var(--font-body); font-size: 18px; font-weight: 400;
     line-height: 1.6; color: var(--color-white-50);
     margin-bottom: 40px;
+    animation: fourFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.16s both;
   }
   .four-links {
     display: flex; align-items: center; justify-content: center;
     gap: 16px; flex-wrap: wrap;
+    animation: fourFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.24s both;
   }
   .four-link {
     font-family: var(--font-heading); font-size: 15px; font-weight: 500;
@@ -55,21 +61,36 @@ import '../styles/global.css';
     padding: 12px 24px; border-radius: 0.5em;
     border: 1px solid var(--color-white-12);
     display: inline-flex; align-items: center; gap: 8px;
-    transition: color 0.2s, border-color 0.2s;
+    transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
   }
-  .four-link:hover { color: var(--color-rose); border-color: var(--color-rose); }
+  .four-link:hover {
+    background: var(--color-rose); border-color: var(--color-rose);
+    color: var(--color-white);
+  }
+  .four-link:active { transform: scale(0.97); }
   .four-link--primary {
     background: var(--color-rose); border-color: var(--color-rose);
     color: var(--color-white);
   }
   .four-link--primary:hover {
-    background: transparent; color: var(--color-rose);
+    background: #f43f5e; border-color: #f43f5e;
+    color: var(--color-white);
   }
   .four-dot {
     width: 10px; height: 10px; border-radius: 50%;
     background: var(--color-rose);
     box-shadow: 0 0 12px 4px rgba(225, 29, 72, 0.35);
     margin-top: 64px;
+    animation: fourPulse 3s ease-in-out infinite, fourFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.4s both;
+  }
+
+  @keyframes fourFadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fourPulse {
+    0%, 100% { box-shadow: 0 0 12px 4px rgba(225, 29, 72, 0.35); opacity: 1; }
+    50% { box-shadow: 0 0 20px 8px rgba(225, 29, 72, 0.5); opacity: 0.7; }
   }
 </style>
 
