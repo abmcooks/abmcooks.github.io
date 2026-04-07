@@ -1,0 +1,683 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/global.css';
+---
+
+<Base title="Consulting — Basit Masood" description="AI-powered design consulting. Design systems, automation, and AI integration for product teams.">
+
+<!-- Cursor -->
+<div class="custom-cursor" id="customCursor">
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+</div>
+
+<!-- Nav -->
+<nav class="cs-nav" id="nav">
+  <a href="/" class="cs-nav-logo">
+    <svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/>
+      <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/>
+      <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/>
+    </svg>
+  </a>
+  <a href="/" class="cs-nav-back"><i class="ph-bold ph-arrow-left"></i> Back to site</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════ -->
+<section class="cs-hero">
+  <div class="cs-hero-line"></div>
+  <div class="cs-hero-inner reveal">
+    <h1 class="cs-hero-heading">AI-POWERED DESIGN<br/>FOR PRODUCT TEAMS</h1>
+    <p class="cs-hero-sub">I help startups and product teams integrate AI into their design workflow — not as a gimmick, but as infrastructure that ships faster, scales better, and doesn't hallucinate your brand away.</p>
+    <a href="#contact" class="cs-hero-cta">Start a conversation <i class="ph-bold ph-arrow-down"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SERVICES
+     ═══════════════════════════════════════════ -->
+<section class="cs-services">
+  <div class="cs-services-inner">
+    <div class="cs-service reveal reveal-stagger-1">
+      <svg class="cs-service-shape" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" stroke="currentColor" stroke-width="1.5"/><circle cx="40" cy="40" r="24" stroke="currentColor" stroke-width="1.5"/><circle cx="40" cy="40" r="12" stroke="currentColor" stroke-width="1.5"/></svg>
+      <div class="cs-service-header">
+        <div class="cs-service-num">01</div>
+        <h2 class="cs-service-title">AI Design Operations</h2>
+      </div>
+      <p class="cs-service-desc">Set up AI-assisted design workflows from scratch. From prompt engineering for design tasks to full automation pipelines where engineers self-serve from your design system — no designer bottleneck.</p>
+      <ul class="cs-service-list">
+        <li>Claude Code setup for design teams</li>
+        <li>AI agent workflows for repetitive design tasks</li>
+        <li>Design-to-code automation pipelines</li>
+        <li>Custom scripts and recipes for daily ops</li>
+      </ul>
+    </div>
+
+    <div class="cs-service reveal reveal-stagger-2">
+      <svg class="cs-service-shape" viewBox="0 0 80 80" fill="none"><rect x="4" y="4" width="72" height="72" rx="6" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="18" width="44" height="44" rx="4" stroke="currentColor" stroke-width="1.5"/><rect x="32" y="32" width="16" height="16" rx="3" fill="#e11d48" opacity="0.4"/></svg>
+      <div class="cs-service-header">
+        <div class="cs-service-num">02</div>
+        <h2 class="cs-service-title">Design Systems That Scale</h2>
+      </div>
+      <p class="cs-service-desc">Build production-grade design systems with tokens connected to code. Not a Figma library that nobody uses — a living system with governance, adoption strategy, and AI-readiness built in.</p>
+      <ul class="cs-service-list">
+        <li>Component architecture + token system</li>
+        <li>Figma-to-code pipeline with design tokens</li>
+        <li>Governance, QA, and adoption frameworks</li>
+        <li>AI-ready systems (agents can consume your DS)</li>
+      </ul>
+    </div>
+
+    <div class="cs-service reveal reveal-stagger-3">
+      <svg class="cs-service-shape" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="14" r="5" fill="currentColor"/><line x1="40" y1="19" x2="40" y2="38" stroke="currentColor" stroke-width="1.5"/><line x1="16" y1="38" x2="64" y2="38" stroke="currentColor" stroke-width="1.5"/><line x1="16" y1="38" x2="16" y2="52" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="38" x2="40" y2="52" stroke="currentColor" stroke-width="1.5"/><line x1="64" y1="38" x2="64" y2="52" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="56" r="4" fill="currentColor"/><circle cx="40" cy="56" r="4" fill="currentColor"/><circle cx="64" cy="56" r="4" fill="currentColor"/></svg>
+      <div class="cs-service-header">
+        <div class="cs-service-num">03</div>
+        <h2 class="cs-service-title">Product Design Leadership</h2>
+      </div>
+      <p class="cs-service-desc">Fractional design leadership for teams that need senior guidance without a full-time head of design. Strategy, team structure, hiring, process — the scaffolding that lets your team do their best work.</p>
+      <ul class="cs-service-list">
+        <li>Design team structure and hiring</li>
+        <li>UX strategy and product direction</li>
+        <li>Design reviews and quality governance</li>
+        <li>Research practice and frameworks</li>
+      </ul>
+    </div>
+
+    <div class="cs-service reveal reveal-stagger-4">
+      <svg class="cs-service-shape" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="28" stroke="currentColor" stroke-width="1.5"/><circle cx="40" cy="40" r="8" fill="#e11d48" opacity="0.4"/><line x1="40" y1="12" x2="40" y2="4" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="68" x2="40" y2="76" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="40" x2="4" y2="40" stroke="currentColor" stroke-width="1.5"/><line x1="68" y1="40" x2="76" y2="40" stroke="currentColor" stroke-width="1.5"/><circle cx="40" cy="4" r="3" fill="currentColor"/><circle cx="40" cy="76" r="3" fill="currentColor"/><circle cx="4" cy="40" r="3" fill="currentColor"/><circle cx="76" cy="40" r="3" fill="currentColor"/></svg>
+      <div class="cs-service-header">
+        <div class="cs-service-num">04</div>
+        <h2 class="cs-service-title">AI Agent Design</h2>
+      </div>
+      <p class="cs-service-desc">Design products where the primary user is an AI agent, not a human. I built MACHINA — a 5-tool AI operating system — and designed interfaces for both machine consumption and human oversight.</p>
+      <ul class="cs-service-list">
+        <li>Agent-facing UX (APIs, schemas, dashboards)</li>
+        <li>Human-in-the-loop oversight interfaces</li>
+        <li>AI brand identity and documentation systems</li>
+        <li>Experimentation and metrics frameworks</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PROBLEMS — Scroll-driven large text reveal
+     ═══════════════════════════════════════════ -->
+<section class="cs-problems" id="csProblems">
+  <div class="cs-problems-inner">
+    <div class="cs-problem-slide" data-slide="0">
+      <p class="cs-problem-text">ENGINEERS WAIT DAYS FOR DESIGN TO DELIVER A SCREEN.</p>
+    </div>
+    <div class="cs-problem-slide" data-slide="1">
+      <p class="cs-problem-text">YOUR DESIGN TEAM IS 2 PEOPLE DOING THE WORK OF 10.</p>
+    </div>
+    <div class="cs-problem-slide" data-slide="2">
+      <p class="cs-problem-text">YOU WANT TO USE AI BUT DON'T KNOW WHERE TO START.</p>
+    </div>
+    <div class="cs-problem-slide" data-slide="3">
+      <p class="cs-problem-text">YOU HAVE A DESIGN SYSTEM BUT NOBODY USES IT.</p>
+    </div>
+    <div class="cs-problem-slide" data-slide="4">
+      <p class="cs-problem-text">DESIGN IS THE BOTTLENECK IN EVERY SPRINT.</p>
+    </div>
+    <div class="cs-problem-slide cs-problem-slide--closer" data-slide="5">
+      <p class="cs-problem-closer">I've solved each of these.</p>
+      <p class="cs-problem-closer-sub">Yours is next.</p>
+      <a href="#contact" class="cs-problem-closer-cta"><i class="ph-bold ph-envelope-simple"></i> Get in touch</a>
+    </div>
+  </div>
+  <div class="cs-problems-progress">
+    <div class="cs-problems-progress-fill" id="csProgressFill"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     HOW I WORK — Single column, focused reading
+     ═══════════════════════════════════════════ -->
+<section class="cs-engage">
+  <div class="cs-engage-inner">
+    <h2 class="cs-engage-heading reveal">HOW I WORK</h2>
+
+    <div class="cs-engage-card reveal">
+      <div class="cs-engage-card-watermark">01</div>
+      <span class="cs-engage-fit">Teams with a specific problem to solve</span>
+      <h3 class="cs-engage-title">Project-Based</h3>
+      <p class="cs-engage-desc">Scoped engagement with clear deliverables. Design system build, AI workflow setup, product redesign. Fixed timeline, fixed scope. We agree on what done looks like before we start.</p>
+    </div>
+
+    <div class="cs-engage-card reveal">
+      <div class="cs-engage-card-watermark">02</div>
+      <span class="cs-engage-fit">Startups without a senior design hire</span>
+      <h3 class="cs-engage-title">Monthly Retainer</h3>
+      <p class="cs-engage-desc">Ongoing design leadership and AI guidance. Weekly syncs, async reviews, hands-on work. Like having a Head of Design on speed dial — without the full-time commitment.</p>
+    </div>
+
+    <div class="cs-engage-card reveal">
+      <div class="cs-engage-card-watermark">03</div>
+      <span class="cs-engage-fit">Teams that have designers but need direction</span>
+      <h3 class="cs-engage-title">Advisory</h3>
+      <p class="cs-engage-desc">Strategic guidance without hands-on execution. Team structure, process, tooling decisions, design reviews. Light touch, high impact. I point, your team builds.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PROOF
+     ═══════════════════════════════════════════ -->
+<section class="cs-proof">
+  <div class="cs-proof-inner reveal">
+    <div class="cs-proof-stats">
+      <div class="cs-proof-stat">
+        <span class="cs-proof-val">8+</span>
+        <span class="cs-proof-label">Years in product design</span>
+      </div>
+      <div class="cs-proof-stat">
+        <span class="cs-proof-val">$90M+</span>
+        <span class="cs-proof-label">Funding raised by products</span>
+      </div>
+      <div class="cs-proof-stat">
+        <span class="cs-proof-val">6M+</span>
+        <span class="cs-proof-label">Users across products</span>
+      </div>
+      <div class="cs-proof-stat">
+        <span class="cs-proof-val">25+</span>
+        <span class="cs-proof-label">Designers hired & mentored</span>
+      </div>
+    </div>
+    <p class="cs-proof-note">Previously: Head of Design at ZAR (a16z-backed), Founding Designer at SadaPay (acquired for $50M), Lead Designer at ADIB. Built MACHINA — an AI agent operating system with 5 tools.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════════ -->
+<section class="cs-cta" id="contact">
+  <div class="cs-cta-inner reveal">
+    <h2 class="cs-cta-heading">LET'S TALK</h2>
+    <p class="cs-cta-sub">Every engagement starts with a conversation — and the conversation is <span class="cs-cta-free">FREE</span>. Tell me what you're building and where design is slowing you down.</p>
+    <div class="cs-cta-links">
+      <a href="mailto:basitmasood999@gmail.com" class="cs-cta-link cs-cta-link--primary"><i class="ph-bold ph-envelope-simple"></i> basitmasood999@gmail.com</a>
+      <a href="https://linkedin.com/in/iabm" target="_blank" class="cs-cta-link"><i class="ph-bold ph-linkedin-logo"></i> LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ═══ CONSULTING PAGE ═══ */
+
+  /* Easing tokens (Emil Kowalski) */
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  /* Scroll Reveal with stagger */
+  .reveal {
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+  .reveal.revealed { opacity: 1; transform: translateY(0); }
+  .reveal-stagger-1 { transition-delay: 0ms; }
+  .reveal-stagger-2 { transition-delay: 60ms; }
+  .reveal-stagger-3 { transition-delay: 120ms; }
+  .reveal-stagger-4 { transition-delay: 180ms; }
+  .reveal-stagger-5 { transition-delay: 240ms; }
+  .reveal-stagger-6 { transition-delay: 300ms; }
+
+  /* Nav */
+  .cs-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 32px 40px 0;
+  }
+  .cs-nav-logo { display: inline-flex; opacity: 0.8; transition: opacity 0.2s; }
+  .cs-nav-logo:hover { opacity: 1; }
+  .cs-nav-back {
+    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
+    color: var(--color-white-50); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .cs-nav-back:hover { color: var(--color-rose); border-color: var(--color-rose); }
+
+  /* Hero */
+  .cs-hero {
+    position: relative; overflow: hidden;
+    min-height: 100dvh;
+    display: flex; align-items: flex-end;
+    padding: 0 40px 120px;
+    background: var(--color-void);
+    background-image:
+      radial-gradient(ellipse 50% 60% at 10% 90%, rgba(225, 29, 72, 0.1) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 85% 40%, rgba(225, 29, 72, 0.04) 0%, transparent 60%);
+  }
+  .cs-hero-line {
+    position: absolute;
+    right: max(40px, calc((100vw - 1400px) / 2 + 40px));
+    top: 15%; bottom: 15%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent 10%, var(--color-rose-50) 40%, var(--color-rose-50) 60%, transparent 90%);
+    z-index: 0;
+  }
+  .cs-hero-inner { max-width: 1400px; width: 100%; position: relative; z-index: 1; }
+  .cs-hero-heading {
+    font-family: var(--font-display); font-size: clamp(48px, 9vw, 140px);
+    font-weight: 400; line-height: 0.92; text-transform: uppercase;
+    color: var(--color-white); margin-bottom: 40px;
+    max-width: 90%;
+  }
+  .cs-hero-sub {
+    font-family: var(--font-body); font-size: 20px; font-weight: 400;
+    line-height: 1.7; color: var(--color-white-50);
+    max-width: 600px; margin-bottom: 48px;
+  }
+  .cs-hero-cta {
+    font-family: var(--font-heading); font-size: 15px; font-weight: 500;
+    color: var(--color-white-80); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 28px; border-radius: 0.5em;
+    border: 1px solid var(--color-white-12);
+    transition: color 0.3s, border-color 0.3s, gap 0.3s;
+  }
+  .cs-hero-cta:hover { color: var(--color-rose); border-color: var(--color-rose); gap: 14px; }
+  .cs-hero-cta:active { transform: scale(0.97); }
+  .cs-hero-cta i { font-size: 16px; }
+
+  /* Services */
+  .cs-services {
+    padding: 100px 40px;
+    background: var(--color-depth);
+  }
+  .cs-services-inner {
+    max-width: 1400px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+  }
+  .cs-service {
+    padding: 44px;
+    background: var(--color-basalt);
+    border: 1px solid var(--color-white-06);
+    border-radius: 8px;
+    position: relative; overflow: hidden;
+    transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+  }
+  .cs-service::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--color-rose);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 300ms var(--ease-out);
+  }
+  .cs-service:hover {
+    border-color: var(--color-rose-20);
+    transform: translateY(-4px);
+  }
+  .cs-service:hover::before { transform: scaleX(1); }
+  .cs-service:active { transform: scale(0.98); }
+
+  /* Service shapes — SVG icons, top-right */
+  .cs-service-shape {
+    position: absolute; top: 32px; right: 32px;
+    width: 72px; height: 72px;
+    color: var(--color-white);
+    opacity: 0.12;
+    transition: opacity 300ms var(--ease-out);
+  }
+  .cs-service:hover .cs-service-shape { opacity: 0.2; }
+
+  .cs-service-header {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 20px;
+  }
+  .cs-service-num {
+    font-family: var(--font-display); font-size: 48px;
+    font-weight: 400; text-transform: uppercase;
+    color: var(--color-white-06);
+    line-height: 1;
+  }
+  .cs-service-title {
+    font-family: var(--font-heading); font-size: 22px; font-weight: 600;
+    color: var(--color-white); line-height: 1.3;
+  }
+  .cs-service-desc {
+    font-family: var(--font-body); font-size: 16px; font-weight: 400;
+    line-height: 1.7; color: var(--color-white-50);
+    margin-bottom: 24px;
+  }
+  .cs-service-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-white-06);
+  }
+  .cs-service-list li {
+    font-family: var(--font-heading); font-size: 14px; font-weight: 400;
+    color: var(--color-white-80);
+    padding-left: 16px;
+    position: relative;
+  }
+  .cs-service-list li::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--color-rose);
+  }
+
+  /* Problems — scroll-driven large text with atmosphere */
+  .cs-problems {
+    position: relative;
+    height: 600vh;
+    background: var(--color-void);
+  }
+  .cs-problems-inner {
+    position: sticky; top: 0;
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    padding: 40px;
+  }
+  /* Gradient atmosphere that shifts with scroll via JS */
+  .cs-problems-inner::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, var(--problems-glow, rgba(225, 29, 72, 0)) 0%, transparent 70%);
+    transition: background 0.8s ease;
+    pointer-events: none;
+  }
+  .cs-problem-slide {
+    position: absolute;
+    max-width: 900px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    pointer-events: none;
+  }
+  .cs-problem-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .cs-problem-text {
+    font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px);
+    font-weight: 400; line-height: 1.1; text-transform: uppercase;
+    color: var(--color-white-25);
+    transition: color 0.3s var(--ease-out);
+  }
+  .cs-problem-slide.active .cs-problem-text {
+    color: var(--color-white);
+  }
+  .cs-problem-slide--closer { text-align: center; }
+  .cs-problem-closer {
+    font-family: var(--font-heading); font-size: clamp(24px, 3vw, 40px);
+    font-weight: 600; color: var(--color-white);
+    margin-bottom: 12px;
+  }
+  .cs-problem-closer-sub {
+    font-family: var(--font-body); font-size: 22px;
+    color: var(--color-rose); font-style: italic;
+    margin-bottom: 32px;
+  }
+  .cs-problem-closer-cta {
+    font-family: var(--font-heading); font-size: 16px; font-weight: 600;
+    color: var(--color-rose); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px; border-radius: 0.5em;
+    border: 1px solid var(--color-rose);
+    transition: background 200ms var(--ease-out), color 200ms var(--ease-out), gap 200ms var(--ease-out);
+  }
+  .cs-problem-closer-cta:hover { background: var(--color-rose); color: var(--color-white); gap: 14px; }
+  .cs-problem-closer-cta:active { transform: scale(0.97); }
+  .cs-problems-progress {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 3px; background: var(--color-white-06);
+    z-index: 50;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .cs-problems-progress.visible { opacity: 1; }
+  .cs-problems-progress-fill {
+    height: 100%; background: var(--color-rose);
+    width: 0; transition: width 0.1s linear;
+  }
+
+  /* How I Work — cards with watermark numbers */
+  .cs-engage {
+    padding: 120px 40px;
+    background: var(--color-depth);
+    position: relative;
+  }
+  .cs-engage::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(245, 240, 232, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .cs-engage-inner {
+    max-width: 1400px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .cs-engage-heading {
+    font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400; line-height: 1.1; text-transform: uppercase;
+    color: var(--color-white); margin-bottom: 64px;
+  }
+  .cs-engage-card {
+    position: relative; overflow: hidden;
+    padding: 56px;
+    background: var(--color-basalt);
+    border: 1px solid var(--color-white-06);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+  }
+  .cs-engage-card:last-child { margin-bottom: 0; }
+  .cs-engage-card:hover {
+    border-color: var(--color-white-12);
+    transform: translateY(-2px);
+  }
+  .cs-engage-card-watermark {
+    position: absolute; right: 40px; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display); font-size: clamp(120px, 12vw, 200px);
+    font-weight: 400; text-transform: uppercase;
+    color: var(--color-white);
+    opacity: 0.02;
+    line-height: 1;
+    pointer-events: none;
+    transition: opacity 300ms var(--ease-out);
+  }
+  .cs-engage-card:hover .cs-engage-card-watermark { opacity: 0.04; }
+  .cs-engage-fit {
+    display: inline-block;
+    font-family: var(--font-heading); font-size: 13px; font-weight: 600;
+    color: var(--color-rose); letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .cs-engage-title {
+    font-family: var(--font-heading); font-size: clamp(24px, 3vw, 32px); font-weight: 600;
+    color: var(--color-white); line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .cs-engage-desc {
+    font-family: var(--font-body); font-size: 18px; font-weight: 400;
+    line-height: 1.75; color: var(--color-white-50);
+    max-width: 640px;
+  }
+
+
+  /* Proof */
+  .cs-proof {
+    padding: 80px 40px;
+    background: var(--color-basalt);
+    border-top: 1px solid var(--color-white-06);
+    border-bottom: 1px solid var(--color-white-06);
+  }
+  .cs-proof-inner { max-width: 1400px; margin: 0 auto; }
+  .cs-proof-stats {
+    display: flex; gap: 56px; margin-bottom: 32px; flex-wrap: wrap;
+  }
+  .cs-proof-stat {
+    display: flex; flex-direction: column; gap: 4px;
+    padding-left: 20px;
+    border-left: 2px solid var(--color-rose);
+  }
+  .cs-proof-val {
+    font-family: var(--font-heading); font-size: 36px; font-weight: 700;
+    color: var(--color-white); line-height: 1;
+  }
+  .cs-proof-label {
+    font-family: var(--font-heading); font-size: 14px; font-weight: 400;
+    color: var(--color-white-50);
+  }
+  .cs-proof-note {
+    font-family: var(--font-body); font-size: 16px; font-weight: 400;
+    line-height: 1.7; color: var(--color-white-25);
+    max-width: 800px;
+  }
+
+  /* CTA */
+  .cs-cta {
+    padding: 140px 40px;
+    background: var(--color-void);
+    text-align: center;
+    position: relative;
+    background-image: radial-gradient(ellipse 40% 50% at 50% 60%, rgba(225, 29, 72, 0.06) 0%, transparent 70%);
+  }
+  .cs-cta-inner { max-width: 600px; margin: 0 auto; }
+  .cs-cta-heading {
+    font-family: var(--font-display); font-size: clamp(48px, 6vw, 80px);
+    font-weight: 400; line-height: 1; text-transform: uppercase;
+    color: var(--color-white); margin-bottom: 24px;
+  }
+  .cs-cta-sub {
+    font-family: var(--font-body); font-size: 18px; font-weight: 400;
+    line-height: 1.7; color: var(--color-white-50);
+    margin-bottom: 40px;
+  }
+  .cs-cta-free {
+    color: var(--color-white); font-weight: 700;
+    font-family: var(--font-heading);
+    letter-spacing: 0.04em;
+  }
+  .cs-cta-links {
+    display: flex; align-items: center; justify-content: center; gap: 20px;
+    flex-wrap: wrap;
+  }
+  .cs-cta-link {
+    font-family: var(--font-heading); font-size: 16px; font-weight: 500;
+    color: var(--color-white-80); text-decoration: none;
+    padding: 14px 28px; border-radius: 0.5em;
+    border: 1px solid var(--color-white-12);
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .cs-cta-link:hover { color: var(--color-rose); border-color: var(--color-rose); }
+  .cs-cta-link--primary {
+    background: var(--color-rose); border-color: var(--color-rose);
+    color: var(--color-white);
+  }
+  .cs-cta-link--primary:hover {
+    background: transparent; color: var(--color-rose);
+  }
+  .cs-cta-link:active { transform: scale(0.97); }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none; opacity: 1; transform: none; }
+    .cs-service, .cs-engage-row, .cs-problem, .cs-hero-cta, .cs-cta-link { transition: none; }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .cs-hero { padding: 160px 24px 80px; }
+    .cs-hero-mark { display: none; }
+    .cs-services { padding: 60px 24px; }
+    .cs-services-inner { grid-template-columns: 1fr; }
+    .cs-hero-line { display: none; }
+    .cs-problems { padding: 60px 24px; }
+    .cs-engage { padding: 60px 24px; }
+    .cs-engage-card { padding: 32px; }
+    .cs-engage-card-watermark { font-size: 100px; right: 16px; }
+    .cs-proof { padding: 48px 24px; }
+    .cs-proof-stats { gap: 32px; }
+    .cs-problems { height: 500vh; }
+    .cs-problems-inner { padding: 24px; }
+    .cs-problem-text { font-size: clamp(24px, 7vw, 48px); }
+    .cs-proof { padding: 48px 24px; }
+    .cs-proof-stats { gap: 32px; }
+    .cs-cta { padding: 80px 24px; }
+    .cs-nav { padding: 24px 24px 0; }
+  }
+
+  /* Cursor */
+  .custom-cursor { position: fixed; top: 0; left: 0; z-index: 99998; pointer-events: none; will-change: transform; }
+  .cursor-ring { width: 44px; height: 44px; border: 1.5px solid rgba(245, 240, 232, 0.5); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s; }
+  .cursor-dot { width: 6px; height: 6px; background: var(--color-white); border-radius: 50%; position: absolute; top: 0; left: 0; transform: translate(-50%, -50%); }
+  .custom-cursor.hover .cursor-ring { width: 72px; height: 72px; border-color: var(--color-white); background: rgba(245, 240, 232, 0.08); }
+  @media (pointer: coarse) { .custom-cursor { display: none; } }
+  body.cursor-active, body.cursor-active a, body.cursor-active button { cursor: none; }
+</style>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('customCursor');
+  if (cursor && window.matchMedia('(pointer: fine)').matches) {
+    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+    function animateCursor() { curX += (mouseX - curX) * 0.15; curY += (mouseY - curY) * 0.15; cursor.style.transform = `translate(${curX}px, ${curY}px)`; requestAnimationFrame(animateCursor); }
+    animateCursor();
+    document.body.classList.add('cursor-active');
+    document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  }
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Problems — scroll-driven slides
+  (function() {
+    const section = document.getElementById('csProblems');
+    const slides = document.querySelectorAll('.cs-problem-slide');
+    const progress = document.querySelector('.cs-problems-progress');
+    const fill = document.getElementById('csProgressFill');
+    if (!section || !slides.length) return;
+
+    const total = slides.length;
+    let lastIndex = -1;
+
+    function onScroll() {
+      const rect = section.getBoundingClientRect();
+      const scrollable = section.offsetHeight - window.innerHeight;
+      const scrolled = -rect.top;
+      const p = Math.max(0, Math.min(1, scrolled / scrollable));
+      const index = Math.min(Math.floor(p * total), total - 1);
+
+      // Show/hide progress bar
+      if (rect.top < 0 && rect.bottom > window.innerHeight) {
+        progress?.classList.add('visible');
+        if (fill) fill.style.width = (p * 100) + '%';
+      } else {
+        progress?.classList.remove('visible');
+      }
+
+      if (index !== lastIndex) {
+        lastIndex = index;
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+        });
+        // Atmosphere: glow intensifies as you scroll deeper
+        const inner = document.querySelector('.cs-problems-inner');
+        if (inner) {
+          const intensity = Math.min(p * 0.12, 0.1);
+          inner.style.setProperty('--problems-glow', `rgba(225, 29, 72, ${intensity})`);
+        }
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</Base>
