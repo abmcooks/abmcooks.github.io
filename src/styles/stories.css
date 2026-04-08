@@ -54,6 +54,16 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .nav-burger:hover { color: var(--color-rose); }
 @media (max-width: 768px) { .nav { padding: 24px 24px 0; } .nav-right { display: none; } .nav-burger { display: flex; } }
 
+/* ── NAV LIGHT (on cream sections) ── */
+.nav.nav-light .nav-logo svg path { fill: rgba(6, 6, 6, 0.7); }
+.nav.nav-light .nav-right a { color: rgba(6, 6, 6, 0.7); }
+.nav.nav-light .nav-right a:not(.nav-resume):hover { color: var(--color-rose); }
+.nav.nav-light .nav-active { color: var(--color-void) !important; }
+.nav.nav-light .nav-resume { border-color: rgba(6, 6, 6, 0.3); color: rgba(6, 6, 6, 0.7); }
+.nav.nav-light .nav-resume:hover { border-color: var(--color-rose); color: var(--color-rose); }
+.nav.nav-light .nav-burger { color: rgba(6, 6, 6, 0.7); }
+.nav.nav-light .nav-burger:hover { color: var(--color-rose); }
+
 /* ── FULLSCREEN MENU ── */
 .fs-menu { position: fixed; inset: 0; z-index: 10001; background: var(--color-void); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s; }
 .fs-menu.open { opacity: 1; visibility: visible; }
