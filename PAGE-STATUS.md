@@ -5,7 +5,7 @@
 |---|------|------|--------|
 | | **CORE (5)** | | |
 | 1 | Homepage | `/` | Approved |
-| 2 | About | `/about` | Approved |
+| 2 | About | `/about` | Needs review |
 | 3 | Resume | `/resume` | Approved |
 | 4 | Consulting | `/consulting` | Approved |
 | 5 | 404 | `/404` | Approved |
@@ -33,9 +33,9 @@
 | 25 | Watching Merchants | `/writing/watching-merchants` | Needs review |
 
 ## Summary
-- **6 approved** — Homepage, About, Resume, Consulting, 404, Stories Landing
+- **5 approved** — Homepage, Resume, Consulting, 404, Stories Landing
 - **1 rebuilt, pending fixes** — SadaPay (Basit spotted issues, not yet addressed)
-- **17 need review** — All other stories + all writing pages
+- **18 need review** — About + all other stories + all writing pages
 - **1 missing** — Xpence (linked from stories landing, no page file)
 
 ## Design Decisions Applied During Reviews

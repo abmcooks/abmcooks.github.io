@@ -1,0 +1,29 @@
+---
+interface Props {
+  active?: 'stories' | 'writing' | 'about' | 'resume' | null;
+}
+const { active = null } = Astro.props;
+---
+
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <a href="/" class="nav-logo">
+      <svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/>
+        <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/>
+        <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/>
+      </svg>
+    </a>
+  </div>
+  <div class="nav-right">
+    <a href="/stories" class={active === 'stories' ? 'nav-active' : undefined}>Stories</a>
+    <a href="/writing" class={active === 'writing' ? 'nav-active' : undefined}>Writing</a>
+    <a href="/about" class={active === 'about' ? 'nav-active' : undefined}>About</a>
+    <a href="/resume" class={active === 'resume' ? 'nav-resume nav-active' : 'nav-resume'}>
+      <i class="ph-bold ph-download-simple"></i> Resume
+    </a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <i class="ph-bold ph-list"></i>
+  </button>
+</nav>

@@ -142,8 +142,8 @@ import '../styles/global.css';
           <img src="/images/sadapay-logo.svg" alt="SadaPay" />
           <img src="/images/papara-logo.png" alt="Papara" />
         </div>
-        <p class="stories-eyebrow">SadaPay · 2020–2024 · Founding Designer</p>
-        <a href="/stories/sadapay" class="stories-card-title">FOUNDING DESIGNER TO $50M ACQUISITION. PAKISTAN'S LARGEST NEOBANK.</a>
+        <p class="stories-eyebrow">SadaPay acquired by Papara — Founding Designer → Head of Product Design</p>
+        <a href="/stories/sadapay" class="stories-card-title">$50M ACQUISITION. PAKISTAN'S LARGEST NEOBANK.</a>
         <p class="stories-card-desc">4M+ users · $1.5B+ processed yearly · 700K viral waitlist · Team of 8 · Nukta design system · Acquired by Papara</p>
       </div>
     </div>
@@ -154,7 +154,7 @@ import '../styles/global.css';
       <div class="stories-card-overlay"></div>
       <div class="stories-card-content">
         <div class="stories-card-logo"><img src="/images/ZAR-logo.png" alt="ZAR" /></div>
-        <p class="stories-eyebrow">ZAR · 2024–Present · Head of Product Design</p>
+        <p class="stories-eyebrow">ZAR, a Solana wallet — Head of Product Design</p>
         <a href="/stories/zar" class="stories-card-title">A $20M-FUNDED STABLECOIN WALLET FOR THE NEXT BILLION USERS.</a>
         <p class="stories-card-desc">a16z · Dragonfly · Coinbase · VanEck · 200K+ users · 110+ countries · Techtonic design system · MACHINA AI suite</p>
       </div>
@@ -169,8 +169,8 @@ import '../styles/global.css';
           <img src="/images/WTT-logo.svg" alt="Walking the Talk" />
           <img src="/images/ZRG-logo.svg" alt="ZRG Partners" />
         </div>
-        <p class="stories-eyebrow">Walking the Talk · Consulting</p>
-        <a href="/stories/wtt" class="stories-card-title">DIGITIZING CULTURE MEASUREMENT FOR 200+ ORGANIZATIONS WORLDWIDE.</a>
+        <p class="stories-eyebrow">Walking the Talk acquired by ZRG Partners — Lead Product Design Consultant</p>
+        <a href="/stories/wtt" class="stories-card-title">6 CULTURE & PSYCHOMETRIC ASSESSMENT TOOLS FOR 200+ ORGANIZATIONS WORLDWIDE.</a>
         <p class="stories-card-desc">40 countries · Multi-dimensional data platform · Enterprise SaaS · Acquired by ZRG Partners</p>
       </div>
     </div>
@@ -795,7 +795,7 @@ import '../styles/global.css';
   }
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
-    background: radial-gradient(ellipse at 70% 60%, #1a1a18 0%, #0a0a0a 40%, var(--color-void) 80%);
+    background: radial-gradient(ellipse at 70% 60%, var(--color-basalt) 0%, var(--color-depth) 40%, var(--color-void) 80%);
   }
   .hero-bg-img { width: 100%; height: 100%; object-fit: cover; will-change: transform; image-rendering: -webkit-optimize-contrast; }
   .hero-bg-fade {
@@ -858,13 +858,13 @@ import '../styles/global.css';
   }
   .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; padding-left: 8px; }
   .stat-val {
-    font-family: var(--font-heading); font-weight: 600;
+    font-family: var(--font-heading); font-weight: 700;
     font-size: 48px;
     letter-spacing: 0; color: var(--color-white); line-height: 0.9; display: block;
   }
   .stat-label {
     font-family: var(--font-heading); font-size: 14px; font-weight: 500;
-    color: rgba(245, 240, 232, 0.6); margin-top: 12px; display: block; line-height: 0.9;
+    color: var(--color-white-50); margin-top: 12px; display: block; line-height: 0.9;
   }
   @media (max-width: 768px) { .hero { padding: 0 24px 48px; } .hero-stats { gap: 24px; } .hero-name { font-size: clamp(64px, 14vw, 180px); } }
 
@@ -943,7 +943,7 @@ import '../styles/global.css';
   .stories-card-logo img {
     width: 56px; height: 56px; object-fit: contain;
     border-radius: 8px;
-    background: #ffffff;
+    background: var(--color-white);
     padding: 8px;
   }
   .stories-eyebrow {
@@ -993,9 +993,9 @@ import '../styles/global.css';
   }
 
 
-  /* ═══ TESTIMONIALS — Bento Grid ═══ */
+  /* ═══ TESTIMONIALS — Bento Grid (warm cream — homepage only) ═══ */
   .testi {
-    background: var(--color-light); padding: 120px 40px;
+    background: var(--color-cream); padding: 120px 40px;
   }
   .testi-inner {
     max-width: 1400px; margin: 0 auto;
@@ -1010,15 +1010,15 @@ import '../styles/global.css';
     margin-top: 48px;
   }
   .bento-card {
-    background: #ffffff;
+    background: var(--color-white);
     border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 12px var(--color-dark-08), 0 1px 3px var(--color-dark-08);
     padding: 32px;
     transition: box-shadow 0.3s, transform 0.3s;
     display: flex; flex-direction: column; justify-content: space-between;
   }
   .bento-card:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 32px var(--color-dark-12), 0 2px 8px var(--color-dark-08);
     transform: translateY(-2px);
   }
 
@@ -1031,14 +1031,14 @@ import '../styles/global.css';
   .bento-quote-hero {
     font-family: var(--font-display); font-size: 38px; font-weight: 400;
     text-transform: uppercase; line-height: 1.3; letter-spacing: 0.01em;
-    color: #1a1a1a; margin-bottom: 28px;
+    color: var(--color-void); margin-bottom: 28px;
   }
 
   /* Regular quote */
   .bento-quote {
     font-family: var(--font-body); font-style: italic;
     font-size: 18px; line-height: 1.65;
-    color: #1a1a1a; margin-bottom: 28px; flex-grow: 1;
+    color: var(--color-dark-80); margin-bottom: 28px; flex-grow: 1;
   }
 
   /* Divider */
@@ -1054,10 +1054,10 @@ import '../styles/global.css';
   }
   .bento-avatar {
     width: 44px; height: 44px; border-radius: 50%;
-    background: #e5e0d8;
+    background: var(--color-cream);
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-heading); font-weight: 600; font-size: 14px;
-    color: #1a1a1a; flex-shrink: 0;
+    color: var(--color-void); flex-shrink: 0;
   }
   .bento-person-info { flex: 1; }
   .bento-name {
@@ -1066,7 +1066,7 @@ import '../styles/global.css';
   }
   .bento-role {
     font-family: var(--font-heading); font-size: 14px; font-weight: 500;
-    color: rgba(6, 6, 6, 0.5);
+    color: var(--color-dark-50);
   }
 
   /* CTA */

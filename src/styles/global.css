@@ -19,37 +19,52 @@
 
 /* ═══════════════════════════════════════════
    DESIGN TOKENS
+   ─────────────────────────────────────────────
+   Semantic roles — do NOT swap:
+     void    = page body bg (the deepest anchor)
+     depth   = section bg within a page
+     basalt  = elevated surface (cards, tabs, testimonial cards)
+     light   = cool limestone — general light-mode section bg
+     cream   = warm sand — homepage testimonial section ONLY
+   Rule: never use pure #ffffff on screen (print mode allowed).
    ═══════════════════════════════════════════ */
 @theme {
+  /* ── Dark surfaces (3 tokens, semantic) ── */
   --color-void: #060606;
-  --color-obsidian: #0a0a0a;
+  --color-depth: #0E0F10;
   --color-basalt: #111110;
-  --color-slate: #1a1a18;
-  --color-ash: #242422;
-  --color-stone: #333330;
-  --color-white: #f5f0e8;
+
+  /* ── Light surfaces ── */
+  --color-light: #E8ECEB;          /* cool limestone — general light-mode bg */
+  --color-cream: #ede8df;          /* warm sand — homepage testimonial bg ONLY */
+
+  /* ── Brand ── */
+  --color-white: #f5f0e8;          /* warm white — body text, brand ink */
+  --color-rose: #e11d48;           /* single accent — hover, focus, rose edges */
+
+  /* ── Text on dark (white alpha family) ── */
   --color-white-80: rgba(245, 240, 232, 0.8);
   --color-white-50: rgba(245, 240, 232, 0.5);
   --color-white-25: rgba(245, 240, 232, 0.25);
   --color-white-12: rgba(245, 240, 232, 0.12);
   --color-white-06: rgba(245, 240, 232, 0.06);
-  --color-white-03: rgba(245, 240, 232, 0.03);
-  --color-rose: #e11d48;
+
+  /* ── Text on light (dark alpha family, rgba(6,6,6) = void) ── */
+  --color-dark-80: rgba(6, 6, 6, 0.80);    /* strong — headings, emphasis */
+  --color-dark-65: rgba(6, 6, 6, 0.65);    /* body text */
+  --color-dark-50: rgba(6, 6, 6, 0.50);    /* meta, secondary */
+  --color-dark-25: rgba(6, 6, 6, 0.25);    /* tertiary */
+  --color-dark-12: rgba(6, 6, 6, 0.12);    /* subtle dividers */
+  --color-dark-08: rgba(6, 6, 6, 0.08);    /* hair borders */
+
+  /* ── Rose alphas ── */
   --color-rose-50: rgba(225, 29, 72, 0.5);
   --color-rose-20: rgba(225, 29, 72, 0.2);
-  --color-rose-08: rgba(225, 29, 72, 0.08);
 
-  /* Light section — cool tube-light glow tint, softened */
-  --color-light: #E8ECEB;
-  --color-light-border: rgba(14, 15, 16, 0.08);
-
-  /* Dark section bg — obsidian depth, not pure black */
-  --color-depth: #0E0F10;
-
-  --font-display: 'Tanker', serif;
+  /* ── Typography ── */
+  --font-display: 'Tanker', serif;         /* ALWAYS uppercase */
   --font-heading: 'General Sans', sans-serif;
   --font-body: 'Literata', serif;
-  --font-mono: 'JetBrains Mono', monospace;
 }
 
 /* ═══════════════════════════════════════════
@@ -96,3 +111,29 @@ body::after {
 }
 
 /* Lenis removed — using CSS scroll-snap instead */
+
+/* ═══════════════════════════════════════════
+   NAV — site-wide scroll behavior
+   Every page's .nav gets backdrop + hide-on-scroll via Base.astro script.
+   Light-mode pages (body.sp-page-v2) override the backdrop color.
+   ═══════════════════════════════════════════ */
+.nav {
+  transition: background 0.25s ease, padding 0.25s ease, border-color 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-bottom: 1px solid transparent;
+}
+.nav.nav-scrolled {
+  background: rgba(6, 6, 6, 0.78);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom-color: var(--color-white-06);
+}
+body.sp-page-v2 .nav.nav-scrolled {
+  background: rgba(232, 236, 235, 0.85);
+  border-bottom-color: var(--color-dark-08);
+}
+body.sp-page-v2 .nav.nav-over-dark.nav-scrolled {
+  background: rgba(6, 6, 6, 0.78);
+  border-bottom-color: var(--color-white-06);
+}

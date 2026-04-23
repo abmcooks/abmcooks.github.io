@@ -1,0 +1,25 @@
+<div class="loader" id="loader">
+  <div class="loader-mark">
+    <svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <circle class="glow" cx="308" cy="389" r="55.5"/>
+      <circle class="dot" cx="308" cy="389" r="55.5"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+  function hideLoader() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+      loader.classList.add('done');
+      document.body.classList.add('loaded');
+    }
+  }
+  hideLoader();
+  document.addEventListener('astro:page-load', hideLoader);
+</script>

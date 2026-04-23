@@ -261,9 +261,10 @@ import '../styles/resume.css';
 </footer>
 
 <script>
-  // Set light bg for resume page
-  document.documentElement.style.background = '#ffffff';
-  document.body.style.background = '#ffffff';
+  // Set light bg for resume page — match --color-white token
+  const warmWhite = getComputedStyle(document.documentElement).getPropertyValue('--color-white').trim();
+  document.documentElement.style.background = warmWhite;
+  document.body.style.background = warmWhite;
 
   // Loader
   const loader = document.getElementById('loader');

@@ -34,7 +34,29 @@ const { title, description = "Basit Masood — Head of Product Design. Two-time 
   <slot />
 
   <script>
-    // No GSAP — using pure CSS/JS for scroll
+    // Site-wide nav behavior — backdrop + hide-on-scroll.
+    // Per-page scripts can still layer nav-over-dark / nav-light / etc.
+    (function(){
+      let nav = null;
+      let ls = 0;
+      function bind(){
+        nav = document.querySelector('.nav');
+        update();
+      }
+      function update(){
+        if(!nav) return;
+        const c = window.scrollY;
+        if(c > ls && c > 100) nav.classList.add('nav-hidden');
+        else if(c < ls) nav.classList.remove('nav-hidden');
+        if(c > 40) nav.classList.add('nav-scrolled');
+        else nav.classList.remove('nav-scrolled');
+        ls = c;
+      }
+      bind();
+      document.addEventListener('DOMContentLoaded', bind);
+      document.addEventListener('astro:page-load', bind);
+      window.addEventListener('scroll', update, { passive: true });
+    })();
   </script>
 </body>
 </html>

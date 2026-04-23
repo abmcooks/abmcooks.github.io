@@ -1,487 +1,547 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Loader from '../../components/Loader.astro';
+import Cursor from '../../components/Cursor.astro';
+import Nav from '../../components/Nav.astro';
+import FsMenu from '../../components/FsMenu.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/stories.css';
 ---
 
-<Base title="SadaPay — Basit Masood" description="Founding designer of Pakistan's largest neobank. 0 to 4M+ users, $50M acquisition.">
+<Base title="SadaPay — Basit Masood" description="Founding designer of Pakistan's first fintech. Four years from zero to a $50M exit.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  // Light-mode page class — only on this page
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('sp-page-v2'); };
+    var clear = function(){ document.body && document.body.classList.remove('sp-page-v2'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
-
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
-  </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
-
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
 <!-- ═══════════════════════════════════════════
-     HERO
+     ACT I · HERO — 0 → 1 → ∞
      ═══════════════════════════════════════════ -->
-<section class="sp-hero">
-  <div class="sp-hero-inner reveal">
-    <div class="sp-hero-content">
-      <a href="/stories" class="sp-hero-back"><i class="ph-bold ph-arrow-left"></i> All Stories</a>
-      <p class="sp-hero-eyebrow">SadaPay · Dec 2020 – Aug 2024 · Founding Product Designer → Head of Product Design</p>
-      <h1 class="sp-hero-title">FOUNDING DESIGNER<br/>TO $50M ACQUISITION.</h1>
-      <p class="sp-hero-desc">Pakistan's first and largest neobank. I joined as the only designer and left leading a team of eight — after building the product, the design system, the team, and the culture that made it all work.</p>
-    </div>
-    <div class="sp-hero-visual">
-      <!-- Replace with SadaPay hero image/mockup -->
-    </div>
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">SadaPay · Founding Designer → Head of Product Design · Dec 2020 – Aug 2024</p>
+    <h1 class="sp2-hero-primary">Started from zero.</h1>
+    <p class="sp2-hero-secondary">Four years later — a $50 million exit.</p>
+    <p class="sp2-hero-desc">I was hired as SadaPay's first designer in December 2020 with one job: figure out what good fintech could look like in a country that had never seen one. Four years later — 4 million users, $1 billion processed annually, the first numberless card in the MEA region, and Pakistan's first fintech exit.</p>
   </div>
+  <span class="sp2-hero-scroll">Scroll</span>
 </section>
 
 <!-- ═══════════════════════════════════════════
-     STATS
+     ACT I · LAUNCH VIDEO
      ═══════════════════════════════════════════ -->
-<section class="sp-stats">
-  <div class="sp-stats-inner reveal">
-    <div class="sp-stat">
-      <span class="sp-stat-val">4M+</span>
-      <span class="sp-stat-label">Wallet users</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">$1.5B+</span>
-      <span class="sp-stat-label">Processed yearly</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">700K+</span>
-      <span class="sp-stat-label">Viral waitlist</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">68%</span>
-      <span class="sp-stat-label">Login retention</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">$50M</span>
-      <span class="sp-stat-label">Acquired by Papara</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">8</span>
-      <span class="sp-stat-label">Design team</span>
-    </div>
-  </div>
+<section class="sp2-video-moment">
+  <video id="sp2LaunchVideo" autoplay muted loop playsinline poster="/images/Sadapay/banner.png">
+    <source src="/videos/sadapay-launch.mp4" type="video/mp4" />
+  </video>
+  <div class="sp2-video-caption">SadaPay brand launch film · 2019</div>
+  <button class="sp2-video-audio" id="sp2VideoAudio" aria-label="Toggle audio" type="button">
+    <i class="ph-bold ph-speaker-simple-slash"></i>
+    <span>Sound off</span>
+  </button>
 </section>
 
 <!-- ═══════════════════════════════════════════
-     MEDIA — Full-width image or video
+     ACT II · CONTEXT — 220M, 87% unbanked
      ═══════════════════════════════════════════ -->
-<div class="sp-video">
-  <div class="sp-video-placeholder">
-    <!-- Replace with: <img src="/images/sadapay-showcase.png" alt="SadaPay product screens" /> -->
-    <i class="ph-bold ph-image" style="font-size: 40px; opacity: 0.15;"></i>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     NARRATIVE — Sectioned, not a wall of text
-     ═══════════════════════════════════════════ -->
-<section class="sp-narrative">
-  <div class="sp-narrative-inner">
-
-    <div class="sp-narrative-block reveal">
-      <h2 class="sp-narrative-heading">THE BEGINNING</h2>
-      <p>When I joined SadaPay in December 2020, there was no app, no design team, and no design system. Just a bold idea — build Pakistan's first neobank — and a CEO who believed design would be the difference.</p>
-      <p>I was the founding designer. The first screen, the first flow, the first pixel — all mine. Within months, I'd designed the entire mobile banking experience from scratch: onboarding, KYC, wallets, transfers, bill payments, and card management.</p>
-    </div>
-
-    <div class="sp-narrative-block reveal">
-      <h2 class="sp-narrative-heading">THE BREAKOUT</h2>
-      <p><strong>The waitlist changed everything.</strong> 700,000 people signed up with zero paid acquisition. I designed a gamification system — Founders Club cards, golden tickets, branded merchandise, a referral engine. Celebrities felt FOMO. Irfan Junejo came to the office. It was the first time a Pakistani fintech had created genuine cultural hype.</p>
-      <p>I designed Pakistan's first numberless debit card with Mastercard — the first of its kind in the MEA region. Security through simplicity instead of complexity.</p>
-    </div>
-
-    <div class="sp-narrative-block reveal">
-      <h2 class="sp-narrative-heading">THE TEAM</h2>
-      <p>I hired 15-20 designers over my tenure, managing a core team of 8 at peak. Associates straight from university with messy portfolios — I saw something in them. The joke in Pakistan's design community became: <em>"Getting into Harvard is easier than getting into SadaPay's design team."</em></p>
-      <p>Those designers are now leading teams at Revolut London and companies across the world.</p>
-    </div>
-
-    <div class="sp-narrative-block reveal">
-      <h2 class="sp-narrative-heading">CHALLENGING ASSUMPTIONS</h2>
-      <p>I don't accept "that's just how it works" as an answer. I challenged unnecessary PINs and OTPs in the authentication flow, introduced biometric-only login, put emojis in a banking app — a first in Pakistan — and proposed QR code payments years before the industry adopted it.</p>
-      <p>I built service design blueprints that mapped every touchpoint in the system. The CEO called this my "superpower" — they helped reduce fraud by making invisible flows visible.</p>
-    </div>
-
-    <div class="sp-narrative-block reveal">
-      <h2 class="sp-narrative-heading">THE EXIT</h2>
-      <p>SadaPay helped raise $7.2M pre-seed (the largest by a Pakistani startup at the time), followed by seed and Series A — totaling $20M+. The design was a selling point in every investor deck. In 2024, Papara acquired SadaPay for $50M.</p>
-      <p>I was laid off post-acquisition. Zero compensation. Stocks worth nothing. But SadaPay changed Pakistan's fintech landscape permanently — every bank revamped their app after us.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     THE WORK — Approach A: cards with different weight
-     ═══════════════════════════════════════════ -->
-<section class="sp-cases">
-  <div class="sp-cases-inner">
-    <h2 class="sp-cases-heading reveal">THE WORK</h2>
-
-    <!-- Featured cards — deep dives -->
-    <div class="sp-cases-featured reveal">
-      <a href="/stories/sadapay/waitlist" class="sp-case sp-case--large">
-        <div class="sp-case-img">
-          <!-- Replace with waitlist visual -->
-          <span class="sp-case-num">01</span>
+<section class="sp2-stakes">
+  <div class="sp2-stakes-inner">
+    <div class="sp2-stakes-layout">
+      <div class="sp2-stakes-stats">
+        <div class="sp2-stakes-hero-stat">
+          <span class="val">4M+</span>
+          <span class="label">Users at departure</span>
         </div>
-        <div class="sp-case-body">
-          <h3 class="sp-case-title">The Waitlist That Created FOMO Among Celebrities</h3>
-          <p class="sp-case-desc">How gamification, golden tickets, and zero ad spend drove 700K sign-ups and made SadaPay a cultural moment.</p>
-          <span class="sp-case-cta">Read more <i class="ph-bold ph-arrow-right"></i></span>
+        <div class="sp2-stakes-supporting">
+          <div class="stat"><span class="val">1 → 8</span><span class="label">Team, built</span></div>
+          <div class="stat"><span class="val">$50M</span><span class="label">Papara acquisition</span></div>
+          <div class="stat"><span class="val">$1B+</span><span class="label">Annual volume</span></div>
+          <div class="stat"><span class="val">4.8★</span><span class="label">App Store rating</span></div>
         </div>
-      </a>
-      <a href="/stories/sadapay/nukta" class="sp-case sp-case--large">
-        <div class="sp-case-img">
-          <!-- Replace with Nukta design system visual -->
-          <span class="sp-case-num">02</span>
-        </div>
-        <div class="sp-case-body">
-          <h3 class="sp-case-title">Nukta — Pakistan's First Design Token System</h3>
-          <p class="sp-case-desc">Building a token-based design system in 2021, before it was mainstream. How Nukta gave SadaPay consistency at scale.</p>
-          <span class="sp-case-cta">Read more <i class="ph-bold ph-arrow-right"></i></span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Smaller cards — projects -->
-    <div class="sp-cases-grid reveal">
-      <a href="/stories/sadapay/sadabiz" class="sp-case sp-case--compact">
-        <div class="sp-case-compact-img">
-          <!-- Replace with SadaBiz visual -->
-        </div>
-        <div class="sp-case-body">
-          <h3 class="sp-case-title">SadaBiz</h3>
-          <p class="sp-case-desc">Business banking for freelancers. $1B+ annualized volume. Apple Pay, Google Pay, and service blueprints that reduced fraud.</p>
-          <span class="sp-case-cta">Read more <i class="ph-bold ph-arrow-right"></i></span>
-        </div>
-      </a>
-      <a class="sp-case sp-case--compact sp-case--disabled">
-        <div class="sp-case-compact-img">
-          <!-- Replace with SadaSchool visual -->
-        </div>
-        <div class="sp-case-body">
-          <h3 class="sp-case-title">SadaSchool</h3>
-          <p class="sp-case-desc">Community learning platform teaching freelancers to earn through SadaBiz. Onboarding, courses, and growth loops.</p>
-          <span class="sp-case-tag">Coming soon</span>
-        </div>
-      </a>
-      <a class="sp-case sp-case--compact sp-case--disabled">
-        <div class="sp-case-compact-img">
-          <!-- Replace with Mission Control visual -->
-        </div>
-        <div class="sp-case-body">
-          <h3 class="sp-case-title">Mission Control</h3>
-          <p class="sp-case-desc">Internal admin panel serving 10+ teams and 50+ support associates. Unified ops tooling for the entire company.</p>
-          <span class="sp-case-tag">Coming soon</span>
-        </div>
-      </a>
-      <a class="sp-case sp-case--compact sp-case--disabled">
-        <div class="sp-case-compact-img">
-          <!-- Replace with website visual -->
-        </div>
-        <div class="sp-case-body">
-          <h3 class="sp-case-title">SadaPay Website</h3>
-          <p class="sp-case-desc">Complete website redesign that earned CSS Design Awards Special Kudos — 7.21/10 from 40 international judges.</p>
-          <span class="sp-case-tag">Coming soon</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     TESTIMONIALS — Cream section, carousel
-     ═══════════════════════════════════════════ -->
-<section class="sp-testi" id="spTesti">
-  <div class="sp-testi-header">
-    <h2 class="sp-testi-heading reveal">WHAT THEY SAID</h2>
-    <div class="sp-testi-arrows reveal">
-      <button class="sp-testi-arrow" id="testiPrev" aria-label="Previous"><i class="ph-bold ph-caret-left"></i></button>
-      <button class="sp-testi-arrow" id="testiNext" aria-label="Next"><i class="ph-bold ph-caret-right"></i></button>
-    </div>
-  </div>
-  <div class="sp-testi-track" id="testiTrack">
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">SadaPay was praised for how well designed the product is — this is thanks to Basit. His attention to detail in service design is one of his superpowers.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Brandon Timinsky</span>
-        <span class="sp-testi-role">CEO, SadaPay & ZAR</span>
       </div>
-    </div>
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">Basit is an insanely good UX designer. He built the foundations of the SadaPay mobile experience, which is recognized as world-class.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Sergio Schüler</span>
-        <span class="sp-testi-role">Product Leader, SadaPay</span>
-      </div>
-    </div>
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">He introduced our design system which allowed our app to have a great consistent design. He pushed for an uncommonly close design-engineering relationship.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Jon Sheppard</span>
-        <span class="sp-testi-role">CTO, SadaPay</span>
-      </div>
-    </div>
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">Exceptional leader. He trusted and empowered us without micromanagement. I wholeheartedly recommend Basit to any organization.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Sohaib Arif</span>
-        <span class="sp-testi-role">Product Designer @ Revolut, formerly under Basit</span>
-      </div>
-    </div>
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">I considered him our Head of Design, and one of my peers. He made design integral, not just a production line.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Eli Mydlarz</span>
-        <span class="sp-testi-role">Head of R&D, SadaPay</span>
-      </div>
-    </div>
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">The most user-focused and data-driven designer I've worked with.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Swaleha Saleem</span>
-        <span class="sp-testi-role">Solutions Architect, SadaPay</span>
+      <div class="sp2-stakes-context">
+        <h2><span class="accent">220 million</span> people.<br/><span class="accent">87% unbanked</span>.<br/>A market that had never seen good fintech UX.</h2>
+        <p>The national baseline for "signing up to a bank" was a branch visit, a paper form, and a wait measured in weeks. The State Bank of Pakistan (SBP) wrote its regulations for banks, not apps. Nobody had a reference for what <em>good</em> fintech looked like — because no one had ever built it.</p>
+        <p>I joined as the first in-house designer. The only design voice in a room of engineers, PMs, and a design-obsessed CEO who had raised $7.2M on a vision of simple banking — the largest seed round by a Pakistani startup at the time.</p>
+        <p><strong>Nobody had written the playbook. We wrote one that worked.</strong></p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════
-     PREV / NEXT
+     ACT III · THE ARC — career ladder + 0 → 1 → ∞ bridge
+     (Ladder first; symbols as the climax below)
      ═══════════════════════════════════════════ -->
-<nav class="sp-nav">
-  <div class="sp-nav-empty"></div>
-  <a href="/stories/zar" class="sp-nav-link sp-nav-link--next">
-    <span class="sp-nav-label">Next Story</span>
-    <span class="sp-nav-title">ZAR <i class="ph-bold ph-arrow-right"></i></span>
+<section class="sp2-arc">
+  <div class="sp2-arc-inner">
+    <div class="sp2-rungs" aria-label="Career progression over four years">
+      <span class="sp2-rungs-label">Six rungs, four years</span>
+      <span class="sp2-rungs-row">
+        <span>Mid-level</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Senior</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Senior II</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Lead I</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Lead II</span>
+        <span class="sp2-rungs-sep"></span>
+        <strong>Head of Product Design</strong>
+      </span>
+    </div>
+    <div class="sp2-zti" aria-label="Zero to one to infinity">
+      <span class="sp2-zti-char sp2-zti-z">0</span>
+      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--1">→</span>
+      <span class="sp2-zti-char sp2-zti-o">1</span>
+      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--2">→</span>
+      <span class="sp2-zti-char sp2-zti-i">∞</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT III · THE STORY — five chapters
+     ═══════════════════════════════════════════ -->
+<section class="sp2-story">
+  <div class="sp2-story-inner">
+    <div class="sp2-story-head">
+      <h2>The Story</h2>
+      <p>From zero to Pakistan's first fintech exit. Four years, in five chapters.</p>
+    </div>
+
+    <!-- Chapter 01 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">01</span>
+        <span class="sp2-chapter-date">December 2020</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>The beginning.</h3>
+        <p>When I joined SadaPay as its first designer, the company was raising on a vision — <em>Pakistan's first neobank</em> — but had nothing to show. No product. No team. No brand. I was the only design voice in the building, figuring out what good fintech could look like in a country that had never seen one.</p>
+        <p>The first job wasn't a screen. It was deciding <em>what kind of product</em> we were building. Pakistan had banks — bureaucratic, paper-first, designed for the teller, not the user. Everything we'd ship had to feel like the opposite of that.</p>
+      </div>
+    </article>
+
+    <!-- Chapter 02 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">02</span>
+        <span class="sp2-chapter-date">2021 · The Waitlist</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>200,000 people signed up to wait for a product that didn't exist yet.</h3>
+        <p>Before we shipped a single feature, we ran a gamified waitlist. Golden tickets, referral mechanics, branded Founders Club cards — the black edition in particular became a cultural object people referenced by name. It grew to <strong>200,000 signups pre-launch</strong>. Eventually past 700,000. No paid acquisition.</p>
+        <p>SBP granted us a trial license — 1,000 users to onboard, extended to 10,000. We invited friends and family, then early adopters. They got hoodies, goodies, merchandise, the black Founders Club card. The hype built before the doors opened.</p>
+        <div class="sp2-chapter-image">
+          <img src="/images/Sadapay/kyc-hero.png" alt="SadaPay KYC onboarding flow" />
+        </div>
+      </div>
+    </article>
+
+    <!-- Chapter 03 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">03</span>
+        <span class="sp2-chapter-date">2021–2022 · The Launch</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>We couldn't print cards fast enough.</h3>
+        <p>Public rollout hit and demand crushed our fulfillment. Physical cards ran out within days — people lined up for a piece of plastic in a country where nobody had ever lined up for a debit card before.</p>
+        <p>Onboarding took under two minutes in the app — CNIC scan, biometric liveness check, PIN setup. We were also the first neobank in Pakistan to integrate a Biometric Verification System with <strong>NADRA</strong> (the national ID authority), so users could verify by scanning a fingerprint through the camera. Higher limits, a layer of trust the category hadn't had.</p>
+        <p>We crossed 1 million, then 2 million users — and kept going. App Store hit <strong>4.8★</strong>. Play Store <strong>4.7★</strong>. Pakistan's largest neobank before the market had figured out what we were building.</p>
+        <div class="sp2-chapter-image">
+          <img src="/images/Sadapay/home-balance.png" alt="SadaPay home balance screen" />
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INTERLUDE · THE CARD — specimen plate, at the moment of launch
+     ═══════════════════════════════════════════ -->
+<section class="sp2-cardshow sp2-cardshow--specimen">
+  <div class="sp2-specimen-inner">
+    <div class="sp2-specimen-stage reveal">
+      <img src="/images/Sadapay/card-hero.png" alt="SadaPay numberless card — teal front, peach back" />
+      <aside class="sp2-specimen-label">
+        <span class="sp2-specimen-num">Object 01</span>
+        <span class="sp2-specimen-class">Numberless debit card</span>
+        <dl class="sp2-specimen-meta">
+          <dt>Issued</dt><dd>2021</dd>
+          <dt>Designer</dt><dd>Founding team</dd>
+          <dt>Partner</dt><dd>Mastercard</dd>
+          <dt>Region</dt><dd>First numberless card in MEA</dd>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="sp2-specimen-narrative reveal">
+      <h2>The Card</h2>
+      <p class="sp2-section-intro">The decision I'm most proud of.</p>
+      <p>No card number. No CVV. No expiration date. When a card gets stolen in Pakistan, everything needed for fraud is printed on it — we eliminated that entirely. Card details live only in the app, behind biometrics and PIN.</p>
+      <p>But the card became more than a security decision — <strong>the hero of the brand.</strong> A deliberate departure from every bank card people had seen before. It didn't look like a bank card at all. People were <em>talking about a debit card</em> in Pakistan. That had never happened.</p>
+    </div>
+
+    <blockquote class="sp2-specimen-caption reveal">
+      <p>The card is the hero of our brand — a physical representation of how we do things differently.</p>
+      <cite>Brandon Timinsky · CEO &amp; Founder</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT III (cont.) · THE STORY — Chapters 4 & 5
+     ═══════════════════════════════════════════ -->
+<section class="sp2-story sp2-story--continued">
+  <div class="sp2-story-inner">
+    <!-- Chapter 04 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">04</span>
+        <span class="sp2-chapter-date">2022–2023 · The Scale</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>Two verticals took us past $1 billion a year.</h3>
+        <p><strong>SadaBiz</strong> — invoicing for Pakistan's freelancers. A country with no PayPal and no Wise. We built a payment-link platform: freelancer creates an invoice, client pays with Apple Pay or Google Pay, freelancer gets paid in three days. <strong>Grew transaction volume 441%</strong> ($160K → $869K a month) and cut fraud 79% (3.26% → 0.67%) through service-design blueprints.</p>
+        <p><strong>SadaSchool</strong> — free education for young Pakistani freelancers. Courses on graphic design, coding, management — in a Notion-backed library, a Discord community, and weekly live sessions run by the country's top Upwork and Fiverr earners. A personal wallet, a business wallet, and the skills to earn into them — all inside one app.</p>
+        <p>By this point we were processing <strong>$1 billion a year</strong>.</p>
+        <div class="sp2-chapter-image">
+          <img src="/images/Sadapay/send-money-success.png" alt="SadaPay send money success" />
+        </div>
+      </div>
+    </article>
+
+    <!-- Chapter 05 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">05</span>
+        <span class="sp2-chapter-date">August 2024 · The Exit</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>Papara, $50 million. Pakistan's first fintech exit.</h3>
+        <p>Offers came in. We picked Papara — the Turkish fintech. Acquisition closed for approximately <strong>$50 million</strong>.</p>
+        <p>We'd gone from a shared office and no designs to Pakistan's first fintech exit in four years. I left the product in the hands of the team I'd built.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT IV · SERVICE BLUEPRINT — fraud + CX
+     ═══════════════════════════════════════════ -->
+<section class="sp2-service">
+  <div class="sp2-service-inner">
+    <div class="sp2-service-head">
+      <p class="sp2-service-eyebrow">Service design</p>
+      <h2>Service Blueprint.</h2>
+      <p class="sp2-service-lede"><strong>Product designers fix screens. I mapped the entire service.</strong> Two places where that paid off.</p>
+    </div>
+
+    <div class="sp2-service-cases">
+      <div class="sp2-service-case">
+        <span class="sp2-service-case-tag">01 · Fraud</span>
+        <h3 class="sp2-service-case-title">Front stage and back stage.</h3>
+        <div class="sp2-service-case-body">
+          <p>In 2022, SadaPay was seeing fraud attempts that no single screen could stop. The gaps were in the spaces <em>between</em> screens — verification timing, CX scripts, edge cases where legitimate users got flagged while actual fraud passed.</p>
+          <p>I built a full service blueprint — every front-stage flow mapped against every backstage operation and system. The fix wasn't a new screen. It was a systemic redesign.</p>
+          <div class="sp2-service-case-metric">
+            <span class="num">−79%</span>
+            <span class="label">Fraud rate · 3.26% → 0.67% on SadaBiz</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp2-service-case">
+        <span class="sp2-service-case-tag">02 · Customer experience</span>
+        <h3 class="sp2-service-case-title">The CX team was drowning.</h3>
+        <div class="sp2-service-case-body">
+          <p>Support volume kept climbing. The team had hired more and more agents but couldn't catch up. They came to design for help — the first time design had been pulled into a CX scaling problem.</p>
+          <p>I pulled together every data source — Intercom chats, Jira tickets, Mixpanel events — and mapped the full support journey. Root causes showed up in the product, not the inbox. Service redesign cut volume sustainably. The CX team stopped scaling with headcount and started scaling with design.</p>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="sp2-service-quote">
+      His attention to detail in service design is one of his superpowers.
+      <cite>Brandon Timinsky · CEO &amp; Founder</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- Ladder moved to hero as compact one-line strip; full section removed. -->
+
+<!-- ═══════════════════════════════════════════
+     ACT V · FOUNDATIONS — 8 cards, asymmetric
+     ═══════════════════════════════════════════ -->
+<section class="sp2-foundations">
+  <div class="sp2-foundations-inner">
+    <div class="sp2-foundations-lead">
+      <h2>The Foundations I Built</h2>
+      <p>Products are the visible work. This is the quieter one — the operating system that ran the team without me in the room.</p>
+    </div>
+    <div class="sp2-foundations-grid sp2-foundations-grid--8">
+      <div class="sp2-foundation sp2-foundation--hero">
+        <span class="sp2-foundation-num">Foundation 01</span>
+        <h3 class="sp2-foundation-title">Hiring framework</h3>
+        <p class="sp2-foundation-body">Built end-to-end with the recruiting team: new JDs, a Product Designer Recruitment Guide, Technical Interview scorecards, a Career Progression Framework spanning Associate → Mid → Senior → Lead, and a design challenge calibrated to SadaPay's actual constraints — replacing the old generic portfolio review. <strong>Designers who thought, not decorated.</strong> 15–20 hired through the pipeline, 8 on the core team at peak.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">02</span>
+        <h3 class="sp2-foundation-title">Research practice</h3>
+        <p class="sp2-foundation-body">Built from zero. A Notion-backed research repo: recruitment protocols, interview methods, synthesis templates, study archive. Research lived in the review cycle, not as a side artifact.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">03</span>
+        <h3 class="sp2-foundation-title">Data analytics practice</h3>
+        <p class="sp2-foundation-body">No analytics culture existed. I wrote Mixpanel event specs into every handoff, stood up dashboards for success metrics, and partnered with data engineering so design decisions became measurable.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">04</span>
+        <h3 class="sp2-foundation-title">Design-engineering collaboration</h3>
+        <p class="sp2-foundation-body">Squads, pairing, hot-potato co-authorship. We hate handoffs — we built alongside. Design jams, weekly design reviews, engineers in the Figma file.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">05</span>
+        <h3 class="sp2-foundation-title">Career framework</h3>
+        <p class="sp2-foundation-body">Clear levels with skill matrices — the same ladder I walked up. Growth plans for every designer. 1:1s structured around development, not status.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">06</span>
+        <h3 class="sp2-foundation-title">Crit rituals</h3>
+        <p class="sp2-foundation-body">Weekly crits where the newest junior could challenge a Lead's work. Monthly showcases. Quarterly retros. Safety built into the rhythm, not hoped for.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">07</span>
+        <h3 class="sp2-foundation-title">Design ops &amp; governance</h3>
+        <p class="sp2-foundation-body">File versioning, asset management, design system governance. The last layer I put in place — the one that let the system run itself when I wasn't in the file.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">08</span>
+        <h3 class="sp2-foundation-title">Cross-functional squads</h3>
+        <p class="sp2-foundation-body">Design embedded with CX, legal, compliance, and marketing — not in a service relationship, inside the same squad. Legal on the research calls. Compliance in the design reviews. Marketing briefed before build, not after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT VI · MORE WORK — deep-dive teasers
+     ═══════════════════════════════════════════ -->
+<section class="sp2-works">
+  <div class="sp2-works-inner">
+    <div class="sp2-works-lead">
+      <h2>More work</h2>
+      <p>Deep dives on the systems and products inside the story above.</p>
+    </div>
+
+    <div class="sp2-works-grid">
+      <a class="sp2-work" href="/stories/sadapay/nukta">
+        <span class="sp2-work-tag">System · Deep dive</span>
+        <h3 class="sp2-work-title">Nukta</h3>
+        <p class="sp2-work-body">SadaPay's design system. Tokens wired to production code. Atomic architecture. Three months of infrastructure while features waited. <strong>Once live, new features shipped in half the time.</strong></p>
+        <span class="sp2-work-cta">Read the Nukta case study <span class="sp2-arrow">→</span></span>
+      </a>
+      <a class="sp2-work" href="/stories/sadapay/sadabiz">
+        <span class="sp2-work-tag">Product · Deep dive</span>
+        <h3 class="sp2-work-title">SadaBiz</h3>
+        <p class="sp2-work-body">Banking for Pakistan's freelancers. Apple Pay and Google Pay for clients abroad, three-day settlement, USD held in-account.</p>
+        <span class="sp2-work-cta">Read the SadaBiz case study <span class="sp2-arrow">→</span></span>
+      </a>
+    </div>
+
+    <div class="sp2-works-grid sp2-works-grid--flip">
+      <a class="sp2-work" href="/stories/sadapay/waitlist">
+        <span class="sp2-work-tag">Growth · Deep dive</span>
+        <h3 class="sp2-work-title">The Waitlist</h3>
+        <p class="sp2-work-body">How a gamified pre-launch waitlist — Founders Club, golden tickets, black cards — grew past 700,000 signups with zero paid acquisition, and turned into the highest-transacting cohort post-launch.</p>
+        <span class="sp2-work-cta">Read the Waitlist case study <span class="sp2-arrow">→</span></span>
+      </a>
+      <article class="sp2-work" style="border-style:dashed; pointer-events:none;">
+        <span class="sp2-work-tag">Coming soon</span>
+        <h3 class="sp2-work-title">SadaSchool · BVS · Mission Control</h3>
+        <p class="sp2-work-body">Education platform for freelancers, biometric verification with NADRA, and the internal ops panel serving 10+ teams and 50+ support associates. Separate case studies — on the way.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT VII · TESTIMONIALS
+     ═══════════════════════════════════════════ -->
+<section class="sp2-testi">
+  <div class="sp2-testi-head">
+    <h2>What they said</h2>
+    <div class="sp2-testi-arrows">
+      <button class="sp2-testi-arrow" id="testiPrev" aria-label="Previous"><span class="sp2-arrow">←</span></button>
+      <button class="sp2-testi-arrow" id="testiNext" aria-label="Next"><span class="sp2-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="sp2-testi-track" id="testiTrack">
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">SadaPay was praised for how well designed the product is — this is thanks to Basit and the exceptional product design team he built.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Brandon Timinsky</span>
+        <span class="sp2-testi-role">CEO &amp; Founder, SadaPay</span>
+      </div>
+    </div>
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">Basit is an insanely good UX designer. He built the foundations of the SadaPay mobile experience, which is recognized as world-class.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Sergio Schüler</span>
+        <span class="sp2-testi-role">Head of Product, SadaPay</span>
+      </div>
+    </div>
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">He introduced our design system which allowed our app to have a great consistent design. He pushed for an uncommonly close design-engineering relationship.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Jon Sheppard</span>
+        <span class="sp2-testi-role">CTO &amp; Board, SadaPay</span>
+      </div>
+    </div>
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">He consistently trusted and empowered us to take ownership of our projects.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Sohaib Arif</span>
+        <span class="sp2-testi-role">Product Designer, SadaPay</span>
+      </div>
+    </div>
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">I considered him our Head of Design, and one of my peers. He made design integral, not just a production line.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Eli Mydlarz</span>
+        <span class="sp2-testi-role">Head of Engineering, SadaPay</span>
+      </div>
+    </div>
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">Basit took what was basically ground zero for a product and built cohesive design systems that were incredibly versatile and gorgeous.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Nikita Protsenko</span>
+        <span class="sp2-testi-role">Product Designer, SadaPay</span>
+      </div>
+    </div>
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">Among all the Product Designers I've had the pleasure of working with, Basit stands out as the most user-focused and data-driven designer.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Swaleha Saleem</span>
+        <span class="sp2-testi-role">Solutions Architect, SadaPay</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT VIII · NEXT
+     ═══════════════════════════════════════════ -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories"><span class="sp2-arrow">←</span> Back to all stories</a></div>
+  <a href="/stories/zar" class="sp2-next-cta">
+    <span class="label">Next Story</span>
+    <span class="title">ZAR <span class="sp2-arrow">→</span></span>
   </a>
-</nav>
+</section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
-
-<style>
-  /* ═══════════════════════════════════════════
-     SADAPAY STORY — Page-specific overrides
-     ═══════════════════════════════════════════ */
-
-  /* Narrative sections with sub-headings */
-  .sp-narrative-block {
-    margin-bottom: 72px;
-  }
-  .sp-narrative-block:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Featured cards — 2 col, taller image area */
-  .sp-cases-featured {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-bottom: 24px;
-  }
-  .sp-case--large .sp-case-img {
-    height: 280px;
-  }
-
-  /* Compact cards — 4 col grid */
-  .sp-cases-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .sp-case--compact {
-    display: flex;
-    flex-direction: column;
-  }
-  .sp-case-compact-img {
-    width: 100%; height: 140px;
-    background: linear-gradient(135deg, var(--color-slate, #1a1a1a) 0%, var(--color-obsidian) 100%);
-    border-radius: 8px 8px 0 0;
-    position: relative;
-  }
-  .sp-case--compact .sp-case-body {
-    padding: 24px;
-  }
-  .sp-case--compact .sp-case-title {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-  .sp-case--compact .sp-case-desc {
-    font-size: 14px;
-    line-height: 1.55;
-    margin-bottom: 16px;
-  }
-  .sp-case-tag {
-    font-family: var(--font-heading);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-white-25);
-  }
-
-  /* Disabled cards — coming soon */
-  .sp-case--disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  .sp-case--disabled .sp-case-title {
-    color: var(--color-white-50);
-  }
-
-  /* Testimonials — cream section */
-  .sp-testi {
-    background: var(--color-light);
-    border-top: none;
-  }
-  .sp-testi-heading {
-    color: var(--color-void);
-  }
-  .sp-testi-arrow {
-    border-color: rgba(6, 6, 6, 0.2);
-    color: rgba(6, 6, 6, 0.5);
-  }
-  .sp-testi-arrow:hover {
-    border-color: var(--color-rose);
-    color: var(--color-rose);
-    background: rgba(225, 29, 72, 0.06);
-  }
-  .sp-testi-card {
-    background: var(--color-void);
-    border-color: transparent;
-  }
-  .sp-testi-card:hover {
-    border-color: rgba(225, 29, 72, 0.15);
-  }
-  .sp-testi-quote {
-    color: var(--color-white-80);
-  }
-  .sp-testi-name {
-    color: var(--color-white);
-  }
-  .sp-testi-role {
-    color: var(--color-white-50);
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 1024px) {
-    .sp-cases-featured {
-      grid-template-columns: 1fr;
-    }
-    .sp-cases-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (max-width: 768px) {
-    .sp-narrative-block {
-      margin-bottom: 56px;
-    }
-    .sp-cases-grid {
-      grid-template-columns: 1fr;
-    }
-    .sp-testi {
-      padding: 64px 24px;
-    }
-  }
-</style>
+<Footer />
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
-  }
+  // Page-specific behavior. Loader/Cursor/Nav-scroll/FsMenu live in shared components now.
+  function initSadaPay() {
+    const cursor = document.getElementById('customCursor');
+    const nav = document.getElementById('nav');
 
-  // Nav hide on scroll + light/dark detection for testimonials
-  let ls=0; const nav=document.getElementById('nav');
-  const lightSections = document.querySelectorAll('.sp-testi');
-  window.addEventListener('scroll',()=>{
-    const c=window.scrollY;
-    if(c>ls&&c>100) nav?.classList.add('nav-hidden');
-    else nav?.classList.remove('nav-hidden');
-    ls=c;
-
-    let isLight = false;
-    lightSections.forEach(sec => {
-      const rect = sec.getBoundingClientRect();
-      if (rect.top < 60 && rect.bottom > 60) isLight = true;
-    });
-    if (isLight) {
-      nav?.classList.add('nav-light');
-      cursor?.classList.add('cursor-dark');
-    } else {
-      nav?.classList.remove('nav-light');
-      cursor?.classList.remove('cursor-dark');
+    // Nav inversion over dark sections (video + footer)
+    const navDarkSections = document.querySelectorAll('.sp2-video-moment, .the-footer');
+    function detectNavOverDark() {
+      let overDark = false;
+      navDarkSections.forEach(sec => {
+        const r = sec.getBoundingClientRect();
+        if (r.top < 80 && r.bottom > 80) overDark = true;
+      });
+      nav?.classList.toggle('nav-over-dark', overDark);
     }
-  },{passive:true});
+    window.addEventListener('scroll', detectNavOverDark, { passive: true });
+    detectNavOverDark();
 
-  // Menu
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
+    // Cursor inversion — per-element over dark surfaces
+    const cursorDarkTargets = document.querySelectorAll(
+      '.sp2-video-moment, .the-footer, .sp2-testi-card, .sp2-foundation--hero'
+    );
+    cursorDarkTargets.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor?.classList.add('cursor-over-dark'));
+      el.addEventListener('mouseleave', () => cursor?.classList.remove('cursor-over-dark'));
+    });
 
-  // Loader
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
+    // Scroll reveal for .reveal elements
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
 
-  // Reveal
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
+    // Video audio toggle
+    const video = document.getElementById('sp2LaunchVideo') as HTMLVideoElement | null;
+    const audioBtn = document.getElementById('sp2VideoAudio');
+    if (video && audioBtn) {
+      audioBtn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        const icon = audioBtn.querySelector('i');
+        const label = audioBtn.querySelector('span');
+        if (video.muted) {
+          if (icon) icon.className = 'ph-bold ph-speaker-simple-slash';
+          if (label) label.textContent = 'Sound off';
+        } else {
+          if (icon) icon.className = 'ph-bold ph-speaker-simple-high';
+          if (label) label.textContent = 'Sound on';
+        }
+      });
+    }
 
-  // Testimonial carousel arrows
-  const track=document.getElementById('testiTrack');
-  const prevBtn=document.getElementById('testiPrev');
-  const nextBtn=document.getElementById('testiNext');
-  if(track&&prevBtn&&nextBtn){
-    const scrollAmt=424;
-    prevBtn.addEventListener('click',()=>track.scrollBy({left:-scrollAmt,behavior:'smooth'}));
-    nextBtn.addEventListener('click',()=>track.scrollBy({left:scrollAmt,behavior:'smooth'}));
+    // Testimonial carousel arrows
+    const track = document.getElementById('testiTrack');
+    const prevBtn = document.getElementById('testiPrev');
+    const nextBtn = document.getElementById('testiNext');
+    if (track && prevBtn && nextBtn) {
+      function getScrollAmt() {
+        const card = track.querySelector('.sp2-testi-card') as HTMLElement | null;
+        if (!card) return 464;
+        return card.offsetWidth + 24;
+      }
+      prevBtn.addEventListener('click', () => track.scrollBy({ left: -getScrollAmt(), behavior: 'smooth' }));
+      nextBtn.addEventListener('click', () => track.scrollBy({ left: getScrollAmt(), behavior: 'smooth' }));
+    }
   }
+  initSadaPay();
+  document.addEventListener('astro:page-load', initSadaPay);
 </script>
 
 </Base>

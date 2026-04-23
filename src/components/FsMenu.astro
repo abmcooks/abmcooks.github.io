@@ -1,0 +1,44 @@
+<div class="fs-menu" id="fsMenu">
+  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu">
+    <i class="ph-bold ph-x"></i>
+  </button>
+  <nav class="fs-menu-nav">
+    <a href="/" class="fs-menu-link">HOME</a>
+    <a href="/stories" class="fs-menu-link">STORIES</a>
+    <a href="/writing" class="fs-menu-link">WRITING</a>
+    <a href="/about" class="fs-menu-link">ABOUT</a>
+    <a href="/resume" class="fs-menu-link fs-menu-link--resume">
+      <i class="ph-bold ph-download-simple"></i> RESUME
+    </a>
+  </nav>
+  <div class="fs-menu-footer">
+    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
+    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <span class="sp2-arrow">↗</span></a>
+  </div>
+</div>
+
+<script>
+  function initFsMenu() {
+    const burger = document.getElementById('navBurger');
+    const fsMenu = document.getElementById('fsMenu');
+    const fsClose = document.getElementById('fsMenuClose');
+    if (!burger || !fsMenu) return;
+
+    const open = () => {
+      fsMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      fsMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    burger.addEventListener('click', open);
+    fsClose?.addEventListener('click', close);
+    fsMenu.querySelectorAll('.fs-menu-link').forEach(l =>
+      l.addEventListener('click', close)
+    );
+  }
+  initFsMenu();
+  document.addEventListener('astro:page-load', initFsMenu);
+</script>
