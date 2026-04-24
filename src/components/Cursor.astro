@@ -26,7 +26,44 @@
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
+
+    // Auto-invert cursor based on surface beneath it.
+    // Any element with data-cursor="light" or data-cursor="dark" flips the cursor.
+    // Useful for dark sections within light pages (and vice versa).
+    let lastSurface: string | null = null;
+    function detectSurface() {
+      if (!cursor) return;
+      const el = document.elementFromPoint(mouseX, mouseY) as HTMLElement | null;
+      const match = el?.closest<HTMLElement>('[data-cursor]');
+      const surface = match?.dataset.cursor ?? null;
+      if (surface === lastSurface) return;
+      cursor.classList.remove('cursor-on-light', 'cursor-on-dark');
+      if (surface === 'light') cursor.classList.add('cursor-on-light');
+      else if (surface === 'dark') cursor.classList.add('cursor-on-dark');
+      lastSurface = surface;
+    }
+    document.addEventListener('mousemove', detectSurface, { passive: true });
+    window.addEventListener('scroll', detectSurface, { passive: true });
   }
   initCursor();
   document.addEventListener('astro:page-load', initCursor);
 </script>
+
+<style is:global>
+  /* Cursor inversion variants — opt in by adding data-cursor="light|dark" on any section. */
+  /* cursor-on-dark = cursor is over a DARK surface → cursor must go LIGHT */
+  .custom-cursor.cursor-on-dark .cursor-ring { border-color: rgba(245, 240, 232, 0.5) !important; }
+  .custom-cursor.cursor-on-dark .cursor-dot { background: var(--color-white) !important; }
+  .custom-cursor.cursor-on-dark.hover .cursor-ring {
+    border-color: var(--color-white) !important;
+    background: rgba(245, 240, 232, 0.08) !important;
+  }
+
+  /* cursor-on-light = cursor is over a LIGHT surface → cursor must go DARK */
+  .custom-cursor.cursor-on-light .cursor-ring { border-color: var(--color-dark-50) !important; }
+  .custom-cursor.cursor-on-light .cursor-dot { background: var(--color-dark-80) !important; }
+  .custom-cursor.cursor-on-light.hover .cursor-ring {
+    border-color: var(--color-dark-80) !important;
+    background: var(--color-dark-08) !important;
+  }
+</style>

@@ -1,170 +1,489 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Loader from '../../components/Loader.astro';
+import Cursor from '../../components/Cursor.astro';
+import Nav from '../../components/Nav.astro';
+import FsMenu from '../../components/FsMenu.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/stories.css';
 ---
 
-<Base title="Walking the Talk — Basit Masood" description="Digitizing culture measurement for 200+ organizations worldwide. Taylor Assessment, Culture Insights Survey, Target Culture Mapping.">
+<Base title="Walking the Talk — Basit Masood" description="Lead Product Design Consultant for the world's largest culture-only consulting firm. Six tools, 200 organizations, acquired by ZRG Partners.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  // Light-mode page class — only on this page
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+<!-- ═══════════════════════════════════════════
+     ACT I · HERO — Culture, made measurable.
+     ═══════════════════════════════════════════ -->
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">Walking the Talk · Lead Product Design Consultant · 2023 – 2024</p>
+    <h1 class="sp2-hero-primary">Culture, made measurable.</h1>
+    <p class="sp2-hero-secondary">Six tools. 200 organizations. Acquired by ZRG.</p>
+    <p class="sp2-hero-desc">Walking the Talk is the world's largest culture-only consulting firm — clients run from Visa and Vodafone to Telstra, Westpac, eBay, and Lilly. Their consulting practice was bottlenecked by the tools underneath it. I redesigned their core assessment software into self-serve products that Fortune 500s could use without a consultant on the call — and the firm was acquired by ZRG Partners on the back of that shift.</p>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
-
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══ HERO — Clean, product-focused ═══ -->
-<section class="sp-hero">
-  <div class="sp-hero-inner reveal">
-    <div class="sp-hero-content">
-      <a href="/stories" class="sp-hero-back"><i class="ph-bold ph-arrow-left"></i> All Stories</a>
-      <img src="/images/logo-wtt.svg" alt="Walking the Talk" class="sp-hero-logo" />
-      <p class="sp-hero-eyebrow">Walking the Talk · 2023–2024 · Product Design Consultant</p>
-      <h1 class="sp-hero-title">DIGITIZING CULTURE MEASUREMENT FOR 200+ ORGANIZATIONS WORLDWIDE.</h1>
-      <p class="sp-hero-desc">The world's largest culture-only consulting firm, acquired by ZRG Partners. I redesigned their three core digital tools used by Fortune 500 companies across 40 countries.</p>
-    </div>
-    <div class="sp-hero-visual">
-      <!-- Replace with product screenshot: <img src="/images/wtt-hero.png" alt="Walking the Talk" /> -->
-    </div>
-  </div>
+  <span class="sp2-hero-scroll">Scroll</span>
 </section>
 
-<!-- ═══ STATS — Grid cards ═══ -->
-<section class="sp-stats">
-  <div class="sp-stats-inner reveal">
-    <div class="sp-stat">
-      <span class="sp-stat-val">200K</span>
-      <span class="sp-stat-label">Leaders assessed</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">200</span>
-      <span class="sp-stat-label">Organizations</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">40</span>
-      <span class="sp-stat-label">Countries</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">50K+</span>
-      <span class="sp-stat-label">Taylor Assessment database</span>
-    </div>
+<!-- ═══════════════════════════════════════════
+     ACT I · PSYCHOMETRIC MOMENT
+     Radial chart — 6 archetypes × 30 behaviors
+     ═══════════════════════════════════════════ -->
+<section class="sp2-video-moment wtt-psych-moment">
+  <div class="wtt-psych-stage" aria-hidden="true">
+    <svg class="wtt-psych-svg" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Psychometric radial chart — six archetypes, thirty behaviors">
+      <defs>
+        <radialGradient id="wtt-center-glow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#e11d48" stop-opacity="0.35"/>
+          <stop offset="0.7" stop-color="#e11d48" stop-opacity="0.08"/>
+          <stop offset="1" stop-color="#e11d48" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <g transform="translate(400,250)">
+        <!-- background faint rings -->
+        <circle r="60" fill="none" stroke="rgba(245,240,232,0.06)" stroke-width="1"/>
+        <circle r="110" fill="none" stroke="rgba(245,240,232,0.06)" stroke-width="1"/>
+        <circle r="160" fill="none" stroke="rgba(245,240,232,0.06)" stroke-width="1"/>
+        <circle r="210" fill="none" stroke="rgba(245,240,232,0.05)" stroke-width="1"/>
+
+        <!-- 6 archetype wedges — varying radii to read as a psychometric profile -->
+        <g stroke="rgba(245,240,232,0.7)" stroke-width="1" fill="rgba(245,240,232,0.06)">
+          <path d="M 0 0 L 175 0 A 175 175 0 0 1 87.5 151.55 Z"/>
+          <path d="M 0 0 L 87.5 151.55 A 195 195 0 0 1 -97.5 168.87 Z"/>
+          <path d="M 0 0 L -97.5 168.87 A 155 155 0 0 1 -155 0 Z"/>
+          <path d="M 0 0 L -175 0 A 175 175 0 0 1 -87.5 -151.55 Z"/>
+          <path d="M 0 0 L -87.5 -151.55 A 205 205 0 0 1 102.5 -177.53 Z"/>
+          <path d="M 0 0 L 102.5 -177.53 A 165 165 0 0 1 165 0 Z"/>
+        </g>
+
+        <!-- accent wedge (rose) — calls out the differentiator -->
+        <path d="M 0 0 L 102.5 -177.53 A 205 205 0 0 1 205 0 Z"
+              fill="rgba(225,29,72,0.18)" stroke="rgba(225,29,72,0.8)" stroke-width="1.5"/>
+
+        <!-- 30 behavior dots on the outer ring -->
+        <g fill="rgba(245,240,232,0.65)">
+          <circle cx="230" cy="0" r="2.5"/>
+          <circle cx="221.6" cy="61.2" r="2.5"/>
+          <circle cx="197.2" cy="117.5" r="2.5"/>
+          <circle cx="159" cy="166.2" r="2.5"/>
+          <circle cx="109.4" cy="202.2" r="2.5"/>
+          <circle cx="51.4" cy="223.8" r="2.5"/>
+          <circle cx="-10.9" cy="229.7" r="2.5"/>
+          <circle cx="-72.7" cy="218.2" r="2.5"/>
+          <circle cx="-128.5" cy="190.6" r="2.5"/>
+          <circle cx="-174" cy="149.9" r="2.5"/>
+          <circle cx="-206.8" cy="100" r="2.5"/>
+          <circle cx="-225.5" cy="44.2" r="2.5"/>
+          <circle cx="-228.8" cy="-15.4" r="2.5"/>
+          <circle cx="-216.4" cy="-74" r="2.5"/>
+          <circle cx="-189" cy="-128.1" r="2.5"/>
+          <circle cx="-148.4" cy="-173.9" r="2.5"/>
+          <circle cx="-97" cy="-208.5" r="2.5"/>
+          <circle cx="-38.7" cy="-229.1" r="2.5"/>
+          <circle cx="22.9" cy="-234.3" r="2.5" fill="#e11d48"/>
+          <circle cx="83.4" cy="-223.9" r="2.5" fill="#e11d48"/>
+          <circle cx="139.1" cy="-198.7" r="2.5" fill="#e11d48"/>
+          <circle cx="186.5" cy="-161" r="2.5" fill="#e11d48"/>
+          <circle cx="222" cy="-113.6" r="2.5"/>
+          <circle cx="242.8" cy="-59.7" r="2.5"/>
+          <circle cx="248" cy="0" r="2.5"/>
+          <circle cx="236.9" cy="72" r="2.5"/>
+          <circle cx="210.7" cy="136" r="2.5"/>
+          <circle cx="171" cy="189.5" r="2.5"/>
+          <circle cx="121" cy="228.7" r="2.5"/>
+          <circle cx="64" cy="251.1" r="2.5"/>
+        </g>
+
+        <!-- center glow + dot -->
+        <circle r="80" fill="url(#wtt-center-glow)"/>
+        <circle r="10" fill="#e11d48"/>
+      </g>
+    </svg>
   </div>
+  <div class="sp2-video-caption">Six archetypes × thirty behaviors — the Taylor Assessment geometry</div>
 </section>
 
-<!-- ═══ VIDEO — Placeholder ═══ -->
-<div class="sp-video">
-  <div class="sp-video-placeholder">
-    <i class="ph-bold ph-play-circle" style="font-size: 40px; opacity: 0.3;"></i>
-  </div>
-</div>
-
-<!-- ═══ NARRATIVE ═══ -->
-<section class="sp-narrative">
-  <div class="sp-narrative-inner">
-    <h2 class="sp-narrative-heading reveal">THE JOURNEY</h2>
-
-    <div class="reveal">
-      <p>Walking the Talk is the world's largest culture-only consulting firm, later acquired by ZRG Partners. Their clients include Visa, Vodafone, Telstra, Westpac, Tesco Bank, eBay, Experian, Syngenta, Takeda, and Lilly. I was brought in to redesign their three core digital tools — the products that their entire consulting practice runs on.</p>
-
-      <p><strong>Taylor Assessment</strong> is the only psychometric tool in the world that measures individual culture contribution across 6 archetypes and 30 behaviors. I redesigned it from the ground up in partnership with Psynet, the psychometrics engine behind it. The new Taylor Assessment was press-released globally in January 2024. It's now used by over 50,000 leaders in Walking the Talk's database.</p>
-
-      <p><strong>Culture Insights Survey</strong> measures 90 behaviors across multiple languages. It's a 15-20 minute assessment that gives organizations immediate portal results — no waiting weeks for consultants to compile data. I redesigned the survey experience and the results portal so that HR leaders and executives could self-serve insights without needing a consultant on the call.</p>
-
-      <p><strong>Target Culture Mapping</strong> is the workshop tool — used in 80+ executive workshops to help leadership teams align on the culture they want to build. I redesigned the digital experience that supports these in-person sessions, making it easier for facilitators to capture, visualize, and share outcomes in real time.</p>
-
-      <p>The common thread across all three tools: taking complex psychometric and organizational data and making it immediately useful. No dashboards for the sake of dashboards. Every screen had to answer a specific question that a CEO or CHRO would actually ask.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CASE STUDIES — Visual cards with numbers ═══ -->
-<section class="sp-cases">
-  <div class="sp-cases-inner">
-    <h2 class="sp-cases-heading reveal">GO DEEPER</h2>
-    <div class="sp-cases-grid reveal">
-      <a href="/stories/wtt/taylor" class="sp-case">
-        <div class="sp-case-img"><span class="sp-case-num">01</span></div>
-        <div class="sp-case-body">
-          <p class="sp-case-label">Case Study</p>
-          <h3 class="sp-case-title">Taylor Assessment — The World's Only Culture Contribution Psychometric</h3>
-          <p class="sp-case-desc">Redesigning a globally press-released psychometric tool measuring 6 archetypes and 30 behaviors across 50K+ leaders.</p>
-          <span class="sp-case-cta">Read case study <i class="ph-bold ph-arrow-right"></i></span>
+<!-- ═══════════════════════════════════════════
+     ACT II · CONTEXT — the consulting bottleneck
+     ═══════════════════════════════════════════ -->
+<section class="sp2-stakes">
+  <div class="sp2-stakes-inner">
+    <div class="sp2-stakes-layout">
+      <div class="sp2-stakes-stats">
+        <div class="sp2-stakes-hero-stat">
+          <span class="val">200+</span>
+          <span class="label">Organizations</span>
         </div>
-      </a>
+        <div class="sp2-stakes-supporting">
+          <div class="stat"><span class="val">200K</span><span class="label">Leaders assessed</span></div>
+          <div class="stat"><span class="val">40</span><span class="label">Countries</span></div>
+          <div class="stat"><span class="val">50K+</span><span class="label">Taylor DB</span></div>
+          <div class="stat"><span class="val">6</span><span class="label">Tools shipped</span></div>
+        </div>
+      </div>
+      <div class="sp2-stakes-context">
+        <h2>Culture consulting was <span class="accent">analog</span>.<br/>Assessments took <span class="accent">weeks</span>.<br/>Results arrived on PDFs.</h2>
+        <p>Walking the Talk measured culture for Visa, Vodafone, Telstra, Westpac, Tesco Bank, eBay, Experian, Syngenta, Takeda, and Lilly. Their consultants were the best in the world at what they did — and they were the bottleneck. Every assessment needed a consultant to run it, compile it, and deliver it.</p>
+        <p>The firm wanted its practice to scale without its people scaling linearly with it. That meant building the software layer underneath — tools a CHRO could run herself, get results from in minutes, and use in the boardroom the same week.</p>
+        <p><strong>Six tools shipped. Fortune 500s self-serving. Acquisition followed.</strong></p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PREV / NEXT ═══ -->
-<nav class="sp-nav">
-  <a href="/stories/zar" class="sp-nav-link sp-nav-link--prev">
-    <span class="sp-nav-label">Previous Story</span>
-    <span class="sp-nav-title"><i class="ph-bold ph-arrow-left"></i> ZAR</span>
-  </a>
-  <div class="sp-nav-empty"></div>
-</nav>
-
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
+<!-- ═══════════════════════════════════════════
+     ACT III · THE ARC — paper → portal → self-serve
+     ═══════════════════════════════════════════ -->
+<section class="sp2-arc">
+  <div class="sp2-arc-inner">
+    <div class="sp2-rungs" aria-label="Walking the Talk progression, shift from analog to self-serve">
+      <span class="sp2-rungs-label">The shift</span>
+      <span class="sp2-rungs-row">
+        <span>Paper assessments</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Taylor v1</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Culture Insights Portal</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Workshop tooling</span>
+        <span class="sp2-rungs-sep"></span>
+        <strong>ZRG acquisition</strong>
+      </span>
+    </div>
+    <div class="sp2-zti" aria-label="Zero tools to six shipped to two hundred organizations">
+      <span class="sp2-zti-char sp2-zti-z">0</span>
+      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--1">→</span>
+      <span class="sp2-zti-char sp2-zti-o">6</span>
+      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--2">→</span>
+      <span class="sp2-zti-char sp2-zti-i">200</span>
+    </div>
   </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT III · THE STORY — five chapters
+     ═══════════════════════════════════════════ -->
+<section class="sp2-story">
+  <div class="sp2-story-inner">
+    <div class="sp2-story-head">
+      <h2>The Story</h2>
+      <p>From consulting-only assessments to a software suite Fortune 500s ran themselves.</p>
+    </div>
+
+    <!-- Chapter 01 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">01</span>
+        <span class="sp2-chapter-date">2023 · The brief</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>The consultants were the bottleneck.</h3>
+        <p>Walking the Talk had the methodology — the decade-old frameworks, the archetype taxonomy, the Psynet psychometric engine behind it. What they didn't have was a software layer that let clients <em>run</em> the methodology. Every assessment needed a consultant to set up, score, and present. The practice couldn't scale past the calendar of its senior people.</p>
+        <p>The brief was simple and unforgiving: take the three tools the firm ran on, and make them work without a consultant in the room.</p>
+      </div>
+    </article>
+
+    <!-- Chapter 02 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">02</span>
+        <span class="sp2-chapter-date">January 2024 · Taylor Assessment</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>The only psychometric in the world that measures culture contribution.</h3>
+        <p>Taylor Assessment scores individual culture contribution across <strong>six archetypes and thirty behaviors</strong> — a categorization no other tool on the market captures. I redesigned it ground-up in partnership with <strong>Psynet</strong>, the psychometrics house that built the engine underneath. Every screen was a conversation between design and psychometric rigor; nothing in the assessment could bend if the math didn't allow it.</p>
+        <p>The new Taylor Assessment was <strong>press-released globally in January 2024</strong>. It's now used by over 50,000 leaders in Walking the Talk's database — and it's the single tool that defined the firm's post-redesign positioning.</p>
+      </div>
+    </article>
+
+    <!-- Chapter 03 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">03</span>
+        <span class="sp2-chapter-date">2023–2024 · Culture Insights Survey</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>Weeks of waiting collapsed into minutes.</h3>
+        <p>Culture Insights Survey measures <strong>ninety behaviors across multiple languages</strong> — a 15-to-20-minute assessment designed to produce immediate portal results. Before the redesign, HR teams waited days or weeks for a consultant to compile data and write it up. After the redesign, a CHRO could open the portal the moment the survey closed and walk into a board meeting with findings the same afternoon.</p>
+        <p>The shift wasn't cosmetic. The entire service model moved from <em>consultant-delivered</em> to <em>self-serve-with-expert-support-when-needed</em>.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INTERLUDE · TAYLOR — specimen plate
+     ═══════════════════════════════════════════ -->
+<section class="sp2-cardshow sp2-cardshow--specimen">
+  <div class="sp2-specimen-inner">
+    <div class="sp2-specimen-stage reveal">
+      <div class="wtt-specimen-placeholder" role="img" aria-label="Taylor Assessment — psychometric archetype wheel placeholder">
+        <svg class="wtt-specimen-wheel" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g transform="translate(200,200)">
+            <circle r="170" fill="none" stroke="rgba(6,6,6,0.1)" stroke-width="1"/>
+            <circle r="130" fill="none" stroke="rgba(6,6,6,0.08)" stroke-width="1"/>
+            <circle r="90" fill="none" stroke="rgba(6,6,6,0.08)" stroke-width="1"/>
+            <g stroke="rgba(6,6,6,0.35)" stroke-width="1" fill="rgba(6,6,6,0.04)">
+              <path d="M 0 0 L 150 0 A 150 150 0 0 1 75 129.9 Z"/>
+              <path d="M 0 0 L 75 129.9 A 170 170 0 0 1 -85 147.22 Z"/>
+              <path d="M 0 0 L -85 147.22 A 130 130 0 0 1 -130 0 Z"/>
+              <path d="M 0 0 L -150 0 A 150 150 0 0 1 -75 -129.9 Z"/>
+              <path d="M 0 0 L -75 -129.9 A 170 170 0 0 1 85 -147.22 Z"/>
+            </g>
+            <path d="M 0 0 L 85 -147.22 A 170 170 0 0 1 170 0 Z"
+                  fill="rgba(225,29,72,0.22)" stroke="rgba(225,29,72,0.85)" stroke-width="1.5"/>
+            <circle r="6" fill="#e11d48"/>
+          </g>
+        </svg>
+        <span class="wtt-specimen-watermark">Taylor</span>
+      </div>
+      <aside class="sp2-specimen-label">
+        <span class="sp2-specimen-num">Object 01</span>
+        <span class="sp2-specimen-class">Taylor · Culture Contribution Psychometric</span>
+        <dl class="sp2-specimen-meta">
+          <dt>Press launch</dt><dd>January 2024, global</dd>
+          <dt>Archetypes</dt><dd>6</dd>
+          <dt>Behaviors</dt><dd>30</dd>
+          <dt>Database</dt><dd>50,000+ leaders</dd>
+          <dt>Engine</dt><dd>Psynet, partnership</dd>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="sp2-specimen-narrative reveal">
+      <h2>Taylor Assessment</h2>
+      <p class="sp2-section-intro">The tool that defined the post-redesign positioning.</p>
+      <p>Taylor is the only psychometric in the world that measures <em>culture contribution</em> — how an individual's behavior pushes, pulls, or destabilizes the culture around them. Six archetypes, thirty behaviors, calibrated against Psynet's database.</p>
+      <p><strong>The redesign took Taylor from an internally-used tool to a product the firm could press-release.</strong> Every screen — instruction, question, scoring, report — had to keep the psychometric validity intact while making the experience something a senior leader would finish in a single sitting.</p>
+    </div>
+
+    <blockquote class="sp2-specimen-caption reveal">
+      <p>The redesigned Taylor Assessment gave us a globally press-releasable product for the first time in our history.</p>
+      <cite>Walking the Talk · Jan 2024 launch</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT III (cont.) · Chapters 4 & 5
+     ═══════════════════════════════════════════ -->
+<section class="sp2-story sp2-story--continued">
+  <div class="sp2-story-inner">
+    <!-- Chapter 04 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">04</span>
+        <span class="sp2-chapter-date">2024 · Target Culture Mapping</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>Workshops captured, visualized, shared — in real time.</h3>
+        <p>Target Culture Mapping is the workshop tool — used in <strong>over eighty executive workshops</strong> to help leadership teams align on the culture they want to build. The old version was a whiteboard and a PowerPoint deck the consultant wrote up afterwards. The redesigned version let the facilitator capture decisions as they happened, visualize the target culture against the current one live, and share the output with the room before everyone left.</p>
+        <p>The experience shifted from "we'll send you the summary next week" to "you're leaving this room with your target culture on a page."</p>
+      </div>
+    </article>
+
+    <!-- Chapter 05 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">05</span>
+        <span class="sp2-chapter-date">2024 · The acquisition</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>Walking the Talk, acquired by ZRG Partners.</h3>
+        <p>Six tools in, the firm was no longer a boutique consulting practice with software on the side — it was a methodology-backed product business. <strong>ZRG Partners acquired Walking the Talk</strong>, folding the firm's culture practice into its global executive-search and leadership-advisory business.</p>
+        <p>The redesigned software wasn't the whole reason for the acquisition, but it was a material one. Fortune 500 self-service had made the practice buyable.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT IV · THE SHIFT — service-model redesign
+     ═══════════════════════════════════════════ -->
+<section class="sp2-service">
+  <div class="sp2-service-inner">
+    <div class="sp2-service-head">
+      <p class="sp2-service-eyebrow">Service redesign</p>
+      <h2>The Shift.</h2>
+      <p class="sp2-service-lede"><strong>The tool is the product. But the service model is the business.</strong> Two places where the redesign changed how the firm operates.</p>
+    </div>
+
+    <div class="sp2-service-cases">
+      <div class="sp2-service-case">
+        <span class="sp2-service-case-tag">01 · Portal self-serve</span>
+        <h3 class="sp2-service-case-title">Days of waiting collapsed into minutes.</h3>
+        <div class="sp2-service-case-body">
+          <p>Culture Insights Survey used to require a consultant to compile the data, author an interpretation, and walk the client through it — usually on a call days or weeks after the survey closed. The redesigned portal gave HR leaders and executives instant results, visualized in the firm's methodology, and designed to be read without an expert on the line.</p>
+          <p>Consultants still came in — but for interpretation and intervention, not for summary. The firm's senior time moved up the value chain.</p>
+          <div class="sp2-service-case-metric">
+            <span class="num">Days → Minutes</span>
+            <span class="label">Time to insight · Culture Insights Survey portal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp2-service-case">
+        <span class="sp2-service-case-tag">02 · Workshop capture</span>
+        <h3 class="sp2-service-case-title">The summary left the room with the team.</h3>
+        <div class="sp2-service-case-body">
+          <p>Target Culture Mapping took executive workshops from "we'll send the deck next week" to live capture: the facilitator maps the target culture as the team talks, the visualization updates in real time, and the output is shareable before anyone leaves the room. Eighty-plus workshops have run on the redesigned tool.</p>
+          <p>It changed how leadership teams engaged with their own output — the artifact wasn't a deliverable, it was the meeting.</p>
+          <div class="sp2-service-case-metric">
+            <span class="num">80+</span>
+            <span class="label">Executive workshops run · Target Culture Mapping</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT V · THE TOOLKIT — 9 cards, asymmetric
+     ═══════════════════════════════════════════ -->
+<section class="sp2-foundations">
+  <div class="sp2-foundations-inner">
+    <div class="sp2-foundations-lead">
+      <h2>The Toolkit</h2>
+      <p>Six shipped tools, plus the supporting work that let the firm run them at Fortune-500 scale.</p>
+    </div>
+    <div class="sp2-foundations-grid sp2-foundations-grid--8">
+      <div class="sp2-foundation sp2-foundation--hero">
+        <span class="sp2-foundation-num">Tool 01</span>
+        <h3 class="sp2-foundation-title">Taylor Assessment</h3>
+        <p class="sp2-foundation-body">The world's only psychometric that measures culture contribution — six archetypes, thirty behaviors, calibrated against Psynet's database. <strong>Press-released globally January 2024.</strong> 50,000+ leaders measured. The flagship product around which the firm's post-redesign positioning was built.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">02</span>
+        <h3 class="sp2-foundation-title">Culture Insights Survey</h3>
+        <p class="sp2-foundation-body">Ninety behaviors across multiple languages, 15-to-20-minute assessment, immediate portal results. The tool that moved the firm from consultant-delivered to self-serve.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">03</span>
+        <h3 class="sp2-foundation-title">Target Culture Mapping</h3>
+        <p class="sp2-foundation-body">Workshop tool for executive culture alignment — 80+ sessions run. Live capture, real-time visualization, shareable output before the room empties.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">04</span>
+        <h3 class="sp2-foundation-title">Psynet partnership</h3>
+        <p class="sp2-foundation-body">Client-side lead on the Psynet integration — the psychometrics engine behind Taylor. Design decisions negotiated against statistical validity, not around it.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">05</span>
+        <h3 class="sp2-foundation-title">Multi-language design</h3>
+        <p class="sp2-foundation-body">Culture Insights Survey runs across multiple languages with the methodology held constant. Typography, line lengths, and scale anchoring redesigned so the psychometric reads the same in every market.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">06</span>
+        <h3 class="sp2-foundation-title">Self-serve results portal</h3>
+        <p class="sp2-foundation-body">Immediate visualization, methodology-anchored layout, readable without a consultant in the room. The artifact the firm now walks into C-suite meetings with.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">07</span>
+        <h3 class="sp2-foundation-title">Workshop digitization</h3>
+        <p class="sp2-foundation-body">Taking a decade-old paper-and-whiteboard practice and rebuilding it as real-time software. Facilitator capture, live synthesis, instant share-out.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">08</span>
+        <h3 class="sp2-foundation-title">Press-ready launch</h3>
+        <p class="sp2-foundation-body">Taylor's global press release in January 2024 was a product-launch outcome — the redesign turned an internal tool into something the firm could market externally for the first time.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">09</span>
+        <h3 class="sp2-foundation-title">Psychometric-grade rigor</h3>
+        <p class="sp2-foundation-body">Every design decision reviewed against the methodology. No pattern that compromised statistical validity survived review. The firm's credibility was the constraint, not an afterthought.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT VI · MORE WORK — deep-dive teasers
+     ═══════════════════════════════════════════ -->
+<section class="sp2-works">
+  <div class="sp2-works-inner">
+    <div class="sp2-works-lead">
+      <h2>More work</h2>
+      <p>Deep dives on the tools inside the story above.</p>
+    </div>
+
+    <div class="sp2-works-grid">
+      <a class="sp2-work" href="/stories/wtt/taylor">
+        <span class="sp2-work-tag">Tool · Deep dive</span>
+        <h3 class="sp2-work-title">Taylor Assessment</h3>
+        <p class="sp2-work-body">The world's only psychometric that measures culture contribution. Six archetypes. Thirty behaviors. Press-released globally and backed by the Psynet engine. <strong>The flagship redesign.</strong></p>
+        <span class="sp2-work-cta">Read the Taylor case study <span class="sp2-arrow">→</span></span>
+      </a>
+      <article class="sp2-work sp2-work--soon">
+        <span class="sp2-work-tag">Coming soon</span>
+        <h3 class="sp2-work-title">Culture Insights Survey</h3>
+        <p class="sp2-work-body">The 90-behavior, multi-language assessment that moved the firm from consultant-delivered reports to instant portal results. Case study in progress.</p>
+      </article>
+    </div>
+
+    <div class="sp2-works-grid sp2-works-grid--flip">
+      <article class="sp2-work sp2-work--soon">
+        <span class="sp2-work-tag">Coming soon</span>
+        <h3 class="sp2-work-title">Target Culture Mapping</h3>
+        <p class="sp2-work-body">Workshop tool used in 80+ executive sessions. Live capture, real-time visualization, shareable output before the room empties. Case study in progress.</p>
+      </article>
+      <article class="sp2-work sp2-work--soon">
+        <span class="sp2-work-tag">Coming soon</span>
+        <h3 class="sp2-work-title">The acquisition</h3>
+        <p class="sp2-work-body">How the redesigned software stack made Walking the Talk buyable — and what moved from boutique consultancy into ZRG's global platform.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT VII · NEXT
+     ═══════════════════════════════════════════ -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories"><span class="sp2-arrow">←</span> Back to all stories</a></div>
+  <a href="/stories/adib" class="sp2-next-cta">
+    <span class="label">Next Story</span>
+    <span class="title">ADIB <span class="sp2-arrow">→</span></span>
+  </a>
+</section>
+
+<Footer />
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  function initWtt() {
+    // Scroll reveal for .reveal elements
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-  // Nav hide
-  let ls=0; const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
-  // Menu
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
-  // Loader
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
-  // Reveal
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
+  initWtt();
+  document.addEventListener('astro:page-load', initWtt);
 </script>
 
 </Base>

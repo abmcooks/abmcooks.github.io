@@ -1,129 +1,139 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Loader from '../../components/Loader.astro';
+import Cursor from '../../components/Cursor.astro';
+import Nav from '../../components/Nav.astro';
+import FsMenu from '../../components/FsMenu.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/stories.css';
 ---
 
-<Base title="Bolt VPN — Basit Masood" description="Complete UI/UX transformation for a 25M+ download VPN app.">
+<Base title="Bolt VPN — Basit Masood" description="UI/UX transformation and paywall optimization for a 25M+ download VPN app. Via Galixo AI.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+<!-- ═══════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════ -->
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">Bolt VPN via Galixo AI · Lead Product Design Consultant · 2023</p>
+    <h1 class="sp2-hero-primary">25 million downloads.</h1>
+    <p class="sp2-hero-secondary">A VPN app that needed to look like it earned them.</p>
+    <p class="sp2-hero-desc">Bolt VPN had the scale but not the polish — a dated interface bleeding conversion to slicker competitors. I was brought in through Galixo AI to rebuild the brand, the product, and the paywall flow that drives the subscription business.</p>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
+  <span class="sp2-hero-scroll">Scroll</span>
+</section>
 
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
+<!-- ═══════════════════════════════════════════
+     BRAND MOMENT
+     ═══════════════════════════════════════════ -->
+<section class="sb-brand">
+  <div class="sb-brand-inner">
+    <img src="/images/boltvpn-logo.png" alt="Bolt VPN" class="sb-brand-logo sb-brand-logo--dark" />
+    <div class="sb-brand-rule"></div>
+    <p class="sb-brand-caption">Bolt VPN · Consumer app · Global</p>
   </div>
-</div>
+</section>
 
-<!-- ═══ HERO — Clean, product-focused ═══ -->
-<section class="sp-hero">
-  <div class="sp-hero-inner reveal">
-    <div class="sp-hero-content">
-      <a href="/stories" class="sp-hero-back"><i class="ph-bold ph-arrow-left"></i> All Stories</a>
-      <p class="sp-hero-eyebrow">Bolt VPN · 2023 · Freelance</p>
-      <h1 class="sp-hero-title">COMPLETE UI/UX TRANSFORMATION FOR A 25M+ DOWNLOAD VPN APP.</h1>
-      <p class="sp-hero-desc">Full product redesign and paywall optimization for Bolt VPN via Galixo AI.</p>
-    </div>
-    <div class="sp-hero-visual">
-      <!-- Replace with product screenshot: <img src="/images/bolt-vpn-hero.png" alt="Bolt VPN app" /> -->
+<!-- ═══════════════════════════════════════════
+     STAKES · CONTEXT
+     ═══════════════════════════════════════════ -->
+<section class="sp2-stakes">
+  <div class="sp2-stakes-inner">
+    <div class="sp2-stakes-layout">
+      <div class="sp2-stakes-stats">
+        <div class="sp2-stakes-hero-stat">
+          <span class="val">25M+</span>
+          <span class="label">Downloads</span>
+        </div>
+        <div class="sp2-stakes-supporting">
+          <div class="stat"><span class="val">Global</span><span class="label">User base</span></div>
+          <div class="stat"><span class="val">Galixo AI</span><span class="label">Studio partner</span></div>
+          <div class="stat"><span class="val">Full stack</span><span class="label">Brand + UX + paywall</span></div>
+        </div>
+      </div>
+      <div class="sp2-stakes-context">
+        <h2>The scale was there.<br/><span class="accent">The product</span> wasn't keeping up.</h2>
+        <p>Bolt VPN had reached 25 million downloads on a dated interface — one-tap connect was hidden behind two tap-throughs, server selection was a wall of flags, and the paywall was doing the bare minimum to convert users who'd already decided to subscribe. The category had moved; the product hadn't.</p>
+        <p>The brief was end-to-end: complete visual overhaul, UI/UX redesign of every core flow, and a paywall rebuild calibrated to lift subscription conversion without sacrificing the "free and fast" promise that drove downloads in the first place.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ STATS — Grid cards ═══ -->
-<section class="sp-stats">
-  <div class="sp-stats-inner reveal">
-    <div class="sp-stat">
-      <span class="sp-stat-val">25M+</span>
-      <span class="sp-stat-label">Downloads</span>
+<!-- ═══════════════════════════════════════════
+     THE WORK
+     ═══════════════════════════════════════════ -->
+<section class="sb-work">
+  <div class="sb-work-head">
+    <p class="sb-work-eyebrow">What I did</p>
+    <h2 class="sb-work-heading">Three layers, rebuilt in parallel.</h2>
+  </div>
+  <div class="sb-work-grid">
+    <div class="sb-work-item">
+      <span class="sb-work-tag">Brand overhaul</span>
+      <h3 class="sb-work-title">A VPN that looked the part.</h3>
+      <p class="sb-work-body">Rebuilt the brand from the logo out — typography, colour, iconography, motion. The old identity read "free utility app"; the new one signals "subscription-grade product you'd pay for." Modern and confident, no cyberpunk cliché.</p>
+    </div>
+    <div class="sb-work-item">
+      <span class="sb-work-tag">Core UX redesign</span>
+      <h3 class="sb-work-title">One tap to connect.</h3>
+      <p class="sb-work-body">Redesigned connection flow, server selection, and status UI. A user who just wants VPN-on never thinks about the app; a user wanting server control gets there in two taps. Visual server status, grouped country tiles, instant-feedback motion.</p>
+    </div>
+    <div class="sb-work-item">
+      <span class="sb-work-tag">Paywall optimization</span>
+      <h3 class="sb-work-title">Conversion without coercion.</h3>
+      <p class="sb-work-body">Rebuilt the paywall around price clarity, plan comparison, and a trial that felt like opportunity, not trap. No dark patterns, no fake urgency. Conversion lifted because the upgrade was easier to understand, not because friction forced it.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ NARRATIVE ═══ -->
-<section class="sp-narrative">
-  <div class="sp-narrative-inner">
-    <h2 class="sp-narrative-heading reveal">THE WORK</h2>
-
-    <div class="reveal">
-      <p>Bolt VPN had 25 million+ downloads but a dated interface that was losing users to slicker competitors. I was brought in through Galixo AI to do a complete UI/UX transformation — rethinking the core connection experience, server selection, and the paywall that drives their subscription business.</p>
-
-      <p>The redesign focused on clarity and speed: one-tap connect, visual server status, and a paywall flow that reduced friction while improving conversion. Clean, modern, and built for the kind of user who just wants their VPN to work without thinking about it.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PREV / NEXT ═══ -->
-<nav class="sp-nav">
-  <a href="/stories/adib" class="sp-nav-link sp-nav-link--prev">
-    <span class="sp-nav-label">Previous Story</span>
-    <span class="sp-nav-title"><i class="ph-bold ph-arrow-left"></i> ADIB</span>
+<!-- ═══════════════════════════════════════════
+     NEXT
+     ═══════════════════════════════════════════ -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories"><span class="sp2-arrow">←</span> Back to all stories</a></div>
+  <a href="/stories/gosaas" class="sp2-next-cta">
+    <span class="label">Next Story</span>
+    <span class="title">GoCompliance <span class="sp2-arrow">→</span></span>
   </a>
-  <a href="/stories/gosaas" class="sp-nav-link sp-nav-link--next">
-    <span class="sp-nav-label">Next Story</span>
-    <span class="sp-nav-title">GOSAAS <i class="ph-bold ph-arrow-right"></i></span>
-  </a>
-</nav>
+</section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
+<Footer />
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  function initBrief() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-  // Nav hide
-  let ls=0; const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
-  // Menu
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
-  // Loader
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
-  // Reveal
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
+  initBrief();
+  document.addEventListener('astro:page-load', initBrief);
 </script>
 
 </Base>

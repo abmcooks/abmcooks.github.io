@@ -1,181 +1,102 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Loader from '../../components/Loader.astro';
+import Cursor from '../../components/Cursor.astro';
+import Nav from '../../components/Nav.astro';
+import FsMenu from '../../components/FsMenu.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/stories.css';
-import '../../styles/writing.css';
 ---
 
-<Base title="Writing — Basit Masood" description="Opinions, lessons, and things I wish someone told me earlier.">
+<Base title="Writing — Basit Masood" description="Essays, opinions, and things I wish someone told me earlier — on design leadership, AI, hiring, and the systems behind product work.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="writing" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left">
-    <a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a>
-  </div>
-  <div class="nav-right">
-    <a href="/stories">Stories</a>
-    <a href="/writing" class="nav-active">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
-  </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
-
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════════ -->
-<section class="wr-hero">
-  <div class="wr-hero-inner reveal">
-    <p class="wr-hero-label">Thoughts</p>
-    <h1 class="wr-hero-heading">WRITING</h1>
-    <p class="wr-hero-sub">Opinions, lessons, and things I wish someone told me earlier.</p>
+<!-- HERO -->
+<section class="wr2-hero">
+  <div class="wr2-hero-inner">
+    <p class="wr2-hero-kicker">Essays · 2025 – Present</p>
+    <h1 class="wr2-hero-title">Notes.</h1>
+    <p class="wr2-hero-sub">Opinions, lessons, and things I wish someone had told me earlier — about design leadership, AI, hiring, and the systems behind product work.</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     ARTICLE LIST
-     ═══════════════════════════════════════════ -->
-<section class="wr-list">
-  <div class="wr-list-inner">
-    <p class="wr-list-label reveal">All Articles</p>
-    <div class="wr-rows reveal">
-      <a href="/writing/ai-didnt-kill-the-designers-job" class="wr-row">
-        <div>
-          <span class="wr-row-title">AI didn't kill the designer's job</span>
-          <span class="wr-row-meta">March 2026 · 5 min read</span>
-        </div>
-        <span class="wr-row-excerpt">Design isn't going anywhere — but the designers who refuse to evolve might.</span>
-        <span class="wr-row-arrow"><i class="ph-bold ph-arrow-up-right"></i></span>
-      </a>
-      <a href="/writing/the-1-12-ratio" class="wr-row">
-        <div>
-          <span class="wr-row-title">The 1:12 ratio — why I hire for taste, not portfolios</span>
-          <span class="wr-row-meta">February 2026 · 4 min read</span>
-        </div>
-        <span class="wr-row-excerpt">Out of every 12 candidates, only 1 gets through. Here's what I look for.</span>
-        <span class="wr-row-arrow"><i class="ph-bold ph-arrow-up-right"></i></span>
-      </a>
-      <a href="/writing/design-systems-that-outlast" class="wr-row">
-        <div>
-          <span class="wr-row-title">Design systems that outlast the designer who built them</span>
-          <span class="wr-row-meta">January 2026 · 6 min read</span>
-        </div>
-        <span class="wr-row-excerpt">Nukta, Xperia, Techtonic — three systems, three lessons in letting go.</span>
-        <span class="wr-row-arrow"><i class="ph-bold ph-arrow-up-right"></i></span>
-      </a>
-      <a href="/writing/watching-merchants" class="wr-row">
-        <div>
-          <span class="wr-row-title">What I learned watching merchants ignore our product</span>
-          <span class="wr-row-meta">December 2025 · 4 min read</span>
-        </div>
-        <span class="wr-row-excerpt">Standing in shops for hours taught me more than any user test ever did.</span>
-        <span class="wr-row-arrow"><i class="ph-bold ph-arrow-up-right"></i></span>
-      </a>
+<!-- ARTICLE LIST -->
+<section class="wr2-list">
+  <p class="wr2-list-label">All articles · 4</p>
+
+  <a href="/writing/ai-didnt-kill-the-designers-job" class="wr2-row">
+    <span class="wr2-row-date">March 2026</span>
+    <div class="wr2-row-content">
+      <h2 class="wr2-row-title">AI didn't kill the designer's job.</h2>
+      <p class="wr2-row-excerpt">Design isn't going anywhere — but the designers who refuse to evolve might.</p>
     </div>
-  </div>
+    <span class="wr2-row-read">5 min read</span>
+    <span class="wr2-row-arrow">→</span>
+  </a>
+
+  <a href="/writing/the-1-12-ratio" class="wr2-row">
+    <span class="wr2-row-date">February 2026</span>
+    <div class="wr2-row-content">
+      <h2 class="wr2-row-title">The 1:12 ratio.</h2>
+      <p class="wr2-row-excerpt">Out of every twelve candidates, only one gets through. Here's what I look for — and why portfolios aren't the answer.</p>
+    </div>
+    <span class="wr2-row-read">4 min read</span>
+    <span class="wr2-row-arrow">→</span>
+  </a>
+
+  <a href="/writing/design-systems-that-outlast" class="wr2-row">
+    <span class="wr2-row-date">January 2026</span>
+    <div class="wr2-row-content">
+      <h2 class="wr2-row-title">Design systems that outlast their designer.</h2>
+      <p class="wr2-row-excerpt">Nukta, Techtonic, and the quiet discipline of building a system the next person can run without you in the room.</p>
+    </div>
+    <span class="wr2-row-read">6 min read</span>
+    <span class="wr2-row-arrow">→</span>
+  </a>
+
+  <a href="/writing/watching-merchants" class="wr2-row">
+    <span class="wr2-row-date">December 2025</span>
+    <div class="wr2-row-content">
+      <h2 class="wr2-row-title">Watching merchants ignore our product.</h2>
+      <p class="wr2-row-excerpt">Standing in shops for hours taught me more than any moderated user test ever could.</p>
+    </div>
+    <span class="wr2-row-read">4 min read</span>
+    <span class="wr2-row-arrow">→</span>
+  </a>
 </section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg">
-    <img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" />
-    <div class="footer-bg-fade"></div>
-  </div>
-  <div class="footer-mark">
-    <svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo">
-      <path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/>
-      <circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/>
-    </svg>
-  </div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-      <a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a>
-      <span class="footer-loc">UAE · Open to relocation</span>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-nav-row">
-      <a href="/">Home</a><span class="footer-nav-dot"></span>
-      <a href="/stories">Stories</a><span class="footer-nav-dot"></span>
-      <a href="/writing">Writing</a><span class="footer-nav-dot"></span>
-      <a href="/about">About</a><span class="footer-nav-dot"></span>
-      <a href="/resume">Resume</a>
-    </div>
-    <span class="footer-copy">Designed & built by hand · © 2026</span>
-  </div>
-</footer>
+<Footer />
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
-    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-    function animateCursor() { curX += (mouseX - curX) * 0.15; curY += (mouseY - curY) * 0.15; cursor.style.transform = `translate(${curX}px, ${curY}px)`; requestAnimationFrame(animateCursor); }
-    animateCursor();
-    document.body.classList.add('cursor-active');
-    document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  function initWriting() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-
-  // Nav hide on scroll
-  let lastScroll = 0;
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current > lastScroll && current > 100) nav?.classList.add('nav-hidden');
-    else nav?.classList.remove('nav-hidden');
-    lastScroll = current;
-  }, { passive: true });
-
-  // Menu
-  const burger = document.getElementById('navBurger');
-  const fsMenu = document.getElementById('fsMenu');
-  const fsClose = document.getElementById('fsMenuClose');
-  if (burger && fsMenu) {
-    burger.addEventListener('click', () => { fsMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
-    fsClose?.addEventListener('click', () => { fsMenu.classList.remove('open'); document.body.style.overflow = ''; });
-    fsMenu.querySelectorAll('.fs-menu-link').forEach(l => l.addEventListener('click', () => { fsMenu.classList.remove('open'); document.body.style.overflow = ''; }));
-  }
-
-  // Loader
-  const loader = document.getElementById('loader');
-  if (loader) { setTimeout(() => { loader.classList.add('done'); document.body.classList.add('loaded'); }, 2400); }
-
-  // Reveal
-  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Reduced motion
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
-  }
+  initWriting();
+  document.addEventListener('astro:page-load', initWriting);
 </script>
 
 </Base>

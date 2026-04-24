@@ -1,190 +1,134 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import Loader from '../../../components/Loader.astro';
+import Cursor from '../../../components/Cursor.astro';
+import Nav from '../../../components/Nav.astro';
+import FsMenu from '../../../components/FsMenu.astro';
+import Footer from '../../../components/Footer.astro';
 import '../../../styles/global.css';
 import '../../../styles/stories.css';
-import '../../../styles/casestudy.css';
 ---
 
-<Base title="Taylor Assessment — Walking the Talk — Basit Masood" description="Redesigning the world's only culture-contribution measurement tool. 50,000+ leaders assessed across 200+ organizations.">
+<Base title="Taylor Assessment — Basit Masood" description="The world's only culture-contribution psychometric, redesigned for a digital-first world. 30 behaviors, 6 archetypes. Press-released globally in January 2024.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+<!-- HERO -->
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">
+      <a href="/stories/wtt" style="color:inherit;text-decoration:none;">← Walking the Talk</a> · Case study · 2023 – 2024
+    </p>
+    <h1 class="sp2-hero-primary">Measuring culture at scale.</h1>
+    <p class="sp2-hero-secondary">The world's only culture-contribution psychometric, redesigned.</p>
+    <p class="sp2-hero-desc">Walking the Talk's Taylor Assessment is unique — the only psychometric that measures how an individual contributes to organizational culture. 30 behaviors, 6 archetypes. I redesigned the experience for a digital-first world while preserving the psychometric rigor that makes the tool credible. Press-released globally in January 2024.</p>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
+  <span class="sp2-hero-scroll">Scroll</span>
+</section>
 
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══ HERO ═══ -->
-<section class="cs-hero">
-  <div class="cs-hero-inner reveal">
-    <div class="cs-breadcrumb">
-      <a href="/stories">Stories</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <a href="/stories/wtt">Walking the Talk</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <span class="cs-breadcrumb-current">Taylor Assessment</span>
-    </div>
-    <h1 class="cs-hero-title">THE TAYLOR ASSESSMENT — MEASURING CULTURE AT SCALE</h1>
-    <p class="cs-hero-desc">Redesigning the world's only psychometric tool that measures individual contribution to organizational culture. 30 behaviors, 6 archetypes, 30 minutes.</p>
-    <div class="cs-hero-meta">
-      <span><span class="cs-meta-label">Company</span> <span class="cs-meta-value">Walking the Talk</span></span>
-      <span><span class="cs-meta-label">Year</span> <span class="cs-meta-value">2023 – 2024</span></span>
-      <span><span class="cs-meta-label">Role</span> <span class="cs-meta-value">Senior Product Designer</span></span>
-    </div>
+<!-- BRAND MOMENT -->
+<section class="sb-brand">
+  <div class="sb-brand-inner">
+    <img src="/images/WTT-full-logo.svg" alt="Walking the Talk" class="sb-brand-logo" />
+    <div class="sb-brand-rule"></div>
+    <p class="sb-brand-caption">Walking the Talk · Taylor Assessment · 2023 – 2024</p>
   </div>
 </section>
 
-<!-- ═══ CHALLENGE ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE CHALLENGE</h2>
-    <div class="cs-body">
-      <p>Walking the Talk's Taylor Assessment is unique in the market — the only psychometric tool that measures how an individual contributes to organizational culture. It evaluates 30 behaviors across 6 culture archetypes (Achievement, Customer-Centric, One Team, Innovative, People First, and Greater Good). But the existing tool was showing its age.</p>
-      <p>The assessment was built for a pre-digital world. The experience was functional but uninspiring — long form pages, minimal feedback during the assessment, and results that required expert interpretation. In a world where leaders expect Spotify-level UX from every tool they use, the Taylor Assessment needed to meet modern expectations without compromising its psychometric rigor.</p>
-      <p>The challenge was delicate: redesign the experience for a digital-first world while preserving the scientific integrity that makes the tool credible. Every design decision had to be validated against the psychometric model — you can't optimize UX at the expense of assessment accuracy.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ METRIC HIGHLIGHT ═══ -->
-<div class="cs-highlight">
-  <div class="cs-highlight-inner reveal">
-    <span class="cs-highlight-value">50,000+</span>
-    <span class="cs-highlight-label">leaders assessed across 200+ organizations</span>
-  </div>
-</div>
-
-<!-- ═══ APPROACH ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE APPROACH</h2>
-    <div class="cs-body">
-      <p>I worked closely with Walking the Talk's psychometric experts and the Psynet platform team to understand the constraints. Every question's presentation, ordering, and response mechanism had been calibrated over years of research. Changes to these elements required psychometric validation.</p>
-      <p>Within those constraints, there was significant room for improvement. The visual design, progress feedback, transition animations, results presentation, and overall flow could all be modernized without touching the psychometric core.</p>
-      <p>I designed the assessment as a <strong>journey, not a form</strong>. Each section (corresponding to a culture archetype) had its own visual identity within a cohesive whole. Progress was communicated through both explicit indicators and subtle visual cues. Transitions between sections felt like moving through chapters of a story about yourself.</p>
-      <p>The results experience was completely reimagined. Instead of dense data tables, I designed visual profiles that communicated culture contribution patterns at a glance — while still providing the depth that coaches and consultants needed for interpretation.</p>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — assessment flow design</span>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — results visualization</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SOLUTION ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE SOLUTION</h2>
-    <div class="cs-body">
-      <p>The enhanced Taylor Assessment is a 30-minute online experience that feels closer to a personal discovery tool than a corporate psychometric test. The assessment flow guides users through 30 behaviors organized by culture archetype, with clear progress tracking and engaging micro-interactions that maintain attention without biasing responses.</p>
-      <p>The results dashboard presents individual culture profiles visually — showing where a leader's behaviors cluster across the six archetypes. Team and organization-level views aggregate individual data into culture heat maps that reveal patterns invisible at the individual level.</p>
-      <p>Built on the Psynet psychometric platform, the tool was press-released globally in January 2024 and adopted by organizations ranging from multinational corporations to government agencies.</p>
-    </div>
-    <div class="cs-img-placeholder cs-img-placeholder--lg">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — Taylor Assessment complete experience</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ IMPACT ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE IMPACT</h2>
-    <div class="cs-impact-grid">
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">50,000+</span>
-        <span class="cs-impact-label">Leaders assessed</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">200+</span>
-        <span class="cs-impact-label">Organizations</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">30 min</span>
-        <span class="cs-impact-label">Assessment time</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">Only</span>
-        <span class="cs-impact-label">Culture measurement tool</span>
+<!-- CHALLENGE -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Challenge</span>
+    <div>
+      <h2 class="sub-section-heading">Modern UX<br/>without <span class="accent">losing the science</span>.</h2>
+      <div class="sub-section-body">
+        <p>The Taylor Assessment is the only psychometric in the market measuring culture contribution — 30 behaviors across 6 archetypes (Achievement, Customer-Centric, One Team, Innovative, People First, Greater Good). But the existing tool was built for a pre-digital world. Long form pages, minimal feedback, results that required expert interpretation.</p>
+        <p>In a world where leaders expect Spotify-level UX, it needed to meet modern expectations — without compromising the rigor that made it credible. You can't optimize UX at the expense of assessment accuracy.</p>
       </div>
     </div>
-    <div class="cs-body">
-      <p>The redesigned Taylor Assessment maintained its position as the only culture-contribution measurement tool on the market while dramatically improving the user experience. The January 2024 global press release marked a significant milestone for Walking the Talk's digital transformation.</p>
-      <p>The design proved that psychometric rigor and modern UX aren't in conflict — they're complementary. A better experience leads to more thoughtful responses, which leads to more accurate assessments, which leads to better organizational insights. Good design makes the science work better.</p>
+  </div>
+</section>
+
+<!-- METRIC HIGHLIGHT -->
+<section class="sub-highlight">
+  <span class="sub-highlight-value">50K+</span>
+  <span class="sub-highlight-label">Leaders assessed across 200+ organizations</span>
+</section>
+
+<!-- APPROACH -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Approach</span>
+    <div>
+      <h2 class="sub-section-heading">Psychometric rigor.<br/>Untouched.</h2>
+      <div class="sub-section-body">
+        <p>I worked closely with Walking the Talk's psychometric experts and the Psynet platform team. Every question's presentation, ordering, and response mechanism had been calibrated over years of research — those elements couldn't change. Within that constraint, there was significant room to improve: visual design, progress feedback, transition animations, results presentation, overall flow.</p>
+        <p>I designed the assessment as a journey, not a form. Each section — corresponding to a culture archetype — had its own visual identity within a cohesive whole. Progress was communicated through explicit indicators and subtle visual cues. Transitions between sections felt like moving through chapters of a story about yourself.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CASE STUDY NAV ═══ -->
-<nav class="cs-nav">
-  <div class="cs-nav-empty"></div>
-  <div class="cs-nav-empty"></div>
-</nav>
-<div class="cs-back-link">
-  <a href="/stories/wtt"><i class="ph-bold ph-arrow-left"></i> Back to Walking the Talk</a>
-</div>
+<!-- PULL QUOTE -->
+<section class="sub-pullquote">
+  <div class="sub-pullquote-mark">&#8220;</div>
+  <p class="sub-pullquote-text">Good design makes the science work better.</p>
+  <p class="sub-pullquote-cite">The redesign thesis</p>
+</section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
+<!-- OUTCOME -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Outcome</span>
+    <div>
+      <h2 class="sub-section-heading">Press-released globally.<br/>January 2024.</h2>
+      <div class="sub-section-body">
+        <p>A 30-minute experience that feels like personal discovery rather than form-filling. The results experience was completely reimagined — visual culture-contribution profiles readable in a glance, while still providing the depth that coaches and consultants needed. Team and organization-level views aggregate individual data into culture heat maps that reveal patterns invisible at the individual level.</p>
+        <p>The redesigned Taylor Assessment was press-released globally in January 2024 and adopted by multinationals and government agencies. It proved that psychometric rigor and modern UX aren't in conflict — they're complementary.</p>
+      </div>
+    </div>
   </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
+</section>
+
+<!-- NEXT -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories/wtt"><span class="sp2-arrow">←</span> Back to Walking the Talk</a></div>
+  <a href="/stories/adib" class="sp2-next-cta">
+    <span class="label">Next Story</span>
+    <span class="title">ADIB <span class="sp2-arrow">→</span></span>
+  </a>
+</section>
+
+<Footer />
 
 <script>
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  function initSub() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-  let ls=0; const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
+  initSub();
+  document.addEventListener('astro:page-load', initSub);
 </script>
 
 </Base>

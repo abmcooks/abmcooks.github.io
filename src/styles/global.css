@@ -115,7 +115,8 @@ body::after {
 /* ═══════════════════════════════════════════
    NAV — site-wide scroll behavior
    Every page's .nav gets backdrop + hide-on-scroll via Base.astro script.
-   Light-mode pages (body.sp-page-v2) override the backdrop color.
+   On body.page-light, items are dark ink at rest (visible over light hero);
+   when .nav-scrolled fires (dark backdrop), items flip back to white.
    ═══════════════════════════════════════════ */
 .nav {
   transition: background 0.25s ease, padding 0.25s ease, border-color 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -129,11 +130,35 @@ body::after {
   padding-bottom: 16px;
   border-bottom-color: var(--color-white-06);
 }
-body.sp-page-v2 .nav.nav-scrolled {
-  background: rgba(232, 236, 235, 0.85);
-  border-bottom-color: var(--color-dark-08);
+
+/* Light-page nav — dark ink at rest, reverts to white once scrolled backdrop appears */
+body.page-light .nav:not(.nav-scrolled) .nav-logo svg path { fill: var(--color-dark-80); }
+body.page-light .nav:not(.nav-scrolled) .nav-right a { color: var(--color-dark-65); }
+body.page-light .nav:not(.nav-scrolled) .nav-right a:not(.nav-resume):hover { color: var(--color-rose); }
+body.page-light .nav:not(.nav-scrolled) .nav-active { color: var(--color-dark-80) !important; }
+body.page-light .nav:not(.nav-scrolled) .nav-resume { border-color: var(--color-dark-25); color: var(--color-dark-65); }
+body.page-light .nav:not(.nav-scrolled) .nav-resume:hover { border-color: var(--color-rose); color: var(--color-rose); }
+body.page-light .nav:not(.nav-scrolled) .nav-burger { color: var(--color-dark-65); }
+body.page-light .nav:not(.nav-scrolled) .nav-burger:hover { color: var(--color-rose); }
+
+/* Nav burger — hidden on desktop, shown on mobile. Site-wide. */
+.nav-burger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: none;
+  color: var(--color-white-80);
+  transition: color 0.2s;
 }
-body.sp-page-v2 .nav.nav-over-dark.nav-scrolled {
-  background: rgba(6, 6, 6, 0.78);
-  border-bottom-color: var(--color-white-06);
+.nav-burger:hover { color: var(--color-rose); }
+@media (max-width: 768px) {
+  .nav-burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+  }
 }

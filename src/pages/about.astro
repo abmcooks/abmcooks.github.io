@@ -1,79 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
+import Loader from '../components/Loader.astro';
+import Cursor from '../components/Cursor.astro';
+import Nav from '../components/Nav.astro';
+import FsMenu from '../components/FsMenu.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import '../styles/about.css';
 ---
 
 <Base title="About — Basit Masood" description="The person behind the products. From a village in Pakistan to designing fintech for millions.">
 
-<!-- ═══════════════════════════════════════════
-     LOADER
-     ═══════════════════════════════════════════ -->
-<div class="loader" id="loader">
-  <div class="loader-mark">
-    <svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <circle class="glow" cx="308" cy="389" r="55.5"/>
-      <circle class="dot" cx="308" cy="389" r="55.5"/>
-    </svg>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     CUSTOM CURSOR
-     ═══════════════════════════════════════════ -->
-<div class="custom-cursor" id="customCursor">
-  <div class="cursor-ring"></div>
-  <div class="cursor-dot"></div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     NAV
-     ═══════════════════════════════════════════ -->
-<nav class="nav" id="nav">
-  <div class="nav-left">
-    <a href="/" class="nav-logo">
-      <svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/>
-        <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/>
-        <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/>
-      </svg>
-    </a>
-  </div>
-  <div class="nav-right">
-    <a href="/stories">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about" class="nav-active">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
-  </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu">
-    <i class="ph-bold ph-list"></i>
-  </button>
-</nav>
-
-<!-- ═══════════════════════════════════════════
-     FULLSCREEN MENU
-     ═══════════════════════════════════════════ -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu">
-    <i class="ph-bold ph-x"></i>
-  </button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
+<Loader />
+<Cursor />
+<Nav active="about" />
+<FsMenu />
 
 <!-- ═══════════════════════════════════════════
      HERO — Photo + hook
@@ -243,119 +184,29 @@ import '../styles/about.css';
   <p class="ab-ending-text reveal">Still asking why.</p>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     FOOTER
-     ═══════════════════════════════════════════ -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg">
-    <img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" />
-    <div class="footer-bg-fade"></div>
-  </div>
-
-  <div class="footer-mark" id="footerMark">
-    <svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo">
-      <path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/>
-      <circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/>
-    </svg>
-  </div>
-
-  <div class="footer-center">
-    <h2 class="footer-headline">Let's build<br/>something together.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-      <a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a>
-      <span class="footer-loc">UAE · Open to relocation</span>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <div class="footer-nav-row">
-      <a href="/">Home</a>
-      <span class="footer-nav-dot"></span>
-      <a href="/stories">Stories</a>
-      <span class="footer-nav-dot"></span>
-      <a href="/writing">Writing</a>
-      <span class="footer-nav-dot"></span>
-      <a href="/about">About</a>
-      <span class="footer-nav-dot"></span>
-      <a href="/resume">Resume</a>
-    </div>
-    <span class="footer-copy">Designed & built by hand · © 2026</span>
-  </div>
-</footer>
+<Footer headline="Let's build<br/>something together." />
 
 <script>
-  // ═══ Custom cursor (safe — class-based) ═══
+  // Cursor / Loader / FsMenu / Nav-scroll handled by shared components.
   const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
-    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-    function animateCursor() {
-      curX += (mouseX - curX) * 0.15;
-      curY += (mouseY - curY) * 0.15;
-      cursor.style.transform = `translate(${curX}px, ${curY}px)`;
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-    document.body.classList.add('cursor-active');
-    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-  }
 
-  // ═══ Nav hide on scroll + light/dark detection ═══
-  let lastScroll = 0;
-  const nav = document.getElementById('nav');
+  // Mark as light-mode page — nav items go dark ink at rest, white on scrolled backdrop.
+  document.body.classList.add('page-light');
+  document.addEventListener('astro:page-load', () => document.body.classList.add('page-light'));
+  document.addEventListener('astro:before-swap', () => document.body.classList.remove('page-light'));
+
+  // ═══ Cursor light/dark detection (page-specific — about has mixed light/dark sections) ═══
   const lightSections = document.querySelectorAll('.ab-hero, .ab-lens, .ab-personal, .ab-ending');
-  function checkInversion() {
+  function checkCursorInversion() {
     let isLight = false;
     lightSections.forEach(sec => {
       const rect = sec.getBoundingClientRect();
       if (rect.top < 60 && rect.bottom > 60) isLight = true;
     });
-    nav?.classList.toggle('nav-light', isLight);
     cursor?.classList.toggle('cursor-dark', isLight);
   }
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current > lastScroll && current > 100) nav?.classList.add('nav-hidden');
-    else nav?.classList.remove('nav-hidden');
-    lastScroll = current;
-    checkInversion();
-  }, { passive: true });
-  checkInversion();
-
-  // ═══ Fullscreen menu ═══
-  const burger = document.getElementById('navBurger');
-  const fsMenu = document.getElementById('fsMenu');
-  const fsClose = document.getElementById('fsMenuClose');
-  if (burger && fsMenu) {
-    burger.addEventListener('click', () => {
-      fsMenu.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-    fsClose?.addEventListener('click', () => {
-      fsMenu.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-    fsMenu.querySelectorAll('.fs-menu-link').forEach(link => {
-      link.addEventListener('click', () => {
-        fsMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-
-  // ═══ Loader ═══
-  const loader = document.getElementById('loader');
-  if (loader) {
-    loader.classList.add('done');
-    document.body.classList.add('loaded');
-  }
+  window.addEventListener('scroll', checkCursorInversion, { passive: true });
+  checkCursorInversion();
 
   // ═══ Scroll-reveal ═══
   const reveals = document.querySelectorAll('.reveal');

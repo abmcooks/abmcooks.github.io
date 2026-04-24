@@ -1,244 +1,544 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Loader from '../../components/Loader.astro';
+import Cursor from '../../components/Cursor.astro';
+import Nav from '../../components/Nav.astro';
+import FsMenu from '../../components/FsMenu.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/stories.css';
 ---
 
-<Base title="ZAR — Basit Masood" description="Head of Product Design at ZAR, a $20M-funded Solana stablecoin wallet backed by a16z, Dragonfly, Coinbase Ventures.">
+<Base title="ZAR — Basit Masood" description="Head of Product Design at ZAR. A $20M stablecoin wallet, live in 110 countries, backed by a16z.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  // Light-mode page class — only on this page
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+<!-- ═══════════════════════════════════════════
+     ACT I · HERO — An instant wallet.
+     ═══════════════════════════════════════════ -->
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">ZAR · Head of Product Design · Nov 2024 – Present</p>
+    <h1 class="sp2-hero-primary">An instant wallet.</h1>
+    <p class="sp2-hero-secondary">110 countries. 300K users. Backed by a16z.</p>
+    <p class="sp2-hero-desc">Brandon Timinsky — SadaPay's CEO — called me back for a second run. The product was already bleeding: five freelancers deep, no design system, no voice, no direction. Twelve months later ZAR is a $20M-funded stablecoin wallet, live across 110 countries, with a design team that runs without me in the room.</p>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
-
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══ HERO — Clean, product-focused ═══ -->
-<section class="sp-hero">
-  <div class="sp-hero-inner reveal">
-    <div class="sp-hero-content">
-      <a href="/stories" class="sp-hero-back"><i class="ph-bold ph-arrow-left"></i> All Stories</a>
-      <img src="/images/logo-zar.svg" alt="ZAR" class="sp-hero-logo" />
-      <p class="sp-hero-eyebrow">ZAR · Nov 2024 – Present · Head of Product Design</p>
-      <h1 class="sp-hero-title">A $20M-FUNDED STABLECOIN WALLET FOR THE NEXT BILLION USERS.</h1>
-      <p class="sp-hero-desc">Solana-based stablecoin wallet backed by a16z, Dragonfly, Coinbase Ventures, and VanEck. Led by Brandon Timinsky (ex-SadaPay CEO). I rebuilt the entire product from scratch and built the systems that let design scale without me.</p>
-    </div>
-    <div class="sp-hero-visual">
-      <!-- Replace with product screenshot: <img src="/images/zar-hero.png" alt="ZAR app" /> -->
-    </div>
-  </div>
+  <span class="sp2-hero-scroll">Scroll</span>
 </section>
 
-<!-- ═══ STATS — Grid cards ═══ -->
-<section class="sp-stats">
-  <div class="sp-stats-inner reveal">
-    <div class="sp-stat">
-      <span class="sp-stat-val">300K+</span>
-      <span class="sp-stat-label">Users</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">110+</span>
-      <span class="sp-stat-label">Countries</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">$20M</span>
-      <span class="sp-stat-label">Series A</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">670+</span>
-      <span class="sp-stat-label">Techtonic components</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">77.8%</span>
-      <span class="sp-stat-label">Onboarding reduction</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">5</span>
-      <span class="sp-stat-label">AI tools (MACHINA)</span>
-    </div>
+<!-- ═══════════════════════════════════════════
+     ACT I · ROCK-BREAKING MOMENT
+     Placeholder — replace with animation
+     ═══════════════════════════════════════════ -->
+<section class="sp2-video-moment zar-rock-moment">
+  <div class="zar-rock-stage" aria-hidden="true">
+    <svg class="zar-rock-svg" viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rock-breaking animation placeholder">
+      <defs>
+        <linearGradient id="zar-rock-grad" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0" stop-color="#2a2927"/>
+          <stop offset="0.5" stop-color="#1a1a19"/>
+          <stop offset="1" stop-color="#0a0a0a"/>
+        </linearGradient>
+        <linearGradient id="zar-rock-face" x1="0" y1="0" x2="1" y2="0.3">
+          <stop offset="0" stop-color="#33322f"/>
+          <stop offset="1" stop-color="#1a1a18"/>
+        </linearGradient>
+        <radialGradient id="zar-glow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#f5b43b" stop-opacity="0.92"/>
+          <stop offset="0.55" stop-color="#f5b43b" stop-opacity="0.18"/>
+          <stop offset="1" stop-color="#f5b43b" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- fissure glow behind -->
+      <ellipse cx="400" cy="230" rx="170" ry="150" fill="url(#zar-glow)"/>
+
+      <!-- left half — jagged, fractured edge facing right -->
+      <path d="M 60 400
+               L 42 310
+               L 55 220
+               L 88 140
+               L 140 85
+               L 220 56
+               L 300 48
+               L 360 72
+               L 352 118
+               L 380 152
+               L 345 192
+               L 372 228
+               L 338 260
+               L 368 298
+               L 348 336
+               L 376 370
+               L 350 400 Z"
+            fill="url(#zar-rock-grad)" stroke="rgba(245,240,232,0.06)" stroke-width="1"/>
+
+      <!-- left face highlight (suggests lit edge) -->
+      <path d="M 60 400 L 42 310 L 55 220 L 88 140 L 140 85 L 220 56 L 300 48 L 360 72 L 352 118"
+            fill="none" stroke="rgba(245,240,232,0.12)" stroke-width="1.5"/>
+
+      <!-- right half — jagged, fractured edge facing left, mirrored -->
+      <path d="M 740 400
+               L 758 310
+               L 745 220
+               L 712 140
+               L 660 85
+               L 580 56
+               L 500 48
+               L 440 72
+               L 448 118
+               L 420 152
+               L 455 192
+               L 428 228
+               L 462 260
+               L 432 298
+               L 452 336
+               L 424 370
+               L 450 400 Z"
+            fill="url(#zar-rock-face)" stroke="rgba(245,240,232,0.06)" stroke-width="1"/>
+
+      <!-- right face highlight -->
+      <path d="M 740 400 L 758 310 L 745 220 L 712 140 L 660 85 L 580 56 L 500 48 L 440 72"
+            fill="none" stroke="rgba(245,240,232,0.08)" stroke-width="1.5"/>
+
+      <!-- dollar symbol peeking through the crack -->
+      <text x="400" y="260" text-anchor="middle" font-family="Tanker, serif" font-size="140" font-weight="400" fill="#f5b43b">$</text>
+
+      <!-- stray shards drifting -->
+      <path d="M 185 32 L 212 18 L 225 44 L 196 52 Z" fill="url(#zar-rock-grad)" opacity="0.85"/>
+      <path d="M 580 22 L 612 40 L 592 60 L 572 46 Z" fill="url(#zar-rock-grad)" opacity="0.7"/>
+      <path d="M 320 30 L 344 22 L 356 42 L 332 50 Z" fill="url(#zar-rock-grad)" opacity="0.55"/>
+      <path d="M 100 420 L 128 410 L 138 432 L 112 440 Z" fill="url(#zar-rock-grad)" opacity="0.65"/>
+      <path d="M 640 428 L 668 418 L 680 440 L 656 446 Z" fill="url(#zar-rock-grad)" opacity="0.5"/>
+    </svg>
   </div>
+  <div class="sp2-video-caption">Rock. Solid. Dollars. — ZAR's brand principle · placeholder animation</div>
 </section>
 
-<!-- ═══ VIDEO — Placeholder ═══ -->
-<div class="sp-video">
-  <!-- Replace with: <video src="/videos/zar.mp4" autoplay muted loop playsinline></video> -->
-  <div class="sp-video-placeholder">
-    <i class="ph-bold ph-play-circle" style="font-size: 40px; opacity: 0.3;"></i>
-  </div>
-</div>
-
-<!-- ═══ NARRATIVE ═══ -->
-<section class="sp-narrative">
-  <div class="sp-narrative-inner">
-    <h2 class="sp-narrative-heading reveal">THE JOURNEY</h2>
-
-    <div class="reveal">
-      <p>When I rejoined Brandon Timinsky at ZAR, the product was a mess. A freelancer had left behind chaotic Figma files, inconsistent patterns, and no system to speak of. My first job was to throw it all away and start fresh.</p>
-
-      <p><strong>I built the design system three times.</strong> Techtonic went through three full iterations — not because it failed, but because the product evolved that fast. The final version: 670+ components, 37 Figma pages, 103 icons, 3 platforms (iOS, Android, Web). It's the backbone of everything ZAR ships.</p>
-
-      <p>I led the branding overhaul with Ragged Edge in London — the same agency that rebranded Wise. We rebuilt ZAR's identity from the ground up: visual language, tone, motion, everything. I was the design counterpart on the client side, ensuring every brand decision translated into product reality.</p>
-
-      <p><strong>Service design and on-ground research drove the biggest wins.</strong> The Golden Flow project reduced onboarding from 18 steps to 4 — a 77.8% reduction. This wasn't guesswork. I mapped every touchpoint, identified where users dropped off, and redesigned the flow to match how people actually behave when they first open a financial app in emerging markets.</p>
-
-      <p>Cash QR Consolidation tackled a critical business problem: 72% of transactions were bypassing the order system entirely. Merchants were using personal QR codes instead of business ones. I consolidated the flow so every transaction was tracked, reconciled, and visible — protecting both the user and the business.</p>
-
-      <p>Merchant Onboarding went from 19 steps to 4. Same philosophy: remove everything that doesn't directly serve the user's goal.</p>
-
-      <p><strong>Then I started building AI tools.</strong> Chothu was an AI design consultant I built internally — it could answer design system questions, suggest component usage, and help engineers self-serve without pinging the design team. Engineer Self-Serve Design became a real thing: engineers could ship UI without a designer in the loop for standard patterns.</p>
-
-      <p>MACHINA was the culmination — an internal AI design suite with 5 tools that automated repetitive design work. Content generation, layout suggestions, component mapping, QA checks, documentation. I essentially automated myself out of the job — and that was the point. The best design leaders make themselves unnecessary.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CASE STUDIES — Visual cards with numbers ═══ -->
-<section class="sp-cases">
-  <div class="sp-cases-inner">
-    <h2 class="sp-cases-heading reveal">GO DEEPER</h2>
-    <div class="sp-cases-grid reveal">
-      <a href="/stories/zar/golden-flow" class="sp-case">
-        <div class="sp-case-img"><span class="sp-case-num">01</span></div>
-        <div class="sp-case-body">
-          <p class="sp-case-label">Case Study</p>
-          <h3 class="sp-case-title">Golden Flow — 18 Steps to 4</h3>
-          <p class="sp-case-desc">How service design and on-ground research reduced onboarding by 77.8% for users in emerging markets.</p>
-          <span class="sp-case-cta">Read case study <i class="ph-bold ph-arrow-right"></i></span>
+<!-- ═══════════════════════════════════════════
+     ACT II · CONTEXT — emerging markets, currency breaks
+     ═══════════════════════════════════════════ -->
+<section class="sp2-stakes">
+  <div class="sp2-stakes-inner">
+    <div class="sp2-stakes-layout">
+      <div class="sp2-stakes-stats">
+        <div class="sp2-stakes-hero-stat">
+          <span class="val">110+</span>
+          <span class="label">Countries, live</span>
         </div>
-      </a>
-      <a href="/stories/zar/techtonic" class="sp-case">
-        <div class="sp-case-img"><span class="sp-case-num">02</span></div>
-        <div class="sp-case-body">
-          <p class="sp-case-label">Case Study</p>
-          <h3 class="sp-case-title">Techtonic — A Design System Built Three Times</h3>
-          <p class="sp-case-desc">670+ components, 37 Figma pages, 103 icons, 3 platforms. The system that scaled ZAR's product across 110+ countries.</p>
-          <span class="sp-case-cta">Read case study <i class="ph-bold ph-arrow-right"></i></span>
+        <div class="sp2-stakes-supporting">
+          <div class="stat"><span class="val">300K+</span><span class="label">Users</span></div>
+          <div class="stat"><span class="val">$20M</span><span class="label">Series A · a16z led</span></div>
+          <div class="stat"><span class="val">670+</span><span class="label">Techtonic components</span></div>
+          <div class="stat"><span class="val">77.8%</span><span class="label">Onboarding reduction</span></div>
         </div>
-      </a>
-      <a href="/stories/zar/machina" class="sp-case">
-        <div class="sp-case-img"><span class="sp-case-num">03</span></div>
-        <div class="sp-case-body">
-          <p class="sp-case-label">Case Study</p>
-          <h3 class="sp-case-title">MACHINA — Automating Design with AI</h3>
-          <p class="sp-case-desc">5 internal AI tools that let engineers self-serve and freed the design team to focus on what matters.</p>
-          <span class="sp-case-cta">Read case study <i class="ph-bold ph-arrow-right"></i></span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ TESTIMONIALS — Horizontal carousel ═══ -->
-<section class="sp-testi">
-  <div class="sp-testi-header">
-    <h2 class="sp-testi-heading reveal">WHAT THEY SAID</h2>
-    <div class="sp-testi-arrows reveal">
-      <button class="sp-testi-arrow" id="testiPrev" aria-label="Previous"><i class="ph-bold ph-caret-left"></i></button>
-      <button class="sp-testi-arrow" id="testiNext" aria-label="Next"><i class="ph-bold ph-caret-right"></i></button>
-    </div>
-  </div>
-  <div class="sp-testi-track" id="testiTrack">
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">His progression over the years was remarkable.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Brandon Timinsky</span>
-        <span class="sp-testi-role">CEO, ZAR & ex-CEO SadaPay</span>
       </div>
-    </div>
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">He understands that the best design work is often the work that unlocks other people. He is practical, technically capable, and genuinely invested in making the product better.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Sebastian Scholl</span>
-        <span class="sp-testi-role">ZAR</span>
+      <div class="sp2-stakes-context">
+        <h2>Where the <span class="accent">local currency</span> breaks,<br/>the <span class="accent">dollar</span> has to arrive<br/>in under a second.</h2>
+        <p>ZAR is a stablecoin wallet — digital dollars on Solana — built for the markets where inflation, capital controls, and bank closures make holding local money a losing bet. Nigeria. Argentina. Turkey. Pakistan. 110+ countries in total.</p>
+        <p>The problem isn't crypto. The problem is trust. Previous crypto products in these markets scammed people; the category starts at zero. Every visual decision — fonts, weights, grid, motion — had to earn back belief that a stablecoin wallet would not disappear overnight.</p>
+        <p><strong>Rock. Solid. Dollars. Nothing flimsy, nothing bouncy, nothing that could float away.</strong></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PREV / NEXT ═══ -->
-<nav class="sp-nav">
-  <a href="/stories/sadapay" class="sp-nav-link sp-nav-link--prev">
-    <span class="sp-nav-label">Previous Story</span>
-    <span class="sp-nav-title"><i class="ph-bold ph-arrow-left"></i> SADAPAY</span>
-  </a>
-  <a href="/stories/wtt" class="sp-nav-link sp-nav-link--next">
-    <span class="sp-nav-label">Next Story</span>
-    <span class="sp-nav-title">WALKING THE TALK <i class="ph-bold ph-arrow-right"></i></span>
-  </a>
-</nav>
-
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
+<!-- ═══════════════════════════════════════════
+     ACT III · THE ARC — 0 → 3 → ∞
+     ═══════════════════════════════════════════ -->
+<section class="sp2-arc">
+  <div class="sp2-arc-inner">
+    <div class="sp2-rungs" aria-label="ZAR progression over twelve months">
+      <span class="sp2-rungs-label">Twelve months, end to end</span>
+      <span class="sp2-rungs-row">
+        <span>Freelancer mess</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Techtonic v1</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Techtonic v2</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Techtonic v3</span>
+        <span class="sp2-rungs-sep"></span>
+        <span>Ragged Edge brand</span>
+        <span class="sp2-rungs-sep"></span>
+        <strong>MACHINA AI suite</strong>
+      </span>
+    </div>
+    <div class="sp2-zti" aria-label="Zero to three to infinity">
+      <span class="sp2-zti-char sp2-zti-z">0</span>
+      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--1">→</span>
+      <span class="sp2-zti-char sp2-zti-o">3</span>
+      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--2">→</span>
+      <span class="sp2-zti-char sp2-zti-i">∞</span>
+    </div>
   </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT III · THE STORY — five chapters
+     ═══════════════════════════════════════════ -->
+<section class="sp2-story">
+  <div class="sp2-story-inner">
+    <div class="sp2-story-head">
+      <h2>The Story</h2>
+      <p>From a freelancer's leftovers to a $20M wallet, in five chapters.</p>
+    </div>
+
+    <!-- Chapter 01 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">01</span>
+        <span class="sp2-chapter-date">November 2024</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>The call.</h3>
+        <p>Brandon Timinsky — my CEO at SadaPay — called me back. ZAR had been running on freelancers: five of them, each pointing the product in a different direction. No design system. No voice. A brand that hadn't settled. Figma files that read like five startups stacked on top of each other.</p>
+        <p>I took the job as Head of Product Design with one condition: rebuild from the ground up. The first month was not a screen — it was an inventory of what had to be thrown out.</p>
+      </div>
+    </article>
+
+    <!-- Chapter 02 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">02</span>
+        <span class="sp2-chapter-date">2025 · Techtonic ×3</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>I built the design system three times.</h3>
+        <p>V1 landed at around 200 components and failed within a quarter — product scope shifted, component patterns broke, coverage collapsed. V2 fixed the structure but the brand was still moving underneath it. V3 was the one that stuck.</p>
+        <p><strong>670+ components. 37 Figma pages. 103 icons. Three platforms — iOS, Android, Web.</strong> Token architecture wired to production. Light-mode for browsing, dark-mode locked for amount-entry to build certainty. A tectonic grid where nothing floats.</p>
+        <p>Techtonic is why ZAR can ship to 110 countries without 110 engineering teams.</p>
+      </div>
+    </article>
+
+    <!-- Chapter 03 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">03</span>
+        <span class="sp2-chapter-date">2025 · Ragged Edge, London</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>The brand had to feel certain.</h3>
+        <p>We partnered with <strong>Ragged Edge</strong> in London — the agency that rebranded Wise. I was the client-side lead, translating every brand decision into product reality: the typefaces engineers would implement, the motion curves the animations had to hit, the grid the components would sit on.</p>
+        <p>EK Modena Heavy for hero numerals — the weight was deliberate. Baikal for body, grounded and quiet. Gold reserved for primary CTA only; nothing decorative. The treatment matches the thesis — <em>rock, solid, dollars</em> — and it carries from marketing through to the moment you confirm a payment.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INTERLUDE · TECHTONIC — specimen plate
+     ═══════════════════════════════════════════ -->
+<section class="sp2-cardshow sp2-cardshow--specimen">
+  <div class="sp2-specimen-inner">
+    <div class="sp2-specimen-stage reveal">
+      <div class="zar-specimen-placeholder" role="img" aria-label="Techtonic design system overview — placeholder">
+        <div class="zar-specimen-grid" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <span class="zar-specimen-watermark">Techtonic</span>
+      </div>
+      <aside class="sp2-specimen-label">
+        <span class="sp2-specimen-num">Object 01</span>
+        <span class="sp2-specimen-class">Techtonic · Design System</span>
+        <dl class="sp2-specimen-meta">
+          <dt>Built</dt><dd>2025, three iterations</dd>
+          <dt>Components</dt><dd>670+</dd>
+          <dt>Pages</dt><dd>37 in Figma</dd>
+          <dt>Icons</dt><dd>103 custom</dd>
+          <dt>Platforms</dt><dd>iOS · Android · Web</dd>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="sp2-specimen-narrative reveal">
+      <h2>Techtonic</h2>
+      <p class="sp2-section-intro">The system that scaled ZAR across 110 countries.</p>
+      <p>A tokenized, atomic system — colour, type, spacing, radius, motion — all resolved upstream in Figma and wired downstream into Swift, Kotlin, and React. Every component encodes a constraint of the thesis: <em>gold for primary only</em>, <em>dark for amount-entry</em>, <em>tight margins</em>, <em>no floating</em>.</p>
+      <p><strong>Three rebuilds are not three failures.</strong> They're what it takes to compress a brand, a product, and a regulated flow into one substrate. Once Techtonic settled, feature velocity doubled.</p>
+    </div>
+
+    <blockquote class="sp2-specimen-caption reveal">
+      <p>His progression over the years was remarkable.</p>
+      <cite>Brandon Timinsky · CEO, ZAR &amp; ex-CEO, SadaPay</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT III (cont.) · THE STORY — Chapters 4 & 5
+     ═══════════════════════════════════════════ -->
+<section class="sp2-story sp2-story--continued">
+  <div class="sp2-story-inner">
+    <!-- Chapter 04 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">04</span>
+        <span class="sp2-chapter-date">Late 2025 · The flows got fast</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>The Golden Flow dropped from 18 steps to 4.</h3>
+        <p>Onboarding was the one I watched most closely. On-ground research in the target markets showed where people quit — ID steps that asked for the wrong document, friction that read as a scam, a flow designed for a western user who didn't exist here. I mapped every touchpoint and stripped it to four. <strong>77.8% fewer steps, measurably higher completion.</strong></p>
+        <p><strong>Cash QR Consolidation.</strong> 72% of transactions were bypassing the order system — merchants were handing out personal QR codes instead of business ones. I consolidated the flow so every transaction routed through the ledger. Reconciled, visible, tracked. That fix protected the business and the user at the same time.</p>
+        <p><strong>Merchant onboarding went from 19 steps to 4.</strong> Same philosophy. Remove everything that doesn't directly serve the user's goal.</p>
+      </div>
+    </article>
+
+    <!-- Chapter 05 -->
+    <article class="sp2-chapter">
+      <div class="sp2-chapter-index">
+        <span class="sp2-chapter-num">05</span>
+        <span class="sp2-chapter-date">2026 · MACHINA</span>
+      </div>
+      <div class="sp2-chapter-body">
+        <h3>I automated myself out of the job.</h3>
+        <p>I started with <strong>Chothu</strong> — an internal AI design consultant. Engineers could ask it design-system questions, get component suggestions, and ship standard patterns without a designer in the loop.</p>
+        <p>Then <strong>MACHINA</strong> — a five-tool AI suite that automated the repetitive parts of design work. Content generation. Layout suggestions. Component mapping. QA checks. Documentation. <strong>Engineer Self-Serve Design</strong> stopped being a slide and became a real thing: engineers could ship UI for standard flows without pulling a designer in.</p>
+        <p>The point wasn't to replace the design team. The point was to take everything that didn't require a designer's judgment off the team's plate, so the team could spend its hours on the decisions that matter. The best design leaders make themselves unnecessary. I meant it.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT IV · ON THE GROUND — research-driven design
+     ═══════════════════════════════════════════ -->
+<section class="sp2-service">
+  <div class="sp2-service-inner">
+    <div class="sp2-service-head">
+      <p class="sp2-service-eyebrow">On-ground research</p>
+      <h2>On the Ground.</h2>
+      <p class="sp2-service-lede"><strong>In these markets, Silicon Valley instincts fail.</strong> Two places where service design beat assumption.</p>
+    </div>
+
+    <div class="sp2-service-cases">
+      <div class="sp2-service-case">
+        <span class="sp2-service-case-tag">01 · Cash QR Consolidation</span>
+        <h3 class="sp2-service-case-title">72% of transactions bypassed the ledger.</h3>
+        <div class="sp2-service-case-body">
+          <p>Merchants were using personal QR codes instead of business ones — faster to set up, no compliance friction, zero reconciliation. Problem: the business couldn't see 72% of its own volume, and users had no recourse when a payment went wrong.</p>
+          <p>I mapped the full merchant journey, front-stage and back-stage, and consolidated QR issuance inside the onboarding flow. Every transaction routed through the ledger. Every dispute recoverable. Business visibility and user trust in the same redesign.</p>
+          <div class="sp2-service-case-metric">
+            <span class="num">72% → ≈0%</span>
+            <span class="label">Bypass rate · consolidated to ledger</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp2-service-case">
+        <span class="sp2-service-case-tag">02 · Golden Flow</span>
+        <h3 class="sp2-service-case-title">Onboarding was built for a user who didn't exist.</h3>
+        <div class="sp2-service-case-body">
+          <p>The original flow had 18 steps, most imported from a western neobank template. In markets like Nigeria, Argentina, Turkey — users quit by step six. On-ground interviews surfaced the real shape of the problem: wrong documents requested, wrong mental model for "verification," wrong default currency at sign-up.</p>
+          <p>I redesigned for how people actually behave when they first open a financial app in an inflationary market. Four steps. Same regulatory coverage. Dramatically higher completion.</p>
+          <div class="sp2-service-case-metric">
+            <span class="num">18 → 4</span>
+            <span class="label">Golden Flow · 77.8% reduction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="sp2-service-quote">
+      He understands that the best design work is often the work that unlocks other people.
+      <cite>Sebastian Scholl · ZAR</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT V · FOUNDATIONS — 8 cards, asymmetric
+     ═══════════════════════════════════════════ -->
+<section class="sp2-foundations">
+  <div class="sp2-foundations-inner">
+    <div class="sp2-foundations-lead">
+      <h2>The Foundations I Built</h2>
+      <p>Products are the visible work. This is the quieter one — the operating system that ran the team without me in the room.</p>
+    </div>
+    <div class="sp2-foundations-grid sp2-foundations-grid--8">
+      <div class="sp2-foundation sp2-foundation--hero">
+        <span class="sp2-foundation-num">Foundation 01</span>
+        <h3 class="sp2-foundation-title">Techtonic · the design system</h3>
+        <p class="sp2-foundation-body">Built three times, settled on the fourth attempt. 670+ components, 37 Figma pages, 103 icons, three platforms. Token architecture wired upstream in Figma and downstream into Swift, Kotlin, and React. <strong>The substrate that made 110-country coverage possible without 110 engineering teams.</strong></p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">02</span>
+        <h3 class="sp2-foundation-title">Chothu · AI design consultant</h3>
+        <p class="sp2-foundation-body">An internal AI tool engineers could query directly — design-system questions, component suggestions, standard patterns — without pulling a designer in. The first step toward self-serve.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">03</span>
+        <h3 class="sp2-foundation-title">MACHINA · AI design suite</h3>
+        <p class="sp2-foundation-body">Five internal tools that automated content generation, layout suggestions, component mapping, QA checks, and documentation. Took the repetitive work off the team's plate.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">04</span>
+        <h3 class="sp2-foundation-title">Engineer Self-Serve Design</h3>
+        <p class="sp2-foundation-body">Standard patterns engineers could ship without a designer in the loop — gated by the design system, not by a reviewer's calendar. Freed the team for judgment calls.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">05</span>
+        <h3 class="sp2-foundation-title">Ragged Edge brand partnership</h3>
+        <p class="sp2-foundation-body">Client-side lead on the brand overhaul with Ragged Edge (London, rebranded Wise). Typefaces, motion, grid — translated from brand into product in real time, not over a handoff.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">06</span>
+        <h3 class="sp2-foundation-title">On-ground research practice</h3>
+        <p class="sp2-foundation-body">Field interviews in target markets — Nigeria, Pakistan, Turkey, Argentina. Journey mapping. Stakeholder research. Every major flow decision had a grounded sample behind it, not a dashboard.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">07</span>
+        <h3 class="sp2-foundation-title">Hiring &amp; governance</h3>
+        <p class="sp2-foundation-body">Scaled the design function from me to a capable team. JDs, scorecards, a design challenge calibrated to ZAR's actual constraints, brand-compliance governance that ran after I stepped back.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">08</span>
+        <h3 class="sp2-foundation-title">Design-engineering loop</h3>
+        <p class="sp2-foundation-body">No handoffs. Design and engineering in the same file, same standup, same review. Token parity enforced in code, not in docs.</p>
+      </div>
+      <div class="sp2-foundation">
+        <span class="sp2-foundation-num">09</span>
+        <h3 class="sp2-foundation-title">Cross-functional squads</h3>
+        <p class="sp2-foundation-body">Compliance, legal, ops — inside the squad, not on the other side of it. Regulatory constraints entered at research time, not at release time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT VI · MORE WORK — deep-dive teasers
+     ═══════════════════════════════════════════ -->
+<section class="sp2-works">
+  <div class="sp2-works-inner">
+    <div class="sp2-works-lead">
+      <h2>More work</h2>
+      <p>Deep dives on the systems inside the story above.</p>
+    </div>
+
+    <div class="sp2-works-grid">
+      <a class="sp2-work" href="/stories/zar/techtonic">
+        <span class="sp2-work-tag">System · Deep dive</span>
+        <h3 class="sp2-work-title">Techtonic</h3>
+        <p class="sp2-work-body">The design system built three times. 670+ components, 37 Figma pages, 103 icons, three platforms. Token architecture wired to production. <strong>Once it settled, feature velocity doubled.</strong></p>
+        <span class="sp2-work-cta">Read the Techtonic case study <span class="sp2-arrow">→</span></span>
+      </a>
+      <a class="sp2-work" href="/stories/zar/machina">
+        <span class="sp2-work-tag">AI · Deep dive</span>
+        <h3 class="sp2-work-title">MACHINA</h3>
+        <p class="sp2-work-body">Five AI tools and an internal design consultant. How the design team stopped scaling with headcount and started scaling with automation.</p>
+        <span class="sp2-work-cta">Read the MACHINA case study <span class="sp2-arrow">→</span></span>
+      </a>
+    </div>
+
+    <div class="sp2-works-grid sp2-works-grid--flip">
+      <a class="sp2-work" href="/stories/zar/golden-flow">
+        <span class="sp2-work-tag">Research · Deep dive</span>
+        <h3 class="sp2-work-title">Golden Flow</h3>
+        <p class="sp2-work-body">How on-ground research in four emerging markets collapsed an 18-step onboarding flow into 4 — without losing a regulatory requirement — and lifted completion across every cohort.</p>
+        <span class="sp2-work-cta">Read the Golden Flow case study <span class="sp2-arrow">→</span></span>
+      </a>
+      <article class="sp2-work sp2-work--soon">
+        <span class="sp2-work-tag">Coming soon</span>
+        <h3 class="sp2-work-title">Cash QR · Merchant Onboarding · Chothu</h3>
+        <p class="sp2-work-body">The ledger-consolidation redesign, the merchant flow compressed 19→4, and the AI design consultant engineers talked to instead of the design team. Separate case studies — on the way.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT VII · TESTIMONIALS
+     ═══════════════════════════════════════════ -->
+<section class="sp2-testi">
+  <div class="sp2-testi-head">
+    <h2>What they said</h2>
+    <div class="sp2-testi-arrows">
+      <button class="sp2-testi-arrow" id="testiPrev" aria-label="Previous"><span class="sp2-arrow">←</span></button>
+      <button class="sp2-testi-arrow" id="testiNext" aria-label="Next"><span class="sp2-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="sp2-testi-track" id="testiTrack">
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">His progression over the years was remarkable.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Brandon Timinsky</span>
+        <span class="sp2-testi-role">CEO, ZAR &amp; ex-CEO, SadaPay</span>
+      </div>
+    </div>
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">He understands that the best design work is often the work that unlocks other people. He is practical, technically capable, and genuinely invested in making the product better.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Sebastian Scholl</span>
+        <span class="sp2-testi-role">ZAR</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACT VIII · NEXT
+     ═══════════════════════════════════════════ -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories"><span class="sp2-arrow">←</span> Back to all stories</a></div>
+  <a href="/stories/wtt" class="sp2-next-cta">
+    <span class="label">Next Story</span>
+    <span class="title">Walking the Talk <span class="sp2-arrow">→</span></span>
+  </a>
+</section>
+
+<Footer />
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  function initZar() {
+    // Scroll reveal for .reveal elements
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
+
+    // Testimonial carousel arrows
+    const track = document.getElementById('testiTrack');
+    const prevBtn = document.getElementById('testiPrev');
+    const nextBtn = document.getElementById('testiNext');
+    if (track && prevBtn && nextBtn) {
+      function getScrollAmt() {
+        const card = track.querySelector('.sp2-testi-card') as HTMLElement | null;
+        if (!card) return 464;
+        return card.offsetWidth + 24;
+      }
+      prevBtn.addEventListener('click', () => track.scrollBy({ left: -getScrollAmt(), behavior: 'smooth' }));
+      nextBtn.addEventListener('click', () => track.scrollBy({ left: getScrollAmt(), behavior: 'smooth' }));
+    }
   }
-  // Nav hide
-  let ls=0; const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
-  // Menu
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
-  // Loader
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
-  // Reveal
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
-  // Testimonial carousel arrows
-  const track=document.getElementById('testiTrack');
-  const prevBtn=document.getElementById('testiPrev');
-  const nextBtn=document.getElementById('testiNext');
-  if(track&&prevBtn&&nextBtn){
-    const scrollAmt=424;
-    prevBtn.addEventListener('click',()=>track.scrollBy({left:-scrollAmt,behavior:'smooth'}));
-    nextBtn.addEventListener('click',()=>track.scrollBy({left:scrollAmt,behavior:'smooth'}));
-  }
+  initZar();
+  document.addEventListener('astro:page-load', initZar);
 </script>
 
 </Base>

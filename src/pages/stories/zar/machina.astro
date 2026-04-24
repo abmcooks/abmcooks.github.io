@@ -1,193 +1,134 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import Loader from '../../../components/Loader.astro';
+import Cursor from '../../../components/Cursor.astro';
+import Nav from '../../../components/Nav.astro';
+import FsMenu from '../../../components/FsMenu.astro';
+import Footer from '../../../components/Footer.astro';
 import '../../../styles/global.css';
 import '../../../styles/stories.css';
-import '../../../styles/casestudy.css';
 ---
 
-<Base title="MACHINA — ZAR — Basit Masood" description="An internal AI design suite that lets engineers create design artifacts. 5 tools, 60-80% faster iteration.">
+<Base title="MACHINA — Basit Masood" description="5 internal AI design tools that removed the design-team bottleneck. 60-80% faster iteration. Being prepared for commercialization.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+<!-- HERO -->
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">
+      <a href="/stories/zar" style="color:inherit;text-decoration:none;">← ZAR</a> · Case study · 2025
+    </p>
+    <h1 class="sp2-hero-primary">AI design, for non-designers.</h1>
+    <p class="sp2-hero-secondary">5 internal tools that removed the design-team bottleneck.</p>
+    <p class="sp2-hero-desc">The design team was a bottleneck — engineers waiting for designers to produce mockups, icons, specifications. MACHINA is a suite of 5 internal AI tools that let engineers produce design artifacts at speed, trained on ZAR's brand system so outputs are brand-consistent by default. 60-80% faster iteration.</p>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
+  <span class="sp2-hero-scroll">Scroll</span>
+</section>
 
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══ HERO ═══ -->
-<section class="cs-hero">
-  <div class="cs-hero-inner reveal">
-    <div class="cs-breadcrumb">
-      <a href="/stories">Stories</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <a href="/stories/zar">ZAR</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <span class="cs-breadcrumb-current">MACHINA</span>
-    </div>
-    <h1 class="cs-hero-title">MACHINA — AI DESIGN FOR EVERYONE</h1>
-    <p class="cs-hero-desc">An internal AI design suite that removes the design team bottleneck. 5 tools that let engineers and non-designers create design artifacts at speed.</p>
-    <div class="cs-hero-meta">
-      <span><span class="cs-meta-label">Company</span> <span class="cs-meta-value">ZAR</span></span>
-      <span><span class="cs-meta-label">Year</span> <span class="cs-meta-value">2025</span></span>
-      <span><span class="cs-meta-label">Role</span> <span class="cs-meta-value">Head of Design</span></span>
-    </div>
+<!-- BRAND MOMENT -->
+<section class="sb-brand">
+  <div class="sb-brand-inner">
+    <img src="/images/ZAR-logo-full.png" alt="ZAR" class="sb-brand-logo sb-brand-logo--dark" />
+    <div class="sb-brand-rule"></div>
+    <p class="sb-brand-caption">ZAR MACHINA · AI Design Suite · 2025</p>
   </div>
 </section>
 
-<!-- ═══ CHALLENGE ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE CHALLENGE</h2>
-    <div class="cs-body">
-      <p>The design team was a bottleneck. Engineers waited for designers to produce mockups, icons, illustrations, and UI specifications before they could build. In a startup moving fast, those waiting periods accumulated into weeks of lost velocity. Every "quick design request" was another item in an already full queue.</p>
-      <p>The traditional solution — hire more designers — doesn't scale at the speed a startup needs. And it doesn't address the root problem: the dependency itself. As long as design is a service that others request, the queue will always exist.</p>
-      <p>The question was radical: what if engineers could do design work themselves, with AI assistance that ensures quality and brand consistency?</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ METRIC HIGHLIGHT ═══ -->
-<div class="cs-highlight">
-  <div class="cs-highlight-inner reveal">
-    <span class="cs-highlight-value">60-80%</span>
-    <span class="cs-highlight-label">faster iteration with AI-assisted design</span>
-  </div>
-</div>
-
-<!-- ═══ APPROACH ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE APPROACH</h2>
-    <div class="cs-body">
-      <p>I analyzed every type of design request that came to the team and categorized them by how much design judgment they required. Some tasks — like generating app store screenshots, creating social media graphics, or producing icon variants — followed patterns that could be systematized and assisted by AI.</p>
-      <p>The key insight was that <strong>AI doesn't replace design thinking — it replaces design production</strong>. A designer still defines the system, the rules, the brand. But the execution of those rules on routine tasks can be augmented by tools that understand the system.</p>
-      <p>I built MACHINA as a suite of 5 internal tools, each targeting a specific design production bottleneck. Each tool was trained on ZAR's brand guidelines, design tokens, and component library — so its outputs were brand-consistent by default.</p>
-      <p>The tools were designed to be used by non-designers. Clear interfaces, sensible defaults, and guardrails that prevent off-brand outputs. Engineers don't need to learn Figma — they need to describe what they want and get something usable.</p>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — MACHINA tool suite overview</span>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — engineer using MACHINA</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SOLUTION ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE SOLUTION</h2>
-    <div class="cs-body">
-      <p>MACHINA is an internal AI design suite consisting of 5 specialized tools. Each tool handles a specific category of design production: UI mockup generation from text descriptions, icon and illustration creation within brand guidelines, marketing asset generation (app store, social media), design spec documentation from Figma files, and design review automation that flags inconsistencies.</p>
-      <p>The suite is 60-80% complete and already in active use within ZAR. Engineers use it daily for tasks that previously required a designer's involvement. The tools produce drafts that are good enough to ship for internal purposes and need only light design review for customer-facing outputs.</p>
-      <p>MACHINA is being prepared for commercialization — the plan is to make it available as a standalone product for other companies facing the same design bottleneck challenge.</p>
-    </div>
-    <div class="cs-img-placeholder cs-img-placeholder--lg">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — MACHINA in action</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ IMPACT ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE IMPACT</h2>
-    <div class="cs-impact-grid">
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">5</span>
-        <span class="cs-impact-label">AI design tools</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">60-80%</span>
-        <span class="cs-impact-label">Faster iteration</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">0</span>
-        <span class="cs-impact-label">Design bottleneck</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">Next</span>
-        <span class="cs-impact-label">Commercialization</span>
+<!-- CHALLENGE -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Challenge</span>
+    <div>
+      <h2 class="sub-section-heading">Design as a service<br/>becomes a <span class="accent">system</span>.</h2>
+      <div class="sub-section-body">
+        <p>Engineers waited for designers to produce mockups, icons, illustrations, and UI specifications before they could build. In a startup moving fast, those waiting periods accumulated into weeks of lost velocity. Every "quick design request" was another item in an already-full queue.</p>
+        <p>The traditional solution — hire more designers — doesn't scale at startup speed. And it doesn't address the root problem: the dependency itself. As long as design is a service others request, the queue will always exist.</p>
       </div>
     </div>
-    <div class="cs-body">
-      <p>MACHINA fundamentally changed ZAR's design operations. Engineers now handle routine design tasks with AI assistance, freeing the design team to focus on strategic work — user research, complex interaction design, and system-level thinking. The bottleneck didn't just shrink; the dependency model itself changed.</p>
-      <p>The broader implication is significant: design teams in startups don't need to scale linearly with engineering. With the right AI tools trained on the right design system, a small design team can support a much larger engineering organization without becoming a constraint.</p>
+  </div>
+</section>
+
+<!-- METRIC HIGHLIGHT -->
+<section class="sub-highlight">
+  <span class="sub-highlight-value">5</span>
+  <span class="sub-highlight-label">Internal AI design tools, 60–80% faster iteration</span>
+</section>
+
+<!-- APPROACH -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Approach</span>
+    <div>
+      <h2 class="sub-section-heading">AI replaces production,<br/>not thinking.</h2>
+      <div class="sub-section-body">
+        <p>I analyzed every type of design request and categorized them by how much judgment they required. Some tasks — app store screenshots, social media graphics, icon variants — followed patterns that could be systematized. AI doesn't replace design thinking; it replaces design production. A designer still defines the system, the rules, the brand. But execution of those rules on routine tasks can be augmented.</p>
+        <p>MACHINA is 5 tools, each targeting a specific bottleneck: UI mockup generation from text, icon and illustration creation within brand guidelines, marketing asset generation (app store + social), design spec documentation from Figma files, and design review automation that flags inconsistencies. Each tool was trained on ZAR's brand guidelines, design tokens, and component library — outputs are brand-consistent by default.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CASE STUDY NAV ═══ -->
-<nav class="cs-nav">
-  <a href="/stories/zar/techtonic" class="cs-nav-link cs-nav-link--prev">
-    <span class="cs-nav-label">Previous Case Study</span>
-    <span class="cs-nav-title"><i class="ph-bold ph-arrow-left"></i> TECHTONIC</span>
+<!-- PULL QUOTE -->
+<section class="sub-pullquote">
+  <div class="sub-pullquote-mark">&#8220;</div>
+  <p class="sub-pullquote-text">Design teams in startups don't need to scale linearly with engineering.</p>
+  <p class="sub-pullquote-cite">MACHINA thesis</p>
+</section>
+
+<!-- OUTCOME -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Outcome</span>
+    <div>
+      <h2 class="sub-section-heading">The dependency<br/>model changed.</h2>
+      <div class="sub-section-body">
+        <p>Engineers now handle routine design tasks with AI assistance, freeing the design team for strategic work — user research, complex interaction design, system-level thinking. The bottleneck didn't just shrink; the dependency model changed.</p>
+        <p>MACHINA is being prepared for commercialization — the internal infrastructure that unblocked ZAR is being packaged to help other startups escape the same trap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories/zar"><span class="sp2-arrow">←</span> Back to ZAR</a></div>
+  <a href="/stories/zar/golden-flow" class="sp2-next-cta">
+    <span class="label">Next Case Study</span>
+    <span class="title">Golden Flow <span class="sp2-arrow">→</span></span>
   </a>
-  <div class="cs-nav-empty"></div>
-</nav>
-<div class="cs-back-link">
-  <a href="/stories/zar"><i class="ph-bold ph-arrow-left"></i> Back to ZAR</a>
-</div>
+</section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
+<Footer />
 
 <script>
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  function initSub() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-  let ls=0; const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
+  initSub();
+  document.addEventListener('astro:page-load', initSub);
 </script>
 
 </Base>

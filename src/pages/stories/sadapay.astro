@@ -14,8 +14,8 @@ import '../../styles/stories.css';
 <script is:inline>
   // Light-mode page class — only on this page
   (function(){
-    var apply = function(){ document.body && document.body.classList.add('sp-page-v2'); };
-    var clear = function(){ document.body && document.body.classList.remove('sp-page-v2'); };
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
     apply();
     document.addEventListener('astro:page-load', apply);
     document.addEventListener('astro:after-swap', apply);
@@ -469,31 +469,6 @@ import '../../styles/stories.css';
 <script>
   // Page-specific behavior. Loader/Cursor/Nav-scroll/FsMenu live in shared components now.
   function initSadaPay() {
-    const cursor = document.getElementById('customCursor');
-    const nav = document.getElementById('nav');
-
-    // Nav inversion over dark sections (video + footer)
-    const navDarkSections = document.querySelectorAll('.sp2-video-moment, .the-footer');
-    function detectNavOverDark() {
-      let overDark = false;
-      navDarkSections.forEach(sec => {
-        const r = sec.getBoundingClientRect();
-        if (r.top < 80 && r.bottom > 80) overDark = true;
-      });
-      nav?.classList.toggle('nav-over-dark', overDark);
-    }
-    window.addEventListener('scroll', detectNavOverDark, { passive: true });
-    detectNavOverDark();
-
-    // Cursor inversion — per-element over dark surfaces
-    const cursorDarkTargets = document.querySelectorAll(
-      '.sp2-video-moment, .the-footer, .sp2-testi-card, .sp2-foundation--hero'
-    );
-    cursorDarkTargets.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor?.classList.add('cursor-over-dark'));
-      el.addEventListener('mouseleave', () => cursor?.classList.remove('cursor-over-dark'));
-    });
-
     // Scroll reveal for .reveal elements
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {

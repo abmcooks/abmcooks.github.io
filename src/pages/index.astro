@@ -1,6 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import Loader from '../components/Loader.astro';
+import FsMenu from '../components/FsMenu.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import '../styles/stories.css';
 ---
 
 <Base title="Basit Masood — Head of Product Design">
@@ -36,42 +40,8 @@ import '../styles/global.css';
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════
-     FULLSCREEN MENU
-     ═══════════════════════════════════════════ -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu">
-    <i class="ph-bold ph-x"></i>
-  </button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     LOADER
-     ═══════════════════════════════════════════ -->
-<div class="loader" id="loader">
-  <div class="loader-mark">
-    <svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <circle class="glow" cx="308" cy="389" r="55.5"/>
-      <circle class="dot" cx="308" cy="389" r="55.5"/>
-    </svg>
-  </div>
-</div>
+<FsMenu />
+<Loader />
 
 <!-- ═══════════════════════════════════════════
      HERO — Left aligned, owl on right
@@ -343,46 +313,7 @@ import '../styles/global.css';
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     FOOTER — Editorial, owns its space
-     ═══════════════════════════════════════════ -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg">
-    <img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" />
-    <div class="footer-bg-fade"></div>
-  </div>
-
-  <div class="footer-mark" id="footerMark">
-    <svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo">
-      <path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/>
-      <circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/>
-    </svg>
-  </div>
-
-  <div class="footer-center">
-    <h2 class="footer-headline">Have a role or a project?<br/>Let's talk.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-      <span class="footer-loc">Based in UAE · Open to relocation</span>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <div class="footer-nav-row">
-      <a href="/stories">Stories</a>
-      <span class="footer-nav-dot"></span>
-      <a href="/writing">Writing</a>
-      <span class="footer-nav-dot"></span>
-      <a href="/about">About</a>
-      <span class="footer-nav-dot"></span>
-      <a href="/resume">Resume</a>
-    </div>
-    <span class="footer-copy">Designed & built by hand · © 2026</span>
-  </div>
-</footer>
+<Footer headline="Have a role or a project?<br/>Let's talk." />
 
 <!-- ═══════════════════════════════════════════
      AI ASSISTANT
@@ -457,19 +388,13 @@ import '../styles/global.css';
       if (current > heroBottom - 100) aiTriggerEl.classList.add('collapsed');
       else aiTriggerEl.classList.remove('collapsed');
     }
-    // Nav light/dark based on what section is behind it
+    // Cursor inversion over light sections — nav stays white with dark scrolled backdrop
     let isLight = false;
     lightSections.forEach(sec => {
       const rect = sec.getBoundingClientRect();
       if (rect.top < 60 && rect.bottom > 60) isLight = true;
     });
-    if (isLight) {
-      nav?.classList.add('nav-light');
-      cursor?.classList.add('cursor-dark');
-    } else {
-      nav?.classList.remove('nav-light');
-      cursor?.classList.remove('cursor-dark');
-    }
+    cursor?.classList.toggle('cursor-dark', isLight);
   });
 
   // ═══ Loader ═══
@@ -663,6 +588,7 @@ import '../styles/global.css';
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     padding: 32px 40px 0;
     opacity: 0;
+    display: block;
   }
   .nav.visible { opacity: 1; }
   .nav-inner {
@@ -670,14 +596,6 @@ import '../styles/global.css';
     display: flex; justify-content: space-between; align-items: center;
   }
   .nav.nav-hidden { transform: translateY(-100%); }
-  /* Light section inversion */
-  .nav.nav-light .nav-available { color: rgba(6, 6, 6, 0.6); }
-  .nav.nav-light .avail-dot { background: #16a34a; box-shadow: 0 0 8px rgba(22, 163, 74, 0.4); }
-  .nav.nav-light .nav-right a { color: rgba(6, 6, 6, 0.7); }
-  .nav.nav-light .nav-right a:not(.nav-resume):hover { color: var(--color-rose); }
-  .nav.nav-light .nav-right:hover a:not(:hover):not(.nav-resume) { opacity: 0.4; }
-  .nav.nav-light .nav-resume { border-color: rgba(6, 6, 6, 0.3) !important; color: rgba(6, 6, 6, 0.7) !important; }
-  .nav.nav-light .nav-resume:hover { border-color: var(--color-rose) !important; color: var(--color-rose) !important; }
   .nav-left { display: flex; align-items: center; }
   .nav-available {
     display: inline-flex; align-items: center; gap: 8px;
@@ -719,8 +637,6 @@ import '../styles/global.css';
     transition: color 0.2s;
   }
   .nav-burger:hover { color: var(--color-rose); }
-  .nav.nav-light .nav-burger { color: rgba(6, 6, 6, 0.7); }
-  .nav.nav-light .nav-burger:hover { color: var(--color-rose); }
 
   @media (max-width: 768px) {
     .nav { padding: 24px 24px 0; }

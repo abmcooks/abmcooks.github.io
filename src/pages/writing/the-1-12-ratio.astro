@@ -1,156 +1,81 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Loader from '../../components/Loader.astro';
+import Cursor from '../../components/Cursor.astro';
+import Nav from '../../components/Nav.astro';
+import FsMenu from '../../components/FsMenu.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/stories.css';
-import '../../styles/writing.css';
 ---
 
-<Base title="The 1:12 ratio — Basit Masood" description="Out of every 12 candidates, only 1 gets through. Here's what I look for.">
+<Base title="The 1:12 ratio. — Basit Masood" description="Out of every twelve candidates, only one gets through. Here's what I look for.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="writing" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left">
-    <a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a>
-  </div>
-  <div class="nav-right">
-    <a href="/stories">Stories</a>
-    <a href="/writing" class="nav-active">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
-  </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
-
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════════ -->
-<section class="ar-hero">
-  <div class="ar-hero-inner reveal">
-    <a href="/writing" class="ar-back"><i class="ph-bold ph-arrow-left"></i> All Writing</a>
-    <h1 class="ar-hero-title">The 1:12 ratio — why I hire for taste, not portfolios</h1>
-    <div class="ar-meta">
-      <span>February 2026</span>
-      <span class="ar-meta-dot"></span>
-      <span>4 min read</span>
-    </div>
+<!-- HERO -->
+<section class="ar2-hero">
+  <a href="/writing" class="ar2-back">← All writing</a>
+  <h1 class="ar2-hero-title">The 1:12 ratio.</h1>
+  <div class="ar2-meta">
+    <span>February 2026</span>
+    <span class="ar2-meta-dot"></span>
+    <span>4 min read</span>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     BODY
-     ═══════════════════════════════════════════ -->
-<section class="ar-body">
-  <div class="ar-body-inner reveal">
-    <p>Over the past four years, I have interviewed roughly 200 designers. The ratio that keeps showing up — across SadaPay, ZAR, and freelance advisory work — is 1 in 12. Out of every twelve candidates who make it to the portfolio review stage, one gets through. Not because the others are bad. Most of them are competent. Some are genuinely skilled. But competence and skill are table stakes. What separates the one from the eleven is taste.</p>
+<!-- BODY -->
+<section class="ar2-body">
+  <p>Over the past four years, I have interviewed roughly 200 designers. The ratio that keeps showing up — across SadaPay, ZAR, and freelance advisory work — is 1 in 12. Out of every twelve candidates who make it to the portfolio review stage, one gets through. Not because the others are bad. Most of them are competent. Some are genuinely skilled. But competence and skill are table stakes. What separates the one from the eleven is taste.</p>
 
-    <p>Taste is a loaded word in design. People confuse it with aesthetic preference — liking minimalism over brutalism, preferring serif to sans-serif. That is not what I mean. Taste, in the context of product design, is the ability to make decisions that feel inevitable in hindsight. It is knowing when a flow has one too many steps. It is sensing when a label is doing too much work. It is the instinct to remove rather than add. You cannot teach it in a bootcamp and you cannot fake it in a case study.</p>
+  <p>Taste is a loaded word in design. People confuse it with aesthetic preference — liking minimalism over brutalism, preferring serif to sans-serif. That is not what I mean. Taste, in the context of product design, is the ability to make decisions that feel inevitable in hindsight. It is knowing when a flow has one too many steps. It is sensing when a label is doing too much work. It is the instinct to remove rather than add. You cannot teach it in a bootcamp and you cannot fake it in a case study.</p>
 
-    <p>When I review portfolios, I am not looking at how polished the mockups are. I am looking at the decisions behind them. Did this person question the brief or just execute it? Did they explore alternatives that were genuinely different, or just iterate on the same idea three times with slightly different spacing? Do they have opinions about their own work — real opinions, not recycled design Twitter talking points? The candidates who stand out are the ones who can articulate why they made a choice and what they would change if they could do it again.</p>
+  <div class="ar2-pullquote"><p>Taste is the ability to make decisions that feel inevitable in hindsight. You cannot teach it in a bootcamp.</p></div>
 
-    <p>The other thing I look for is curiosity that extends beyond design. The best designers I have hired were interested in economics, psychology, architecture, music, film — anything that trained their eye and sharpened their judgment. A designer who only consumes design content ends up producing derivative work. The ideas have nowhere to come from except other designers' ideas. The 1 in 12 brings something from outside the discipline, and that is what makes their work feel different. Not better-executed. Different.</p>
-  </div>
+  <p>When I review portfolios, I am not looking at how polished the mockups are. I am looking at the decisions behind them. Did this person question the brief or just execute it? Did they explore alternatives that were genuinely different, or just iterate on the same idea three times with slightly different spacing? Do they have opinions about their own work — real opinions, not recycled design Twitter talking points? The candidates who stand out are the ones who can articulate why they made a choice and what they would change if they could do it again.</p>
+
+  <p>The other thing I look for is curiosity that extends beyond design. The best designers I have hired were interested in economics, psychology, architecture, music, film — anything that trained their eye and sharpened their judgment. A designer who only consumes design content ends up producing derivative work. The ideas have nowhere to come from except other designers' ideas. The 1 in 12 brings something from outside the discipline, and that is what makes their work feel different. Not better-executed. Different.</p>
 </section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg">
-    <img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" />
-    <div class="footer-bg-fade"></div>
-  </div>
-  <div class="footer-mark">
-    <svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo">
-      <path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/>
-      <circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/>
-    </svg>
-  </div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-      <a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a>
-      <span class="footer-loc">UAE · Open to relocation</span>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-nav-row">
-      <a href="/">Home</a><span class="footer-nav-dot"></span>
-      <a href="/stories">Stories</a><span class="footer-nav-dot"></span>
-      <a href="/writing">Writing</a><span class="footer-nav-dot"></span>
-      <a href="/about">About</a><span class="footer-nav-dot"></span>
-      <a href="/resume">Resume</a>
-    </div>
-    <span class="footer-copy">Designed & built by hand · © 2026</span>
-  </div>
-</footer>
+<!-- FOOTER NAV -->
+<section class="ar2-footer">
+  <a href="/writing" class="ar2-footer-back">← All writing</a>
+  <a href="/writing/design-systems-that-outlast" class="ar2-footer-next">
+    <span class="ar2-footer-next-label">Next essay</span>
+    <span class="ar2-footer-next-title">Design systems that outlast their designer.</span>
+  </a>
+</section>
+
+<Footer />
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
-    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-    function animateCursor() { curX += (mouseX - curX) * 0.15; curY += (mouseY - curY) * 0.15; cursor.style.transform = `translate(${curX}px, ${curY}px)`; requestAnimationFrame(animateCursor); }
-    animateCursor();
-    document.body.classList.add('cursor-active');
-    document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  function initArticle() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-
-  // Nav hide on scroll
-  let lastScroll = 0;
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current > lastScroll && current > 100) nav?.classList.add('nav-hidden');
-    else nav?.classList.remove('nav-hidden');
-    lastScroll = current;
-  }, { passive: true });
-
-  // Menu
-  const burger = document.getElementById('navBurger');
-  const fsMenu = document.getElementById('fsMenu');
-  const fsClose = document.getElementById('fsMenuClose');
-  if (burger && fsMenu) {
-    burger.addEventListener('click', () => { fsMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
-    fsClose?.addEventListener('click', () => { fsMenu.classList.remove('open'); document.body.style.overflow = ''; });
-    fsMenu.querySelectorAll('.fs-menu-link').forEach(l => l.addEventListener('click', () => { fsMenu.classList.remove('open'); document.body.style.overflow = ''; }));
-  }
-
-  // Loader
-  const loader = document.getElementById('loader');
-  if (loader) { setTimeout(() => { loader.classList.add('done'); document.body.classList.add('loaded'); }, 2400); }
-
-  // Reveal
-  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
-  }
+  initArticle();
+  document.addEventListener('astro:page-load', initArticle);
 </script>
 
 </Base>

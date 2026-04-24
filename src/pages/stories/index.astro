@@ -4,11 +4,34 @@ import Loader from '../../components/Loader.astro';
 import Cursor from '../../components/Cursor.astro';
 import Nav from '../../components/Nav.astro';
 import FsMenu from '../../components/FsMenu.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/stories.css';
 ---
 
-<Base title="Stories — Basit Masood" description="30+ products shipped, 110+ countries reached, 2 acquisitions. The work of Basit Masood.">
+<Base title="Stories — Basit Masood" description="Thirty products shipped. Six million users. Two acquisitions. The work of Basit Masood.">
+
+<script is:inline>
+  // Light-mode + page-specific class (for scroll-snap behavior)
+  (function(){
+    var apply = function(){
+      if (!document.body) return;
+      document.body.classList.add('page-light');
+      document.body.classList.add('stories-landing');
+      document.documentElement.classList.add('stories-landing');
+    };
+    var clear = function(){
+      if (!document.body) return;
+      document.body.classList.remove('page-light');
+      document.body.classList.remove('stories-landing');
+      document.documentElement.classList.remove('stories-landing');
+    };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
 <Loader />
 <Cursor />
@@ -16,264 +39,210 @@ import '../../styles/stories.css';
 <FsMenu />
 
 <!-- ═══════════════════════════════════════════
-     HERO
+     HERO — glass panel over soft atmospheric wash
      ═══════════════════════════════════════════ -->
-<section class="st-hero">
-  <div class="st-hero-inner reveal">
-    <h1 class="st-hero-heading">TRUE STORIES</h1>
-    <p class="st-hero-sub">8 years of building products people actually use.</p>
-    <div class="st-hero-stats">
-      <div class="st-hero-stat">
-        <span class="st-hero-stat-val">30+</span>
-        <span class="st-hero-stat-label">Products shipped</span>
-      </div>
-      <div class="st-hero-stat">
-        <span class="st-hero-stat-val">110+</span>
-        <span class="st-hero-stat-label">Countries reached</span>
-      </div>
-      <div class="st-hero-stat">
-        <span class="st-hero-stat-val">25+</span>
-        <span class="st-hero-stat-label">Designers hired</span>
-      </div>
-      <div class="st-hero-stat">
-        <span class="st-hero-stat-val">2</span>
-        <span class="st-hero-stat-label">Acquisitions</span>
-      </div>
+<section class="sti-hero">
+
+  <!-- Architectural dot-grid backdrop — gives glass something real to blur -->
+  <div class="sti-atmosphere" aria-hidden="true"></div>
+
+  <!-- Glass panel — the anchor -->
+  <div class="sti-hero-center">
+    <p class="sti-hero-kicker">
+      <span class="sti-kicker-rule"></span>
+      <span>Selected work · 2016 – Present</span>
+    </p>
+    <h1 class="sti-hero-title">Hall of fame.</h1>
+    <div class="sti-hero-stats">
+      <div><strong>30+</strong><span>Products</span></div>
+      <div><strong>6M+</strong><span>Users</span></div>
+      <div><strong>110+</strong><span>Countries</span></div>
+      <div><strong>2</strong><span>Exits</span></div>
     </div>
   </div>
+
+  <span class="sti-hero-scroll">Scroll</span>
 </section>
 
 <!-- ═══════════════════════════════════════════
-     MAIN STORIES
+     THE THREE MAIN STORIES — editorial entries
      ═══════════════════════════════════════════ -->
-<section class="stb-grid">
-  <div class="stb-grid-inner">
+<section class="sti-features">
 
-    <a href="/stories/sadapay" class="stb-card reveal">
-      <div class="stb-card-content">
-        <div class="stb-card-top">
-          <div class="stb-card-logos"><img src="/images/sadapay-logo.svg" alt="SadaPay" /><img src="/images/papara-logo.png" alt="Papara" /></div>
-          <div class="stb-card-top-text">
-            <p class="stb-card-eyebrow"><span class="stb-card-company">SadaPay acquired by Papara</span>&nbsp; —&nbsp; Founding Designer → Head of Product Design</p>
-            <h2 class="stb-card-title">$50M ACQUISITION. PAKISTAN'S LARGEST NEOBANK.</h2>
-          </div>
-        </div>
-        <div class="stb-card-metrics">
-          <span class="stb-card-metric"><strong>4M+</strong> users</span>
-          <span class="stb-card-metric"><strong>$1.5B+</strong> yearly</span>
-          <span class="stb-card-metric"><strong>700K</strong> waitlist</span>
-          <span class="stb-card-metric"><strong>$50M</strong> acquisition</span>
-        </div>
+  <!-- SADAPAY -->
+  <a href="/stories/sadapay" class="sti-feature sti-feature--warm reveal">
+    <span class="sti-feature-hover-arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+    <div class="sti-feature-text">
+      <p class="sti-feature-eyebrow">2020 – 2024 · Founding Designer → Head of Product Design</p>
+      <h2 class="sti-feature-title"><span class="sti-feature-num">01</span>SadaPay.</h2>
+      <p class="sti-feature-sub">Pakistan's first fintech exit. Four years, zero to $50 million.</p>
+      <div class="sti-feature-metrics">
+        <span><strong>4M+</strong>users</span>
+        <span><strong>$1B+</strong>yearly</span>
+        <span><strong>700K</strong>waitlist</span>
+        <span><strong>$50M</strong>acquisition</span>
       </div>
-      <span class="stb-card-arrow"><i class="ph-bold ph-arrow-up-right"></i></span>
-    </a>
+      <span class="sti-feature-cta">Read the SadaPay story <span class="sp2-arrow">→</span></span>
+    </div>
+    <div class="sti-feature-visual">
+      <div class="sti-logomark">
+        <img src="/images/sadapay-full-logo.svg" alt="SadaPay" class="sti-logomark-img" />
+        <div class="sti-logomark-rule"></div>
+        <p class="sti-logomark-caption">Founding Designer · Dec 2020 – Aug 2024</p>
+      </div>
+    </div>
+  </a>
 
-    <a href="/stories/zar" class="stb-card reveal">
-      <div class="stb-card-content">
-        <div class="stb-card-top">
-          <div class="stb-card-logos"><img src="/images/ZAR-logo.png" alt="ZAR" /></div>
-          <div class="stb-card-top-text">
-            <p class="stb-card-eyebrow"><span class="stb-card-company">ZAR, a Solana wallet</span>&nbsp; —&nbsp; Head of Product Design</p>
-            <h2 class="stb-card-title">A $20M-FUNDED STABLECOIN WALLET FOR THE NEXT BILLION USERS.</h2>
-          </div>
-        </div>
-        <div class="stb-card-metrics">
-          <span class="stb-card-metric"><strong>300K+</strong> users</span>
-          <span class="stb-card-metric"><strong>110+</strong> countries</span>
-          <span class="stb-card-metric"><strong>a16z</strong> backed</span>
-          <span class="stb-card-metric"><strong>MACHINA</strong> AI suite</span>
-        </div>
+  <!-- ZAR -->
+  <a href="/stories/zar" class="sti-feature sti-feature--flip sti-feature--dark reveal" data-cursor="dark">
+    <span class="sti-feature-hover-arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+    <div class="sti-feature-text">
+      <p class="sti-feature-eyebrow">2024 – Present · Head of Product Design</p>
+      <h2 class="sti-feature-title"><span class="sti-feature-num">02</span>ZAR.</h2>
+      <p class="sti-feature-sub">An instant wallet. 110 countries. Backed by a16z.</p>
+      <div class="sti-feature-metrics">
+        <span><strong>300K+</strong>users</span>
+        <span><strong>110+</strong>countries</span>
+        <span><strong>$20M</strong>Series A</span>
+        <span><strong>670+</strong>components</span>
       </div>
-      <span class="stb-card-arrow"><i class="ph-bold ph-arrow-up-right"></i></span>
-    </a>
+      <span class="sti-feature-cta">Read the ZAR story <span class="sp2-arrow">→</span></span>
+    </div>
+    <div class="sti-feature-visual">
+      <div class="sti-logomark">
+        <img src="/images/ZAR-logo-full.png" alt="ZAR" class="sti-logomark-img" />
+        <div class="sti-logomark-rule"></div>
+        <p class="sti-logomark-caption">Head of Product Design · Nov 2024 – Present</p>
+      </div>
+    </div>
+  </a>
 
-    <a href="/stories/wtt" class="stb-card reveal">
-      <div class="stb-card-content">
-        <div class="stb-card-top">
-          <div class="stb-card-logos"><img src="/images/WTT-logo.svg" alt="Walking the Talk" /><img src="/images/ZRG-logo.svg" alt="ZRG Partners" /></div>
-          <div class="stb-card-top-text">
-            <p class="stb-card-eyebrow"><span class="stb-card-company">Walking the Talk acquired by ZRG Partners</span>&nbsp; —&nbsp; Lead Product Design Consultant</p>
-            <h2 class="stb-card-title">6 CULTURE & PSYCHOMETRIC ASSESSMENT TOOLS FOR 200+ ORGANIZATIONS WORLDWIDE.</h2>
-          </div>
-        </div>
-        <div class="stb-card-metrics">
-          <span class="stb-card-metric"><strong>200K</strong> leaders</span>
-          <span class="stb-card-metric"><strong>40</strong> countries</span>
-          <span class="stb-card-metric"><strong>ZRG</strong> acquisition</span>
-        </div>
+  <!-- WTT -->
+  <a href="/stories/wtt" class="sti-feature sti-feature--cool reveal">
+    <span class="sti-feature-hover-arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+    <div class="sti-feature-text">
+      <p class="sti-feature-eyebrow">2023 – 2024 · Lead Product Design Consultant</p>
+      <h2 class="sti-feature-title"><span class="sti-feature-num">03</span>Walking the Talk.</h2>
+      <p class="sti-feature-sub">Six tools. Two hundred Fortune 500s. Acquired by ZRG.</p>
+      <div class="sti-feature-metrics">
+        <span><strong>200K</strong>leaders</span>
+        <span><strong>40</strong>countries</span>
+        <span><strong>50K+</strong>Taylor DB</span>
+        <span><strong>ZRG</strong>acquisition</span>
       </div>
-      <span class="stb-card-arrow"><i class="ph-bold ph-arrow-up-right"></i></span>
-    </a>
-  </div>
+      <span class="sti-feature-cta">Read the WTT story <span class="sp2-arrow">→</span></span>
+    </div>
+    <div class="sti-feature-visual">
+      <div class="sti-logomark">
+        <img src="/images/WTT-full-logo.svg" alt="Walking the Talk" class="sti-logomark-img" />
+        <div class="sti-logomark-rule"></div>
+        <p class="sti-logomark-caption">Lead Product Design Consultant · 2023 – 2024</p>
+      </div>
+    </div>
+  </a>
 </section>
-
 
 <!-- ═══════════════════════════════════════════
-     PROJECT BRIEFS
+     THE ARCHIVE — editorial list, not cards
      ═══════════════════════════════════════════ -->
-<section class="st-briefs">
-  <div class="st-briefs-inner">
-    <h2 class="st-briefs-heading reveal">MUCH MORE</h2>
-    <div class="st-briefs-grid reveal">
-
-      <a href="/stories/adib" class="st-brief">
-        <div class="st-brief-top">
-          <div class="st-brief-top-row">
-            <img src="/images/ADIB-full-logo.svg" alt="ADIB" class="st-brief-logo" />
-            <div>
-              <span class="st-brief-metric">1M+</span>
-              <span class="st-brief-metric-label">App users</span>
-            </div>
-          </div>
-        </div>
-        <div class="st-brief-body">
-          <p class="st-brief-eyebrow">Lead Product Designer</p>
-          <h3 class="st-brief-title">Abu Dhabi Islamic Bank</h3>
-          <p class="st-brief-desc">Remit! by Visa cross-border transfers, open banking, design ops & governance. For the Middle East's leading Islamic bank.</p>
-          <span class="st-brief-arrow">View <i class="ph-bold ph-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <a href="/stories/bolt-vpn" class="st-brief">
-        <div class="st-brief-top">
-          <div class="st-brief-top-row">
-            <img src="/images/boltvpn-logo.png" alt="Bolt VPN" class="st-brief-logo st-brief-logo--dark st-brief-logo--lg" />
-            <div>
-              <span class="st-brief-metric">25M+</span>
-              <span class="st-brief-metric-label">Downloads</span>
-            </div>
-          </div>
-        </div>
-        <div class="st-brief-body">
-          <p class="st-brief-eyebrow">Lead Product Design Consultant</p>
-          <h3 class="st-brief-title">Bolt VPN via Galixo AI</h3>
-          <p class="st-brief-desc">Complete brand overhaul, UI/UX transformation, and paywall optimization that drove conversion for one of the most downloaded VPN apps.</p>
-          <span class="st-brief-arrow">View <i class="ph-bold ph-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <a href="/stories/gosaas" class="st-brief">
-        <div class="st-brief-top">
-          <div class="st-brief-top-row">
-            <img src="/images/gocompliance-full-logo.svg" alt="GoCompliance" class="st-brief-logo st-brief-logo--dark" />
-            <div>
-              <span class="st-brief-metric">200+</span>
-              <span class="st-brief-metric-label">Enterprise clients</span>
-            </div>
-          </div>
-        </div>
-        <div class="st-brief-body">
-          <p class="st-brief-eyebrow">Lead Product Design Consultant</p>
-          <h3 class="st-brief-title">GoCompliance with Oracle</h3>
-          <p class="st-brief-desc">Enterprise compliance platform for Oracle Cloud — 1B+ component database, 70% reduction in manual effort, serving 200+ clients globally.</p>
-          <span class="st-brief-arrow">View <i class="ph-bold ph-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <a href="/stories/xpence" class="st-brief">
-        <div class="st-brief-top">
-          <div class="st-brief-top-row">
-            <img src="/images/xpence-full-logo.svg" alt="Xpence" class="st-brief-logo" />
-            <div>
-              <span class="st-brief-metric">50K+</span>
-              <span class="st-brief-metric-label">Business users</span>
-            </div>
-          </div>
-        </div>
-        <div class="st-brief-body">
-          <p class="st-brief-eyebrow">Product Designer</p>
-          <h3 class="st-brief-title">Xpence Business Banking</h3>
-          <p class="st-brief-desc">End-to-end business banking app — expense management, virtual cards, and spend analytics for SMEs in the Middle East.</p>
-          <span class="st-brief-arrow">View <i class="ph-bold ph-arrow-right"></i></span>
-        </div>
-      </a>
-
+<section class="sti-archive">
+  <div class="sti-archive-inner">
+    <div class="sti-archive-head">
+      <p class="sti-archive-eyebrow">The rest of the ledger</p>
+      <h2 class="sti-archive-title">Also.</h2>
+      <p class="sti-archive-sub">Consulting engagements, product designs, and the quieter work that didn't make headlines.</p>
     </div>
+
+    <ol class="sti-archive-list">
+      <li class="sti-archive-row">
+        <a href="/stories/adib" class="sti-archive-link">
+          <span class="sti-archive-num">04</span>
+          <div class="sti-archive-logo">
+            <img src="/images/ADIB-full-logo.svg" alt="Abu Dhabi Islamic Bank" />
+          </div>
+          <div class="sti-archive-content">
+            <h3 class="sti-archive-title-line">Abu Dhabi Islamic Bank</h3>
+            <p class="sti-archive-meta">Lead Product Designer · 2022 · Remit! by Visa, open banking, design ops &amp; governance for the Middle East's leading Islamic bank.</p>
+          </div>
+          <div class="sti-archive-right">
+            <span class="sti-archive-metric"><strong>1M+</strong>App users</span>
+            <span class="sti-archive-arrow">→</span>
+          </div>
+        </a>
+      </li>
+      <li class="sti-archive-row">
+        <a href="/stories/bolt-vpn" class="sti-archive-link">
+          <span class="sti-archive-num">05</span>
+          <div class="sti-archive-logo sti-archive-logo--dark">
+            <img src="/images/boltvpn-logo.png" alt="Bolt VPN" />
+          </div>
+          <div class="sti-archive-content">
+            <h3 class="sti-archive-title-line">Bolt VPN</h3>
+            <p class="sti-archive-meta">Lead Product Design Consultant · 2021 · Brand overhaul, UI/UX transformation, and paywall optimization via Galixo AI.</p>
+          </div>
+          <div class="sti-archive-right">
+            <span class="sti-archive-metric"><strong>25M+</strong>Downloads</span>
+            <span class="sti-archive-arrow">→</span>
+          </div>
+        </a>
+      </li>
+      <li class="sti-archive-row">
+        <a href="/stories/gosaas" class="sti-archive-link">
+          <span class="sti-archive-num">06</span>
+          <div class="sti-archive-logo sti-archive-logo--dark">
+            <img src="/images/gocompliance-full-logo.svg" alt="GoCompliance" />
+          </div>
+          <div class="sti-archive-content">
+            <h3 class="sti-archive-title-line">GoCompliance with Oracle</h3>
+            <p class="sti-archive-meta">Lead Product Design Consultant · 2020 · 1B+ component database, 70% less manual effort, serving 200+ clients globally.</p>
+          </div>
+          <div class="sti-archive-right">
+            <span class="sti-archive-metric"><strong>200+</strong>Enterprise clients</span>
+            <span class="sti-archive-arrow">→</span>
+          </div>
+        </a>
+      </li>
+      <li class="sti-archive-row">
+        <a href="/stories/xpence" class="sti-archive-link">
+          <span class="sti-archive-num">07</span>
+          <div class="sti-archive-logo">
+            <img src="/images/xpence-full-logo.svg" alt="Xpence" />
+          </div>
+          <div class="sti-archive-content">
+            <h3 class="sti-archive-title-line">Xpence Business Banking</h3>
+            <p class="sti-archive-meta">Product Designer · 2019 · Expense management, virtual cards, spend analytics for SMEs in the Middle East.</p>
+          </div>
+          <div class="sti-archive-right">
+            <span class="sti-archive-metric"><strong>50K+</strong>Business users</span>
+            <span class="sti-archive-arrow">→</span>
+          </div>
+        </a>
+      </li>
+    </ol>
+
+    <p class="sti-archive-more">and many more…</p>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg">
-    <img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" />
-    <div class="footer-bg-fade"></div>
-  </div>
-  <div class="footer-mark">
-    <svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo">
-      <path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
-      <circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/>
-      <circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/>
-    </svg>
-  </div>
-  <div class="footer-center">
-    <h2 class="footer-headline">Have a role or a project?<br/>Let's talk.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-      <a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a>
-      <span class="footer-loc">UAE · Open to relocation</span>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-nav-row">
-      <a href="/">Home</a><span class="footer-nav-dot"></span>
-      <a href="/stories">Stories</a><span class="footer-nav-dot"></span>
-      <a href="/writing">Writing</a><span class="footer-nav-dot"></span>
-      <a href="/about">About</a><span class="footer-nav-dot"></span>
-      <a href="/resume">Resume</a>
-    </div>
-    <span class="footer-copy">Designed & built by hand · © 2026</span>
-  </div>
-</footer>
+<Footer headline="Have a role or a project?<br/>Let's talk." />
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
-    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-    function animateCursor() { curX += (mouseX - curX) * 0.15; curY += (mouseY - curY) * 0.15; cursor.style.transform = `translate(${curX}px, ${curY}px)`; requestAnimationFrame(animateCursor); }
-    animateCursor();
-    document.body.classList.add('cursor-active');
-    document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  function initStoriesIndex() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-
-  // Nav hide on scroll
-  let lastScroll = 0;
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current > lastScroll && current > 100) nav?.classList.add('nav-hidden');
-    else nav?.classList.remove('nav-hidden');
-    lastScroll = current;
-  }, { passive: true });
-
-  // Menu
-  const burger = document.getElementById('navBurger');
-  const fsMenu = document.getElementById('fsMenu');
-  const fsClose = document.getElementById('fsMenuClose');
-  if (burger && fsMenu) {
-    burger.addEventListener('click', () => { fsMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
-    fsClose?.addEventListener('click', () => { fsMenu.classList.remove('open'); document.body.style.overflow = ''; });
-    fsMenu.querySelectorAll('.fs-menu-link').forEach(l => l.addEventListener('click', () => { fsMenu.classList.remove('open'); document.body.style.overflow = ''; }));
-  }
-
-  // Loader — skip entirely, ClientRouter handles transitions
-  const loader = document.getElementById('loader');
-  if (loader) {
-    loader.classList.add('done');
-    document.body.classList.add('loaded');
-  }
-
-  // Reveal
-  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Reduced motion
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
-  }
+  initStoriesIndex();
+  document.addEventListener('astro:page-load', initStoriesIndex);
 </script>
 
 </Base>

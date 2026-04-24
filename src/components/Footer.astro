@@ -1,4 +1,13 @@
-<footer class="the-footer" id="footer">
+---
+interface Props {
+  headline?: string;
+}
+const {
+  headline = 'The next product<br/>I design could be yours.'
+} = Astro.props;
+---
+
+<footer class="the-footer" id="footer" data-cursor="dark">
   <div class="footer-bg">
     <img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" />
     <div class="footer-bg-fade"></div>
@@ -12,7 +21,7 @@
     </svg>
   </div>
   <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
+    <h2 class="footer-headline" set:html={headline}></h2>
     <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
     <div class="footer-links">
       <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <span class="sp2-arrow">↗</span></a>

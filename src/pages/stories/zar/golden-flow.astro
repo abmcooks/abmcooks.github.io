@@ -1,193 +1,134 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import Loader from '../../../components/Loader.astro';
+import Cursor from '../../../components/Cursor.astro';
+import Nav from '../../../components/Nav.astro';
+import FsMenu from '../../../components/FsMenu.astro';
+import Footer from '../../../components/Footer.astro';
 import '../../../styles/global.css';
 import '../../../styles/stories.css';
-import '../../../styles/casestudy.css';
 ---
 
-<Base title="Golden Flow — ZAR — Basit Masood" description="Reducing crypto wallet onboarding from 18 steps to 4. A 77.8% reduction for emerging market users.">
+<Base title="Golden Flow — Basit Masood" description="18 steps to 4. Crypto wallet onboarding rebuilt for emerging-market users meeting the product for the first time. 77.8% fewer steps, measurably higher completion.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+<!-- HERO -->
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">
+      <a href="/stories/zar" style="color:inherit;text-decoration:none;">← ZAR</a> · Case study · 2025
+    </p>
+    <h1 class="sp2-hero-primary">18 steps to 4.</h1>
+    <p class="sp2-hero-secondary">Crypto wallet onboarding for emerging markets.</p>
+    <p class="sp2-hero-desc">ZAR's onboarding was 18 steps long. For users encountering crypto for the first time, that's not an inconvenience — it's a wall. I mapped every step, categorized by necessity, and redesigned around "get them to value first." 77.8% fewer steps, measurably higher completion.</p>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
+  <span class="sp2-hero-scroll">Scroll</span>
+</section>
 
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══ HERO ═══ -->
-<section class="cs-hero">
-  <div class="cs-hero-inner reveal">
-    <div class="cs-breadcrumb">
-      <a href="/stories">Stories</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <a href="/stories/zar">ZAR</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <span class="cs-breadcrumb-current">Golden Flow</span>
-    </div>
-    <h1 class="cs-hero-title">18 STEPS TO 4 — THE GOLDEN FLOW</h1>
-    <p class="cs-hero-desc">Redesigning crypto wallet onboarding for emerging markets. A 77.8% step reduction that made the difference between users finishing and users leaving.</p>
-    <div class="cs-hero-meta">
-      <span><span class="cs-meta-label">Company</span> <span class="cs-meta-value">ZAR</span></span>
-      <span><span class="cs-meta-label">Year</span> <span class="cs-meta-value">2024</span></span>
-      <span><span class="cs-meta-label">Role</span> <span class="cs-meta-value">Head of Design</span></span>
-    </div>
+<!-- BRAND MOMENT -->
+<section class="sb-brand">
+  <div class="sb-brand-inner">
+    <img src="/images/ZAR-logo-full.png" alt="ZAR" class="sb-brand-logo sb-brand-logo--dark" />
+    <div class="sb-brand-rule"></div>
+    <p class="sb-brand-caption">ZAR · Onboarding redesign · 2025</p>
   </div>
 </section>
 
-<!-- ═══ CHALLENGE ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE CHALLENGE</h2>
-    <div class="cs-body">
-      <p>ZAR's onboarding flow was 18 steps long. For a crypto wallet targeting emerging markets — users who may be encountering crypto for the first time — that's not an inconvenience, it's a wall. Every additional step is a chance to lose someone who was curious but not yet committed.</p>
-      <p>The existing flow was designed by engineers who added screens as requirements came in: email verification, phone verification, KYC document upload, selfie capture, address entry, security setup, wallet creation, seed phrase backup, and more. Each step made sense in isolation. Together, they created an experience that felt like filling out a government form.</p>
-      <p>The data confirmed what the design suggested: completion rates were low, and most drop-offs happened in the middle of the flow where the cognitive load peaked.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ METRIC HIGHLIGHT ═══ -->
-<div class="cs-highlight">
-  <div class="cs-highlight-inner reveal">
-    <span class="cs-highlight-value">77.8%</span>
-    <span class="cs-highlight-label">reduction in onboarding steps</span>
-  </div>
-</div>
-
-<!-- ═══ APPROACH ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE APPROACH</h2>
-    <div class="cs-body">
-      <p>I mapped every step of the existing flow, then categorized each one: <strong>essential</strong> (legally required or technically necessary), <strong>important</strong> (adds value but can be deferred), and <strong>removable</strong> (legacy, redundant, or premature).</p>
-      <p>The key insight was <strong>progressive disclosure</strong>. Not every piece of information needs to be collected before the user gets value. A crypto wallet can be useful with just a verified identity — the rest can come later, when the user is invested in the product and motivated to complete additional steps.</p>
-      <p>I redesigned the flow around the principle of "get them to value first." The minimum viable onboarding: verify your identity, create your wallet, start exploring. Everything else — additional security, advanced KYC tiers, seed phrase backup — was moved to post-onboarding prompts triggered by user behavior.</p>
-      <p>Each of the remaining 4 steps was redesigned to feel quick. Progress indicators, pre-filled data where possible, smart defaults, and micro-copy that explained why each step mattered.</p>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — flow mapping before/after</span>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — progressive disclosure strategy</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SOLUTION ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE SOLUTION</h2>
-    <div class="cs-body">
-      <p>The redesigned Golden Flow was 4 steps: identity verification (streamlined with document scanning and liveness check in one screen), wallet creation (automatic, with a clear explanation of what just happened), security setup (biometric lock, presented as a benefit not a chore), and a welcome screen showing the user their empty-but-ready wallet.</p>
-      <p>Deferred steps were introduced through contextual prompts: when a user first tries to send a large amount, they're prompted for enhanced KYC. When they accumulate a meaningful balance, they're guided through seed phrase backup. The timing matched the user's motivation.</p>
-      <p>The visual design used ZAR's brand to make each step feel fast and premium — dark backgrounds, clear typography, generous spacing, and animations that moved things forward rather than making users wait.</p>
-    </div>
-    <div class="cs-img-placeholder cs-img-placeholder--lg">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — Golden Flow 4-step onboarding</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ IMPACT ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE IMPACT</h2>
-    <div class="cs-impact-grid">
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">18 → 4</span>
-        <span class="cs-impact-label">Steps reduced</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">77.8%</span>
-        <span class="cs-impact-label">Step reduction</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">Higher</span>
-        <span class="cs-impact-label">Completion rates</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">Faster</span>
-        <span class="cs-impact-label">Time to value</span>
+<!-- CHALLENGE -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Challenge</span>
+    <div>
+      <h2 class="sub-section-heading">Every extra step<br/>is someone <span class="accent">leaving</span>.</h2>
+      <div class="sub-section-body">
+        <p>ZAR's 18-step flow was designed by engineers adding screens as requirements came in — email verification, phone verification, KYC documents, selfie capture, address entry, security setup, wallet creation, seed phrase backup. Each step made sense in isolation. Together, they felt like filling out a government form.</p>
+        <p>The data confirmed what the design suggested: completion rates were low, and most drop-offs happened in the middle of the flow where cognitive load peaked. Every additional step was another chance to lose someone who was curious but not committed.</p>
       </div>
     </div>
-    <div class="cs-body">
-      <p>The Golden Flow transformed ZAR's onboarding from a barrier into a bridge. Completion rates improved significantly, and the deferred-step approach meant users who completed onboarding had a higher engagement rate — they'd already experienced the product's value before being asked to do more.</p>
-      <p>For a crypto product targeting emerging markets, where every user's first interaction with the technology might happen through your app, removing friction isn't just a UX improvement — it's the difference between adoption and abandonment.</p>
+  </div>
+</section>
+
+<!-- METRIC HIGHLIGHT -->
+<section class="sub-highlight">
+  <span class="sub-highlight-value">18 → 4</span>
+  <span class="sub-highlight-label">Onboarding steps, a 77.8% reduction</span>
+</section>
+
+<!-- APPROACH -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Approach</span>
+    <div>
+      <h2 class="sub-section-heading">Essential.<br/>Important.<br/>Removable.</h2>
+      <div class="sub-section-body">
+        <p>I mapped every step of the existing flow, then categorized each: essential (legally required or technically necessary), important (adds value but can be deferred), removable (legacy, redundant, or premature). The guiding principle was progressive disclosure — not every piece of information needs to be collected before the user gets value.</p>
+        <p>The goal was a minimum viable onboarding: get them to value first, then earn the right to ask for more. Document scan and liveness check merged into one screen. Wallet creation happened automatically, framed as a benefit rather than a chore. Security setup was tied to biometrics. Progress indicators, pre-filled data, smart defaults, and micro-copy that explained why each step mattered.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CASE STUDY NAV ═══ -->
-<nav class="cs-nav">
-  <div class="cs-nav-empty"></div>
-  <a href="/stories/zar/techtonic" class="cs-nav-link cs-nav-link--next">
-    <span class="cs-nav-label">Next Case Study</span>
-    <span class="cs-nav-title">TECHTONIC <i class="ph-bold ph-arrow-right"></i></span>
+<!-- PULL QUOTE -->
+<section class="sub-pullquote">
+  <div class="sub-pullquote-mark">&#8220;</div>
+  <p class="sub-pullquote-text">Remove friction for a market's first encounter with the category.</p>
+  <p class="sub-pullquote-cite">Golden Flow thesis</p>
+</section>
+
+<!-- OUTCOME -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Outcome</span>
+    <div>
+      <h2 class="sub-section-heading">Completion up.<br/>Drop-offs gone.</h2>
+      <div class="sub-section-body">
+        <p>The redesigned 4-step flow — identity, wallet, security, welcome — measurably raised completion. The deferred steps were reintroduced through contextual prompts: when a user first tries to send a large amount, they're prompted for enhanced KYC. When they accumulate a balance, they're guided through seed phrase backup. Friction matched to motivation.</p>
+        <p>Users who completed onboarding also engaged more — they'd already experienced the product's value before being asked to do more. The shorter flow didn't just improve completion; it changed the quality of every user who made it through.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories/zar"><span class="sp2-arrow">←</span> Back to ZAR</a></div>
+  <a href="/stories/zar/techtonic" class="sp2-next-cta">
+    <span class="label">Next Case Study</span>
+    <span class="title">Techtonic <span class="sp2-arrow">→</span></span>
   </a>
-</nav>
-<div class="cs-back-link">
-  <a href="/stories/zar"><i class="ph-bold ph-arrow-left"></i> Back to ZAR</a>
-</div>
+</section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
+<Footer />
 
 <script>
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  function initSub() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-  let ls=0; const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
+  initSub();
+  document.addEventListener('astro:page-load', initSub);
 </script>
 
 </Base>

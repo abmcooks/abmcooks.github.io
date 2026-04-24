@@ -1,193 +1,134 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import Loader from '../../../components/Loader.astro';
+import Cursor from '../../../components/Cursor.astro';
+import Nav from '../../../components/Nav.astro';
+import FsMenu from '../../../components/FsMenu.astro';
+import Footer from '../../../components/Footer.astro';
 import '../../../styles/global.css';
 import '../../../styles/stories.css';
-import '../../../styles/casestudy.css';
 ---
 
-<Base title="SadaBiz — SadaPay — Basit Masood" description="Designing business banking for Pakistan's freelancers. $1B+ annualized volume, Apple Pay, Google Pay, and service design blueprints.">
+<Base title="SadaBiz — Basit Masood" description="Pakistan's first fintech in Apple Pay and Google Pay. $1B+ annualized volume and 40% fraud reduction through end-to-end service design.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+<!-- HERO -->
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">
+      <a href="/stories/sadapay" style="color:inherit;text-decoration:none;">← SadaPay</a> · Case study · 2022 – 2024
+    </p>
+    <h1 class="sp2-hero-primary">A billion for the freelancers.</h1>
+    <p class="sp2-hero-secondary">Apple Pay, Google Pay, and service design that cut fraud 40%.</p>
+    <p class="sp2-hero-desc">Pakistan's freelance economy was growing faster than its banks could serve it. SadaBiz was built specifically for that segment — international payment receipt, business expense management, and the first Pakistani fintech card in Apple Pay and Google Pay. Service design blueprints exposed and closed the fraud windows that screen-level design would never catch.</p>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
+  <span class="sp2-hero-scroll">Scroll</span>
+</section>
 
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══ HERO ═══ -->
-<section class="cs-hero">
-  <div class="cs-hero-inner reveal">
-    <div class="cs-breadcrumb">
-      <a href="/stories">Stories</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <a href="/stories/sadapay">SadaPay</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <span class="cs-breadcrumb-current">SadaBiz</span>
-    </div>
-    <h1 class="cs-hero-title">SADABIZ — $1B+ FOR PAKISTAN'S FREELANCERS</h1>
-    <p class="cs-hero-desc">Designing business banking for a new generation of Pakistani freelancers. Apple Pay, Google Pay, international transfers, and service design blueprints that reduced fraud.</p>
-    <div class="cs-hero-meta">
-      <span><span class="cs-meta-label">Company</span> <span class="cs-meta-value">SadaPay</span></span>
-      <span><span class="cs-meta-label">Year</span> <span class="cs-meta-value">2022 – 2024</span></span>
-      <span><span class="cs-meta-label">Role</span> <span class="cs-meta-value">Head of Product Design</span></span>
-    </div>
+<!-- BRAND MOMENT -->
+<section class="sb-brand">
+  <div class="sb-brand-inner">
+    <img src="/images/sadapay-full-logo.svg" alt="SadaPay" class="sb-brand-logo" />
+    <div class="sb-brand-rule"></div>
+    <p class="sb-brand-caption">SadaBiz · Business banking · 2022 – 2024</p>
   </div>
 </section>
 
-<!-- ═══ CHALLENGE ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE CHALLENGE</h2>
-    <div class="cs-body">
-      <p>Pakistan has one of the world's fastest-growing freelance economies, but its banking infrastructure was built for a different era. Freelancers earning from international platforms like Upwork, Fiverr, and Toptal had no clean way to receive payments, manage business finances, or separate personal and business spending. Existing banks treated them like afterthoughts.</p>
-      <p>SadaPay saw the opportunity: build a business banking product specifically for this underserved segment. But the challenge went deeper than UI. The entire service journey — from international payment receipt to local currency conversion to business expense management — needed to be mapped, understood, and designed end-to-end.</p>
-      <p>This wasn't just a new feature. It was a new product with new users, new regulatory requirements, and new technical integrations including Apple Pay and Google Pay.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ METRIC HIGHLIGHT ═══ -->
-<div class="cs-highlight">
-  <div class="cs-highlight-inner reveal">
-    <span class="cs-highlight-value">$1B+</span>
-    <span class="cs-highlight-label">annualized volume through SadaBiz</span>
-  </div>
-</div>
-
-<!-- ═══ APPROACH ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE APPROACH</h2>
-    <div class="cs-body">
-      <p>I led with <strong>service design blueprints</strong> — detailed maps of every touchpoint, every system interaction, every human handoff in the SadaBiz journey. Front-stage (what users see), back-stage (what operations handles), and support processes (what happens when things go wrong). The CEO called these blueprints my "superpower."</p>
-      <p>The blueprints revealed critical friction points and fraud vectors that weren't visible from a screen-level view. By mapping the complete service, we could identify where users dropped off, where manual intervention was needed, and where bad actors could exploit gaps in the system.</p>
-      <p>For Apple Pay and Google Pay integration, I worked directly with engineering to understand the technical constraints and designed flows that met both platform guidelines and SadaPay's brand standards. The card provisioning experience needed to feel seamless — one tap to add your SadaPay card to your phone's wallet.</p>
-      <p>User research with Pakistani freelancers informed every decision. Their pain points were specific: delayed international transfers, confusing currency conversion, no way to generate invoices, and the constant friction of switching between personal and business accounts.</p>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — service design blueprint</span>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — Apple Pay provisioning flow</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SOLUTION ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE SOLUTION</h2>
-    <div class="cs-body">
-      <p>SadaBiz launched as a comprehensive business banking product for freelancers. The core experience included international payment receipt with competitive FX rates, instant notifications and transaction categorization, business expense management with receipt capture, Apple Pay and Google Pay integration for instant card access, and invoice generation tied to the payment flow.</p>
-      <p>The UI was designed to feel like an extension of the SadaPay personal app — familiar enough to be intuitive, distinct enough to signal "this is your business." The account switching experience was a single swipe, keeping both worlds accessible without confusion.</p>
-      <p>The service design blueprints didn't just inform the product — they became operational tools. The operations team used them to train new staff, and the fraud team used them to identify and close vulnerability windows.</p>
-    </div>
-    <div class="cs-img-placeholder cs-img-placeholder--lg">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — SadaBiz product screens</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ IMPACT ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE IMPACT</h2>
-    <div class="cs-impact-grid">
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">$1B+</span>
-        <span class="cs-impact-label">Annualized volume</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">40%</span>
-        <span class="cs-impact-label">Fraud reduction</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">2</span>
-        <span class="cs-impact-label">Pay integrations</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">E2E</span>
-        <span class="cs-impact-label">Service blueprints</span>
+<!-- CHALLENGE -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Challenge</span>
+    <div>
+      <h2 class="sub-section-heading">Pakistan's freelancers,<br/>served by <span class="accent">consumer banking</span>.</h2>
+      <div class="sub-section-body">
+        <p>Freelancers earning from Upwork, Fiverr, and Toptal had no clean way to receive payments, manage business finances, or separate personal and business spending. They were running businesses on consumer banking apps — the only option Pakistani banks offered them.</p>
+        <p>SadaPay saw the opportunity. Not to adapt the consumer product, but to build something purpose-built: international payment receipt, currency conversion, business expense management — a service journey designed end-to-end for how freelancers actually work.</p>
       </div>
     </div>
-    <div class="cs-body">
-      <p>SadaBiz processed over $1 billion in annualized volume, making it one of SadaPay's most important revenue drivers. The service design blueprints directly contributed to fraud reduction by exposing and closing system-level vulnerabilities that screen-level design would never catch.</p>
-      <p>The Apple Pay and Google Pay integrations made SadaPay one of the first Pakistani fintechs to offer tap-to-pay through mobile wallets. For freelancers, SadaBiz became the banking product they'd been waiting for — purpose-built for how they actually work.</p>
+  </div>
+</section>
+
+<!-- METRIC HIGHLIGHT -->
+<section class="sub-highlight">
+  <span class="sub-highlight-value">$1B+</span>
+  <span class="sub-highlight-label">Annualized volume through SadaBiz</span>
+</section>
+
+<!-- APPROACH -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Approach</span>
+    <div>
+      <h2 class="sub-section-heading">Service design<br/>blueprints.</h2>
+      <div class="sub-section-body">
+        <p>I led with service design blueprints — every touchpoint, every system interaction, every human handoff in the SadaBiz journey. Front-stage, back-stage, and support processes. The CEO called these blueprints my "superpower." They revealed critical friction points and fraud vectors that weren't visible from a screen-level view. By mapping the complete service, we could identify drop-offs, manual-intervention needs, and exploitable gaps.</p>
+        <p>From there, I worked directly with engineering on the Apple Pay and Google Pay integrations — meeting both platform guidelines and SadaPay's brand standards. Card provisioning needed to feel seamless: one tap to add your SadaPay card to your phone's wallet. SadaPay became one of the first Pakistani fintechs to offer tap-to-pay through mobile wallets.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CASE STUDY NAV ═══ -->
-<nav class="cs-nav">
-  <a href="/stories/sadapay/nukta" class="cs-nav-link cs-nav-link--prev">
-    <span class="cs-nav-label">Previous Case Study</span>
-    <span class="cs-nav-title"><i class="ph-bold ph-arrow-left"></i> NUKTA</span>
+<!-- PULL QUOTE -->
+<section class="sub-pullquote">
+  <div class="sub-pullquote-mark">&#8220;</div>
+  <p class="sub-pullquote-text">His attention to detail in service design is one of his superpowers.</p>
+  <p class="sub-pullquote-cite">Brandon Timinsky · CEO, SadaPay</p>
+</section>
+
+<!-- OUTCOME -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Outcome</span>
+    <div>
+      <h2 class="sub-section-heading">$1 billion a year.<br/>40% less fraud.</h2>
+      <div class="sub-section-body">
+        <p>SadaBiz processed over $1 billion in annualized volume, making it one of SadaPay's most important revenue drivers. The service design blueprints directly contributed to fraud reduction by exposing and closing system-level vulnerabilities that screen-level design would never catch.</p>
+        <p>For Pakistani freelancers, SadaBiz became the banking product they'd been waiting for — purpose-built for how they actually work, with the payment rails and mobile wallet support to match.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories/sadapay"><span class="sp2-arrow">←</span> Back to SadaPay</a></div>
+  <a href="/stories/sadapay/waitlist" class="sp2-next-cta">
+    <span class="label">Next Case Study</span>
+    <span class="title">The Waitlist <span class="sp2-arrow">→</span></span>
   </a>
-  <div class="cs-nav-empty"></div>
-</nav>
-<div class="cs-back-link">
-  <a href="/stories/sadapay"><i class="ph-bold ph-arrow-left"></i> Back to SadaPay</a>
-</div>
+</section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
+<Footer />
 
 <script>
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  function initSub() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-  let ls=0; const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
+  initSub();
+  document.addEventListener('astro:page-load', initSub);
 </script>
 
 </Base>

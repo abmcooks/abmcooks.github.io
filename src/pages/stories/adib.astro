@@ -1,183 +1,183 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Loader from '../../components/Loader.astro';
+import Cursor from '../../components/Cursor.astro';
+import Nav from '../../components/Nav.astro';
+import FsMenu from '../../components/FsMenu.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 import '../../styles/stories.css';
 ---
 
-<Base title="ADIB — Basit Masood" description="Real-time cross-border transfers for the Middle East's leading Islamic bank. Visa Direct, open banking, design system overhaul.">
+<Base title="ADIB — Basit Masood" description="Real-time cross-border transfers for the Middle East's leading Islamic bank. Remit! by Visa Direct, open banking, and design system overhaul.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+<!-- ═══════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════ -->
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">ADIB · Lead Product Designer · Sep 2024 – Feb 2025</p>
+    <h1 class="sp2-hero-primary">Cross-border, real-time.</h1>
+    <p class="sp2-hero-secondary">Remit! by Visa Direct for the Middle East's leading Islamic bank.</p>
+    <p class="sp2-hero-desc">Six months at Abu Dhabi Islamic Bank — a 1.5 million-customer institution with 80% digital adoption and Euromoney's Best Islamic Bank 2025. I shipped three strategic initiatives: Remit! (Visa Direct cross-border), UAE Open Banking UI/UX, and a design-system overhaul. Short tenure, meaningful work.</p>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
+  <span class="sp2-hero-scroll">Scroll</span>
+</section>
 
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══ HERO — Clean, product-focused ═══ -->
-<section class="sp-hero">
-  <div class="sp-hero-inner reveal">
-    <div class="sp-hero-content">
-      <a href="/stories" class="sp-hero-back"><i class="ph-bold ph-arrow-left"></i> All Stories</a>
-      <p class="sp-hero-eyebrow">ADIB · Sep 2024 – Feb 2025 · Lead Product Designer</p>
-      <h1 class="sp-hero-title">REAL-TIME CROSS-BORDER TRANSFERS FOR THE MIDDLE EAST'S LEADING ISLAMIC BANK.</h1>
-      <p class="sp-hero-desc">Six months at Abu Dhabi Islamic Bank. Designed Remit! (Visa Direct), open banking UI/UX, and overhauled the design system from chaotic to atomic.</p>
-    </div>
-    <div class="sp-hero-visual">
-      <!-- Replace with product screenshot: <img src="/images/adib-hero.png" alt="ADIB app" /> -->
-    </div>
+<!-- ═══════════════════════════════════════════
+     BRAND MOMENT
+     ═══════════════════════════════════════════ -->
+<section class="sb-brand">
+  <div class="sb-brand-inner">
+    <img src="/images/ADIB-full-logo.svg" alt="Abu Dhabi Islamic Bank" class="sb-brand-logo" />
+    <div class="sb-brand-rule"></div>
+    <p class="sb-brand-caption">Abu Dhabi Islamic Bank · UAE · Since 1997</p>
   </div>
 </section>
 
-<!-- ═══ STATS — Grid cards ═══ -->
-<section class="sp-stats">
-  <div class="sp-stats-inner reveal">
-    <div class="sp-stat">
-      <span class="sp-stat-val">1M+</span>
-      <span class="sp-stat-label">App users</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">80%</span>
-      <span class="sp-stat-label">Digital adoption</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">1.5M</span>
-      <span class="sp-stat-label">Customers</span>
-    </div>
-    <div class="sp-stat">
-      <span class="sp-stat-val">Euromoney 2025</span>
-      <span class="sp-stat-label">Best Islamic Bank</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ NARRATIVE ═══ -->
-<section class="sp-narrative">
-  <div class="sp-narrative-inner">
-    <h2 class="sp-narrative-heading reveal">THE WORK</h2>
-
-    <div class="reveal">
-      <p>ADIB is the Middle East's leading Islamic bank — 1.5 million customers, 80% digital adoption, Euromoney's Best Islamic Bank 2025. I joined as Lead Product Designer to work on their most strategic digital initiatives.</p>
-
-      <p><strong>Remit!</strong> was the flagship project — real-time cross-border transfers powered by Visa Direct, reaching 11 billion+ cards globally. I designed the end-to-end experience: recipient management, transfer flow, fee transparency, confirmation states, and error handling for a product that had to work across dozens of corridors with different regulatory requirements.</p>
-
-      <p>I also designed the <strong>open banking UI/UX</strong> for the UAE's emerging Open Finance ecosystem — account aggregation, consent management, and third-party data sharing flows that had to balance regulatory compliance with genuine usability. And I led a <strong>design system overhaul</strong>, taking a chaotic collection of inconsistent components and restructuring it into an atomic system that the team could actually maintain.</p>
-
-      <p>The tenure was short — six months — and the environment was slow and political. But the impact was recognized. I shipped meaningful work in a fraction of the time most enterprise designers get to warm up.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ TESTIMONIALS — Horizontal carousel ═══ -->
-<section class="sp-testi">
-  <div class="sp-testi-header">
-    <h2 class="sp-testi-heading reveal">WHAT THEY SAID</h2>
-    <div class="sp-testi-arrows reveal">
-      <button class="sp-testi-arrow" id="testiPrev" aria-label="Previous"><i class="ph-bold ph-caret-left"></i></button>
-      <button class="sp-testi-arrow" id="testiNext" aria-label="Next"><i class="ph-bold ph-caret-right"></i></button>
-    </div>
-  </div>
-  <div class="sp-testi-track" id="testiTrack">
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">Although short, his impact was truly significant.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Daniel Young</span>
-        <span class="sp-testi-role">ADIB</span>
+<!-- ═══════════════════════════════════════════
+     STAKES · CONTEXT
+     ═══════════════════════════════════════════ -->
+<section class="sp2-stakes">
+  <div class="sp2-stakes-inner">
+    <div class="sp2-stakes-layout">
+      <div class="sp2-stakes-stats">
+        <div class="sp2-stakes-hero-stat">
+          <span class="val">1M+</span>
+          <span class="label">App users</span>
+        </div>
+        <div class="sp2-stakes-supporting">
+          <div class="stat"><span class="val">1.5M</span><span class="label">Customers</span></div>
+          <div class="stat"><span class="val">80%</span><span class="label">Digital adoption</span></div>
+          <div class="stat"><span class="val">Euromoney</span><span class="label">Best Islamic Bank 2025</span></div>
+        </div>
       </div>
-    </div>
-    <div class="sp-testi-card">
-      <div class="sp-testi-quote-mark">"</div>
-      <blockquote class="sp-testi-quote">He added value from day one. He's a fearless problem solver.</blockquote>
-      <div class="sp-testi-person">
-        <span class="sp-testi-name">Batsi Madzonga</span>
-        <span class="sp-testi-role">ADIB</span>
+      <div class="sp2-stakes-context">
+        <h2>The flagship Islamic bank<br/>meets <span class="accent">real-time remittance</span>.</h2>
+        <p>ADIB's customer base spans the UAE's expat majority — workers sending money home to Egypt, Pakistan, India, the Philippines. The remittance product they had was branch-era: slow, corridor-limited, and priced against regional challengers. The brief was to build the real-time digital version on top of Visa Direct's global rails.</p>
+        <p>I joined as Lead Product Designer on the most strategic digital initiative of the year — and on two parallel tracks that touched the rest of the bank: UAE's emerging Open Banking regulation, and the internal design system.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PREV / NEXT ═══ -->
-<nav class="sp-nav">
-  <a href="/stories/wtt" class="sp-nav-link sp-nav-link--prev">
-    <span class="sp-nav-label">Previous Story</span>
-    <span class="sp-nav-title"><i class="ph-bold ph-arrow-left"></i> WALKING THE TALK</span>
-  </a>
-  <a href="/stories/bolt-vpn" class="sp-nav-link sp-nav-link--next">
-    <span class="sp-nav-label">Next Story</span>
-    <span class="sp-nav-title">BOLT VPN <i class="ph-bold ph-arrow-right"></i></span>
-  </a>
-</nav>
-
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
+<!-- ═══════════════════════════════════════════
+     THE WORK
+     ═══════════════════════════════════════════ -->
+<section class="sb-work">
+  <div class="sb-work-head">
+    <p class="sb-work-eyebrow">What I did</p>
+    <h2 class="sb-work-heading">Three tracks, six months.</h2>
   </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
+  <div class="sb-work-grid">
+    <div class="sb-work-item">
+      <span class="sb-work-tag">Remit! · Visa Direct</span>
+      <h3 class="sb-work-title">Cross-border, end-to-end.</h3>
+      <p class="sb-work-body">Full Remit! experience — recipients, transfer flow, live FX and fee transparency, confirmation, error handling. Dozens of corridors on Visa Direct's 11B-card rail. Every screen shipped live; no staging for regulated flows.</p>
+    </div>
+    <div class="sb-work-item">
+      <span class="sb-work-tag">Open Banking</span>
+      <h3 class="sb-work-title">UAE Open Finance, from scratch.</h3>
+      <p class="sb-work-body">UI/UX for the UAE's emerging Open Finance regulation — aggregation, consent, third-party sharing. No regional precedent. Balanced compliance with usability for customers never before asked to grant an app read-access to their bank.</p>
+    </div>
+    <div class="sb-work-item">
+      <span class="sb-work-tag">Design system overhaul</span>
+      <h3 class="sb-work-title">From chaotic to atomic.</h3>
+      <p class="sb-work-body">Full restructure of a system fragmented by years of parallel squads — token architecture, atomic primitives, governed patterns. Became the substrate other product teams shipped on for the rest of the year.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+     ═══════════════════════════════════════════ -->
+<section class="sp2-testi">
+  <div class="sp2-testi-head">
+    <h2>What they said</h2>
+    <div class="sp2-testi-arrows">
+      <button class="sp2-testi-arrow" id="testiPrev" aria-label="Previous"><span class="sp2-arrow">←</span></button>
+      <button class="sp2-testi-arrow" id="testiNext" aria-label="Next"><span class="sp2-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="sp2-testi-track" id="testiTrack">
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">Although short, his impact was truly significant.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Daniel Young</span>
+        <span class="sp2-testi-role">ADIB</span>
+      </div>
+    </div>
+    <div class="sp2-testi-card">
+      <div class="sp2-testi-mark">&#8220;</div>
+      <blockquote class="sp2-testi-quote">He added value from day one. He's a fearless problem solver.</blockquote>
+      <div class="sp2-testi-attribution">
+        <span class="sp2-testi-name">Batsi Madzonga</span>
+        <span class="sp2-testi-role">ADIB</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     NEXT
+     ═══════════════════════════════════════════ -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories"><span class="sp2-arrow">←</span> Back to all stories</a></div>
+  <a href="/stories/bolt-vpn" class="sp2-next-cta">
+    <span class="label">Next Story</span>
+    <span class="title">Bolt VPN <span class="sp2-arrow">→</span></span>
+  </a>
+</section>
+
+<Footer />
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  function initBrief() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
+
+    const track = document.getElementById('testiTrack');
+    const prevBtn = document.getElementById('testiPrev');
+    const nextBtn = document.getElementById('testiNext');
+    if (track && prevBtn && nextBtn) {
+      function getScrollAmt() {
+        const card = track.querySelector('.sp2-testi-card') as HTMLElement | null;
+        if (!card) return 464;
+        return card.offsetWidth + 24;
+      }
+      prevBtn.addEventListener('click', () => track.scrollBy({ left: -getScrollAmt(), behavior: 'smooth' }));
+      nextBtn.addEventListener('click', () => track.scrollBy({ left: getScrollAmt(), behavior: 'smooth' }));
+    }
   }
-  // Nav hide
-  let ls=0; const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
-  // Menu
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
-  // Loader
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
-  // Reveal
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
-  // Testimonial carousel arrows
-  const track=document.getElementById('testiTrack');
-  const prevBtn=document.getElementById('testiPrev');
-  const nextBtn=document.getElementById('testiNext');
-  if(track&&prevBtn&&nextBtn){
-    const scrollAmt=424;
-    prevBtn.addEventListener('click',()=>track.scrollBy({left:-scrollAmt,behavior:'smooth'}));
-    nextBtn.addEventListener('click',()=>track.scrollBy({left:scrollAmt,behavior:'smooth'}));
-  }
+  initBrief();
+  document.addEventListener('astro:page-load', initBrief);
 </script>
 
 </Base>

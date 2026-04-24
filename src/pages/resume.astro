@@ -1,50 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
+import Loader from '../components/Loader.astro';
+import Cursor from '../components/Cursor.astro';
+import Nav from '../components/Nav.astro';
+import FsMenu from '../components/FsMenu.astro';
 import '../styles/global.css';
 import '../styles/resume.css';
 ---
 
 <Base title="Resume — Basit Masood" description="Head of Product Design. 8 years in fintech. Founding designer at SadaPay (0→4M+ users) and ZAR (a16z-backed). Products raised $90M+.">
 
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-mark">
-    <svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
-      <circle class="glow" cx="308" cy="389" r="55.5"/>
-      <circle class="dot" cx="308" cy="389" r="55.5"/>
-    </svg>
-  </div>
-</div>
-
-<!-- CURSOR -->
-<div class="custom-cursor" id="customCursor">
-  <div class="cursor-ring"></div>
-  <div class="cursor-dot"></div>
-</div>
-
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="nav-left">
-    <a href="/" class="nav-logo">
-      <svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/>
-        <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/>
-        <circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/>
-      </svg>
-    </a>
-  </div>
-  <div class="nav-right">
-    <a href="/stories">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume nav-active"><i class="ph-bold ph-download-simple"></i> Resume</a>
-  </div>
-</nav>
+<Loader />
+<Cursor />
+<Nav active="resume" />
+<FsMenu />
 
 <!-- RESUME -->
 <div class="res-page">
@@ -261,36 +230,27 @@ import '../styles/resume.css';
 </footer>
 
 <script>
-  // Set light bg for resume page — match --color-white token
-  const warmWhite = getComputedStyle(document.documentElement).getPropertyValue('--color-white').trim();
-  document.documentElement.style.background = warmWhite;
-  document.body.style.background = warmWhite;
+  // Cursor / FsMenu / Nav-scroll handled by shared components.
+  function initResume() {
+    // Mark as light-mode page — nav items go dark ink at rest, white on scrolled backdrop.
+    document.body.classList.add('page-light');
 
-  // Loader
-  const loader = document.getElementById('loader');
-  if (loader) {
-    setTimeout(() => {
-      loader.classList.add('done');
-      document.body.classList.add('loaded');
-    }, 2400);
+    // Light bg override for resume — match --color-white token
+    const warmWhite = getComputedStyle(document.documentElement).getPropertyValue('--color-white').trim();
+    document.documentElement.style.background = warmWhite;
+    document.body.style.background = warmWhite;
+
+    // Print button
+    document.querySelector('.res-print')?.addEventListener('click', () => window.print());
   }
-
-  // Custom cursor (safe, class-based)
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac();
-    document.body.classList.add('cursor-active');
-    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
+  function cleanupResume() {
+    document.body.classList.remove('page-light');
+    document.documentElement.style.background = '';
+    document.body.style.background = '';
   }
-
-  // Print button
-  document.querySelector('.res-print')?.addEventListener('click', () => window.print());
+  initResume();
+  document.addEventListener('astro:page-load', initResume);
+  document.addEventListener('astro:before-swap', cleanupResume);
 </script>
 
 </Base>

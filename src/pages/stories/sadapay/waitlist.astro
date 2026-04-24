@@ -1,198 +1,134 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import Loader from '../../../components/Loader.astro';
+import Cursor from '../../../components/Cursor.astro';
+import Nav from '../../../components/Nav.astro';
+import FsMenu from '../../../components/FsMenu.astro';
+import Footer from '../../../components/Footer.astro';
 import '../../../styles/global.css';
 import '../../../styles/stories.css';
-import '../../../styles/casestudy.css';
 ---
 
-<Base title="Waitlist — SadaPay — Basit Masood" description="How gamification, golden tickets, and zero ad spend drove 700K sign-ups and made SadaPay a cultural moment.">
+<Base title="The Waitlist — Basit Masood" description="700,000 signups. Zero ad spend. The gamified pre-launch that made Pakistan desperate to join a neobank that didn't exist yet.">
 
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-mark"><svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/><circle class="glow" cx="308" cy="389" r="55.5"/><circle class="dot" cx="308" cy="389" r="55.5"/></svg></div></div>
+<script is:inline>
+  (function(){
+    var apply = function(){ document.body && document.body.classList.add('page-light'); };
+    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
+    apply();
+    document.addEventListener('astro:page-load', apply);
+    document.addEventListener('astro:after-swap', apply);
+    document.addEventListener('astro:before-swap', clear);
+  })();
+</script>
 
-<!-- Cursor -->
-<div class="custom-cursor" id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<Loader />
+<Cursor />
+<Nav active="stories" />
+<FsMenu />
 
-<!-- Nav -->
-<nav class="nav" id="nav">
-  <div class="nav-left"><a href="/" class="nav-logo"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#f5f0e8" fill-opacity="0.8"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48"/><circle cx="14.6662" cy="17.3332" r="2.6667" fill="#e11d48" style="filter: blur(4px); opacity: 0.5;"/></svg></a></div>
-  <div class="nav-right">
-    <a href="/stories" class="nav-active">Stories</a>
-    <a href="/writing">Writing</a>
-    <a href="/about">About</a>
-    <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
+<!-- HERO -->
+<section class="sp2-hero">
+  <div class="sp2-hero-inner">
+    <p class="sp2-hero-eyebrow">
+      <a href="/stories/sadapay" style="color:inherit;text-decoration:none;">← SadaPay</a> · Case study · 2021
+    </p>
+    <h1 class="sp2-hero-primary">Zero ad spend. 700K signups.</h1>
+    <p class="sp2-hero-secondary">The waitlist that broke Pakistan's internet.</p>
+    <p class="sp2-hero-desc">SadaPay had a bold visual identity, a product vision people could believe in, and zero marketing budget. I designed a gamified waitlist with Founders Club tiers, golden tickets, and branded merchandise that turned the pre-launch into a cultural phenomenon. 700,000 signups. Zero paid acquisition.</p>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
-</nav>
+  <span class="sp2-hero-scroll">Scroll</span>
+</section>
 
-<!-- Fullscreen Menu -->
-<div class="fs-menu" id="fsMenu">
-  <button class="fs-menu-close" id="fsMenuClose" aria-label="Close menu"><i class="ph-bold ph-x"></i></button>
-  <nav class="fs-menu-nav">
-    <a href="/" class="fs-menu-link">HOME</a>
-    <a href="/stories" class="fs-menu-link">STORIES</a>
-    <a href="/writing" class="fs-menu-link">WRITING</a>
-    <a href="/about" class="fs-menu-link">ABOUT</a>
-    <a href="/resume" class="fs-menu-link fs-menu-link--resume"><i class="ph-bold ph-download-simple"></i> RESUME</a>
-  </nav>
-  <div class="fs-menu-footer">
-    <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a>
-    <a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-  </div>
-</div>
-
-<!-- ═══ HERO ═══ -->
-<section class="cs-hero">
-  <div class="cs-hero-inner reveal">
-    <div class="cs-breadcrumb">
-      <a href="/stories">Stories</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <a href="/stories/sadapay">SadaPay</a>
-      <span class="cs-breadcrumb-sep"><i class="ph-bold ph-caret-right"></i></span>
-      <span class="cs-breadcrumb-current">Waitlist</span>
-    </div>
-    <h1 class="cs-hero-title">THE WAITLIST THAT BROKE PAKISTAN'S INTERNET</h1>
-    <p class="cs-hero-desc">How gamification, golden tickets, and zero ad spend drove 700K sign-ups and made SadaPay a cultural moment before the app even launched.</p>
-    <div class="cs-hero-meta">
-      <span><span class="cs-meta-label">Company</span> <span class="cs-meta-value">SadaPay</span></span>
-      <span><span class="cs-meta-label">Year</span> <span class="cs-meta-value">2021</span></span>
-      <span><span class="cs-meta-label">Role</span> <span class="cs-meta-value">Founding Product Designer</span></span>
-    </div>
+<!-- BRAND MOMENT -->
+<section class="sb-brand">
+  <div class="sb-brand-inner">
+    <img src="/images/sadapay-full-logo.svg" alt="SadaPay" class="sb-brand-logo" />
+    <div class="sb-brand-rule"></div>
+    <p class="sb-brand-caption">SadaPay Waitlist · Pre-launch · 2021</p>
   </div>
 </section>
 
-<!-- ═══ CHALLENGE ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE CHALLENGE</h2>
-    <div class="cs-body">
-      <p>SadaPay was building Pakistan's first neobank, but the app wasn't ready yet. The company had zero marketing budget, no brand recognition, and was entering a market where digital banking was barely a concept. The challenge was simple but enormous: how do you build hype for a product nobody can use yet?</p>
-      <p>Traditional fintech launches rely on paid acquisition — performance marketing, influencer deals, billboard campaigns. SadaPay had none of that. What we had was a bold visual identity, a product vision people could believe in, and the willingness to try something nobody in Pakistan's tech scene had attempted before.</p>
-      <p>The question became: could we make people desperate to join something that didn't exist yet?</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ METRIC HIGHLIGHT ═══ -->
-<div class="cs-highlight">
-  <div class="cs-highlight-inner reveal">
-    <span class="cs-highlight-value">700K</span>
-    <span class="cs-highlight-label">sign-ups, zero ad spend</span>
-  </div>
-</div>
-
-<!-- ═══ APPROACH ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE APPROACH</h2>
-    <div class="cs-body">
-      <p>I designed a multi-layered gamification system inspired by the psychology of exclusivity and social proof. The core mechanic was simple: sign up, get a position in the queue, move up by referring friends. But the details made it addictive.</p>
-      <p><strong>Founders Club tiers</strong> gave early adopters status. The higher your tier, the more exclusive your card design, the earlier your access. I designed distinct visual identities for each tier — from standard to gold to the ultra-rare platinum — making each one feel like a collectible.</p>
-      <p><strong>Golden tickets</strong> were the viral engine. Randomly distributed, they let holders skip the entire queue. The unpredictability created a lottery-like excitement. People shared screenshots of their golden tickets on social media, which drove more sign-ups organically.</p>
-      <p>I also designed branded merchandise — exclusive to top referrers — turning the waitlist into a status symbol. Hoodies, stickers, card skins. Each piece reinforced the brand and gave people something physical to show off.</p>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — waitlist tiers design</span>
-    </div>
-    <div class="cs-img-placeholder">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — golden ticket experience</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SOLUTION ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE SOLUTION</h2>
-    <div class="cs-body">
-      <p>The final waitlist experience was a complete product in itself. Users landed on a page that felt premium — dark, bold, with the SadaPay brand front and center. After signing up, they entered a gamified dashboard showing their queue position, referral count, tier status, and what they'd unlock next.</p>
-      <p>The referral sharing was designed to be frictionless. One tap to copy a link, with pre-written messages optimized for WhatsApp (Pakistan's dominant messaging platform). Every share felt personal, not spammy.</p>
-      <p>The leaderboard created healthy competition. Top referrers were visible, driving people to recruit harder. And the merchandise drops — announced with countdown timers — created urgency that kept people coming back.</p>
-    </div>
-    <div class="cs-img-placeholder cs-img-placeholder--lg">
-      <i class="ph-bold ph-image"></i>
-      <span>Add screenshot — complete waitlist dashboard</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ IMPACT ═══ -->
-<section class="cs-section">
-  <div class="cs-section-inner reveal">
-    <h2 class="cs-section-heading">THE IMPACT</h2>
-    <div class="cs-impact-grid">
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">700K+</span>
-        <span class="cs-impact-label">Total sign-ups</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">$0</span>
-        <span class="cs-impact-label">Paid acquisition</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">100%</span>
-        <span class="cs-impact-label">Organic growth</span>
-      </div>
-      <div class="cs-impact-stat">
-        <span class="cs-impact-val">#1</span>
-        <span class="cs-impact-label">Cultural moment</span>
+<!-- CHALLENGE -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Challenge</span>
+    <div>
+      <h2 class="sub-section-heading">A neobank<br/>that didn't <span class="accent">exist yet</span>.</h2>
+      <div class="sub-section-body">
+        <p>Pakistan's first neobank wasn't ready to launch. Zero ad budget, no brand recognition, a market where digital banking was barely a concept. The question became: could we make people desperate to join something that didn't exist yet?</p>
+        <p>Traditional fintech launches rely on paid acquisition — performance marketing, influencers, billboards. SadaPay had none of that. What we had was a bold identity and the willingness to try something nobody in Pakistan's tech scene had attempted.</p>
       </div>
     </div>
-    <div class="cs-body">
-      <p>The waitlist became more than a growth hack — it became a cultural phenomenon. Celebrities joined organically. Irfan Junejo, one of Pakistan's biggest YouTubers, visited the office unprompted. People posted their queue positions on Instagram stories. SadaPay became the first Pakistani fintech to generate genuine FOMO.</p>
-      <p>The design of the waitlist experience set the tone for everything that followed. It proved that in a market with no precedent for digital banking hype, the right combination of design, psychology, and brand could create demand out of thin air.</p>
+  </div>
+</section>
+
+<!-- METRIC HIGHLIGHT -->
+<section class="sub-highlight">
+  <span class="sub-highlight-value">700K+</span>
+  <span class="sub-highlight-label">Pre-launch signups with zero paid acquisition</span>
+</section>
+
+<!-- APPROACH -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Approach</span>
+    <div>
+      <h2 class="sub-section-heading">Exclusivity<br/>as mechanic.</h2>
+      <div class="sub-section-body">
+        <p>I designed a multi-layered gamification system inspired by the psychology of exclusivity. Sign up, get a position in the queue, move up by referring friends. Founders Club tiers gave early adopters status — distinct visual identities from standard to gold to the ultra-rare platinum. The black edition became a cultural object people referenced by name.</p>
+        <p>Golden tickets were the viral engine — randomly distributed, letting holders skip the entire queue. Unpredictability created lottery-like excitement. People shared screenshots on social media, driving more organic signups. Branded merchandise — exclusive to top referrers — turned the waitlist into a status symbol. Hoodies, stickers, card skins. Each piece reinforced the brand.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CASE STUDY NAV ═══ -->
-<nav class="cs-nav">
-  <div class="cs-nav-empty"></div>
-  <a href="/stories/sadapay/nukta" class="cs-nav-link cs-nav-link--next">
-    <span class="cs-nav-label">Next Case Study</span>
-    <span class="cs-nav-title">NUKTA <i class="ph-bold ph-arrow-right"></i></span>
+<!-- PULL QUOTE -->
+<section class="sub-pullquote">
+  <div class="sub-pullquote-mark">&#8220;</div>
+  <p class="sub-pullquote-text">The first Pakistani fintech to generate genuine FOMO.</p>
+  <p class="sub-pullquote-cite">The SadaPay waitlist, 2021</p>
+</section>
+
+<!-- OUTCOME -->
+<section class="sub-section">
+  <div class="sub-section-inner">
+    <span class="sub-section-label">Outcome</span>
+    <div>
+      <h2 class="sub-section-heading">Celebrities joined<br/>unprompted.</h2>
+      <div class="sub-section-body">
+        <p>The waitlist became more than a growth hack — it became a cultural phenomenon. Celebrities joined organically. Irfan Junejo, one of Pakistan's biggest YouTubers, visited the office unprompted. People posted their queue positions on Instagram stories. Hoodies and card skins surfaced in the feeds of people who'd never worked in fintech.</p>
+        <p>It proved that in a market with no precedent for digital banking hype, the right combination of design, psychology, and brand could create demand out of thin air — without a single rupee of paid acquisition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="sp2-next">
+  <div class="sp2-next-back"><a href="/stories/sadapay"><span class="sp2-arrow">←</span> Back to SadaPay</a></div>
+  <a href="/stories/sadapay/nukta" class="sp2-next-cta">
+    <span class="label">Next Case Study</span>
+    <span class="title">Nukta <span class="sp2-arrow">→</span></span>
   </a>
-</nav>
-<div class="cs-back-link">
-  <a href="/stories/sadapay"><i class="ph-bold ph-arrow-left"></i> Back to SadaPay</a>
-</div>
+</section>
 
-<!-- Footer -->
-<footer class="the-footer" id="footer">
-  <div class="footer-bg"><img src="/images/divider-volcanic.png" alt="" class="footer-bg-img" loading="lazy" /><div class="footer-bg-fade"></div></div>
-  <div class="footer-mark"><svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-logo"><path class="footer-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><path class="footer-tube-bloom" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/><circle class="footer-dot" cx="14.6662" cy="17.3332" r="2.6667"/><circle class="footer-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/></svg></div>
-  <div class="footer-center">
-    <h2 class="footer-headline">The next product<br/>I design could be yours.</h2>
-    <a href="mailto:basitmasood999@gmail.com" class="footer-email">basitmasood999@gmail.com</a>
-    <div class="footer-links"><a href="https://linkedin.com/in/iabm" target="_blank">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a><a href="https://wa.me/971582071725" target="_blank">WhatsApp <i class="ph-bold ph-arrow-up-right"></i></a><span class="footer-loc">UAE · Open to relocation</span></div>
-  </div>
-  <div class="footer-bottom"><div class="footer-nav-row"><a href="/">Home</a><span class="footer-nav-dot"></span><a href="/stories">Stories</a><span class="footer-nav-dot"></span><a href="/writing">Writing</a><span class="footer-nav-dot"></span><a href="/about">About</a><span class="footer-nav-dot"></span><a href="/resume">Resume</a></div><span class="footer-copy">Designed & built by hand · © 2026</span></div>
-</footer>
+<Footer />
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX=0,mouseY=0,curX=0,curY=0;
-    document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});
-    function ac(){curX+=(mouseX-curX)*0.15;curY+=(mouseY-curY)*0.15;cursor.style.transform=`translate(${curX}px,${curY}px)`;requestAnimationFrame(ac);}
-    ac(); document.body.classList.add('cursor-active');
-    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+  function initSub() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
   }
-  // Nav hide
-  let ls=0; const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>100)nav?.classList.add('nav-hidden');else nav?.classList.remove('nav-hidden');ls=c;},{passive:true});
-  // Menu
-  const burger=document.getElementById('navBurger'),fsMenu=document.getElementById('fsMenu'),fsClose=document.getElementById('fsMenuClose');
-  if(burger&&fsMenu){burger.addEventListener('click',()=>{fsMenu.classList.add('open');document.body.style.overflow='hidden';});fsClose?.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';});fsMenu.querySelectorAll('.fs-menu-link').forEach(l=>l.addEventListener('click',()=>{fsMenu.classList.remove('open');document.body.style.overflow='';}));}
-  // Loader
-  const loader=document.getElementById('loader');if(loader){setTimeout(()=>{loader.classList.add('done');document.body.classList.add('loaded');},2400);}
-  // Reveal
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('revealed'));}
+  initSub();
+  document.addEventListener('astro:page-load', initSub);
 </script>
 
 </Base>
