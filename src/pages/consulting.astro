@@ -17,19 +17,14 @@ import '../styles/stories.css';
 <Nav />
 <FsMenu />
 
-<!-- Click-to-copy toast -->
-<div class="cs3-copy-toast" id="copyToast">Email copied to clipboard</div>
-
 <!-- ============================================
      1. HERO — minimal
      ============================================ -->
 <section class="cs3-hero" data-cursor="dark">
-  <canvas class="cs3-hero-canvas" id="cs3HeroCanvas" aria-hidden="true"></canvas>
-
   <div class="cs3-hero-content">
     <p class="cs3-hero-eyebrow">
       <span class="cs3-avail-dot"></span>
-      <span>Consulting · Available Q2 2026</span>
+      <span>Consulting · Currently available</span>
     </p>
 
     <h1 class="cs3-hero-poster" aria-label="Design times AI">
@@ -93,15 +88,9 @@ import '../styles/stories.css';
       <p class="cs2-problem-text">Two designers doing the work of ten.</p>
     </div>
     <div class="cs2-problem-slide" data-slide="2">
-      <p class="cs2-problem-text">You want to use AI but don't know where to start.</p>
-    </div>
-    <div class="cs2-problem-slide" data-slide="3">
-      <p class="cs2-problem-text">You have a design system and nobody uses it.</p>
-    </div>
-    <div class="cs2-problem-slide" data-slide="4">
       <p class="cs2-problem-text">Design is the bottleneck in every sprint.</p>
     </div>
-    <div class="cs2-problem-slide cs2-problem-slide--closer" data-slide="5">
+    <div class="cs2-problem-slide cs2-problem-slide--closer" data-slide="3">
       <p class="cs2-problem-closer">I've solved each of these.</p>
       <p class="cs2-problem-closer-sub">Yours is next.</p>
       <a href="#contact" class="cs2-problem-closer-cta">Get in touch <span class="sp2-arrow">→</span></a>
@@ -111,188 +100,38 @@ import '../styles/stories.css';
 </section>
 
 <!-- ============================================
-     5. SERVICES — DARK BAND, full-width chapters
+     5. SERVICES — compact 2×2 grid
      ============================================ -->
-<section class="cs4-services" id="services" data-cursor="dark">
-  <!-- Intro block -->
-  <header class="cs4-intro">
-    <p class="cs4-intro-kicker">The services</p>
-    <h2 class="cs4-intro-heading">Four shapes<br/>of engagement.</h2>
-    <p class="cs4-intro-sub">Each shaped to what your team actually needs — not a bundled retainer, not a generic audit. Real deliverables, real timeline, real handover.</p>
-  </header>
+<section class="cs5-services" id="services" data-cursor="dark">
+  <div class="cs5-services-inner">
+    <header class="cs5-services-head">
+      <p class="cs5-services-kicker">The services</p>
+      <h2 class="cs5-services-heading">Four things I do.</h2>
+    </header>
 
-  <!-- CHAPTER 01 -->
-  <article class="cs4-chapter" data-cursor="dark">
-    <div class="cs4-chapter-inner">
-      <div class="cs4-chapter-text">
-        <span class="cs4-chapter-num">01</span>
-        <h3 class="cs4-chapter-title">AI Design Operations</h3>
-        <p class="cs4-chapter-lede">Set up AI-assisted design workflows from scratch — prompt engineering, agent pipelines, and engineer self-service from your design system. No designer bottleneck.</p>
-        <ul class="cs4-chapter-points">
-          <li>Claude Code setup for design teams</li>
-          <li>AI agent workflows for repetitive design tasks</li>
-          <li>Design-to-code automation pipelines</li>
-          <li>Custom scripts and recipes for daily ops</li>
-        </ul>
-      </div>
-      <div class="cs4-chapter-visual">
-        <div class="cs4-term" aria-hidden="true">
-          <div class="cs4-term-chrome">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="cs4-term-body">
-            <p><span class="cs4-term-prompt">$</span> claude design --spec</p>
-            <p class="cs4-term-out">✓ Tokens exported → figma.json</p>
-            <p class="cs4-term-out">✓ Components synced to Storybook</p>
-            <p><span class="cs4-term-prompt">$</span> agent ship button-primary</p>
-            <p class="cs4-term-out">✓ Variants generated</p>
-            <p class="cs4-term-out">✓ PR opened: <span class="cs4-term-link">#1284</span></p>
-            <p><span class="cs4-term-prompt">$</span> <span class="cs4-term-cursor">_</span></p>
-          </div>
-        </div>
-      </div>
+    <div class="cs5-services-grid">
+      <article class="cs5-service">
+        <span class="cs5-service-num">01</span>
+        <h3 class="cs5-service-title">AI Design Operations</h3>
+        <p class="cs5-service-line">AI-assisted workflows so engineers self-serve from your design system. No designer bottleneck.</p>
+      </article>
+      <article class="cs5-service">
+        <span class="cs5-service-num">02</span>
+        <h3 class="cs5-service-title">Design Systems</h3>
+        <p class="cs5-service-line">Production-grade systems with tokens wired to code. Governance and AI-readiness built in.</p>
+      </article>
+      <article class="cs5-service">
+        <span class="cs5-service-num">03</span>
+        <h3 class="cs5-service-title">Product Design Leadership</h3>
+        <p class="cs5-service-line">Fractional senior leadership — strategy, hiring, reviews. Without the full-time Head-of-Design hire.</p>
+      </article>
+      <article class="cs5-service">
+        <span class="cs5-service-num">04</span>
+        <h3 class="cs5-service-title">AI Agent Design</h3>
+        <p class="cs5-service-line">Design products where the primary user is an AI agent, not a human. I built MACHINA — a 5-tool AI OS.</p>
+      </article>
     </div>
-  </article>
-
-  <!-- CHAPTER 02 -->
-  <article class="cs4-chapter cs4-chapter--flip">
-    <div class="cs4-chapter-inner">
-      <div class="cs4-chapter-text">
-        <span class="cs4-chapter-num">02</span>
-        <h3 class="cs4-chapter-title">Design Systems That Scale</h3>
-        <p class="cs4-chapter-lede">Production-grade design systems with tokens connected to code — not a Figma library nobody uses. A living system with governance and AI-readiness built in.</p>
-        <ul class="cs4-chapter-points">
-          <li>Component architecture + token system</li>
-          <li>Figma-to-code pipeline with design tokens</li>
-          <li>Governance, QA, and adoption frameworks</li>
-          <li>AI-ready systems (agents can consume your DS)</li>
-        </ul>
-      </div>
-      <div class="cs4-chapter-visual">
-        <svg class="cs4-atomic" viewBox="0 0 400 400" aria-hidden="true">
-          <defs>
-            <radialGradient id="cs4AtomicGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="rgba(225,29,72,0.22)"/>
-              <stop offset="100%" stop-color="rgba(225,29,72,0)"/>
-            </radialGradient>
-          </defs>
-          <circle cx="200" cy="200" r="170" fill="url(#cs4AtomicGlow)"/>
-          <g stroke="rgba(245,240,232,0.35)" stroke-width="1" fill="none">
-            <circle cx="200" cy="200" r="160"/>
-            <circle cx="200" cy="200" r="120"/>
-            <circle cx="200" cy="200" r="80"/>
-            <circle cx="200" cy="200" r="40"/>
-          </g>
-          <g fill="#f5f0e8">
-            <circle cx="200" cy="40" r="4"/>
-            <circle cx="360" cy="200" r="4"/>
-            <circle cx="200" cy="360" r="4"/>
-            <circle cx="40" cy="200" r="4"/>
-          </g>
-          <g fill="rgba(245,240,232,0.55)">
-            <circle cx="283" cy="117" r="3"/>
-            <circle cx="117" cy="117" r="3"/>
-            <circle cx="117" cy="283" r="3"/>
-            <circle cx="283" cy="283" r="3"/>
-          </g>
-          <rect x="188" y="188" width="24" height="24" fill="#e11d48" transform="rotate(45 200 200)"/>
-          <text x="200" y="30" text-anchor="middle" fill="rgba(245,240,232,0.4)" font-family="var(--font-heading)" font-size="10" letter-spacing="2">TOKEN</text>
-          <text x="200" y="80" text-anchor="middle" fill="rgba(245,240,232,0.4)" font-family="var(--font-heading)" font-size="10" letter-spacing="2">PRIMITIVE</text>
-          <text x="200" y="140" text-anchor="middle" fill="rgba(245,240,232,0.4)" font-family="var(--font-heading)" font-size="10" letter-spacing="2">COMPONENT</text>
-          <text x="200" y="180" text-anchor="middle" fill="rgba(245,240,232,0.4)" font-family="var(--font-heading)" font-size="10" letter-spacing="2">PATTERN</text>
-        </svg>
-      </div>
-    </div>
-  </article>
-
-  <!-- CHAPTER 03 -->
-  <article class="cs4-chapter">
-    <div class="cs4-chapter-inner">
-      <div class="cs4-chapter-text">
-        <span class="cs4-chapter-num">03</span>
-        <h3 class="cs4-chapter-title">Product Design Leadership</h3>
-        <p class="cs4-chapter-lede">Fractional senior leadership for teams that need direction without a full-time Head of Design. Strategy, hiring, reviews, and the scaffolding that lets your team do their best work.</p>
-        <ul class="cs4-chapter-points">
-          <li>Design team structure and hiring</li>
-          <li>UX strategy and product direction</li>
-          <li>Design reviews and quality governance</li>
-          <li>Research practice and frameworks</li>
-        </ul>
-      </div>
-      <div class="cs4-chapter-visual">
-        <svg class="cs4-team" viewBox="0 0 400 400" aria-hidden="true">
-          <g stroke="rgba(245,240,232,0.3)" stroke-width="1" fill="none">
-            <line x1="200" y1="70" x2="100" y2="180"/>
-            <line x1="200" y1="70" x2="200" y2="180"/>
-            <line x1="200" y1="70" x2="300" y2="180"/>
-            <line x1="100" y1="210" x2="60" y2="320"/>
-            <line x1="100" y1="210" x2="140" y2="320"/>
-            <line x1="200" y1="210" x2="200" y2="320"/>
-            <line x1="300" y1="210" x2="260" y2="320"/>
-            <line x1="300" y1="210" x2="340" y2="320"/>
-          </g>
-          <circle cx="200" cy="60" r="16" fill="#e11d48"/>
-          <text x="200" y="98" text-anchor="middle" fill="rgba(245,240,232,0.6)" font-family="var(--font-heading)" font-size="10" letter-spacing="2">LEAD</text>
-          <g fill="none" stroke="#f5f0e8" stroke-width="1.5">
-            <circle cx="100" cy="195" r="11"/>
-            <circle cx="200" cy="195" r="11"/>
-            <circle cx="300" cy="195" r="11"/>
-          </g>
-          <g fill="rgba(245,240,232,0.8)">
-            <circle cx="60" cy="335" r="7"/>
-            <circle cx="140" cy="335" r="7"/>
-            <circle cx="200" cy="335" r="7"/>
-            <circle cx="260" cy="335" r="7"/>
-            <circle cx="340" cy="335" r="7"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </article>
-
-  <!-- CHAPTER 04 -->
-  <article class="cs4-chapter cs4-chapter--flip">
-    <div class="cs4-chapter-inner">
-      <div class="cs4-chapter-text">
-        <span class="cs4-chapter-num">04</span>
-        <h3 class="cs4-chapter-title">AI Agent Design</h3>
-        <p class="cs4-chapter-lede">Design products where the primary user is an AI agent, not a human. I built MACHINA — a 5-tool AI operating system — with interfaces for machine consumption and human oversight.</p>
-        <ul class="cs4-chapter-points">
-          <li>Agent-facing UX (APIs, schemas, dashboards)</li>
-          <li>Human-in-the-loop oversight interfaces</li>
-          <li>AI brand identity and documentation systems</li>
-          <li>Experimentation and metrics frameworks</li>
-        </ul>
-      </div>
-      <div class="cs4-chapter-visual">
-        <svg class="cs4-agent" viewBox="0 0 420 400" aria-hidden="true">
-          <defs>
-            <marker id="cs4ArrowEnd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-              <path d="M0,0 L10,5 L0,10 Z" fill="rgba(245,240,232,0.5)"/>
-            </marker>
-          </defs>
-          <rect x="10" y="180" width="70" height="40" rx="6" fill="none" stroke="rgba(245,240,232,0.55)" stroke-width="1"/>
-          <text x="45" y="205" text-anchor="middle" fill="#f5f0e8" font-family="var(--font-heading)" font-size="10" letter-spacing="2">PROMPT</text>
-          <line x1="80" y1="200" x2="150" y2="200" stroke="rgba(245,240,232,0.5)" stroke-width="1" marker-end="url(#cs4ArrowEnd)"/>
-          <g transform="translate(210, 200)">
-            <g class="cs4-agent-core">
-              <polygon points="0,-50 43,-25 43,25 0,50 -43,25 -43,-25" fill="rgba(225,29,72,0.2)" stroke="#e11d48" stroke-width="1.5"/>
-            </g>
-            <text x="0" y="5" text-anchor="middle" fill="#f5f0e8" font-family="var(--font-display)" font-size="20" letter-spacing="0">AI</text>
-          </g>
-          <line x1="270" y1="200" x2="340" y2="80" stroke="rgba(245,240,232,0.5)" stroke-width="1" marker-end="url(#cs4ArrowEnd)"/>
-          <line x1="270" y1="200" x2="340" y2="200" stroke="rgba(245,240,232,0.5)" stroke-width="1" marker-end="url(#cs4ArrowEnd)"/>
-          <line x1="270" y1="200" x2="340" y2="320" stroke="rgba(245,240,232,0.5)" stroke-width="1" marker-end="url(#cs4ArrowEnd)"/>
-          <rect x="350" y="60" width="60" height="40" rx="6" fill="none" stroke="rgba(245,240,232,0.55)"/>
-          <text x="380" y="85" text-anchor="middle" fill="#f5f0e8" font-family="var(--font-heading)" font-size="9" letter-spacing="2">UI</text>
-          <rect x="350" y="180" width="60" height="40" rx="6" fill="none" stroke="rgba(245,240,232,0.55)"/>
-          <text x="380" y="205" text-anchor="middle" fill="#f5f0e8" font-family="var(--font-heading)" font-size="9" letter-spacing="2">SPEC</text>
-          <rect x="350" y="300" width="60" height="40" rx="6" fill="none" stroke="rgba(245,240,232,0.55)"/>
-          <text x="380" y="325" text-anchor="middle" fill="#f5f0e8" font-family="var(--font-heading)" font-size="9" letter-spacing="2">CODE</text>
-        </svg>
-      </div>
-    </div>
-  </article>
+  </div>
 </section>
 
 <!-- ============================================
@@ -309,116 +148,229 @@ import '../styles/stories.css';
         <span class="cs3-step-num">01</span>
         <div class="cs3-step-phase">Week 1</div>
         <h3 class="cs3-step-title">Discovery</h3>
-        <p class="cs3-step-body">Team interviews, product audit, design-system audit if one exists. I leave with a diagnosis — the real problem, not the surface one. You get a written brief with what I'd do and why.</p>
+        <p class="cs3-step-body">Team interviews, product + system audit. You leave with a diagnosis brief.</p>
       </div>
       <div class="cs3-step">
         <span class="cs3-step-num">02</span>
         <div class="cs3-step-phase">Week 2 – 3</div>
         <h3 class="cs3-step-title">Shape</h3>
-        <p class="cs3-step-body">We align on scope, deliverables, success metrics. If it's a system build, the skeleton ships in week 2. If it's ops, the first AI workflow runs by end of week 3. Demos weekly.</p>
+        <p class="cs3-step-body">Scope locked. Skeleton ships week 2. Weekly demos.</p>
       </div>
       <div class="cs3-step">
         <span class="cs3-step-num">03</span>
         <div class="cs3-step-phase">Week 4 – 8</div>
         <h3 class="cs3-step-title">Build</h3>
-        <p class="cs3-step-body">I work in-file with your designers and engineers. Pairing, reviews, documentation, governance handover. By week 8, your team owns what I built.</p>
+        <p class="cs3-step-body">In-file pairing with your team. By week 8 they own it.</p>
       </div>
       <div class="cs3-step">
         <span class="cs3-step-num">04</span>
         <div class="cs3-step-phase">Ongoing</div>
         <h3 class="cs3-step-title">Scale</h3>
-        <p class="cs3-step-body">Optional retainer for teams that want senior guidance as the system and team grow. Monthly strategy, async reviews, design hiring, ad-hoc advisory.</p>
+        <p class="cs3-step-body">Optional monthly retainer for strategy + ad-hoc advisory.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================
-     7. TESTIMONIALS — DARK BAND
+     7. TESTIMONIAL — single static quote
      ============================================ -->
-<section class="cs3-testi" data-cursor="dark">
-  <div class="cs3-testi-inner">
-    <p class="cs3-testi-kicker">What they said</p>
-    <h2 class="cs3-testi-heading">From the teams<br/>that hired me.</h2>
-    <div class="cs3-testi-grid">
-      <blockquote class="cs3-testi-card">
-        <span class="cs3-testi-mark">&#8220;</span>
-        <p class="cs3-testi-quote">SadaPay was praised for how well designed the product is — this is thanks to Basit and the exceptional product design team he built.</p>
-        <footer class="cs3-testi-attr">
-          <span class="cs3-testi-name">Brandon Timinsky</span>
-          <span class="cs3-testi-role">CEO, SadaPay &amp; ZAR</span>
-        </footer>
-      </blockquote>
-      <blockquote class="cs3-testi-card">
-        <span class="cs3-testi-mark">&#8220;</span>
-        <p class="cs3-testi-quote">He understands that the best design work is often the work that unlocks other people. Practical, technically capable, genuinely invested in making the product better.</p>
-        <footer class="cs3-testi-attr">
-          <span class="cs3-testi-name">Sebastian Scholl</span>
-          <span class="cs3-testi-role">ZAR</span>
-        </footer>
-      </blockquote>
-      <blockquote class="cs3-testi-card">
-        <span class="cs3-testi-mark">&#8220;</span>
-        <p class="cs3-testi-quote">He added value from day one. He's a fearless problem solver.</p>
-        <footer class="cs3-testi-attr">
-          <span class="cs3-testi-name">Batsi Madzonga</span>
-          <span class="cs3-testi-role">ADIB</span>
-        </footer>
-      </blockquote>
-    </div>
+<section class="cs5-testi" data-cursor="dark">
+  <div class="cs5-testi-inner">
+    <p class="cs5-testi-kicker">What they said</p>
+    <blockquote class="cs5-testi-quote">
+      <span class="cs5-testi-mark" aria-hidden="true">&#8220;</span>
+      <p>SadaPay was praised for how well designed the product is — this is thanks to Basit and the exceptional design team he built.</p>
+      <footer>
+        <span class="cs5-testi-name">Brandon Timinsky</span>
+        <span class="cs5-testi-role">CEO, SadaPay &amp; ZAR</span>
+      </footer>
+    </blockquote>
   </div>
 </section>
 
 <!-- ============================================
-     8. ENGAGEMENT TYPES (LIGHT)
+     8. ENGAGEMENT TYPES — detailed offer cards
      ============================================ -->
-<section class="sb-work">
-  <div class="sb-work-head">
-    <p class="sb-work-eyebrow">How we can work</p>
-    <h2 class="sb-work-heading">Three engagement shapes.</h2>
-  </div>
-  <div class="sb-work-grid">
-    <div class="sb-work-item">
-      <span class="sb-work-tag">Specific problem to solve</span>
-      <h3 class="sb-work-title">Project-based.</h3>
-      <p class="sb-work-body">Scoped engagement with clear deliverables — design system build, AI workflow setup, product redesign. Fixed timeline, fixed scope. We agree on what "done" looks like before we start.</p>
+<!-- TODO: pricing is placeholder ($12k / $6k / $2k) — replace with real numbers before shipping -->
+<section class="cs4-engage">
+  <div class="cs4-engage-inner">
+    <header class="cs4-engage-head">
+      <p class="cs4-engage-kicker">Engagement shapes</p>
+      <h2 class="cs4-engage-heading">Three ways<br/>to work together.</h2>
+    </header>
+
+    <div class="cs4-engage-grid">
+      <!-- Card 1 -->
+      <article class="cs4-engage-card">
+        <div class="cs4-engage-card-head">
+          <p class="cs4-engage-card-tag">For specific problems</p>
+          <h3 class="cs4-engage-card-title">Project</h3>
+          <p class="cs4-engage-card-fit">Scoped engagement. Fixed scope, fixed outcome. Agree on "done" before we start.</p>
+        </div>
+
+        <div class="cs4-engage-timeline">
+          <span class="cs4-engage-timeline-label">Timeline</span>
+          <div class="cs4-engage-timeline-bar">
+            <div class="cs4-engage-timeline-fill" style="width: 60%"></div>
+          </div>
+          <span class="cs4-engage-timeline-range">4 – 12 weeks</span>
+        </div>
+
+        <div class="cs4-engage-price">
+          <span class="cs4-engage-price-label">From</span>
+          <span class="cs4-engage-price-val">$12k</span>
+          <span class="cs4-engage-price-note">Fixed scope</span>
+        </div>
+
+        <ul class="cs4-engage-included">
+          <li><span>Discovery + audit + deliverables</span></li>
+          <li><span>Weekly demos + full handover</span></li>
+        </ul>
+
+        <div class="cs4-engage-foot">
+          <span class="cs4-engage-scope">
+            <span class="cs4-engage-scope-label">Starting scope</span>
+            <span class="cs4-engage-scope-val">Design system build · AI ops setup · Product redesign</span>
+          </span>
+          <a href="#contact" class="cs4-engage-cta">
+            <span>Start here</span>
+            <span class="cs4-engage-cta-arrow">→</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2 — featured -->
+      <article class="cs4-engage-card cs4-engage-card--featured">
+        <span class="cs4-engage-badge">Most booked</span>
+        <div class="cs4-engage-card-head">
+          <p class="cs4-engage-card-tag">For ongoing leadership</p>
+          <h3 class="cs4-engage-card-title">Retainer</h3>
+          <p class="cs4-engage-card-fit">Senior leadership without the full-time hire. Weekly presence, hands-on when it matters.</p>
+        </div>
+
+        <div class="cs4-engage-timeline">
+          <span class="cs4-engage-timeline-label">Timeline</span>
+          <div class="cs4-engage-timeline-bar">
+            <div class="cs4-engage-timeline-fill" style="width: 100%"></div>
+          </div>
+          <span class="cs4-engage-timeline-range">3 – 12 months</span>
+        </div>
+
+        <div class="cs4-engage-price">
+          <span class="cs4-engage-price-label">From</span>
+          <span class="cs4-engage-price-val">$6k /mo</span>
+          <span class="cs4-engage-price-note">3-month minimum</span>
+        </div>
+
+        <ul class="cs4-engage-included">
+          <li><span>Weekly syncs + hands-on priority work</span></li>
+          <li><span>Hiring + strategic roadmap</span></li>
+        </ul>
+
+        <div class="cs4-engage-foot">
+          <span class="cs4-engage-scope">
+            <span class="cs4-engage-scope-label">Best fit</span>
+            <span class="cs4-engage-scope-val">Startups without a senior design hire</span>
+          </span>
+          <a href="#contact" class="cs4-engage-cta">
+            <span>Start here</span>
+            <span class="cs4-engage-cta-arrow">→</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="cs4-engage-card">
+        <div class="cs4-engage-card-head">
+          <p class="cs4-engage-card-tag">For teams with designers</p>
+          <h3 class="cs4-engage-card-title">Advisory</h3>
+          <p class="cs4-engage-card-fit">Strategic guidance, no hands-on work. Light touch, high leverage. I point; your team builds.</p>
+        </div>
+
+        <div class="cs4-engage-timeline">
+          <span class="cs4-engage-timeline-label">Timeline</span>
+          <div class="cs4-engage-timeline-bar">
+            <div class="cs4-engage-timeline-fill" style="width: 40%"></div>
+          </div>
+          <span class="cs4-engage-timeline-range">Ongoing · Monthly</span>
+        </div>
+
+        <div class="cs4-engage-price">
+          <span class="cs4-engage-price-label">From</span>
+          <span class="cs4-engage-price-val">$2k /mo</span>
+          <span class="cs4-engage-price-note">Month-to-month</span>
+        </div>
+
+        <ul class="cs4-engage-included">
+          <li><span>Monthly 90-min strategy call</span></li>
+          <li><span>Async design reviews + advisory</span></li>
+        </ul>
+
+        <div class="cs4-engage-foot">
+          <span class="cs4-engage-scope">
+            <span class="cs4-engage-scope-label">Best fit</span>
+            <span class="cs4-engage-scope-val">Teams with designers who need direction</span>
+          </span>
+          <a href="#contact" class="cs4-engage-cta">
+            <span>Start here</span>
+            <span class="cs4-engage-cta-arrow">→</span>
+          </a>
+        </div>
+      </article>
     </div>
-    <div class="sb-work-item">
-      <span class="sb-work-tag">Startups without a senior hire</span>
-      <h3 class="sb-work-title">Monthly retainer.</h3>
-      <p class="sb-work-body">Ongoing design leadership and AI guidance — weekly syncs, async reviews, hands-on work. Like having a Head of Design on speed dial, without the full-time commitment.</p>
-    </div>
-    <div class="sb-work-item">
-      <span class="sb-work-tag">Teams that need direction</span>
-      <h3 class="sb-work-title">Advisory.</h3>
-      <p class="sb-work-body">Strategic guidance without hands-on execution — team structure, process, tooling decisions, design reviews. Light touch, high impact. I point, your team builds.</p>
-    </div>
+
+    <p class="cs4-engage-note">
+      Every engagement starts with a free 30-minute call. No minimums, no catch.
+    </p>
   </div>
 </section>
 
 <!-- ============================================
-     9. CTA — DARK, big, direct
+     9. CTA — massive typographic bookend
      ============================================ -->
-<section class="cs3-cta" id="contact" data-cursor="dark">
-  <div class="cs3-cta-inner">
-    <div class="cs3-cta-availability">
-      <span class="cs3-avail-dot"></span>
-      <span>Taking 2 clients for Q2 2026</span>
+<section class="cs4-cta" id="contact" data-cursor="dark">
+  <div class="cs4-cta-bg" aria-hidden="true"></div>
+  <div class="cs4-cta-inner">
+    <p class="cs4-cta-eyebrow">
+      <span class="cs4-cta-dot"></span>
+      <span>Currently available for new clients</span>
+    </p>
+
+    <h2 class="cs4-cta-poster">
+      <span>Let's build</span>
+      <span class="cs4-cta-poster-accent">something</span>
+      <span>together.</span>
+    </h2>
+
+    <p class="cs4-cta-sub">
+      Free 30-minute call. I'll tell you straight if I can help.
+    </p>
+
+    <div class="cs4-cta-methods">
+      <a href="mailto:basitmasood999@gmail.com" class="cs4-cta-method cs4-cta-method--email" id="cs4CtaEmail">
+        <span class="cs4-cta-method-label">Email</span>
+        <span class="cs4-cta-method-value">basitmasood999@gmail.com</span>
+        <span class="cs4-cta-method-action" data-default="Click to copy" data-copied="Copied">Click to copy</span>
+      </a>
+      <a href="https://cal.com/iabm/consulting" target="_blank" class="cs4-cta-method">
+        <span class="cs4-cta-method-label">Book</span>
+        <span class="cs4-cta-method-value">30-minute call</span>
+        <span class="cs4-cta-method-action">Open Cal ↗</span>
+      </a>
+      <a href="https://linkedin.com/in/iabm" target="_blank" class="cs4-cta-method">
+        <span class="cs4-cta-method-label">LinkedIn</span>
+        <span class="cs4-cta-method-value">@iabm</span>
+        <span class="cs4-cta-method-action">Open LinkedIn ↗</span>
+      </a>
+      <a href="https://wa.me/971582071725" target="_blank" class="cs4-cta-method">
+        <span class="cs4-cta-method-label">WhatsApp</span>
+        <span class="cs4-cta-method-value">+971 58 207 1725</span>
+        <span class="cs4-cta-method-action">Open WhatsApp ↗</span>
+      </a>
     </div>
-    <h2 class="cs3-cta-heading">Let's talk.</h2>
-    <p class="cs3-cta-sub">The conversation is free. Tell me what you're building and where design is slowing you down — I'll tell you straight whether I can help.</p>
-    <div class="cs3-cta-links">
-      <a href="mailto:basitmasood999@gmail.com" class="cs3-cta-link cs3-cta-link--primary">
-        <i class="ph-bold ph-envelope-simple"></i> basitmasood999@gmail.com
-      </a>
-      <a href="https://linkedin.com/in/iabm" target="_blank" class="cs3-cta-link">
-        <i class="ph-bold ph-linkedin-logo"></i> LinkedIn
-      </a>
-      <a href="https://wa.me/971582071725" target="_blank" class="cs3-cta-link">
-        <i class="ph-bold ph-whatsapp-logo"></i> WhatsApp
-      </a>
-    </div>
-    <p class="cs3-cta-footnote">Based in UAE · Open to remote engagements worldwide</p>
+
+    <p class="cs4-cta-footnote">Based in UAE · Working with teams worldwide</p>
   </div>
 </section>
 
@@ -486,141 +438,26 @@ import '../styles/stories.css';
     }, { threshold: 0.4 });
     steps.forEach(s => stepIO.observe(s));
 
-    // Magnetic CTA buttons — translate toward cursor within 120px
-    document.querySelectorAll<HTMLElement>('.cs3-cta-link--primary').forEach(btn => {
-      btn.addEventListener('mousemove', (e: MouseEvent) => {
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = e.clientX - cx;
-        const dy = e.clientY - cy;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 120) {
-          const strength = (120 - dist) / 120;
-          btn.classList.add('is-magnetic');
-          btn.style.transform = `translate(${dx * 0.2 * strength}px, ${dy * 0.2 * strength}px)`;
-        }
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.classList.remove('is-magnetic');
-        btn.style.transform = '';
-      });
-    });
-
-    // Click-to-copy email with toast
-    const emailLinks = document.querySelectorAll<HTMLAnchorElement>('a[href^="mailto:"]');
-    const toast = document.getElementById('copyToast');
-    emailLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
+    // Email click-to-copy with in-place label swap
+    const ctaEmail = document.getElementById('cs4CtaEmail');
+    if (ctaEmail) {
+      const action = ctaEmail.querySelector<HTMLElement>('.cs4-cta-method-action');
+      ctaEmail.addEventListener('click', (e) => {
         e.preventDefault();
-        const email = link.href.replace('mailto:', '');
-        navigator.clipboard?.writeText(email);
-        if (toast) {
-          toast.classList.add('is-visible');
-          setTimeout(() => toast.classList.remove('is-visible'), 1500);
+        navigator.clipboard?.writeText('basitmasood999@gmail.com');
+        if (action) {
+          const copied = action.dataset.copied || 'Copied';
+          const defaultText = action.dataset.default || action.textContent || 'Click to copy';
+          action.textContent = copied;
+          action.style.color = 'var(--color-rose)';
+          setTimeout(() => {
+            action.textContent = defaultText;
+            action.style.color = '';
+          }, 1400);
         }
       });
-    });
-
-    // Cursor-trail canvas on hero
-    const canvas = document.getElementById('cs3HeroCanvas') as HTMLCanvasElement | null;
-    if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.matchMedia('(pointer: fine)').matches) {
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        const hero = canvas.parentElement as HTMLElement;
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-        function resize() {
-          if (!hero || !canvas || !ctx) return;
-          const rect = hero.getBoundingClientRect();
-          canvas.width = Math.floor(rect.width * dpr);
-          canvas.height = Math.floor(rect.height * dpr);
-          canvas.style.width = rect.width + 'px';
-          canvas.style.height = rect.height + 'px';
-          ctx.scale(dpr, dpr);
-        }
-        resize();
-        window.addEventListener('resize', resize);
-
-        // Trail state
-        type Pt = { x: number; y: number; life: number };
-        const trails: Pt[] = [];
-        let mouseX = -1, mouseY = -1, lastX = -1, lastY = -1;
-
-        hero.addEventListener('mousemove', (e) => {
-          const rect = hero.getBoundingClientRect();
-          mouseX = e.clientX - rect.left;
-          mouseY = e.clientY - rect.top;
-          if (lastX < 0) { lastX = mouseX; lastY = mouseY; }
-          // Interpolate points between last and current to smooth fast movements
-          const dx = mouseX - lastX;
-          const dy = mouseY - lastY;
-          const dist = Math.hypot(dx, dy);
-          const steps = Math.max(1, Math.floor(dist / 6));
-          for (let i = 1; i <= steps; i++) {
-            trails.push({
-              x: lastX + (dx * i) / steps,
-              y: lastY + (dy * i) / steps,
-              life: 1,
-            });
-          }
-          lastX = mouseX; lastY = mouseY;
-          // Cap trail length
-          if (trails.length > 120) trails.splice(0, trails.length - 120);
-        });
-
-        hero.addEventListener('mouseleave', () => {
-          lastX = -1; lastY = -1;
-        });
-
-        function render() {
-          if (!ctx || !canvas) return;
-          ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
-
-          // Decay trail points
-          for (let i = trails.length - 1; i >= 0; i--) {
-            trails[i].life -= 0.012;
-            if (trails[i].life <= 0) trails.splice(i, 1);
-          }
-
-          // Render as flowing curve
-          if (trails.length > 1) {
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-            for (let i = 1; i < trails.length; i++) {
-              const p = trails[i];
-              const prev = trails[i - 1];
-              const alpha = Math.max(0, p.life) * 0.55;
-              ctx.strokeStyle = `rgba(225, 29, 72, ${alpha})`;
-              ctx.lineWidth = 2 + Math.max(0, p.life) * 6;
-              ctx.shadowColor = 'rgba(225, 29, 72, 0.8)';
-              ctx.shadowBlur = 12 * p.life;
-              ctx.beginPath();
-              ctx.moveTo(prev.x, prev.y);
-              ctx.lineTo(p.x, p.y);
-              ctx.stroke();
-            }
-            ctx.shadowBlur = 0;
-          }
-
-          requestAnimationFrame(render);
-        }
-        render();
-      }
     }
 
-    // Testimonial 3D tilt — rotateX/rotateY based on cursor position
-    document.querySelectorAll<HTMLElement>('.cs3-testi-card').forEach(card => {
-      card.addEventListener('mousemove', (e: MouseEvent) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(1000px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) scale(1.02)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
   }
   initConsulting();
   document.addEventListener('astro:page-load', initConsulting);
