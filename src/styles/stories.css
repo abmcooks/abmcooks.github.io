@@ -4954,6 +4954,45 @@ html.stories-landing {
 }
 .cs4-engage-card--featured .cs4-engage-price-note { color: var(--color-white-80); }
 
+/* Tiered pricing variant — Workshop card */
+.cs4-engage-price--tiered {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  display: flex;
+}
+.cs4-engage-price-tiers {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.cs4-engage-tier {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-dark-65);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.cs4-engage-card--featured .cs4-engage-tier {
+  color: var(--color-white-80);
+}
+.cs4-engage-tier strong {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-dark-80);
+  letter-spacing: -0.005em;
+}
+.cs4-engage-card--featured .cs4-engage-tier strong {
+  color: var(--color-white);
+}
+@media (max-width: 480px) {
+  .cs4-engage-price-tiers { flex-direction: column; gap: 8px; }
+}
+
 /* Included list */
 .cs4-engage-included {
   list-style: none;
