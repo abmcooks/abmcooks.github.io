@@ -50,6 +50,8 @@ import '../styles/stories.css';
         <span class="cs3-hero-ticker-dot">●</span>
         <span>AI Design Ops</span>
         <span class="cs3-hero-ticker-dot">●</span>
+        <span>AI Training</span>
+        <span class="cs3-hero-ticker-dot">●</span>
         <span>Figma-to-Code</span>
         <span class="cs3-hero-ticker-dot">●</span>
         <span>Design Systems</span>
@@ -61,6 +63,8 @@ import '../styles/stories.css';
         <span>Design Leadership</span>
         <span class="cs3-hero-ticker-dot">●</span>
         <span>AI Design Ops</span>
+        <span class="cs3-hero-ticker-dot">●</span>
+        <span>AI Training</span>
         <span class="cs3-hero-ticker-dot">●</span>
         <span>Figma-to-Code</span>
         <span class="cs3-hero-ticker-dot">●</span>
@@ -78,7 +82,7 @@ import '../styles/stories.css';
 <!-- ============================================
      4. PROBLEMS SCROLL DECK (LIGHT — reused)
      ============================================ -->
-<section class="cs2-problems" id="csProblems">
+<section class="cs2-problems" id="csProblems" data-cursor="light">
   <div class="cs2-problems-inner">
     <p class="cs2-problems-label">If you're nodding at any of these</p>
     <div class="cs2-problem-slide" data-slide="0">
@@ -90,7 +94,10 @@ import '../styles/stories.css';
     <div class="cs2-problem-slide" data-slide="2">
       <p class="cs2-problem-text">Design is the bottleneck in every sprint.</p>
     </div>
-    <div class="cs2-problem-slide cs2-problem-slide--closer" data-slide="3">
+    <div class="cs2-problem-slide" data-slide="3">
+      <p class="cs2-problem-text">Your team is nagged to use AI. Nobody's actually taught them how.</p>
+    </div>
+    <div class="cs2-problem-slide cs2-problem-slide--closer" data-slide="4">
       <p class="cs2-problem-closer">I've solved each of these.</p>
       <p class="cs2-problem-closer-sub">Yours is next.</p>
       <a href="#contact" class="cs2-problem-closer-cta">Get in touch <span class="sp2-arrow">→</span></a>
@@ -137,7 +144,7 @@ import '../styles/stories.css';
 <!-- ============================================
      6. PROCESS — how it actually runs, LIGHT
      ============================================ -->
-<section class="cs3-process">
+<section class="cs3-process" data-cursor="light">
   <div class="cs3-process-inner">
     <div class="cs3-process-head">
       <p class="cs3-process-kicker">The engagement</p>
@@ -146,25 +153,21 @@ import '../styles/stories.css';
     <div class="cs3-process-steps">
       <div class="cs3-step">
         <span class="cs3-step-num">01</span>
-        <div class="cs3-step-phase">Week 1</div>
         <h3 class="cs3-step-title">Discovery</h3>
         <p class="cs3-step-body">Team interviews, product + system audit. You leave with a diagnosis brief.</p>
       </div>
       <div class="cs3-step">
         <span class="cs3-step-num">02</span>
-        <div class="cs3-step-phase">Week 2 – 3</div>
         <h3 class="cs3-step-title">Shape</h3>
-        <p class="cs3-step-body">Scope locked. Skeleton ships week 2. Weekly demos.</p>
+        <p class="cs3-step-body">Scope locked. Skeleton ships fast. Regular demos.</p>
       </div>
       <div class="cs3-step">
         <span class="cs3-step-num">03</span>
-        <div class="cs3-step-phase">Week 4 – 8</div>
         <h3 class="cs3-step-title">Build</h3>
-        <p class="cs3-step-body">In-file pairing with your team. By week 8 they own it.</p>
+        <p class="cs3-step-body">In-file pairing with your team. By the end, they own it.</p>
       </div>
       <div class="cs3-step">
         <span class="cs3-step-num">04</span>
-        <div class="cs3-step-phase">Ongoing</div>
         <h3 class="cs3-step-title">Scale</h3>
         <p class="cs3-step-body">Optional monthly retainer for strategy + ad-hoc advisory.</p>
       </div>
@@ -173,31 +176,71 @@ import '../styles/stories.css';
 </section>
 
 <!-- ============================================
-     7. TESTIMONIAL — single static quote
+     7. TESTIMONIALS — editorial magazine spread
      ============================================ -->
-<section class="cs5-testi" data-cursor="dark">
+<section class="cs5-testi" data-cursor="dark" id="cs5Testi">
   <div class="cs5-testi-inner">
     <p class="cs5-testi-kicker">What they said</p>
-    <blockquote class="cs5-testi-quote">
-      <span class="cs5-testi-mark" aria-hidden="true">&#8220;</span>
-      <p>SadaPay was praised for how well designed the product is — this is thanks to Basit and the exceptional design team he built.</p>
-      <footer>
-        <span class="cs5-testi-name">Brandon Timinsky</span>
-        <span class="cs5-testi-role">CEO, SadaPay &amp; ZAR</span>
-      </footer>
-    </blockquote>
+    <h2 class="cs5-testi-heading">Trusted by people<br/>who shipped.</h2>
+
+    <div class="cs5-testi-stack">
+      <!-- HERO entry — Brandon -->
+      <article class="cs5-testi-entry cs5-testi-entry--hero" data-reveal="0">
+        <div class="cs5-testi-portrait">
+          <img src="/images/people/brandon.png" alt="Brandon Timinsky" loading="lazy" />
+        </div>
+        <div class="cs5-testi-content">
+          <span class="cs5-testi-mark" aria-hidden="true">&#8220;</span>
+          <p class="cs5-testi-quote">SadaPay was praised for how well designed the product is — this is thanks to Basit and the exceptional design team he built.</p>
+          <footer class="cs5-testi-attr">
+            <span class="cs5-testi-name">Brandon Timinsky</span>
+            <span class="cs5-testi-role">CEO, SadaPay &amp; ZAR</span>
+          </footer>
+        </div>
+      </article>
+
+      <!-- Support — Sergio -->
+      <article class="cs5-testi-entry" data-reveal="1">
+        <div class="cs5-testi-portrait">
+          <img src="/images/people/sergio.png" alt="Sergio Schüler" loading="lazy" />
+        </div>
+        <div class="cs5-testi-content">
+          <span class="cs5-testi-mark" aria-hidden="true">&#8220;</span>
+          <p class="cs5-testi-quote">Basit is an insanely good UX designer. He built the foundations of the SadaPay mobile experience, recognized as world-class.</p>
+          <footer class="cs5-testi-attr">
+            <span class="cs5-testi-name">Sergio Schüler</span>
+            <span class="cs5-testi-role">Head of Product, SadaPay</span>
+          </footer>
+        </div>
+      </article>
+
+      <!-- Support — Batsi -->
+      <article class="cs5-testi-entry" data-reveal="2">
+        <div class="cs5-testi-portrait">
+          <img src="/images/people/batsi.png" alt="Batsi Madzonga" loading="lazy" />
+        </div>
+        <div class="cs5-testi-content">
+          <span class="cs5-testi-mark" aria-hidden="true">&#8220;</span>
+          <p class="cs5-testi-quote">He added value from day one. He's a fearless problem solver.</p>
+          <footer class="cs5-testi-attr">
+            <span class="cs5-testi-name">Batsi Madzonga</span>
+            <span class="cs5-testi-role">ADIB</span>
+          </footer>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
 <!-- ============================================
      8. ENGAGEMENT TYPES — detailed offer cards
      ============================================ -->
-<!-- TODO: pricing is placeholder ($12k / $6k / $2k) — replace with real numbers before shipping -->
-<section class="cs4-engage">
+<!-- Pricing: Project $10k · Retainer $6k/mo · Advisory $1.5k/mo · Workshop $2k+ -->
+<section class="cs4-engage" data-cursor="light">
   <div class="cs4-engage-inner">
     <header class="cs4-engage-head">
       <p class="cs4-engage-kicker">Engagement shapes</p>
-      <h2 class="cs4-engage-heading">Three ways<br/>to work together.</h2>
+      <h2 class="cs4-engage-heading">Four ways<br/>to work together.</h2>
     </header>
 
     <div class="cs4-engage-grid">
@@ -219,7 +262,7 @@ import '../styles/stories.css';
 
         <div class="cs4-engage-price">
           <span class="cs4-engage-price-label">From</span>
-          <span class="cs4-engage-price-val">$12k</span>
+          <span class="cs4-engage-price-val">$10k</span>
           <span class="cs4-engage-price-note">Fixed scope</span>
         </div>
 
@@ -298,7 +341,7 @@ import '../styles/stories.css';
 
         <div class="cs4-engage-price">
           <span class="cs4-engage-price-label">From</span>
-          <span class="cs4-engage-price-val">$2k /mo</span>
+          <span class="cs4-engage-price-val">$1.5k /mo</span>
           <span class="cs4-engage-price-note">Month-to-month</span>
         </div>
 
@@ -311,6 +354,46 @@ import '../styles/stories.css';
           <span class="cs4-engage-scope">
             <span class="cs4-engage-scope-label">Best fit</span>
             <span class="cs4-engage-scope-val">Teams with designers who need direction</span>
+          </span>
+          <a href="#contact" class="cs4-engage-cta">
+            <span>Start here</span>
+            <span class="cs4-engage-cta-arrow">→</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 4 — Workshop (NEW) -->
+      <article class="cs4-engage-card cs4-engage-card--accent">
+        <span class="cs4-engage-badge cs4-engage-badge--new">New</span>
+        <div class="cs4-engage-card-head">
+          <p class="cs4-engage-card-tag">For design teams</p>
+          <h3 class="cs4-engage-card-title">Workshop</h3>
+          <p class="cs4-engage-card-fit">Teach your designers to ship with AI. Claude Code, agent workflows, design system × AI integration — plus leadership, hiring, and research. Modular curriculum, customized to your team.</p>
+        </div>
+
+        <div class="cs4-engage-timeline">
+          <span class="cs4-engage-timeline-label">Format</span>
+          <div class="cs4-engage-timeline-bar">
+            <div class="cs4-engage-timeline-fill" style="width: 30%"></div>
+          </div>
+          <span class="cs4-engage-timeline-range">1 day – 1 week</span>
+        </div>
+
+        <div class="cs4-engage-price">
+          <span class="cs4-engage-price-label">From</span>
+          <span class="cs4-engage-price-val">$2k</span>
+          <span class="cs4-engage-price-note">1-day · up to $10k for week</span>
+        </div>
+
+        <ul class="cs4-engage-included">
+          <li><span>Daily live sessions + async support</span></li>
+          <li><span>Modular curriculum, customized to team</span></li>
+        </ul>
+
+        <div class="cs4-engage-foot">
+          <span class="cs4-engage-scope">
+            <span class="cs4-engage-scope-label">Best fit</span>
+            <span class="cs4-engage-scope-val">Software houses + product teams with 5–25 designers</span>
           </span>
           <a href="#contact" class="cs4-engage-cta">
             <span>Start here</span>
@@ -348,10 +431,10 @@ import '../styles/stories.css';
     </p>
 
     <div class="cs4-cta-methods">
-      <a href="mailto:basitmasood999@gmail.com" class="cs4-cta-method cs4-cta-method--email" id="cs4CtaEmail">
+      <a href="mailto:basitmasood999@gmail.com" class="cs4-cta-method cs4-cta-method--email" id="cs4CtaEmail" aria-label="Copy email address basitmasood999@gmail.com to clipboard">
         <span class="cs4-cta-method-label">Email</span>
         <span class="cs4-cta-method-value">basitmasood999@gmail.com</span>
-        <span class="cs4-cta-method-action" data-default="Click to copy" data-copied="Copied">Click to copy</span>
+        <span class="cs4-cta-method-action" data-default="Click to copy" data-copied="Copied" aria-live="polite">Click to copy</span>
       </a>
       <a href="https://cal.com/iabm/consulting" target="_blank" class="cs4-cta-method">
         <span class="cs4-cta-method-label">Book</span>
@@ -425,8 +508,10 @@ import '../styles/stories.css';
         const activeIndex = Math.min(slides!.length - 1, Math.floor(progress * slides!.length));
         slides!.forEach((s, i) => s.classList.toggle('is-active', i === activeIndex));
       }
-      window.addEventListener('scroll', updateProblems, { passive: true });
-      updateProblems();
+      if (window.innerWidth >= 900) {
+        window.addEventListener('scroll', updateProblems, { passive: true });
+        updateProblems();
+      }
     }
 
     // Process timeline step activation
@@ -437,6 +522,23 @@ import '../styles/stories.css';
       });
     }, { threshold: 0.4 });
     steps.forEach(s => stepIO.observe(s));
+
+    // Testimonial cascade reveal
+    const testiCards = document.querySelectorAll<HTMLElement>('.cs5-testi-entry');
+    const testiSection = document.getElementById('cs5Testi');
+    if (testiCards.length && testiSection) {
+      const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            testiCards.forEach((card, i) => {
+              setTimeout(() => card.classList.add('is-revealed'), i * 180);
+            });
+            revealIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+      revealIO.observe(testiSection);
+    }
 
     // Email click-to-copy with in-place label swap
     const ctaEmail = document.getElementById('cs4CtaEmail');

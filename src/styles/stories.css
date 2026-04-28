@@ -3974,7 +3974,7 @@ html.stories-landing {
   background: var(--color-light);
   border-top: 1px solid var(--color-dark-08);
   border-bottom: 1px solid var(--color-dark-08);
-  height: 280vh;
+  height: 340vh;
 }
 .cs2-problems-inner {
   position: sticky;
@@ -4052,6 +4052,13 @@ html.stories-landing {
   transform-origin: left;
   transform: scaleX(0);
   transition: transform 0.1s linear;
+}
+@media (max-width: 900px) {
+  .cs2-problems { height: auto; }
+  .cs2-problems-inner { position: static; height: auto; padding: 80px 24px; flex-direction: column; gap: 60px; }
+  .cs2-problem-slide { position: relative; inset: auto; opacity: 1; padding: 0; }
+  .cs2-problems-progress { display: none; }
+  .cs2-problems-label { position: static; transform: none; margin-bottom: 32px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .cs2-problems { height: auto; }
@@ -4286,7 +4293,7 @@ html.stories-landing {
   font-family: var(--font-heading);
   font-size: 12px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--color-white-50);
+  color: var(--color-white-80);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -4430,11 +4437,6 @@ html.stories-landing {
    Appended to override base cs3 rules (declaration order).
    ========================================================================== */
 
-/* sb-work — explicit light bg since consulting body is dark-void */
-.sb-work {
-  background: var(--color-light);
-}
-
 /* Grain overlay on dark sections — uses free pseudo-elements only.
    The hero has its ghost word for atmosphere. Other dark sections
    gain a per-section grain for extra texture. */
@@ -4479,7 +4481,7 @@ html.stories-landing {
   align-items: center;
   gap: 24px;
   flex-wrap: wrap;
-  color: var(--color-white-50);
+  color: var(--color-white-80);
   font-family: var(--font-heading);
   font-size: 12px;
   font-weight: 500;
@@ -4507,6 +4509,15 @@ html.stories-landing {
 /* Reduced-motion respect */
 @media (prefers-reduced-motion: reduce) {
   .cs4-engage-card { transition: none; }
+  .cs4-engage-card:hover,
+  .cs4-engage-card--featured:hover,
+  .cs2-problem-closer-cta:hover,
+  .cs5-service:hover,
+  .cs4-cta-method:hover,
+  .cs4-engage-cta:hover .cs4-engage-cta-arrow,
+  .cs4-cta-method:hover .cs4-cta-method-action {
+    transform: none !important;
+  }
 }
 
 /* =====================================================
@@ -4569,7 +4580,7 @@ html.stories-landing {
 .cs5-service:hover { background: rgba(245, 240, 232, 0.03); }
 .cs5-service-num {
   font-family: var(--font-heading);
-  font-size: 11px; font-weight: 700;
+  font-size: 12px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--color-rose);
 }
@@ -4599,24 +4610,25 @@ html.stories-landing {
 }
 
 /* =====================================================
-   CS5 TESTIMONIAL — single static quote
+   CS5 TESTIMONIALS — editorial magazine spread
+   No cards, no gradients, no chips. Just photos + type.
    ===================================================== */
 .cs5-testi {
   background: var(--color-void);
   color: var(--color-white);
-  padding: clamp(100px, 14vh, 160px) var(--sp2-edge);
+  padding: clamp(120px, 16vh, 180px) var(--sp2-edge);
 }
 .cs5-testi-inner {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
 }
 .cs5-testi-kicker {
   font-family: var(--font-heading);
   font-size: 12px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--color-rose);
-  margin: 0 0 48px;
+  margin: 0 0 24px;
+  text-align: center;
 }
 .cs5-testi-kicker::before {
   content: ''; display: inline-block;
@@ -4625,47 +4637,130 @@ html.stories-landing {
   margin-right: 14px;
   vertical-align: middle;
 }
-.cs5-testi-quote {
-  margin: 0;
+.cs5-testi-heading {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 80px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-align: center;
+  margin: 0 0 96px;
+}
+
+.cs5-testi-stack {
   display: flex; flex-direction: column;
+  gap: 0;
+}
+
+/* Each entry — 2-column layout, hairline between */
+.cs5-testi-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: clamp(48px, 5vw, 72px);
+  padding: 56px 0;
+  border-top: 1px solid var(--color-white-12);
   align-items: center;
-  gap: 28px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cs5-testi-entry:last-child {
+  border-bottom: 1px solid var(--color-white-12);
+}
+.cs5-testi-entry.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Portrait — clean, no card, no border */
+.cs5-testi-portrait {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--color-white-12);
+}
+.cs5-testi-portrait img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cs5-testi-entry:hover .cs5-testi-portrait img {
+  transform: scale(1.04);
+}
+
+/* Content side — no card, just typography */
+.cs5-testi-content {
+  display: flex; flex-direction: column;
+  gap: 24px;
+  position: relative;
 }
 .cs5-testi-mark {
   font-family: var(--font-display);
-  font-size: clamp(56px, 6vw, 96px);
+  font-size: 56px;
   line-height: 0.5;
   color: var(--color-rose);
-  text-shadow: 0 0 24px rgba(225, 29, 72, 0.3);
+  display: block;
+  margin-bottom: -12px;
 }
-.cs5-testi-quote > p {
+.cs5-testi-quote {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: clamp(22px, 2.6vw, 36px);
-  line-height: 1.3;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.4;
   color: var(--color-white);
-  max-width: 28ch;
   margin: 0;
-  text-wrap: balance;
+  max-width: 60ch;
 }
-.cs5-testi-quote > footer {
-  display: flex; flex-direction: column; align-items: center;
-  gap: 6px;
+.cs5-testi-attr {
+  display: flex; flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
 }
 .cs5-testi-name {
-  font-family: var(--font-heading);
-  font-size: 13px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
   color: var(--color-white);
 }
 .cs5-testi-role {
   font-family: var(--font-heading);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--color-white-50);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--color-white-80);
 }
+
+/* Mobile — stack portrait above content */
 @media (max-width: 900px) {
   .cs5-testi { padding: 80px 24px; }
+  .cs5-testi-heading { margin-bottom: 64px; }
+  .cs5-testi-entry {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 48px 0;
+  }
+  .cs5-testi-portrait {
+    max-width: 150px;
+  }
+  .cs5-testi-quote { font-size: 18px; max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs5-testi-entry {
+    opacity: 1;
+    transform: none;
+  }
+  .cs5-testi-entry:hover .cs5-testi-portrait img {
+    transform: none;
+  }
 }
 
 /* =====================================================
@@ -4711,8 +4806,8 @@ html.stories-landing {
 
 .cs4-engage-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
   align-items: stretch;
 }
 .cs4-engage-card {
@@ -4748,16 +4843,24 @@ html.stories-landing {
   background: var(--color-rose);
   color: var(--color-white);
   font-family: var(--font-heading);
-  font-size: 10px; font-weight: 700;
+  font-size: 12px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
   border-radius: 100px;
   box-shadow: 0 6px 20px rgba(225, 29, 72, 0.35);
+}
+.cs4-engage-badge--new {
+  background: var(--color-gold);
+  color: var(--color-void);
+  box-shadow: 0 6px 20px var(--color-gold-35);
+}
+.cs4-engage-card--accent {
+  border-color: var(--color-gold);
 }
 
 .cs4-engage-card-head { display: flex; flex-direction: column; gap: 12px; }
 .cs4-engage-card-tag {
   font-family: var(--font-heading);
-  font-size: 11px; font-weight: 700;
+  font-size: 12px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--color-rose);
   margin: 0;
@@ -4792,7 +4895,7 @@ html.stories-landing {
 }
 .cs4-engage-timeline-label {
   font-family: var(--font-heading);
-  font-size: 10px; font-weight: 600;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--color-dark-50);
 }
@@ -4811,7 +4914,7 @@ html.stories-landing {
 }
 .cs4-engage-timeline-range {
   font-family: var(--font-heading);
-  font-size: 11px; font-weight: 600;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--color-dark-65);
 }
@@ -4829,7 +4932,7 @@ html.stories-landing {
 }
 .cs4-engage-price-label {
   font-family: var(--font-heading);
-  font-size: 11px; font-weight: 600;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--color-dark-50);
 }
@@ -4897,7 +5000,7 @@ html.stories-landing {
 .cs4-engage-scope { display: flex; flex-direction: column; gap: 6px; }
 .cs4-engage-scope-label {
   font-family: var(--font-heading);
-  font-size: 10px; font-weight: 600;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--color-dark-50);
 }
@@ -5072,7 +5175,7 @@ html.stories-landing {
 }
 .cs4-cta-method-label {
   font-family: var(--font-heading);
-  font-size: 10px; font-weight: 700;
+  font-size: 12px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--color-rose);
   grid-row: 1; grid-column: 1 / 3;
@@ -5087,9 +5190,9 @@ html.stories-landing {
 }
 .cs4-cta-method-action {
   font-family: var(--font-heading);
-  font-size: 11px; font-weight: 600;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--color-white-50);
+  color: var(--color-white-80);
   grid-row: 2; grid-column: 2;
   transition: color 0.3s ease;
 }
@@ -5097,9 +5200,9 @@ html.stories-landing {
 
 .cs4-cta-footnote {
   font-family: var(--font-heading);
-  font-size: 11px; font-weight: 500;
+  font-size: 12px; font-weight: 500;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--color-white-50);
+  color: var(--color-white-80);
   margin: 16px 0 0;
 }
 
@@ -5108,3 +5211,4 @@ html.stories-landing {
   .cs4-cta-methods { grid-template-columns: 1fr; }
   .cs4-cta-poster { font-size: clamp(48px, 14vw, 96px); }
 }
+

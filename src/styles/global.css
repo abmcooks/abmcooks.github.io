@@ -41,6 +41,9 @@
   /* ── Brand ── */
   --color-white: #f5f0e8;          /* warm white — body text, brand ink */
   --color-rose: #e11d48;           /* single accent — hover, focus, rose edges */
+  /* Single-use accent for Workshop card on /consulting only */
+  --color-gold: #f5b43b;
+  --color-gold-35: rgba(245, 180, 59, 0.35);
 
   /* ── Text on dark (white alpha family) ── */
   --color-white-80: rgba(245, 240, 232, 0.8);
