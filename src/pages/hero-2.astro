@@ -1,0 +1,350 @@
+---
+import Base from '../layouts/Base.astro';
+import Loader from '../components/Loader.astro';
+import '../styles/global.css';
+---
+
+<Base title="Hero Option 2 — The Living Ledger">
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <span class="nav-available">
+        <span class="avail-dot"></span>
+        Open for opportunities
+      </span>
+    </div>
+    <div class="nav-right">
+      <a href="/hero-1">Hero 1</a>
+      <a href="/hero-2" class="active">Hero 2</a>
+      <a href="/hero-3">Hero 3</a>
+    </div>
+  </div>
+</nav>
+
+<Loader />
+
+<div class="preview-banner">
+  <span class="preview-dot"></span>
+  Hero · Option 2 · The Living Ledger
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO — LIVING LEDGER
+     Banker's till tape that audits itself.
+     ═══════════════════════════════════════════ -->
+<section class="lg-hero" id="lgHero">
+  <div class="lg-content">
+
+    <div class="lg-head">
+      <p class="lg-eyebrow">
+        <span class="lg-eyebrow-line"></span>
+        Basit Masood · A working ledger
+      </p>
+      <p class="lg-date" id="lgDate">2026 · Q2</p>
+    </div>
+
+    <div class="lg-frame">
+      <ul class="lg-rows" id="lgRows">
+
+        <li class="lg-row">
+          <span class="lg-label">Users across products</span>
+          <span class="lg-leader"></span>
+          <span class="lg-value" data-target="6000000" data-suffix="+">0</span>
+        </li>
+
+        <li class="lg-row">
+          <span class="lg-label">Products shipped</span>
+          <span class="lg-leader"></span>
+          <span class="lg-value" data-target="30" data-suffix="+">0</span>
+        </li>
+
+        <li class="lg-row">
+          <span class="lg-label">Countries shipped to</span>
+          <span class="lg-leader"></span>
+          <span class="lg-value" data-target="110" data-suffix="+">0</span>
+        </li>
+
+        <li class="lg-row">
+          <span class="lg-label">Design systems</span>
+          <span class="lg-leader"></span>
+          <span class="lg-value lg-value--text">2 <span class="lg-aux">(Nukta · Techtonic)</span></span>
+        </li>
+
+        <li class="lg-row">
+          <span class="lg-label">Acquisitions led design for</span>
+          <span class="lg-leader"></span>
+          <span class="lg-value lg-value--text">2 <span class="lg-aux">(SadaPay → Papara · WTT → ZRG)</span></span>
+        </li>
+
+        <li class="lg-row">
+          <span class="lg-label">Years in</span>
+          <span class="lg-leader"></span>
+          <span class="lg-value" data-target="8" data-suffix="+">0</span>
+        </li>
+
+      </ul>
+
+      <div class="lg-rule" id="lgRule"></div>
+
+      <p class="lg-closer" id="lgCloser">
+        <span class="lg-closer-mark">—</span>
+        <span class="lg-closer-text">a record, not a résumé.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const rows = document.querySelectorAll('.lg-row');
+  const values = document.querySelectorAll('.lg-value[data-target]');
+  const rule = document.getElementById('lgRule');
+  const closer = document.getElementById('lgCloser');
+
+  function fmt(n: number): string {
+    if (n >= 1_000_000) {
+      const m = n / 1_000_000;
+      return m % 1 === 0 ? `${m}M` : `${m.toFixed(1)}M`;
+    }
+    if (n >= 1_000) {
+      return `${Math.floor(n / 1000)},${String(n % 1000).padStart(3, '0')}`;
+    }
+    return n.toString();
+  }
+
+  function ratchet(el: HTMLElement) {
+    const target = parseInt(el.dataset.target || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1800 + Math.random() * 400;
+    const start = performance.now();
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const t = Math.min(elapsed / dur, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+
+      // Jitter — random small backsteps to feel mechanical
+      const base = target * eased;
+      const jitterMag = target * 0.015 * (1 - eased);
+      const jitter = (Math.random() - 0.5) * 2 * jitterMag;
+      const display = Math.max(0, Math.floor(base + jitter));
+
+      el.textContent = fmt(display) + suffix;
+
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = fmt(target) + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function reveal() {
+    document.getElementById('loader')?.classList.add('done');
+    document.body.classList.add('loaded');
+    document.getElementById('nav')?.classList.add('visible');
+    document.getElementById('lgHero')?.classList.add('in');
+
+    // Stagger row reveals
+    rows.forEach((row, i) => {
+      setTimeout(() => row.classList.add('in'), 100 + i * 90);
+    });
+
+    // Start ratchets after rows reveal
+    setTimeout(() => {
+      values.forEach(v => ratchet(v as HTMLElement));
+    }, 600);
+
+    // Rule + closer
+    setTimeout(() => rule?.classList.add('in'), 2400);
+    setTimeout(() => closer?.classList.add('in'), 2800);
+  }
+
+  const loader = document.getElementById('loader');
+  if (loader) {
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    Promise.all([fontsReady, new Promise(r => setTimeout(r, 800))]).then(reveal);
+    setTimeout(reveal, 3000);
+  } else {
+    reveal();
+  }
+</script>
+
+</Base>
+
+<style is:global>
+  .loader { position: fixed; inset: 0; z-index: 99999; background: var(--color-void); display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease; }
+  .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+  body:not(.loaded) { overflow: hidden; }
+  body { background: var(--color-void); }
+
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 32px 40px 0; opacity: 0; transition: opacity 0.4s ease;
+  }
+  .nav.visible { opacity: 1; }
+  .nav-inner { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-available {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
+    color: rgba(245, 240, 232, 0.7); letter-spacing: 0.02em;
+  }
+  .avail-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .nav-right { display: flex; align-items: center; gap: 28px; }
+  .nav-right a {
+    font-family: var(--font-heading); font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--color-white-50); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-right a:hover { color: var(--color-white); }
+  .nav-right a.active { color: var(--color-rose); }
+
+  .preview-banner {
+    position: fixed; bottom: 24px; left: 24px; z-index: 9500;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border-radius: 999px;
+    background: rgba(225, 29, 72, 0.12);
+    border: 1px solid rgba(225, 29, 72, 0.4);
+    font-family: var(--font-heading); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.04em; color: var(--color-rose);
+  }
+  .preview-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--color-rose); animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* === LIVING LEDGER HERO === */
+  .lg-hero {
+    min-height: 100vh; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 64px 80px;
+    opacity: 0; transition: opacity 1s ease;
+  }
+  .lg-hero.in { opacity: 1; }
+
+  .lg-content {
+    width: 100%; max-width: 1100px;
+  }
+
+  .lg-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 64px;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .lg-eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: var(--font-heading); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-white-50);
+  }
+  .lg-eyebrow-line { width: 32px; height: 1px; background: var(--color-rose); }
+  .lg-date {
+    font-family: var(--font-heading); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-white-25);
+  }
+
+  .lg-frame {
+    border-top: 1px solid var(--color-white-12);
+    padding-top: 48px;
+  }
+
+  .lg-rows {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column;
+    gap: 28px;
+  }
+
+  .lg-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 18px;
+    align-items: baseline;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .lg-row.in { opacity: 1; transform: translateY(0); }
+
+  .lg-label {
+    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-white-50);
+  }
+
+  .lg-leader {
+    height: 1px;
+    background-image: radial-gradient(circle, var(--color-white-25) 1px, transparent 1px);
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    align-self: center;
+    transform: translateY(-2px);
+  }
+
+  .lg-value {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(36px, 5.4vw, 88px);
+    line-height: 0.95; letter-spacing: -0.01em;
+    color: var(--color-white);
+    font-variant-numeric: tabular-nums;
+    text-transform: uppercase;
+    text-align: right;
+  }
+  .lg-value--text {
+    font-family: var(--font-display);
+  }
+  .lg-aux {
+    font-family: var(--font-body); font-style: italic;
+    font-size: 0.32em; font-weight: 400;
+    color: var(--color-white-50);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+
+  .lg-rule {
+    margin-top: 48px;
+    height: 1px;
+    background: var(--color-rose);
+    width: 0;
+    margin-left: auto;
+    transition: width 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    max-width: 320px;
+  }
+  .lg-rule.in { width: 320px; }
+
+  .lg-closer {
+    margin-top: 24px;
+    text-align: right;
+    font-family: var(--font-body); font-style: italic; font-size: 22px;
+    color: var(--color-white-80);
+    opacity: 0; transform: translateY(6px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .lg-closer.in { opacity: 1; transform: translateY(0); }
+  .lg-closer-mark { color: var(--color-rose); margin-right: 8px; }
+
+  @media (max-width: 768px) {
+    .lg-hero { padding: 100px 24px 60px; }
+    .lg-row { grid-template-columns: 1fr auto; gap: 12px; }
+    .lg-leader { display: none; }
+    .lg-label { font-size: 11px; }
+    .lg-value { font-size: clamp(28px, 9vw, 56px); }
+    .lg-aux { display: block; margin-left: 0; margin-top: 4px; font-size: 13px; }
+    .lg-rule.in { width: 200px; }
+    .lg-closer { font-size: 16px; text-align: left; }
+    .lg-rule { margin-left: 0; margin-right: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lg-row, .lg-rule, .lg-closer { transition: none; opacity: 1; transform: none; }
+    .lg-rule.in { width: 320px; }
+  }
+</style>

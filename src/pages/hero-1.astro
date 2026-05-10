@@ -1,0 +1,272 @@
+---
+import Base from '../layouts/Base.astro';
+import Loader from '../components/Loader.astro';
+import '../styles/global.css';
+---
+
+<Base title="Hero Option 1 — The Operating Principles">
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <span class="nav-available">
+        <span class="avail-dot"></span>
+        Open for opportunities
+      </span>
+    </div>
+    <div class="nav-right">
+      <a href="/hero-1" class="active">Hero 1</a>
+      <a href="/hero-2">Hero 2</a>
+      <a href="/hero-3">Hero 3</a>
+    </div>
+  </div>
+</nav>
+
+<Loader />
+
+<div class="preview-banner">
+  <span class="preview-dot"></span>
+  Hero · Option 1 · The Operating Principles
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO — OPERATING PRINCIPLES
+     Six declarative lines in Tanker. One rose-lit at a time.
+     ═══════════════════════════════════════════ -->
+<section class="op-hero" id="opHero">
+  <div class="op-bg"></div>
+
+  <div class="op-content">
+    <p class="op-eyebrow">
+      <span class="op-eyebrow-line"></span>
+      Working principles · 06
+    </p>
+
+    <ol class="op-list" id="opList">
+      <li class="op-line"><span class="op-mark">▌</span><span class="op-text">Hire better than yourself.</span></li>
+      <li class="op-line"><span class="op-mark">▌</span><span class="op-text">Start from zero, always.</span></li>
+      <li class="op-line"><span class="op-mark">▌</span><span class="op-text">Copy before layout.</span></li>
+      <li class="op-line"><span class="op-mark">▌</span><span class="op-text">Design systems are code.</span></li>
+      <li class="op-line"><span class="op-mark">▌</span><span class="op-text">AI is the new craft.</span></li>
+      <li class="op-line"><span class="op-mark">▌</span><span class="op-text">Ship, then sharpen.</span></li>
+    </ol>
+
+    <div class="op-colophon" id="opColophon">
+      <span class="op-colo-line"></span>
+      <span class="op-colo-text">
+        <strong>Basit Masood</strong> · Head of Product Design ·
+        <span class="op-colo-italic">eight years, two acquisitions, six million users.</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const list = document.getElementById('opList');
+  const lines = list ? Array.from(list.querySelectorAll('.op-line')) : [];
+  const colophon = document.getElementById('opColophon');
+
+  let activeIndex = -1;
+  let interval: ReturnType<typeof setInterval> | null = null;
+  let cycleCount = 0;
+
+  function advance() {
+    if (activeIndex >= 0) lines[activeIndex]?.classList.remove('active');
+    activeIndex = (activeIndex + 1) % lines.length;
+    lines[activeIndex]?.classList.add('active');
+    if (activeIndex === 0) cycleCount++;
+
+    // After one full cycle, settle and reveal colophon
+    if (cycleCount === 1 && activeIndex === lines.length - 1) {
+      setTimeout(() => {
+        if (interval) { clearInterval(interval); interval = null; }
+        lines.forEach(l => { l.classList.remove('active'); l.classList.add('settled'); });
+        colophon?.classList.add('visible');
+      }, 1600);
+    }
+  }
+
+  function start() {
+    advance();
+    interval = setInterval(advance, 1600);
+  }
+
+  // Wait for loader / fonts
+  const loader = document.getElementById('loader');
+  function reveal() {
+    loader?.classList.add('done');
+    document.body.classList.add('loaded');
+    document.getElementById('nav')?.classList.add('visible');
+    document.getElementById('opHero')?.classList.add('in');
+    setTimeout(start, 600);
+  }
+  if (loader) {
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    Promise.all([fontsReady, new Promise(r => setTimeout(r, 800))]).then(reveal);
+    setTimeout(reveal, 3000);
+  }
+
+  // Pause on hover
+  list?.addEventListener('mouseenter', () => { if (interval) { clearInterval(interval); interval = null; } });
+  list?.addEventListener('mouseleave', () => { if (!interval && cycleCount < 2) interval = setInterval(advance, 1600); });
+</script>
+
+</Base>
+
+<style is:global>
+  /* Loader */
+  .loader { position: fixed; inset: 0; z-index: 99999; background: var(--color-void); display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease; }
+  .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+  body:not(.loaded) { overflow: hidden; }
+  body { background: var(--color-void); }
+
+  /* Nav */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 32px 40px 0; opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .nav.visible { opacity: 1; }
+  .nav-inner { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-available {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
+    color: rgba(245, 240, 232, 0.7); letter-spacing: 0.02em;
+  }
+  .avail-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .nav-right { display: flex; align-items: center; gap: 28px; }
+  .nav-right a {
+    font-family: var(--font-heading); font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--color-white-50); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-right a:hover { color: var(--color-white); }
+  .nav-right a.active { color: var(--color-rose); }
+
+  /* Preview banner */
+  .preview-banner {
+    position: fixed; bottom: 24px; left: 24px; z-index: 9500;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border-radius: 999px;
+    background: rgba(225, 29, 72, 0.12);
+    border: 1px solid rgba(225, 29, 72, 0.4);
+    font-family: var(--font-heading); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.04em; color: var(--color-rose);
+  }
+  .preview-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--color-rose); animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* === OPERATING PRINCIPLES HERO === */
+  .op-hero {
+    min-height: 100vh; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: flex-start;
+    padding: 0 64px;
+    opacity: 0; transition: opacity 1s ease;
+  }
+  .op-hero.in { opacity: 1; }
+  .op-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse at 80% 30%, rgba(225, 29, 72, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(245, 240, 232, 0.02) 0%, transparent 60%);
+  }
+  .op-content {
+    position: relative; z-index: 1;
+    max-width: 1300px; margin: 0 auto; width: 100%;
+  }
+
+  .op-eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: var(--font-heading); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-white-50); margin-bottom: 56px;
+  }
+  .op-eyebrow-line { width: 32px; height: 1px; background: var(--color-rose); }
+
+  .op-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column;
+    counter-reset: line;
+  }
+
+  .op-line {
+    position: relative;
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(40px, 6.6vw, 108px);
+    line-height: 1.05; letter-spacing: -0.005em;
+    text-transform: uppercase;
+    color: var(--color-white-12);
+    transition: color 1s cubic-bezier(0.23, 1, 0.32, 1),
+                letter-spacing 1.2s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    padding: 4px 0 4px 64px;
+    cursor: default;
+  }
+
+  .op-mark {
+    position: absolute; left: 0; top: 50%;
+    transform: translate(-12px, -50%);
+    width: 6px; height: 0.85em;
+    background: var(--color-rose);
+    opacity: 0;
+    transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .op-line.active {
+    color: var(--color-white);
+    letter-spacing: 0;
+    transform: translateX(8px);
+  }
+  .op-line.active .op-mark {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+
+  .op-line.settled {
+    color: var(--color-white-50);
+    letter-spacing: -0.005em;
+    transform: none;
+  }
+  .op-line.settled .op-mark { opacity: 0; }
+
+  /* Colophon */
+  .op-colophon {
+    margin-top: 56px;
+    display: flex; align-items: center; gap: 16px;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .op-colophon.visible { opacity: 1; transform: translateY(0); }
+  .op-colo-line { width: 48px; height: 1px; background: var(--color-rose); flex-shrink: 0; }
+  .op-colo-text {
+    font-family: var(--font-heading); font-size: 16px;
+    color: var(--color-white-80); letter-spacing: 0.04em;
+  }
+  .op-colo-text strong { font-weight: 600; }
+  .op-colo-italic { font-family: var(--font-body); font-style: italic; color: var(--color-white-50); }
+
+  @media (max-width: 768px) {
+    .op-hero { padding: 0 24px; }
+    .op-line { padding-left: 32px; }
+    .op-mark { width: 4px; }
+    .op-colo-line { width: 32px; }
+    .op-colo-text { font-size: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .op-line { transition: none; }
+    .op-mark { transition: none; }
+    .op-colophon { transition: none; opacity: 1; transform: none; }
+  }
+</style>

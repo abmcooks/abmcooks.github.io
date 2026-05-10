@@ -1,0 +1,401 @@
+---
+import Base from '../layouts/Base.astro';
+import Loader from '../components/Loader.astro';
+import '../styles/global.css';
+---
+
+<Base title="Hero Option 3 — The Command Hero">
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <span class="nav-available">
+        <span class="avail-dot"></span>
+        Open for opportunities
+      </span>
+    </div>
+    <div class="nav-right">
+      <a href="/hero-1">Hero 1</a>
+      <a href="/hero-2">Hero 2</a>
+      <a href="/hero-3" class="active">Hero 3</a>
+    </div>
+  </div>
+</nav>
+
+<Loader />
+
+<div class="preview-banner">
+  <span class="preview-dot"></span>
+  Hero · Option 3 · The Command Hero
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO — COMMAND PALETTE
+     The site IS a tool. Hero is operable.
+     ═══════════════════════════════════════════ -->
+<section class="cmd-hero" id="cmdHero">
+  <div class="cmd-bg"></div>
+
+  <div class="cmd-frame">
+    <p class="cmd-eyebrow">
+      <span class="cmd-eyebrow-line"></span>
+      Basit Masood · ⌘K
+    </p>
+
+    <div class="cmd-palette" id="cmdPalette" role="dialog" aria-label="Search Basit's portfolio">
+      <div class="cmd-search">
+        <span class="cmd-search-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="11" y1="11" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="cmd-search-text" id="cmdSearchText"></span><span class="cmd-cursor" id="cmdCursor"></span>
+      </div>
+
+      <ul class="cmd-results" id="cmdResults">
+        <li class="cmd-result" data-href="/stories">
+          <span class="cmd-glyph">◇</span>
+          <span class="cmd-result-label">shipped to <strong>6 million users</strong></span>
+          <span class="cmd-result-meta">View work →</span>
+        </li>
+        <li class="cmd-result" data-href="/stories">
+          <span class="cmd-glyph">◇</span>
+          <span class="cmd-result-label">built design systems <strong>from zero</strong></span>
+          <span class="cmd-result-meta">Nukta · Techtonic →</span>
+        </li>
+        <li class="cmd-result" data-href="/about">
+          <span class="cmd-glyph">◇</span>
+          <span class="cmd-result-label">led design through <strong>2 acquisitions</strong></span>
+          <span class="cmd-result-meta">SadaPay · WTT →</span>
+        </li>
+        <li class="cmd-result" data-href="/consulting">
+          <span class="cmd-glyph">◇</span>
+          <span class="cmd-result-label">is teaching teams to <strong>design with AI</strong></span>
+          <span class="cmd-result-meta">Consulting →</span>
+        </li>
+      </ul>
+
+      <div class="cmd-foot">
+        <span class="cmd-foot-key">↑↓</span><span class="cmd-foot-text">navigate</span>
+        <span class="cmd-foot-divider"></span>
+        <span class="cmd-foot-key">↵</span><span class="cmd-foot-text">open</span>
+        <span class="cmd-foot-divider"></span>
+        <span class="cmd-foot-key">esc</span><span class="cmd-foot-text">collapse</span>
+      </div>
+    </div>
+
+    <div class="cmd-sig">
+      <span class="cmd-sig-line"></span>
+      Head of Product Design · 8 years · 2 acquisitions
+    </div>
+  </div>
+</section>
+
+<script>
+  const PALETTE = document.getElementById('cmdPalette');
+  const SEARCH_TEXT = document.getElementById('cmdSearchText');
+  const RESULTS = document.querySelectorAll<HTMLLIElement>('.cmd-result');
+  const HERO = document.getElementById('cmdHero');
+
+  const QUERY = 'head of product design who has...';
+  let activeIndex = 0;
+
+  function setActive(i: number) {
+    RESULTS.forEach((r, idx) => {
+      const glyph = r.querySelector('.cmd-glyph');
+      if (idx === i) {
+        r.classList.add('active');
+        if (glyph) glyph.textContent = '◆';
+      } else {
+        r.classList.remove('active');
+        if (glyph) glyph.textContent = '◇';
+      }
+    });
+    activeIndex = i;
+  }
+
+  function typeQuery(): Promise<void> {
+    return new Promise(resolve => {
+      let i = 0;
+      function step() {
+        if (!SEARCH_TEXT) return resolve();
+        SEARCH_TEXT.textContent = QUERY.slice(0, i);
+        i++;
+        if (i <= QUERY.length) setTimeout(step, 32 + Math.random() * 24);
+        else setTimeout(resolve, 280);
+      }
+      step();
+    });
+  }
+
+  function revealResults(): Promise<void> {
+    return new Promise(resolve => {
+      RESULTS.forEach((r, idx) => {
+        setTimeout(() => {
+          r.classList.add('in');
+          if (idx === 0) setActive(0);
+        }, idx * 90);
+      });
+      setTimeout(resolve, RESULTS.length * 90 + 200);
+    });
+  }
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive((activeIndex + 1) % RESULTS.length); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive((activeIndex - 1 + RESULTS.length) % RESULTS.length); }
+    else if (e.key === 'Enter') {
+      const href = RESULTS[activeIndex]?.dataset.href;
+      if (href) window.location.href = href;
+    } else if (e.key === 'Escape') {
+      PALETTE?.classList.toggle('collapsed');
+    }
+  });
+
+  // Hover navigates
+  RESULTS.forEach((r, idx) => {
+    r.addEventListener('mouseenter', () => setActive(idx));
+    r.addEventListener('click', () => {
+      const href = r.dataset.href;
+      if (href) window.location.href = href;
+    });
+  });
+
+  async function reveal() {
+    document.getElementById('loader')?.classList.add('done');
+    document.body.classList.add('loaded');
+    document.getElementById('nav')?.classList.add('visible');
+    HERO?.classList.add('in');
+
+    await new Promise(r => setTimeout(r, 380));
+    PALETTE?.classList.add('visible');
+    await new Promise(r => setTimeout(r, 260));
+    await typeQuery();
+    await revealResults();
+  }
+
+  const loader = document.getElementById('loader');
+  if (loader) {
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    Promise.all([fontsReady, new Promise(r => setTimeout(r, 700))]).then(reveal);
+    setTimeout(reveal, 3000);
+  } else {
+    reveal();
+  }
+</script>
+
+</Base>
+
+<style is:global>
+  .loader { position: fixed; inset: 0; z-index: 99999; background: var(--color-void); display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease; }
+  .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+  body:not(.loaded) { overflow: hidden; }
+  body { background: var(--color-void); }
+
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 32px 40px 0; opacity: 0; transition: opacity 0.4s ease;
+  }
+  .nav.visible { opacity: 1; }
+  .nav-inner { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-available {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
+    color: rgba(245, 240, 232, 0.7); letter-spacing: 0.02em;
+  }
+  .avail-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .nav-right { display: flex; align-items: center; gap: 28px; }
+  .nav-right a {
+    font-family: var(--font-heading); font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--color-white-50); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-right a:hover { color: var(--color-white); }
+  .nav-right a.active { color: var(--color-rose); }
+
+  .preview-banner {
+    position: fixed; bottom: 24px; left: 24px; z-index: 9500;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border-radius: 999px;
+    background: rgba(225, 29, 72, 0.12);
+    border: 1px solid rgba(225, 29, 72, 0.4);
+    font-family: var(--font-heading); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.04em; color: var(--color-rose);
+  }
+  .preview-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--color-rose); animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* === COMMAND HERO === */
+  .cmd-hero {
+    min-height: 100vh; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 40px 80px;
+    opacity: 0; transition: opacity 0.8s ease;
+  }
+  .cmd-hero.in { opacity: 1; }
+
+  .cmd-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(225, 29, 72, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 80% at 50% 0%, rgba(245, 240, 232, 0.025) 0%, transparent 60%);
+  }
+
+  .cmd-frame {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 720px;
+    display: flex; flex-direction: column; align-items: center; gap: 28px;
+  }
+
+  .cmd-eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: var(--font-heading); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-white-50); margin: 0;
+  }
+  .cmd-eyebrow-line { width: 32px; height: 1px; background: var(--color-rose); }
+
+  .cmd-palette {
+    width: 100%;
+    background: rgba(14, 15, 16, 0.96);
+    border: 1px solid var(--color-white-12);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+      0 1px 0 rgba(245, 240, 232, 0.04) inset,
+      0 30px 60px -20px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(225, 29, 72, 0.04);
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    backdrop-filter: blur(18px);
+  }
+  .cmd-palette.visible { opacity: 1; transform: translateY(0) scale(1); }
+  .cmd-palette.collapsed { opacity: 0.4; transform: scale(0.95); }
+
+  .cmd-search {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--color-white-06);
+    font-family: var(--font-body); font-size: 17px;
+    color: var(--color-white-80);
+  }
+  .cmd-search-icon { color: var(--color-white-25); display: inline-flex; }
+  .cmd-search-text { color: var(--color-white); white-space: pre; }
+  .cmd-cursor {
+    display: inline-block;
+    width: 1.5px; height: 18px;
+    background: var(--color-rose);
+    margin-left: 1px;
+    animation: cmdBlink 1.05s steps(2, end) infinite;
+    vertical-align: -3px;
+  }
+  @keyframes cmdBlink { 50% { opacity: 0; } }
+
+  .cmd-results {
+    list-style: none; padding: 8px 0; margin: 0;
+    display: flex; flex-direction: column;
+  }
+
+  .cmd-result {
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 12px 22px;
+    cursor: pointer;
+    opacity: 0; transform: translateX(-6px);
+    transition: opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                background 0.2s ease;
+  }
+  .cmd-result.in { opacity: 1; transform: translateX(0); }
+  .cmd-result.active {
+    background: rgba(225, 29, 72, 0.06);
+  }
+
+  .cmd-glyph {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    color: var(--color-white-25);
+    transition: color 0.25s, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    text-align: center;
+  }
+  .cmd-result.active .cmd-glyph {
+    color: var(--color-rose);
+    transform: rotate(45deg) scale(1.1);
+  }
+
+  .cmd-result-label {
+    font-family: var(--font-body); font-size: 16px;
+    color: var(--color-white-80);
+    transition: color 0.25s;
+  }
+  .cmd-result-label strong {
+    color: var(--color-white); font-weight: 500;
+  }
+  .cmd-result.active .cmd-result-label { color: var(--color-white); }
+
+  .cmd-result-meta {
+    font-family: var(--font-heading); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-white-25);
+    transition: color 0.25s;
+  }
+  .cmd-result.active .cmd-result-meta { color: var(--color-rose); }
+
+  .cmd-foot {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 22px;
+    border-top: 1px solid var(--color-white-06);
+    font-family: var(--font-heading); font-size: 11px; font-weight: 500;
+    color: var(--color-white-25);
+    background: rgba(6, 6, 6, 0.4);
+  }
+  .cmd-foot-key {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 18px; height: 18px; padding: 0 5px;
+    border: 1px solid var(--color-white-12);
+    border-radius: 4px;
+    color: var(--color-white-50);
+    font-size: 10px;
+  }
+  .cmd-foot-text { margin-right: 8px; margin-left: 4px; }
+  .cmd-foot-divider {
+    width: 1px; height: 10px; background: var(--color-white-12); margin: 0 6px;
+  }
+
+  .cmd-sig {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--font-body); font-style: italic; font-size: 14px;
+    color: var(--color-white-50);
+  }
+  .cmd-sig-line { width: 28px; height: 1px; background: var(--color-white-25); }
+
+  @media (max-width: 768px) {
+    .cmd-hero { padding: 100px 20px 60px; }
+    .cmd-frame { max-width: 100%; }
+    .cmd-search { font-size: 14px; padding: 14px 16px; }
+    .cmd-result { padding: 10px 16px; gap: 10px; }
+    .cmd-result-label { font-size: 14px; }
+    .cmd-result-meta { display: none; }
+    .cmd-foot { padding: 8px 16px; font-size: 10px; flex-wrap: wrap; gap: 4px; }
+    .cmd-foot-divider { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cmd-palette, .cmd-result { transition: none; opacity: 1; transform: none; }
+    .cmd-cursor { animation: none; opacity: 1; }
+  }
+</style>
