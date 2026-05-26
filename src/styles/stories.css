@@ -3413,6 +3413,13 @@ html.stories-landing {
   filter: invert(1) brightness(0.55);
   mix-blend-mode: luminosity;
 }
+/* Force the logo to render at the full max-width when the SVG has small intrinsic dimensions */
+.sb-brand-logo--large {
+  width: 360px;
+  height: auto;
+  max-height: none;
+  opacity: 1;
+}
 .sb-brand-rule {
   width: 48px; height: 1px;
   background: var(--color-rose);
@@ -4008,6 +4015,29 @@ html.stories-landing {
 }
 .sub-section-body strong { color: var(--color-dark-80); font-weight: 500; }
 
+/* Editorial-axis modifier — label as eyebrow above heading, content centered in a single 720px column. Used for pages that want a continuous reading spine rather than the sticky-label layout. */
+.sub-section--editorial .sub-section-inner {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+  gap: 0;
+  align-items: stretch;
+}
+.sub-section--editorial .sub-section-label {
+  position: static;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-bottom: 24px;
+  align-self: start;
+}
+.sub-section--editorial .sub-section-heading {
+  margin-bottom: 32px;
+}
+.sub-section--editorial .sub-section-body {
+  max-width: 100%;
+}
+
 @media (max-width: 900px) {
   .sub-section { padding: 80px 24px; }
   .sub-section-inner { grid-template-columns: 1fr; gap: 24px; }
@@ -4039,6 +4069,8 @@ html.stories-landing {
   max-width: 26ch;
   margin: 0 auto 28px;
 }
+/* Wider pullquote variant for longer-form thesis lines */
+.sub-pullquote--wide .sub-pullquote-text { max-width: 44ch; }
 .sub-pullquote-cite {
   font-family: var(--font-heading);
   font-size: 12px; font-weight: 700;
