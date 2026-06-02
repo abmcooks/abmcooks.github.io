@@ -3970,7 +3970,7 @@ html.stories-landing {
    Adds pull-quote callout + metric highlight band.
    ═══════════════════════════════════════════════════════════════ */
 .sub-section {
-  padding: clamp(96px, 12vh, 160px) var(--sp2-edge);
+  padding: clamp(64px, 7vh, 96px) var(--sp2-edge);
   max-width: var(--sp2-max); margin: 0 auto;
 }
 .sub-section + .sub-section { border-top: 1px solid var(--color-dark-08); }
@@ -4018,7 +4018,7 @@ html.stories-landing {
 /* Editorial-axis modifier — label as eyebrow above heading, content centered in a single 720px column. Used for pages that want a continuous reading spine rather than the sticky-label layout. */
 .sub-section--editorial .sub-section-inner {
   grid-template-columns: 1fr;
-  max-width: 720px;
+  max-width: 800px;
   gap: 0;
   align-items: stretch;
 }
@@ -4047,7 +4047,7 @@ html.stories-landing {
 
 /* Pull-quote callout — sits between sections */
 .sub-pullquote {
-  padding: clamp(80px, 10vh, 140px) var(--sp2-edge);
+  padding: clamp(52px, 6vh, 84px) var(--sp2-edge);
   max-width: 1100px; margin: 0 auto;
   text-align: center;
   border-top: 1px solid var(--color-dark-08);
@@ -4080,7 +4080,7 @@ html.stories-landing {
 
 /* Metric highlight band — one big number, full-bleed */
 .sub-highlight {
-  padding: clamp(100px, 14vh, 180px) var(--sp2-edge);
+  padding: clamp(60px, 7vh, 100px) var(--sp2-edge);
   background: var(--color-void);
   color: var(--color-white);
   text-align: center;
