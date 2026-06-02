@@ -263,52 +263,81 @@ import '../../../styles/stories.css';
   </aside>
 </section>
 
-<!-- K-FACTOR / REFERRAL MATH — the system fed itself -->
+<!-- K-FACTOR / REFERRAL MATH — output becomes input, a closing ring -->
 <section class="wl-kfactor" aria-label="The math of compounding without paid acquisition">
   <header class="wl-kfactor-header">
-    <span class="wl-kfactor-eyebrow">The math</span>
-    <h3 class="wl-kfactor-heading">A loop, not a funnel.</h3>
-    <p class="wl-kfactor-desc">Most growth charts narrow as users drop off. Ours widened, because each user multiplied. The Founders Club box gave 3–5 tickets back. Every redemption created a new inviter. The system fed itself.</p>
+    <span class="wl-kfactor-eyebrow reveal">The math</span>
+    <h3 class="wl-kfactor-heading reveal">A loop, not a funnel.</h3>
+    <p class="wl-kfactor-lede reveal">Each user became an inviter. The math only widened.</p>
   </header>
 
-  <div class="wl-kfactor-cycle">
-    <div class="wl-kfactor-stages" role="presentation">
-      <div class="wl-kfactor-stage">
-        <span class="wl-kfactor-number">1</span>
-        <span class="wl-kfactor-label">user</span>
-      </div>
-      <span class="wl-kfactor-arrow" aria-hidden="true">→</span>
-      <div class="wl-kfactor-stage">
-        <span class="wl-kfactor-number">7</span>
-        <span class="wl-kfactor-label">invites</span>
-      </div>
-      <span class="wl-kfactor-arrow" aria-hidden="true">→</span>
-      <div class="wl-kfactor-stage">
-        <span class="wl-kfactor-number">49</span>
-        <span class="wl-kfactor-label">second degree</span>
-      </div>
-      <span class="wl-kfactor-arrow" aria-hidden="true">→</span>
-      <div class="wl-kfactor-stage">
-        <span class="wl-kfactor-number">343</span>
-        <span class="wl-kfactor-label">third degree</span>
-      </div>
-      <span class="wl-kfactor-arrow" aria-hidden="true">→</span>
-      <div class="wl-kfactor-stage wl-kfactor-stage--terminal">
-        <span class="wl-kfactor-number">2,401+</span>
-        <span class="wl-kfactor-label">five rounds in</span>
-      </div>
-    </div>
-    <div class="wl-kfactor-loopback" aria-hidden="true">
-      <svg class="wl-kfactor-loopback-arc" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path d="M99 6 C 99 72, 64 94, 50 94 C 36 94, 1 72, 1 22" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" />
-      </svg>
-      <span class="wl-kfactor-loopback-head"></span>
-      <span class="wl-kfactor-loopback-tag">each round feeds the next</span>
-    </div>
-    <p class="wl-kfactor-loopline">Every redemption minted a new inviter — output becomes input, round after round. <strong>A funnel narrows; this only widened.</strong></p>
-  </div>
+  <div class="wl-kfactor-ring reveal">
+    <svg class="wl-kfactor-svg" viewBox="0 0 400 400" role="img" aria-label="A closed loop: 1 user becomes 7 invites, then 49, 343, and 2,401-plus, which feeds back into the first user. The output becomes the input. At the center, the real result: 10,000-plus users from one referrer, 3 million signups, zero paid acquisition.">
+      <defs>
+        <!-- arrowhead piercing node 1; uses currentColor so the marker inherits the rose set on the element -->
+        <marker id="wlReentryHead" viewBox="0 0 12 12" refX="8.5" refY="6" markerWidth="16" markerHeight="16" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+          <path d="M1 1 L11 6 L1 11 Z" fill="currentColor" />
+        </marker>
+      </defs>
 
-  <p class="wl-kfactor-footnote">In production, one referrer alone brought in 10,000+ users, and we crossed 3M signups — with no paid acquisition behind any of it. Pakistani fintech had never seen exponential growth without spend.</p>
+      <!-- base ring — faint, the circuit the progression rides -->
+      <circle class="wl-kfactor-base" cx="200" cy="200" r="120" fill="none" stroke="var(--color-white-12)" stroke-width="1.5" />
+
+      <!-- main draw-on ring: clockwise from node 1 (top) round to node 5 (top-left) -->
+      <!-- arc sweeps the 4 progression gaps; the rose re-entry arc closes the final gap -->
+      <path class="wl-kfactor-track"
+            d="M 200 80
+               A 120 120 0 1 1 85.87 162.92"
+            pathLength="1"
+            fill="none" stroke="var(--color-white-25)" stroke-width="2" stroke-linecap="round" />
+
+      <!-- BOLD rose re-entry arc: from node 5 (2,401+) sweeping clockwise back INTO node 1 (1) -->
+      <g class="wl-kfactor-reentry">
+        <path class="wl-kfactor-reentry-path"
+              d="M 85.87 162.92
+                 A 120 120 0 0 1 187.46 80.66"
+              pathLength="1"
+              fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"
+              marker-end="url(#wlReentryHead)" />
+      </g>
+
+      <!-- node dots, sitting on the ring -->
+      <circle class="wl-kfactor-dot" data-n="0" cx="200"    cy="80"     r="5" />
+      <circle class="wl-kfactor-dot" data-n="1" cx="314.13" cy="162.92" r="5" />
+      <circle class="wl-kfactor-dot" data-n="2" cx="270.53" cy="297.08" r="5" />
+      <circle class="wl-kfactor-dot" data-n="3" cx="129.47" cy="297.08" r="5" />
+      <circle class="wl-kfactor-dot wl-kfactor-dot--terminal" data-n="4" cx="85.87" cy="162.92" r="6" />
+    </svg>
+
+    <!-- numbers + labels, positioned just OUTSIDE the ring at each node (described by the SVG label above).
+         Coordinates: center 50/50, radius factor 0.46 of the box → sits clear of the 0.375 ring stroke. -->
+    <span class="wl-kfactor-node wl-kfactor-node--1" aria-hidden="true" style="--x:50%;--y:9%;">
+      <b class="wl-kfactor-num">1</b>
+      <em class="wl-kfactor-cap">user</em>
+    </span>
+    <span class="wl-kfactor-node wl-kfactor-node--2" aria-hidden="true" style="--x:87%;--y:37.5%;">
+      <b class="wl-kfactor-num">7</b>
+      <em class="wl-kfactor-cap">invites</em>
+    </span>
+    <span class="wl-kfactor-node wl-kfactor-node--3" aria-hidden="true" style="--x:74%;--y:83%;">
+      <b class="wl-kfactor-num">49</b>
+      <em class="wl-kfactor-cap">2nd degree</em>
+    </span>
+    <span class="wl-kfactor-node wl-kfactor-node--4" aria-hidden="true" style="--x:26%;--y:83%;">
+      <b class="wl-kfactor-num">343</b>
+      <em class="wl-kfactor-cap">3rd degree</em>
+    </span>
+    <span class="wl-kfactor-node wl-kfactor-node--5" aria-hidden="true" style="--x:11%;--y:37.5%;">
+      <b class="wl-kfactor-num wl-kfactor-num--terminal">2,401+</b>
+      <em class="wl-kfactor-cap wl-kfactor-cap--terminal">five rounds in</em>
+    </span>
+
+    <!-- gravitational core: the real production proof the model produced -->
+    <div class="wl-kfactor-core" aria-hidden="true">
+      <span class="wl-kfactor-core-stat">4M+</span>
+      <span class="wl-kfactor-core-sub">signups · zero paid acquisition</span>
+    </div>
+  </div>
 </section>
 
 <!-- STAGE THREE -->
@@ -705,7 +734,9 @@ import '../../../styles/stories.css';
     color: var(--color-dark-50);
   }
 
-  /* K-factor / referral math — dark "moment"; numbers escalate to embody exponential growth */
+  /* K-factor / referral math — "Output becomes input": a closing ring on the dark band.
+     The compounding progression rides the ring clockwise; a bold rose arc closes the loop
+     back into node 1; the real production proof sits dead-center as the gravitational core. */
   .wl-kfactor {
     padding: clamp(80px, 10vh, 128px) var(--sp2-edge);
     background: var(--color-void);
@@ -714,7 +745,7 @@ import '../../../styles/stories.css';
   .wl-kfactor-header {
     text-align: center;
     max-width: 660px;
-    margin: 0 auto 72px;
+    margin: 0 auto clamp(40px, 6vh, 64px);
   }
   .wl-kfactor-eyebrow {
     display: inline-block;
@@ -735,112 +766,173 @@ import '../../../styles/stories.css';
     color: var(--color-white);
     letter-spacing: -0.01em;
   }
-  .wl-kfactor-desc {
+  .wl-kfactor-lede {
     font-family: 'Literata', serif;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: clamp(15px, 1.6vw, 18px);
+    line-height: 1.55;
     color: var(--color-white-50);
     margin: 0;
   }
-  /* The loop — escalating progression that loops back on itself (a cycle, not a funnel) */
-  .wl-kfactor-cycle {
-    max-width: 1000px;
+
+  /* The ring — a centered square that holds the SVG circuit, the node numbers, and the core */
+  .wl-kfactor-ring {
+    position: relative;
+    width: 100%;
+    max-width: min(560px, 84vw);
+    aspect-ratio: 1;
     margin: 0 auto;
+    box-sizing: border-box;
   }
-  .wl-kfactor-stages {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: clamp(8px, 2vw, 24px);
+  .wl-kfactor-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
   }
-  .wl-kfactor-stage {
+
+  /* draw-on ring: stroke the path from full to zero offset when revealed */
+  .wl-kfactor-track {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.65, 0, 0.35, 1) 0.1s;
+  }
+  .wl-kfactor-ring.revealed .wl-kfactor-track { stroke-dashoffset: 0; }
+
+  /* BOLD rose re-entry arc — closes the loop into node 1, drawn last/slowest so it reads as the payoff */
+  .wl-kfactor-reentry { color: var(--color-rose); }
+  .wl-kfactor-reentry-path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    opacity: 0;
+    transition: stroke-dashoffset 0.9s cubic-bezier(0.65, 0, 0.35, 1) 1.35s,
+                opacity 0.01s linear 1.35s;
+  }
+  .wl-kfactor-ring.revealed .wl-kfactor-reentry-path { stroke-dashoffset: 0; opacity: 1; }
+
+  /* node dots */
+  .wl-kfactor-dot {
+    fill: var(--color-white);
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .wl-kfactor-dot--terminal { fill: var(--color-rose); }
+  .wl-kfactor-ring.revealed .wl-kfactor-dot { opacity: 1; transform: scale(1); }
+  .wl-kfactor-ring.revealed .wl-kfactor-dot[data-n="0"] { transition-delay: 0.25s; }
+  .wl-kfactor-ring.revealed .wl-kfactor-dot[data-n="1"] { transition-delay: 0.5s; }
+  .wl-kfactor-ring.revealed .wl-kfactor-dot[data-n="2"] { transition-delay: 0.75s; }
+  .wl-kfactor-ring.revealed .wl-kfactor-dot[data-n="3"] { transition-delay: 1s; }
+  .wl-kfactor-ring.revealed .wl-kfactor-dot[data-n="4"] { transition-delay: 1.25s; }
+
+  /* node numbers + labels, positioned over the ring via per-node --x / --y */
+  .wl-kfactor-node {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
+    gap: 4px;
     text-align: center;
+    width: max-content;
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
+    transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .wl-kfactor-number {
+  .wl-kfactor-ring.revealed .wl-kfactor-node { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .wl-kfactor-ring.revealed .wl-kfactor-node--1 { transition-delay: 0.3s; }
+  .wl-kfactor-ring.revealed .wl-kfactor-node--2 { transition-delay: 0.55s; }
+  .wl-kfactor-ring.revealed .wl-kfactor-node--3 { transition-delay: 0.8s; }
+  .wl-kfactor-ring.revealed .wl-kfactor-node--4 { transition-delay: 1.05s; }
+  .wl-kfactor-ring.revealed .wl-kfactor-node--5 { transition-delay: 1.3s; }
+  .wl-kfactor-num {
     font-family: 'Tanker', sans-serif;
-    font-size: clamp(26px, 4vw, 40px);
+    font-style: normal;
     font-weight: 400;
     color: var(--color-white);
     line-height: 0.85;
+    text-transform: uppercase;
   }
-  .wl-kfactor-stage:nth-of-type(2) .wl-kfactor-number { font-size: clamp(30px, 4.6vw, 50px); }
-  .wl-kfactor-stage:nth-of-type(3) .wl-kfactor-number { font-size: clamp(36px, 5.6vw, 66px); }
-  .wl-kfactor-stage:nth-of-type(4) .wl-kfactor-number { font-size: clamp(44px, 7vw, 88px); }
-  .wl-kfactor-stage--terminal .wl-kfactor-number {
-    font-size: clamp(56px, 9vw, 120px);
-    color: var(--color-rose);
+  /* escalating sizes 1 → 7 → 49 → 343 → 2,401+ */
+  .wl-kfactor-node--1 .wl-kfactor-num { font-size: clamp(16px, 2vw, 22px); }
+  .wl-kfactor-node--2 .wl-kfactor-num { font-size: clamp(18px, 2.3vw, 26px); }
+  .wl-kfactor-node--3 .wl-kfactor-num { font-size: clamp(20px, 2.7vw, 30px); }
+  .wl-kfactor-node--4 .wl-kfactor-num { font-size: clamp(23px, 3vw, 36px); }
+  .wl-kfactor-num--terminal {
+    font-size: clamp(26px, 3.4vw, 42px);
+    color: var(--color-white);
   }
-  .wl-kfactor-label {
+  .wl-kfactor-cap {
     font-family: 'General Sans', sans-serif;
-    font-size: clamp(9px, 0.95vw, 12px);
+    font-style: normal;
+    font-size: clamp(9px, 1vw, 11px);
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-white-50);
   }
-  .wl-kfactor-stage--terminal .wl-kfactor-label { color: var(--color-rose); }
-  .wl-kfactor-arrow {
-    font-family: 'General Sans', sans-serif;
-    font-size: clamp(14px, 1.8vw, 24px);
-    color: var(--color-white-25);
-    font-weight: 300;
-    align-self: flex-end;
-    margin-bottom: clamp(4px, 1vw, 14px);
-  }
-  /* loop-back arc — travels from 2,401+ back to the 1: output becomes input */
-  .wl-kfactor-loopback {
-    position: relative;
-    height: 60px;
-    margin-top: 12px;
-    color: var(--color-rose);
-  }
-  .wl-kfactor-loopback-arc { width: 100%; height: 100%; display: block; }
-  .wl-kfactor-loopback-head {
+  .wl-kfactor-cap--terminal { color: var(--color-white-50); }
+
+  /* gravitational core — the real result the model encircled */
+  .wl-kfactor-core {
     position: absolute;
-    left: -1px;
-    top: 7px;
-    width: 0; height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 9px solid var(--color-rose);
-  }
-  .wl-kfactor-loopback-tag {
-    position: absolute;
-    left: 50%; bottom: -2px;
-    transform: translateX(-50%);
-    font-family: 'General Sans', sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--color-rose);
-    background: var(--color-void);
-    padding: 0 12px;
-  }
-  .wl-kfactor-loopline {
-    margin: 28px auto 0;
-    max-width: 560px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     text-align: center;
-    font-family: 'Literata', serif;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--color-white-80);
+    width: min(58%, 280px);
+    opacity: 0;
+    transition: opacity 0.7s ease 0.9s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.9s;
+    transform: translate(-50%, -50%) scale(0.92);
   }
-  .wl-kfactor-loopline strong { color: var(--color-white); font-weight: 600; }
-  .wl-kfactor-footnote {
-    margin: 72px auto 0;
-    max-width: 720px;
-    font-family: 'Literata', serif;
-    font-style: italic;
-    font-size: 14px;
-    line-height: 1.6;
+  .wl-kfactor-ring.revealed .wl-kfactor-core { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .wl-kfactor-core-stat {
+    font-family: 'Tanker', sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(40px, 7.5vw, 80px);
+    line-height: 0.85;
+    color: var(--color-rose);
+    letter-spacing: -0.01em;
+  }
+  .wl-kfactor-core-sub {
+    font-family: 'General Sans', sans-serif;
+    font-size: clamp(10px, 1.2vw, 12px);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--color-white-50);
-    text-align: center;
+    max-width: 22ch;
   }
+
   @media (max-width: 720px) {
     .wl-kfactor { padding: 64px 24px; }
+  }
+  /* small screens: shrink the widest ring numbers and pull side nodes inward so nothing clips */
+  @media (max-width: 600px) {
+    .wl-kfactor-num--terminal { font-size: clamp(18px, 5vw, 24px); }
+    .wl-kfactor-node--4 .wl-kfactor-num { font-size: clamp(18px, 5vw, 24px); }
+    .wl-kfactor-node--5 { --x: 12%; }
+    .wl-kfactor-node--2 { --x: 86%; }
+  }
+  /* reduced motion — everything fully drawn and visible, no transitions */
+  @media (prefers-reduced-motion: reduce) {
+    .wl-kfactor-track,
+    .wl-kfactor-reentry-path { stroke-dashoffset: 0; opacity: 1; transition: none; }
+    .wl-kfactor-dot,
+    .wl-kfactor-node,
+    .wl-kfactor-core {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      transition: none;
+    }
+    .wl-kfactor-dot { transform: scale(1); }
   }
 
   /* Challenge "two jobs" — simple bulleted list for easy digestion */
