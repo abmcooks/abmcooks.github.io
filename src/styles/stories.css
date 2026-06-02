@@ -971,8 +971,9 @@ body.page-light .custom-cursor .cursor-dot { background: var(--color-dark-80); }
 body.page-light .custom-cursor.hover .cursor-ring { border-color: var(--color-dark-80); background: var(--color-dark-08); }
 
 :root {
-  --sp2-edge: 64px;
+  --sp2-edge: clamp(24px, 5vw, 64px);
   --sp2-max: 1400px;
+  --sp2-frame: 1200px;
   --sp2-content: 920px;
 }
 @media (max-width: 900px) {
@@ -2116,7 +2117,7 @@ body.page-light .custom-cursor.hover .cursor-ring { border-color: var(--color-da
   min-height: auto;
   border-top: 1px solid var(--color-dark-12);
 }
-.sp2-story-inner { max-width: 1100px; margin: 0 auto; }
+.sp2-story-inner { max-width: var(--sp2-frame); margin: 0 auto; }
 .sp2-story-head {
   display: flex; align-items: flex-end; gap: 80px; justify-content: space-between;
   margin-bottom: 96px;
@@ -2244,7 +2245,7 @@ body.page-light .custom-cursor.hover .cursor-ring { border-color: var(--color-da
   border-top: 1px solid var(--color-dark-12);
 }
 .sp2-service-inner {
-  max-width: 1100px; margin: 0 auto;
+  max-width: var(--sp2-frame); margin: 0 auto;
 }
 .sp2-service-head {
   margin-bottom: 64px;
@@ -2490,7 +2491,7 @@ body.page-light .custom-cursor.hover .cursor-ring { border-color: var(--color-da
   padding: 120px var(--sp2-edge);
 }
 .sp2-specimen-inner {
-  max-width: 1100px; margin: 0 auto;
+  max-width: var(--sp2-frame); margin: 0 auto;
   width: 100%;
   display: flex; flex-direction: column;
   gap: 72px; align-items: center;
@@ -3971,7 +3972,7 @@ html.stories-landing {
    ═══════════════════════════════════════════════════════════════ */
 .sub-section {
   padding: clamp(64px, 7vh, 96px) var(--sp2-edge);
-  max-width: var(--sp2-max); margin: 0 auto;
+  max-width: var(--sp2-frame); margin: 0 auto;
 }
 .sub-section + .sub-section { border-top: 1px solid var(--color-dark-08); }
 .sub-section-inner {
@@ -4018,7 +4019,7 @@ html.stories-landing {
 /* Editorial-axis modifier — label as eyebrow above heading, content centered in a single 720px column. Used for pages that want a continuous reading spine rather than the sticky-label layout. */
 .sub-section--editorial .sub-section-inner {
   grid-template-columns: 1fr;
-  max-width: 800px;
+  max-width: 100%;
   gap: 0;
   align-items: stretch;
 }
@@ -4035,7 +4036,7 @@ html.stories-landing {
   margin-bottom: 32px;
 }
 .sub-section--editorial .sub-section-body {
-  max-width: 100%;
+  max-width: 72ch;
 }
 
 @media (max-width: 900px) {
@@ -4048,7 +4049,7 @@ html.stories-landing {
 /* Pull-quote callout — sits between sections */
 .sub-pullquote {
   padding: clamp(52px, 6vh, 84px) var(--sp2-edge);
-  max-width: 1100px; margin: 0 auto;
+  max-width: var(--sp2-frame); margin: 0 auto;
   text-align: center;
   border-top: 1px solid var(--color-dark-08);
   border-bottom: 1px solid var(--color-dark-08);

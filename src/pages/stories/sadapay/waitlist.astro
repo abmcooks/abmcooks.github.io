@@ -242,7 +242,7 @@ import '../../../styles/stories.css';
       <h2 class="sub-section-heading">One short statement.<br/>Then we <span class="accent">throttled supply</span>.</h2>
       <div class="sub-section-body">
         <p>We had two options. Shut it down or let it run. We let it run. A resale market for invite codes was a demand signal no dashboard could fake. We posted one short statement saying we weren't connected to the sellers, then went quiet. And we started intentionally throttling ticket supply.</p>
-        <p>The Founders Club shipments included three to five physical tickets per box. The apex reward unlocked more gifting power. The system fed itself.</p>
+        <p>The Founders Club shipments included three to five physical tickets per box. The apex reward unlocked more gifting power — our most loyal users became our biggest distributors.</p>
       </div>
     </div>
   </div>
@@ -338,7 +338,6 @@ import '../../../styles/stories.css';
       <h2 class="sub-section-heading">Five million users.<br/>Through one <span class="accent">designed funnel</span>.</h2>
       <div class="sub-section-body">
         <p>Five million users came through the same status → scarcity → cash system between 2021 and 2023, processing $1 billion a year, with the cash stage steering the dollar-earning freelancers toward that volume. We became one of the two that reached scale, by designing demand instead of buying it. SadaPay sold to Papara for up to $50M in May 2024. After I left, people still introduce themselves to me with <em>"I hold a Founders Club card."</em></p>
-        <!-- TODO Basit: if you have it, drop the efficiency number in here — effective CAC near zero, or marketing spend avoided vs a fintech CAC benchmark. This is the one figure that turns "designed demand" into a P&L result. Do NOT invent it. -->
       </div>
     </div>
   </div>
@@ -392,7 +391,7 @@ import '../../../styles/stories.css';
   /* Specimen plate — artifact photo + sidebar meta (Object 02 / 03 / 04 series) */
   .wl-specimen {
     position: relative;
-    padding: 64px 40px;
+    padding: clamp(56px, 7vh, 88px) var(--sp2-edge);
     background: var(--color-light);
     display: grid;
     grid-template-columns: minmax(0, 1fr) 300px;
@@ -469,7 +468,7 @@ import '../../../styles/stories.css';
   /* Single phone-screen and wide flow strip shots */
   .wl-shot {
     margin: 0 auto;
-    padding: 64px 40px;
+    padding: clamp(56px, 7vh, 88px) var(--sp2-edge);
     max-width: 1200px;
     background: var(--color-light);
   }
@@ -874,8 +873,8 @@ import '../../../styles/stories.css';
 
   /* EMI LANDSCAPE — table image with caption */
   .wl-landscape {
-    padding: 64px 24px 80px;
-    max-width: 1120px;
+    padding: clamp(56px, 7vh, 88px) var(--sp2-edge) clamp(72px, 9vh, 96px);
+    max-width: 1200px;
     margin: 0 auto;
     background: var(--color-light);
   }
@@ -901,7 +900,7 @@ import '../../../styles/stories.css';
 
   /* DIFF SLIDER — v1 vs v2 craft comparison */
   .wl-diff {
-    padding: 96px 24px;
+    padding: clamp(64px, 8vh, 96px) var(--sp2-edge);
     max-width: 1200px;
     margin: 0 auto;
     background: var(--color-light);
@@ -1074,7 +1073,7 @@ import '../../../styles/stories.css';
   /* LEADERBOARD specimen plate — production state, 2021 */
   .wl-leaderboard {
     position: relative;
-    padding: 64px 40px;
+    padding: clamp(56px, 7vh, 88px) var(--sp2-edge);
     background: var(--color-light);
     display: grid;
     grid-template-columns: 360px minmax(0, 1fr);
