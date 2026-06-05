@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Private design-talent shortlist — by invite." />
+<title>Design Talent — Private</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Fontshare: JetBrains Mono (score numerals) -->
+<link href="https://api.fontshare.com/v2/css?f[]=jet-brains-mono@400,700&display=swap" rel="stylesheet" />
+
+<style>
+/* ═══════════════════════════════════════════
+   SELF-HOSTED FONTS (absolute paths — live on domain)
+   ═══════════════════════════════════════════ */
+@font-face { font-family: 'Tanker'; src: url('/fonts/Tanker-Regular.woff2') format('woff2'), url('/fonts/Tanker-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Light.otf') format('opentype'); font-weight: 300; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Medium.otf') format('opentype'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Semibold.otf') format('opentype'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'General Sans'; src: url('/fonts/GeneralSans-Bold.otf') format('opentype'); font-weight: 700; font-display: swap; }
+
+@font-face { font-family: 'Literata'; src: url('/fonts/Literata-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Literata'; src: url('/fonts/Literata-Italic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Literata'; src: url('/fonts/Literata-Medium.otf') format('opentype'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Literata'; src: url('/fonts/Literata-SemiBold.otf') format('opentype'); font-weight: 600; font-display: swap; }
+
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS (inlined from portfolio system)
+   ═══════════════════════════════════════════ */
+:root {
+  --void:#060606;
+  --depth:#0E0F10;
+  --light:#E8ECEB;
+  --cream:#ede8df;
+  --white:#f5f0e8;
+  --rose:#e11d48;
+
+  --dark-80:rgba(6,6,6,.80);
+  --dark-65:rgba(6,6,6,.65);
+  --dark-50:rgba(6,6,6,.50);
+  --dark-25:rgba(6,6,6,.25);
+  --dark-12:rgba(6,6,6,.12);
+  --dark-08:rgba(6,6,6,.08);
+
+  --rose-20:rgba(225,29,72,.2);
+  --rose-08:rgba(225,29,72,.08);
+  --rose-06:rgba(225,29,72,.06);
+
+  /* calm teal for "Contacted" — restrained, not SaaS-blue */
+  --teal:#0e7490;
+  --teal-10:rgba(14,116,144,.10);
+
+  --font-display:'Tanker', serif;
+  --font-heading:'General Sans', sans-serif;
+  --font-body:'Literata', serif;
+  --font-mono:'JetBrains Mono', ui-monospace, monospace;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { background: var(--light); }
+body {
+  font-family: var(--font-body);
+  background: var(--light);
+  color: var(--dark-80);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+::selection { background: var(--rose); color: var(--white); }
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--rose); outline-offset: 3px;
+}
+
+/* Grain overlay — same as site, subtle */
+body::after {
+  content:''; position:fixed; inset:0; z-index:9000; pointer-events:none; opacity:.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* ═══════════════════════════════════════════
+   SPINNER (gate + load states)
+   ═══════════════════════════════════════════ */
+.spinner {
+  width:28px; height:28px; border-radius:50%;
+  border:1.5px solid var(--dark-12);
+  border-right-color: var(--void);
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ═══════════════════════════════════════════
+   LOGIN GATE
+   ═══════════════════════════════════════════ */
+.gate {
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding:48px 24px;
+  background-image: radial-gradient(ellipse 50% 40% at 85% 100%, rgba(225,29,72,.06) 0%, transparent 70%);
+}
+.gate-inner { width:100%; max-width:580px; }
+
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size:13px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color: var(--rose); display:flex; align-items:center; gap:14px;
+  margin-bottom:24px;
+}
+.eyebrow::before { content:''; display:inline-block; width:32px; height:1px; background: var(--rose); }
+
+.gate-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6.5vw, 88px);
+  font-weight:400; letter-spacing:-0.005em;
+  text-transform: uppercase; line-height:.95; color: var(--dark-80);
+  margin:0 0 24px;
+}
+.gate-sub {
+  font-family: var(--font-body);
+  font-size:18px; font-style:italic; color: var(--dark-65); line-height:1.65;
+  max-width:480px; margin-bottom:48px;
+}
+
+.gate-form { display:flex; flex-direction:column; gap:26px; }
+.field {
+  background:transparent; border:none; border-bottom:1px solid var(--dark-80);
+  font-family: var(--font-body); font-size:18px; color: var(--dark-80);
+  padding:10px 2px; border-radius:0; width:100%;
+  transition: border-color .2s ease;
+}
+.field::placeholder { color: var(--dark-50); font-style:italic; }
+.field:focus { outline:none; border-bottom-color: var(--rose); }
+@media (-webkit-min-device-pixel-ratio:0){ .gate-form .field{ font-size:16px; } }
+
+/* Primary = the resume nav button's shape (0.5em), filled with the primary color */
+.btn-dark {
+  font-family: var(--font-heading); font-size:13px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase;
+  background: var(--rose); color: var(--white);
+  border:1px solid var(--rose); padding:16px 28px; border-radius:.5em; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center; gap:12px; line-height:1;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-dark:hover { background:transparent; color: var(--rose); }
+.btn-dark:disabled { opacity:.55; cursor:default; }
+.btn-dark .spinner { width:16px; height:16px; border-width:1.5px; border-right-color: var(--white); border-color: rgba(245,240,232,.3); border-right-color: var(--white); }
+
+.gate-submit-row { display:flex; align-items:center; gap:28px; margin-top:8px; }
+
+.gate-error {
+  font-family: var(--font-heading); font-size:13px; color: var(--rose);
+  font-weight:500; letter-spacing:.02em;
+  display:none;
+}
+.gate-error.show { display:block; }
+
+.gate-foot {
+  margin-top:56px; padding-top:22px; border-top:1px solid var(--dark-12);
+  font-family: var(--font-heading); font-size:12px; color: var(--dark-50);
+  line-height:1.6;
+}
+.gate-foot a { color: var(--dark-65); text-decoration:none; border-bottom:1px solid var(--dark-12); transition:color .2s, border-color .2s; }
+.gate-foot a:hover { color: var(--rose); border-bottom-color: var(--rose); }
+
+/* ═══════════════════════════════════════════
+   APP SHELL
+   ═══════════════════════════════════════════ */
+.app { display:none; flex-direction:column; min-height:100vh; }
+.app.show { display:flex; }
+
+.wrap { width:100%; max-width:1180px; margin:0 auto; padding:0 40px; }
+
+.app-header {
+  background: var(--light);
+}
+.app-header-inner {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:30px 40px 26px; gap:24px; flex-wrap:wrap;
+}
+.brand { display:flex; align-items:baseline; gap:12px; }
+.header-left { display:flex; align-items:center; gap:20px; }
+.back-link { font-family: var(--font-heading); font-size:12px; font-weight:500; letter-spacing:.02em; color: var(--dark-50); text-decoration:none; white-space:nowrap; transition: color .2s ease; }
+.back-link:hover { color: var(--rose); }
+.brand-mark {
+  font-family: var(--font-display); font-size:22px; text-transform:uppercase;
+  color: var(--dark-80); line-height:1;
+}
+.brand-count { font-family: var(--font-mono); font-size:13px; color: var(--dark-50); }
+
+/* "View only" indicator — viewers only */
+.view-only-tag {
+  font-family: var(--font-heading); font-size:11px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; color: var(--dark-50);
+  display:inline-flex; align-items:center; gap:8px;
+  padding-left:14px; margin-left:4px; border-left:1px solid var(--dark-12);
+}
+.view-only-tag .vot-dot { width:5px; height:5px; border-radius:50%; background: var(--dark-25); flex:none; }
+
+/* ── Reviewer gating: no data writes (add/edit/delete); status stays editable ── */
+body.viewer .row-actions { display:none; }
+/* Reviewer has no actions column — collapse it so Status sits flush at the right edge */
+body.viewer .candidates thead th:last-child,
+body.viewer .candidates tbody td:last-child { display:none; }
+body.viewer .candidates thead th:nth-child(5),
+body.viewer .candidates tbody td:nth-child(5) { padding-right:0; }
+
+.header-actions { display:flex; align-items:center; gap:24px; }
+.btn-signout {
+  font-family: var(--font-heading); font-size:13px; font-weight:500;
+  color: var(--dark-50); background:none; border:none; cursor:pointer;
+  letter-spacing:.02em; transition: color .2s ease;
+}
+.btn-signout:hover { color: var(--rose); }
+
+/* Toolbar */
+.toolbar {
+  position: sticky; top:0; z-index:50;
+  background: rgba(232,236,235,.86);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+.toolbar-inner {
+  display:flex; align-items:center; gap:28px; padding:18px 40px; flex-wrap:wrap;
+}
+.tool-search { flex:1 1 280px; min-width:200px; }
+.tool-search .field {
+  border-bottom:1px solid var(--dark-12); font-size:16px; padding:8px 2px;
+}
+.tool-search .field:focus { border-bottom-color: var(--rose); }
+
+.tool-group { display:flex; align-items:center; gap:10px; }
+.tool-label {
+  font-family: var(--font-heading); font-size:11px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; color: var(--dark-50);
+}
+.tool-select {
+  font-family: var(--font-heading); font-size:13px; font-weight:500; color: var(--dark-80);
+  background:transparent; border:1px solid var(--dark-12); border-radius:4px;
+  padding:8px 32px 8px 12px; cursor:pointer;
+  -webkit-appearance:none; appearance:none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(6,6,6,0.5)' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position: right 12px center;
+  transition: border-color .2s ease;
+}
+.tool-select:hover { border-color: var(--dark-25); }
+.tool-select:focus { outline:none; border-color: var(--rose); }
+
+/* ═══════════════════════════════════════════
+   TABLE
+   ═══════════════════════════════════════════ */
+.table-region { padding:14px 0 96px; }
+.table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+table.candidates {
+  width:100%; border-collapse:collapse; min-width:860px;
+}
+.candidates thead th {
+  font-family: var(--font-heading); font-size:12px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; color: var(--dark-50);
+  text-align:left; padding:16px 20px 14px; border-bottom:1px solid var(--dark-12);
+  white-space:nowrap; user-select:none;
+}
+.candidates thead th.sortable { cursor:pointer; transition:color .2s ease; }
+.candidates thead th.sortable:hover { color: var(--rose); }
+.sort-caret { color: var(--rose); margin-left:6px; font-size:10px; }
+
+.col-score { width:96px; text-align:center; }
+.col-score-h { text-align:center; }
+.col-actions { width:78px; }
+
+.candidates tbody tr {
+  border-bottom:1px solid var(--dark-08);
+  transition: background .15s ease;
+}
+.candidates tbody tr:hover { background: var(--dark-08); }
+.candidates tbody td { padding:20px; vertical-align:top; }
+.candidates thead th:first-child, .candidates tbody td:first-child { padding-left:0; }
+.candidates thead th:last-child, .candidates tbody td:last-child { padding-right:0; }
+
+.c-name { font-family: var(--font-heading); font-weight:500; color: var(--dark-80); font-size:15px; }
+
+.score-pill {
+  font-family: var(--font-mono); font-size:14px; font-weight:700;
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:30px; height:30px; padding:0 8px; border-radius:5px;
+  background: var(--dark-08); color: var(--dark-65);
+}
+.score-pill.hi { background: var(--rose-08); color: var(--rose); }
+
+.c-work { font-family: var(--font-body); font-size:14px; color: var(--dark-65); line-height:1.55; max-width:320px; }
+.c-work a { color: var(--rose); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .2s ease; }
+.c-work a:hover { border-bottom-color: var(--rose); }
+
+.c-notes { font-family: var(--font-body); font-size:14px; color: var(--dark-65); line-height:1.6; max-width:420px; }
+.c-notes .notes-text { display:block; }
+.c-notes .notes-text.clamped {
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.notes-toggle {
+  font-family: var(--font-heading); font-size:12px; font-weight:500; color: var(--dark-50);
+  background:none; border:none; cursor:pointer; padding:4px 0 0; margin-top:2px;
+  transition: color .2s ease;
+}
+.notes-toggle:hover { color: var(--rose); }
+
+/* Status chip */
+.chip-wrap { position:relative; display:inline-block; }
+.chip {
+  font-family: var(--font-heading); font-size:12px; font-weight:500;
+  letter-spacing:.02em; padding:6px 12px; border-radius:4px; cursor:pointer;
+  display:inline-flex; align-items:center; gap:7px; border:1px solid transparent;
+  transition: filter .15s ease;
+  white-space:nowrap;
+}
+.chip:hover { filter:brightness(.97); }
+.chip::after {
+  content:''; width:6px; height:6px; border-right:1.3px solid currentColor; border-bottom:1.3px solid currentColor;
+  transform: rotate(45deg) translateY(-1px); opacity:.6;
+}
+.chip[data-status="To review"] { background: var(--dark-08); color: var(--dark-65); }
+.chip[data-status="Shortlist"] { background: var(--rose); color: var(--white); }
+.chip[data-status="Contacted"] { background: var(--teal-10); color: var(--teal); }
+.chip[data-status="Not a fit"] { background: transparent; color: var(--dark-50); border-color: var(--dark-12); text-decoration: line-through; text-decoration-thickness:1px; }
+
+.chip-menu {
+  position:absolute; top:calc(100% + 6px); left:0; z-index:60;
+  background: var(--white); border:1px solid var(--dark-12); border-radius:6px;
+  box-shadow: 0 8px 24px rgba(6,6,6,.10);
+  padding:6px; min-width:160px; display:none;
+}
+.chip-menu.open { display:block; }
+.chip-menu button {
+  display:flex; align-items:center; gap:9px; width:100%; text-align:left;
+  font-family: var(--font-heading); font-size:13px; font-weight:500; color: var(--dark-65);
+  background:none; border:none; padding:9px 10px; border-radius:4px; cursor:pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.chip-menu button:hover { background: var(--dark-08); color: var(--dark-80); }
+.chip-menu .dot { width:8px; height:8px; border-radius:2px; flex:none; }
+.chip-menu .dot.to-review { background: var(--dark-25); }
+.chip-menu .dot.shortlist { background: var(--rose); }
+.chip-menu .dot.contacted { background: var(--teal); }
+.chip-menu .dot.not-a-fit { background: var(--dark-25); }
+
+/* Row actions */
+.row-actions { display:flex; gap:6px; opacity:0; transition:opacity .15s ease; }
+.candidates tbody tr:hover .row-actions { opacity:1; }
+.row-actions:focus-within { opacity:1; }
+.icon-btn {
+  width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center;
+  background:none; border:none; cursor:pointer; color: var(--dark-50); border-radius:4px;
+  transition: color .15s ease, background .15s ease;
+}
+.icon-btn:hover { color: var(--rose); background: var(--dark-08); }
+.icon-btn svg { width:15px; height:15px; }
+
+/* Empty / loading */
+.state-block {
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
+  padding:120px 24px; color: var(--dark-50);
+  font-family: var(--font-body); font-style:italic; font-size:17px;
+}
+
+/* ═══════════════════════════════════════════
+   SLIDE-OVER PANEL (add / edit)
+   ═══════════════════════════════════════════ */
+.overlay {
+  position:fixed; inset:0; z-index:200; background: rgba(6,6,6,.40);
+  opacity:0; pointer-events:none; transition: opacity .25s ease;
+}
+.overlay.open { opacity:1; pointer-events:auto; }
+
+.panel {
+  position:fixed; top:0; right:0; bottom:0; z-index:210;
+  width:min(440px, 92vw); background: var(--light);
+  border-left:1px solid var(--dark-12);
+  transform: translateX(100%); transition: transform .3s cubic-bezier(.16,1,.3,1);
+  display:flex; flex-direction:column;
+  background-image: radial-gradient(ellipse 60% 30% at 90% 0%, rgba(225,29,72,.05) 0%, transparent 70%);
+}
+.panel.open { transform: translateX(0); }
+.panel-head {
+  padding:34px 36px 24px; border-bottom:1px solid var(--dark-12);
+  display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+}
+.panel-eyebrow {
+  font-family: var(--font-heading); font-size:13px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase; color: var(--rose);
+  display:flex; align-items:center; gap:12px; margin-bottom:14px;
+}
+.panel-eyebrow::before { content:''; width:28px; height:1px; background: var(--rose); }
+.panel-title { font-family: var(--font-display); font-size:30px; font-weight:400; letter-spacing:-0.005em; text-transform:uppercase; color: var(--dark-80); line-height:.95; }
+.panel-close {
+  background:none; border:none; cursor:pointer; color: var(--dark-50); font-size:22px;
+  line-height:1; padding:4px; transition: color .2s ease;
+}
+.panel-close:hover { color: var(--rose); }
+
+.panel-body { padding:30px 36px; overflow-y:auto; flex:1; }
+.form-field { margin-bottom:26px; }
+.form-field label {
+  display:block; font-family: var(--font-heading); font-size:11px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; color: var(--dark-50); margin-bottom:10px;
+}
+.form-field .field { font-size:16px; }
+.form-field textarea.field { resize:vertical; min-height:96px; line-height:1.6; border:1px solid var(--dark-12); border-radius:4px; padding:12px; }
+.form-field textarea.field:focus { border-color: var(--rose); }
+.form-field select.field {
+  border:1px solid var(--dark-12); border-radius:4px; padding:11px 32px 11px 12px;
+  font-family: var(--font-heading); font-weight:500;
+  -webkit-appearance:none; appearance:none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(6,6,6,0.5)' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position: right 12px center;
+}
+.form-field select.field:focus { border-color: var(--rose); }
+.field-err { font-family: var(--font-heading); font-size:12px; font-weight:500; color: var(--rose); margin-top:8px; display:none; }
+.field-err.show { display:block; }
+
+.panel-foot {
+  padding:22px 36px; border-top:1px solid var(--dark-12);
+  display:flex; align-items:center; gap:16px;
+}
+.btn-text {
+  font-family: var(--font-heading); font-size:13px; font-weight:500; letter-spacing:.02em;
+  color: var(--dark-50); background:none; border:none; cursor:pointer; transition: color .2s ease;
+}
+.btn-text:hover { color: var(--rose); }
+
+/* ═══════════════════════════════════════════
+   TOAST
+   ═══════════════════════════════════════════ */
+.toast {
+  position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px);
+  z-index:400; background: var(--void); color: var(--white);
+  font-family: var(--font-heading); font-size:13px; font-weight:500;
+  padding:14px 22px; border-radius:6px; box-shadow:0 8px 28px rgba(6,6,6,.25);
+  opacity:0; pointer-events:none; transition: opacity .25s ease, transform .25s ease;
+  display:flex; align-items:center; gap:10px;
+}
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+.toast .tdot { width:7px; height:7px; border-radius:50%; background: var(--rose); flex:none; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 720px) {
+  .wrap { padding:0 22px; }
+  .toolbar-inner { gap:16px; }
+  .tool-group { flex:1 1 auto; }
+  .tool-select { width:100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════ LOGIN GATE ════════════ -->
+<section class="gate" id="gate">
+  <div class="gate-inner">
+    <p class="eyebrow">Private</p>
+    <h1 class="gate-title">Design Talent</h1>
+    <p class="gate-sub">A curated shortlist of design talent. Access by invite.</p>
+
+    <form class="gate-form" id="gateForm" novalidate>
+      <input class="field" type="email" id="gateEmail" placeholder="Email" autocomplete="email" required />
+      <input class="field" type="password" id="gatePassword" placeholder="Password" autocomplete="current-password" required />
+      <div class="gate-submit-row">
+        <button class="btn-dark" id="gateSubmit" type="submit">Enter</button>
+        <span class="gate-error" id="gateError">Invalid credentials.</span>
+      </div>
+    </form>
+
+    <p class="gate-foot">Contact <a href="mailto:basitmasood999@gmail.com">basitmasood999@gmail.com</a> for access.</p>
+  </div>
+</section>
+
+<!-- ════════════ APP ════════════ -->
+<main class="app" id="app">
+  <header class="app-header">
+    <div class="wrap app-header-inner">
+      <div class="header-left">
+        <a class="back-link" href="/">← Portfolio</a>
+        <div class="brand">
+          <span class="brand-mark">Design Talent</span>
+          <span class="brand-count" id="brandCount">(0)</span>
+          <span class="view-only-tag" id="viewOnlyTag" style="display:none;"><span class="vot-dot"></span>Reviewer</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-dark" id="addBtn" type="button">+ Add candidate</button>
+        <button class="btn-signout" id="signOutBtn" type="button">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="wrap toolbar-inner">
+      <div class="tool-search">
+        <input class="field" type="search" id="searchInput" placeholder="Search name or notes…" />
+      </div>
+      <div class="tool-group">
+        <span class="tool-label">Status</span>
+        <select class="tool-select" id="statusFilter">
+          <option value="all">All</option>
+          <option value="To review">To review</option>
+          <option value="Shortlist">Shortlist</option>
+          <option value="Contacted">Contacted</option>
+          <option value="Not a fit">Not a fit</option>
+        </select>
+      </div>
+      <div class="tool-group">
+        <span class="tool-label">Sort</span>
+        <select class="tool-select" id="sortSelect">
+          <option value="score-desc">Score (high→low)</option>
+          <option value="score-asc">Score (low→high)</option>
+          <option value="name-asc">Name A–Z</option>
+          <option value="status">Status</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-region">
+    <div class="wrap">
+      <div class="table-scroll">
+        <table class="candidates">
+          <thead>
+            <tr>
+              <th class="sortable" data-sort="name-asc">Name<span class="sort-caret" data-caret="name"></span></th>
+              <th class="sortable col-score-h" data-sort="score-desc">Score<span class="sort-caret" data-caret="score"></span></th>
+              <th>Work</th>
+              <th>Why / Notes</th>
+              <th class="sortable" data-sort="status">Status<span class="sort-caret" data-caret="status"></span></th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="state-block" id="stateBlock" style="display:none;"></div>
+    </div>
+  </div>
+</main>
+
+<!-- ════════════ SLIDE-OVER PANEL ════════════ -->
+<div class="overlay" id="overlay"></div>
+<aside class="panel" id="panel" aria-hidden="true">
+  <div class="panel-head">
+    <div>
+      <p class="panel-eyebrow" id="panelEyebrow">New</p>
+      <h2 class="panel-title" id="panelTitle">Add candidate</h2>
+    </div>
+    <button class="panel-close" id="panelClose" type="button" aria-label="Close">×</button>
+  </div>
+  <form class="panel-body" id="panelForm" novalidate>
+    <div class="form-field">
+      <label for="fName">Name</label>
+      <input class="field" type="text" id="fName" placeholder="Studio or person" />
+      <span class="field-err" id="errName">Name is required.</span>
+    </div>
+    <div class="form-field">
+      <label for="fScore">Score (1–5)</label>
+      <input class="field" type="number" id="fScore" min="1" max="5" step="1" placeholder="4" />
+      <span class="field-err" id="errScore">Score must be 1–5.</span>
+    </div>
+    <div class="form-field">
+      <label for="fWork">Work</label>
+      <input class="field" type="text" id="fWork" placeholder="domain.com — App, App" />
+    </div>
+    <div class="form-field">
+      <label for="fNotes">Why / Notes</label>
+      <textarea class="field" id="fNotes" placeholder="Why they're a fit, what to verify…"></textarea>
+    </div>
+    <div class="form-field">
+      <label for="fStatus">Status</label>
+      <select class="field" id="fStatus">
+        <option value="To review">To review</option>
+        <option value="Shortlist">Shortlist</option>
+        <option value="Contacted">Contacted</option>
+        <option value="Not a fit">Not a fit</option>
+      </select>
+    </div>
+  </form>
+  <div class="panel-foot">
+    <button class="btn-dark" id="panelSave" type="button">Save</button>
+    <button class="btn-text" id="panelCancel" type="button">Cancel</button>
+  </div>
+</aside>
+
+<!-- ════════════ TOAST ════════════ -->
+<div class="toast" id="toast"><span class="tdot"></span><span id="toastMsg"></span></div>
+
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+/* ═══════════════════════════════════════════
+   SUPABASE CONFIG  ← swap real values here
+   ═══════════════════════════════════════════ */
+const SUPABASE_URL = "https://pjpinhvgjpctuqehwcco.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqcGluaHZnanBjdHVxZWh3Y2NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTMzNTEsImV4cCI6MjA5NjIyOTM1MX0.X9UV1zWjr61obxUCC-hR29enFW5MwoOdLMWTbH6DHvc";
+const MOCK_MODE = false;   // live: reads/writes the Supabase candidates table
+const ADMIN_EMAIL = "basitmasood999@gmail.com";   // only this account gets write affordances
+/* ═══════════════════════════════════════════ */
+
+const usePlaceholders = SUPABASE_URL.startsWith("__") || SUPABASE_ANON_KEY.startsWith("__");
+const isMock = MOCK_MODE || usePlaceholders;
+
+const STATUSES = ["To review", "Shortlist", "Contacted", "Not a fit"];
+const STATUS_ORDER = { "Shortlist": 0, "To review": 1, "Contacted": 2, "Not a fit": 3 };
+
+const SEED = [
+  { id: "s1", name: "MetaLab", score: 4, work: "metalab.com — Coinbase, Crypto.com", why_notes: "Strongest verified match: shipped consumer-crypto PRODUCT UI (Coinbase, Crypto.com), not brand-only. Verify senior-team availability.", status: "To review", created_at: "2026-06-01T10:00:00Z" },
+  { id: "s2", name: "Bakken & Bæck", score: 4, work: "bakkenbaeck.com — Phantom, Coinbase", why_notes: "Zero-to-launch product+eng studio, embeds with eng. Phantom work was brand/site/motion, not core wallet UI — pressure-test app-product depth.", status: "To review", created_at: "2026-06-01T10:01:00Z" },
+  { id: "s3", name: "Clay", score: 4, work: "clay.global — Coinbase, MEXC, Credit Karma", why_notes: "End-to-end brand→UI→front-end; works with client dev teams. Verify crypto work = shipped app vs brand.", status: "To review", created_at: "2026-06-01T10:02:00Z" },
+  { id: "s4", name: "Fueled", score: 3, work: "fueled.com — Greenlight (fintech app)", why_notes: "Strong shipped-mobile studio (NYC). Fintech app depth; no verified crypto.", status: "To review", created_at: "2026-06-01T10:03:00Z" },
+];
+
+/* ─── State ─── */
+let supabase = null;
+if (!isMock) supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let candidates = [];
+let mockStore = SEED.map(c => ({ ...c }));
+let isAdmin = false;
+let editingId = null;
+let sortMode = "score-desc";
+let searchTerm = "";
+let statusFilter = "all";
+const expanded = new Set();
+
+/* ─── Elements ─── */
+const $ = id => document.getElementById(id);
+const gate = $("gate"), app = $("app");
+
+/* ═══════════════════════════════════════════
+   AUTH
+   ═══════════════════════════════════════════ */
+function showApp(session) {
+  // Derive role from the authenticated email. Mock mode = admin (for UI dev / screenshots).
+  const email = (session && session.user && session.user.email) || "";
+  isAdmin = isMock ? true : (email === ADMIN_EMAIL);
+  applyRoleGating();
+  gate.style.display = "none";
+  app.classList.add("show");
+  loadCandidates();
+}
+
+// Show/hide write affordances based on isAdmin. Viewers get a read-only view.
+function applyRoleGating() {
+  document.body.classList.toggle("viewer", !isAdmin);
+  $("addBtn").style.display = isAdmin ? "" : "none";
+  $("viewOnlyTag").style.display = isAdmin ? "none" : "inline-flex";
+}
+function showGate() {
+  app.classList.remove("show");
+  gate.style.display = "flex";
+}
+
+$("gateForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = $("gateEmail").value.trim();
+  const password = $("gatePassword").value;
+  const errEl = $("gateError");
+  const btn = $("gateSubmit");
+  errEl.classList.remove("show");
+
+  if (isMock) {
+    // No real auth in mock mode — just reveal the app for UI dev / screenshots.
+    showApp();
+    return;
+  }
+  if (!email || !password) { errEl.textContent = "Enter email and password."; errEl.classList.add("show"); return; }
+
+  btn.disabled = true;
+  const original = btn.textContent;
+  btn.innerHTML = '<span class="spinner"></span>';
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  btn.disabled = false;
+  btn.textContent = original;
+  if (error) { errEl.textContent = "Invalid credentials."; errEl.classList.add("show"); }
+});
+
+$("signOutBtn").addEventListener("click", async () => {
+  if (isMock) { showGate(); return; }
+  await supabase.auth.signOut();
+});
+
+if (!isMock) {
+  supabase.auth.onAuthStateChange((_event, session) => {
+    if (session) showApp(session); else showGate();
+  });
+  supabase.auth.getSession().then(({ data }) => {
+    if (data.session) showApp(data.session); else showGate();
+  });
+}
+
+/* ═══════════════════════════════════════════
+   DATA
+   ═══════════════════════════════════════════ */
+async function loadCandidates() {
+  renderState("loading");
+  if (isMock) {
+    candidates = mockStore.map(c => ({ ...c }));
+    render();
+    return;
+  }
+  const { data, error } = await supabase.from("candidates").select("*");
+  if (error) { toast("Failed to load candidates"); renderState("error"); return; }
+  candidates = data || [];
+  render();
+}
+
+async function addCandidate(payload) {
+  if (isMock) {
+    mockStore.push({ id: "m" + Date.now(), created_at: new Date().toISOString(), ...payload });
+    await loadCandidates();
+    toast("Candidate added");
+    return true;
+  }
+  const { error } = await supabase.from("candidates").insert(payload);
+  if (error) { toast("Failed to add"); return false; }
+  await loadCandidates();
+  toast("Candidate added");
+  return true;
+}
+
+async function updateCandidate(id, payload) {
+  if (isMock) {
+    mockStore = mockStore.map(c => c.id === id ? { ...c, ...payload } : c);
+    await loadCandidates();
+    return true;
+  }
+  const { error } = await supabase.from("candidates").update(payload).eq("id", id);
+  if (error) { toast("Failed to save"); return false; }
+  await loadCandidates();
+  return true;
+}
+
+// Status changes (chip) route through the RPC so the reviewer can set status only.
+async function setStatus(id, value) {
+  if (isMock) {
+    mockStore = mockStore.map(c => c.id === id ? { ...c, status: value } : c);
+    await loadCandidates();
+    return true;
+  }
+  const { error } = await supabase.rpc("set_candidate_status", { p_id: id, p_status: value });
+  if (error) { toast("Failed to update status"); return false; }
+  await loadCandidates();
+  return true;
+}
+
+async function deleteCandidate(id) {
+  if (isMock) {
+    mockStore = mockStore.filter(c => c.id !== id);
+    await loadCandidates();
+    toast("Candidate removed");
+    return;
+  }
+  const { error } = await supabase.from("candidates").delete().eq("id", id);
+  if (error) { toast("Failed to delete"); return; }
+  await loadCandidates();
+  toast("Candidate removed");
+}
+
+/* ═══════════════════════════════════════════
+   RENDER
+   ═══════════════════════════════════════════ */
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
+}
+
+// Linkify domains/URLs in the Work column, keep descriptors as plain text.
+function linkifyWork(raw) {
+  const safe = escapeHtml(raw);
+  const re = /\b((?:https?:\/\/)?(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/[^\s,]*)?)/gi;
+  return safe.replace(re, (m) => {
+    // skip things that look like sentence fragments (no real TLD already covered by regex)
+    const href = m.startsWith("http") ? m : "https://" + m;
+    return `<a href="${href}" target="_blank" rel="noopener">${m}</a>`;
+  });
+}
+
+function getView() {
+  let list = candidates.filter(c => {
+    if (statusFilter !== "all" && c.status !== statusFilter) return false;
+    if (searchTerm) {
+      const hay = ((c.name || "") + " " + (c.why_notes || "")).toLowerCase();
+      if (!hay.includes(searchTerm)) return false;
+    }
+    return true;
+  });
+  list.sort((a, b) => {
+    switch (sortMode) {
+      case "score-asc": return (a.score ?? 0) - (b.score ?? 0) || (a.name || "").localeCompare(b.name || "");
+      case "name-asc": return (a.name || "").localeCompare(b.name || "");
+      case "status": return (STATUS_ORDER[a.status] ?? 9) - (STATUS_ORDER[b.status] ?? 9) || (b.score ?? 0) - (a.score ?? 0);
+      case "score-desc":
+      default: return (b.score ?? 0) - (a.score ?? 0) || (a.name || "").localeCompare(b.name || "");
+    }
+  });
+  return list;
+}
+
+function renderState(kind) {
+  const body = $("tableBody");
+  const block = $("stateBlock");
+  const table = document.querySelector(".table-scroll");
+  if (kind === "loading") {
+    body.innerHTML = "";
+    table.style.display = "none";
+    block.style.display = "flex";
+    block.innerHTML = '<div class="spinner"></div><span>Loading shortlist…</span>';
+  } else if (kind === "empty") {
+    table.style.display = "none";
+    block.style.display = "flex";
+    block.innerHTML = '<span>No candidates yet.</span>';
+  } else if (kind === "error") {
+    table.style.display = "none";
+    block.style.display = "flex";
+    block.innerHTML = '<span>Couldn’t load candidates. Try again.</span>';
+  } else {
+    table.style.display = "block";
+    block.style.display = "none";
+  }
+}
+
+function render() {
+  $("brandCount").textContent = "(" + candidates.length + ")";
+  updateCarets();
+  const view = getView();
+  if (candidates.length === 0) { renderState("empty"); return; }
+  renderState("table");
+
+  const body = $("tableBody");
+  if (view.length === 0) {
+    body.innerHTML = `<tr><td colspan="6"><div class="state-block" style="padding:64px 0;"><span>No matches.</span></div></td></tr>`;
+    return;
+  }
+
+  body.innerHTML = view.map(c => {
+    const hi = (c.score ?? 0) >= 4 ? " hi" : "";
+    const notesId = "notes-" + c.id;
+    const isExpanded = expanded.has(c.id);
+    const clampClass = isExpanded ? "" : " clamped";
+    const toggleLabel = isExpanded ? "less" : "more";
+    return `
+      <tr data-id="${c.id}">
+        <td><span class="c-name">${escapeHtml(c.name)}</span></td>
+        <td class="col-score"><span class="score-pill${hi}">${escapeHtml(c.score)}</span></td>
+        <td class="c-work">${linkifyWork(c.work || "")}</td>
+        <td>
+          <div class="c-notes">
+            <span class="notes-text${clampClass}" id="${notesId}">${escapeHtml(c.why_notes || "")}</span>
+            <button class="notes-toggle" data-toggle="${c.id}" type="button">${toggleLabel}</button>
+          </div>
+        </td>
+        <td>
+          <div class="chip-wrap" data-chip-wrap="${c.id}">
+            <button class="chip" data-status="${escapeHtml(c.status)}" data-chip="${c.id}" type="button">${escapeHtml(c.status)}</button>
+            <div class="chip-menu" data-menu="${c.id}">
+              ${STATUSES.map(s => `<button type="button" data-set-status="${c.id}" data-value="${escapeHtml(s)}"><span class="dot ${s.toLowerCase().replace(/\s+/g,'-')}"></span>${escapeHtml(s)}</button>`).join("")}
+            </div>
+          </div>
+        </td>
+        <td class="col-actions">
+          <div class="row-actions">
+            <button class="icon-btn" data-edit="${c.id}" type="button" aria-label="Edit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </button>
+            <button class="icon-btn" data-delete="${c.id}" type="button" aria-label="Delete">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>`;
+  }).join("");
+
+  // Hide notes "more/less" toggle when text fits on <=2 lines.
+  view.forEach(c => {
+    const el = $("notes-" + c.id);
+    const btn = body.querySelector(`[data-toggle="${c.id}"]`);
+    if (!el || !btn) return;
+    if (!expanded.has(c.id)) {
+      const overflowing = el.scrollHeight - el.clientHeight > 2;
+      btn.style.display = overflowing ? "inline-block" : "none";
+    }
+  });
+}
+
+function updateCarets() {
+  document.querySelectorAll(".sort-caret").forEach(el => el.textContent = "");
+  if (sortMode === "name-asc") $("tableBody") && setCaret("name", "▲");
+  if (sortMode === "score-desc") setCaret("score", "▼");
+  if (sortMode === "score-asc") setCaret("score", "▲");
+  if (sortMode === "status") setCaret("status", "▲");
+}
+function setCaret(key, glyph) {
+  const el = document.querySelector(`[data-caret="${key}"]`);
+  if (el) el.textContent = glyph;
+}
+
+/* ═══════════════════════════════════════════
+   TABLE EVENT DELEGATION
+   ═══════════════════════════════════════════ */
+$("tableBody").addEventListener("click", (e) => {
+  const t = e.target.closest("button");
+  if (!t) return;
+
+  if (t.dataset.toggle) {
+    const id = t.dataset.toggle;
+    if (expanded.has(id)) expanded.delete(id); else expanded.add(id);
+    render();
+    return;
+  }
+  // Status chip is editable by EVERYONE — setting status is the reviewer's job.
+  if (t.dataset.chip) {
+    e.stopPropagation();
+    const id = t.dataset.chip;
+    closeAllMenus(id);
+    const menu = document.querySelector(`[data-menu="${id}"]`);
+    if (menu) menu.classList.toggle("open");
+    return;
+  }
+  if (t.dataset.setStatus) {
+    const id = t.dataset.setStatus;
+    const value = t.dataset.value;
+    closeAllMenus();
+    setStatus(id, value);
+    return;
+  }
+  // Below this point are DATA-write affordances — admin (curator) only.
+  if (!isAdmin) return;
+  if (t.dataset.edit) { openPanel(t.dataset.edit); return; }
+  if (t.dataset.delete) {
+    const id = t.dataset.delete;
+    const c = candidates.find(x => x.id === id);
+    if (confirm(`Delete ${c ? c.name : "this candidate"}? This can’t be undone.`)) deleteCandidate(id);
+    return;
+  }
+});
+
+function closeAllMenus(except) {
+  document.querySelectorAll(".chip-menu.open").forEach(m => {
+    if (except && m.dataset.menu === except) return;
+    m.classList.remove("open");
+  });
+}
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".chip-wrap")) closeAllMenus();
+});
+
+/* Header sort */
+document.querySelectorAll("th.sortable").forEach(th => {
+  th.addEventListener("click", () => {
+    const target = th.dataset.sort;
+    // toggle score direction when clicking score header repeatedly
+    if (target === "score-desc") {
+      sortMode = sortMode === "score-desc" ? "score-asc" : "score-desc";
+    } else {
+      sortMode = target;
+    }
+    $("sortSelect").value = sortMode;
+    render();
+  });
+});
+
+/* ═══════════════════════════════════════════
+   TOOLBAR
+   ═══════════════════════════════════════════ */
+$("searchInput").addEventListener("input", (e) => { searchTerm = e.target.value.trim().toLowerCase(); render(); });
+$("statusFilter").addEventListener("change", (e) => { statusFilter = e.target.value; render(); });
+$("sortSelect").addEventListener("change", (e) => { sortMode = e.target.value; render(); });
+
+/* ═══════════════════════════════════════════
+   PANEL (add / edit)
+   ═══════════════════════════════════════════ */
+const overlay = $("overlay"), panel = $("panel");
+
+function openPanel(id) {
+  if (!isAdmin) return;   // viewers are read-only — no add/edit panel
+  editingId = id || null;
+  clearFieldErrors();
+  if (id) {
+    const c = candidates.find(x => x.id === id);
+    $("panelEyebrow").textContent = "Edit";
+    $("panelTitle").textContent = "Edit candidate";
+    $("fName").value = c.name || "";
+    $("fScore").value = c.score ?? "";
+    $("fWork").value = c.work || "";
+    $("fNotes").value = c.why_notes || "";
+    $("fStatus").value = c.status || "To review";
+  } else {
+    $("panelEyebrow").textContent = "New";
+    $("panelTitle").textContent = "Add candidate";
+    $("fName").value = ""; $("fScore").value = ""; $("fWork").value = "";
+    $("fNotes").value = ""; $("fStatus").value = "To review";
+  }
+  overlay.classList.add("open");
+  panel.classList.add("open");
+  panel.setAttribute("aria-hidden", "false");
+  setTimeout(() => $("fName").focus(), 320);
+}
+function closePanel() {
+  overlay.classList.remove("open");
+  panel.classList.remove("open");
+  panel.setAttribute("aria-hidden", "true");
+  editingId = null;
+}
+function clearFieldErrors() {
+  $("errName").classList.remove("show");
+  $("errScore").classList.remove("show");
+}
+
+$("addBtn").addEventListener("click", () => openPanel(null));
+$("panelClose").addEventListener("click", closePanel);
+$("panelCancel").addEventListener("click", closePanel);
+overlay.addEventListener("click", closePanel);
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && panel.classList.contains("open")) closePanel(); });
+
+$("panelSave").addEventListener("click", async () => {
+  clearFieldErrors();
+  const name = $("fName").value.trim();
+  const scoreRaw = $("fScore").value.trim();
+  const score = Number(scoreRaw);
+  let ok = true;
+  if (!name) { $("errName").classList.add("show"); ok = false; }
+  if (!scoreRaw || isNaN(score) || score < 1 || score > 5) { $("errScore").classList.add("show"); ok = false; }
+  if (!ok) return;
+
+  const payload = {
+    name,
+    score: Math.round(score),
+    work: $("fWork").value.trim(),
+    why_notes: $("fNotes").value.trim(),
+    status: $("fStatus").value,
+  };
+
+  const btn = $("panelSave");
+  btn.disabled = true;
+  const orig = btn.textContent;
+  btn.innerHTML = '<span class="spinner"></span>';
+  let success;
+  if (editingId) success = await updateCandidate(editingId, payload);
+  else success = await addCandidate(payload);
+  btn.disabled = false;
+  btn.textContent = orig;
+  if (success) closePanel();
+});
+
+/* ═══════════════════════════════════════════
+   TOAST
+   ═══════════════════════════════════════════ */
+let toastTimer = null;
+function toast(msg) {
+  const el = $("toast");
+  $("toastMsg").textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
+}
+
+/* ═══════════════════════════════════════════
+   BOOT
+   ═══════════════════════════════════════════ */
+$("sortSelect").value = sortMode;
+if (isMock) {
+  // Gate stays up; submit reveals the app so it can be screenshotted.
+  showGate();
+}
+</script>
+</body>
+</html>
