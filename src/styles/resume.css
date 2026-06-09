@@ -274,7 +274,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-rose); ou
 
 /* ── PRINT ── */
 @media print {
-  .loader, .custom-cursor, .nav, .res-print, .res-footer { display: none !important; }
+  .loader, .custom-cursor, .nav, .fs-menu, .res-print, .res-footer { display: none !important; }
   body::after { display: none !important; }
   html, body, * { background-color: white !important; }
   .res-header { border-color: #e0e0e0 !important; }

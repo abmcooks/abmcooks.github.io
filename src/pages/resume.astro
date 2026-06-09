@@ -24,7 +24,7 @@ import '../styles/resume.css';
         <h1 class="res-name">BASIT MASOOD</h1>
         <div class="res-title">Product Design Leader</div>
       </div>
-      <button class="res-print" onclick="window.print()">
+      <button class="res-print">
         <i class="ph-bold ph-download-simple"></i> Save PDF
       </button>
     </div>
@@ -240,8 +240,12 @@ import '../styles/resume.css';
     document.documentElement.style.background = warmWhite;
     document.body.style.background = warmWhite;
 
-    // Print button
-    document.querySelector('.res-print')?.addEventListener('click', () => window.print());
+    // Print button — guard against listener stacking on re-runs
+    const btn = document.querySelector('.res-print');
+    if (btn && !btn.dataset.printBound) {
+      btn.dataset.printBound = 'true';
+      btn.addEventListener('click', () => window.print());
+    }
   }
   function cleanupResume() {
     document.body.classList.remove('page-light');
