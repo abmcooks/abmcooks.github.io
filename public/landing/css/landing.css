@@ -235,12 +235,14 @@ html{ scroll-snap-type:y proximity; }
 .sloop.static .sl-card.sl-park{ opacity:1; transform:none; }
 
 /* outro strip: the archive door lives AFTER the evidence, not before it */
+/* same anatomy as every section header: content left, big circle action on
+   the FAR RIGHT, baseline-aligned. (Was clustered-left — broke the convention.) */
 .chap-out{
-  display:flex; flex-direction:column; align-items:flex-start; gap:32px;
+  display:flex; align-items:flex-end; justify-content:space-between; gap:40px;
   padding:var(--sp-sec-top) 0 var(--sp-sec-bot); border-top:var(--hairline) solid var(--ink-12);
 }
-.chap-out-actions{ display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
-.chap-out p{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.5; color:var(--ink-65); max-width:52ch; }
+.chap-out-left{ display:flex; flex-direction:column; align-items:flex-start; gap:28px; max-width:54ch; }
+.chap-out p{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.5; color:var(--ink-65); }
 
 /* ── BREAKER — the kinetic chain ── */
 .breaker{
@@ -338,6 +340,7 @@ html{ scroll-snap-type:y proximity; }
   /* single column, always (rules/mobile.md §1) */
   .statrow{ grid-template-columns:1fr; gap:24px; margin-bottom:64px; }
   .wr-wall{ grid-template-columns:1fr; gap:24px; }
+  .chap-out{ flex-direction:column; align-items:flex-start; gap:32px; }
   .wr-art{ aspect-ratio:16/9; }
   .wr-label-title{ font-size:var(--fs-body); }
   .receipts-track img{ max-height:220px; max-width:300px; }
