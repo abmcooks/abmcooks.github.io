@@ -175,8 +175,7 @@ html{ scroll-snap-type:y proximity; }
   color:var(--white); background:rgba(var(--coal-rgb),.72);
   padding:6px 10px; border-radius:4px;
 }
-.chap-adib{ background:var(--paper); }
-.chap-adib .chap-media img{ filter:var(--duo); opacity:.18; }
+.chap-adib{ background:var(--coal); }
 
 /* ── THE SADAPAY AD — full-bleed kinetic-type cards, ZAR-film grammar:
    one message per card, type fills the frame, logo opens and closes. ── */
@@ -215,13 +214,15 @@ html{ scroll-snap-type:y proximity; }
   width:clamp(120px,12vw,172px); aspect-ratio:1; border-radius:var(--r);
   background:var(--white); padding:18px;
   box-shadow:var(--sh-photo);
-  opacity:0; transform:translateY(20px) scale(.92);
-  transition:opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease);
-  transition-delay:calc(var(--i) * 140ms);
+  /* the one product expands into five — each tile pops out from the first,
+     left to right, with a little overshoot (a "multiply" motion) */
+  opacity:0; transform:scale(0); transform-origin:center;
+  transition:opacity .35s var(--ease), transform .5s cubic-bezier(.34,1.56,.64,1);
+  transition-delay:calc(var(--i) * 170ms);
 }
 .sl-chips span img{ width:clamp(44px,4.4vw,60px); height:clamp(44px,4.4vw,60px); object-fit:contain; display:block; }
 .sl-chips span i{ font-style:normal; font-family:var(--sans); font-weight:600; font-size:var(--fs-body); letter-spacing:.01em; color:var(--ink); line-height:1.2; }
-.sl-card.on .sl-chips span{ opacity:1; transform:none; }
+.sl-card.on .sl-chips span{ opacity:1; transform:scale(1); }
 /* the flag gets planted — 3D tiles art ABOVE the exit claim (balanced) */
 .sl-art{ width:clamp(220px,28vw,420px); display:block; }
 .sl-logo img{ width:clamp(220px,30vw,440px); display:block; }
