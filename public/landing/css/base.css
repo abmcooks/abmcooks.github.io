@@ -1,0 +1,29 @@
+/* ════════════════════════════════════════════════════════════════
+   BASE — element foundations. Fonts, reset, page defaults.
+   Consumes tokens only. No hex, no raw sizes, no !important.
+   ════════════════════════════════════════════════════════════════ */
+@font-face { font-family:'Tanker'; src:url('../fonts/Tanker-Regular.woff2') format('woff2'); font-display:swap; }
+@font-face { font-family:'General Sans'; src:url('../fonts/GeneralSans-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'General Sans'; src:url('../fonts/GeneralSans-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+@font-face { font-family:'General Sans'; src:url('../fonts/GeneralSans-Semibold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+/* GeneralSans-Bold deliberately NOT loaded — weight 700 is banned ("too thick", 2026-06-11). 600 is the ceiling. */
+@font-face { font-family:'Literata'; src:url('../fonts/Literata-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Literata'; src:url('../fonts/Literata-Italic.woff2') format('woff2'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Literata'; src:url('../fonts/Literata-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; scrollbar-color:var(--ink-25) var(--paper); }
+
+/* scrollbar follows the system: hairline-quiet at rest, red when touched */
+::-webkit-scrollbar{ width:12px; }
+::-webkit-scrollbar-track{ background:var(--paper); }
+::-webkit-scrollbar-thumb{
+  background:var(--ink-25); border-radius:var(--r-pill);
+  border:4px solid var(--paper); /* inset: reads as a 4px hairline thumb */
+}
+::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:active{ background:var(--red); }
+:focus-visible{ outline:var(--stroke) solid var(--red); outline-offset:3px; }
+body{ background:var(--paper); color:var(--ink-80); font-family:var(--serif); overflow-x:clip; }
+::selection{ background:var(--red); color:var(--white); }
+img{ display:block; }
+a{ color:inherit; }

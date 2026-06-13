@@ -1,1337 +1,400 @@
 ---
-import Base from '../layouts/Base.astro';
-import Loader from '../components/Loader.astro';
-import FsMenu from '../components/FsMenu.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-import '../styles/stories.css';
+// Standalone landing — own document, own nav/cursor/scripts (no shared Base,
+// which injects a site-wide .nav handler that would collide). Assets live
+// in /public/landing/. Source of truth: portfolio-experience/lab/index.html.
 ---
-
-<Base title="Basit Masood — Product Design Leader">
-
-<!-- ═══════════════════════════════════════════
-     CUSTOM CURSOR
-     ═══════════════════════════════════════════ -->
-<div class="custom-cursor" id="customCursor">
-  <div class="cursor-ring"></div>
-  <div class="cursor-dot"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Basit Masood — 6M+ people use my work</title>
+<meta name="description" content="Basit Masood — Product Design Leader, Dubai. Two fintechs taken from zero — one to Pakistan's first fintech exit. A bank. 30+ products across eight years." />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://abmcooks.github.io/" />
+<meta property="og:title" content="Basit Masood — 6M+ people use my work" />
+<meta property="og:description" content="Product Design Leader, Dubai. Two fintechs taken from zero — one to Pakistan's first fintech exit. A bank. 30+ products across eight years." />
+<meta property="og:image" content="https://abmcooks.github.io/landing/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Basit Masood — 6M+ people use my work" />
+<meta name="twitter:image" content="https://abmcooks.github.io/landing/og.png" />
+<link rel="stylesheet" href="/landing/css/tokens.css?v=9" />
+<link rel="stylesheet" href="/landing/css/base.css?v=9" />
+<link rel="stylesheet" href="/landing/css/components.css?v=9" />
+<link rel="stylesheet" href="/landing/css/landing.css?v=9" />
+<script defer src="https://cloud.umami.is/script.js" data-website-id="dcd588fe-7465-4f25-b904-c044d2a17532"></script>
+</head>
+<body>
+<!-- LOADER — fluorescent-tube logo (ported from live site) -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-mark">
+    <svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="vl" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="vr" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="vb" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="tube-bloom" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <path class="tube" d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z"/>
+      <circle class="glow" cx="308" cy="389" r="55.5"/>
+      <circle class="dot" cx="308" cy="389" r="55.5"/>
+    </svg>
+  </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     NAV — Hides on scroll down
-     ═══════════════════════════════════════════ -->
+<!-- NAV (approved) -->
 <nav class="nav" id="nav">
-  <div class="nav-inner">
-    <div class="nav-left">
-      <span class="nav-available">
-        <span class="avail-dot"></span>
-        Open for opportunities
-      </span>
-    </div>
-    <div class="nav-right">
-      <a href="/stories">Stories</a>
-      <a href="/writing">Writing</a>
-      <a href="/about">About</a>
-      <a href="/resume" class="nav-resume"><i class="ph-bold ph-download-simple"></i> Resume</a>
-    </div>
-    <button class="nav-burger" id="navBurger" aria-label="Open menu">
-      <i class="ph-bold ph-list"></i>
-    </button>
+  <a href="#" class="nav-logo" aria-label="Basit Masood — home">
+    <svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="logo-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
+      <circle class="logo-dot" cx="14.6662" cy="17.3332" r="2.6667"/>
+      <circle class="logo-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="#chapters">Work</a>
+    <a href="/about">About</a>
+    <a href="#writing">Writing</a>
+    <a href="/consulting">Consulting</a>
+    <a href="/resume" class="nav-cta">Resume
+      <span class="nav-cta-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+    </a>
   </div>
+  <button class="nav-burger" id="burger" aria-label="Open menu">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4h12M2 8h12M2 12h7"/></svg>
+  </button>
 </nav>
 
-<FsMenu />
-<Loader />
+<!-- mobile menu overlay -->
+<div class="menu" id="menu" aria-hidden="true">
+  <button class="menu-close" aria-label="Close menu">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13L13 3M3 3l10 10"/></svg>
+  </button>
+  <a class="menu-link" href="#chapters">Work<em>.</em></a>
+  <a class="menu-link" href="/about">About<em>.</em></a>
+  <a class="menu-link" href="#writing">Writing<em>.</em></a>
+  <a class="menu-link" href="/consulting">Consulting<em>.</em></a>
+  <a class="btn" href="/resume">Resume
+    <span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+  </a>
+</div>
 
-<!-- ═══════════════════════════════════════════
-     HERO — Left aligned, owl on right
-     ═══════════════════════════════════════════ -->
-<section class="hero snap-section" id="hero">
-  <div class="hero-bg" id="heroBg">
-    <img src="/images/hero-obsidian.png" alt="" class="hero-bg-img" loading="eager" />
-    <div class="hero-bg-fade"></div>
+<!-- HERO — the scale claim -->
+<header class="hero shell" id="hero">
+  <div class="hero-ghost" aria-hidden="true">
+    <span>SadaPay · ZAR · ADIB · WTT · GoCompliance · VentureDive ·&nbsp;</span>
+    <span>SadaPay · ZAR · ADIB · WTT · GoCompliance · VentureDive ·&nbsp;</span>
   </div>
+  <div class="hero-band">
+    <p class="hero-id"><b>Basit Masood<em>.</em></b> <span>Product Design Leader · Dubai, UAE</span></p>
+    <a href="#contact" class="btn-sec"><span class="pill-dot"></span><span>Available for work<span class="hide-sm"> — let's talk</span></span>
+      <span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+    </a>
+  </div>
+  <h1 class="hero-claim" id="heroClaim">
+    <span class="l">6M+ people</span>
+    <span class="l">use my work<em>.</em></span>
+  </h1>
+  <p class="hero-sub">Two fintechs taken from zero — one to Pakistan's first fintech exit.
+  A bank. Fortune-500 leadership tools. 30+ products across eight years.</p>
+</header>
 
-  <div class="hero-content-wrap">
-  <div class="hero-content" id="heroContent">
-    <div class="hero-text">
-      <div class="hero-role-row">
-        <span class="hero-role-line"></span>
-        <p class="hero-role">Product Design Leader</p>
-      </div>
-      <h1 class="hero-name" id="heroName"><span class="fl">B</span><span class="fl">A</span><span class="fl">S</span><span class="fl">I</span><span class="fl">T</span><br/><span class="fl">M</span><span class="fl">A</span><span class="fl">S</span><span class="fl">O</span><span class="fl">O</span><span class="fl">D</span></h1>
-    </div>
-
-    <div class="hero-stats" id="heroStats">
-      <div class="stat">
-        <span class="stat-val" data-count="6" data-suffix="M+">0</span>
-        <span class="stat-label">Users across products</span>
-      </div>
-      <div class="stat">
-        <span class="stat-val" data-prefix="$" data-count="90" data-suffix="M+">0</span>
-        <span class="stat-label">Funding raised</span>
-      </div>
-      <div class="stat">
-        <span class="stat-val" data-count="12" data-suffix="+">0</span>
-        <span class="stat-label">Products shipped</span>
-      </div>
-      <div class="stat">
-        <span class="stat-val" data-count="8" data-suffix="+ yrs">0</span>
-        <span class="stat-label">Experience</span>
-      </div>
+<!-- 02 THE RECORD -->
+<section class="record shell" id="record">
+  <div class="sec-intro rv">
+    <div>
+      <h2 class="h2">The record<em>.</em></h2>
+      <p class="sec-sub">Pakistan's first fintech exit — four years, zero to $50 million.
+      Then an instant wallet for 110 countries. Every number verified.</p>
     </div>
   </div>
+  <div class="statrow rv">
+    <div class="stat"><div class="stat-v" data-num="6" data-suffix="M+">6M+</div><div class="stat-l">Users across products</div></div>
+    <div class="stat"><div class="stat-v" data-num="90" data-prefix="$" data-suffix="M+">$90M+</div><div class="stat-l">Raised by products I designed</div></div>
+    <div class="stat"><div class="stat-v" data-num="30" data-suffix="+">30+</div><div class="stat-l">Products shipped</div></div>
+    <div class="stat"><div class="stat-v" data-num="8" data-suffix="+">8+</div><div class="stat-l">Years of design experience</div></div>
   </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     STORIES — Editorial horizontal carousel
-     ═══════════════════════════════════════════ -->
-<section class="stories" id="stories">
-  <div class="stories-sticky">
-  <div class="stories-track" id="storiesTrack">
-
-    <!-- Intro panel -->
-    <div class="stories-panel stories-intro">
-      <img src="/images/stories-intro.png" alt="" class="stories-intro-bg" loading="eager" />
-      <div class="stories-intro-overlay"></div>
-      <div class="stories-intro-content">
-        <p class="section-label">Selected Work</p>
-        <h2 class="section-heading">TRUE STORIES</h2>
-        <p class="stories-intro-sub">The products I built, the teams I grew,<br/>and the systems that outlasted me.</p>
-      </div>
-    </div>
-
-    <!-- SadaPay -->
-    <div class="stories-panel stories-card">
-      <img src="/images/story-sadapay.png" alt="" class="stories-card-bg" loading="eager" />
-      <div class="stories-card-overlay"></div>
-      <div class="stories-card-content">
-        <div class="stories-card-logo">
-          <img src="/images/sadapay-logo.svg" alt="SadaPay" />
-          <img src="/images/papara-logo.png" alt="Papara" />
-        </div>
-        <p class="stories-eyebrow">SadaPay acquired by Papara — Founding Designer → Head of Product Design</p>
-        <a href="/stories/sadapay" class="stories-card-title">$50M ACQUISITION. PAKISTAN'S LARGEST NEOBANK.</a>
-        <p class="stories-card-desc">4M+ users · $1.5B+ processed yearly · 700K viral waitlist · Team of 10 · Nukta design system · Acquired by Papara</p>
-      </div>
-    </div>
-
-    <!-- ZAR -->
-    <div class="stories-panel stories-card">
-      <img src="/images/story-zar.png" alt="" class="stories-card-bg" loading="eager" />
-      <div class="stories-card-overlay"></div>
-      <div class="stories-card-content">
-        <div class="stories-card-logo"><img src="/images/ZAR-logo.png" alt="ZAR" /></div>
-        <p class="stories-eyebrow">ZAR, a Solana wallet — Head of Product Design</p>
-        <a href="/stories/zar" class="stories-card-title">A $20M-FUNDED STABLECOIN WALLET FOR THE NEXT BILLION USERS.</a>
-        <p class="stories-card-desc">a16z · Dragonfly · Coinbase · VanEck · 200K+ users · 110+ countries · Techtonic design system · MACHINA AI suite</p>
-      </div>
-    </div>
-
-    <!-- Walking the Talk -->
-    <div class="stories-panel stories-card">
-      <img src="/images/story-wtt.png" alt="" class="stories-card-bg" loading="eager" />
-      <div class="stories-card-overlay"></div>
-      <div class="stories-card-content">
-        <div class="stories-card-logo">
-          <img src="/images/WTT-logo.svg" alt="Walking the Talk" />
-          <img src="/images/ZRG-logo.svg" alt="ZRG Partners" />
-        </div>
-        <p class="stories-eyebrow">Walking the Talk acquired by ZRG Partners — Lead Product Design Consultant</p>
-        <a href="/stories/wtt" class="stories-card-title">6 CULTURE & PSYCHOMETRIC ASSESSMENT TOOLS FOR 200+ ORGANIZATIONS WORLDWIDE.</a>
-        <p class="stories-card-desc">40 countries · Multi-dimensional data platform · Enterprise SaaS · Acquired by ZRG Partners</p>
-      </div>
-    </div>
-
-  </div>
-  <div class="stories-dots" id="storiesDots">
-    <span class="stories-dot active"></span>
-    <span class="stories-dot"></span>
-    <span class="stories-dot"></span>
-    <span class="stories-dot"></span>
-  </div>
+    <div class="record-outro rv">
+    <p>The numbers are the short version.</p>
+    <a class="btn-text" href="/about">The full story, village to here <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     TESTIMONIALS — Bento Grid, cream background
-     ═══════════════════════════════════════════ -->
-<section class="testi" id="testimonials">
-  <div class="testi-inner">
-    <p class="section-label" style="color: rgba(6,6,6,0.45);">What they say</p>
-    <h2 class="section-heading" style="color: var(--color-void);">25+ ENDORSEMENTS</h2>
-
-    <div class="bento-grid">
-
-      <!-- Hero: Brandon (span 2) -->
-      <div class="bento-card bento-hero">
-        <div>
-          <div class="bento-quote-mark">&ldquo;</div>
-          <div class="bento-quote-hero">SADAPAY WAS PRAISED FOR HOW WELL DESIGNED THE PRODUCT IS &mdash; THIS IS THANKS TO BASIT. HIS ATTENTION TO DETAIL IN SERVICE DESIGN IS ONE OF HIS SUPERPOWERS.</div>
-        </div>
-        <div>
-          <div class="bento-divider"></div>
-          <div class="bento-person">
-            <div class="bento-avatar">BT</div>
-            <div class="bento-person-info">
-              <div class="bento-name">Brandon Timinsky</div>
-              <div class="bento-role">CEO, SadaPay &amp; ZAR</div>
-            </div>
-          </div>
-        </div>
+<!-- THE WORK — FULL-BLEED THEATER (v3, Basit-picked 2026-06-12) -->
+<section class="chapters" id="chapters">
+  <div class="shell">
+    <div class="sec-intro rv">
+      <div>
+        <h2 class="h2">The work<em>.</em></h2>
+        <p class="sec-sub">Three companies, full screen each, in their own colors —
+        keep scrolling, they stack.</p>
       </div>
-
-      <!-- Sebastian -->
-      <div class="bento-card">
-        <div>
-          <div class="bento-quote">He understands that the best design work is often the work that unlocks other people. He is practical, technically capable, and genuinely invested in making the product better.</div>
-        </div>
-        <div>
-          <div class="bento-divider"></div>
-          <div class="bento-person">
-            <div class="bento-avatar">SS</div>
-            <div class="bento-person-info">
-              <div class="bento-name">Sebastian Scholl</div>
-              <div class="bento-role">Co-founder, ZAR</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Batsi -->
-      <div class="bento-card">
-        <div>
-          <div class="bento-quote">He added value from day one. He&rsquo;s a fearless problem solver.</div>
-        </div>
-        <div>
-          <div class="bento-divider"></div>
-          <div class="bento-person">
-            <div class="bento-avatar">BM</div>
-            <div class="bento-person-info">
-              <div class="bento-name">Batsi Madzonga</div>
-              <div class="bento-role">Head of Design, ADIB</div> <!-- Batsi's title, not Basit's -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sergio -->
-      <div class="bento-card">
-        <div>
-          <div class="bento-quote">Basit is an insanely good UX designer. He built the foundations of the SadaPay mobile experience, which is recognized as world-class.</div>
-        </div>
-        <div>
-          <div class="bento-divider"></div>
-          <div class="bento-person">
-            <div class="bento-avatar">SS</div>
-            <div class="bento-person-info">
-              <div class="bento-name">Sergio Sch&uuml;ler</div>
-              <div class="bento-role">Product Leader, SadaPay (ex-Gojek)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Jon -->
-      <div class="bento-card">
-        <div>
-          <div class="bento-quote">He introduced our design system which allowed our app to have a great consistent design. He pushed for an uncommonly close design-engineering relationship.</div>
-        </div>
-        <div>
-          <div class="bento-divider"></div>
-          <div class="bento-person">
-            <div class="bento-avatar">JS</div>
-            <div class="bento-person-info">
-              <div class="bento-name">Jon Sheppard</div>
-              <div class="bento-role">CTO, SadaPay</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="testi-cta">
-      <a href="https://linkedin.com/in/iabm" target="_blank" class="testi-cta-link">
-        All recommendations on LinkedIn <i class="ph-bold ph-arrow-up-right"></i>
-      </a>
     </div>
   </div>
-</section>
+  <div class="chap-stack">
 
-<!-- ═══════════════════════════════════════════
-     WRITING — Editorial Cards (Option A)
-     ═══════════════════════════════════════════ -->
-<section class="writing" id="writing">
-  <div class="writing-inner">
-    <p class="section-label">Thoughts</p>
-    <h2 class="section-heading">WRITING</h2>
-
-    <!-- Featured lead -->
-    <a href="/writing/ai-didnt-kill-the-designers-job" class="wr-featured">
-      <div class="wr-featured-num">01</div>
-      <div class="wr-featured-content">
-        <span class="wr-tag">Opinion</span>
-        <h3 class="wr-featured-title">AI DIDN'T KILL THE DESIGNER'S JOB</h3>
-        <p class="wr-featured-excerpt">Design isn't going anywhere — but the designers who refuse to evolve might. After building an AI agent suite from scratch, here's what I actually learned about where design sits in the age of automation.</p>
-        <span class="wr-read">Read <i class="ph-bold ph-arrow-right"></i></span>
+    <a class="chap chap-sada" href="/stories/sadapay">
+      <div class="chap-media">
+        <div class="sloop" id="sloop" role="img" aria-label="SadaPay in twenty seconds: first designer in a country 87 percent unbanked. 700,000 on the waitlist before launch. $20M raised. Zero to four million users. Five products, a team grown from 1 to 10. Acquired for $50 million — Pakistan's first fintech exit.">
+        <div class="sl-card c-teal on">
+          <span class="sl-logo sl-logo-mono"><img src="/landing/images/logos/sadapay-full-logo.svg" alt="SadaPay" /></span>
+        </div>
+        <div class="sl-card c-teal">
+          <p class="sl-line">I was the first designer<em>.</em></p>
+        </div>
+        <div class="sl-card c-ink">
+          <p class="sl-line">In a country 87% unbanked</p>
+        </div>
+        <div class="sl-card c-white">
+          <p class="sl-tag">The gamified waitlist I designed — before launch</p>
+          <p class="sl-giant" data-counter="wait">0</p>
+        </div>
+        <div class="sl-card c-teal">
+          <p class="sl-tag">$7.2M seed · $10.7M extension</p>
+          <p class="sl-giant">$20M+</p>
+          <p class="sl-tag">Raised</p>
+        </div>
+        <div class="sl-card c-coral">
+          <p class="sl-tag">Users, from zero</p>
+          <p class="sl-giant" data-counter="users">0</p>
+        </div>
+        <div class="sl-card c-blue">
+          <p class="sl-tag">Five products</p>
+          <div class="sl-chips">
+            <span style="--i:0">Personal wallet</span>
+            <span style="--i:1">SadaBiz</span>
+            <span style="--i:2">Mission Control</span>
+            <span style="--i:3">SadaSchool</span>
+            <span style="--i:4">sadapay.pk</span>
+          </div>
+        </div>
+        <div class="sl-card c-teal">
+          <p class="sl-line">1 → 10 designers</p>
+          <p class="sl-tag">The team I hired and grew</p>
+        </div>
+        <div class="sl-card c-white sl-park">
+          <p class="sl-line sl-red">Acquired. $50M.</p>
+          <p class="sl-tag">Pakistan's first fintech exit</p>
+          <img class="sl-art" src="/landing/images/sadapay/tiles-flag.png" alt="" />
+        </div>
+        <div class="sl-card c-teal">
+          <span class="sl-logo sl-logo-mono"><img src="/landing/images/logos/sadapay-full-logo.svg" alt="SadaPay" /></span>
+          <p class="sl-tag">2020 → 2024</p>
+        </div>
+        </div>
+      </div>
+      <div class="chap-plate">
+        <span class="chap-name">SadaPay</span>
+        <p class="chap-meta">Founding designer → Head of Product Design <span>· Dec 2020 – Aug 2024</span></p>
+        <div class="chap-stats">
+          <span class="chap-stat"><b>4M+</b><i>Users from zero</i></span>
+          <span class="chap-stat"><b>$50M</b><i>Exit to Papara</i></span>
+          <span class="chap-stat"><b>$1.5B+</b><i>Annual volume</i></span>
+        </div>
+        <span class="btn-text">Read the story <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
       </div>
     </a>
 
-    <!-- 3-card grid -->
-    <div class="wr-grid">
-      <a href="/writing/the-1-12-ratio" class="wr-card">
-        <div class="wr-card-num">02</div>
-        <span class="wr-tag">Leadership</span>
-        <h3 class="wr-card-title">The 1:12 ratio — why I hire for taste, not portfolios</h3>
-        <p class="wr-card-excerpt">Out of every 12 candidates, only 1 gets through. Here's what I look for and why most portfolios tell me nothing.</p>
-        <span class="wr-card-arrow">Read <i class="ph-bold ph-arrow-right"></i></span>
-      </a>
-      <a href="/writing/design-systems-that-outlast" class="wr-card">
-        <div class="wr-card-num">03</div>
-        <span class="wr-tag">Systems</span>
-        <h3 class="wr-card-title">Design systems that outlast the designer who built them</h3>
-        <p class="wr-card-excerpt">Nukta, Xperia, Techtonic — three systems, three lessons in building things that survive your departure.</p>
-        <span class="wr-card-arrow">Read <i class="ph-bold ph-arrow-right"></i></span>
-      </a>
-      <a href="/writing/watching-merchants" class="wr-card">
-        <div class="wr-card-num">04</div>
-        <span class="wr-tag">Research</span>
-        <h3 class="wr-card-title">What we learned watching merchants ignore our product</h3>
-        <p class="wr-card-excerpt">Standing in shops for hours taught us more than any user test ever did.</p>
-        <span class="wr-card-arrow">Read <i class="ph-bold ph-arrow-right"></i></span>
+    <a class="chap chap-zar" href="/stories/zar">
+      <div class="chap-media">
+        <video src="/landing/media/zar-film.mp4?v=3" autoplay muted loop playsinline preload="none" poster="/landing/media/zar-poster.jpg" aria-label="ZAR product film — the full brand and product story"></video>
+      </div>
+      <button class="vid-sound" aria-label="Unmute video">
+        <svg class="off-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6v4h3l4 3V3L6 6H3z"/><path d="M12 5l3 6M15 5l-3 6"/></svg>
+        <svg class="on-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6v4h3l4 3V3L6 6H3z"/><path d="M12 6c1 1 1 3 0 4"/></svg>
+      </button>
+      <div class="chap-plate">
+        <span class="chap-name">ZAR</span>
+        <p class="chap-meta">Founding designer · Head of Product Design <span>· Nov 2024 – Present</span></p>
+        <p class="chap-line">And <em>MACHINA</em> — the AI pipeline I built that ships production design without Figma in the loop.</p>
+        <div class="chap-stats">
+          <span class="chap-stat"><b>110</b><i>Countries</i></span>
+          <span class="chap-stat"><b>$20M</b><i>Raised</i></span>
+          <span class="chap-stat"><b>670+</b><i>System components</i></span>
+        </div>
+        <span class="btn-text">Read the story <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+      </div>
+    </a>
+
+    <a class="chap chap-adib" href="/stories/adib">
+      <div class="chap-media">
+        <span class="ph-tag">ADIB — static composition pending Basit's screenshots</span>
+        <img loading="lazy" src="https://picsum.photos/seed/adibledger/1920/1080" alt="ADIB — static composition pending screenshots from Basit" />
+      </div>
+      <div class="chap-plate">
+        <span class="chap-name">ADIB</span>
+        <p class="chap-meta">Lead Product Designer <span>· Sep 2024 – Feb 2025 · Abu Dhabi</span></p>
+        <div class="chap-stats">
+          <span class="chap-stat"><b>1M+</b><i>App users</i></span>
+          <span class="chap-stat"><b>11B+</b><i>Cards &amp; wallets reached</i></span>
+          <span class="chap-stat"><b>99%</b><i>Digital transactions</i></span>
+        </div>
+        <span class="btn-text">Read the story <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+      </div>
+    </a>
+
+  </div>
+  <div class="shell">
+    <div class="chap-out rv">
+      <p>That's the headline trio. Walking the Talk's Fortune-500 tools, GoSaaS,
+      Bolt VPN, Xpence, MACHINA, Tectonic and the rest live in the archive.</p>
+      <div class="chap-out-actions">
+        <a href="#contact" class="btn-sec"><span class="pill-dot"></span><span>Available for work<span class="hide-sm"> — let's talk</span></span>
+          <span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+        </a>
+        <a class="btn-circle" href="/stories">
+          <span class="big"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+          <span class="lbl">All work</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BREAKER — the kinetic chain -->
+<section class="breaker on-coal" aria-label="I build wallets, gamified experiences, design systems, design teams, AI pipelines, product strategy">
+  <div class="br-ghost" aria-hidden="true">
+    <span>Wallets · Systems · Teams · Pipelines · Strategy ·&nbsp;</span>
+    <span>Wallets · Systems · Teams · Pipelines · Strategy ·&nbsp;</span>
+  </div>
+  <div class="shell">
+    <p class="br-lockup">
+      I build
+      <span class="br-window"><span class="br-chain">
+        <span>Wallets</span>
+        <span>Gamified experiences</span>
+        <span>Design systems</span>
+        <span>Design teams</span>
+        <span>AI pipelines</span>
+        <span>Product strategy</span>
+        <span>Wallets</span>
+      </span></span>
+    </p>
+  </div>
+</section>
+
+<!-- 04 THEY'LL VOUCH -->
+<section class="people shell" id="people">
+  <div class="sec-intro rv">
+    <div>
+      <h2 class="h2">They'll vouch<em>.</em></h2>
+      <p class="sec-sub">The CEO who hired me twice, the product leader from Gojek, the head of
+      design at a major bank — in their words, not mine.</p>
+    </div>
+    <a class="btn-circle" href="https://linkedin.com/in/iabm">
+      <span class="big"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+      <span class="lbl">More on LinkedIn</span>
+    </a>
+  </div>
+  <div class="quote-row rv">
+    <p class="quote-text">"SadaPay was praised for how well designed the product is — this is
+    thanks to Basit. His attention to detail in service design is one of his superpowers."</p>
+    <div class="quote-who">
+      <img class="quote-face" src="/landing/images/people/brandon.webp" alt="Brandon Timinsky" />
+      <div><div class="quote-by">Brandon Timinsky</div><div class="quote-role">CEO, SadaPay &amp; ZAR</div></div>
+    </div>
+  </div>
+  <div class="quote-row rv">
+    <p class="quote-text">"Basit is an insanely good UX designer. He built the foundations of
+    the SadaPay mobile experience, which is recognized as world-class."</p>
+    <div class="quote-who">
+      <img class="quote-face" src="/landing/images/people/sergio.webp" alt="Sergio Schüler" />
+      <div><div class="quote-by">Sergio Schüler</div><div class="quote-role">Product Leader, SadaPay · ex-Gojek</div></div>
+    </div>
+  </div>
+  <div class="quote-row rv">
+    <p class="quote-text">"He added value from day one. He's a fearless problem solver."</p>
+    <div class="quote-who">
+      <img class="quote-face" src="/landing/images/people/batsi.webp" alt="Batsi Madzonga" />
+      <div><div class="quote-by">Batsi Madzonga</div><div class="quote-role">Head of Design, ADIB</div></div>
+    </div>
+  </div>
+  <div class="receipts rv">
+    <p class="receipts-intro">And the receipts you won't find on LinkedIn — Slack, reviews, DMs. Unedited.</p>
+    <div class="receipts-belt">
+      <div class="receipts-track">
+        <img src="/landing/images/receipts/r5.png" alt="Private testimonial screenshot 5" loading="lazy" /><img src="/landing/images/receipts/r9.png" alt="Private testimonial screenshot 9" loading="lazy" /><img src="/landing/images/receipts/r2.png" alt="Private testimonial screenshot 2" loading="lazy" /><img src="/landing/images/receipts/r3.png" alt="Private testimonial screenshot 3" loading="lazy" /><img src="/landing/images/receipts/r4.png" alt="Private testimonial screenshot 4" loading="lazy" /><img src="/landing/images/receipts/r6.png" alt="Private testimonial screenshot 6" loading="lazy" /><img src="/landing/images/receipts/r7.png" alt="Private testimonial screenshot 7" loading="lazy" /><img src="/landing/images/receipts/r8.png" alt="Private testimonial screenshot 8" loading="lazy" /><img src="/landing/images/receipts/r1.png" alt="Private testimonial screenshot 1" loading="lazy" />
+        <img src="/landing/images/receipts/r5.png" alt="Private testimonial screenshot 5" loading="lazy" /><img src="/landing/images/receipts/r9.png" alt="Private testimonial screenshot 9" loading="lazy" /><img src="/landing/images/receipts/r2.png" alt="Private testimonial screenshot 2" loading="lazy" /><img src="/landing/images/receipts/r3.png" alt="Private testimonial screenshot 3" loading="lazy" /><img src="/landing/images/receipts/r4.png" alt="Private testimonial screenshot 4" loading="lazy" /><img src="/landing/images/receipts/r6.png" alt="Private testimonial screenshot 6" loading="lazy" /><img src="/landing/images/receipts/r7.png" alt="Private testimonial screenshot 7" loading="lazy" /><img src="/landing/images/receipts/r8.png" alt="Private testimonial screenshot 8" loading="lazy" /><img src="/landing/images/receipts/r1.png" alt="Private testimonial screenshot 1" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 WRITING -->
+<section class="writing-band" id="writing">
+  <div class="shell">
+    <div class="sec-intro rv">
+      <div>
+        <h2 class="h2">Writing<em>.</em></h2>
+        <p class="sec-sub">Essays from the practice — on AI, design systems, and what actually
+        ships. Written to be argued with.</p>
+      </div>
+      <a class="btn-circle" href="/writing">
+        <span class="big"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+        <span class="lbl">All writing</span>
       </a>
     </div>
-
-    <div class="wr-cta">
-      <a href="/writing" class="wr-cta-link">
-        All writing <i class="ph-bold ph-arrow-up-right"></i>
+    <div class="wr-wall">
+      <a class="wr-piece rv" href="/writing/ai-didnt-kill-the-designers-job">
+        <span class="wr-art"><span class="ph-tag">Artwork — generating</span><img loading="lazy" src="https://picsum.photos/seed/wrai/900/1200" alt="" /></span>
+        <span class="wr-label">
+          <span class="wr-label-meta">Essay</span>
+          <span class="wr-label-title">AI didn't kill the designer's job</span>
+          <span class="btn-text">Read <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+        </span>
+      </a>
+      <a class="wr-piece rv" href="/writing/design-systems-that-outlast">
+        <span class="wr-art"><span class="ph-tag">Artwork — generating</span><img loading="lazy" src="https://picsum.photos/seed/wrds/900/1200" alt="" /></span>
+        <span class="wr-label">
+          <span class="wr-label-meta">Essay</span>
+          <span class="wr-label-title">Design systems that outlast</span>
+          <span class="btn-text">Read <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+        </span>
+      </a>
+      <a class="wr-piece rv" href="/writing/the-1-12-ratio">
+        <span class="wr-art"><span class="ph-tag">Artwork — generating</span><img loading="lazy" src="https://picsum.photos/seed/wrratio/900/1200" alt="" /></span>
+        <span class="wr-label">
+          <span class="wr-label-meta">Essay</span>
+          <span class="wr-label-title">The 1:12 ratio</span>
+          <span class="btn-text">Read <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+        </span>
+      </a>
+      <a class="wr-piece rv" href="/writing/watching-merchants">
+        <span class="wr-art"><span class="ph-tag">Artwork — generating</span><img loading="lazy" src="https://picsum.photos/seed/wrmerch/900/1200" alt="" /></span>
+        <span class="wr-label">
+          <span class="wr-label-meta">Field notes</span>
+          <span class="wr-label-title">Watching merchants</span>
+          <span class="btn-text">Read <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+        </span>
       </a>
     </div>
   </div>
 </section>
 
-<Footer headline="Have a role or a project?<br/>Let's talk." />
-
-<!-- ═══════════════════════════════════════════
-     AI ASSISTANT
-     ═══════════════════════════════════════════ -->
-<div class="ai-widget" id="aiWidget">
-  <div class="ai-panel" id="aiPanel">
-    <div class="ai-panel-header">
-      <div class="ai-panel-brand">
-        <svg viewBox="0 0 616 445" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="15">
-          <path d="M574.5 41.5V129C574.5 188.923 525.923 237.5 466 237.5H150C90.0771 237.5 41.5 188.923 41.5 129V41.5H574.5Z" stroke="#f5f0e8" stroke-width="55"/>
-          <circle cx="308" cy="389" r="44" fill="#e11d48"/>
-        </svg>
-        <span class="ai-label">Ask me about Basit</span>
-      </div>
-      <button class="ai-close" id="aiClose"><i class="ph-bold ph-x"></i></button>
-    </div>
-    <div class="ai-panel-body">
-      <p class="ai-intro">I know everything about Basit's work, process, and career.</p>
-      <div class="ai-input-row">
-        <input type="text" class="ai-input" placeholder="Why did he leave SadaPay?" />
-        <button class="ai-send"><i class="ph-bold ph-arrow-right"></i></button>
-      </div>
+<!-- DOORS -->
+<section class="doors on-coal" id="contact">
+  <div class="doors-grid">
+    <a class="door" href="/resume">
+      <span class="door-kicker">For hiring managers</span>
+      <span class="door-title">Hiring<em>?</em></span>
+      <p class="door-line">Head of Product Design / founding designer roles — UAE, GCC or remote.</p>
+      <span class="btn-text btn-chip btn-chip-lg"><span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>View the resume</span>
+    </a>
+    <a class="door" href="https://cal.com/basit-masood/30min">
+      <span class="door-kicker">For founders &amp; teams</span>
+      <span class="door-title">Building<em>?</em></span>
+      <p class="door-line">Product design, design systems and AI design operations — project or retainer.</p>
+      <span class="btn-text btn-chip btn-chip-lg"><span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>Book a 30-min call</span>
+    </a>
+  </div>
+  <div class="foot">
+    <span>© 2026 Basit Masood</span>
+    <div class="foot-links">
+      <a href="https://linkedin.com/in/iabm">LinkedIn</a>
+      <a href="mailto:basitmasood999@gmail.com">Email</a>
+      <a href="https://wa.me/971582071725">WhatsApp</a>
     </div>
   </div>
-  <button class="ai-trigger" id="aiTrigger">
-    <svg width="22" height="15" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="ai-trigger-icon">
-      <path d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z" fill="#F5F0E8" fill-opacity="0.8"/>
-      <path d="M14.6662 19.9999C16.1389 19.9999 17.3328 18.806 17.3328 17.3332C17.3328 15.8604 16.1389 14.6665 14.6662 14.6665C13.1934 14.6665 11.9995 15.8604 11.9995 17.3332C11.9995 18.806 13.1934 19.9999 14.6662 19.9999Z" fill="#E11D48"/>
-    </svg>
-    <span class="ai-trigger-text">Ask me about Basit</span>
-  </button>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     SCRIPTS
-     ═══════════════════════════════════════════ -->
-<script>
-  // ═══ Custom cursor ═══
-  const cursor = document.getElementById('customCursor');
-  if (cursor && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
-    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-    function animateCursor() {
-      curX += (mouseX - curX) * 0.15;
-      curY += (mouseY - curY) * 0.15;
-      cursor.style.transform = `translate(${curX}px, ${curY}px)`;
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-    document.body.classList.add('cursor-active');
-    document.querySelectorAll('a, button, input').forEach((el) => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-  }
-
-  // ═══ Nav hide on scroll + AI pill collapse + light/dark detection ═══
-  let lastScroll = 0;
-  const nav = document.getElementById('nav');
-  const aiTriggerEl = document.getElementById('aiTrigger');
-  const heroSection = document.getElementById('hero');
-  const lightSections = document.querySelectorAll('.testi');
-
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current > lastScroll && current > 100) nav?.classList.add('nav-hidden');
-    else nav?.classList.remove('nav-hidden');
-    lastScroll = current;
-    // Collapse AI pill past hero
-    if (aiTriggerEl && heroSection) {
-      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-      if (current > heroBottom - 100) aiTriggerEl.classList.add('collapsed');
-      else aiTriggerEl.classList.remove('collapsed');
-    }
-    // Cursor inversion over light sections — nav stays white with dark scrolled backdrop
-    let isLight = false;
-    lightSections.forEach(sec => {
-      const rect = sec.getBoundingClientRect();
-      if (rect.top < 60 && rect.bottom > 60) isLight = true;
-    });
-    cursor?.classList.toggle('cursor-dark', isLight);
-  });
-
-  // ═══ Loader ═══
-  const loader = document.getElementById('loader');
-
-  function revealPage(skipFlicker) {
-    loader?.classList.add('done');
-    document.body.classList.add('loaded');
-    document.getElementById('nav')?.classList.add('visible');
-    document.getElementById('heroContent')?.classList.add('visible');
-
-    if (skipFlicker) {
-      document.querySelectorAll('.fl').forEach(el => el.classList.add('on'));
-      animateCounters();
-    } else {
-      const letters = document.querySelectorAll('.fl');
-      const flickerers = [];
-      letters.forEach(el => {
-        if (Math.random() > 0.4) {
-          el.classList.add('on');
-        } else {
-          const dur = 0.8 + Math.random() * 0.4;
-          el.style.setProperty('--fd', (Math.random() * 0.3).toFixed(2) + 's');
-          el.style.setProperty('--dur', dur.toFixed(2) + 's');
-          el.classList.add('go');
-          flickerers.push({ el, dur });
-        }
-      });
-      if (flickerers.length) {
-        const last = flickerers.reduce((a, b) => a.dur > b.dur ? a : b);
-        last.el.style.setProperty('--dur', '1.8s');
-      }
-      animateCounters();
-      setTimeout(() => {
-        document.querySelectorAll('.fl').forEach(el => el.classList.add('on'));
-      }, 2800);
-    }
-  }
-
-  // Wait for fonts + hero image before revealing
-  function waitForAssets(callback) {
-    const heroImg = document.querySelector('.hero-bg-img');
-    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
-    const imgReady = new Promise(resolve => {
-      if (!heroImg || heroImg.complete) resolve();
-      else { heroImg.addEventListener('load', resolve); heroImg.addEventListener('error', resolve); }
-    });
-    Promise.all([fontsReady, imgReady]).then(callback);
-    setTimeout(callback, 4000); // safety fallback
-  }
-
-  if (loader) {
-    // Always: 2s minimum + wait for assets, then reveal with flicker
-    const minDelay = new Promise(r => setTimeout(r, 2000));
-    const assets = new Promise(r => waitForAssets(r));
-    Promise.all([minDelay, assets]).then(() => revealPage(false));
-  }
-
-  // ═══ Counter animation ═══
-  function animateCounters() {
-    document.querySelectorAll('.stat-val[data-count]').forEach((el) => {
-      const target = parseFloat(el.dataset.count);
-      const prefix = el.dataset.prefix || '';
-      const suffix = el.dataset.suffix || '';
-      const duration = 2000;
-      const start = performance.now();
-      function tick(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4);
-        el.textContent = prefix + Math.floor(target * eased) + suffix;
-        if (progress < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    });
-  }
-  // Counter starts after loader reveals content (called from loader callback)
-
-  // ═══ AI Widget ═══
-  const aiTrigger = document.getElementById('aiTrigger');
-  const aiPanel = document.getElementById('aiPanel');
-  const aiClose = document.getElementById('aiClose');
-  if (aiTrigger && aiPanel) {
-    aiTrigger.addEventListener('click', () => { aiPanel.classList.toggle('open'); aiTrigger.classList.toggle('hidden'); });
-    aiClose?.addEventListener('click', () => { aiPanel.classList.remove('open'); aiTrigger.classList.remove('hidden'); });
-  }
-
-  // ═══ Stories — Scroll-driven horizontal carousel ═══
-  (function() {
-    const section = document.getElementById('stories');
-    const track = document.getElementById('storiesTrack');
-    const dots = document.querySelectorAll('.stories-dot');
-    if (!section || !track) return;
-
-    const panels = track.querySelectorAll('.stories-panel');
-    const total = panels.length;
-
-    // Set section height to create scroll room: panels * 100vh
-    section.style.height = (total * 100) + 'vh';
-
-    let lastIndex = -1;
-    function onScroll() {
-      const rect = section.getBoundingClientRect();
-      const scrollableHeight = section.offsetHeight - window.innerHeight;
-      const scrolled = -rect.top;
-      const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
-      const panelIndex = Math.round(progress * (total - 1));
-      track.style.transform = `translateX(-${panelIndex * 100}vw)`;
-
-      // Update progress dots
-      if (panelIndex !== lastIndex) {
-        lastIndex = panelIndex;
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === panelIndex);
-        });
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  })();
-
-  // ═══ Fullscreen menu ═══
-  const burger = document.getElementById('navBurger');
-  const fsMenu = document.getElementById('fsMenu');
-  const fsClose = document.getElementById('fsMenuClose');
-  if (burger && fsMenu) {
-    burger.addEventListener('click', () => {
-      fsMenu.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-    fsClose?.addEventListener('click', () => {
-      fsMenu.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-    // Close on link click
-    fsMenu.querySelectorAll('.fs-menu-link').forEach(link => {
-      link.addEventListener('click', () => {
-        fsMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-</script>
-
-</Base>
-
-<style is:global>
-  /* ═══ LOADER ═══ */
-  .loader { position: fixed; inset: 0; z-index: 99999; background: var(--color-void); display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease; }
-  .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-  .loader-mark { width: 150px; height: 110px; }
-  .loader-mark svg { width: 100%; height: 100%; overflow: visible; }
-  .loader-mark .vl { stroke: #ededed; stroke-width: 83; fill: none; clip-path: polygon(0 0, 38% 0, 38% 65%, 0 65%); animation: cL 3.6s cubic-bezier(0.19, 1, 0.22, 1) infinite; }
-  .loader-mark .vr { stroke: #ededed; stroke-width: 83; fill: none; clip-path: polygon(62% 0, 100% 0, 100% 65%, 62% 65%); animation: cR 3.6s cubic-bezier(0.19, 1, 0.22, 1) infinite; }
-  .loader-mark .vb { stroke: #ededed; stroke-width: 83; fill: none; clip-path: polygon(0 30%, 100% 30%, 100% 100%, 0 100%); animation: cB 3.6s cubic-bezier(0.19, 1, 0.22, 1) infinite; }
-  .loader-mark .tube { stroke: #ededed; stroke-width: 83; fill: none; animation: tubeFlicker 3.6s step-end infinite; }
-  .loader-mark .tube-bloom { stroke: #ededed; stroke-width: 83; fill: none; filter: blur(14px); animation: tubeBloom 3.6s ease infinite; }
-  .loader-mark .dot { fill: #e11d48; transform-origin: 308px 389px; animation: comboDot 3.6s cubic-bezier(0.2, 0, 0, 1) infinite; }
-  .loader-mark .glow { fill: #e11d48; filter: blur(22px); transform-origin: 308px 389px; animation: comboGlow 3.6s ease infinite; }
-  @keyframes cL { 0%{transform:translateX(-90px);opacity:0}4%{opacity:.15}14%{transform:translateX(0);opacity:.15}15%{transform:translateX(1.5px)}16%{transform:translateX(0)}25%{transform:translateX(0);opacity:.15}26%{opacity:0}72%{transform:translateX(0);opacity:.15}86%{transform:translateX(-90px);opacity:0}100%{transform:translateX(-90px);opacity:0} }
-  @keyframes cR { 0%{transform:translateX(90px);opacity:0}2%{opacity:0}6%{opacity:.15}16%{transform:translateX(0);opacity:.15}17%{transform:translateX(-1.5px)}18%{transform:translateX(0)}25%{transform:translateX(0);opacity:.15}26%{opacity:0}72%{transform:translateX(0);opacity:.15}83%{transform:translateX(90px);opacity:0}100%{transform:translateX(90px);opacity:0} }
-  @keyframes cB { 0%{transform:translateY(55px);opacity:0}6%{opacity:0}10%{opacity:.15}20%{transform:translateY(0);opacity:.15}21%{transform:translateY(-1.5px)}22%{transform:translateY(0)}25%{transform:translateY(0);opacity:.15}26%{opacity:0}72%{transform:translateY(0);opacity:.15}80%{transform:translateY(55px);opacity:0}100%{transform:translateY(55px);opacity:0} }
-  @keyframes tubeFlicker { 0%{opacity:0}25%{opacity:0}27%{opacity:.12}28%{opacity:0}29.5%{opacity:.22}30.5%{opacity:.03}32%{opacity:.4}33.5%{opacity:.06}35%{opacity:.55}36%{opacity:.12}38%{opacity:1}60%{opacity:1}61.5%{opacity:.25}62.5%{opacity:.85}64%{opacity:.1}65%{opacity:.6}66.5%{opacity:.04}67.5%{opacity:.35}69%{opacity:0}100%{opacity:0} }
-  @keyframes tubeBloom { 0%{opacity:0}37%{opacity:0}39%{opacity:.2}44%{opacity:.06}60%{opacity:.06}62%{opacity:0}100%{opacity:0} }
-  @keyframes comboDot { 0%{opacity:0;transform:scale(0)}36%{opacity:0;transform:scale(0)}40%{opacity:1;transform:scale(1.1)}43%{opacity:1;transform:scale(1)}60%{opacity:1;transform:scale(1)}65%{opacity:.5;transform:scale(.95)}70%{opacity:0;transform:scale(.8)}100%{opacity:0;transform:scale(0)} }
-  @keyframes comboGlow { 0%{opacity:0;transform:scale(0)}39%{opacity:0;transform:scale(0)}41%{opacity:.55;transform:scale(1.5)}45%{opacity:.3;transform:scale(1.3)}60%{opacity:.3;transform:scale(1.3)}67%{opacity:.1;transform:scale(.8)}72%{opacity:0;transform:scale(0)}100%{opacity:0;transform:scale(0)} }
-  body:not(.loaded) { overflow: hidden; }
-
-  /* ═══ CURSOR ═══ */
-  .custom-cursor { position: fixed; top: 0; left: 0; z-index: 99998; pointer-events: none; will-change: transform; }
-  .cursor-ring {
-    width: 44px; height: 44px; border: 1.5px solid rgba(245, 240, 232, 0.5); border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s;
-  }
-  .cursor-dot {
-    position: absolute; top: 0; left: 0; width: 5px; height: 5px;
-    background: var(--color-white); border-radius: 50%; transform: translate(-50%, -50%);
-    transition: opacity 0.3s, transform 0.3s;
-  }
-  .custom-cursor.hover .cursor-ring { width: 72px; height: 72px; border-color: var(--color-white); background: rgba(245, 240, 232, 0.08); mix-blend-mode: difference; }
-  .custom-cursor.hover .cursor-dot { opacity: 0; transform: translate(-50%, -50%) scale(0); }
-  /* Invert cursor on light sections */
-  .custom-cursor.cursor-dark .cursor-ring { border-color: rgba(6, 6, 6, 0.4); }
-  .custom-cursor.cursor-dark .cursor-dot { background: var(--color-void); }
-  .custom-cursor.cursor-dark.hover .cursor-ring { border-color: var(--color-void); background: rgba(6, 6, 6, 0.06); }
-  @media (pointer: coarse) { .custom-cursor { display: none; } }
-
-  /* ═══ NAV ═══ */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    padding: 32px 40px 0;
-    opacity: 0;
-    display: block;
-  }
-  .nav.visible { opacity: 1; }
-  .nav-inner {
-    max-width: 1400px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .nav.nav-hidden { transform: translateY(-100%); }
-  .nav-left { display: flex; align-items: center; }
-  .nav-available {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
-    color: rgba(245, 240, 232, 0.7); letter-spacing: 0.02em;
-  }
-  .avail-dot {
-    width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
-    box-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .nav-right { display: flex; align-items: center; gap: 40px; }
-  .nav-right a {
-    font-family: var(--font-heading); font-size: 16px; font-weight: 400; color: var(--color-white-80);
-    text-decoration: none; transition: color 0.3s, opacity 0.3s; position: relative;
-  }
-  .nav-right a:not(.nav-resume)::after {
-    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
-    background: var(--color-rose); transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .nav-right a:not(.nav-resume):hover::after { width: 100%; }
-  .nav-right a:not(.nav-resume):hover { color: var(--color-rose); }
-  .nav-right:hover a:not(:hover):not(.nav-resume) { opacity: 0.4; }
-  .nav-resume {
-    border: 1px solid rgba(245, 240, 232, 0.5) !important; color: var(--color-white-80) !important;
-    padding: 10px 15px !important; border-radius: 0.5em; font-weight: 500 !important;
-    display: inline-flex !important; align-items: center; gap: 12px; line-height: 1 !important;
-    transition: border-color 0.2s, color 0.2s !important; background: transparent !important;
-  }
-  .nav-resume:hover { border-color: var(--color-rose) !important; color: var(--color-rose) !important; }
-  .nav-resume i { font-size: 18px; }
-  /* Hamburger — mobile only, Phosphor icon */
-  .nav-burger {
-    display: none; background: none; border: none; cursor: none;
-    width: 44px; height: 44px;
-    align-items: center; justify-content: center;
-    font-size: 24px; color: var(--color-white-80);
-    transition: color 0.2s;
-  }
-  .nav-burger:hover { color: var(--color-rose); }
-
-  @media (max-width: 768px) {
-    .nav { padding: 24px 24px 0; }
-    .nav-right { display: none; }
-    .nav-burger { display: flex; }
-  }
-
-  /* ═══ FULLSCREEN MENU ═══ */
-  .fs-menu {
-    position: fixed; inset: 0; z-index: 10001;
-    background: var(--color-void);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    opacity: 0; visibility: hidden;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
-  }
-  .fs-menu.open { opacity: 1; visibility: visible; }
-  .fs-menu-close {
-    position: absolute; top: 24px; right: 24px;
-    background: none; border: none; cursor: none;
-    width: 44px; height: 44px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; color: var(--color-white-80);
-    transition: color 0.2s;
-  }
-  .fs-menu-close:hover { color: var(--color-rose); }
-  .fs-menu-nav {
-    display: flex; flex-direction: column; align-items: center; gap: 12px;
-  }
-  .fs-menu-link {
-    font-family: var(--font-display); font-size: clamp(40px, 10vw, 72px);
-    font-weight: 400; text-transform: uppercase; text-decoration: none;
-    color: var(--color-white); line-height: 1.15;
-    transition: color 0.2s;
-    position: relative;
-  }
-  .fs-menu-link::after {
-    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
-    background: var(--color-rose); transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .fs-menu-link:hover { color: var(--color-rose); }
-  .fs-menu-link:hover::after { width: 100%; }
-  .fs-menu-link--resume {
-    font-family: var(--font-heading); font-size: 18px; font-weight: 500;
-    margin-top: 32px; letter-spacing: 0.04em;
-    color: var(--color-white-80);
-    border: 1px solid rgba(245, 240, 232, 0.3);
-    padding: 14px 28px; border-radius: 0.5em;
-    display: inline-flex; align-items: center; gap: 12px;
-  }
-  .fs-menu-link--resume::after { display: none; }
-  .fs-menu-link--resume:hover { border-color: var(--color-rose); color: var(--color-rose); }
-  .fs-menu-footer {
-    position: absolute; bottom: 48px;
-    display: flex; flex-direction: column; align-items: center; gap: 12px;
-  }
-  .fs-menu-footer a {
-    font-family: var(--font-heading); font-size: 15px; font-weight: 500;
-    color: var(--color-white-50); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 6px;
-    transition: color 0.2s;
-  }
-  .fs-menu-footer a:hover { color: var(--color-rose); }
-
-  /* ═══ HERO — Left aligned ═══ */
-  .hero {
-    height: 100vh; display: flex; align-items: flex-end; justify-content: center;
-    position: relative; overflow: hidden; background: var(--color-void);
-    padding: 0 40px 80px;
-  }
-  .hero-content-wrap {
-    max-width: 1400px; width: 100%;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background: radial-gradient(ellipse at 70% 60%, var(--color-basalt) 0%, var(--color-depth) 40%, var(--color-void) 80%);
-  }
-  .hero-bg-img { width: 100%; height: 100%; object-fit: cover; will-change: transform; image-rendering: -webkit-optimize-contrast; }
-  .hero-bg-fade {
-    position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(to top, var(--color-void) 0%, rgba(6,6,6,0.4) 25%, transparent 50%);
-  }
-  .hero-content {
-    position: relative; z-index: 2;
-    display: flex; flex-direction: column; gap: 80px;
-    opacity: 0;
-  }
-  .hero-content.visible { opacity: 1; }
-
-  /* Per-letter tube light flicker */
-  .fl { opacity: 0; }
-  .fl.go {
-    animation: letterFlicker var(--dur, 1.5s) step-end var(--fd, 0s) forwards;
-  }
-  .fl.on { opacity: 1 !important; animation: none; }
-
-  @keyframes letterFlicker {
-    0%   { opacity: 0; }
-    8%   { opacity: 0.06; }
-    10%  { opacity: 0; }
-    20%  { opacity: 0.15; }
-    22%  { opacity: 0; }
-    28%  { opacity: 0.25; }
-    30%  { opacity: 0.04; }
-    38%  { opacity: 0.5; }
-    40%  { opacity: 0.08; }
-    48%  { opacity: 0.6; }
-    50%  { opacity: 0.15; }
-    58%  { opacity: 0.75; }
-    60%  { opacity: 0.3; }
-    68%  { opacity: 0.85; }
-    72%  { opacity: 0.5; }
-    80%  { opacity: 0.9; }
-    85%  { opacity: 0.7; }
-    92%  { opacity: 1; }
-    95%  { opacity: 0.85; }
-    100% { opacity: 1; }
-  }
-  .hero-text { display: flex; flex-direction: column; gap: 8px; }
-  .hero-role-row {
-    display: flex; align-items: center; gap: 10px; padding-left: 8px;
-  }
-  .hero-role-line {
-    width: 56px; height: 1.5px; background: var(--color-rose); flex-shrink: 0;
-  }
-  .hero-role {
-    font-family: var(--font-body); font-size: 20px;
-    font-weight: 400; letter-spacing: 0; text-transform: none;
-    color: var(--color-rose);
-  }
-  .hero-name {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: 180px;
-    line-height: 0.9; color: var(--color-white);
-    text-transform: uppercase;
-  }
-  .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; padding-left: 8px; }
-  .stat-val {
-    font-family: var(--font-heading); font-weight: 700;
-    font-size: 48px;
-    letter-spacing: 0; color: var(--color-white); line-height: 0.9; display: block;
-  }
-  .stat-label {
-    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
-    color: var(--color-white-50); margin-top: 12px; display: block; line-height: 0.9;
-  }
-  @media (max-width: 768px) { .hero { padding: 0 24px 48px; } .hero-stats { gap: 24px; } .hero-name { font-size: clamp(64px, 14vw, 180px); } }
-
-  /* ═══ SCROLL ═══ */
-  html { scroll-behavior: smooth; }
-  .snap-section { min-height: 100vh; }
-
-  /* ═══ LOGO STRIP ═══ */
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .logo-strip-track { animation: none; }
-  }
-
-  /* ═══ SHARED ═══ */
-  .section-label { font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-white-50); margin-bottom: 12px; }
-  .section-heading { font-family: var(--font-display); font-weight: 400; font-size: clamp(48px, 7vw, 96px); line-height: 0.95; color: var(--color-white); text-transform: uppercase; }
-
-  /* ═══ STORIES ═══ */
-  .stories { position: relative; background: var(--color-depth); }
-  .stories-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
-  .stories-track { display: flex; width: max-content; height: 100%; will-change: transform; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-  .stories-panel { width: 100vw; height: 100vh; flex-shrink: 0; position: relative; }
-
-  /* Intro panel */
-  .stories-intro {
-    display: flex; align-items: center; justify-content: center; overflow: hidden;
-  }
-  .stories-intro-bg {
-    position: absolute; inset: -20px; width: calc(100% + 40px); height: calc(100% + 40px);
-    object-fit: cover; z-index: 0;
-    animation: scenicDrift 18s ease-in-out infinite alternate;
-  }
-  @keyframes scenicDrift {
-    0% { transform: scale(1.0) translate(0, 0); }
-    33% { transform: scale(1.04) translate(-8px, -4px); }
-    66% { transform: scale(1.02) translate(6px, -6px); }
-    100% { transform: scale(1.05) translate(-4px, 4px); }
-  }
-  .stories-intro-overlay {
-    position: absolute; inset: 0; z-index: 1;
-    background: radial-gradient(ellipse at center, rgba(6,6,6,0.75) 0%, rgba(6,6,6,0.5) 60%, rgba(6,6,6,0.3) 100%);
-  }
-  .stories-intro-content { position: relative; z-index: 2; text-align: center; }
-  .stories-intro-sub {
-    font-family: var(--font-body); font-size: 20px; line-height: 1.6;
-    color: var(--color-white-50); margin-top: 24px; font-style: italic;
-  }
-
-  /* Story cards — full bleed with content overlay */
-  .stories-card {
-    overflow: hidden; text-decoration: none; display: block; color: inherit;
-  }
-  .stories-card-bg {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; z-index: 0;
-  }
-  .stories-card-overlay {
-    position: absolute; inset: 0; z-index: 1;
-    background:
-      linear-gradient(to top, var(--color-void) 0%, rgba(6,6,6,0.7) 35%, rgba(6,6,6,0.3) 60%, transparent 80%),
-      linear-gradient(to right, rgba(6,6,6,0.6) 0%, transparent 50%);
-  }
-  .stories-card-content {
-    position: relative; z-index: 2;
-    padding: 0 40px 72px; display: flex; flex-direction: column; justify-content: flex-end;
-    height: 100%; max-width: 1480px; margin: 0 auto;
-  }
-  .stories-card-content > * { max-width: 800px; }
-  .stories-card-logo {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 20px;
-  }
-  .stories-card-logo img {
-    width: 56px; height: 56px; object-fit: contain;
-    border-radius: 8px;
-    background: var(--color-white);
-    padding: 8px;
-  }
-  .stories-eyebrow {
-    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--color-rose); margin-bottom: 16px;
-  }
-
-  /* Stories progress dots */
-  .stories-dots {
-    position: absolute; right: 40px; top: 50%;
-    transform: translateY(-50%); z-index: 10;
-    display: flex; flex-direction: column; gap: 10px; align-items: center;
-  }
-  .stories-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--color-white-25);
-    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-  .stories-dot.active {
-    background: var(--color-white);
-    transform: scale(1.25);
-    box-shadow: 0 0 8px rgba(245, 240, 232, 0.3);
-  }
-  .stories-card-title {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: clamp(36px, 3.5vw, 56px); line-height: 1.15;
-    color: var(--color-white); margin-bottom: 18px;
-    text-transform: uppercase; text-decoration: none; display: block;
-    position: relative; width: fit-content;
-    transition: color 0.3s;
-  }
-  .stories-card-title::after {
-    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
-    background: var(--color-rose); transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .stories-card-title:hover { color: var(--color-rose); }
-  .stories-card-title:hover::after { width: 100%; }
-  .stories-card-desc {
-    font-family: var(--font-heading); font-size: 17px; font-weight: 400; line-height: 1.8;
-    color: var(--color-white-80); letter-spacing: 0.02em;
-  }
-
-  @media (max-width: 900px) {
-    .stories-card-content { padding: 0 24px 48px; }
-    .stories-dots { right: 24px; }
-  }
-
-
-  /* ═══ TESTIMONIALS — Bento Grid (warm cream — homepage only) ═══ */
-  .testi {
-    background: var(--color-cream); padding: 120px 40px;
-  }
-  .testi-inner {
-    max-width: 1400px; margin: 0 auto;
-  }
-
-  /* Bento grid */
-  .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
-    gap: 24px;
-    margin-top: 48px;
-  }
-  .bento-card {
-    background: var(--color-white);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px var(--color-dark-08), 0 1px 3px var(--color-dark-08);
-    padding: 32px;
-    transition: box-shadow 0.3s, transform 0.3s;
-    display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .bento-card:hover {
-    box-shadow: 0 8px 32px var(--color-dark-12), 0 2px 8px var(--color-dark-08);
-    transform: translateY(-2px);
-  }
-
-  /* Hero card */
-  .bento-hero { grid-column: span 2; }
-  .bento-quote-mark {
-    font-family: var(--font-display); font-size: 80px; font-weight: 400;
-    color: var(--color-rose); line-height: 1; margin-bottom: -12px;
-  }
-  .bento-quote-hero {
-    font-family: var(--font-display); font-size: 38px; font-weight: 400;
-    text-transform: uppercase; line-height: 1.3; letter-spacing: 0.01em;
-    color: var(--color-void); margin-bottom: 28px;
-  }
-
-  /* Regular quote */
-  .bento-quote {
-    font-family: var(--font-body); font-style: italic;
-    font-size: 18px; line-height: 1.65;
-    color: var(--color-dark-80); margin-bottom: 28px; flex-grow: 1;
-  }
-
-  /* Divider */
-  .bento-divider {
-    width: 48px; height: 3px;
-    background: var(--color-rose); border-radius: 2px;
-    margin-bottom: 20px;
-  }
-
-  /* Person row */
-  .bento-person {
-    display: flex; align-items: center; gap: 12px;
-  }
-  .bento-avatar {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--color-cream);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-heading); font-weight: 600; font-size: 14px;
-    color: var(--color-void); flex-shrink: 0;
-  }
-  .bento-person-info { flex: 1; }
-  .bento-name {
-    font-family: var(--font-heading); font-size: 16px; font-weight: 600;
-    color: var(--color-void);
-  }
-  .bento-role {
-    font-family: var(--font-heading); font-size: 14px; font-weight: 500;
-    color: var(--color-dark-50);
-  }
-
-  /* CTA */
-  .testi-cta { padding-top: 40px; }
-  .testi-cta-link {
-    font-family: var(--font-heading); font-size: 15px; font-weight: 600;
-    color: var(--color-rose); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 6px;
-    border-bottom: 1px solid rgba(225, 29, 72, 0.3);
-    transition: gap 0.25s ease-out, border-color 0.2s ease-out;
-  }
-  .testi-cta-link:hover { gap: 12px; border-color: var(--color-rose); }
-
-  @media (max-width: 860px) {
-    .testi { padding: 80px 24px; }
-    .bento-grid { grid-template-columns: 1fr; }
-    .bento-hero { grid-column: span 1; }
-    .bento-quote-hero { font-size: 28px; }
-    .bento-quote-mark { font-size: 60px; }
-  }
-
-  /* ═══ WRITING — Editorial Cards ═══ */
-  .writing {
-    background: var(--color-depth); padding: 120px 40px;
-  }
-  .writing-inner {
-    max-width: 1400px; margin: 0 auto;
-  }
-  .writing .section-heading { margin-bottom: 64px; }
-
-  /* Tag */
-  .wr-tag {
-    display: inline-block;
-    font-family: var(--font-heading); font-size: 11px; font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--color-rose); padding: 4px 0;
-  }
-
-  /* Featured lead */
-  .wr-featured {
-    display: grid; grid-template-columns: auto 1fr; gap: 40px;
-    align-items: start; padding: 32px;
-    background: linear-gradient(135deg, rgba(245,240,232,0.04) 0%, rgba(245,240,232,0.01) 100%);
-    border: 1px solid var(--color-white-06); border-radius: 8px;
-    margin-bottom: 24px; text-decoration: none; cursor: pointer;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .wr-featured:hover { border-color: var(--color-rose-20); transform: translateY(-2px); }
-  .wr-featured-num {
-    font-family: var(--font-display); font-size: 80px; text-transform: uppercase;
-    line-height: 1; color: var(--color-white-06); transition: color 0.3s;
-  }
-  .wr-featured:hover .wr-featured-num { color: var(--color-rose-20); }
-  .wr-featured-title {
-    font-family: var(--font-display); text-transform: uppercase;
-    font-size: clamp(28px, 3vw, 42px); font-weight: 400;
-    line-height: 1.2; letter-spacing: 0.01em;
-    color: var(--color-white); margin: 16px 0; transition: color 0.3s;
-  }
-  .wr-featured:hover .wr-featured-title { color: var(--color-rose); }
-  .wr-featured-excerpt {
-    font-family: var(--font-body); font-size: 17px; line-height: 1.7;
-    color: var(--color-white-50); max-width: 600px;
-  }
-  .wr-read {
-    display: inline-flex; align-items: center; gap: 6px;
-    margin-top: 24px; font-family: var(--font-heading); font-size: 13px; font-weight: 500;
-    color: var(--color-white-25); transition: color 0.3s, gap 0.3s;
-  }
-  .wr-featured:hover .wr-read { color: var(--color-rose); gap: 10px; }
-
-  /* 3-card grid */
-  .wr-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-  }
-  .wr-card {
-    padding: 32px;
-    background: linear-gradient(135deg, rgba(245,240,232,0.03) 0%, rgba(245,240,232,0.005) 100%);
-    border: 1px solid var(--color-white-06); border-radius: 8px;
-    text-decoration: none; display: flex; flex-direction: column;
-    cursor: pointer; transition: border-color 0.3s, transform 0.3s;
-  }
-  .wr-card:hover { border-color: var(--color-rose-20); transform: translateY(-2px); }
-  .wr-card-num {
-    font-family: var(--font-display); font-size: 48px; text-transform: uppercase;
-    line-height: 1; color: var(--color-white-06); margin-bottom: 24px;
-    transition: color 0.3s;
-  }
-  .wr-card:hover .wr-card-num { color: var(--color-rose-20); }
-  .wr-card-title {
-    font-family: var(--font-heading); font-size: 20px; font-weight: 500;
-    line-height: 1.4; color: var(--color-white); margin: 12px 0;
-    flex-grow: 1; transition: color 0.3s;
-  }
-  .wr-card:hover .wr-card-title { color: var(--color-rose); }
-  .wr-card-excerpt {
-    font-family: var(--font-body); font-size: 15px; line-height: 1.6;
-    color: var(--color-white-50);
-  }
-  .wr-card-arrow {
-    display: inline-flex; align-items: center; gap: 4px;
-    margin-top: 20px; font-family: var(--font-heading); font-size: 13px; font-weight: 500;
-    color: var(--color-white-25); transition: color 0.3s, gap 0.3s;
-  }
-  .wr-card:hover .wr-card-arrow { color: var(--color-rose); gap: 8px; }
-
-  /* CTA */
-  .wr-cta { padding-top: 40px; }
-  .wr-cta-link {
-    font-family: var(--font-heading); font-size: 15px; font-weight: 600;
-    color: var(--color-rose); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 6px;
-    border-bottom: 1px solid rgba(225, 29, 72, 0.3);
-    transition: gap 0.25s ease-out, border-color 0.2s ease-out;
-  }
-  .wr-cta-link:hover { gap: 12px; border-color: var(--color-rose); }
-
-  @media (max-width: 860px) {
-    .writing { padding: 80px 24px; }
-    .wr-featured { grid-template-columns: 1fr; padding: 32px; }
-    .wr-featured-num { font-size: 48px; }
-    .wr-grid { grid-template-columns: 1fr; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .wr-featured, .wr-card, .wr-read, .wr-card-arrow { transition: none !important; }
-  }
-
-  /* ═══ FOOTER ═══ */
-  .the-footer {
-    position: relative; overflow: hidden;
-    padding: 160px 40px 48px;
-    display: flex; flex-direction: column; align-items: center;
-    background: var(--color-depth);
-  }
-
-  /* Volcanic texture bg */
-  .footer-bg { position: absolute; inset: 0; z-index: 0; }
-  .footer-bg-img {
-    width: 100%; height: 100%; object-fit: cover;
-    opacity: 0.3;
-  }
-  .footer-bg-fade {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, var(--color-depth) 0%, transparent 20%, transparent 85%, var(--color-depth) 100%);
-  }
-
-  /* Tube light logo — animated */
-  .footer-mark {
-    position: relative; z-index: 1;
-    width: 80px; margin-bottom: 56px;
-  }
-  .footer-logo { width: 100%; height: auto; overflow: visible; }
-  .footer-tube {
-    fill: var(--color-white); opacity: 0;
-    animation: footerTubeFlicker 4s ease infinite;
-  }
-  .footer-tube-bloom {
-    fill: var(--color-white); filter: blur(8px); opacity: 0;
-    animation: footerTubeBloom 4s ease infinite;
-  }
-  .footer-dot { fill: var(--color-rose); }
-  .footer-dot-glow {
-    fill: var(--color-rose); filter: blur(6px); opacity: 0.4;
-    animation: footerDotPulse 4s ease infinite;
-  }
-  @keyframes footerTubeFlicker {
-    0%{opacity:0}20%{opacity:0}22%{opacity:.15}23%{opacity:0}24.5%{opacity:.3}25.5%{opacity:.05}27%{opacity:.5}28.5%{opacity:.08}30%{opacity:.7}31%{opacity:.15}33%{opacity:1}70%{opacity:1}72%{opacity:.3}73.5%{opacity:.9}75%{opacity:.15}76%{opacity:.7}77.5%{opacity:.05}79%{opacity:.4}81%{opacity:0}100%{opacity:0}
-  }
-  @keyframes footerTubeBloom {
-    0%{opacity:0}32%{opacity:0}34%{opacity:.25}40%{opacity:.08}70%{opacity:.08}73%{opacity:0}100%{opacity:0}
-  }
-  @keyframes footerDotPulse {
-    0%{opacity:.3;transform:scale(1)}33%{opacity:.6;transform:scale(1.3)}70%{opacity:.6;transform:scale(1.3)}80%{opacity:.3;transform:scale(1)}100%{opacity:.3;transform:scale(1)}
-  }
-
-  /* Center content */
-  .footer-center {
-    position: relative; z-index: 1;
-    text-align: center; margin-bottom: 80px;
-  }
-  .footer-headline {
-    font-family: var(--font-heading); font-size: clamp(32px, 4vw, 56px);
-    font-weight: 600; line-height: 1.2;
-    color: var(--color-white); margin-bottom: 36px;
-  }
-  .footer-email {
-    font-family: var(--font-heading); font-size: 22px; font-weight: 500;
-    color: var(--color-rose); text-decoration: none;
-    display: inline-block; margin-bottom: 28px;
-    border-bottom: 1px solid rgba(225, 29, 72, 0.3);
-    transition: border-color 0.2s ease-out;
-  }
-  .footer-email:hover { border-color: var(--color-rose); }
-  .footer-links {
-    display: flex; align-items: center; justify-content: center; gap: 28px;
-  }
-  .footer-links a {
-    font-family: var(--font-heading); font-size: 16px; font-weight: 500;
-    color: var(--color-white-80); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 6px;
-    border-bottom: 1px solid transparent;
-    transition: color 0.2s ease-out, border-color 0.2s ease-out;
-  }
-  .footer-links a:hover { color: var(--color-rose); border-color: var(--color-rose); }
-  .footer-loc {
-    font-family: var(--font-heading); font-size: 15px; font-weight: 500;
-    color: var(--color-white-80);
-  }
-
-  /* Bottom */
-  .footer-bottom {
-    position: relative; z-index: 1;
-    width: 100%;
-    display: flex; flex-direction: column; align-items: center; gap: 24px;
-    margin-top: 20px;
-  }
-  .footer-nav-row {
-    display: flex; align-items: center; gap: 20px;
-  }
-  .footer-nav-row a {
-    font-family: var(--font-heading); font-size: 15px; font-weight: 500;
-    color: var(--color-white-80); text-decoration: none;
-    letter-spacing: 0.04em; text-transform: uppercase;
-    border-bottom: 1px solid transparent;
-    transition: color 0.2s ease-out, border-color 0.2s ease-out;
-  }
-  .footer-nav-row a:hover { color: var(--color-rose); border-color: var(--color-rose); }
-  .footer-nav-dot {
-    width: 4px; height: 4px; border-radius: 50%;
-    background: var(--color-rose); flex-shrink: 0;
-  }
-  .footer-copy {
-    font-family: var(--font-heading); font-size: 14px; font-weight: 400;
-    color: var(--color-white-25); letter-spacing: 0.02em;
-  }
-
-  @media (max-width: 900px) {
-    .the-footer { padding: 100px 24px 32px; }
-    .footer-mark { width: 56px; margin-bottom: 40px; }
-    .footer-links { flex-direction: column; gap: 12px; }
-    .footer-bottom { gap: 16px; }
-    .footer-nav-row { flex-wrap: wrap; justify-content: center; gap: 14px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .footer-tube, .footer-tube-bloom, .footer-dot-glow { animation: none; }
-    .footer-tube { opacity: 0.8; }
-    .footer-dot-glow { opacity: 0.3; }
-  }
-
-  /* ═══ AI WIDGET ═══ */
-  .ai-widget {
-    position: fixed; bottom: 64px; right: 64px; z-index: 9000;
-    display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
-    opacity: 0; pointer-events: none;
-  }
-  .ai-widget.visible { opacity: 1; pointer-events: all; }
-  .ai-trigger {
-    display: flex; align-items: center; gap: 12px;
-    color: var(--color-white); border: none; border-radius: 80px;
-    padding: 15.5px 21.5px; font-family: var(--font-heading); font-size: 14px; font-weight: 500;
-    letter-spacing: 0.02em; position: relative; isolation: isolate;
-    cursor: none; transition: transform 0.3s, padding 0.4s cubic-bezier(0.16, 1, 0.3, 1), gap 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    background: rgba(26, 26, 24, 0.99);
-  }
-  .ai-trigger-text {
-    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
-    overflow: hidden; white-space: nowrap;
-  }
-  /* Collapsed state */
-  .ai-trigger.collapsed { padding: 15.5px; gap: 0; }
-  .ai-trigger.collapsed .ai-trigger-text { width: 0 !important; opacity: 0; }
-  .ai-trigger.collapsed:hover { padding: 15.5px 21.5px; gap: 12px; }
-  .ai-trigger.collapsed:hover .ai-trigger-text { width: auto !important; opacity: 1; }
-  /* Static border */
-  .ai-trigger::before {
-    content: ''; position: absolute; inset: 0; border-radius: 80px;
-    border: 1px solid rgba(245, 240, 232, 0.2);
-    transition: opacity 0.4s ease; z-index: 3; pointer-events: none;
-  }
-  /* Gradient border */
-  .ai-trigger::after {
-    content: ''; position: absolute; inset: -1.5px; border-radius: 80px;
-    padding: 1.5px;
-    background: conic-gradient(from var(--ai-angle, 0deg), #e11d48, #f5f0e8, #e11d48, rgba(245,240,232,0.4), #e11d48);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0; transition: opacity 0.4s ease;
-    z-index: 4; pointer-events: none;
-  }
-  .ai-trigger:hover::before { opacity: 0; }
-  .ai-trigger:hover::after { opacity: 1; animation: ai-border-spin 3s linear infinite; }
-  .ai-trigger:hover { transform: translateY(-1px); }
-  @property --ai-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
-  @keyframes ai-border-spin { to { --ai-angle: 360deg; } }
-  .ai-trigger.hidden { opacity: 0; pointer-events: none; }
-  .ai-trigger svg { flex-shrink: 0; }
-  .ai-panel {
-    background: var(--color-void); border: 1px solid var(--color-white-12);
-    border-radius: 16px; width: 360px; overflow: hidden;
-    opacity: 0; transform: translateY(12px) scale(0.95);
-    pointer-events: none; transition: opacity 0.3s, transform 0.3s;
-  }
-  .ai-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
-  .ai-panel-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--color-white-06); }
-  .ai-panel-brand { display: flex; align-items: center; gap: 10px; }
-  .ai-label { font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--color-white-80); }
-  .ai-close { background: none; border: none; color: var(--color-white-50); font-size: 18px; cursor: none; padding: 0 4px; transition: color 0.2s; }
-  .ai-close:hover { color: var(--color-white); }
-  .ai-panel-body { padding: 18px; }
-  .ai-intro { font-family: var(--font-body); font-size: 15px; line-height: 1.5; color: var(--color-white-80); margin-bottom: 14px; }
-  .ai-input-row { display: flex; gap: 8px; }
-  .ai-input { flex: 1; background: var(--color-basalt); border: 1px solid var(--color-white-12); border-radius: 8px; padding: 12px 14px; font-family: var(--font-body); font-size: 14px; color: var(--color-white); outline: none; transition: border-color 0.2s; }
-  .ai-input::placeholder { color: var(--color-white-25); }
-  .ai-input:focus { border-color: var(--color-white-50); }
-  .ai-send { background: var(--color-white); color: var(--color-void); border: none; border-radius: 8px; width: 44px; font-size: 16px; cursor: none; transition: transform 0.2s; display: flex; align-items: center; justify-content: center; }
-  .ai-send:hover { transform: scale(1.05); }
-  @media (max-width: 768px) { .ai-widget { bottom: 24px; right: 24px; } .ai-panel { width: calc(100vw - 48px); } .ai-trigger-text { display: none; } }
-
-  /* ═══ CURSOR SAFETY ═══ */
-  body.cursor-active, body.cursor-active a, body.cursor-active button, body.cursor-active input { cursor: none; }
-
-  /* ═══ FOCUS STATES ═══ */
-  a:focus-visible, button:focus-visible, input:focus-visible {
-    outline: 2px solid var(--color-rose);
-    outline-offset: 3px;
-  }
-
-  /* ═══ REDUCED MOTION ═══ */
-  @media (prefers-reduced-motion: reduce) {
-    .loader { transition: none; }
-    .loader-mark .vl, .loader-mark .vr, .loader-mark .vb,
-    .loader-mark .tube, .loader-mark .tube-bloom,
-    .loader-mark .dot, .loader-mark .glow { animation: none; }
-    .loader-mark .tube { opacity: 0.8; }
-    .loader-mark .dot { opacity: 1; transform: scale(1); }
-    .fl { opacity: 1 !important; animation: none !important; }
-    .hero-content { opacity: 1; }
-    .nav { opacity: 1; transition: none; }
-    .nav.nav-hidden { transform: none; }
-    .avail-dot { animation: none; opacity: 1; }
-    .stories-track { transition: none; }
-    .stories-intro-bg { animation: none; inset: 0; width: 100%; height: 100%; }
-    .ai-trigger, .ai-trigger-text, .ai-trigger::after { transition: none; animation: none; }
-    .ai-trigger::after { opacity: 0; }
-    .ai-panel { transition: none; }
-    .fs-menu { transition: none; }
-    .cursor-ring, .cursor-dot { transition: none; }
-    .article-title, .article-excerpt { transition: none; }
-    .stories-dot { transition: none; }
-  }
-</style>
+</section>
+<script is:inline src="/landing/js/landing.js?v=9"></script>
+</body>
+</html>

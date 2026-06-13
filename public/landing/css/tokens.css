@@ -1,0 +1,150 @@
+/* ════════════════════════════════════════════════════════════════
+   TOKENS — the single source of truth.
+   The ONLY file allowed to contain hex values, rgb triplets and
+   raw type sizes. Everything else inherits via var().
+
+   4-POINT GRID (law, 2026-06-11): every spacing and dimension value
+   is a multiple of 4. Exempt: the type scale (follows its own scale,
+   vertical rhythm handled by line-height), stroke/line weights, and
+   shadow geometry (optical effects, not layout).
+
+   Literals allowed elsewhere: line-height/letter-spacing ratios,
+   z-index, %, vw offsets, and (CSS limitation) the 900px breakpoint.
+   ════════════════════════════════════════════════════════════════ */
+:root{
+
+  /* ── color · surfaces & text ──
+     Bright high-contrast only. Banned: cream #EDE8DF, warm #f5f0e8,
+     paper-tint #FDFBF7, limestone #E8ECEB family, #FAF5EC, #F8F7F4,
+     purple. One white, everywhere. */
+  --paper:#FFFFFF;            /* the page — only light background */
+  --ink:#0B0B0A;              /* text on light */
+  --coal:#0A0A09;             /* deliberate dark moments only */
+  --white:#FFFFFF;            /* text on coal · button text on red */
+
+  /* rgb triplets — for rgba() composition outside this file */
+  --ink-rgb:11,11,10;
+  --coal-rgb:10,10,9;
+  --white-rgb:255,255,255;
+  --red-rgb:225,29,72;
+  --emerald-rgb:14,159,110;
+
+  /* alpha ramps */
+  --ink-80:rgba(11,11,10,.8);   /* body */
+  --ink-65:rgba(11,11,10,.65);  /* subtext */
+  --ink-50:rgba(11,11,10,.5);   /* meta */
+  --ink-25:rgba(11,11,10,.25);  /* borders */
+  --ink-12:rgba(11,11,10,.12);  /* hairlines */
+  --ink-08:rgba(11,11,10,.08);  /* fills */
+  --white-50:rgba(255,255,255,.5);
+  --white-25:rgba(255,255,255,.25);
+  --white-12:rgba(255,255,255,.12);
+
+  /* ── color · accents ──
+     RED = everything interactive. EMERALD = non-interactive signals
+     only — never a button, never a fill on chrome. */
+  --red:#E11D48;
+  --red-deep:#C11540;          /* hover state of red fills */
+  --emerald:#0e9f6e;           /* graphics on light (3:1) — dots, route */
+  --emerald-ink:#0A7B55;       /* emerald TEXT on light (4.5:1) */
+
+  /* ── color · company palettes ──
+     Used ONLY inside that company's chapter plate — never on page chrome.
+     Sampled from real assets 2026-06-12: SadaPay from home-balance.png,
+     ZAR gold from the v10 product film. ADIB provisional until real
+     screenshots arrive. Alpha variants via color-mix(), not new hex. */
+  --sadapay:#02C3A3;        /* official, from Basit 2026-06-12 */
+  --sadapay-coral:#FF7B66;  /* official */
+  --sadapay-blue:#1C9CE5;   /* official (SadaBiz family) */
+  --zar-gold:#C2AC52;
+  --adib:#005EB8;           /* PROVISIONAL */
+
+  /* ── type · families ── */
+  --display:'Tanker',serif;          /* ALWAYS uppercase */
+  --sans:'General Sans',sans-serif;  /* UI · 400/500/600 — 700 BANNED everywhere (too thick; Bold not loaded) */
+  --serif:'Literata',serif;          /* body · editorial */
+
+  /* ── type · scale (exempt from the 4pt grid — see header) ── */
+  --fs-display-2xl:clamp(64px,10.4vw,180px);  /* hero claim */
+  --fs-display-xl:clamp(48px,7vw,108px);      /* section h2 */
+  --fs-display-lg:clamp(52px,7.6vw,128px);    /* breaker lockup */
+  --fs-display-index:clamp(44px,6.6vw,104px); /* work index rows */
+  --fs-display-stat:clamp(56px,6.4vw,104px);  /* stat values */
+  --fs-display-door:clamp(44px,5vw,76px);     /* door titles */
+  --fs-display-md:clamp(40px,4.2vw,68px);     /* exhibit names */
+  --fs-ghost-xl:clamp(120px,22vw,340px);      /* breaker ghost ticker */
+  --fs-ghost-md:clamp(90px,12vw,185px);       /* hero ghost ticker */
+  --fs-quote-mark:clamp(90px,9vw,150px);      /* outlined serif quote mark */
+  --fs-serif-lg:clamp(22px,2.6vw,38px);       /* pull quotes */
+  --fs-serif-md:clamp(26px,2.6vw,40px);       /* essay titles */
+  --fs-head-sm:clamp(19px,1.8vw,24px);        /* spine year heads */
+  --fs-body-lg:clamp(16px,1.4vw,20px);        /* hero sub · section subs */
+  --fs-logo:20px;
+  --fs-body:16px;        /* body copy · UI names */
+  --fs-md:15px;          /* button labels · meta lines */
+  --fs-ui:14px;          /* nav links · circle-action labels */
+  --fs-label:13px;       /* tertiary actions · kickers */
+  --fs-micro:12px;       /* door kickers · footer */
+
+  /* ── spacing · page & section rhythm (4pt) ── */
+  --gutter:clamp(20px,3.4vw,48px);
+  --sp-sec-top:112px;
+  --sp-sec-bot:120px;
+  --sp-sec-bot-lg:140px;
+  --sp-intro-top:56px;
+  --sp-intro-bot:64px;
+  --sp-breaker:clamp(80px,10vw,152px);
+
+  /* ── radii (4pt) ── */
+  --r-pill:999px;
+  --r-face:20px;     /* testimonial portraits */
+  --r-card:16px;     /* exhibit cards · panels */
+  --r-thumb:16px;    /* image frames · previews */
+  --r-photo:4px;     /* polaroids */
+
+  /* ── strokes & rules (line weights — exempt from grid) ── */
+  --stroke-2xl:2.5px;   /* hero outline letters */
+  --stroke:2px;         /* standard outline type · secondary button border */
+  --stroke-thin:1.5px;  /* ghost tickers · quote marks */
+  --rule-heavy:3px;     /* stat top rules */
+  --hairline:1px;
+  --frame:4px;          /* polaroid white frame */
+
+  /* ── shadows (optical — exempt from grid) ── */
+  --sh-nav:0 12px 40px -18px rgba(11,11,10,.25);
+  --sh-float:0 16px 40px -22px rgba(11,11,10,.3);     /* cursor trail */
+  --sh-photo:0 10px 26px -12px rgba(11,11,10,.35);    /* polaroid rest */
+  --sh-photo-up:0 30px 70px -20px rgba(11,11,10,.45); /* polaroid grown */
+  --sh-card-up:0 30px 70px -30px rgba(11,11,10,.35);  /* exhibit hover */
+  --sh-preview:0 30px 70px -24px rgba(11,11,10,.5);   /* work cursor preview */
+
+  /* ── motion ──
+     Motion is entrance (once), scroll-driven, or cursor-response.
+     Nothing loops idly. JS-side durations (count 1400ms, chain 2800ms
+     auto / 380ms click / 750ms drift) live with their scripts. */
+  --ease:cubic-bezier(.23,1,.32,1);
+  --t-fast:.25s;      /* hovers, chips */
+  --t-base:.35s;      /* lifts, indents */
+  --t-med:.45s;       /* fills, transforms */
+  --t-fill:.5s;       /* outline→fill on hover */
+  --t-slow:.7s;       /* image zooms */
+  --t-fill-lg:.8s;    /* hero line-2 self-fill */
+  --t-reveal:.9s;     /* scroll reveals */
+  --t-tick-hero:60s;  /* hero ghost drift */
+  --t-tick-br:50s;    /* breaker ghost drift */
+
+  /* ── imagery ── */
+  --duo:grayscale(1) sepia(.2) hue-rotate(-28deg) saturate(1.3) contrast(1.12) brightness(1.06);
+}
+
+/* ── mobile rhythm (rules/mobile.md §2) — tokens respond, sections don't ── */
+@media (max-width:900px){
+  :root{
+    --sp-sec-top:64px;
+    --sp-sec-bot:72px;
+    --sp-sec-bot-lg:80px;
+    --sp-intro-top:40px;
+    --sp-intro-bot:44px;
+    --sp-breaker:clamp(64px,12vw,96px);
+  }
+}

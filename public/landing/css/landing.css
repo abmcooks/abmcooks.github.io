@@ -1,0 +1,358 @@
+/* ════════════════════════════════════════════════════════════════
+   LANDING — page-scoped composition only. Inherits everything from
+   css/tokens.css → base.css → components.css. Vars only: no hex,
+   no raw type sizes, no !important. Anything reused on a second
+   page graduates to components.css + the style guide.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── LOADER — the fluorescent-tube logo (ported from the live site) ──
+   Dark curtain over the white page; tube draws + flickers on, red dot
+   pops, then the curtain lifts to reveal the hero. */
+.loader{
+  position:fixed; inset:0; z-index:9999; background:var(--coal);
+  display:flex; align-items:center; justify-content:center;
+  transition:opacity .6s var(--ease), visibility .6s var(--ease);
+}
+.loader.done{ opacity:0; visibility:hidden; pointer-events:none; }
+.loader-mark{ width:150px; height:110px; }
+.loader-mark svg{ width:100%; height:100%; overflow:visible; }
+.loader-mark .vl{ stroke:var(--white); stroke-width:83; fill:none; clip-path:polygon(0 0,38% 0,38% 65%,0 65%); animation:cL 3.6s cubic-bezier(.19,1,.22,1) infinite; }
+.loader-mark .vr{ stroke:var(--white); stroke-width:83; fill:none; clip-path:polygon(62% 0,100% 0,100% 65%,62% 65%); animation:cR 3.6s cubic-bezier(.19,1,.22,1) infinite; }
+.loader-mark .vb{ stroke:var(--white); stroke-width:83; fill:none; clip-path:polygon(0 30%,100% 30%,100% 100%,0 100%); animation:cB 3.6s cubic-bezier(.19,1,.22,1) infinite; }
+.loader-mark .tube{ stroke:var(--white); stroke-width:83; fill:none; animation:tubeFlicker 3.6s step-end infinite; }
+.loader-mark .tube-bloom{ stroke:var(--white); stroke-width:83; fill:none; filter:blur(14px); animation:tubeBloom 3.6s ease infinite; }
+.loader-mark .dot{ fill:var(--red); transform-origin:308px 389px; animation:comboDot 3.6s cubic-bezier(.2,0,0,1) infinite; }
+.loader-mark .glow{ fill:var(--red); filter:blur(22px); transform-origin:308px 389px; animation:comboGlow 3.6s ease infinite; }
+@keyframes cL{ 0%{transform:translateX(-90px);opacity:0}4%{opacity:.15}14%{transform:translateX(0);opacity:.15}15%{transform:translateX(1.5px)}16%{transform:translateX(0)}25%{transform:translateX(0);opacity:.15}26%{opacity:0}72%{transform:translateX(0);opacity:.15}86%{transform:translateX(-90px);opacity:0}100%{transform:translateX(-90px);opacity:0} }
+@keyframes cR{ 0%{transform:translateX(90px);opacity:0}2%{opacity:0}6%{opacity:.15}16%{transform:translateX(0);opacity:.15}17%{transform:translateX(-1.5px)}18%{transform:translateX(0)}25%{transform:translateX(0);opacity:.15}26%{opacity:0}72%{transform:translateX(0);opacity:.15}83%{transform:translateX(90px);opacity:0}100%{transform:translateX(90px);opacity:0} }
+@keyframes cB{ 0%{transform:translateY(55px);opacity:0}6%{opacity:0}10%{opacity:.15}20%{transform:translateY(0);opacity:.15}21%{transform:translateY(-1.5px)}22%{transform:translateY(0)}25%{transform:translateY(0);opacity:.15}26%{opacity:0}72%{transform:translateY(0);opacity:.15}80%{transform:translateY(55px);opacity:0}100%{transform:translateY(55px);opacity:0} }
+@keyframes tubeFlicker{ 0%{opacity:0}25%{opacity:0}27%{opacity:.12}28%{opacity:0}29.5%{opacity:.22}30.5%{opacity:.03}32%{opacity:.4}33.5%{opacity:.06}35%{opacity:.55}36%{opacity:.12}38%{opacity:1}60%{opacity:1}61.5%{opacity:.25}62.5%{opacity:.85}64%{opacity:.1}65%{opacity:.6}66.5%{opacity:.04}67.5%{opacity:.35}69%{opacity:0}100%{opacity:0} }
+@keyframes tubeBloom{ 0%{opacity:0}37%{opacity:0}39%{opacity:.2}44%{opacity:.06}60%{opacity:.06}62%{opacity:0}100%{opacity:0} }
+@keyframes comboDot{ 0%{opacity:0;transform:scale(0)}36%{opacity:0;transform:scale(0)}40%{opacity:1;transform:scale(1.1)}43%{opacity:1;transform:scale(1)}60%{opacity:1;transform:scale(1)}65%{opacity:.5;transform:scale(.95)}70%{opacity:0;transform:scale(.8)}100%{opacity:0;transform:scale(0)} }
+@keyframes comboGlow{ 0%{opacity:0;transform:scale(0)}39%{opacity:0;transform:scale(0)}41%{opacity:.55;transform:scale(1.5)}45%{opacity:.3;transform:scale(1.3)}60%{opacity:.3;transform:scale(1.3)}67%{opacity:.1;transform:scale(.8)}72%{opacity:0;transform:scale(0)}100%{opacity:0;transform:scale(0)} }
+
+/* ── HERO — typographic monument ── */
+.hero{
+  position:relative; overflow:hidden;
+  min-height:100dvh; display:flex; flex-direction:column; justify-content:center;
+  padding-top:128px; padding-bottom:clamp(152px,18vh,220px);
+}
+.hero-band{
+  position:relative; z-index:3;
+  display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  border-top:var(--hairline) solid var(--ink-12); border-bottom:var(--hairline) solid var(--ink-12);
+  padding:16px 0; margin-bottom:clamp(40px,6vh,72px);
+}
+/* the name gets the stat anatomy — a heavy rule above — but in red:
+   the one red structural rule on the page. Indexed, not decorated. */
+.hero-id{ display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; font-family:var(--sans); }
+.hero-id b{
+  display:inline-block;
+  font-weight:600; font-size:var(--fs-body); line-height:1.3;
+  text-transform:uppercase; letter-spacing:.08em; color:var(--ink);
+  border-top:var(--rule-heavy) solid var(--red); padding-top:8px;
+}
+.hero-id b em{ font-style:normal; color:var(--red); }
+.hero-id span{ font-size:var(--fs-body); color:var(--ink-50); font-weight:500; }
+.hero-ghost{
+  position:absolute; bottom:0; left:0; z-index:0; pointer-events:none;
+  display:flex; white-space:nowrap;
+  font-family:var(--display); font-size:var(--fs-ghost-md); line-height:1;
+  color:transparent; -webkit-text-stroke:var(--stroke-thin) var(--ink-12);
+}
+.hero-ghost span{ display:block; padding-right:.5em; animation:tick var(--t-tick-hero) linear infinite; }
+.hero-claim{
+  position:relative; z-index:2;
+  font-family:var(--display); text-transform:uppercase; font-weight:400;
+  font-size:var(--fs-display-2xl); line-height:.9; color:var(--ink);
+}
+.hero-claim .l{ display:block; overflow:hidden; padding-bottom:.08em; }
+.hero-claim .l:nth-child(2){ padding-left:clamp(28px,5vw,112px); }
+.hero-claim em{ font-style:normal; color:var(--red); }
+/* per-letter choreography (spans injected by JS) */
+.hero-claim .ch{ display:inline-block; transform:translateY(118%) rotate(4deg); }
+body.loaded .hero-claim .ch{ animation:chLift .85s var(--ease) forwards; animation-delay:calc(.15s + var(--i) * .035s); }
+@keyframes chLift{ to{ transform:translateY(0) rotate(0); } }
+/* line 2: outlined, then fills itself in */
+.hero-claim .l:nth-child(2) .ch{
+  color:transparent; -webkit-text-stroke:var(--stroke-2xl) var(--ink);
+  transition:color var(--t-fill-lg) var(--ease);
+}
+body.filled .hero-claim .l:nth-child(2) .ch{ color:var(--ink); }
+.hero-sub{
+  position:relative; z-index:2;
+  font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.55;
+  color:var(--ink-65); max-width:46ch; margin-top:32px;
+}
+.hero-band,.hero-sub,.hero-ghost{ opacity:0; }
+body.loaded .hero-band{ animation:fade var(--t-reveal) var(--ease) .3s forwards; }
+body.loaded .hero-sub{ animation:fade var(--t-reveal) var(--ease) .5s forwards; }
+body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
+@keyframes fade{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;} }
+
+/* ── 02 THE RECORD ── */
+.record{ padding-top:var(--sp-sec-top); padding-bottom:var(--sp-sec-bot); }
+.statrow{ display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-bottom:112px; }
+
+/* quiet outro: the stats are the short version; the full story lives at /about */
+.record-outro{
+  display:flex; flex-direction:column; align-items:flex-start; gap:12px;
+  padding-top:64px;
+}
+.record-outro p{ font-family:var(--serif); font-style:italic; font-size:var(--fs-body); color:var(--ink-50); }
+
+/* ── THE WORK v3 — FULL-BLEED THEATER (2026-06-12, Basit-picked).
+   The media IS the section: SadaPay's ad, ZAR's film, ADIB's still fill
+   the whole plate edge-to-edge. Copy rides on a paper plate bottom-left.
+   Plates stack on scroll (position:sticky, no scroll-jacking). ── */
+.chapters .sec-intro{ margin-bottom:0; }
+.chap-stack{ position:relative; }
+.chap{
+  position:sticky; top:0; height:100svh;
+  display:block; overflow:hidden; text-decoration:none;
+  background:var(--coal);
+  border-top:var(--hairline) solid var(--ink-12);
+}
+.chap-zar{ border-top-color:var(--white-12); }
+.chap-media{ position:absolute; inset:0; z-index:1; }
+.chap-media video{ width:100%; height:100%; object-fit:contain; background:var(--coal); display:block; }
+.chap-media > img{ width:100%; height:100%; object-fit:cover; display:block; }
+/* the copy plate — same grammar on every chapter, legible over anything.
+   Theater mode (Basit's idea): plate slides away when the mouse rests so
+   the media owns the screen; any movement brings it back. Fine pointers
+   only — touch and keyboard always see it. */
+.chap-plate{
+  position:absolute; z-index:3; left:var(--gutter); bottom:48px;
+  background:var(--paper); border-radius:var(--r-card);
+  padding:28px 32px 32px; max-width:600px;
+  box-shadow:var(--sh-card-up);
+  transition:transform var(--t-fill) var(--ease), opacity var(--t-fill) var(--ease);
+}
+.chap.plate-rest .chap-plate{ transform:translateY(calc(100% + 64px)); opacity:0; }
+.chap.plate-rest:focus-within .chap-plate{ transform:none; opacity:1; }
+.chap.plate-rest .vid-sound{ transform:translateY(calc(100% + 80px)); opacity:0; }
+.chap .vid-sound{ transition:background var(--t-fast) var(--ease), transform var(--t-fill) var(--ease), opacity var(--t-fill) var(--ease); }
+.chap-name{
+  display:block; font-family:var(--display); text-transform:uppercase; font-weight:400;
+  font-size:clamp(32px,3.4vw,52px); line-height:1; color:var(--ink);
+}
+.chap-meta{ font-family:var(--sans); font-weight:600; font-size:var(--fs-ui); color:var(--ink); margin-top:12px; }
+.chap-meta span{ color:var(--ink-50); font-weight:500; }
+.chap-line{ font-family:var(--serif); font-size:var(--fs-body); line-height:1.5; color:var(--ink-65); margin-top:14px; max-width:42ch; }
+.chap-line em{ font-style:normal; color:var(--ink); }
+.chap-stats{ display:flex; gap:32px; margin-top:20px; flex-wrap:wrap; }
+.chap-stat b{
+  display:block; font-family:var(--display); font-weight:400; text-transform:uppercase;
+  font-size:clamp(20px,1.8vw,30px); line-height:1; color:var(--ink);
+}
+.chap-stat i{ display:block; font-style:normal; font-family:var(--sans); font-weight:600; font-size:var(--fs-micro); color:var(--ink-50); margin-top:6px; }
+.chap .btn-text{ margin-top:20px; }
+.chap:hover .btn-text{ color:var(--red); }
+.chap:hover .btn-text > svg{ transform:translate(3px,-3px); }
+/* film sound toggle — on the plate\'s side of the law: red = interactive */
+.chap .vid-sound{
+  position:absolute; right:var(--gutter); bottom:48px; z-index:3;
+  width:48px; height:48px; border-radius:50%; border:0; cursor:pointer;
+  background:var(--red); color:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  transition:background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.chap .vid-sound:hover{ background:var(--red-deep); transform:translateY(-1px); }
+.vid-sound svg{ width:18px; height:18px; }
+.vid-sound .on-icon{ display:none; }
+.vid-sound.sound-on .on-icon{ display:block; }
+.vid-sound.sound-on .off-icon{ display:none; }
+/* placeholder labeling (shared: ADIB still, writing covers) */
+.ph-tag{
+  position:absolute; left:var(--gutter); top:24px; z-index:2;
+  font-family:var(--sans); font-size:var(--fs-micro); font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase;
+  color:var(--white); background:rgba(var(--coal-rgb),.72);
+  padding:6px 10px; border-radius:4px;
+}
+.chap-adib{ background:var(--paper); }
+.chap-adib .chap-media img{ filter:var(--duo); opacity:.18; }
+
+/* ── THE SADAPAY AD — full-bleed kinetic-type cards, ZAR-film grammar:
+   one message per card, type fills the frame, logo opens and closes. ── */
+.sloop{ position:absolute; inset:0; overflow:hidden; }
+.sl-card{
+  position:absolute; inset:0; padding:var(--gutter);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:clamp(16px,2vh,28px); text-align:center;
+  opacity:0; transform:translateY(3%); pointer-events:none;
+  transition:opacity var(--t-med) var(--ease), transform var(--t-fill) var(--ease);
+}
+.sl-card.on{ opacity:1; transform:none; }
+.c-teal{ background:var(--sadapay); color:var(--ink); }
+.c-ink{ background:var(--ink); color:var(--white); }
+.c-white{ background:var(--paper); color:var(--ink); }
+.c-coral{ background:var(--sadapay-coral); color:var(--ink); }
+.c-blue{ background:var(--sadapay-blue); color:var(--ink); }
+.sl-line{
+  font-family:var(--display); text-transform:uppercase; font-weight:400;
+  font-size:clamp(44px,7vw,128px); line-height:.95; max-width:16ch;
+}
+.sl-line em{ font-style:normal; color:var(--red); }
+.sl-giant{
+  font-family:var(--display); text-transform:uppercase; font-weight:400;
+  font-size:clamp(72px,11vw,208px); line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+.sl-tag{
+  font-family:var(--sans); font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  font-size:clamp(16px,1.8vw,26px); opacity:.8;
+}
+/* product logo chips — placeholders until Basit supplies the five marks */
+.sl-chips{ display:flex; gap:clamp(12px,1.6vw,24px); flex-wrap:wrap; justify-content:center; max-width:80%; }
+.sl-chips span{
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  width:clamp(96px,11vw,160px); aspect-ratio:1; border-radius:24px;
+  background:rgba(var(--white-rgb),.92); color:var(--ink);
+  font-family:var(--sans); font-weight:600; font-size:clamp(12px,1.1vw,16px);
+  letter-spacing:.06em; text-transform:uppercase; padding:12px;
+  box-shadow:var(--sh-photo);
+  opacity:0; transform:translateY(20px) scale(.92);
+  transition:opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+  transition-delay:calc(var(--i) * 140ms);
+}
+.sl-card.on .sl-chips span{ opacity:1; transform:none; }
+/* the flag gets planted — 3D tiles art under the exit claim */
+.sl-art{ width:clamp(280px,36vw,560px); display:block; }
+.sl-logo img{ width:clamp(220px,30vw,440px); display:block; }
+.sl-logo-mono img{ filter:brightness(0) invert(1); }
+.sl-red{ color:var(--red); }
+/* spans stagger in on multi-part cards */
+.sl-card .sl-line span{ display:inline-block; opacity:0; transform:translateY(16px); transition:opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease); transition-delay:calc(var(--i) * 180ms); }
+.sl-card.on .sl-line span{ opacity:1; transform:none; }
+/* reduced motion / no-JS: park on the payoff card */
+.sloop.static .sl-card{ opacity:0; }
+.sloop.static .sl-card.sl-park{ opacity:1; transform:none; }
+
+/* outro strip: the archive door lives AFTER the evidence, not before it */
+.chap-out{
+  display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap;
+  padding:var(--sp-sec-top) 0 var(--sp-sec-bot); border-top:var(--hairline) solid var(--ink-12);
+}
+.chap-out-actions{ display:flex; align-items:center; gap:32px; flex-wrap:wrap; }
+.chap-out p{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.5; color:var(--ink-65); max-width:46ch; }
+
+/* ── BREAKER — the kinetic chain ── */
+.breaker{
+  position:relative;
+  background:var(--coal);
+  padding-top:var(--sp-breaker); padding-bottom:var(--sp-breaker);
+  overflow:hidden;
+  cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none;
+}
+.br-ghost{
+  position:absolute; top:50%; left:0; transform:translateY(-50%);
+  display:flex; white-space:nowrap; pointer-events:none;
+  font-family:var(--display); text-transform:uppercase;
+  font-size:var(--fs-ghost-xl); line-height:1;
+  color:transparent; -webkit-text-stroke:var(--stroke-thin) var(--white-12);
+}
+.br-ghost span{ display:block; padding-right:.6em; animation:tick var(--t-tick-br) linear infinite; }
+@keyframes tick{ from{transform:translateX(0);} to{transform:translateX(-100%);} }
+.br-lockup{
+  position:relative; z-index:2;
+  font-family:var(--display); text-transform:uppercase; font-weight:400;
+  font-size:var(--fs-display-lg); line-height:1.04; color:var(--white);
+}
+.br-window{
+  display:block; height:1.08em; overflow:hidden;
+  mask-image:linear-gradient(to bottom, transparent, black 22%, black 78%, transparent);
+  -webkit-mask-image:linear-gradient(to bottom, transparent, black 22%, black 78%, transparent);
+}
+/* chain is JS-driven: auto-advances, click flips to the next word */
+.br-chain{ display:block; }
+.br-chain span{ display:block; height:1.08em; line-height:1.08; color:var(--red); white-space:nowrap; }
+
+/* ── 04 THEY'LL VOUCH ── */
+.people{ padding-bottom:var(--sp-sec-bot); }
+
+/* ── 05 WRITING — broadsheet spread on plain paper ── */
+.writing-band{ padding-bottom:var(--sp-sec-bot-lg); }
+.writing-band .sec-intro{ padding-top:100px; }
+/* writing = GALLERY PIECES. The artwork owns its full frame — no scrim,
+   no overlay, nothing on it. The text stands beneath like a gallery label:
+   no card box, no border around text. Four equals in a row. */
+.wr-wall{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,2vw,32px); }
+.wr-piece{ display:block; text-decoration:none; }
+.wr-art{
+  display:block; position:relative; aspect-ratio:3/4; overflow:hidden;
+  border-radius:var(--r-card); border:var(--hairline) solid var(--ink-12);
+  background:var(--ink-08);
+}
+.wr-art img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform var(--t-slow) var(--ease);
+}
+.wr-piece:hover .wr-art img{ transform:scale(1.04); }
+.wr-label{ display:block; padding:16px 4px 0; }
+.wr-label-meta{
+  display:block; font-family:var(--sans); font-size:var(--fs-micro); font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-50);
+}
+.wr-label-title{
+  display:block; font-family:var(--serif); font-weight:500;
+  font-size:clamp(18px,1.6vw,24px); line-height:1.25; color:var(--ink);
+  margin-top:8px; transition:color var(--t-base) var(--ease);
+}
+.wr-piece:hover .wr-label-title{ color:var(--red); }
+.wr-piece .btn-text{ margin-top:12px; }
+.wr-piece:hover .btn-text{ color:var(--red); }
+.wr-piece:hover .btn-text > svg{ transform:translate(3px,-3px); }
+
+/* ── THE RECEIPTS — real testimonial screenshots, unedited, drifting ── */
+.receipts{ margin-top:64px; }
+.receipts-intro{
+  font-family:var(--serif); font-style:italic; font-size:var(--fs-body);
+  color:var(--ink-50); margin-bottom:24px;
+}
+.receipts-belt{
+  overflow:hidden;
+  mask-image:linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image:linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+.receipts-track{ display:flex; align-items:center; gap:16px; width:max-content; animation:receiptsDrift 80s linear infinite; }
+.receipts-belt:hover .receipts-track{ animation-play-state:paused; }
+.receipts-track img{
+  max-height:320px; max-width:560px; width:auto; height:auto; display:block;
+  border:var(--hairline) solid var(--ink-12); border-radius:var(--r-thumb);
+  background:var(--white); padding:12px;
+}
+@keyframes receiptsDrift{ to{ transform:translateX(-50%); } }
+
+/* ── PAGE RESPONSIVE ── */
+@media (max-width:900px){
+  /* hero stays a hero (rules/mobile.md §10): full viewport, compact band,
+     dominant claim, one full-width CTA */
+  .hero{ min-height:100svh; padding-top:112px; padding-bottom:96px; justify-content:flex-start; }
+  .hero-band{ flex-direction:column; align-items:flex-start; gap:16px; padding:16px 0; margin-bottom:clamp(32px,5vh,48px); }
+  .hero-band .btn-sec{ width:100%; justify-content:space-between; }
+  .hero-claim .l:nth-child(2){ padding-left:6vw; }
+  .hero-claim .l:nth-child(2) .ch{ -webkit-text-stroke-width:var(--stroke-thin); }
+  .hero-ghost{ top:auto; bottom:4%; }
+  /* single column, always (rules/mobile.md §1) */
+  .statrow{ grid-template-columns:1fr; gap:24px; margin-bottom:64px; }
+  .wr-wall{ grid-template-columns:1fr 1fr; gap:16px; }
+  .wr-art{ aspect-ratio:3/4; }
+  .wr-label-title{ font-size:var(--fs-body); }
+  .receipts-track img{ max-height:220px; max-width:300px; }
+  .chap-plate{ left:var(--gutter); right:var(--gutter); bottom:24px; max-width:none; padding:20px 24px 24px; }
+  .chap-stats{ gap:20px 24px; margin-top:16px; }
+  .chap .btn-text{ margin-top:16px; }
+  .chap .vid-sound{ right:var(--gutter); bottom:auto; top:24px; }
+  .sl-line{ max-width:12ch; }
+}
+
+/* ── PAGE REDUCED MOTION ── */
+@media (prefers-reduced-motion:reduce){
+  .hero-band,.hero-sub,.hero-ghost{ opacity:1; animation:none; }
+  .hero-claim .ch{ transform:none; }
+  .hero-claim .l:nth-child(2) .ch{ color:var(--ink); }
+  .br-ghost span,.hero-ghost span{ animation:none; }
+  .receipts-track{ animation:none; }
+  .receipts-belt{ overflow-x:auto; mask-image:none; -webkit-mask-image:none; }
+}
