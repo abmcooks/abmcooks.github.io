@@ -208,21 +208,23 @@ html{ scroll-snap-type:y proximity; }
   font-size:clamp(16px,1.8vw,26px); opacity:.8;
 }
 /* product logo chips — placeholders until Basit supplies the five marks */
-.sl-chips{ display:flex; gap:clamp(12px,1.6vw,24px); flex-wrap:wrap; justify-content:center; max-width:90%; }
+.sl-chips{ --chip-gap:clamp(14px,1.7vw,26px); display:flex; gap:var(--chip-gap); flex-wrap:nowrap; justify-content:center; max-width:92%; }
 .sl-chips span{
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; text-align:center;
-  width:clamp(120px,12vw,172px); aspect-ratio:1; border-radius:var(--r);
+  width:clamp(120px,12vw,172px); aspect-ratio:1; flex:0 0 auto; border-radius:var(--r);
   background:var(--white); padding:18px;
   box-shadow:var(--sh-photo);
-  /* the one product expands into five — each tile pops out from the first,
-     left to right, with a little overshoot (a "multiply" motion) */
-  opacity:0; transform:scale(0); transform-origin:center;
-  transition:opacity .35s var(--ease), transform .5s cubic-bezier(.34,1.56,.64,1);
-  transition-delay:calc(var(--i) * 170ms);
+  /* the first tile (the SadaPay mark) lands; the other four slide OUT FROM
+     BEHIND it to their places — born from the one product. Tile 0 sits on
+     top (highest z), the rest start stacked behind it and slide right. */
+  z-index:calc(20 - var(--i));
+  transform:translateX(calc(var(--i) * (-100% - var(--chip-gap))));
+  transition:transform .6s var(--ease);
+  transition-delay:calc(.45s + var(--i) * .15s);
 }
 .sl-chips span img{ width:clamp(44px,4.4vw,60px); height:clamp(44px,4.4vw,60px); object-fit:contain; display:block; }
 .sl-chips span i{ font-style:normal; font-family:var(--sans); font-weight:600; font-size:var(--fs-body); letter-spacing:.01em; color:var(--ink); line-height:1.2; }
-.sl-card.on .sl-chips span{ opacity:1; transform:scale(1); }
+.sl-card.on .sl-chips span{ transform:translateX(0); }
 /* the flag gets planted — 3D tiles art ABOVE the exit claim (balanced) */
 .sl-art{ width:clamp(220px,28vw,420px); display:block; }
 .sl-logo img{ width:clamp(220px,30vw,440px); display:block; }
@@ -342,6 +344,8 @@ html{ scroll-snap-type:y proximity; }
   .statrow{ grid-template-columns:1fr; gap:24px; margin-bottom:64px; }
   .wr-wall{ grid-template-columns:1fr; gap:24px; }
   .chap-out{ flex-direction:column; align-items:flex-start; gap:32px; }
+  .sl-chips{ flex-wrap:wrap; }
+  .sl-chips span{ width:clamp(96px,28vw,132px); transform:none; transition:none; }
   .wr-art{ aspect-ratio:16/9; }
   .wr-label-title{ font-size:var(--fs-body); }
   .receipts-track img{ max-height:220px; max-width:300px; }
