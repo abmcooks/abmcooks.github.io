@@ -93,13 +93,10 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
 /* ── 02 THE RECORD ── */
 .record{ padding-top:var(--sp-sec-top); padding-bottom:var(--sp-sec-bot); }
 .statrow{ display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-bottom:112px; }
+/* a red ledger-tab on each stat rule — accent without coloring the numbers */
+.statrow .stat{ position:relative; }
+.statrow .stat::after{ content:''; position:absolute; top:calc(-1 * var(--rule-heavy)); left:0; width:32px; height:var(--rule-heavy); background:var(--red); }
 
-/* quiet outro: the stats are the short version; the full story lives at /about */
-.record-outro{
-  display:flex; flex-direction:column; align-items:flex-start; gap:12px;
-  padding-top:64px;
-}
-.record-outro p{ font-family:var(--serif); font-style:italic; font-size:var(--fs-body); color:var(--ink-50); }
 
 /* ── THE WORK v3 — FULL-BLEED THEATER (2026-06-12, Basit-picked).
    The media IS the section: SadaPay's ad, ZAR's film, ADIB's still fill
@@ -123,8 +120,8 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
    only — touch and keyboard always see it. */
 .chap-plate{
   position:absolute; z-index:3; left:var(--gutter); bottom:48px;
-  background:var(--paper); border-radius:var(--r-card);
-  padding:28px 32px 32px; max-width:600px;
+  background:var(--paper); border-radius:var(--r);
+  padding:32px 36px 28px; max-width:560px;
   box-shadow:var(--sh-card-up);
   transition:transform var(--t-fill) var(--ease), opacity var(--t-fill) var(--ease);
 }
@@ -132,21 +129,23 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
 .chap.plate-rest:focus-within .chap-plate{ transform:none; opacity:1; }
 .chap.plate-rest .vid-sound{ transform:translateY(calc(100% + 80px)); opacity:0; }
 .chap .vid-sound{ transition:background var(--t-fast) var(--ease), transform var(--t-fill) var(--ease), opacity var(--t-fill) var(--ease); }
+/* card hierarchy: TWO families only — Tanker (name + stat values), Sans
+   (everything else). One clear step-down: name → role → context → stats. */
 .chap-name{
   display:block; font-family:var(--display); text-transform:uppercase; font-weight:400;
-  font-size:clamp(32px,3.4vw,52px); line-height:1; color:var(--ink);
+  font-size:clamp(36px,3.6vw,56px); line-height:1; color:var(--ink);
 }
-.chap-meta{ font-family:var(--sans); font-weight:600; font-size:var(--fs-ui); color:var(--ink); margin-top:12px; }
-.chap-meta span{ color:var(--ink-50); font-weight:500; }
-.chap-line{ font-family:var(--serif); font-size:var(--fs-body); line-height:1.5; color:var(--ink-65); margin-top:14px; max-width:42ch; }
-.chap-line em{ font-style:normal; color:var(--ink); }
-.chap-stats{ display:flex; gap:32px; margin-top:20px; flex-wrap:wrap; }
+.chap-role{ font-family:var(--sans); font-weight:600; font-size:var(--fs-md); color:var(--ink); margin-top:14px; letter-spacing:.01em; }
+.chap-role em{ font-style:normal; color:var(--red); }      /* the accent — the progression */
+.chap-sub{ font-family:var(--sans); font-weight:500; font-size:var(--fs-label); color:var(--ink-50); margin-top:6px; }
+.chap-stats{ display:flex; gap:36px; margin-top:28px; flex-wrap:wrap; }
 .chap-stat b{
   display:block; font-family:var(--display); font-weight:400; text-transform:uppercase;
-  font-size:clamp(20px,1.8vw,30px); line-height:1; color:var(--ink);
+  font-size:clamp(30px,3vw,44px); line-height:1; color:var(--ink);
 }
-.chap-stat i{ display:block; font-style:normal; font-family:var(--sans); font-weight:600; font-size:var(--fs-micro); color:var(--ink-50); margin-top:6px; }
-.chap .btn-text{ margin-top:20px; }
+.chap-stat i{ display:block; font-style:normal; font-family:var(--sans); font-weight:600; font-size:var(--fs-label); color:var(--ink-50); margin-top:8px; }
+.chap-stat--word b{ font-size:clamp(20px,1.9vw,28px); }     /* ADIB: word values, not numbers */
+.chap .btn-text{ margin-top:28px; }
 .chap:hover .btn-text{ color:var(--red); }
 .chap:hover .btn-text > svg{ transform:translate(3px,-3px); }
 /* film sound toggle — on the plate\'s side of the law: red = interactive */
@@ -277,27 +276,27 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
 /* writing = GALLERY PIECES. The artwork owns its full frame — no scrim,
    no overlay, nothing on it. The text stands beneath like a gallery label:
    no card box, no border around text. Four equals in a row. */
-.wr-wall{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,2vw,32px); }
+.wr-wall{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px 20px; }
 .wr-piece{ display:block; text-decoration:none; }
 .wr-art{
-  display:block; position:relative; aspect-ratio:3/4; overflow:hidden;
-  border-radius:var(--r-card); border:var(--hairline) solid var(--ink-12);
+  display:block; position:relative; aspect-ratio:16/9; overflow:hidden;
+  border-radius:var(--r); border:var(--hairline) solid var(--ink-12);
   background:var(--ink-08);
 }
 .wr-art img{
   width:100%; height:100%; object-fit:cover; display:block;
   transition:transform var(--t-slow) var(--ease);
 }
-.wr-piece:hover .wr-art img{ transform:scale(1.04); }
-.wr-label{ display:block; padding:16px 4px 0; }
+.wr-piece:hover .wr-art img{ transform:scale(1.03); }
+.wr-label{ display:block; padding:18px 4px 0; }
 .wr-label-meta{
   display:block; font-family:var(--sans); font-size:var(--fs-micro); font-weight:600;
   letter-spacing:.14em; text-transform:uppercase; color:var(--ink-50);
 }
 .wr-label-title{
   display:block; font-family:var(--serif); font-weight:500;
-  font-size:clamp(18px,1.6vw,24px); line-height:1.25; color:var(--ink);
-  margin-top:8px; transition:color var(--t-base) var(--ease);
+  font-size:clamp(20px,1.8vw,28px); line-height:1.2; color:var(--ink);
+  margin-top:10px; transition:color var(--t-base) var(--ease);
 }
 .wr-piece:hover .wr-label-title{ color:var(--red); }
 .wr-piece .btn-text{ margin-top:12px; }
@@ -310,11 +309,7 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
   font-family:var(--serif); font-style:italic; font-size:var(--fs-body);
   color:var(--ink-50); margin-bottom:24px;
 }
-.receipts-belt{
-  overflow:hidden;
-  mask-image:linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image:linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-}
+.receipts-belt{ overflow:hidden; }
 .receipts-track{ display:flex; align-items:center; gap:16px; width:max-content; animation:receiptsDrift 80s linear infinite; }
 .receipts-belt:hover .receipts-track{ animation-play-state:paused; }
 .receipts-track img{
@@ -336,8 +331,8 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
   .hero-ghost{ top:auto; bottom:4%; }
   /* single column, always (rules/mobile.md §1) */
   .statrow{ grid-template-columns:1fr; gap:24px; margin-bottom:64px; }
-  .wr-wall{ grid-template-columns:1fr 1fr; gap:16px; }
-  .wr-art{ aspect-ratio:3/4; }
+  .wr-wall{ grid-template-columns:1fr; gap:24px; }
+  .wr-art{ aspect-ratio:16/9; }
   .wr-label-title{ font-size:var(--fs-body); }
   .receipts-track img{ max-height:220px; max-width:300px; }
   .chap-plate{ left:var(--gutter); right:var(--gutter); bottom:24px; max-width:none; padding:20px 24px 24px; }
@@ -354,5 +349,5 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
   .hero-claim .l:nth-child(2) .ch{ color:var(--ink); }
   .br-ghost span,.hero-ghost span{ animation:none; }
   .receipts-track{ animation:none; }
-  .receipts-belt{ overflow-x:auto; mask-image:none; -webkit-mask-image:none; }
+  .receipts-belt{ overflow-x:auto; }
 }

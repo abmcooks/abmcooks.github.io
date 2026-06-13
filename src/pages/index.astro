@@ -1,7 +1,6 @@
 ---
-// Standalone landing — own document, own nav/cursor/scripts (no shared Base,
-// which injects a site-wide .nav handler that would collide). Assets live
-// in /public/landing/. Source of truth: portfolio-experience/lab/index.html.
+// Standalone landing — own document (no shared Base; its .nav handler collides).
+// Assets in /public/landing/. Source of truth: portfolio-experience/lab/index.html.
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -14,15 +13,15 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://abmcooks.github.io/" />
 <meta property="og:title" content="Basit Masood — 6M+ people use my work" />
-<meta property="og:description" content="Product Design Leader, Dubai. Two fintechs taken from zero — one to Pakistan's first fintech exit. A bank. 30+ products across eight years." />
+<meta property="og:description" content="Product Design Leader, Dubai. Two fintechs from zero — one to Pakistan's first fintech exit. A bank. 30+ products across eight years." />
 <meta property="og:image" content="https://abmcooks.github.io/landing/og.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Basit Masood — 6M+ people use my work" />
 <meta name="twitter:image" content="https://abmcooks.github.io/landing/og.png" />
-<link rel="stylesheet" href="/landing/css/tokens.css?v=9" />
-<link rel="stylesheet" href="/landing/css/base.css?v=9" />
-<link rel="stylesheet" href="/landing/css/components.css?v=9" />
-<link rel="stylesheet" href="/landing/css/landing.css?v=9" />
+<link rel="stylesheet" href="/landing/css/tokens.css?v=10" />
+<link rel="stylesheet" href="/landing/css/base.css?v=10" />
+<link rel="stylesheet" href="/landing/css/components.css?v=10" />
+<link rel="stylesheet" href="/landing/css/landing.css?v=10" />
 <script defer src="https://cloud.umami.is/script.js" data-website-id="dcd588fe-7465-4f25-b904-c044d2a17532"></script>
 </head>
 <body>
@@ -103,8 +102,7 @@
   <div class="sec-intro rv">
     <div>
       <h2 class="h2">The record<em>.</em></h2>
-      <p class="sec-sub">Pakistan's first fintech exit — four years, zero to $50 million.
-      Then an instant wallet for 110 countries. Every number verified.</p>
+      <p class="sec-sub">Eight years of shipped work — the part that's easy to count.</p>
     </div>
   </div>
   <div class="statrow rv">
@@ -112,10 +110,6 @@
     <div class="stat"><div class="stat-v" data-num="90" data-prefix="$" data-suffix="M+">$90M+</div><div class="stat-l">Raised by products I designed</div></div>
     <div class="stat"><div class="stat-v" data-num="30" data-suffix="+">30+</div><div class="stat-l">Products shipped</div></div>
     <div class="stat"><div class="stat-v" data-num="8" data-suffix="+">8+</div><div class="stat-l">Years of design experience</div></div>
-  </div>
-    <div class="record-outro rv">
-    <p>The numbers are the short version.</p>
-    <a class="btn-text" href="/about">The full story, village to here <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></a>
   </div>
 </section>
 
@@ -125,8 +119,7 @@
     <div class="sec-intro rv">
       <div>
         <h2 class="h2">The work<em>.</em></h2>
-        <p class="sec-sub">Three companies, full screen each, in their own colors —
-        keep scrolling, they stack.</p>
+        <p class="sec-sub">Two fintechs and a bank — the work behind the numbers.</p>
       </div>
     </div>
   </div>
@@ -184,7 +177,8 @@
       </div>
       <div class="chap-plate">
         <span class="chap-name">SadaPay</span>
-        <p class="chap-meta">Founding designer → Head of Product Design <span>· Dec 2020 – Aug 2024</span></p>
+        <p class="chap-role">Founding designer <em>→</em> Head of Product Design</p>
+        <p class="chap-sub">Pakistan's first fintech exit · 2020–2024</p>
         <div class="chap-stats">
           <span class="chap-stat"><b>4M+</b><i>Users from zero</i></span>
           <span class="chap-stat"><b>$50M</b><i>Exit to Papara</i></span>
@@ -204,11 +198,11 @@
       </button>
       <div class="chap-plate">
         <span class="chap-name">ZAR</span>
-        <p class="chap-meta">Founding designer · Head of Product Design <span>· Nov 2024 – Present</span></p>
-        <p class="chap-line">And <em>MACHINA</em> — the AI pipeline I built that ships production design without Figma in the loop.</p>
+        <p class="chap-role">Founding designer <em>·</em> Head of Product Design</p>
+        <p class="chap-sub">An instant dollar wallet for emerging markets · 2024–present</p>
         <div class="chap-stats">
           <span class="chap-stat"><b>110</b><i>Countries</i></span>
-          <span class="chap-stat"><b>$20M</b><i>Raised</i></span>
+          <span class="chap-stat"><b>$20M</b><i>Raised, a16z-backed</i></span>
           <span class="chap-stat"><b>670+</b><i>System components</i></span>
         </div>
         <span class="btn-text">Read the story <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
@@ -222,11 +216,12 @@
       </div>
       <div class="chap-plate">
         <span class="chap-name">ADIB</span>
-        <p class="chap-meta">Lead Product Designer <span>· Sep 2024 – Feb 2025 · Abu Dhabi</span></p>
+        <p class="chap-role">Lead Product Designer</p>
+        <p class="chap-sub">Cross-border banking, Abu Dhabi · 2024–2025</p>
         <div class="chap-stats">
-          <span class="chap-stat"><b>1M+</b><i>App users</i></span>
-          <span class="chap-stat"><b>11B+</b><i>Cards &amp; wallets reached</i></span>
-          <span class="chap-stat"><b>99%</b><i>Digital transactions</i></span>
+          <span class="chap-stat chap-stat--word"><b>Visa Direct</b><i>Remit — first bank worldwide</i></span>
+          <span class="chap-stat chap-stat--word"><b>Open Banking</b><i>Designed from zero</i></span>
+          <span class="chap-stat chap-stat--word"><b>Design System</b><i>Audited &amp; rebuilt</i></span>
         </div>
         <span class="btn-text">Read the story <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
       </div>
@@ -264,6 +259,7 @@
         <span>Gamified experiences</span>
         <span>Design systems</span>
         <span>Design teams</span>
+        <span>Design careers</span>
         <span>AI pipelines</span>
         <span>Product strategy</span>
         <span>Wallets</span>
@@ -277,8 +273,7 @@
   <div class="sec-intro rv">
     <div>
       <h2 class="h2">They'll vouch<em>.</em></h2>
-      <p class="sec-sub">The CEO who hired me twice, the product leader from Gojek, the head of
-      design at a major bank — in their words, not mine.</p>
+      <p class="sec-sub">Founders, product leaders, and heads of design I've built alongside.</p>
     </div>
     <a class="btn-circle" href="https://linkedin.com/in/iabm">
       <span class="big"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
@@ -308,6 +303,15 @@
       <div><div class="quote-by">Batsi Madzonga</div><div class="quote-role">Head of Design, ADIB</div></div>
     </div>
   </div>
+  <div class="quote-row rv">
+    <p class="quote-text">"What stood out most was his ability to engage with stakeholders at all
+    levels — thoughtfully considering feedback, incorporating diverse perspectives, and
+    articulating his own insights in a clear and structured manner."</p>
+    <div class="quote-who">
+      <img class="quote-face" src="/landing/images/people/daniel.jpg" alt="Daniel Young" />
+      <div><div class="quote-by">Daniel Young</div><div class="quote-role">Head of Digital Products &amp; Design, ADIB · ex-JPMorgan</div></div>
+    </div>
+  </div>
   <div class="receipts rv">
     <p class="receipts-intro">And the receipts you won't find on LinkedIn — Slack, reviews, DMs. Unedited.</p>
     <div class="receipts-belt">
@@ -335,7 +339,7 @@
     </div>
     <div class="wr-wall">
       <a class="wr-piece rv" href="/writing/ai-didnt-kill-the-designers-job">
-        <span class="wr-art"><span class="ph-tag">Artwork — generating</span><img loading="lazy" src="https://picsum.photos/seed/wrai/900/1200" alt="" /></span>
+        <span class="wr-art"><img loading="lazy" src="/landing/images/writing/ai.jpg" alt="AI didn't kill the designer's job — a red line weaving unbroken through machine-ruled black lines" /></span>
         <span class="wr-label">
           <span class="wr-label-meta">Essay</span>
           <span class="wr-label-title">AI didn't kill the designer's job</span>
@@ -343,7 +347,7 @@
         </span>
       </a>
       <a class="wr-piece rv" href="/writing/design-systems-that-outlast">
-        <span class="wr-art"><span class="ph-tag">Artwork — generating</span><img loading="lazy" src="https://picsum.photos/seed/wrds/900/1200" alt="" /></span>
+        <span class="wr-art"><img loading="lazy" src="/landing/images/writing/systems.jpg" alt="Design systems that outlast — black modules locking like masonry around one red load-bearing block" /></span>
         <span class="wr-label">
           <span class="wr-label-meta">Essay</span>
           <span class="wr-label-title">Design systems that outlast</span>
@@ -351,7 +355,7 @@
         </span>
       </a>
       <a class="wr-piece rv" href="/writing/the-1-12-ratio">
-        <span class="wr-art"><span class="ph-tag">Artwork — generating</span><img loading="lazy" src="https://picsum.photos/seed/wrratio/900/1200" alt="" /></span>
+        <span class="wr-art"><img loading="lazy" src="/landing/images/writing/ratio.jpg" alt="The 1:12 ratio — a grid of black circles with one red at the centre" /></span>
         <span class="wr-label">
           <span class="wr-label-meta">Essay</span>
           <span class="wr-label-title">The 1:12 ratio</span>
@@ -359,7 +363,7 @@
         </span>
       </a>
       <a class="wr-piece rv" href="/writing/watching-merchants">
-        <span class="wr-art"><span class="ph-tag">Artwork — generating</span><img loading="lazy" src="https://picsum.photos/seed/wrmerch/900/1200" alt="" /></span>
+        <span class="wr-art"><img loading="lazy" src="/landing/images/writing/merchants.jpg" alt="Watching merchants — black flow-lines with one red line breaking onto its own path" /></span>
         <span class="wr-label">
           <span class="wr-label-meta">Field notes</span>
           <span class="wr-label-title">Watching merchants</span>
@@ -376,13 +380,13 @@
     <a class="door" href="/resume">
       <span class="door-kicker">For hiring managers</span>
       <span class="door-title">Hiring<em>?</em></span>
-      <p class="door-line">Head of Product Design / founding designer roles — UAE, GCC or remote.</p>
+      <p class="door-line">Founding designer & lead product designer roles — UAE, GCC or remote.</p>
       <span class="btn-text btn-chip btn-chip-lg"><span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>View the resume</span>
     </a>
     <a class="door" href="https://cal.com/basit-masood/30min">
       <span class="door-kicker">For founders &amp; teams</span>
       <span class="door-title">Building<em>?</em></span>
-      <p class="door-line">Product design, design systems and AI design operations — project or retainer.</p>
+      <p class="door-line">Product design, design systems and AI design operations — project, retainer, or part-time.</p>
       <span class="btn-text btn-chip btn-chip-lg"><span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>Book a 30-min call</span>
     </a>
   </div>
@@ -395,6 +399,6 @@
     </div>
   </div>
 </section>
-<script is:inline src="/landing/js/landing.js?v=9"></script>
+<script is:inline src="/landing/js/landing.js?v=10"></script>
 </body>
 </html>

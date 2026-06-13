@@ -95,12 +95,15 @@
   --sp-intro-bot:64px;
   --sp-breaker:clamp(80px,10vw,152px);
 
-  /* ── radii (4pt) ── */
-  --r-pill:999px;
-  --r-face:20px;     /* testimonial portraits */
-  --r-card:16px;     /* exhibit cards · panels */
-  --r-thumb:16px;    /* image frames · previews */
-  --r-photo:4px;     /* polaroids */
+  /* ── radii (LAW, Basit 2026-06-13): exactly three shapes on the site —
+     flat solid (0), the 8px universal radius (everything rectangular),
+     and fully circular (--r-pill, for CTAs/circles). Nothing in between. */
+  --r-pill:999px;    /* CTAs, circular actions */
+  --r:8px;           /* THE universal radius — every card/frame/face/panel */
+  --r-face:8px;      /* testimonial portraits → universal */
+  --r-card:8px;      /* cards · panels → universal */
+  --r-thumb:8px;     /* image frames · previews → universal */
+  --r-photo:8px;     /* polaroids → universal */
 
   /* ── strokes & rules (line weights — exempt from grid) ── */
   --stroke-2xl:2.5px;   /* hero outline letters */
