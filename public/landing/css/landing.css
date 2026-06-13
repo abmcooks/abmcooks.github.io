@@ -93,9 +93,10 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
 /* ── 02 THE RECORD ── */
 .record{ padding-top:var(--sp-sec-top); padding-bottom:var(--sp-sec-bot); }
 .statrow{ display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-bottom:112px; }
-/* a red ledger-tab on each stat rule — accent without coloring the numbers */
-.statrow .stat{ position:relative; }
-.statrow .stat::after{ content:''; position:absolute; top:calc(-1 * var(--rule-heavy)); left:0; width:32px; height:var(--rule-heavy); background:var(--red); }
+/* the stat rule is EMERALD — data/signal colour (brings emerald back as a
+   real presence; numbers stay ink, interactive stays red). One clean colour,
+   not two-tone. */
+.statrow .stat{ border-top-color:var(--emerald); }
 
 
 /* ── THE WORK v3 — FULL-BLEED THEATER (2026-06-12, Basit-picked).
@@ -104,11 +105,16 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
    Plates stack on scroll (position:sticky, no scroll-jacking). ── */
 .chapters .sec-intro{ margin-bottom:0; }
 .chap-stack{ position:relative; }
+/* magnetic snap: each work chapter pulls to full view on scroll. proximity
+   (not mandatory) so the rest of the page still scrolls free. html is the
+   scroller; only .chap carries snap-align, so only the work plates snap. */
+html{ scroll-snap-type:y proximity; }
 .chap{
   position:sticky; top:0; height:100svh;
   display:block; overflow:hidden; text-decoration:none;
   background:var(--coal);
   border-top:var(--hairline) solid var(--ink-12);
+  scroll-snap-align:start; scroll-snap-stop:always;
 }
 .chap-zar{ border-top-color:var(--white-12); }
 .chap-media{ position:absolute; inset:0; z-index:1; }
@@ -203,21 +209,21 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
   font-size:clamp(16px,1.8vw,26px); opacity:.8;
 }
 /* product logo chips — placeholders until Basit supplies the five marks */
-.sl-chips{ display:flex; gap:clamp(12px,1.6vw,24px); flex-wrap:wrap; justify-content:center; max-width:80%; }
+.sl-chips{ display:flex; gap:clamp(12px,1.6vw,24px); flex-wrap:wrap; justify-content:center; max-width:90%; }
 .sl-chips span{
-  display:flex; align-items:center; justify-content:center; text-align:center;
-  width:clamp(96px,11vw,160px); aspect-ratio:1; border-radius:24px;
-  background:rgba(var(--white-rgb),.92); color:var(--ink);
-  font-family:var(--sans); font-weight:600; font-size:clamp(12px,1.1vw,16px);
-  letter-spacing:.06em; text-transform:uppercase; padding:12px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; text-align:center;
+  width:clamp(120px,12vw,172px); aspect-ratio:1; border-radius:var(--r);
+  background:var(--white); padding:18px;
   box-shadow:var(--sh-photo);
   opacity:0; transform:translateY(20px) scale(.92);
   transition:opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease);
   transition-delay:calc(var(--i) * 140ms);
 }
+.sl-chips span img{ width:clamp(44px,4.4vw,60px); height:clamp(44px,4.4vw,60px); object-fit:contain; display:block; }
+.sl-chips span i{ font-style:normal; font-family:var(--sans); font-weight:600; font-size:var(--fs-body); letter-spacing:.01em; color:var(--ink); line-height:1.2; }
 .sl-card.on .sl-chips span{ opacity:1; transform:none; }
-/* the flag gets planted — 3D tiles art under the exit claim */
-.sl-art{ width:clamp(280px,36vw,560px); display:block; }
+/* the flag gets planted — 3D tiles art ABOVE the exit claim (balanced) */
+.sl-art{ width:clamp(220px,28vw,420px); display:block; }
 .sl-logo img{ width:clamp(220px,30vw,440px); display:block; }
 .sl-logo-mono img{ filter:brightness(0) invert(1); }
 .sl-red{ color:var(--red); }
@@ -230,11 +236,11 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
 
 /* outro strip: the archive door lives AFTER the evidence, not before it */
 .chap-out{
-  display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap;
+  display:flex; flex-direction:column; align-items:flex-start; gap:32px;
   padding:var(--sp-sec-top) 0 var(--sp-sec-bot); border-top:var(--hairline) solid var(--ink-12);
 }
-.chap-out-actions{ display:flex; align-items:center; gap:32px; flex-wrap:wrap; }
-.chap-out p{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.5; color:var(--ink-65); max-width:46ch; }
+.chap-out-actions{ display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
+.chap-out p{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.5; color:var(--ink-65); max-width:52ch; }
 
 /* ── BREAKER — the kinetic chain ── */
 .breaker{
@@ -276,7 +282,7 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
 /* writing = GALLERY PIECES. The artwork owns its full frame — no scrim,
    no overlay, nothing on it. The text stands beneath like a gallery label:
    no card box, no border around text. Four equals in a row. */
-.wr-wall{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px 20px; }
+.wr-wall{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 .wr-piece{ display:block; text-decoration:none; }
 .wr-art{
   display:block; position:relative; aspect-ratio:16/9; overflow:hidden;
@@ -295,8 +301,8 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
 }
 .wr-label-title{
   display:block; font-family:var(--serif); font-weight:500;
-  font-size:clamp(20px,1.8vw,28px); line-height:1.2; color:var(--ink);
-  margin-top:10px; transition:color var(--t-base) var(--ease);
+  font-size:clamp(17px,1.4vw,21px); line-height:1.25; color:var(--ink);
+  margin-top:8px; transition:color var(--t-base) var(--ease);
 }
 .wr-piece:hover .wr-label-title{ color:var(--red); }
 .wr-piece .btn-text{ margin-top:12px; }

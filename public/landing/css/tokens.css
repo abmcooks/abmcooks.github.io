@@ -99,11 +99,11 @@
      flat solid (0), the 8px universal radius (everything rectangular),
      and fully circular (--r-pill, for CTAs/circles). Nothing in between. */
   --r-pill:999px;    /* CTAs, circular actions */
-  --r:8px;           /* THE universal radius — every card/frame/face/panel */
-  --r-face:8px;      /* testimonial portraits → universal */
-  --r-card:8px;      /* cards · panels → universal */
-  --r-thumb:8px;     /* image frames · previews → universal */
-  --r-photo:8px;     /* polaroids → universal */
+  --r:12px;          /* THE universal radius — every card/frame/face/panel */
+  --r-face:12px;     /* testimonial portraits → universal */
+  --r-card:12px;     /* cards · panels → universal */
+  --r-thumb:12px;    /* image frames · previews → universal */
+  --r-photo:12px;    /* polaroids → universal */
 
   /* ── strokes & rules (line weights — exempt from grid) ── */
   --stroke-2xl:2.5px;   /* hero outline letters */

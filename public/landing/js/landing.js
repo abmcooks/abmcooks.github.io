@@ -136,7 +136,7 @@ document.querySelectorAll('.rv').forEach(el => io.observe(el));
       step();
     };
     //        logo  first  87%   waitlist money users chips team acquired end
-    const DUR = [2400, 2900, 2700, 3600,   3200, 3400, 3400, 2900, 3600, 2600];
+    const DUR = [2400, 2900, 2700, 3600,   3200, 3400, 5400, 2900, 3600, 2600];
     let ci = 0, timer = null;
     const show = i => {
       cards.forEach((c, j) => c.classList.toggle('on', j === i));
