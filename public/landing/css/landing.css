@@ -308,9 +308,11 @@ html{ scroll-snap-type:y proximity; }
 /* ── 04 THEY'LL VOUCH ── */
 .people{ padding-bottom:64px; }
 .people .quote-grid{ margin-top:clamp(20px,2.4vw,32px); }
-/* mentee proof: a third kind of vouch (designers I mentored), linked out live */
-.vouch-mentees{ font-family:var(--serif); font-size:var(--fs-body); color:var(--ink-65);
-  margin-top:clamp(28px,3.2vw,44px); display:flex; align-items:center; gap:10px 14px; flex-wrap:wrap; }
+/* mentee proof — its OWN prominent moment between the peer quotes and the
+   receipts (a real button, centred, with breathing room — not a buried link) */
+.vouch-also{ display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap:clamp(16px,2vw,24px); margin:clamp(52px,6.5vw,88px) 0; }
+.vouch-also-lead{ font-family:var(--serif); font-size:var(--fs-body-lg); color:var(--ink); max-width:34ch; line-height:1.4; }
 
 /* ── 05 WRITING — broadsheet spread on plain paper ── */
 .writing-band{ padding-bottom:var(--sp-sec-bot-lg); }
