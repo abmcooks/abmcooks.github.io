@@ -1,0 +1,186 @@
+---
+/* ════════════════════════════════════════════════════════════════
+   SHELL — new-system layout for inner pages (the home-page direction).
+   Standalone document (NO ClientRouter — full-page navigations, so the
+   inline scripts init once on load; no astro:page-load re-entry needed).
+   Consumes the deployed system kit at /landing/css/{tokens,base,components}.css
+   — the same files the re-port script keeps in sync with the home page.
+
+   Old pages stay on Base.astro until migrated. When the last page moves
+   to Shell, delete Base/Nav/Footer/FsMenu/global.css.
+   ════════════════════════════════════════════════════════════════ */
+interface Props {
+  title: string;
+  description?: string;
+  active?: 'stories' | 'about' | 'writing' | 'consulting' | null;
+}
+const {
+  title,
+  description = 'Basit Masood — Product Design Leader. Two-time founding designer. Fintech.',
+  active = null,
+} = Astro.props;
+const V = 19;
+const nav = [
+  { label: 'Work', href: '/stories', key: 'stories' },
+  { label: 'About', href: '/about', key: 'about' },
+  { label: 'Writing', href: '/writing', key: 'writing' },
+  { label: 'Consulting', href: '/consulting', key: 'consulting' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <link rel="stylesheet" href={`/landing/css/tokens.css?v=${V}`} />
+  <link rel="stylesheet" href={`/landing/css/base.css?v=${V}`} />
+  <link rel="stylesheet" href={`/landing/css/components.css?v=${V}`} />
+
+  <!-- Umami Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="dcd588fe-7465-4f25-b904-c044d2a17532"></script>
+
+  <slot name="head" />
+</head>
+<body>
+
+  <!-- ════ NAV — floating pill (system) ════ -->
+  <nav class="nav" id="nav">
+    <a href="/" class="nav-logo" aria-label="Basit Masood — home">
+      <svg viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="logo-tube" d="M25.3808 3.56993H3.95236V5.54845C3.95236 7.14 5.38078 8.4302 7.14282 8.4302H22.1904C23.9524 8.4302 25.3808 7.14 25.3808 5.54845V3.56993ZM29.3332 5.54845C29.3332 9.11162 26.1352 12.0001 22.1904 12.0001H7.14282C3.19795 12.0001 0 9.11162 0 5.54845V0H29.3332V5.54845Z"/>
+        <circle class="logo-dot" cx="14.6662" cy="17.3332" r="2.6667"/>
+        <circle class="logo-dot-glow" cx="14.6662" cy="17.3332" r="2.6667"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+      {nav.map(item => (
+        <a href={item.href} aria-current={active === item.key ? 'page' : undefined}>{item.label}</a>
+      ))}
+      <a href="/resume" class="nav-cta">Resume
+        <span class="nav-cta-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+      </a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Open menu">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4h12M2 8h12M2 12h7"/></svg>
+    </button>
+  </nav>
+
+  <!-- ════ MOBILE MENU — coal overlay (system) ════ -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <button class="menu-close" aria-label="Close menu">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13L13 3M3 3l10 10"/></svg>
+    </button>
+    {nav.map(item => (
+      <a class="menu-link" href={item.href}>{item.label}<em>.</em></a>
+    ))}
+    <a class="btn" href="/resume">Resume
+      <span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
+    </a>
+  </div>
+
+  <slot />
+
+  <!-- ════ DOORS — dark finale (system, universal CTA) ════ -->
+  <section class="doors on-coal" id="contact">
+    <div class="doors-grid">
+      <a class="door" href="/resume">
+        <span class="door-kicker">For hiring managers</span>
+        <span class="door-title">Hiring<em>?</em></span>
+        <p class="door-line">Founding designer & lead product designer roles — anywhere in the world.</p>
+        <span class="btn-text btn-chip btn-chip-lg"><span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>View the resume</span>
+      </a>
+      <a class="door" href="https://cal.com/basit-masood/30min">
+        <span class="door-kicker">For founders &amp; teams</span>
+        <span class="door-title">Building<em>?</em></span>
+        <p class="door-line">Product design, design systems and AI design operations — project, retainer, or part-time.</p>
+        <span class="btn-text btn-chip btn-chip-lg"><span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>Book a 30-min call</span>
+      </a>
+    </div>
+    <div class="foot">
+      <span>© 2026 Basit Masood</span>
+      <div class="foot-links">
+        <a href="https://linkedin.com/in/iabm">LinkedIn</a>
+        <a href="mailto:basitmasood999@gmail.com">Email</a>
+        <a href="https://wa.me/971582071725">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ SYSTEM CHROME JS — cursor · menu · nav-hide · reveals ════ -->
+  <script is:inline>
+    (function () {
+      const motionOK = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Custom cursor: red dot, hollows to outline over interactive
+      if (motionOK && matchMedia('(pointer:fine)').matches) {
+        const cur = document.createElement('div');
+        cur.className = 'cursor';
+        document.body.appendChild(cur);
+        document.body.classList.add('cursor-on');
+        let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy;
+        addEventListener('mousemove', e => {
+          tx = e.clientX; ty = e.clientY;
+          cur.classList.toggle('is-link', !!e.target.closest('a, button'));
+        }, { passive: true });
+        addEventListener('mousedown', () => cur.classList.add('is-down'));
+        addEventListener('mouseup', () => cur.classList.remove('is-down'));
+        document.documentElement.addEventListener('mouseleave', () => { cur.style.opacity = '0'; });
+        document.documentElement.addEventListener('mouseenter', () => { cur.style.opacity = ''; });
+        (function follow() {
+          cx += (tx - cx) * .22; cy += (ty - cy) * .22;
+          cur.style.left = cx + 'px'; cur.style.top = cy + 'px';
+          requestAnimationFrame(follow);
+        })();
+      }
+
+      // Mobile menu
+      {
+        const menu = document.getElementById('menu');
+        const burger = document.getElementById('burger');
+        const setMenu = open => {
+          menu.classList.toggle('open', open);
+          menu.setAttribute('aria-hidden', String(!open));
+          document.body.classList.toggle('menu-locked', open);
+        };
+        burger.addEventListener('click', () => setMenu(true));
+        menu.addEventListener('click', e => { if (e.target.closest('a') || e.target.closest('.menu-close')) setMenu(false); });
+        addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+      }
+
+      // Magnetic pull on the CTA pills
+      if (motionOK && matchMedia('(pointer:fine)').matches) {
+        document.querySelectorAll('.btn, .btn-sec, .nav-cta').forEach(host => {
+          host.addEventListener('mousemove', e => {
+            const r = host.getBoundingClientRect();
+            host.style.translate = `${(e.clientX - (r.left + r.width / 2)) * .14}px ${(e.clientY - (r.top + r.height / 2)) * .14}px`;
+          });
+          host.addEventListener('mouseleave', () => {
+            host.style.transition = 'translate .5s cubic-bezier(.23,1,.32,1)';
+            host.style.translate = '0px 0px';
+            setTimeout(() => host.style.transition = '', 500);
+          });
+        });
+      }
+
+      // Scroll reveals
+      const io = new IntersectionObserver(es => {
+        es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+      // Nav hide on scroll-down
+      let last = 0;
+      addEventListener('scroll', () => {
+        const y = scrollY;
+        document.getElementById('nav').classList.toggle('hide', y > last && y > 120);
+        last = y;
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

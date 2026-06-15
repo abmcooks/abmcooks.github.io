@@ -1,5 +1,15 @@
 # Portfolio Page Review Status
-## Last updated: 2026-04-09
+## Last updated: 2026-06-15
+
+## NEW-SYSTEM MIGRATION (in progress, 2026-06-15)
+The home page shipped on a new visual system (`public/landing/css/{tokens,base,components}.css`).
+Inner pages are being migrated onto it ONE AT A TIME (Strategy 2):
+- New layout `src/layouts/Shell.astro` = system CSS + floating-pill nav + coal menu + doors footer + chrome JS (cursor/menu/nav-hide/reveals). No ClientRouter (full-page nav).
+- Migrated pages use `Shell`. Un-migrated pages stay on `Base.astro` + old `Nav/Footer/FsMenu` + `global.css`.
+- When the LAST page migrates, delete `Base.astro`, `Nav.astro`, `Footer.astro`, `FsMenu.astro`, `Cursor.astro`, `Loader.astro`, `global.css`, and the per-page `src/styles/*.css` they used.
+- Nav routes: Work→/stories · About→/about · Writing→/writing · Consulting→/consulting · Resume→/resume.
+
+Migration status: **/stories DONE** (rebuilt on Shell, verified desktop+mobile). Rest pending.
 
 | # | Page | Path | Status |
 |---|------|------|--------|

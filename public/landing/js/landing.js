@@ -297,3 +297,42 @@ addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('hide', y > last && y > 120);
   last = y;
 }, { passive: true });
+
+// ── Hero cursor image-trail: company work-frames stamp the cursor path ──
+// (desktop / fine-pointer / motion-OK only; spec: landing.md hero)
+if (motionOK && matchMedia('(pointer:fine)').matches) {
+  const hero = document.getElementById('hero');
+  if (hero) {
+    const LOGOS = [
+      '/landing/images/logos/sadapay.svg',
+      '/landing/images/logos/zar.png',
+      '/landing/images/logos/adib.svg',
+      '/landing/images/logos/wtt.svg',
+      '/landing/images/logos/gocompliance.svg',
+      '/landing/images/logos/venturedive.svg',
+    ];
+    LOGOS.forEach(src => { const im = new Image(); im.src = src; }); // preload
+    let li = 0, lx = 0, ly = 0, lt = 0;
+    const live = [];
+    const MIN_DIST = 42, MIN_GAP = 75, MAX_LIVE = 2; // glitter: a couple at a time, never a trail
+    const kill = f => { f.classList.add('out'); setTimeout(() => f.remove(), 300); };
+    hero.addEventListener('mousemove', e => {
+      const now = performance.now();
+      if (Math.hypot(e.clientX - lx, e.clientY - ly) < MIN_DIST || now - lt < MIN_GAP) return;
+      lx = e.clientX; ly = e.clientY; lt = now;
+      const frame = document.createElement('div');
+      frame.className = 'trail-frame';
+      frame.style.left = (e.clientX + (Math.random() * 40 - 20)) + 'px'; // slight sprinkle scatter
+      frame.style.top = (e.clientY + (Math.random() * 40 - 20)) + 'px';
+      const img = document.createElement('img');
+      img.src = LOGOS[li++ % LOGOS.length]; img.alt = '';
+      frame.appendChild(img);
+      document.body.appendChild(frame);
+      live.push(frame);
+      while (live.length > MAX_LIVE) kill(live.shift());
+      requestAnimationFrame(() => frame.classList.add('in'));
+      setTimeout(() => frame.classList.add('out'), 300);     // brief hold, then a slow fade-out
+      setTimeout(() => { frame.remove(); const i = live.indexOf(frame); if (i > -1) live.splice(i, 1); }, 1080);
+    }, { passive: true });
+  }
+}
