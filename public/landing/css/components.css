@@ -256,32 +256,47 @@ body.menu-locked{ overflow:hidden; }
 .work-preview.on{ opacity:1; transform:scale(1); }
 .work-preview img{ width:100%; height:100%; object-fit:cover; filter:var(--duo); }
 
-/* ════════ QUOTE ROW ════════ */
-.quote-row{
-  position:relative;
-  display:grid; grid-template-columns:8fr 4fr; gap:48px; align-items:end;
-  padding:56px 0 56px clamp(48px,5vw,88px); border-top:var(--hairline) solid var(--ink-12);
+/* ════════ QUOTE GRID — They'll vouch (bento: faces + cards, low-scroll) ════════ */
+.quote-grid{
+  display:grid; grid-template-columns:1.7fr 1fr; gap:16px; align-items:start;
 }
-.quote-row::before{
-  content:'\201C'; position:absolute; left:0; top:32px;
-  font-family:var(--serif); font-size:var(--fs-quote-mark); line-height:1;
+.quote-card{
+  position:relative; display:flex; flex-direction:column;
+  background:var(--white); border:var(--hairline) solid var(--ink-12);
+  border-radius:var(--r); padding:28px;
+  transition:border-color var(--t-base) var(--ease);
+}
+.quote-card:hover{ border-color:var(--ink-25); }
+/* feature: column 1, spans the two stacked cards beside it. Content centred
+   so the tall card reads as one intentional pull-quote. */
+.quote-card--feature{ grid-column:1; grid-row:1 / span 2; align-self:stretch; padding:40px; justify-content:center; }
+.quote-card--feature .quote-who{ margin-top:0; }
+/* full-width row beneath — holds the longest quote; wider measure keeps it to
+   a couple of lines so the whole grid fits the viewport */
+.quote-card--full{ grid-column:1 / -1; }
+.quote-card--full .quote-text{ max-width:none; }
+/* the outlined quote mark lives ONLY on the feature card — the supporting
+   cards stay clean text so they pack tight */
+.quote-card--feature::before{
+  content:'\201C'; display:block; font-family:var(--serif);
+  font-size:var(--fs-quote-mark); line-height:1; height:.46em; overflow:hidden;
   color:transparent; -webkit-text-stroke:var(--stroke-thin) var(--emerald);
-  pointer-events:none;
-  transition:color var(--t-med) var(--ease);
+  pointer-events:none; transition:color var(--t-med) var(--ease);
 }
-.quote-row:hover::before{ color:var(--emerald); }
+.quote-card--feature:hover::before{ color:var(--emerald); }
 .quote-text{
-  font-family:var(--serif); font-size:var(--fs-serif-lg); line-height:1.32;
-  color:var(--ink); max-width:30ch;
+  font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.4;
+  color:var(--ink); margin:0 0 24px; max-width:42ch;
 }
-.quote-who{ display:flex; align-items:center; gap:16px; justify-self:end; }
+.quote-card--feature .quote-text{ font-size:var(--fs-serif-lg); line-height:1.3; margin:16px 0 32px; max-width:38ch; }
+.quote-who{ display:flex; align-items:center; gap:14px; margin-top:auto; }
 .quote-face{
-  width:88px; height:88px; border-radius:var(--r-face); object-fit:cover; flex:0 0 auto;
+  width:48px; height:48px; border-radius:var(--r-face); object-fit:cover; flex:0 0 auto;
   transition:transform var(--t-base) var(--ease);
 }
-.quote-row:hover .quote-face{ transform:rotate(-3deg) scale(1.06); }
+.quote-card:hover .quote-face{ transform:scale(1.06); }
 .quote-by{ font-family:var(--sans); font-size:var(--fs-md); font-weight:600; color:var(--ink); }
-.quote-role{ font-family:var(--sans); font-size:var(--fs-ui); font-weight:500; color:var(--ink-50); margin-top:4px; }
+.quote-role{ font-family:var(--sans); font-size:var(--fs-ui); font-weight:500; color:var(--ink-50); margin-top:2px; }
 
 /* ════════ POLAROID — visual shell; placement/tilt is composition ════════ */
 .polaroid{
@@ -348,9 +363,9 @@ body.cursor-on, body.cursor-on a, body.cursor-on button{ cursor:none; }
   .sec-intro{ flex-direction:column; align-items:flex-start; gap:28px; }
   .btn-circle{ flex-direction:row; gap:16px; }
   .btn-circle .big{ width:64px; height:64px; }
-  .quote-row{ grid-template-columns:1fr; gap:24px; padding:36px 0 36px 44px; align-items:start; }
-  .quote-row::before{ top:24px; }
-  .quote-who{ justify-self:start; }
+  .quote-grid{ grid-template-columns:1fr; gap:12px; }
+  .quote-card--feature{ grid-column:auto; grid-row:auto; padding:28px; }
+  .quote-card--full{ grid-column:auto; }
   .doors-grid{ grid-template-columns:1fr; }
   .door + .door{ border-left:none; border-top:var(--hairline) solid var(--white-12); }
   .door{ padding:72px var(--gutter) 60px; }

@@ -41,11 +41,11 @@
   --white-12:rgba(255,255,255,.12);
 
   /* ── color · accents ──
-     RED = everything interactive. EMERALD = non-interactive signals
-     only — never a button, never a fill on chrome. */
+     RED = everything interactive. EMERALD = data/signal colour
+     (non-interactive) — never a button, never a fill on chrome. */
   --red:#E11D48;
   --red-deep:#C11540;          /* hover state of red fills */
-  --emerald:#0e9f6e;           /* graphics on light (3:1) — dots, route */
+  --emerald:#0e9f6e;           /* data/signal (3:1) — stat rules, dots, marks */
   --emerald-ink:#0A7B55;       /* emerald TEXT on light (4.5:1) */
 
   /* ── color · company palettes ──
@@ -130,6 +130,8 @@
   --t-base:.35s;      /* lifts, indents */
   --t-med:.45s;       /* fills, transforms */
   --t-fill:.5s;       /* outline→fill on hover */
+  --t-cut:.26s;       /* sadapay ad: colour dissolves on its own layer */
+  --t-cut-fg:.16s;    /* sadapay ad: new subject fades in fast; old one cuts instantly (no muddy overlap) */
   --t-slow:.7s;       /* image zooms */
   --t-fill-lg:.8s;    /* hero line-2 self-fill */
   --t-reveal:.9s;     /* scroll reveals */

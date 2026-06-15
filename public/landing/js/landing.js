@@ -137,9 +137,19 @@ document.querySelectorAll('.rv').forEach(el => io.observe(el));
     };
     //        logo  first  87%   waitlist money users chips team acquired end
     const DUR = [2400, 2900, 2700, 3600,   3200, 3400, 5400, 2900, 3600, 2600];
+    // colour rides its OWN layer (dissolves clean); the locked subject holds
+    // through the cut. DARK flips the text to light-on-dark for the ink beat.
+    const bg = loop.querySelector('.sl-bg');
+    const BG = ['b-white','b-teal','b-ink','b-white','b-teal','b-coral','b-blue','b-teal','b-white','b-white'];
+    const DARK = [false, false, true, false, false, false, false, false, false, false];
     let ci = 0, timer = null;
     const show = i => {
-      cards.forEach((c, j) => c.classList.toggle('on', j === i));
+      bg.className = 'sl-bg ' + BG[i];                 // the hidden cut: colour dissolves
+      loop.classList.toggle('fg-on-dark', DARK[i]);
+      cards.forEach((c, j) => {
+        c.style.setProperty('--beat', DUR[i] + 'ms');  // drift spans the whole beat
+        c.classList.toggle('on', j === i);             // subject stays anchored; only opacity moves
+      });
       if (i === 3) { // waitlist: milestone pacing — 100K, 300K, then the run
         waitNum.textContent = '0';
         runSegments(waitNum, [
@@ -155,6 +165,7 @@ document.querySelectorAll('.rv').forEach(el => io.observe(el));
       show(ci);
       timer = setTimeout(advance, DUR[ci]);
     };
+    show(0); // set the opening beat's colour + locked subject
     const loopIO = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting && !timer) timer = setTimeout(advance, DUR[ci]);
       else if (!e.isIntersecting && timer) { clearTimeout(timer); timer = null; }
@@ -180,12 +191,18 @@ if (motionOK && matchMedia('(pointer:fine)').matches) {
   const chList = [...document.querySelectorAll('.chap')];
   const arm = chap => {
     clearTimeout(chap._idle);
+    if (chap._overPlate) return;          // cursor parked on the card — never rest
     chap._idle = setTimeout(() => chap.classList.add('plate-rest'), 2000);
   };
   const wake = chap => { chap.classList.remove('plate-rest'); arm(chap); };
   chList.forEach(chap => {
     chap.addEventListener('mousemove', () => wake(chap), { passive: true });
     chap.addEventListener('mouseleave', () => wake(chap));
+    const plate = chap.querySelector('.chap-plate');
+    if (plate) {
+      plate.addEventListener('mouseenter', () => { chap._overPlate = true; clearTimeout(chap._idle); chap.classList.remove('plate-rest'); });
+      plate.addEventListener('mouseleave', () => { chap._overPlate = false; arm(chap); });
+    }
   });
   const restIO = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) arm(e.target);
@@ -221,6 +238,39 @@ const statIO = new IntersectionObserver((es) => {
   });
 }, { threshold: 0.6 });
 document.querySelectorAll('.stat-v').forEach(el => statIO.observe(el));
+
+// ── Receipts belt: auto-drift + drag/swipe, driven by translateX (float) ──
+{
+  const belt = document.querySelector('.receipts-belt');
+  const track = belt && belt.querySelector('.receipts-track');
+  if (belt && track) {
+    let half = 0, x = 0, dragging = false, hovering = false, startX = 0, startPos = 0, last = performance.now();
+    const measure = () => { half = track.scrollWidth / 2; };
+    measure(); addEventListener('resize', measure);
+    if (window.ResizeObserver) new ResizeObserver(measure).observe(track); // re-measure when lazy imgs load
+    track.querySelectorAll('img').forEach(img => { if (!img.complete) img.addEventListener('load', measure, { once: true }); });
+    const apply = () => {
+      if (half > 0) { while (x <= -half) x += half; while (x > 0) x -= half; }  // seamless loop both ways
+      track.style.transform = 'translateX(' + x + 'px)';
+    };
+    const tick = (t) => {
+      const dt = Math.min(t - last, 50); last = t;
+      if (!dragging && !hovering) { x -= dt * 0.035; apply(); }  // ~35px/s leftward drift
+      requestAnimationFrame(tick);
+    };
+    if (motionOK) requestAnimationFrame(tick);
+    belt.addEventListener('pointerenter', () => hovering = true);
+    belt.addEventListener('pointerleave', () => hovering = false);
+    belt.addEventListener('pointerdown', e => {
+      dragging = true; belt.classList.add('dragging'); startX = e.clientX; startPos = x;
+      try { belt.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+    belt.addEventListener('pointermove', e => { if (dragging) { x = startPos + (e.clientX - startX); apply(); } });
+    const end = e => { if (dragging) { dragging = false; belt.classList.remove('dragging'); try { belt.releasePointerCapture(e.pointerId); } catch (_) {} } };
+    belt.addEventListener('pointerup', end);
+    belt.addEventListener('pointercancel', end);
+  }
+}
 
 // ── Magnetic pull on big CTAs ──
 if (motionOK && matchMedia('(pointer:fine)').matches) {

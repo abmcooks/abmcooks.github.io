@@ -100,7 +100,7 @@ body.loaded .hero-ghost{ animation:fade 1.6s var(--ease) .9s forwards; }
 
 
 /* ── THE WORK v3 — FULL-BLEED THEATER (2026-06-12, Basit-picked).
-   The media IS the section: SadaPay's ad, ZAR's film, ADIB's still fill
+   The media IS the section: SadaPay's ad, ZAR's film, WTT's still fill
    the whole plate edge-to-edge. Copy rides on a paper plate bottom-left.
    Plates stack on scroll (position:sticky, no scroll-jacking). ── */
 .chapters .sec-intro{ margin-bottom:0; }
@@ -141,16 +141,21 @@ html{ scroll-snap-type:y proximity; }
   display:block; font-family:var(--display); text-transform:uppercase; font-weight:400;
   font-size:clamp(36px,3.6vw,56px); line-height:1; color:var(--ink);
 }
-.chap-role{ font-family:var(--sans); font-weight:600; font-size:var(--fs-md); color:var(--ink); margin-top:14px; letter-spacing:.01em; }
+/* role = quiet byline (tier 3): simple, non-bold, muted. description below it
+   carries more weight — Basit's hierarchy call 2026-06-14.
+   PROXIMITY (4pt rhythm 8→16→32): name+role glued as the identity unit (8),
+   description separates as the summary (16), stats are a distinct block (32). */
+.chap-role{ font-family:var(--sans); font-weight:400; font-size:var(--fs-md); color:var(--ink-50); margin-top:8px; letter-spacing:.01em; }
 .chap-role em{ font-style:normal; color:var(--red); }      /* the accent — the progression */
-.chap-sub{ font-family:var(--sans); font-weight:500; font-size:var(--fs-label); color:var(--ink-50); margin-top:6px; }
-.chap-stats{ display:flex; gap:36px; margin-top:28px; flex-wrap:wrap; }
+/* description = tier-2 body line (after name + stats): body size, fuller ink */
+.chap-sub{ font-family:var(--sans); font-weight:400; font-size:var(--fs-body); color:var(--ink-80); line-height:1.4; margin-top:16px; }
+.chap-stats{ display:flex; gap:36px; margin-top:32px; flex-wrap:wrap; }
 .chap-stat b{
   display:block; font-family:var(--display); font-weight:400; text-transform:uppercase;
   font-size:clamp(30px,3vw,44px); line-height:1; color:var(--ink);
 }
 .chap-stat i{ display:block; font-style:normal; font-family:var(--sans); font-weight:600; font-size:var(--fs-label); color:var(--ink-50); margin-top:8px; }
-.chap-stat--word b{ font-size:clamp(20px,1.9vw,28px); }     /* ADIB: word values, not numbers */
+.chap-stat--word b{ font-size:clamp(20px,1.9vw,28px); }     /* word values, not numbers (WTT: Fortune 500) */
 .chap .btn-text{ margin-top:28px; }
 .chap:hover .btn-text{ color:var(--red); }
 .chap:hover .btn-text > svg{ transform:translate(3px,-3px); }
@@ -167,7 +172,7 @@ html{ scroll-snap-type:y proximity; }
 .vid-sound .on-icon{ display:none; }
 .vid-sound.sound-on .on-icon{ display:block; }
 .vid-sound.sound-on .off-icon{ display:none; }
-/* placeholder labeling (shared: ADIB still, writing covers) */
+/* placeholder labeling (shared: WTT still, writing covers) */
 .ph-tag{
   position:absolute; left:var(--gutter); top:24px; z-index:2;
   font-family:var(--sans); font-size:var(--fs-micro); font-weight:600;
@@ -175,24 +180,48 @@ html{ scroll-snap-type:y proximity; }
   color:var(--white); background:rgba(var(--coal-rgb),.72);
   padding:6px 10px; border-radius:4px;
 }
-.chap-adib{ background:var(--coal); }
+.chap-wtt{ background:var(--coal); }
 
 /* ── THE SADAPAY AD — full-bleed kinetic-type cards, ZAR-film grammar:
    one message per card, type fills the frame, logo opens and closes. ── */
-.sloop{ position:absolute; inset:0; overflow:hidden; }
+.sloop{ position:absolute; inset:0; overflow:hidden; --fg:var(--ink); }
+.sloop.fg-on-dark{ --fg:var(--white); }
+/* CONTINUITY MODEL (research-grounded). Three forces make ten beats read as
+   ONE film, not a slideshow:
+   1. MATCHED COMPOSITION — the hero of every beat sits at the SAME optical
+      centre (the 1fr/auto/1fr grid below locks it). It never jumps, so the
+      eye reads a continuous frame with changing content, not a new slide.
+   2. THE HIDDEN CUT — colour lives on its own layer (.sl-bg) and DISSOLVES
+      (no muddy double-fade of two full cards); the locked subject holds
+      through it. You don't perceive a transition, only a new moment.
+   3. NEVER STATIC — the active subject drifts (a slow camera push) so a beat
+      never freezes dead like a slide. */
+.sl-bg{ position:absolute; inset:0; z-index:0; background:var(--paper);
+  transition:background-color var(--t-cut) var(--ease); }
+.sl-bg.b-teal{ background:var(--sadapay); }
+.sl-bg.b-ink{ background:var(--ink); }
+.sl-bg.b-white{ background:var(--paper); }
+.sl-bg.b-coral{ background:var(--sadapay-coral); }
+.sl-bg.b-blue{ background:var(--sadapay-blue); }
 .sl-card{
-  position:absolute; inset:0; padding:var(--gutter);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:clamp(16px,2vh,28px); text-align:center;
-  opacity:0; transform:translateY(3%); pointer-events:none;
-  transition:opacity var(--t-med) var(--ease), transform var(--t-fill) var(--ease);
+  position:absolute; inset:0; z-index:1; padding:var(--gutter);
+  display:grid; grid-template-rows:1fr auto 1fr; justify-items:center;
+  text-align:center; color:var(--fg);
+  opacity:0; pointer-events:none;            /* off = instant: the outgoing subject cuts clean */
 }
-.sl-card.on{ opacity:1; transform:none; }
-.c-teal{ background:var(--sadapay); color:var(--ink); }
-.c-ink{ background:var(--ink); color:var(--white); }
-.c-white{ background:var(--paper); color:var(--ink); }
-.c-coral{ background:var(--sadapay-coral); color:var(--ink); }
-.c-blue{ background:var(--sadapay-blue); color:var(--ink); }
+.sl-card.on{                                  /* on = fades in fast over the colour dissolve */
+  opacity:1; z-index:2;
+  transition:opacity var(--t-cut-fg) var(--ease);
+  animation:slDrift var(--beat,4000ms) linear both;
+}
+@keyframes slDrift{ from{ transform:scale(.99); } to{ transform:scale(1.03); } }
+/* the locked anchor: hero owns the centre row, secondary text hangs off it
+   without ever shifting it (a logo-only beat and a logo+date beat land the
+   logo on the SAME line). */
+.sl-hero{ grid-row:2; }
+.sl-pre{ grid-row:1; align-self:end; margin-bottom:clamp(12px,2.4vh,28px); }
+.sl-post{ grid-row:3; align-self:start; margin-top:clamp(12px,2.4vh,28px); }
+.sl-low{ grid-template-rows:1.4fr auto 0.6fr; }   /* acquired payoff sits ~16% lower, centred */
 .sl-line{
   font-family:var(--display); text-transform:uppercase; font-weight:400;
   font-size:clamp(44px,7vw,128px); line-height:.95; max-width:16ch;
@@ -230,12 +259,10 @@ html{ scroll-snap-type:y proximity; }
 .sl-logo img{ width:clamp(220px,30vw,440px); display:block; }
 .sl-logo-mono img{ filter:brightness(0) invert(1); }
 .sl-red{ color:var(--red); }
-/* spans stagger in on multi-part cards */
-.sl-card .sl-line span{ display:inline-block; opacity:0; transform:translateY(16px); transition:opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease); transition-delay:calc(var(--i) * 180ms); }
-.sl-card.on .sl-line span{ opacity:1; transform:none; }
-/* reduced motion / no-JS: park on the payoff card */
-.sloop.static .sl-card{ opacity:0; }
-.sloop.static .sl-card.sl-park{ opacity:1; transform:none; }
+/* reduced motion / no-JS: bg stays white (= the payoff card's colour), park
+   on the payoff card, no drift */
+.sloop.static .sl-card{ opacity:0; animation:none; }
+.sloop.static .sl-card.sl-park{ opacity:1; }
 
 /* outro strip: the archive door lives AFTER the evidence, not before it */
 /* same anatomy as every section header: content left, big circle action on
@@ -279,11 +306,15 @@ html{ scroll-snap-type:y proximity; }
 .br-chain span{ display:block; height:1.08em; line-height:1.08; color:var(--red); white-space:nowrap; }
 
 /* ── 04 THEY'LL VOUCH ── */
-.people{ padding-bottom:var(--sp-sec-bot); }
+.people{ padding-bottom:64px; }
+.people .quote-grid{ margin-top:clamp(20px,2.4vw,32px); }
+/* mentee proof: a third kind of vouch (designers I mentored), linked out live */
+.vouch-mentees{ font-family:var(--serif); font-size:var(--fs-body); color:var(--ink-65);
+  margin-top:clamp(28px,3.2vw,44px); display:flex; align-items:center; gap:10px 14px; flex-wrap:wrap; }
 
 /* ── 05 WRITING — broadsheet spread on plain paper ── */
 .writing-band{ padding-bottom:var(--sp-sec-bot-lg); }
-.writing-band .sec-intro{ padding-top:100px; }
+.writing-band .sec-intro{ padding-top:56px; }
 /* writing = GALLERY PIECES. The artwork owns its full frame — no scrim,
    no overlay, nothing on it. The text stands beneath like a gallery label:
    no card box, no border around text. Four equals in a row. */
@@ -320,15 +351,19 @@ html{ scroll-snap-type:y proximity; }
   font-family:var(--serif); font-style:italic; font-size:var(--fs-body);
   color:var(--ink-50); margin-bottom:24px;
 }
-.receipts-belt{ overflow:hidden; }
-.receipts-track{ display:flex; align-items:center; gap:16px; width:max-content; animation:receiptsDrift 80s linear infinite; }
-.receipts-belt:hover .receipts-track{ animation-play-state:paused; }
+/* belt: auto-drifts AND is drag/swipe-able. Driven by translateX on the track
+   (two duplicated sets loop seamlessly) — float-precise, so the slow drift
+   accumulates (native scrollLeft rounds sub-pixel steps to 0). touch-action
+   pan-y lets the page still scroll vertically while horizontal drag is grabbed. */
+.receipts-belt{ overflow:hidden; cursor:grab; touch-action:pan-y; }
+.receipts-belt.dragging{ cursor:grabbing; }
+.receipts-track{ display:flex; align-items:center; gap:16px; width:max-content; will-change:transform; }
 .receipts-track img{
   max-height:320px; max-width:560px; width:auto; height:auto; display:block;
   border:var(--hairline) solid var(--ink-12); border-radius:var(--r-thumb);
   background:var(--white); padding:12px;
+  user-select:none; -webkit-user-drag:none; pointer-events:none;
 }
-@keyframes receiptsDrift{ to{ transform:translateX(-50%); } }
 
 /* ── PAGE RESPONSIVE ── */
 @media (max-width:900px){
