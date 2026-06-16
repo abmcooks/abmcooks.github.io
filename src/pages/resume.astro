@@ -179,25 +179,25 @@ import Shell from '../layouts/Shell.astro';
     </div>
   </section>
 
-  <!-- EXPERTISE -->
+  <!-- SKILLS -->
   <section class="res-section rv">
-    <div class="res-section-title">Expertise</div>
+    <div class="res-section-title">Skills</div>
     <div class="res-expertise-grid">
       <div>
         <div class="res-expertise-cat">Design</div>
-        <div class="res-expertise-items">Product Design (Mobile-First) · Design Systems Architecture (Atomic, Token-Based) · Service Design & Blueprinting · User Research (Interviews, Usability, A/B Testing) · Figma · Prototyping</div>
+        <div class="res-expertise-items">Product Design · Mobile-First Design · UX/UI Design · Design Systems (Atomic, Token-Based) · Design Tokens · Service Design &amp; Blueprinting · User Research · Usability Testing · A/B Testing · Prototyping · Interaction Design · Information Architecture · Figma</div>
       </div>
       <div>
         <div class="res-expertise-cat">Leadership</div>
-        <div class="res-expertise-items">Design Org Scaling (1→12) · Hiring Frameworks · Career Progression Design · Design Governance · Workshop Facilitation · C-Suite Stakeholder Management</div>
+        <div class="res-expertise-items">Design Team Leadership · Design Management · Hiring &amp; Career-Progression Frameworks · Design Governance · Mentorship · Workshop Facilitation · C-Suite &amp; Stakeholder Management · Cross-Functional Collaboration</div>
       </div>
       <div>
         <div class="res-expertise-cat">Domain</div>
-        <div class="res-expertise-items">Islamic Banking & Sharia-Compliant Products · SME Banking · Payments UX · Digital Wallets · Neobanking · Open Banking · KYC/Onboarding · Compliance & Regulatory (SBP, UAE Open Finance) · Emerging Markets</div>
+        <div class="res-expertise-items">Fintech · Neobanking · Digital Wallets · Payments UX · SME Banking · Islamic &amp; Sharia-Compliant Banking · Open Banking · KYC &amp; Onboarding · Regulatory Compliance (SBP, UAE Open Finance) · Emerging Markets</div>
       </div>
       <div>
-        <div class="res-expertise-cat">AI + Design Ops</div>
-        <div class="res-expertise-items">AI-Enabled Design Workflows · AI as a Force-Multiplier · MCP Integrations · Automated Design Operations · Design Knowledge Systems</div>
+        <div class="res-expertise-cat">AI &amp; Design Ops</div>
+        <div class="res-expertise-items">AI-Assisted Design Workflows · AI-Native Product Design · Design Ops · Design System Automation · MCP Integrations</div>
       </div>
     </div>
   </section>
@@ -370,8 +370,11 @@ import Shell from '../layouts/Shell.astro';
 
   /* ── PRINT ── */
   @media print {
-    .nav, .menu, .doors, .cursor, .res-print { display: none !important; }
-    html, body, * { background-color: white !important; }
+    /* Shell chrome lives outside this component's scope — hide globally */
+    :global(.nav), :global(#nav), :global(.menu), :global(#menu),
+    :global(.doors), :global(#contact), :global(.cursor) { display: none !important; }
+    .res-print { display: none !important; }
+    html, body, :global(*) { background-color: white !important; }
     .res-page { max-width: none; padding: 0; margin: 0; }
     .res-section-title::before { display: none; }
     .res-name { color: #1a1a1a; font-size: 28px; }
@@ -397,6 +400,10 @@ import Shell from '../layouts/Shell.astro';
     .res-edu-degree { color: #444; font-size: 11px; }
     .res-edu-year { color: #777; font-size: 10.5px; }
     .res-entry, .res-consult { break-inside: avoid; }
+    /* Single column so ATS/AI parsers read skills in order, not across columns */
+    .res-expertise-grid { grid-template-columns: 1fr; gap: 10px; }
+    .res-expertise-cat { font-size: 10.5px; }
+    .res-expertise-items { font-size: 11px; }
   }
   @page { margin: 0.5in 0.6in; size: letter; }
 </style>
