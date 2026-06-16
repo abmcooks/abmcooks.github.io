@@ -1,31 +1,33 @@
 ---
-import Base from '../layouts/Base.astro';
-import Loader from '../components/Loader.astro';
-import Cursor from '../components/Cursor.astro';
-import Nav from '../components/Nav.astro';
-import FsMenu from '../components/FsMenu.astro';
-import '../styles/global.css';
-import '../styles/resume.css';
+/* Resume — faithful re-skin onto the new system (Shell + landing tokens).
+   Production composition, type scale, and section structure KEPT verbatim;
+   only the visual direction changed: old global.css tokens → --paper/--ink/
+   --red, warm-cream sheet → pure --paper, --font-* → --display/--sans/--serif
+   (same role split: Tanker shouts, General Sans operates, Literata reads),
+   radius → --r, weight 700 → 600 (Bold is banned in the system). Phosphor
+   icons swapped for the system's 16-grid line icons. Custom footer dropped —
+   Shell's doors finale is the universal footer. Every value resolves to a
+   tokens.css variable. */
+import Shell from '../layouts/Shell.astro';
 ---
 
-<Base title="Resume — Basit Masood" description="Product Design Leader. 8 years in fintech. Founding designer at SadaPay (0→4M+ users) and ZAR (a16z-backed). Products raised $90M+.">
-
-<Loader />
-<Cursor />
-<Nav active="resume" />
-<FsMenu />
+<Shell
+  title="Resume — Basit Masood"
+  description="Product Design Leader. 8 years in fintech. Founding designer at SadaPay (0→4M+ users) and ZAR (a16z-backed). Products raised $90M+."
+  active="resume"
+>
 
 <!-- RESUME -->
 <div class="res-page">
 
-  <header class="res-header">
+  <header class="res-header rv">
     <div class="res-header-top">
       <div>
         <h1 class="res-name">BASIT MASOOD</h1>
         <div class="res-title">Product Design Leader</div>
       </div>
-      <button class="res-print">
-        <i class="ph-bold ph-download-simple"></i> Save PDF
+      <button class="btn-sec res-print" type="button">Save PDF
+        <span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v7M5 6.5 8 9.5l3-3M3 13h10"/></svg></span>
       </button>
     </div>
     <div class="res-contact">
@@ -45,7 +47,7 @@ import '../styles/resume.css';
   </header>
 
   <!-- EXPERIENCE -->
-  <section class="res-section">
+  <section class="res-section rv">
     <div class="res-section-title">Experience</div>
 
     <!-- ZAR -->
@@ -141,7 +143,7 @@ import '../styles/resume.css';
 
     <!-- Consulting -->
     <div class="res-entry">
-      <div class="res-section-title" style="margin-top: 0; margin-bottom: 16px;">Selected Consulting</div>
+      <div class="res-section-title res-section-title--sub">Selected Consulting</div>
 
       <div class="res-consult">
         <div class="res-consult-header">
@@ -178,7 +180,7 @@ import '../styles/resume.css';
   </section>
 
   <!-- EXPERTISE -->
-  <section class="res-section">
+  <section class="res-section rv">
     <div class="res-section-title">Expertise</div>
     <div class="res-expertise-grid">
       <div>
@@ -201,7 +203,7 @@ import '../styles/resume.css';
   </section>
 
   <!-- EDUCATION -->
-  <section class="res-section">
+  <section class="res-section rv">
     <div class="res-section-title">Education</div>
     <div class="res-edu-row">
       <div>
@@ -214,47 +216,200 @@ import '../styles/resume.css';
 
 </div>
 
-<!-- FOOTER -->
-<footer class="res-footer">
-  <div class="res-footer-inner">
-    <div class="res-footer-left">
-      <a href="mailto:basitmasood999@gmail.com" class="res-footer-email">basitmasood999@gmail.com</a>
-      <a href="https://wa.me/971582071725" target="_blank" class="res-footer-social"><i class="ph-bold ph-whatsapp-logo"></i> +971 58 207 1725</a>
-    </div>
-    <div class="res-footer-right">
-      <a href="https://linkedin.com/in/iabm" target="_blank" class="res-footer-social">LinkedIn <i class="ph-bold ph-arrow-up-right"></i></a>
-      <span class="res-footer-loc">UAE · Open to relocation</span>
-      <span class="res-footer-copy">© 2026</span>
-    </div>
-  </div>
-</footer>
+<style>
+  /* ── PAGE — light sheet on the new system ── */
+  .res-page {
+    max-width: 820px; margin: 0 auto;
+    padding: 150px 40px 100px;
+  }
+
+  /* ── HEADER ── */
+  .res-header {
+    margin-bottom: 40px; padding-bottom: 32px;
+    border-bottom: 1px solid var(--ink-12);
+  }
+  .res-header-top {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;
+    margin-bottom: 6px;
+  }
+  .res-name {
+    font-family: var(--display); font-size: 40px; font-weight: 400;
+    color: var(--ink); text-transform: uppercase; line-height: 1.02;
+    letter-spacing: -.01em;
+  }
+  .res-title {
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    color: var(--red); letter-spacing: .02em; margin-top: 8px;
+  }
+  .res-contact {
+    display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 16px;
+  }
+  .res-contact a, .res-contact span {
+    font-family: var(--sans); font-size: 14px; font-weight: 400;
+    color: var(--ink-65); text-decoration: none;
+    transition: color .2s;
+  }
+  .res-contact a:hover { color: var(--red); }
+  .res-contact .sep { color: var(--ink-25); }
+  .res-summary {
+    font-family: var(--serif); font-size: 15px; font-weight: 400;
+    color: var(--ink-80); line-height: 1.7;
+    max-width: 700px; margin-top: 18px;
+  }
+
+  /* ── SECTIONS ── */
+  .res-section { margin-top: 40px; }
+  .res-section-title {
+    font-family: var(--sans); font-size: var(--fs-micro); font-weight: 600;
+    text-transform: uppercase; letter-spacing: .18em;
+    color: var(--ink-50); margin-bottom: 18px;
+  }
+  .res-section-title::before {
+    content: ''; display: inline-block;
+    width: 28px; height: 1px; background: var(--red);
+    margin-right: 13px; vertical-align: middle;
+  }
+  .res-section-title--sub { margin-top: 0; margin-bottom: 16px; }
+
+  /* ── ENTRIES ── */
+  .res-entry { margin-bottom: 32px; }
+  .res-entry:last-child { margin-bottom: 0; }
+  .res-entry-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap; margin-bottom: 2px;
+  }
+  .res-company {
+    font-family: var(--sans); font-size: 16px; font-weight: 600;
+    color: var(--ink);
+  }
+  .res-role {
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    color: var(--ink-65);
+  }
+  .res-meta {
+    font-family: var(--sans); font-size: 14px; font-weight: 400;
+    color: var(--ink-50); flex-shrink: 0;
+  }
+  .res-desc {
+    font-family: var(--serif); font-size: 14px; font-weight: 400;
+    font-style: italic; color: var(--ink-65);
+    margin-top: 4px; margin-bottom: 10px;
+  }
+  .res-entry ul { list-style: none; padding: 0; margin: 0; }
+  .res-entry li {
+    font-family: var(--serif); font-size: 14px; font-weight: 400;
+    color: var(--ink-80); line-height: 1.7;
+    padding-left: 16px; position: relative; margin-bottom: 6px;
+  }
+  .res-entry li::before {
+    content: ''; position: absolute; left: 0; top: 11px;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(var(--red-rgb), .5);
+  }
+
+  /* ── CONSULTING ── */
+  .res-consult { margin-bottom: 16px; }
+  .res-consult:last-child { margin-bottom: 0; }
+  .res-consult-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap;
+  }
+  .res-consult-name {
+    font-family: var(--sans); font-size: 15px; font-weight: 600;
+    color: var(--ink);
+  }
+  .res-consult-meta {
+    font-family: var(--sans); font-size: 14px; font-weight: 400;
+    color: var(--ink-50);
+  }
+  .res-consult-desc {
+    font-family: var(--serif); font-size: 14px; font-weight: 400;
+    color: var(--ink-80); line-height: 1.7; margin-top: 3px;
+  }
+
+  /* ── EXPERTISE ── */
+  .res-expertise-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px;
+  }
+  .res-expertise-cat {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .res-expertise-items {
+    font-family: var(--serif); font-size: 14px; font-weight: 400;
+    color: var(--ink-65); line-height: 1.7;
+  }
+
+  /* ── EDUCATION ── */
+  .res-edu-row {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  }
+  .res-edu-school {
+    font-family: var(--sans); font-size: 15px; font-weight: 600;
+    color: var(--ink);
+  }
+  .res-edu-degree {
+    font-family: var(--serif); font-size: 14px; font-weight: 400;
+    color: var(--ink-65); margin-top: 2px;
+  }
+  .res-edu-year {
+    font-family: var(--sans); font-size: 14px; font-weight: 400;
+    color: var(--ink-50);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .res-page { padding: 130px 24px 70px; }
+    .res-name { font-size: 30px; }
+    .res-header-top { flex-direction: column; gap: 12px; }
+    .res-entry-header { flex-direction: column; gap: 2px; }
+    .res-consult-header { flex-direction: column; gap: 2px; }
+    .res-expertise-grid { grid-template-columns: 1fr; }
+    .res-edu-row { flex-direction: column; gap: 2px; }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .nav, .menu, .doors, .cursor, .res-print { display: none !important; }
+    html, body, * { background-color: white !important; }
+    .res-page { max-width: none; padding: 0; margin: 0; }
+    .res-section-title::before { display: none; }
+    .res-name { color: #1a1a1a; font-size: 28px; }
+    .res-title { color: #C11540; font-size: 12px; }
+    .res-contact a, .res-contact span { color: #444; font-size: 11px; }
+    .res-summary { color: #444; font-size: 12px; }
+    .res-section { margin-top: 22px; }
+    .res-section-title { color: #777; font-size: 10px; margin-bottom: 12px; padding-bottom: 5px; border-color: #e0e0e0; }
+    .res-entry { margin-bottom: 18px; }
+    .res-company { color: #1a1a1a; font-size: 14px; }
+    .res-role { color: #444; font-size: 11.5px; }
+    .res-meta { color: #777; font-size: 10.5px; }
+    .res-desc { color: #444; font-size: 11.5px; }
+    .res-entry li { color: #444; font-size: 11.5px; line-height: 1.5; margin-bottom: 2px; }
+    .res-entry li::before { background: #999; width: 3px; height: 3px; top: 7px; }
+    .res-header { border-color: #e0e0e0; margin-bottom: 20px; padding-bottom: 16px; }
+    .res-consult-name { color: #1a1a1a; font-size: 12.5px; }
+    .res-consult-meta { color: #777; font-size: 10px; }
+    .res-consult-desc { color: #444; font-size: 11px; }
+    .res-expertise-cat { color: #1a1a1a; font-size: 10.5px; }
+    .res-expertise-items { color: #444; font-size: 11px; }
+    .res-edu-school { color: #1a1a1a; font-size: 12.5px; }
+    .res-edu-degree { color: #444; font-size: 11px; }
+    .res-edu-year { color: #777; font-size: 10.5px; }
+    .res-entry, .res-consult { break-inside: avoid; }
+  }
+  @page { margin: 0.5in 0.6in; size: letter; }
+</style>
 
 <script>
-  // Cursor / FsMenu / Nav-scroll handled by shared components.
   function initResume() {
-    // Mark as light-mode page — nav items go dark ink at rest, white on scrolled backdrop.
-    document.body.classList.add('page-light');
-
-    // Light bg override for resume — match --color-white token
-    const warmWhite = getComputedStyle(document.documentElement).getPropertyValue('--color-white').trim();
-    document.documentElement.style.background = warmWhite;
-    document.body.style.background = warmWhite;
-
-    // Print button — guard against listener stacking on re-runs
     const btn = document.querySelector('.res-print');
-    if (btn && !btn.dataset.printBound) {
-      btn.dataset.printBound = 'true';
+    if (btn && !(btn as HTMLElement).dataset.printBound) {
+      (btn as HTMLElement).dataset.printBound = 'true';
       btn.addEventListener('click', () => window.print());
     }
   }
-  function cleanupResume() {
-    document.body.classList.remove('page-light');
-    document.documentElement.style.background = '';
-    document.body.style.background = '';
-  }
   initResume();
-  document.addEventListener('astro:page-load', initResume);
-  document.addEventListener('astro:before-swap', cleanupResume);
 </script>
 
-</Base>
+</Shell>
