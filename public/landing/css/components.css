@@ -171,6 +171,11 @@
 .nav-links{ display:flex; align-items:center; gap:24px; }
 .nav-links a{ font-family:var(--sans); font-size:var(--fs-ui); font-weight:500; color:var(--ink-65); text-decoration:none; transition:color var(--t-fast) var(--ease); }
 .nav-links a:hover{ color:var(--red); }
+.nav-links a[aria-current="page"]:not(.nav-cta){ color:var(--ink); position:relative; }
+.nav-links a[aria-current="page"]:not(.nav-cta)::after{
+  content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px;
+  background:var(--red); border-radius:1px;
+}
 .nav-links a.nav-cta{
   display:inline-flex; align-items:center; gap:8px; padding:8px 8px 8px 16px;
   background:var(--red); color:var(--white); border-radius:var(--r-pill); font-weight:500;

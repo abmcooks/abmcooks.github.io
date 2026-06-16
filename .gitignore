@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # temp files
 temp/
+
+# local screenshots / test output
+.shots/
+.playwright-mcp/

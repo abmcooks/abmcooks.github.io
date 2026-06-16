@@ -1,56 +1,39 @@
 ---
-import Base from '../layouts/Base.astro';
-import Loader from '../components/Loader.astro';
-import Cursor from '../components/Cursor.astro';
-import Nav from '../components/Nav.astro';
-import FsMenu from '../components/FsMenu.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-import '../styles/about.css';
+/* About — light-only editorial reading on the new system (Shell + landing
+   tokens). Every colour and type size resolves to a tokens.css variable —
+   no raw hex, rgb, or font sizes live in this file. The alternating
+   light/dark rhythm was removed: one white page throughout (round 1). */
+import Shell from '../layouts/Shell.astro';
 ---
 
-<Base title="About — Basit Masood" description="The person behind the products. From a village in Pakistan to designing fintech for millions.">
+<Shell
+  title="About — Basit Masood"
+  description="The person behind the products. From a village in Pakistan to designing fintech for millions."
+  active="about"
+>
 
-<Loader />
-<Cursor />
-<Nav active="about" />
-<FsMenu />
-
-<!-- ═══════════════════════════════════════════
-     HERO — Photo + hook
-     ═══════════════════════════════════════════ -->
+<!-- ════ HERO — photo + bound monument column (production grammar, monument-scaled) ════ -->
 <section class="ab-hero">
   <div class="ab-hero-inner">
     <div class="ab-photo-col reveal">
       <img src="/images/abm.jpg" alt="Basit Masood" class="ab-photo" />
     </div>
-    <div class="ab-intro-col reveal" style="transition-delay: 150ms;">
-      <p class="ab-label">About</p>
-      <h1 class="ab-hook">THE PERSON BEHIND<br/>THE PRODUCTS.</h1>
-      <p class="ab-intro">I'm Basit. I design products that move money for millions of people. But if you asked my family back in a small village in Pakistan, they'd say I'm the one who left and ended up staring at screens all day.</p>
-      <p class="ab-intro">They're not entirely wrong.</p>
+    <div class="ab-hero-text reveal" style="transition-delay:120ms">
+      <p class="ab-kicker"><span class="ab-kicker-rule"></span>About</p>
+      <h1 class="ab-hero-title"><span class="ab-hl">The person behind</span><span class="ab-hl">the products<em>.</em></span></h1>
+      <div class="ab-intro-col">
+        <p class="ab-intro">I'm Basit. I design products that move money for millions of people. But if you asked my family back in a small village in Pakistan, they'd say I'm the one who left and ended up staring at screens all day.</p>
+        <p class="ab-intro">They're not entirely wrong.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     STORY — Origin
-     ═══════════════════════════════════════════ -->
+<!-- ════ STORY — origin ════ -->
 <section class="ab-story">
   <div class="ab-story-inner">
     <div class="ab-story-text reveal">
       <p>I grew up in a village in rural Pakistan. My family had a small piece of agricultural land — pomegranate trees, guava, shah toot berries. We grew wheat and fruit, just enough for ourselves.</p>
-
-      <p>The biggest adventure for me and my brothers was when our father would take us through the KFC drive-thru. Not for a meal — for a vanilla ice cream cone. The cheapest thing on the menu.</p>
-    </div>
-
-    <p class="ab-standalone reveal">We thought we had everything.</p>
-
-    <div class="ab-story-text reveal">
-      <p class="ab-father">My father worked to put all of us through university. Everything I have started with that.</p>
-    </div>
-
-    <div class="ab-story-text reveal">
       <p>I studied computer science, graduated, and started working as a software engineer. But something kept bothering me — nobody could explain <em>why</em> we were building any of it.</p>
     </div>
 
@@ -61,70 +44,63 @@ import '../styles/about.css';
 
     <div class="ab-story-text reveal">
       <p>That question pulled me into design. Not the pixels. Not the tools. The why.</p>
-
       <p>Eight years later, that same question has followed me from SadaPay to ADIB to ZAR — into arguments with central banks and product debates with CEOs — that turned into products used by millions. Most recently, I built an AI-native design system where engineers now prototype without designers, using tools I created.</p>
     </div>
 
     <div class="ab-story-text reveal">
-      <p>Some of those chapters ended on my terms. Some didn't. All of them taught me something.</p>
+      <p>Some of those chapters ended on my terms. Some didn't. I'd choose every one of them again.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     BELIEFS
-     ═══════════════════════════════════════════ -->
+<!-- ════ BELIEFS ════ -->
 <section class="ab-lens">
   <div class="ab-lens-inner">
-    <h2 class="ab-lens-heading reveal">THINGS I BELIEVE</h2>
-    <div class="ab-beliefs reveal-stagger">
-      <div class="ab-belief reveal-child">
-        <p class="ab-belief-text"><strong>Intuitive.</strong> If someone has to think about how to use it, I failed. The interface should feel inevitable — like it couldn't have been any other way.</p>
+    <aside class="ab-lens-aside">
+      <h2 class="ab-lens-heading reveal">THINGS<br/>I BELIEVE</h2>
+    </aside>
+    <div class="ab-beliefs-col">
+      <div class="ab-beliefs reveal-stagger">
+        <div class="ab-belief reveal-child">
+          <h3 class="ab-belief-title">Intuitive<em>.</em></h3>
+          <p class="ab-belief-text">If someone has to think about how to use it, I failed. The interface should feel inevitable, like it couldn't have been any other way.</p>
+        </div>
+        <div class="ab-belief reveal-child">
+          <h3 class="ab-belief-title">Simple<em>.</em></h3>
+          <p class="ab-belief-text">One screen, one job. No ambiguity. No clever tricks that need explaining.</p>
+        </div>
+        <div class="ab-belief reveal-child">
+          <h3 class="ab-belief-title">Distinct<em>.</em></h3>
+          <p class="ab-belief-text">If it looks like everyone else's product, it will be treated like everyone else's product.</p>
+        </div>
+        <div class="ab-belief reveal-child">
+          <h3 class="ab-belief-title">Hire hunger<em>.</em></h3>
+          <p class="ab-belief-text">Passion, curiosity, drive. Taste comes with time. Those three don't.</p>
+        </div>
       </div>
-      <div class="ab-belief reveal-child">
-        <p class="ab-belief-text"><strong>Simple.</strong> One screen, one job. No ambiguity. No clever tricks that need explaining.</p>
-      </div>
-      <div class="ab-belief reveal-child">
-        <p class="ab-belief-text"><strong>Distinct.</strong> If it looks like everyone else's product, it will be treated like everyone else's product.</p>
-      </div>
-      <div class="ab-belief reveal-child">
-        <p class="ab-belief-text"><strong>Understand first.</strong> I don't open a tool until I understand the problem. I don't accept a constraint until I've read the source.</p>
-      </div>
-      <div class="ab-belief reveal-child">
-        <p class="ab-belief-text"><strong>Users first.</strong> Serve the user well and the business follows.</p>
-      </div>
-      <div class="ab-belief reveal-child">
-        <p class="ab-belief-text"><strong>Hire hunger.</strong> Passion, curiosity, drive. Taste comes with time. Those three don't.</p>
-      </div>
-      <div class="ab-belief ab-belief--hero reveal-child">
-        <p class="ab-belief-text ab-belief-text--big">MLP, not MVP. Someone already solves this problem — you have to solve it better.</p>
-      </div>
+      <p class="ab-belief-coda reveal">MLP, not MVP. Someone already solves this problem — you have to solve it better.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     FULL-BLEED — Cinematic break
-     ═══════════════════════════════════════════ -->
+<!-- ════ CINEMATIC BREAK ════ -->
 <div class="ab-bleed-img" id="bleedImg">
-  <img src="/images/about-bleed.jpg" alt="Highway through green hills under open sky in Malaysia" loading="lazy" />
+  <img src="/images/about-bleed.jpg" alt="Highway through the green hills of the Cameron Highlands, Malaysia" loading="lazy" />
   <div class="ab-bleed-overlay"></div>
+  <span class="ab-loc ab-loc--bleed"><svg class="ab-loc-pin" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s4.5-3.8 4.5-8A4.5 4.5 0 0 0 8 1.5 4.5 4.5 0 0 0 3.5 6c0 4.2 4.5 8 4.5 8z"/><circle cx="8" cy="6" r="1.6"/></svg>Cameron Highlands, Malaysia</span>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     HOW I WORK — Leadership
-     ═══════════════════════════════════════════ -->
+<!-- ════ PEOPLE FIRST — leadership ════ -->
 <section class="ab-how">
   <div class="ab-how-inner">
     <h2 class="ab-how-heading reveal">PEOPLE FIRST.<br/>ALWAYS.</h2>
-
     <div class="ab-how-grid">
       <div class="ab-how-block reveal">
         <p>When someone on my team is struggling, I don't start with feedback. I cover for them — quietly — so the product and the team don't suffer while we figure it out.</p>
         <p>Then I have the real conversation. Not in a meeting room. Over chai, casually. <em>"What's actually going on?"</em> There's always a reason. Nobody loses their talent overnight.</p>
         <p>I give people time. A month, sometimes two. And if it still doesn't work, I make the call. I've let people go. Empathy and hard decisions are not opposites — one just makes the other more honest.</p>
       </div>
-      <div class="ab-how-block reveal" style="transition-delay: 100ms;">
+      <div class="ab-how-block reveal" style="transition-delay:100ms">
         <p>If something doesn't make sense for the user, I challenge it — regardless of who proposed it.</p>
         <p>Most of the designers I hired at SadaPay came straight from university with messy portfolios and no experience. I saw something in them.</p>
         <p class="ab-how-accent">Some of them are now senior designers at Revolut. That's the work I'm most proud of — not the products, the people.</p>
@@ -133,192 +109,322 @@ import '../styles/about.css';
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     BEYOND THE SCREEN — Personal / Light section
-     ═══════════════════════════════════════════ -->
+<!-- ════ BEYOND THE SCREEN — personal ════ -->
 <section class="ab-personal">
   <div class="ab-personal-inner">
-
     <div class="ab-personal-lead reveal">
       <p class="ab-personal-label">Beyond the screen</p>
-      <p class="ab-kharoos">I grew up on agricultural land in rural Pakistan. That closeness to nature never left — it just turned into an obsession with finding places most people never visit.</p>
+      <p class="ab-kharoos">That pull toward nature never left me. It turned into an obsession with finding the places most people never reach.</p>
     </div>
 
     <div class="ab-personal-split" id="travelSplit">
       <div class="ab-personal-text-col">
         <p class="reveal">In university I didn't have the money to travel, but I knew Pakistan held a gem of places I needed to see. So I did my research — found places that are hard to reach, where you take a bus, then switch to a 4x4 jeep, then hike or camp. Places between snow-capped peaks with cold deserts and waterfalls that don't look real. I had zero experience. I planned everything from scratch.</p>
-        <p class="reveal">I started a small adventure club called <strong>Travelogue.</strong> I'd plan the whole trip, post an ad, calculate per-head budgets, book the coaster. Everyone paid their share. I went for free. But I had to earn that — so I offered two things no agency did: free photography for every trip, and my own chef who cooked homemade food on the road. That chef now owns a fast food chain in Islamabad.</p>
-        <p class="reveal">That curiosity never stopped. I lived in Malaysia for a year as a digital nomad, working remotely from SadaPay. Six months in Bali. Jakarta, Gili Islands, Singapore, Saudi Arabia, UAE — always the places fewer people visit, always on foot.</p>
+        <p class="reveal">I started a small adventure club called <strong>Travelogue.</strong> I'd plan the whole trip, post an ad, calculate per-head budgets, book the coaster. Everyone paid their share. I went for free. But I had to earn that — so I offered two things no agency did: free photography for every trip, and my own chef who cooked homemade food on the road.</p>
+        <p class="reveal">That curiosity never stopped. I lived in Malaysia for a year as a digital nomad, working remotely from SadaPay, then six months in Bali. Always the places fewer people visit, always on foot.</p>
         <p class="reveal">I can't do work I'm not passionate about. Not won't — <em>can't.</em> I lose all energy for it. My career shows it. Every role has been a deliberate choice.</p>
-        <p class="reveal">The orange trees back home are still there. Someday I want to bring what I've learned back to that land — technology and agriculture, together.</p>
       </div>
       <div class="ab-sticky-carousel reveal">
         <div class="ab-carousel" id="travelCarousel">
           <div class="ab-carousel-track" id="carouselTrack">
-            <img src="/images/about-carousel-0.jpg" alt="Natural pool overlooking the jungle in Bali" loading="lazy" class="ab-carousel-img active" />
-            <img src="/images/about-carousel-3.jpg" alt="Kelingking beach cliff in Nusa Penida, Bali" loading="lazy" class="ab-carousel-img" />
-            <img src="/images/about-carousel-6.jpg" alt="Karakoram Highway leading to dramatic mountain peaks" loading="lazy" class="ab-carousel-img" style="object-position: top;" />
-            <img src="/images/about-carousel-7.jpg" alt="Pine tree road in Kahuta, Pakistan" loading="lazy" class="ab-carousel-img" />
-            <img src="/images/about-carousel-8.jpg" alt="Underwater snorkeling in crystal blue water" loading="lazy" class="ab-carousel-img" />
+            <div class="ab-slide active">
+              <img src="/images/about-carousel-0.jpg" alt="Natural pool overlooking the jungle in Bali" loading="lazy" class="ab-carousel-img" />
+              <span class="ab-loc"><svg class="ab-loc-pin" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s4.5-3.8 4.5-8A4.5 4.5 0 0 0 8 1.5 4.5 4.5 0 0 0 3.5 6c0 4.2 4.5 8 4.5 8z"/><circle cx="8" cy="6" r="1.6"/></svg>Bali, Indonesia</span>
+            </div>
+            <div class="ab-slide">
+              <img src="/images/about-carousel-3.jpg" alt="Kelingking beach cliff in Nusa Penida, Bali" loading="lazy" class="ab-carousel-img" />
+              <span class="ab-loc"><svg class="ab-loc-pin" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s4.5-3.8 4.5-8A4.5 4.5 0 0 0 8 1.5 4.5 4.5 0 0 0 3.5 6c0 4.2 4.5 8 4.5 8z"/><circle cx="8" cy="6" r="1.6"/></svg>Nusa Penida, Indonesia</span>
+            </div>
+            <div class="ab-slide">
+              <img src="/images/about-carousel-6.jpg" alt="Passu Cones rising over the Karakoram Highway" loading="lazy" class="ab-carousel-img" style="object-position:top" />
+              <span class="ab-loc"><svg class="ab-loc-pin" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s4.5-3.8 4.5-8A4.5 4.5 0 0 0 8 1.5 4.5 4.5 0 0 0 3.5 6c0 4.2 4.5 8 4.5 8z"/><circle cx="8" cy="6" r="1.6"/></svg>Passu Cones, Gilgit-Baltistan</span>
+            </div>
+            <div class="ab-slide">
+              <img src="/images/about-carousel-7.jpg" alt="Pine tree road in Kahuta, Pakistan" loading="lazy" class="ab-carousel-img" />
+              <span class="ab-loc"><svg class="ab-loc-pin" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s4.5-3.8 4.5-8A4.5 4.5 0 0 0 8 1.5 4.5 4.5 0 0 0 3.5 6c0 4.2 4.5 8 4.5 8z"/><circle cx="8" cy="6" r="1.6"/></svg>Kahuta, Pakistan</span>
+            </div>
+            <div class="ab-slide">
+              <img src="/images/about-carousel-8.jpg" alt="Snorkeling in the clear water of the Blue Lagoon, Bali" loading="lazy" class="ab-carousel-img" />
+              <span class="ab-loc"><svg class="ab-loc-pin" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s4.5-3.8 4.5-8A4.5 4.5 0 0 0 8 1.5 4.5 4.5 0 0 0 3.5 6c0 4.2 4.5 8 4.5 8z"/><circle cx="8" cy="6" r="1.6"/></svg>Blue Lagoon, Bali</span>
+            </div>
           </div>
           <div class="ab-carousel-controls">
             <button class="ab-carousel-btn" id="carouselPrev" aria-label="Previous image">
-              <i class="ph-bold ph-caret-left"></i>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4L6 8l4 4"/></svg>
             </button>
             <button class="ab-carousel-btn" id="carouselNext" aria-label="Next image">
-              <i class="ph-bold ph-caret-right"></i>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
             </button>
           </div>
         </div>
       </div>
     </div>
-
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     STORY ENDING — Quiet full stop
-     ═══════════════════════════════════════════ -->
+<!-- ════ ENDING ════ -->
 <div class="ab-ending">
   <p class="ab-ending-text reveal">Still asking why.</p>
 </div>
 
-<Footer headline="Let's build<br/>something together." />
+<style>
+  /* ════════════════════════════════════════════════════════════
+     ABOUT — light-only editorial reading. Every colour and type
+     size resolves to a token from /landing/css/tokens.css; no raw
+     hex, rgb, or font sizes live here. White page throughout —
+     the alternating dark rhythm was removed (Basit, round 1).
+     ════════════════════════════════════════════════════════════ */
+
+  /* ══ HERO — photo + bound monument column (eyebrow→headline→intro share one
+     left edge beside the portrait; monument scaled to the side column) ══ */
+  .ab-hero{ min-height:100svh; display:flex; align-items:center; padding:var(--sp-sec-top) var(--gutter) var(--sp-sec-bot); background:var(--paper); }
+  .ab-hero-inner{ display:flex; align-items:center; gap:72px; max-width:1100px; margin:0 auto; width:100%; }
+  .ab-photo-col{ flex-shrink:0; position:relative; }
+  .ab-photo{ width:340px; height:420px; object-fit:cover; border-radius:var(--r); position:relative; z-index:1; }
+  .ab-photo-col::before{ content:''; position:absolute; left:-16px; top:32px; bottom:32px; width:var(--stroke); background:var(--red); border-radius:1px; }
+  .ab-hero-text{ flex:1; min-width:0; }
+  .ab-kicker{ display:flex; align-items:center; gap:14px; font-family:var(--sans); font-size:var(--fs-label); font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-50); margin-bottom:24px; }
+  .ab-kicker-rule{ width:40px; height:var(--hairline); background:var(--ink-25); display:inline-block; }
+  .ab-hero-title{ font-family:var(--display); text-transform:uppercase; font-weight:400; font-size:clamp(40px,5vw,64px); line-height:.92; color:var(--ink); margin-bottom:28px; }
+  .ab-hl{ display:block; }
+  .ab-hero-title em{ font-style:normal; color:var(--red); }
+  .ab-intro{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.7; color:var(--ink-65); max-width:480px; margin-bottom:12px; }
+  .ab-intro:first-child{ color:var(--ink-80); }
+  .ab-intro:last-child{ margin-bottom:0; }
+
+  /* ══ STORY (light) — left-aligned to the same 1100 grid line as the hero,
+     section headings and photo; reading measure widened from 720 → 860 ══ */
+  .ab-story{ background:var(--paper); padding:var(--sp-sec-bot) var(--gutter); }
+  .ab-story-inner{ max-width:1100px; margin:0 auto; }
+  .ab-story-text{ max-width:none; }
+  .ab-story-text p{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.8; color:var(--ink-80); margin-bottom:24px; }
+  .ab-story-text p:last-child{ margin-bottom:0; }
+  .ab-story-text em{ color:var(--ink); font-style:italic; }
+  .ab-story-text + .ab-story-text{ margin-top:24px; }
+
+  .ab-pullquote{
+    margin:56px 0; padding:44px 0 0; position:relative;
+    font-family:var(--serif); font-size:var(--fs-serif-md); font-weight:400; font-style:italic;
+    line-height:1.3; color:var(--ink); max-width:none;
+  }
+  .ab-pullquote-mark{
+    font-family:var(--display); font-size:var(--fs-quote-mark); font-weight:400; color:var(--red); line-height:.4;
+    position:absolute; left:0; top:8px;
+  }
+  .pq-word{ opacity:.14; transition:opacity var(--t-fill) var(--ease); }
+  .pq-word.pq-visible{ opacity:1; }
+
+  /* ══ BELIEFS — sticky editorial spread: heading pins left, beliefs scroll
+     past on the right. Titles use the site's signature OUTLINED→FILL move. ══ */
+  .ab-lens{ background:var(--paper); padding:var(--sp-sec-bot) var(--gutter); }
+  .ab-lens-inner{ display:flex; align-items:flex-start; gap:88px; max-width:1100px; margin:0 auto; }
+  .ab-lens-aside{ flex:0 0 300px; position:sticky; top:120px; }
+  .ab-lens-heading{ font-family:var(--display); font-size:var(--fs-display-md); font-weight:400; line-height:.9; text-transform:uppercase; color:var(--ink); }
+  .ab-beliefs-col{ flex:1; min-width:0; }
+  .ab-beliefs{ display:flex; flex-direction:column; gap:64px; }
+  /* beliefs stay put; the outline→fill IS the entrance motion (not an opacity fade) */
+  .ab-belief.reveal-child{ opacity:1; transform:none; }
+  .ab-belief-title{
+    font-family:var(--display); font-size:var(--fs-display-md); font-weight:400;
+    line-height:.95; text-transform:uppercase; margin-bottom:14px;
+    color:transparent; -webkit-text-stroke:var(--stroke) var(--ink);
+    transition:color var(--t-fill) var(--ease) .12s, -webkit-text-stroke-color var(--t-fill) var(--ease) .12s;
+  }
+  .ab-belief.revealed .ab-belief-title{ color:var(--ink); -webkit-text-stroke-color:transparent; }
+  .ab-belief-title em{ font-style:normal; color:var(--red); -webkit-text-stroke:0; }
+  .ab-belief-text{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.6; color:var(--ink-65); max-width:54ch; }
+  .ab-belief-coda{
+    font-family:var(--serif); font-style:italic; font-size:var(--fs-serif-md); font-weight:400;
+    line-height:1.4; color:var(--ink); text-align:left; max-width:54ch; margin:0; padding:72px 0 0;
+  }
+
+  /* ══ FULL-BLEED BREAK ══ */
+  .ab-bleed-img{ width:100%; height:70vh; min-height:420px; position:relative; overflow:hidden; }
+  .ab-bleed-img img{ width:100%; height:120%; object-fit:cover; object-position:center 82%; will-change:transform; }
+  .ab-bleed-overlay{ position:absolute; inset:0; background:linear-gradient(to bottom, var(--paper) 0%, transparent 15%, transparent 85%, var(--paper) 100%); }
+
+  /* ══ PEOPLE FIRST (light) ══ */
+  .ab-how{ background:var(--paper); padding:var(--sp-sec-bot) var(--gutter); }
+  .ab-how-inner{ max-width:1100px; margin:0 auto; }
+  .ab-how-heading{ font-family:var(--display); font-size:var(--fs-display-xl); font-weight:400; line-height:.92; text-transform:uppercase; color:var(--ink); margin-bottom:64px; }
+  .ab-how-grid{ display:grid; grid-template-columns:1fr 1fr; gap:64px; }
+  .ab-how-block p{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.8; color:var(--ink-80); margin-bottom:24px; }
+  .ab-how-block p:last-child{ margin-bottom:0; }
+  .ab-how-block em{ color:var(--ink); font-style:italic; }
+  .ab-how-accent{ color:var(--ink); font-weight:500; padding-left:24px; border-left:var(--stroke) solid var(--red); }
+
+  /* ══ BEYOND THE SCREEN (light) ══ */
+  .ab-personal{ background:var(--paper); padding:var(--sp-sec-bot) var(--gutter); }
+  .ab-personal-inner{ max-width:1100px; margin:0 auto; }
+  .ab-personal-lead{ max-width:720px; margin-bottom:64px; }
+  .ab-personal-label{ font-family:var(--display); font-size:var(--fs-display-md); font-weight:400; text-transform:uppercase; color:var(--ink); margin-bottom:24px; line-height:1; }
+  .ab-kharoos{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.7; color:var(--ink); }
+  .ab-kharoos em{ font-style:italic; }
+
+  .ab-personal-split{ display:flex; gap:64px; align-items:flex-start; margin-bottom:64px; }
+  .ab-personal-text-col{ flex:1; min-width:0; }
+  .ab-personal-text-col p{ font-family:var(--serif); font-size:var(--fs-body-lg); line-height:1.7; color:var(--ink-80); margin-bottom:24px; }
+  .ab-personal-text-col p:last-child{ margin-bottom:0; }
+  .ab-personal-text-col strong{ font-weight:600; color:var(--ink); }
+  .ab-personal-text-col em{ font-style:italic; color:var(--ink-80); }
+
+  .ab-sticky-carousel{ flex:0 0 42%; position:sticky; top:120px; align-self:start; }
+  .ab-carousel{ position:relative; border-radius:var(--r); overflow:hidden; }
+  .ab-carousel-track{ position:relative; width:100%; aspect-ratio:3/4; }
+  .ab-slide{ position:absolute; inset:0; opacity:0; transition:opacity var(--t-slow) var(--ease); }
+  .ab-slide.active{ opacity:1; }
+  .ab-carousel-img{ width:100%; height:100%; object-fit:cover; }
+
+  /* ══ LOCATION BADGE (non-interactive caption chrome — white on dark blur) ══ */
+  .ab-loc{
+    position:absolute; bottom:16px; left:16px; z-index:2;
+    display:inline-flex; align-items:center; gap:7px;
+    padding:7px 13px 7px 11px; border-radius:var(--r-pill);
+    background:rgba(var(--ink-rgb),.5); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    font-family:var(--sans); font-size:var(--fs-label); font-weight:500; letter-spacing:.01em; color:var(--white);
+  }
+  .ab-loc-pin{ width:14px; height:14px; flex-shrink:0; }
+  .ab-loc--bleed{ left:var(--gutter); bottom:48px; }
+  .ab-carousel-controls{ position:absolute; bottom:16px; right:16px; display:flex; align-items:center; gap:8px; z-index:2; }
+  .ab-carousel-btn{
+    width:40px; height:40px; border-radius:var(--r-pill); border:none; padding:0;
+    background:rgba(var(--ink-rgb),.5); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    color:var(--white); display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+  }
+  .ab-carousel-btn:hover{ background:var(--red); transform:scale(1.08); }
+  .ab-carousel-btn svg{ width:16px; height:16px; }
+
+  /* ══ ENDING (light) — the full stop ══ */
+  .ab-ending{ background:var(--paper); padding:var(--sp-sec-bot) var(--gutter); display:flex; align-items:center; justify-content:center; }
+  .ab-ending-text{ font-family:var(--serif); font-size:var(--fs-serif-md); font-weight:500; font-style:italic; color:var(--ink); letter-spacing:.01em; text-align:center; }
+
+  /* ══ SCROLL REVEAL ══ */
+  .reveal, .reveal-child{ opacity:0; transform:translateY(24px); transition:opacity var(--t-reveal) var(--ease), transform var(--t-reveal) var(--ease); }
+  .reveal.revealed, .reveal-child.revealed{ opacity:1; transform:none; }
+
+  /* ══ RESPONSIVE — layout only; type clamps live in tokens ══ */
+  @media (max-width:900px){
+    .ab-hero{ padding-top:104px; }
+    .ab-hero-inner{ flex-direction:column; gap:40px; align-items:flex-start; }
+    .ab-hero-title{ margin-bottom:24px; }
+    .ab-lens-inner{ flex-direction:column; gap:32px; }
+    .ab-lens-aside{ position:static; flex:auto; }
+    .ab-beliefs{ gap:40px; }
+    .ab-belief-coda{ padding-top:48px; }
+    .ab-photo{ width:240px; height:300px; }
+    .ab-photo-col::before{ display:none; }
+    .ab-pullquote{ margin:48px auto; }
+    .ab-how-grid{ grid-template-columns:1fr; gap:40px; }
+    .ab-personal-split{ flex-direction:column; gap:40px; }
+    .ab-sticky-carousel{ position:relative; top:0; order:-1; flex:none; width:100%; }
+    .ab-carousel-track{ aspect-ratio:4/3; }
+    .ab-bleed-img{ height:40vh; min-height:280px; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal, .reveal-child{ opacity:1; transform:none; transition:none; }
+    .pq-word{ opacity:1; transition:none; }
+    .ab-belief-title{ color:var(--ink); -webkit-text-stroke-color:transparent; transition:none; }
+    .ab-bleed-img img{ will-change:auto; }
+  }
+</style>
 
 <script>
-  // Cursor / Loader / FsMenu / Nav-scroll handled by shared components.
-  const cursor = document.getElementById('customCursor');
-
-  // Mark as light-mode page — nav items go dark ink at rest, white on scrolled backdrop.
-  document.body.classList.add('page-light');
-  document.addEventListener('astro:page-load', () => document.body.classList.add('page-light'));
-  document.addEventListener('astro:before-swap', () => document.body.classList.remove('page-light'));
-
-  // ═══ Cursor light/dark detection (page-specific — about has mixed light/dark sections) ═══
-  const lightSections = document.querySelectorAll('.ab-hero, .ab-lens, .ab-personal, .ab-ending');
-  function checkCursorInversion() {
-    let isLight = false;
-    lightSections.forEach(sec => {
-      const rect = sec.getBoundingClientRect();
-      if (rect.top < 60 && rect.bottom > 60) isLight = true;
-    });
-    cursor?.classList.toggle('cursor-dark', isLight);
-  }
-  window.addEventListener('scroll', checkCursorInversion, { passive: true });
-  checkCursorInversion();
-
-  // ═══ Scroll-reveal ═══
-  const reveals = document.querySelectorAll('.reveal');
-  const staggerGroups = document.querySelectorAll('.reveal-stagger');
-
+  /* ── Scroll reveal (production behaviour) ── */
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        io.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.classList.add('revealed'); io.unobserve(entry.target); }
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-  reveals.forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   const sio = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const children = entry.target.querySelectorAll('.reveal-child');
-        children.forEach((child, i) => {
-          child.style.transitionDelay = `${i * 80}ms`;
+        entry.target.querySelectorAll('.reveal-child').forEach((child, i) => {
+          (child as HTMLElement).style.transitionDelay = `${i * 80}ms`;
           child.classList.add('revealed');
         });
         sio.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal-stagger').forEach(el => sio.observe(el));
 
-  staggerGroups.forEach(el => sio.observe(el));
-
-  // ═══ Pull quote word-by-word reveal ═══
-  const pullquote = document.getElementById('pullquote');
-  if (pullquote) {
-    const words = pullquote.querySelectorAll('.pq-word');
+  /* ── Pull quote — word by word ── */
+  (function () {
+    const pq = document.getElementById('pullquote');
+    if (!pq) return;
+    const words = pq.querySelectorAll('.pq-word');
     const pqio = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          words.forEach((word, i) => {
-            setTimeout(() => word.classList.add('pq-visible'), i * 150);
-          });
+          words.forEach((w, i) => setTimeout(() => w.classList.add('pq-visible'), i * 150));
           pqio.unobserve(entry.target);
         }
       });
     }, { threshold: 0.5 });
-    pqio.observe(pullquote);
-  }
+    pqio.observe(pq);
+  })();
 
-  // ═══ Parallax on full-bleed image ═══
-  const bleedImg = document.getElementById('bleedImg');
-  if (bleedImg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const img = bleedImg.querySelector('img');
+  /* ── Parallax on the full-bleed image ── */
+  (function () {
+    const wrap = document.getElementById('bleedImg');
+    if (!wrap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const img = wrap.querySelector('img');
+    if (!img) return;
     window.addEventListener('scroll', () => {
-      const rect = bleedImg.getBoundingClientRect();
-      const viewH = window.innerHeight;
-      if (rect.top < viewH && rect.bottom > 0) {
-        const progress = (viewH - rect.top) / (viewH + rect.offsetHeight);
-        const offset = (progress - 0.5) * 60;
-        if (img) img.style.transform = `translateY(${offset}px) scale(1.08)`;
+      const r = wrap.getBoundingClientRect();
+      const vh = window.innerHeight;
+      if (r.top < vh && r.bottom > 0) {
+        const progress = (vh - r.top) / (vh + wrap.offsetHeight);
+        img.style.transform = `translateY(${(progress - 0.5) * 60}px) scale(1.08)`;
       }
     }, { passive: true });
-  }
+  })();
 
-  // ═══ Travel carousel — scroll-driven + arrow navigation ═══
-  (function() {
+  /* ── Travel carousel — scroll-driven + arrows ── */
+  (function () {
     const split = document.getElementById('travelSplit');
-    const imgs = document.querySelectorAll('.ab-carousel-img');
-    const prevBtn = document.getElementById('carouselPrev');
-    const nextBtn = document.getElementById('carouselNext');
-    const countEl = document.getElementById('carouselCount');
-    if (!split || !imgs.length) return;
-
+    const slides = document.querySelectorAll('.ab-slide');
+    const prev = document.getElementById('carouselPrev');
+    const next = document.getElementById('carouselNext');
+    if (!split || !slides.length) return;
     const paragraphs = split.querySelectorAll('.ab-personal-text-col p');
-    const total = imgs.length;
-    let currentIndex = 0;
+    const total = slides.length;
+    let current = 0;
 
-    function setActive(index) {
-      index = Math.max(0, Math.min(total - 1, index));
-      if (index === currentIndex) return;
-      currentIndex = index;
-      imgs.forEach((img, i) => img.classList.toggle('active', i === index));
-      if (countEl) countEl.textContent = (index + 1) + ' / ' + total;
+    function setActive(idx: number) {
+      idx = Math.max(0, Math.min(total - 1, idx));
+      if (idx === current) return;
+      slides[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
     }
 
-    // Arrow buttons
-    prevBtn?.addEventListener('click', () => setActive(currentIndex - 1));
-    nextBtn?.addEventListener('click', () => setActive(currentIndex + 1));
+    prev?.addEventListener('click', () => setActive(current - 1));
+    next?.addEventListener('click', () => setActive(current + 1));
 
-    // Scroll-driven: distribute images evenly across paragraphs
     if (paragraphs.length > 0) {
-      const step = paragraphs.length / total;
-      const pio = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const pIdx = Array.from(paragraphs).indexOf(entry.target);
-            const imgIdx = Math.min(Math.floor(pIdx / step), total - 1);
-            setActive(imgIdx);
+      // image 0 is the default; each paragraph advances by the count gap so
+      // every image is reached on scroll even when paragraphs < images
+      const offset = Math.max(0, total - paragraphs.length);
+      const cio = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const i = Array.from(paragraphs).indexOf(e.target as HTMLParagraphElement);
+            setActive(Math.min(i + offset, total - 1));
           }
         });
       }, { threshold: 0.6 });
-      paragraphs.forEach(p => pio.observe(p));
+      paragraphs.forEach(p => cio.observe(p));
     }
   })();
 
-  // ═══ Reduced motion ═══
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.reveal, .reveal-child').forEach(el => {
-      el.classList.add('revealed');
-      el.style.transitionDelay = '0ms';
-    });
     document.querySelectorAll('.pq-word').forEach(el => el.classList.add('pq-visible'));
   }
 </script>
 
-</Base>
+</Shell>
