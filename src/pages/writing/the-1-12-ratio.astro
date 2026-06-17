@@ -1,35 +1,16 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Loader from '../../components/Loader.astro';
-import Cursor from '../../components/Cursor.astro';
-import Nav from '../../components/Nav.astro';
-import FsMenu from '../../components/FsMenu.astro';
-import Footer from '../../components/Footer.astro';
-import '../../styles/global.css';
-import '../../styles/stories.css';
+/* Writing article — re-skinned onto the new system (Shell + shared
+   src/styles/article.css). Light editorial reading page; body content kept
+   verbatim, only the visual direction swapped via the stylesheet. */
+import Shell from '../../layouts/Shell.astro';
+import '../../styles/article.css';
 ---
 
-<Base title="The 1:12 ratio. — Basit Masood" description="Out of every twelve candidates, only one gets through. Here's what I look for.">
-
-<script is:inline>
-  (function(){
-    var apply = function(){ document.body && document.body.classList.add('page-light'); };
-    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
-    apply();
-    document.addEventListener('astro:page-load', apply);
-    document.addEventListener('astro:after-swap', apply);
-    document.addEventListener('astro:before-swap', clear);
-  })();
-</script>
-
-<Loader />
-<Cursor />
-<Nav active="writing" />
-<FsMenu />
+<Shell title="The 1:12 ratio. — Basit Masood" description="Out of every twelve candidates, only one gets through. Here's what I look for." active="writing">
 
 <!-- HERO -->
 <section class="ar2-hero">
-  <a href="/writing" class="ar2-back">← All writing</a>
+  <a href="/writing" class="ar2-back"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg>All writing</a>
   <h1 class="ar2-hero-title">The 1:12 ratio.</h1>
   <div class="ar2-meta">
     <span>February 2026</span>
@@ -46,6 +27,10 @@ import '../../styles/stories.css';
 
   <div class="ar2-pullquote"><p>Taste is the ability to make decisions that feel inevitable in hindsight. You cannot teach it in a bootcamp.</p></div>
 
+  <figure class="ar2-fig">
+    <img src="/landing/images/writing/ratio.jpg" alt="A grid of black circles with one red at the centre" />
+  </figure>
+
   <p>When I review portfolios, I am not looking at how polished the mockups are. I am looking at the decisions behind them. Did this person question the brief or just execute it? Did they explore alternatives that were genuinely different, or just iterate on the same idea three times with slightly different spacing? Do they have opinions about their own work — real opinions, not recycled design Twitter talking points? The candidates who stand out are the ones who can articulate why they made a choice and what they would change if they could do it again.</p>
 
   <p>The other thing I look for is curiosity that extends beyond design. The best designers I have hired were interested in economics, psychology, architecture, music, film — anything that trained their eye and sharpened their judgment. A designer who only consumes design content ends up producing derivative work. The ideas have nowhere to come from except other designers' ideas. The 1 in 12 brings something from outside the discipline, and that is what makes their work feel different. Not better-executed. Different.</p>
@@ -53,29 +38,11 @@ import '../../styles/stories.css';
 
 <!-- FOOTER NAV -->
 <section class="ar2-footer">
-  <a href="/writing" class="ar2-footer-back">← All writing</a>
+  <a href="/writing" class="ar2-footer-back"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg>All writing</a>
   <a href="/writing/design-systems-that-outlast" class="ar2-footer-next">
     <span class="ar2-footer-next-label">Next essay</span>
     <span class="ar2-footer-next-title">Design systems that outlast their designer.</span>
   </a>
 </section>
 
-<Footer />
-
-<script>
-  function initArticle() {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
-    }
-  }
-  initArticle();
-  document.addEventListener('astro:page-load', initArticle);
-</script>
-
-</Base>
+</Shell>

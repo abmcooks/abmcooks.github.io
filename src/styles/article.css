@@ -1,0 +1,444 @@
+/* ═══════════════════════════════════════════════════════════════
+   WRITING ARTICLE (.ar2-*) — re-skinned onto the new system, imported by
+   each /writing/<essay> page on Shell. Extracted from stories.css and
+   token-swapped (--color-void→--coal, --color-rose→--red, warm-cream
+   --color-white→pure --white, --color-dark-*→--ink-*, fonts→--display/
+   --sans/--serif, weight 700→600). 65ch reading column, drop cap, pull-quotes.
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --sp2-edge: var(--gutter);
+  --sp2-max: 1440px;
+  --sp2-frame: 1200px;
+}
+
+/* ── ARTICLE ── */
+/* Medium-style single reading column — left-aligned, consistent width
+   across hero · body · figures. */
+.ar2-hero {
+  padding: clamp(140px, 18vh, 200px) var(--sp2-edge) clamp(40px, 5vh, 60px);
+  max-width: 740px; margin: 0 auto;
+  text-align: left;
+}
+/* Supporting artwork — lives in the body flow, not the hero */
+.ar2-fig {
+  margin: clamp(40px, 6vh, 64px) 0;
+}
+.ar2-fig img {
+  width: 100%; display: block;
+  aspect-ratio: 16 / 9; object-fit: cover;
+  border-radius: var(--r);
+}
+.ar2-fig figcaption {
+  font-family: var(--sans);
+  font-size: var(--fs-micro); font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-50);
+  margin-top: 14px;
+}
+.ar2-back {
+  font-family: var(--sans);
+  font-size: var(--fs-micro); font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-50);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 48px;
+  transition: color 0.2s ease;
+}
+.ar2-back svg { width: 14px; height: 14px; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+.ar2-back:hover { color: var(--red); }
+.ar2-back:hover svg { transform: translateX(-3px); }
+.ar2-hero-title {
+  font-family: var(--display);
+  font-size: clamp(48px, 6.5vw, 96px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink-80);
+  margin-bottom: 36px;
+  text-wrap: balance;
+}
+.ar2-meta {
+  display: flex; align-items: center;
+  gap: 16px;
+  font-family: var(--sans);
+  font-size: var(--fs-micro); font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-50);
+}
+.ar2-meta-dot {
+  width: 3px; height: 3px; border-radius: 50%;
+  background: var(--ink-25);
+}
+
+.ar2-body {
+  padding: 0 var(--sp2-edge) clamp(120px, 16vh, 180px);
+  max-width: 740px; margin: 0 auto;
+}
+.ar2-body p {
+  font-family: var(--serif);
+  font-size: 21px; line-height: 1.72;
+  color: var(--ink-80);
+  margin-bottom: 28px;
+}
+.ar2-body p:last-child { margin-bottom: 0; }
+.ar2-body strong { font-weight: 500; color: var(--ink-80); }
+.ar2-body em { font-style: italic; }
+.ar2-body a {
+  color: var(--ink-80);
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+.ar2-body a:hover { color: var(--red); }
+
+/* Drop cap on first paragraph — serif italic, classic magazine initial */
+.ar2-body p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 5.6em;
+  line-height: 0.88;
+  float: left;
+  padding: 10px 16px 0 0;
+  color: var(--red);
+  font-weight: 500;
+}
+
+/* Pull quote — full-column, left-aligned with a red rule (Medium-style) */
+.ar2-pullquote {
+  margin: clamp(40px, 6vh, 64px) 0;
+  padding: 4px 0 4px 28px;
+  border-left: 3px solid var(--red);
+}
+.ar2-pullquote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Section break ornament */
+.ar2-break {
+  text-align: center;
+  margin: 40px auto;
+  color: var(--ink-25);
+  font-family: var(--display);
+  font-size: 20px;
+  letter-spacing: 0.8em;
+}
+
+/* Article footer — prev/next + back */
+.ar2-footer {
+  padding: clamp(80px, 10vh, 120px) var(--sp2-edge);
+  max-width: var(--sp2-max); margin: 0 auto;
+  border-top: 1px solid var(--ink-12);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.ar2-footer-back {
+  font-family: var(--sans);
+  font-size: var(--fs-micro); font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-65);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: color 0.2s ease;
+}
+.ar2-footer-back svg { width: 14px; height: 14px; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+.ar2-footer-back:hover { color: var(--red); }
+.ar2-footer-back:hover svg { transform: translateX(-3px); }
+.ar2-footer-next {
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+  max-width: 420px;
+}
+.ar2-footer-next-label {
+  font-family: var(--sans);
+  font-size: var(--fs-micro); font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-50);
+}
+.ar2-footer-next-title {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--ink-80);
+  text-align: right;
+  transition: color 0.3s ease;
+}
+.ar2-footer-next:hover .ar2-footer-next-title { color: var(--red); }
+
+@media (max-width: 900px) {
+  .ar2-body p { font-size: 18px; }
+  .ar2-body p:first-of-type::first-letter { font-size: 4em; padding: 6px 10px 0 0; }
+  .ar2-pullquote p { font-size: 20px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BRIEF "WHAT I DID" GRID — compact card row for portfolio entries
+   ═══════════════════════════════════════════════════════════════ */
+.sb-work {
+  padding: clamp(96px, 12vh, 140px) var(--sp2-edge);
+  max-width: var(--sp2-max); margin: 0 auto;
+}
+.sb-work-head {
+  max-width: 720px; margin: 0 auto 64px;
+  text-align: center;
+}
+.sb-work-eyebrow {
+  font-family: var(--sans);
+  font-size: var(--fs-micro); font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+}
+.sb-work-eyebrow::before {
+  content: ''; display: inline-block;
+  width: 28px; height: 1px;
+  background: var(--red);
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.sb-work-heading {
+  font-family: var(--display);
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink-80);
+}
+.sb-work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--ink-12);
+  border: 1px solid var(--ink-12);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.sb-work-item {
+  background: var(--white);
+  padding: 40px 36px;
+  display: flex; flex-direction: column;
+  gap: 16px;
+  min-height: 280px;
+}
+.sb-work-tag {
+  font-family: var(--sans);
+  font-size: var(--fs-micro); font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red);
+}
+.sb-work-title {
+  font-family: var(--display);
+  font-size: 24px; font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  color: var(--ink-80);
+}
+.sb-work-body {
+  font-family: var(--serif);
+  font-size: var(--fs-md); line-height: 1.55;
+  color: var(--ink-65);
+}
+@media (max-width: 1024px) {
+  .sb-work-grid { grid-template-columns: 1fr; }
+  .sb-work-item { min-height: 0; }
+}
+@media (max-width: 900px) {
+  .sb-work { padding: 80px 24px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SUB-PAGE SECTIONS — deep-dive essay treatment
+   No numbered chapters; Challenge / Approach / Outcome as section heads.
+   Adds pull-quote callout + metric highlight band.
+   ═══════════════════════════════════════════════════════════════ */
+.sub-section {
+  padding: clamp(64px, 7vh, 96px) var(--sp2-edge);
+  max-width: var(--sp2-frame); margin: 0 auto;
+}
+.sub-section + .sub-section { border-top: 1px solid var(--ink-08); }
+.sub-section-inner {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(0, 720px);
+  gap: clamp(48px, 6vw, 120px);
+  align-items: baseline;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+}
+.sub-section-label {
+  font-family: var(--sans);
+  font-size: var(--fs-micro); font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red);
+  position: sticky; top: 140px;
+  align-self: start;
+}
+.sub-section-label::before {
+  content: ''; display: inline-block;
+  width: 28px; height: 1px;
+  background: var(--red);
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.sub-section-heading {
+  font-family: var(--display);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink-80);
+  margin-bottom: 40px;
+}
+.sub-section-body {
+  font-family: var(--serif);
+  font-size: 18px; line-height: 1.7;
+  color: var(--ink-80);
+  display: flex; flex-direction: column; gap: 20px;
+  max-width: 62ch;
+}
+.sub-section-body strong { color: var(--ink-80); font-weight: 500; }
+
+/* Editorial-axis modifier — label as eyebrow above heading, content centered in a single 720px column. Used for pages that want a continuous reading spine rather than the sticky-label layout. */
+.sub-section--editorial .sub-section-inner {
+  grid-template-columns: 1fr;
+  max-width: 100%;
+  gap: 0;
+  align-items: stretch;
+}
+.sub-section--editorial .sub-section-label {
+  position: static;
+  display: inline-block;
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  margin-bottom: 24px;
+  align-self: start;
+}
+.sub-section--editorial .sub-section-heading {
+  margin-bottom: 32px;
+}
+.sub-section--editorial .sub-section-body {
+  max-width: 72ch;
+}
+
+@media (max-width: 900px) {
+  .sub-section { padding: 80px 24px; }
+  .sub-section-inner { grid-template-columns: 1fr; gap: 24px; }
+  .sub-section-label { position: static; }
+  .sub-section-heading { font-size: clamp(32px, 9vw, 48px); margin-bottom: 24px; }
+}
+
+/* Pull-quote callout — sits between sections */
+.sub-pullquote {
+  padding: clamp(52px, 6vh, 84px) var(--sp2-edge);
+  max-width: var(--sp2-frame); margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid var(--ink-08);
+  border-bottom: 1px solid var(--ink-08);
+}
+.sub-pullquote-mark {
+  font-family: var(--display);
+  font-size: 56px;
+  line-height: 0.6;
+  color: var(--red);
+  margin-bottom: 24px;
+}
+.sub-pullquote-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.35;
+  color: var(--ink-80);
+  max-width: 26ch;
+  margin: 0 auto 28px;
+}
+/* Wider pullquote variant for longer-form thesis lines */
+.sub-pullquote--wide .sub-pullquote-text { max-width: 44ch; }
+.sub-pullquote-cite {
+  font-family: var(--sans);
+  font-size: var(--fs-micro); font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-50);
+}
+
+/* Metric highlight band — one big number, full-bleed */
+.sub-highlight {
+  padding: clamp(60px, 7vh, 100px) var(--sp2-edge);
+  background: var(--coal);
+  color: var(--white);
+  text-align: center;
+}
+.sub-highlight-value {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(120px, 18vw, 260px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+.sub-highlight-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: var(--fs-ui); font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,.8);
+  max-width: 48ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .sb-brand { padding: 72px 24px; }
+  .sb-brand-logo { max-width: 260px; max-height: 80px; }
+}
+
+/* "and many more…" closing line under the archive */
+.sti-archive-more {
+  text-align: center;
+  margin-top: 64px;
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink-65);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 1024px) {
+  .sti-archive-link {
+    grid-template-columns: 32px 1fr auto;
+    gap: 20px;
+    padding: 28px 0;
+    row-gap: 16px;
+  }
+  .sti-archive-logo {
+    grid-row: 1; grid-column: 2;
+    height: 40px;
+  }
+  .sti-archive-content {
+    grid-row: 2; grid-column: 1 / 3;
+  }
+  .sti-archive-title-line { font-size: 24px; }
+  .sti-archive-right {
+    grid-row: 3; grid-column: 1 / 4;
+    justify-content: space-between;
+    padding-top: 4px;
+  }
+  .sti-archive-num { grid-row: 1; grid-column: 1; }
+}
+

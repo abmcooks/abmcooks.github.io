@@ -1,35 +1,17 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Loader from '../../components/Loader.astro';
-import Cursor from '../../components/Cursor.astro';
-import Nav from '../../components/Nav.astro';
-import FsMenu from '../../components/FsMenu.astro';
-import Footer from '../../components/Footer.astro';
-import '../../styles/global.css';
-import '../../styles/stories.css';
+/* Writing article — re-skinned onto the new system (Shell + shared
+   src/styles/article.css). Light editorial reading page (Medium-style single
+   column); body content kept verbatim, visual direction via the stylesheet. */
+import Shell from '../../layouts/Shell.astro';
+import '../../styles/article.css';
 ---
 
-<Base title="AI didn't kill the designer's job. — Basit Masood" description="Design isn't going anywhere — but the designers who refuse to evolve might.">
+<Shell title="AI didn't kill the designer's job. — Basit Masood" description="Design isn't going anywhere — but the designers who refuse to evolve might." active="writing">
 
-<script is:inline>
-  (function(){
-    var apply = function(){ document.body && document.body.classList.add('page-light'); };
-    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
-    apply();
-    document.addEventListener('astro:page-load', apply);
-    document.addEventListener('astro:after-swap', apply);
-    document.addEventListener('astro:before-swap', clear);
-  })();
-</script>
-
-<Loader />
-<Cursor />
-<Nav active="writing" />
-<FsMenu />
 
 <!-- HERO -->
 <section class="ar2-hero">
-  <a href="/writing" class="ar2-back">← All writing</a>
+  <a href="/writing" class="ar2-back"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg>All writing</a>
   <h1 class="ar2-hero-title">AI didn't kill the designer's job.</h1>
   <div class="ar2-meta">
     <span>March 2026</span>
@@ -46,6 +28,10 @@ import '../../styles/stories.css';
 
   <div class="ar2-pullquote"><p>AI handles the labor, but it does not handle the judgment. That is still a human decision — and it is the decision that matters.</p></div>
 
+  <figure class="ar2-fig">
+    <img src="/landing/images/writing/ai.jpg" alt="A red line weaving unbroken through machine-ruled black lines" />
+  </figure>
+
   <p>The designers who will struggle are the ones whose entire value proposition is execution speed. If you are the person who takes a wireframe and makes it pixel-perfect in Figma, then yes, your timeline just got compressed. But if you are the person who decides what the wireframe should be — who understands the business constraint, the technical limitation, the user's emotional state, and the competitive landscape — then AI just gave you a superpower. You can now move from insight to artifact in minutes instead of days.</p>
 
   <p>I have seen this play out firsthand. My team ships faster now, but the quality of thinking has not changed. The bottleneck was never "how quickly can we produce screens." It was always "how well do we understand the problem." AI did not solve that. It never will. The designers who embrace this shift — who treat AI as a collaborator rather than a threat — are the ones who will define the next decade of product design. The ones who refuse to evolve might genuinely be left behind. But that has always been true. AI just made the stakes clearer.</p>
@@ -53,29 +39,11 @@ import '../../styles/stories.css';
 
 <!-- FOOTER NAV -->
 <section class="ar2-footer">
-  <a href="/writing" class="ar2-footer-back">← All writing</a>
+  <a href="/writing" class="ar2-footer-back"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg>All writing</a>
   <a href="/writing/the-1-12-ratio" class="ar2-footer-next">
     <span class="ar2-footer-next-label">Next essay</span>
     <span class="ar2-footer-next-title">The 1:12 ratio.</span>
   </a>
 </section>
 
-<Footer />
-
-<script>
-  function initArticle() {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
-    }
-  }
-  initArticle();
-  document.addEventListener('astro:page-load', initArticle);
-</script>
-
-</Base>
+</Shell>

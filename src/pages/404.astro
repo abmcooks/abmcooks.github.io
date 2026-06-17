@@ -14,18 +14,8 @@ import Shell from '../layouts/Shell.astro';
     <p class="four-code">404</p>
     <h1 class="four-title">Wrong turn<em>.</em></h1>
     <p class="four-desc">This page doesn't exist — but the rest of the portfolio does.</p>
-    <div class="four-links">
-      <a href="/" class="four-link four-link--primary">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l6-5 6 5M4 6.5V13h8V6.5"/></svg>
-        Home
-      </a>
-      <a href="/stories" class="four-link">Stories</a>
-      <a href="/writing" class="four-link">Writing</a>
-      <a href="/about" class="four-link">About</a>
-      <a href="/resume" class="four-link">Resume</a>
-    </div>
+    <a href="/" class="btn four-home">Back home<span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l6-5 6 5M4 6.5V13h8V6.5"/></svg></span></a>
   </div>
-  <div class="four-dot"></div>
 </div>
 
 <style>
@@ -60,50 +50,17 @@ import Shell from '../layouts/Shell.astro';
     margin-bottom: 40px;
     animation: fourFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.16s both;
   }
-  .four-links {
-    display: flex; align-items: center; justify-content: center;
-    gap: 16px; flex-wrap: wrap;
+  .four-home {
+    margin-top: 8px;
     animation: fourFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.24s both;
-  }
-  .four-link {
-    font-family: var(--sans); font-size: var(--fs-md); font-weight: 500;
-    letter-spacing: .02em;
-    color: rgba(255,255,255,.8); text-decoration: none;
-    padding: 12px 22px; border-radius: var(--r-pill);
-    border: 1px solid var(--white-12);
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
-  }
-  .four-link svg { width: 15px; height: 15px; }
-  .four-link:hover {
-    background: var(--red); border-color: var(--red);
-    color: var(--white);
-  }
-  .four-link:active { transform: scale(0.97); }
-  .four-link--primary {
-    background: var(--red); border-color: var(--red);
-    color: var(--white);
-  }
-  .four-link--primary:hover { background: var(--red-deep); border-color: var(--red-deep); }
-  .four-dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--red);
-    box-shadow: 0 0 12px 4px rgba(var(--red-rgb), 0.35);
-    margin-top: 64px;
-    animation: fourPulse 3s ease-in-out infinite, fourFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.4s both;
   }
 
   @keyframes fourFadeUp {
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes fourPulse {
-    0%, 100% { box-shadow: 0 0 12px 4px rgba(var(--red-rgb), 0.35); opacity: 1; }
-    50% { box-shadow: 0 0 20px 8px rgba(var(--red-rgb), 0.5); opacity: 0.7; }
-  }
   @media (prefers-reduced-motion: reduce) {
-    .four-content, .four-title, .four-desc, .four-links, .four-dot { animation: none; }
-    .four-dot { animation: fourPulse 3s ease-in-out infinite; }
+    .four-content, .four-title, .four-desc, .four-home { animation: none; }
   }
 </style>
 

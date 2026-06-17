@@ -1,35 +1,17 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Loader from '../../components/Loader.astro';
-import Cursor from '../../components/Cursor.astro';
-import Nav from '../../components/Nav.astro';
-import FsMenu from '../../components/FsMenu.astro';
-import Footer from '../../components/Footer.astro';
-import '../../styles/global.css';
-import '../../styles/stories.css';
+/* Writing article — re-skinned onto the new system (Shell + shared
+   src/styles/article.css). Light editorial reading page (Medium-style single
+   column); body content kept verbatim, visual direction via the stylesheet. */
+import Shell from '../../layouts/Shell.astro';
+import '../../styles/article.css';
 ---
 
-<Base title="Design systems that outlast their designer. — Basit Masood" description="Nukta, Techtonic, and the quiet discipline of building a system the next person can run.">
+<Shell title="Design systems that outlast their designer. — Basit Masood" description="Nukta, Techtonic, and the quiet discipline of building a system the next person can run." active="writing">
 
-<script is:inline>
-  (function(){
-    var apply = function(){ document.body && document.body.classList.add('page-light'); };
-    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
-    apply();
-    document.addEventListener('astro:page-load', apply);
-    document.addEventListener('astro:after-swap', apply);
-    document.addEventListener('astro:before-swap', clear);
-  })();
-</script>
-
-<Loader />
-<Cursor />
-<Nav active="writing" />
-<FsMenu />
 
 <!-- HERO -->
 <section class="ar2-hero">
-  <a href="/writing" class="ar2-back">← All writing</a>
+  <a href="/writing" class="ar2-back"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg>All writing</a>
   <h1 class="ar2-hero-title">Design systems that outlast their designer.</h1>
   <div class="ar2-meta">
     <span>January 2026</span>
@@ -46,6 +28,10 @@ import '../../styles/stories.css';
 
   <div class="ar2-pullquote"><p>I did not build Nukta to be impressive. I built it to be obvious.</p></div>
 
+  <figure class="ar2-fig">
+    <img src="/landing/images/writing/systems.jpg" alt="Black modules locking like masonry around one red load-bearing block" />
+  </figure>
+
   <p>Techtonic at ZAR was a different challenge. We were building for 110 countries, multiple currencies, and a user base that ranged from crypto-native traders to first-time digital wallet users. The system had to be flexible without being chaotic. Every component needed to work in English, Arabic, Spanish, and Swahili. Every spacing decision had to account for text that might be 40% longer in German. I learned that the hardest part of a multi-market design system is not the technical architecture — it is the governance. Who decides when a component gets a new variant? Who says no? Without clear ownership and decision-making frameworks, a design system becomes a junk drawer of edge cases.</p>
 
   <p>The throughline across all three systems is the same: the goal is not to build something beautiful. The goal is to build something that makes the next person's job easier. A design system should reduce decisions, not add them. It should feel like a constraint that frees you up, not a rulebook that slows you down. The best test of a design system is not how it looks in a Figma library. It is what happens six months after the person who built it walks out the door. If it is still being used — still being extended, still making sense to people who never met you — then you built something real.</p>
@@ -53,29 +39,11 @@ import '../../styles/stories.css';
 
 <!-- FOOTER NAV -->
 <section class="ar2-footer">
-  <a href="/writing" class="ar2-footer-back">← All writing</a>
+  <a href="/writing" class="ar2-footer-back"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg>All writing</a>
   <a href="/writing/watching-merchants" class="ar2-footer-next">
     <span class="ar2-footer-next-label">Next essay</span>
     <span class="ar2-footer-next-title">Watching merchants ignore our product.</span>
   </a>
 </section>
 
-<Footer />
-
-<script>
-  function initArticle() {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
-    }
-  }
-  initArticle();
-  document.addEventListener('astro:page-load', initArticle);
-</script>
-
-</Base>
+</Shell>

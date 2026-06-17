@@ -1,35 +1,17 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Loader from '../../components/Loader.astro';
-import Cursor from '../../components/Cursor.astro';
-import Nav from '../../components/Nav.astro';
-import FsMenu from '../../components/FsMenu.astro';
-import Footer from '../../components/Footer.astro';
-import '../../styles/global.css';
-import '../../styles/stories.css';
+/* Writing article — re-skinned onto the new system (Shell + shared
+   src/styles/article.css). Light editorial reading page (Medium-style single
+   column); body content kept verbatim, visual direction via the stylesheet. */
+import Shell from '../../layouts/Shell.astro';
+import '../../styles/article.css';
 ---
 
-<Base title="Watching merchants ignore our product. — Basit Masood" description="Standing in shops for hours taught me more than any moderated user test could.">
+<Shell title="Watching merchants ignore our product. — Basit Masood" description="Standing in shops for hours taught me more than any moderated user test could." active="writing">
 
-<script is:inline>
-  (function(){
-    var apply = function(){ document.body && document.body.classList.add('page-light'); };
-    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
-    apply();
-    document.addEventListener('astro:page-load', apply);
-    document.addEventListener('astro:after-swap', apply);
-    document.addEventListener('astro:before-swap', clear);
-  })();
-</script>
-
-<Loader />
-<Cursor />
-<Nav active="writing" />
-<FsMenu />
 
 <!-- HERO -->
 <section class="ar2-hero">
-  <a href="/writing" class="ar2-back">← All writing</a>
+  <a href="/writing" class="ar2-back"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg>All writing</a>
   <h1 class="ar2-hero-title">Watching merchants ignore our product.</h1>
   <div class="ar2-meta">
     <span>December 2025</span>
@@ -46,6 +28,10 @@ import '../../styles/stories.css';
 
   <div class="ar2-pullquote"><p>Testing tells you if something works. Observation tells you if something will be used.</p></div>
 
+  <figure class="ar2-fig">
+    <img src="/landing/images/writing/merchants.jpg" alt="Black flow-lines with one red line breaking onto its own path" />
+  </figure>
+
   <p>These were not things any usability test would have caught. In a controlled environment, people read instructions because someone is watching them. In real life, they skip everything and try to figure it out by tapping. In a controlled environment, screens look fine because the lighting is fine. In a shop in Karachi at 2pm, your carefully chosen gray-on-white text becomes invisible. Field observation reveals the gap between how people say they will use a product and how they actually use it. That gap is where most product failures live.</p>
 
   <p>We redesigned the merchant flow based on what we saw, not what people told us. We removed the onboarding entirely and replaced it with contextual hints that appeared only when relevant. We tripled the contrast on primary actions. We moved the most-used feature to a persistent bottom bar instead of burying it behind a hamburger menu. Retention improved within two weeks. The lesson was not that user testing is useless — it is that observation and testing answer different questions. Testing tells you if something works. Observation tells you if something will be used. They are not the same thing, and confusing them is one of the most common mistakes in product design.</p>
@@ -53,29 +39,11 @@ import '../../styles/stories.css';
 
 <!-- FOOTER NAV -->
 <section class="ar2-footer">
-  <a href="/writing" class="ar2-footer-back">← All writing</a>
+  <a href="/writing" class="ar2-footer-back"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg>All writing</a>
   <a href="/writing/ai-didnt-kill-the-designers-job" class="ar2-footer-next">
     <span class="ar2-footer-next-label">Next essay</span>
     <span class="ar2-footer-next-title">AI didn't kill the designer's job.</span>
   </a>
 </section>
 
-<Footer />
-
-<script>
-  function initArticle() {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
-    }
-  }
-  initArticle();
-  document.addEventListener('astro:page-load', initArticle);
-</script>
-
-</Base>
+</Shell>
