@@ -1,21 +1,19 @@
 ---
-import Base from '../layouts/Base.astro';
-import Loader from '../components/Loader.astro';
-import Cursor from '../components/Cursor.astro';
-import Nav from '../components/Nav.astro';
-import FsMenu from '../components/FsMenu.astro';
-import '../styles/global.css';
-import '../styles/stories.css';
+/* Consulting — re-skinned onto the new system (Shell + landing tokens).
+   Dark-dominant page: composition, section rhythm, and the page's own
+   end-CTA + meta footer are KEPT; only the visual direction is swapped
+   (see src/styles/consulting.css for the token map). doors={false} so
+   Shell's generic finale doesn't double up on this page's richer CTA. */
+import Shell from '../layouts/Shell.astro';
+import '../styles/consulting.css';
 ---
 
-<Base title="Consulting — Basit Masood" description="Design leadership and AI integration for product teams. Previously Head of Design at ZAR (a16z). Founding Designer at SadaPay ($50M acquisition).">
-
-<!-- IMPORTANT: consulting is DARK-DOMINANT, not page-light. Body bg defaults to var(--color-void) -->
-
-<Loader />
-<Cursor />
-<Nav />
-<FsMenu />
+<Shell
+  title="Consulting — Basit Masood"
+  description="Design leadership and AI integration for product teams. Previously Head of Design at ZAR (a16z). Founding Designer at SadaPay ($50M acquisition)."
+  active="consulting"
+  doors={false}
+>
 
 <!-- ============================================
      1. HERO — minimal
@@ -27,43 +25,45 @@ import '../styles/stories.css';
       <span>Consulting · Currently available</span>
     </p>
 
-    <h1 class="cs3-hero-poster" aria-label="Design times AI">
-      <span class="cs3-hero-poster-word">Design</span>
-      <span class="cs3-hero-poster-op" aria-hidden="true">×</span>
-      <span class="cs3-hero-poster-word">AI</span>
+    <h1 class="cs3-hero-poster" aria-label="The experience products deserve">
+      <span class="cs3-hero-poster-line">
+        <span class="cs3-hero-poster-word">Experience</span>
+        <span class="cs3-hero-poster-op" aria-hidden="true">×</span>
+      </span>
+      <span class="cs3-hero-poster-word">Products Deserve</span>
     </h1>
 
     <p class="cs3-hero-desc">
-      For product teams shipping faster than design can keep up.<br/>
+      Senior product design for teams shipping faster than design can keep up.<br/>
       <em>Design systems. AI workflows. Agent products. Team workshops.</em>
     </p>
 
     <div class="cs3-hero-ticker" aria-hidden="true">
       <div class="cs3-hero-ticker-track">
         <span>Design Systems</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>AI Workflows</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>Agent Products</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>Design Leadership</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>AI Design Ops</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>AI Training</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>Design Systems</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>AI Workflows</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>Agent Products</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>Design Leadership</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>AI Design Ops</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
         <span>AI Training</span>
-        <span class="cs3-hero-ticker-dot">●</span>
+        <span class="cs3-hero-ticker-dot" aria-hidden="true"></span>
       </div>
     </div>
   </div>
@@ -71,7 +71,7 @@ import '../styles/stories.css';
   <a href="#services" class="cs3-hero-foot" aria-label="Scroll to services">
     <span class="cs3-hero-foot-label">Services</span>
     <span class="cs3-hero-foot-line"></span>
-    <span class="cs3-hero-foot-arrow">↓</span>
+    <span class="cs3-hero-foot-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span>
   </a>
 </section>
 
@@ -85,7 +85,7 @@ import '../styles/stories.css';
       <p class="cs2-problem-text">Engineers wait days for design to deliver a screen.</p>
     </div>
     <div class="cs2-problem-slide" data-slide="1">
-      <p class="cs2-problem-text">Two designers doing the work of ten.</p>
+      <p class="cs2-problem-text">Your best designers are stuck making the same screens.</p>
     </div>
     <div class="cs2-problem-slide" data-slide="2">
       <p class="cs2-problem-text">Design is the bottleneck in every sprint.</p>
@@ -96,14 +96,14 @@ import '../styles/stories.css';
     <div class="cs2-problem-slide cs2-problem-slide--closer" data-slide="4">
       <p class="cs2-problem-closer">I've solved each of these.</p>
       <p class="cs2-problem-closer-sub">Yours is next.</p>
-      <a href="#contact" class="cs2-problem-closer-cta">Get in touch <span class="sp2-arrow">→</span></a>
+      <a href="#contact" class="btn">Get in touch<span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span></a>
     </div>
   </div>
   <div class="cs2-problems-progress"><div class="cs2-problems-progress-fill" id="csProgressFill"></div></div>
 </section>
 
 <!-- ============================================
-     5. SERVICES — compact 2×2 grid
+     5. SERVICES — compact 2x2 grid
      ============================================ -->
 <section class="cs5-services" id="services" data-cursor="dark">
   <div class="cs5-services-inner">
@@ -177,7 +177,7 @@ import '../styles/stories.css';
 <section class="cs5-testi" data-cursor="dark" id="cs5Testi">
   <div class="cs5-testi-inner">
     <p class="cs5-testi-kicker">What they said</p>
-    <h2 class="cs5-testi-heading">Trusted by people<br/>who shipped.</h2>
+    <h2 class="cs5-testi-heading">Trusted by people.</h2>
 
     <div class="cs5-testi-stack">
       <!-- HERO entry — Brandon -->
@@ -274,7 +274,7 @@ import '../styles/stories.css';
           </span>
           <a href="#contact" class="cs4-engage-cta">
             <span>Start here</span>
-            <span class="cs4-engage-cta-arrow">→</span>
+            <span class="cs4-engage-cta-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span>
           </a>
         </div>
       </article>
@@ -314,7 +314,7 @@ import '../styles/stories.css';
           </span>
           <a href="#contact" class="cs4-engage-cta">
             <span>Start here</span>
-            <span class="cs4-engage-cta-arrow">→</span>
+            <span class="cs4-engage-cta-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span>
           </a>
         </div>
       </article>
@@ -353,7 +353,7 @@ import '../styles/stories.css';
           </span>
           <a href="#contact" class="cs4-engage-cta">
             <span>Start here</span>
-            <span class="cs4-engage-cta-arrow">→</span>
+            <span class="cs4-engage-cta-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span>
           </a>
         </div>
       </article>
@@ -364,7 +364,7 @@ import '../styles/stories.css';
         <div class="cs4-engage-card-head">
           <p class="cs4-engage-card-tag">For design teams</p>
           <h3 class="cs4-engage-card-title">Workshop</h3>
-          <p class="cs4-engage-card-fit">Teach your designers to ship with AI. Claude Code, agent workflows, design system × AI integration — plus leadership, hiring, and research. Modular curriculum, customized to your team.</p>
+          <p class="cs4-engage-card-fit">Teach your designers to ship with AI. Claude Code, agent workflows, design systems and AI integration — plus leadership, hiring, and research. Modular curriculum, customized to your team.</p>
         </div>
 
         <div class="cs4-engage-timeline">
@@ -396,7 +396,7 @@ import '../styles/stories.css';
           </span>
           <a href="#contact" class="cs4-engage-cta">
             <span>Start here</span>
-            <span class="cs4-engage-cta-arrow">→</span>
+            <span class="cs4-engage-cta-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span>
           </a>
         </div>
       </article>
@@ -433,22 +433,25 @@ import '../styles/stories.css';
       <a href="mailto:basitmasood999@gmail.com" class="cs4-cta-method cs4-cta-method--email" id="cs4CtaEmail" aria-label="Copy email address basitmasood999@gmail.com to clipboard">
         <span class="cs4-cta-method-label">Email</span>
         <span class="cs4-cta-method-value">basitmasood999@gmail.com</span>
-        <span class="cs4-cta-method-action" data-default="Click to copy" data-copied="Copied" aria-live="polite">Click to copy</span>
+        <span class="cs4-cta-method-action" aria-live="polite">
+          <span class="cs4-cta-copy-text" data-default="Copy" data-copied="Copied">Copy</span>
+          <svg class="cs4-copy-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5.5 5.5h7v7h-7z"/><path d="M3.5 10.5V3.5h7"/></svg>
+        </span>
       </a>
       <a href="https://cal.com/basit-masood/30min" target="_blank" class="cs4-cta-method">
         <span class="cs4-cta-method-label">Book</span>
         <span class="cs4-cta-method-value">30-minute call</span>
-        <span class="cs4-cta-method-action">Open Cal ↗</span>
+        <span class="cs4-cta-method-action">Open Cal <svg class="cs4-ext" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
       </a>
       <a href="https://linkedin.com/in/iabm" target="_blank" class="cs4-cta-method">
         <span class="cs4-cta-method-label">LinkedIn</span>
         <span class="cs4-cta-method-value">@iabm</span>
-        <span class="cs4-cta-method-action">Open LinkedIn ↗</span>
+        <span class="cs4-cta-method-action">Open LinkedIn <svg class="cs4-ext" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
       </a>
       <a href="https://wa.me/971582071725" target="_blank" class="cs4-cta-method">
         <span class="cs4-cta-method-label">WhatsApp</span>
         <span class="cs4-cta-method-value">+971 58 207 1725</span>
-        <span class="cs4-cta-method-action">Open WhatsApp ↗</span>
+        <span class="cs4-cta-method-action">Open WhatsApp <svg class="cs4-ext" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></span>
       </a>
     </div>
 
@@ -543,16 +546,17 @@ import '../styles/stories.css';
     const ctaEmail = document.getElementById('cs4CtaEmail');
     if (ctaEmail) {
       const action = ctaEmail.querySelector<HTMLElement>('.cs4-cta-method-action');
+      const label = ctaEmail.querySelector<HTMLElement>('.cs4-cta-copy-text');
       ctaEmail.addEventListener('click', (e) => {
         e.preventDefault();
         navigator.clipboard?.writeText('basitmasood999@gmail.com');
-        if (action) {
-          const copied = action.dataset.copied || 'Copied';
-          const defaultText = action.dataset.default || action.textContent || 'Click to copy';
-          action.textContent = copied;
-          action.style.color = 'var(--color-rose)';
+        if (label && action) {
+          const copied = label.dataset.copied || 'Copied';
+          const defaultText = label.dataset.default || 'Copy';
+          label.textContent = copied;
+          action.style.color = 'var(--red)';
           setTimeout(() => {
-            action.textContent = defaultText;
+            label.textContent = defaultText;
             action.style.color = '';
           }, 1400);
         }
@@ -561,7 +565,6 @@ import '../styles/stories.css';
 
   }
   initConsulting();
-  document.addEventListener('astro:page-load', initConsulting);
 </script>
 
-</Base>
+</Shell>

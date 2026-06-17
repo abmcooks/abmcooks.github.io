@@ -13,11 +13,14 @@ interface Props {
   title: string;
   description?: string;
   active?: 'stories' | 'about' | 'writing' | 'consulting' | null;
+  /* pages with their own end-CTA (e.g. consulting) opt out of the doors finale */
+  doors?: boolean;
 }
 const {
   title,
   description = 'Basit Masood — Product Design Leader. Two-time founding designer. Fintech.',
   active = null,
+  doors = true,
 } = Astro.props;
 const V = 19;
 const nav = [
@@ -85,6 +88,7 @@ const nav = [
 
   <slot />
 
+  {doors && (
   <!-- ════ DOORS — dark finale (system, universal CTA) ════ -->
   <section class="doors on-coal" id="contact">
     <div class="doors-grid">
@@ -110,6 +114,7 @@ const nav = [
       </div>
     </div>
   </section>
+  )}
 
   <!-- ════ SYSTEM CHROME JS — cursor · menu · nav-hide · reveals ════ -->
   <script is:inline>
