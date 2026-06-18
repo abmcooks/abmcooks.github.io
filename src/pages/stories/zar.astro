@@ -1,32 +1,12 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Loader from '../../components/Loader.astro';
-import Cursor from '../../components/Cursor.astro';
-import Nav from '../../components/Nav.astro';
-import FsMenu from '../../components/FsMenu.astro';
-import Footer from '../../components/Footer.astro';
-import '../../styles/global.css';
-import '../../styles/stories.css';
+/* ZAR case study — re-skinned onto the new system (Shell + shared
+   src/styles/story.css). Content/structure kept; visual direction via the
+   stylesheet. */
+import Shell from '../../layouts/Shell.astro';
+import '../../styles/story.css';
 ---
 
-<Base title="ZAR — Basit Masood" description="Head of Product Design at ZAR. A $20M stablecoin wallet, live in 110 countries, backed by a16z.">
-
-<script is:inline>
-  // Light-mode page class — only on this page
-  (function(){
-    var apply = function(){ document.body && document.body.classList.add('page-light'); };
-    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
-    apply();
-    document.addEventListener('astro:page-load', apply);
-    document.addEventListener('astro:after-swap', apply);
-    document.addEventListener('astro:before-swap', clear);
-  })();
-</script>
-
-<Loader />
-<Cursor />
-<Nav active="stories" />
-<FsMenu />
+<Shell title="ZAR — Basit Masood" description="Head of Product Design at ZAR. A $20M stablecoin wallet, live in 110 countries, backed by a16z." active="stories">
 
 <!-- ═══════════════════════════════════════════
      ACT I · HERO — An instant wallet.
@@ -38,7 +18,6 @@ import '../../styles/stories.css';
     <p class="sp2-hero-secondary">110 countries. 300K users. Backed by a16z.</p>
     <p class="sp2-hero-desc">Brandon Timinsky — SadaPay's CEO — called me back for a second run. The product was already bleeding: five freelancers deep, no design system, no voice, no direction. Twelve months later ZAR is a $20M-funded stablecoin wallet, live across 110 countries, with a design team that runs without me in the room.</p>
   </div>
-  <span class="sp2-hero-scroll">Scroll</span>
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -86,11 +65,11 @@ import '../../styles/stories.css';
                L 348 336
                L 376 370
                L 350 400 Z"
-            fill="url(#zar-rock-grad)" stroke="rgba(245,240,232,0.06)" stroke-width="1"/>
+            fill="url(#zar-rock-grad)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
 
       <!-- left face highlight (suggests lit edge) -->
       <path d="M 60 400 L 42 310 L 55 220 L 88 140 L 140 85 L 220 56 L 300 48 L 360 72 L 352 118"
-            fill="none" stroke="rgba(245,240,232,0.12)" stroke-width="1.5"/>
+            fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
 
       <!-- right half — jagged, fractured edge facing left, mirrored -->
       <path d="M 740 400
@@ -110,11 +89,11 @@ import '../../styles/stories.css';
                L 452 336
                L 424 370
                L 450 400 Z"
-            fill="url(#zar-rock-face)" stroke="rgba(245,240,232,0.06)" stroke-width="1"/>
+            fill="url(#zar-rock-face)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
 
       <!-- right face highlight -->
       <path d="M 740 400 L 758 310 L 745 220 L 712 140 L 660 85 L 580 56 L 500 48 L 440 72"
-            fill="none" stroke="rgba(245,240,232,0.08)" stroke-width="1.5"/>
+            fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
 
       <!-- dollar symbol peeking through the crack -->
       <text x="400" y="260" text-anchor="middle" font-family="Tanker, serif" font-size="140" font-weight="400" fill="#f5b43b">$</text>
@@ -154,37 +133,6 @@ import '../../styles/stories.css';
         <p>The problem isn't crypto. The problem is trust. Previous crypto products in these markets scammed people; the category starts at zero. Every visual decision — fonts, weights, grid, motion — had to earn back belief that a stablecoin wallet would not disappear overnight.</p>
         <p><strong>Rock. Solid. Dollars. Nothing flimsy, nothing bouncy, nothing that could float away.</strong></p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     ACT III · THE ARC — 0 → 3 → ∞
-     ═══════════════════════════════════════════ -->
-<section class="sp2-arc">
-  <div class="sp2-arc-inner">
-    <div class="sp2-rungs" aria-label="ZAR progression over twelve months">
-      <span class="sp2-rungs-label">Twelve months, end to end</span>
-      <span class="sp2-rungs-row">
-        <span>Freelancer mess</span>
-        <span class="sp2-rungs-sep"></span>
-        <span>Techtonic v1</span>
-        <span class="sp2-rungs-sep"></span>
-        <span>Techtonic v2</span>
-        <span class="sp2-rungs-sep"></span>
-        <span>Techtonic v3</span>
-        <span class="sp2-rungs-sep"></span>
-        <span>Ragged Edge brand</span>
-        <span class="sp2-rungs-sep"></span>
-        <strong>MACHINA AI suite</strong>
-      </span>
-    </div>
-    <div class="sp2-zti" aria-label="Zero to three to infinity">
-      <span class="sp2-zti-char sp2-zti-z">0</span>
-      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--1">→</span>
-      <span class="sp2-zti-char sp2-zti-o">3</span>
-      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--2">→</span>
-      <span class="sp2-zti-char sp2-zti-i">∞</span>
     </div>
   </div>
 </section>
@@ -336,7 +284,7 @@ import '../../styles/stories.css';
           <p>Merchants were using personal QR codes instead of business ones — faster to set up, no compliance friction, zero reconciliation. Problem: the business couldn't see 72% of its own volume, and users had no recourse when a payment went wrong.</p>
           <p>I mapped the full merchant journey, front-stage and back-stage, and consolidated QR issuance inside the onboarding flow. Every transaction routed through the ledger. Every dispute recoverable. Business visibility and user trust in the same redesign.</p>
           <div class="sp2-service-case-metric">
-            <span class="num">72% → ≈0%</span>
+            <span class="num">72% <span class="sp2-stat-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span> ≈0%</span>
             <span class="label">Bypass rate · consolidated to ledger</span>
           </div>
         </div>
@@ -349,7 +297,7 @@ import '../../styles/stories.css';
           <p>The original flow had 18 steps, most imported from a western neobank template. In markets like Nigeria, Argentina, Turkey — users quit by step six. On-ground interviews surfaced the real shape of the problem: wrong documents requested, wrong mental model for "verification," wrong default currency at sign-up.</p>
           <p>I redesigned for how people actually behave when they first open a financial app in an inflationary market. Four steps. Same regulatory coverage. Dramatically higher completion.</p>
           <div class="sp2-service-case-metric">
-            <span class="num">18 → 4</span>
+            <span class="num">18 <span class="sp2-stat-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span> 4</span>
             <span class="label">Golden Flow · 77.8% reduction</span>
           </div>
         </div>
@@ -437,28 +385,23 @@ import '../../styles/stories.css';
         <span class="sp2-work-tag">System · Deep dive</span>
         <h3 class="sp2-work-title">Techtonic</h3>
         <p class="sp2-work-body">The design system built three times. 670+ components, 37 Figma pages, 103 icons, three platforms. Token architecture wired to production. <strong>Once it settled, feature velocity doubled.</strong></p>
-        <span class="sp2-work-cta">Read the Techtonic case study <span class="sp2-arrow">→</span></span>
+        <span class="sp2-work-cta">Read the Techtonic case study <span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></span>
       </a>
       <a class="sp2-work" href="/stories/zar/machina">
         <span class="sp2-work-tag">AI · Deep dive</span>
         <h3 class="sp2-work-title">MACHINA</h3>
         <p class="sp2-work-body">Five AI tools and an internal design consultant. How the design team stopped scaling with headcount and started scaling with automation.</p>
-        <span class="sp2-work-cta">Read the MACHINA case study <span class="sp2-arrow">→</span></span>
+        <span class="sp2-work-cta">Read the MACHINA case study <span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></span>
       </a>
     </div>
 
-    <div class="sp2-works-grid sp2-works-grid--flip">
+    <div class="sp2-works-grid sp2-works-grid--single">
       <a class="sp2-work" href="/stories/zar/golden-flow">
         <span class="sp2-work-tag">Research · Deep dive</span>
         <h3 class="sp2-work-title">Golden Flow</h3>
         <p class="sp2-work-body">How on-ground research in four emerging markets collapsed an 18-step onboarding flow into 4 — without losing a regulatory requirement — and lifted completion across every cohort.</p>
-        <span class="sp2-work-cta">Read the Golden Flow case study <span class="sp2-arrow">→</span></span>
+        <span class="sp2-work-cta">Read the Golden Flow case study <span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></span>
       </a>
-      <article class="sp2-work sp2-work--soon">
-        <span class="sp2-work-tag">Coming soon</span>
-        <h3 class="sp2-work-title">Cash QR · Merchant Onboarding · Chothu</h3>
-        <p class="sp2-work-body">The ledger-consolidation redesign, the merchant flow compressed 19→4, and the AI design consultant engineers talked to instead of the design team. Separate case studies — on the way.</p>
-      </article>
     </div>
   </div>
 </section>
@@ -470,8 +413,8 @@ import '../../styles/stories.css';
   <div class="sp2-testi-head">
     <h2>What they said</h2>
     <div class="sp2-testi-arrows">
-      <button class="sp2-testi-arrow" id="testiPrev" aria-label="Previous"><span class="sp2-arrow">←</span></button>
-      <button class="sp2-testi-arrow" id="testiNext" aria-label="Next"><span class="sp2-arrow">→</span></button>
+      <button class="sp2-testi-arrow" id="testiPrev" aria-label="Previous"><span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg></span></button>
+      <button class="sp2-testi-arrow" id="testiNext" aria-label="Next"><span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></button>
     </div>
   </div>
   <div class="sp2-testi-track" id="testiTrack">
@@ -498,14 +441,12 @@ import '../../styles/stories.css';
      ACT VIII · NEXT
      ═══════════════════════════════════════════ -->
 <section class="sp2-next">
-  <div class="sp2-next-back"><a href="/stories"><span class="sp2-arrow">←</span> Back to all stories</a></div>
+  <div class="sp2-next-back"><a href="/stories"><span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg></span> Back to all stories</a></div>
   <a href="/stories/wtt" class="sp2-next-cta">
     <span class="label">Next Story</span>
-    <span class="title">Walking the Talk <span class="sp2-arrow">→</span></span>
+    <span class="title">Walking the Talk <span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></span>
   </a>
 </section>
-
-<Footer />
 
 <script>
   function initZar() {
@@ -541,4 +482,4 @@ import '../../styles/stories.css';
   document.addEventListener('astro:page-load', initZar);
 </script>
 
-</Base>
+</Shell>

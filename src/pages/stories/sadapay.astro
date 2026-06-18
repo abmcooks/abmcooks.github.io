@@ -1,32 +1,12 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Loader from '../../components/Loader.astro';
-import Cursor from '../../components/Cursor.astro';
-import Nav from '../../components/Nav.astro';
-import FsMenu from '../../components/FsMenu.astro';
-import Footer from '../../components/Footer.astro';
-import '../../styles/global.css';
-import '../../styles/stories.css';
+/* SadaPay case study — re-skinned onto the new system (Shell + shared
+   src/styles/story.css). Content/structure kept; visual direction swapped
+   via the stylesheet. */
+import Shell from '../../layouts/Shell.astro';
+import '../../styles/story.css';
 ---
 
-<Base title="SadaPay — Basit Masood" description="Founding designer of Pakistan's first fintech. Four years from zero to a $50M exit.">
-
-<script is:inline>
-  // Light-mode page class — only on this page
-  (function(){
-    var apply = function(){ document.body && document.body.classList.add('page-light'); };
-    var clear = function(){ document.body && document.body.classList.remove('page-light'); };
-    apply();
-    document.addEventListener('astro:page-load', apply);
-    document.addEventListener('astro:after-swap', apply);
-    document.addEventListener('astro:before-swap', clear);
-  })();
-</script>
-
-<Loader />
-<Cursor />
-<Nav active="stories" />
-<FsMenu />
+<Shell title="SadaPay — Basit Masood" description="Founding designer of Pakistan's first fintech. Four years from zero to a $50M exit." active="stories">
 
 <!-- ═══════════════════════════════════════════
      ACT I · HERO — 0 → 1 → ∞
@@ -38,7 +18,6 @@ import '../../styles/stories.css';
     <p class="sp2-hero-secondary">Four years later — a $50 million exit.</p>
     <p class="sp2-hero-desc">I was hired as SadaPay's first designer in December 2020 with one job: figure out what good fintech could look like in a country that had never seen one. Four years later — 4 million users, $1 billion processed annually, the first numberless card in the MEA region, and Pakistan's first fintech exit.</p>
   </div>
-  <span class="sp2-hero-scroll">Scroll</span>
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -50,8 +29,11 @@ import '../../styles/stories.css';
   </video>
   <div class="sp2-video-caption">SadaPay brand launch film · 2019</div>
   <button class="sp2-video-audio" id="sp2VideoAudio" aria-label="Toggle audio" type="button">
-    <i class="ph-bold ph-speaker-simple-slash"></i>
-    <span>Sound off</span>
+    <span class="sp2-audio-ico" aria-hidden="true">
+      <svg class="ico-off" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h2l3-2.5v9L5 10H3z"/><path d="M11 6.5l3 3M14 6.5l-3 3"/></svg>
+      <svg class="ico-on" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h2l3-2.5v9L5 10H3z"/><path d="M11 6.5a3 3 0 010 3M13 5a5.5 5.5 0 010 6"/></svg>
+    </span>
+    <span class="sp2-audio-label">Sound off</span>
   </button>
 </section>
 
@@ -67,10 +49,10 @@ import '../../styles/stories.css';
           <span class="label">Users at departure</span>
         </div>
         <div class="sp2-stakes-supporting">
-          <div class="stat"><span class="val">1 → 8</span><span class="label">Team, built</span></div>
+          <div class="stat"><span class="val">1 <span class="sp2-stat-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span> 8</span><span class="label">Team, built</span></div>
           <div class="stat"><span class="val">$50M</span><span class="label">Papara acquisition</span></div>
           <div class="stat"><span class="val">$1B+</span><span class="label">Annual volume</span></div>
-          <div class="stat"><span class="val">4.8★</span><span class="label">App Store rating</span></div>
+          <div class="stat"><span class="val">4.8</span><span class="label">App Store rating</span></div>
         </div>
       </div>
       <div class="sp2-stakes-context">
@@ -91,25 +73,20 @@ import '../../styles/stories.css';
   <div class="sp2-arc-inner">
     <div class="sp2-rungs" aria-label="Career progression over four years">
       <span class="sp2-rungs-label">Six rungs, four years</span>
-      <span class="sp2-rungs-row">
-        <span>Mid-level</span>
-        <span class="sp2-rungs-sep"></span>
-        <span>Senior</span>
-        <span class="sp2-rungs-sep"></span>
-        <span>Senior II</span>
-        <span class="sp2-rungs-sep"></span>
-        <span>Lead I</span>
-        <span class="sp2-rungs-sep"></span>
-        <span>Lead II</span>
-        <span class="sp2-rungs-sep"></span>
-        <strong>Head of Product Design</strong>
-      </span>
+      <ol class="sp2-rungs-row">
+        <li class="sp2-rung"><span class="sp2-rung-role">Mid-level</span></li>
+        <li class="sp2-rung"><span class="sp2-rung-role">Senior</span></li>
+        <li class="sp2-rung"><span class="sp2-rung-role">Senior II</span></li>
+        <li class="sp2-rung"><span class="sp2-rung-role">Lead I</span></li>
+        <li class="sp2-rung"><span class="sp2-rung-role">Lead II</span></li>
+        <li class="sp2-rung sp2-rung--end"><span class="sp2-rung-role">Head of Product Design</span></li>
+      </ol>
     </div>
     <div class="sp2-zti" aria-label="Zero to one to infinity">
       <span class="sp2-zti-char sp2-zti-z">0</span>
-      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--1">→</span>
+      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span>
       <span class="sp2-zti-char sp2-zti-o">1</span>
-      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--2">→</span>
+      <span class="sp2-zti-char sp2-zti-a sp2-zti-a--2"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span>
       <span class="sp2-zti-char sp2-zti-i">∞</span>
     </div>
   </div>
@@ -164,7 +141,7 @@ import '../../styles/stories.css';
         <h3>We couldn't print cards fast enough.</h3>
         <p>Public rollout hit and demand crushed our fulfillment. Physical cards ran out within days — people lined up for a piece of plastic in a country where nobody had ever lined up for a debit card before.</p>
         <p>Onboarding took under two minutes in the app — CNIC scan, biometric liveness check, PIN setup. We were also the first neobank in Pakistan to integrate a Biometric Verification System with <strong>NADRA</strong> (the national ID authority), so users could verify by scanning a fingerprint through the camera. Higher limits, a layer of trust the category hadn't had.</p>
-        <p>We crossed 1 million, then 2 million users — and kept going. App Store hit <strong>4.8★</strong>. Play Store <strong>4.7★</strong>. Pakistan's largest neobank before the market had figured out what we were building.</p>
+        <p>We crossed 1 million, then 2 million users — and kept going. App Store rating hit <strong>4.8</strong>, Play Store <strong>4.7</strong>. Pakistan's largest neobank before the market had figured out what we were building.</p>
         <div class="sp2-chapter-image">
           <img src="/images/Sadapay/home-balance.png" alt="SadaPay home balance screen" />
         </div>
@@ -356,28 +333,23 @@ import '../../styles/stories.css';
         <span class="sp2-work-tag">System · Deep dive</span>
         <h3 class="sp2-work-title">Nukta</h3>
         <p class="sp2-work-body">SadaPay's design system. Tokens wired to production code. Atomic architecture. Three months of infrastructure while features waited. <strong>Once live, new features shipped in half the time.</strong></p>
-        <span class="sp2-work-cta">Read the Nukta case study <span class="sp2-arrow">→</span></span>
+        <span class="sp2-work-cta">Read the Nukta case study <span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></span>
       </a>
       <a class="sp2-work" href="/stories/sadapay/sadabiz">
         <span class="sp2-work-tag">Product · Deep dive</span>
         <h3 class="sp2-work-title">SadaBiz</h3>
         <p class="sp2-work-body">Banking for Pakistan's freelancers. Apple Pay and Google Pay for clients abroad, three-day settlement, USD held in-account.</p>
-        <span class="sp2-work-cta">Read the SadaBiz case study <span class="sp2-arrow">→</span></span>
+        <span class="sp2-work-cta">Read the SadaBiz case study <span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></span>
       </a>
     </div>
 
-    <div class="sp2-works-grid sp2-works-grid--flip">
+    <div class="sp2-works-grid sp2-works-grid--single">
       <a class="sp2-work" href="/stories/sadapay/waitlist">
         <span class="sp2-work-tag">Growth · Deep dive</span>
         <h3 class="sp2-work-title">The Waitlist</h3>
         <p class="sp2-work-body">How a gamified pre-launch waitlist — Founders Club, golden tickets, black cards — grew past 700,000 signups with zero paid acquisition, and turned into the highest-transacting cohort post-launch.</p>
-        <span class="sp2-work-cta">Read the Waitlist case study <span class="sp2-arrow">→</span></span>
+        <span class="sp2-work-cta">Read the Waitlist case study <span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></span>
       </a>
-      <article class="sp2-work" style="border-style:dashed; pointer-events:none;">
-        <span class="sp2-work-tag">Coming soon</span>
-        <h3 class="sp2-work-title">SadaSchool · BVS · Mission Control</h3>
-        <p class="sp2-work-body">Education platform for freelancers, biometric verification with NADRA, and the internal ops panel serving 10+ teams and 50+ support associates. Separate case studies — on the way.</p>
-      </article>
     </div>
   </div>
 </section>
@@ -389,8 +361,8 @@ import '../../styles/stories.css';
   <div class="sp2-testi-head">
     <h2>What they said</h2>
     <div class="sp2-testi-arrows">
-      <button class="sp2-testi-arrow" id="testiPrev" aria-label="Previous"><span class="sp2-arrow">←</span></button>
-      <button class="sp2-testi-arrow" id="testiNext" aria-label="Next"><span class="sp2-arrow">→</span></button>
+      <button class="sp2-testi-arrow" id="testiPrev" aria-label="Previous"><span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg></span></button>
+      <button class="sp2-testi-arrow" id="testiNext" aria-label="Next"><span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></button>
     </div>
   </div>
   <div class="sp2-testi-track" id="testiTrack">
@@ -457,14 +429,12 @@ import '../../styles/stories.css';
      ACT VIII · NEXT
      ═══════════════════════════════════════════ -->
 <section class="sp2-next">
-  <div class="sp2-next-back"><a href="/stories"><span class="sp2-arrow">←</span> Back to all stories</a></div>
+  <div class="sp2-next-back"><a href="/stories"><span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8H2M6 4l-4 4 4 4"/></svg></span> Back to all stories</a></div>
   <a href="/stories/zar" class="sp2-next-cta">
     <span class="label">Next Story</span>
-    <span class="title">ZAR <span class="sp2-arrow">→</span></span>
+    <span class="title">ZAR <span class="sp2-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></span></span>
   </a>
 </section>
-
-<Footer />
 
 <script>
   // Page-specific behavior. Loader/Cursor/Nav-scroll/FsMenu live in shared components now.
@@ -489,15 +459,9 @@ import '../../styles/stories.css';
     if (video && audioBtn) {
       audioBtn.addEventListener('click', () => {
         video.muted = !video.muted;
-        const icon = audioBtn.querySelector('i');
-        const label = audioBtn.querySelector('span');
-        if (video.muted) {
-          if (icon) icon.className = 'ph-bold ph-speaker-simple-slash';
-          if (label) label.textContent = 'Sound off';
-        } else {
-          if (icon) icon.className = 'ph-bold ph-speaker-simple-high';
-          if (label) label.textContent = 'Sound on';
-        }
+        const label = audioBtn.querySelector('.sp2-audio-label');
+        audioBtn.classList.toggle('is-on', !video.muted);
+        if (label) label.textContent = video.muted ? 'Sound off' : 'Sound on';
       });
     }
 
@@ -519,4 +483,4 @@ import '../../styles/stories.css';
   document.addEventListener('astro:page-load', initSadaPay);
 </script>
 
-</Base>
+</Shell>
