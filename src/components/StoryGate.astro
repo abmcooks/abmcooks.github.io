@@ -11,6 +11,9 @@ const HASH = "af50014554ffc608dda388bc587fa1d1aba5ee2515f6a64e3a4b8c7a6ccbf764";
 
 <div id="storyGate" class="sg" data-hash={HASH} hidden>
   <div class="sg-card">
+    <button type="button" class="sg-close" id="sgClose" aria-label="Close">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13L13 3M3 3l10 10"/></svg>
+    </button>
     <p class="sg-kicker"><span class="sg-dot"></span>Private</p>
     <h2 class="sg-title">This case study is locked<em>.</em></h2>
     <form class="sg-form" id="sgForm" autocomplete="off">
@@ -36,7 +39,14 @@ const HASH = "af50014554ffc608dda388bc587fa1d1aba5ee2515f6a64e3a4b8c7a6ccbf764";
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   }
   .sg { font-family: 'General Sans', system-ui, sans-serif; }
+  /* the site hides the native cursor (custom cursor) — restore it on the modal */
+  .sg:not([hidden]) { cursor: default !important; }
+  .sg:not([hidden]) .sg-input { cursor: text !important; }
+  .sg:not([hidden]) .sg-btn,
+  .sg:not([hidden]) .sg-contact,
+  .sg:not([hidden]) .sg-close { cursor: pointer !important; }
   .sg-card {
+    position: relative;
     width: 100%; max-width: 420px;
     background: #0F0F0E;
     border: 1px solid rgba(255,255,255,0.10);
@@ -44,6 +54,16 @@ const HASH = "af50014554ffc608dda388bc587fa1d1aba5ee2515f6a64e3a4b8c7a6ccbf764";
     padding: 36px;
     box-shadow: 0 30px 80px rgba(0,0,0,0.5);
   }
+  .sg-close {
+    position: absolute; top: 14px; right: 14px;
+    width: 34px; height: 34px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; border: 0; border-radius: 50%;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.2s, background 0.2s;
+  }
+  .sg-close:hover { color: #fff; background: rgba(255,255,255,0.08); }
+  .sg-close svg { width: 15px; height: 15px; }
   .sg-kicker {
     display: inline-flex; align-items: center; gap: 9px;
     font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
@@ -121,6 +141,13 @@ const HASH = "af50014554ffc608dda388bc587fa1d1aba5ee2515f6a64e3a4b8c7a6ccbf764";
       gate.hidden = true;
       document.documentElement.style.overflow = '';
     }
+    // dismiss without unlocking: if the gate was opened over an OPEN page
+    // (click-intercept), just hide it; if over a directly-accessed locked
+    // page, leave to the open /stories landing so the content stays hidden.
+    function dismiss() {
+      if (pendingHref) closeGate();
+      else window.location.replace('/stories/');
+    }
 
     // keep gated case studies out of search
     if (isLocked(location.pathname)) {
@@ -137,6 +164,11 @@ const HASH = "af50014554ffc608dda388bc587fa1d1aba5ee2515f6a64e3a4b8c7a6ccbf764";
       if (url.origin !== location.origin) return;
       if (isLocked(url.pathname)) { e.preventDefault(); openGate(url.href); }
     }, true);
+
+    var close = document.getElementById('sgClose');
+    if (close) close.addEventListener('click', dismiss);
+    gate.addEventListener('click', function (e) { if (e.target === gate) dismiss(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !gate.hidden) dismiss(); });
 
     var form = document.getElementById('sgForm');
     var input = document.getElementById('sgInput');
