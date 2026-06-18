@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import StoryGate from '../components/StoryGate.astro';
 
 interface Props {
   title: string;
@@ -31,6 +32,7 @@ const { title, description = "Basit Masood — Product Design Leader. Two-time f
   <slot name="head" />
 </head>
 <body>
+  <StoryGate />
   <slot />
 
   <script>

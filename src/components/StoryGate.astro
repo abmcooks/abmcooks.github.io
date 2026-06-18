@@ -1,0 +1,160 @@
+---
+/* StoryGate — gates the case studies. Lives site-wide (Shell + Base + home).
+   It intercepts clicks on links to /stories/<detail> and opens a modal IN
+   PLACE on the current page — the case study is never navigated to (so a
+   locked visitor never loads its content). On correct password it remembers
+   the unlock and proceeds to the link. Direct URL access to a locked page
+   also shows the modal. Password is verified by SHA-256 hash; plaintext never
+   ships. Self-contained styling so it works on any layout. */
+const HASH = "af50014554ffc608dda388bc587fa1d1aba5ee2515f6a64e3a4b8c7a6ccbf764";
+---
+
+<div id="storyGate" class="sg" data-hash={HASH} hidden>
+  <div class="sg-card">
+    <p class="sg-kicker"><span class="sg-dot"></span>Private</p>
+    <h2 class="sg-title">This case study is locked<em>.</em></h2>
+    <form class="sg-form" id="sgForm" autocomplete="off">
+      <input class="sg-input" id="sgInput" type="password" placeholder="Enter password" aria-label="Password" autocomplete="off" />
+      <button class="sg-btn" type="submit">Unlock<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M10 4l4 4-4 4"/></svg></button>
+    </form>
+    <p class="sg-err" id="sgErr" hidden>Not quite.</p>
+    <div class="sg-contacts">
+      <span class="sg-ask">Get the password</span>
+      <a class="sg-contact" href="mailto:basitmasood999@gmail.com?subject=Case%20study%20access">Email<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></a>
+      <a class="sg-contact" href="https://linkedin.com/in/iabm" target="_blank" rel="noopener">LinkedIn<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M5 4h7v7"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sg[hidden] { display: none; }
+  .sg:not([hidden]) {
+    position: fixed; inset: 0; z-index: 2147483647;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    background: rgba(10,10,9,0.96);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  }
+  .sg { font-family: 'General Sans', system-ui, sans-serif; }
+  .sg-card {
+    width: 100%; max-width: 420px;
+    background: #0F0F0E;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+  .sg-kicker {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin: 0 0 18px;
+  }
+  .sg-dot { width: 7px; height: 7px; border-radius: 50%; background: #E11D48; }
+  .sg-title {
+    font-family: 'Tanker', 'General Sans', system-ui, sans-serif;
+    font-size: 32px; font-weight: 400; line-height: 1.0; letter-spacing: -0.01em;
+    text-transform: uppercase; color: #fff; margin: 0 0 26px;
+  }
+  .sg-title em { font-style: normal; color: #E11D48; }
+  .sg-form { display: flex; gap: 10px; margin-bottom: 10px; }
+  .sg-input {
+    flex: 1 1 auto; min-width: 0;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14); border-radius: 999px;
+    padding: 13px 20px; color: #fff; font-size: 15px; font-family: inherit;
+    outline: none; transition: border-color 0.2s;
+  }
+  .sg-input::placeholder { color: rgba(255,255,255,0.4); }
+  .sg-input:focus { border-color: #E11D48; }
+  .sg-btn {
+    flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px;
+    background: #E11D48; color: #fff; border: 0; cursor: pointer;
+    border-radius: 999px; padding: 13px 22px;
+    font-family: inherit; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .sg-btn:hover { background: #C11540; }
+  .sg-btn:active { transform: scale(0.97); }
+  .sg-btn svg { width: 14px; height: 14px; }
+  .sg-err { font-size: 13px; color: #E11D48; margin: 0; }
+  .sg-contacts {
+    display: flex; align-items: center; gap: 18px;
+    margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .sg-ask { font-size: 13px; color: rgba(255,255,255,0.5); margin-right: auto; }
+  .sg-contact {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .sg-contact svg { width: 12px; height: 12px; }
+  .sg-contact:hover { color: #E11D48; }
+  @media (max-width: 480px) {
+    .sg-card { padding: 26px 20px; }
+    .sg-title { font-size: 26px; }
+    .sg-form { flex-direction: column; }
+    .sg-btn { justify-content: center; }
+    .sg-contacts { flex-wrap: wrap; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var gate = document.getElementById('storyGate');
+    if (!gate) return;
+    var KEY = 'abm-stories-unlocked';
+    function unlocked() { try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
+    // a "locked" route = any /stories/<...> page, but NOT the /stories landing itself
+    function isLocked(path) {
+      var p = (path || '').replace(/\/+$/, '');
+      return p.indexOf('/stories/') === 0 && p !== '/stories';
+    }
+    var pendingHref = null;
+
+    function openGate(href) {
+      pendingHref = href || null;
+      gate.hidden = false;
+      document.documentElement.style.overflow = 'hidden';
+      var i = document.getElementById('sgInput'); if (i) i.focus();
+    }
+    function closeGate() {
+      gate.hidden = true;
+      document.documentElement.style.overflow = '';
+    }
+
+    // keep gated case studies out of search
+    if (isLocked(location.pathname)) {
+      try { document.head.insertAdjacentHTML('beforeend', '<meta name="robots" content="noindex">'); } catch (e) {}
+      if (!unlocked()) openGate(null); // direct URL access
+    }
+
+    // intercept clicks to locked routes — open the modal in place, don't navigate
+    document.addEventListener('click', function (e) {
+      if (unlocked()) return;
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var url; try { url = new URL(a.getAttribute('href'), location.href); } catch (_) { return; }
+      if (url.origin !== location.origin) return;
+      if (isLocked(url.pathname)) { e.preventDefault(); openGate(url.href); }
+    }, true);
+
+    var form = document.getElementById('sgForm');
+    var input = document.getElementById('sgInput');
+    var err = document.getElementById('sgErr');
+    async function sha256(str) {
+      var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    }
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var val = (input.value || '').trim(); if (!val) return;
+      try {
+        var h = await sha256(val);
+        if (h === gate.dataset.hash) {
+          try { localStorage.setItem(KEY, '1'); } catch (_) {}
+          if (pendingHref) { window.location.href = pendingHref; } else { closeGate(); }
+        } else { err.hidden = false; input.value = ''; input.focus(); }
+      } catch (_) { err.hidden = false; }
+    });
+  })();
+</script>

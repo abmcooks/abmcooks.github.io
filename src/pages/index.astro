@@ -1,6 +1,7 @@
 ---
 // Standalone landing — own document (no shared Base; its .nav handler collides).
 // Assets in /public/landing/. Source of truth: portfolio-experience/lab/index.html.
+import StoryGate from '../components/StoryGate.astro';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +26,7 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="dcd588fe-7465-4f25-b904-c044d2a17532"></script>
 </head>
 <body>
+<StoryGate />
 <!-- LOADER — fluorescent-tube logo (ported from live site) -->
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-mark">
